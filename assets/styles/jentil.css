@@ -1,0 +1,469 @@
+/**
+ * Main stylesheet
+ *
+ * This file contains the theme's styles.
+ *
+ * @link              https://jentil.grottopress.com
+ * @package           jentil
+ * @since             Jentil 0.1.0
+ */
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 10px;
+    -webkit-text-size-adjust: none;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  	line-height: 160%;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+	background-color: #fff;
+	color: #333;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+*:first-child {
+    margin-top: 0;
+}
+
+*:last-child {
+    margin-bottom: 0;
+}
+
+p:empty {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    line-height: 140%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 34px;
+    font-size: 3.4rem;
+}
+
+h2 {
+    font-size: 30px;
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 26px;
+    font-size: 2.6rem;
+}
+
+h4 {
+    font-size: 22px;
+    font-size: 2.2rem;
+}
+
+h5 {
+    font-size: 18px;
+    font-size: 1.8rem;
+}
+
+h6 {
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+
+p,
+hr,
+div,
+ul,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#wpadminbar {
+    margin: auto;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.inline-block {
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	vertical-align: top;
+}
+
+img,
+iframe,
+object,
+embed,
+video,
+audio,
+iframe[style],
+object[style],
+embed[style],
+.wp-caption,
+input,
+textarea,
+select,
+button {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+/**
+ * Lists
+ */
+
+ul,
+ol {
+	list-style-image: none;
+	list-style-position: inside;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+ul {
+	list-style-type: circle;
+}
+
+ol {
+	list-style-type: decimal; /*decimal-leading-zero;*/
+}
+
+ol ol {
+	list-style: lower-alpha;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ol ol ol ol {
+	list-style: upper-alpha;
+}
+
+/*ul ul, ol ol, ul ol, ol ul {
+	margin-bottom: 0;
+	margin-top: 10px;
+}*/
+
+li {
+	display: list-item;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/**
+ * Self-Clear
+ */
+
+.self-clear:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+* html .self-clear {
+    zoom: 1;
+} /* IE6 */
+
+*:first-child+html .self-clear {
+    zoom: 1;
+} /* IE7 */
+
+.site-sidebar,
+.site-header,
+.site-footer {
+    font-size: 13px;
+    font-size: 1.3rem;
+}
+
+/**
+ * Layout
+ */
+
+#header,
+#main,
+#footer {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header-wrap,
+#main-wrap,
+#footer-wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (min-width: 800px) {
+    #header,
+    #main,
+    #footer {
+        max-width: 960px;
+    }
+    
+    .site-sidebar {
+        margin-top: 0;
+    }
+    
+    /**
+     * Two Columns, Right Sidebar
+     */
+    
+    #container,
+    .layout-content-sidebar #container {
+    	float: left;
+    	margin-right: -280px;
+    	width: 100%;
+    }
+    
+    #content,
+    .layout-content-sidebar #content {
+    	margin-right: 280px;
+    }
+    
+    #primary,
+    .layout-content-sidebar #primary {
+    	float: right;
+    	width: 250px;
+    }
+    
+    /**
+     * Two Columns, Left Sidebar
+     */
+
+    .layout-sidebar-content #container {
+    	float: right;
+    	margin-left: -280px;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-content #content {
+    	margin-left: 280px;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-content #primary {
+    	float: left;
+    }
+    
+    /**
+     * Three Columns, Left & Right Sidebars
+     */
+    
+    .layout-sidebar-content-sidebar #container {
+    	float: left;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-content-sidebar #content {
+    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
+    	margin-right: 190px;
+    	margin-left: 170px;
+    }
+    
+    .layout-sidebar-content-sidebar #primary,
+    .layout-sidebar-content-sidebar #secondary {
+    	float: left;
+    }
+    
+    .layout-sidebar-content-sidebar #secondary {
+    	margin-left: -100%;
+    	width: 140px; /** Width of left column */
+    }
+    
+    .layout-sidebar-content-sidebar #primary {
+    	margin-left: -160px; /** Set left margin to -(RightColumnWidth) */
+    	width: 160px; /** Width of right column */
+    }
+    
+    /**
+     * Three Columns, Two Left Sidebars
+     */
+    
+    .layout-sidebar-sidebar-content #container {
+    	float: right;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-sidebar-content #content {
+    	margin-right: 0;
+    	margin-left: 360px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #secondary {
+    	float: right;
+    	width: 140px; /** Width of left column in pixels */
+    	margin-right: -330px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #primary {
+    	float: right;
+    	width: 160px; /** Width of right column in pixels */
+    	margin-right: -160px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    /**
+     * Three Columns, Two Right Sidebars
+     */
+    
+    .layout-content-sidebar-sidebar #container {
+    	float: left;
+    	margin-right: 0;
+    }
+    
+    .layout-content-sidebar-sidebar #content {
+    	margin-right: 360px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #secondary {
+    	float: left;
+    	width: 140px; /** Width of left column in pixels */
+    	margin-left: -330px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #primary {
+    	float: left;
+    	width: 160px; /** Width of right column in pixels */
+    	margin-left: -160px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    #footer .widget {
+        margin-top: 0;
+        width: 24.5%;
+        padding: 0 15px;
+        display: -moz-inline-stack;
+    	display: inline-block;
+    	zoom: 1;
+    	*display: inline;
+    	vertical-align: top;
+    }
+}
+
+@media (min-width: 920px) {
+    /**
+     * Two Columns, Right Sidebar
+     */
+    
+    #container,
+    .layout-content-sidebar #container {
+    	margin-right: -330px;
+    }
+    
+    #content,
+    .layout-content-sidebar #content {
+    	margin-right: 330px;
+    }
+    
+    #primary,
+    .layout-content-sidebar #primary {
+    	width: 300px;
+    }
+    
+    /**
+     * Two Columns, Left Sidebar
+     */
+
+    .layout-sidebar-content #container {
+    	margin-left: -330px;
+    }
+    
+    .layout-sidebar-content #content {
+    	margin-left: 330px;
+    }
+    
+    /**
+     * Three Columns, Left & Right Sidebars
+     */
+    
+    .layout-sidebar-content-sidebar #content {
+    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
+    	margin-right: 270px;
+    	margin-left: 190px;
+    }
+    
+    .layout-sidebar-content-sidebar #secondary {
+    	width: 160px; /** Width of left column */
+    }
+    
+    .layout-sidebar-content-sidebar #primary {
+    	margin-left: -240px; /** Set left margin to -(RightColumnWidth) */
+    	width: 240px; /** Width of right column */
+    }
+    
+    /**
+     * Three Columns, Two Left Sidebars
+     */
+    
+    .layout-sidebar-sidebar-content #content {
+    	margin-left: 460px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #secondary {
+    	width: 160px; /** Width of left column in pixels */
+    	margin-right: -430px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #primary {
+    	width: 240px; /** Width of right column in pixels */
+    	margin-right: -240px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    /**
+     * Three Columns, Two Right Sidebars
+     */
+    
+    .layout-content-sidebar-sidebar #content {
+    	margin-right: 460px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #secondary {
+    	width: 160px; /** Width of left column in pixels */
+    	margin-left: -430px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #primary {
+    	width: 240px; /** Width of right column in pixels */
+    	margin-left: -240px; /** Set margin to -(RightColumnWidth) */
+    }
+}
