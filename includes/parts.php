@@ -25,7 +25,7 @@ namespace GrottoPress\Jentil;
  * @subpackage 	    jentil/includes
  * @since			jentil 1.0.0
  */
-class Template_Parts {
+class Parts {
     /**
      * Microdata schema
      * 
@@ -88,6 +88,9 @@ class Template_Parts {
     /**
      * Header logo
      * 
+     * @todo        Fill in the img src with logo theme mod from
+     *              customizer and custom logo since WP 4.6
+     * 
      * @since       MapPess 1.0.0
 	 * @access      public
 	 * 
@@ -137,9 +140,9 @@ class Template_Parts {
 	 * @action      jentil_before_title
      */
     public function breadcrumbs() {
-    // 	if ( is_front_page() && ! is_paged() ) {
-    // 	    return;
-    // 	}
+    	if ( is_front_page() && ! is_paged() ) {
+    	    return;
+    	}
     
         $args = array(
             'before' => esc_html__( 'Path: ', 'jentil' ),
@@ -223,7 +226,7 @@ class Template_Parts {
      * 
      * @filter      body_class
      */
-    public function body_class() {
+    public function body_class( $classes ) {
         //global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         global $post;
         

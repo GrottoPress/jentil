@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'GrottoPress\\Jentil\\Jentil' => $baseDir . '/includes/jentil.php',
+    'GrottoPress\\Jentil\\Parts' => $baseDir . '/includes/parts.php',
     'GrottoPress\\Jentil\\Setup' => $baseDir . '/includes/setup.php',
     'GrottoPress\\Jentil\\Template' => $baseDir . '/includes/template.php',
-    'GrottoPress\\Jentil\\Template_Parts' => $baseDir . '/includes/template-parts.php',
 );

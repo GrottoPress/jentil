@@ -8,9 +8,9 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
 {
     public static $classMap = array (
         'GrottoPress\\Jentil\\Jentil' => __DIR__ . '/../..' . '/includes/jentil.php',
+        'GrottoPress\\Jentil\\Parts' => __DIR__ . '/../..' . '/includes/parts.php',
         'GrottoPress\\Jentil\\Setup' => __DIR__ . '/../..' . '/includes/setup.php',
         'GrottoPress\\Jentil\\Template' => __DIR__ . '/../..' . '/includes/template.php',
-        'GrottoPress\\Jentil\\Template_Parts' => __DIR__ . '/../..' . '/includes/template-parts.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -253,19 +253,19 @@ li {
     #container,
     .layout-content-sidebar #container {
     	float: left;
-    	margin-right: -280px;
+    	margin-right: -270px;
     	width: 100%;
     }
     
     #content,
     .layout-content-sidebar #content {
-    	margin-right: 280px;
+    	margin-right: 270px;
     }
     
     #primary,
     .layout-content-sidebar #primary {
     	float: right;
-    	width: 250px;
+    	width: 240px;
     }
     
     /**
@@ -274,12 +274,12 @@ li {
 
     .layout-sidebar-content #container {
     	float: right;
-    	margin-left: -280px;
+    	margin-left: -270px;
     	margin-right: 0;
     }
     
     .layout-sidebar-content #content {
-    	margin-left: 280px;
+    	margin-left: 270px;
     	margin-right: 0;
     }
     

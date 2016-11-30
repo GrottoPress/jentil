@@ -34,7 +34,7 @@ class Jentil {
 	 */
 	public function run() {
 		$this->setup();
-		$this->template_parts();
+		$this->parts();
 	}
 
     /**
@@ -70,21 +70,21 @@ class Jentil {
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
-	private function template_parts() {
-		$template = new Template_Parts();
+	private function parts() {
+		$parts = new Parts();
 		
-		add_filter( 'language_attributes', array( $template, 'html_microdata' ) );
-		add_filter( 'get_search_form', array( $template, 'search_form' ) );
-		add_filter( 'single_post_entry_meta', array( $template, 'single_post_entry_meta' ), 10, 3 );
-		add_filter( 'body_class', array( $template, 'body_class' ) );
+		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
+		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
+		add_filter( 'single_post_entry_meta', array( $parts, 'single_post_entry_meta' ), 10, 3 );
+		add_filter( 'body_class', array( $parts, 'body_class' ) );
 		
-		add_action( 'jentil_before_title', array( $template, 'breadcrumbs' ) );
+		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ) );
 		
-		add_action( 'jentil_inside_header', array( $template, 'header_logo' ) );
-		add_action( 'jentil_inside_header', array( $template, 'header_search' ) );
-		add_action( 'jentil_inside_header', array( $template, 'header_menu' ) );
+		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ) );
+		add_action( 'jentil_inside_header', array( $parts, 'header_search' ) );
+		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ) );
 		
-		add_action( 'jentil_inside_footer', array( $template, 'footer_widgets' ) );
-		add_action( 'jentil_inside_footer', array( $template, 'footer_credits' ) );
+		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ) );
+		add_action( 'jentil_inside_footer', array( $parts, 'footer_credits' ) );
 	}
 }
