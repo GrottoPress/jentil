@@ -18,7 +18,7 @@
 			<?php do_action( 'jentil_before_footer' ); ?>
 			
 			<div id="footer-wrap">
-				<footer id="footer" class="site-footer self-clear" itemscope itemtype="http://schema.org/WPFooter">
+				<footer id="footer" class="site-footer hobbit self-clear" itemscope itemtype="http://schema.org/WPFooter">
 				
 					<?php do_action( 'jentil_inside_footer' ); ?>
 					

@@ -34,7 +34,7 @@ class Parts {
 	 * 
 	 * @see         http://www.paulund.co.uk/add-schema-org-wordpress
 	 *
-	 * @since       MapPess 1.0.0
+	 * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @filter      language_attributes
@@ -60,7 +60,7 @@ class Parts {
      *
      * @see 		https://developers.google.com/structured-data/slsb-overview
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @filter      get_search_form
@@ -91,7 +91,7 @@ class Parts {
      * @todo        Fill in the img src with logo theme mod from
      *              customizer and custom logo since WP 4.6
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @action      jentil_inside_header
@@ -103,7 +103,7 @@ class Parts {
     /**
      * Header search
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @action      jentil_inside_header
@@ -115,7 +115,7 @@ class Parts {
     /**
      * Header menu
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @action      jentil_inside_header
@@ -134,7 +134,7 @@ class Parts {
     /**
      * Breadcrumbs
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @action      jentil_before_title
@@ -155,7 +155,7 @@ class Parts {
     /**
      * Single post entry meta
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @filter      single_post_entry_meta
@@ -185,7 +185,7 @@ class Parts {
     /**
      * Footer Widget Area.
      *
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
      * @access      public
      * 
      * @action      jentil_inside_footer
@@ -203,7 +203,7 @@ class Parts {
      * 
      * @TODO        Use customizr setting
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
      * @access      public
      * 
      * @action      jentil_inside_footer
@@ -221,7 +221,7 @@ class Parts {
      * 
      * Add classes to <body>
      * 
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
      * @access      public
      * 
      * @filter      body_class
@@ -275,7 +275,7 @@ class Parts {
      * 
      * Add dynamic styles to theme
      *
-     * @since       MapPess 1.0.0
+     * @since       Jentil 0.1.0
      * @access      public
      * 
      * @action      wp_head
