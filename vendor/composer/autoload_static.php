@@ -7,10 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
 {
     public static $classMap = array (
+        'GrottoPress\\Jentil\\Customizer\\Customizer' => __DIR__ . '/../..' . '/includes/customizer/customizer.php',
+        'GrottoPress\\Jentil\\Customizer\\Layout' => __DIR__ . '/../..' . '/includes/customizer/layout.php',
         'GrottoPress\\Jentil\\Jentil' => __DIR__ . '/../..' . '/includes/jentil.php',
         'GrottoPress\\Jentil\\Parts' => __DIR__ . '/../..' . '/includes/parts.php',
         'GrottoPress\\Jentil\\Setup' => __DIR__ . '/../..' . '/includes/setup.php',
-        'GrottoPress\\Jentil\\Template' => __DIR__ . '/../..' . '/includes/template.php',
+        'GrottoPress\\Jentil\\Template\\Layout' => __DIR__ . '/../..' . '/includes/template/layout.php',
+        'GrottoPress\\Jentil\\Template\\Template' => __DIR__ . '/../..' . '/includes/template/template.php',
+        'GrottoPress\\Jentil\\Template\\Title' => __DIR__ . '/../..' . '/includes/template/title.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

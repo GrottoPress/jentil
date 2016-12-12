@@ -9,7 +9,7 @@
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
  * @subpackage 	    jentil/includes
- * @since		    jentil 1.0.0
+ * @since		    Jentil 0.1.0
  */
 
 namespace GrottoPress\Jentil;
@@ -23,7 +23,7 @@ namespace GrottoPress\Jentil;
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
- * @since			jentil 1.0.0
+ * @since			jentil 0.1.0
  */
 class Jentil {
     /**
@@ -35,6 +35,7 @@ class Jentil {
 	public function run() {
 		$this->setup();
 		$this->parts();
+		$this->customizer();
 	}
 
     /**
@@ -86,5 +87,18 @@ class Jentil {
 		
 		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ) );
 		add_action( 'jentil_inside_footer', array( $parts, 'footer_credits' ) );
+	}
+	
+	/**
+     * Define customizer hooks
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function customizer() {
+		$customizer = new Customizer\Customizer();
+		
+		add_action( 'customize_register', array( $customizer, 'register' ) );
+		add_action( 'customize_preview_init', array( $customizer, 'live_preview' ) );
 	}
 }

@@ -7,12 +7,12 @@
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
- * @since			jentil 0.1.0
+ * @since			Jentil 0.1.0
  */
 
-$template = new \GrottoPress\Jentil\Template();
+$template = new \GrottoPress\Jentil\Template\Template();
 $layout = $template->layout();
-$layout_column = $template->layout_column( $layout );
+$layout_column = $template->get_layout()->column();
 
 /**
  * Do not show sidebars if page layout is one_column
@@ -25,7 +25,7 @@ if ( 'one_column' == $layout_column ) {
  * Primary Sidebar
  */
 if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
-	<div id="primary" class="site-sidebar hobbit self-clear" itemscope itemtype="http://schema.org/WPSideBar">
+	<div id="primary" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 		<?php dynamic_sidebar( 'primary-widget-area' ); ?>
 	</div><!-- #primary -->
 <?php }
@@ -35,7 +35,7 @@ if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
  */
 if ( 'three_columns' == $layout_column ) {
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) { ?>
-		<div id="secondary" class="site-sidebar hobbit self-clear" itemscope itemtype="http://schema.org/WPSideBar">
+		<div id="secondary" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 			<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
 		</div><!-- #secondary -->
 	<?php }

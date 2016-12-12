@@ -9,7 +9,7 @@
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
  * @subpackage 	    jentil/includes
- * @since		    jentil 1.0.0
+ * @since		    Jentil 0.1.0
  */
 
 namespace GrottoPress\Jentil;
@@ -23,7 +23,7 @@ namespace GrottoPress\Jentil;
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
- * @since			jentil 1.0.0
+ * @since			jentil 0.1.0
  */
 class Setup {
     /**
@@ -32,7 +32,7 @@ class Setup {
      * Set the content width based on the theme's design
      * and stylesheet.
      *
-     * @since       jentil 1.0.0
+     * @since       jentil 0.1.0
      * @access 		public
      * 
      * @action      after_setup_theme
@@ -49,7 +49,7 @@ class Setup {
      * Make theme available for translation. Translations can
      * be filed in the '/languages' directory.
      *
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
 	 * @access 		public
 	 * 
 	 * @action      after_setup_theme
@@ -63,7 +63,7 @@ class Setup {
      * 
      * Add support for the title tag.
      *
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @since 		WordPress 4.1
      * @access 		public
      * 
@@ -85,7 +85,7 @@ class Setup {
      * @deprecated  WordPress 4.4
      * @see 		https://make.wordpress.org/core/2015/10/20/document-title-in-4-4/
      *
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      wp_head
@@ -103,7 +103,7 @@ class Setup {
      * 
      * Register widgetized areas for this theme.
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      widgets_init
@@ -114,7 +114,7 @@ class Setup {
     		'name'          => esc_html__( 'Primary', 'jentil' ),
     		'id'            => 'primary-widget-area',
     		'description'   => esc_html__( 'Primary widget area', 'jentil' ),
-    		'before_widget' => '<aside id="%1$s" class="widget-container self-clear %2$s">',
+    		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
     		'after_widget'  => '</aside>',
     		'before_title'  => '<h3 class="widget-title">',
     		'after_title'   => '</h3>',
@@ -125,7 +125,7 @@ class Setup {
     		'name'          => esc_html__( 'Secondary', 'jentil' ),
     		'id'            => 'secondary-widget-area',
     		'description'   => esc_html__( 'Secondary widget area', 'jentil' ),
-    		'before_widget' => '<aside id="%1$s" class="widget self-clear %2$s">',
+    		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
     		'after_widget'  => '</aside>',
     		'before_title'  => '<h3 class="widget-title">',
     		'after_title'   => '</h3>',
@@ -136,7 +136,7 @@ class Setup {
         	'name'          => esc_html__( 'Footer', 'jentil' ),
         	'id'            => 'footer-widget-area',
     		'description'   => esc_html__( 'Footer widget area', 'jentil' ),
-        	'before_widget' => '<aside id="%1$s" class="widget self-clear %2$s">',
+        	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         	'after_widget'  => '</aside>',
         	'before_title'  => '<h3 class="widget-title">',
         	'after_title'   => '</h3>',
@@ -148,7 +148,7 @@ class Setup {
      * 
      * Add JavaScript libraries.
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      wp_enqueue_scripts
@@ -164,7 +164,7 @@ class Setup {
      * 
      * Add stylesheets.
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      wp_enqueue_scripts
@@ -185,7 +185,7 @@ class Setup {
      *
      * @see 		https://codex.wordpress.org/Theme_Markup
      *
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      after_setup_theme
@@ -209,7 +209,7 @@ class Setup {
      * 
      * @see 		https://make.wordpress.org/core/2016/03/22/implementing-selective-refresh-support-for-widgets/
      *
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @since       WordPress 4.5
      * @access 		public
      * 
@@ -224,7 +224,7 @@ class Setup {
      * 
      * Register navigation menus
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      after_setup_theme
@@ -240,7 +240,7 @@ class Setup {
      * 
      * Add support for RSS and atom feeds
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      after_setup_theme
@@ -254,7 +254,7 @@ class Setup {
      * 
      * Add support for featured images (post thumbnails).
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      after_setup_theme
@@ -268,7 +268,7 @@ class Setup {
      * 
      * Add/set sizes of featured images.
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @access 		public
      * 
      * @action      after_setup_theme
@@ -289,7 +289,7 @@ class Setup {
      * 
      * @see         https://codex.wordpress.org/Theme_Logo
      * 
-     * @since 		jentil 1.0.0
+     * @since 		jentil 0.1.0
      * @since       WordPress 4.5
      * @access 		public
      * 

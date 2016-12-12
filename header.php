@@ -42,7 +42,7 @@
 		
 		<div id="wrapper" class="hfeed site">
 			<div id="header-wrap">
-				<header id="header" class="site-header hobbit self-clear" itemscope itemtype="http://schema.org/WPHeader">
+				<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
 					
 					<?php do_action( 'jentil_inside_header' ); ?>
 					

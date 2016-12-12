@@ -6,8 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'GrottoPress\\Jentil\\Customizer\\Customizer' => $baseDir . '/includes/customizer/customizer.php',
+    'GrottoPress\\Jentil\\Customizer\\Layout' => $baseDir . '/includes/customizer/layout.php',
     'GrottoPress\\Jentil\\Jentil' => $baseDir . '/includes/jentil.php',
     'GrottoPress\\Jentil\\Parts' => $baseDir . '/includes/parts.php',
     'GrottoPress\\Jentil\\Setup' => $baseDir . '/includes/setup.php',
-    'GrottoPress\\Jentil\\Template' => $baseDir . '/includes/template.php',
+    'GrottoPress\\Jentil\\Template\\Layout' => $baseDir . '/includes/template/layout.php',
+    'GrottoPress\\Jentil\\Template\\Template' => $baseDir . '/includes/template/template.php',
+    'GrottoPress\\Jentil\\Template\\Title' => $baseDir . '/includes/template/title.php',
 );

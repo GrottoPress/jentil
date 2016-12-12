@@ -38,18 +38,6 @@ body {
 	overflow-x: hidden;
 }
 
-*:first-child {
-    margin-top: 0;
-}
-
-*:last-child {
-    margin-bottom: 0;
-}
-
-p:empty {
-    display: none;
-}
-
 /**
  * Hyperlinks
  */
@@ -99,8 +87,17 @@ strong {
 
 em,
 i,
-q {
+q,
+var {
 	font-style: italic;
+}
+
+q {
+    font-size: 1.2em;
+}
+
+del {
+    text-decoration: line-through;
 }
 
 /*q:before,
@@ -108,16 +105,21 @@ q:after {
 	content: "\"";
 }*/
 
-pre, code {
+pre, code, tt {
 	font-family: Monaco, monospace;
 }
 
 pre {
-	margin-bottom: 20px;
-	padding: 10px;
-	border: 1px solid #eaeaea;
+	padding: 15px;
+	border: 1px solid #eee;
 	overflow: auto;
-	background: #f4f4f4;
+	background: #f6f6f6;
+	
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
 }
 
 pre:last-child {
@@ -154,6 +156,7 @@ p,
 hr,
 div,
 ul,
+ol,
 article,
 aside,
 footer,
@@ -201,6 +204,7 @@ hr {
 .hobbit hr,
 .hobbit div,
 .hobbit ul,
+.hobbit ol,
 .hobbit article,
 .hobbit aside,
 .hobbit footer,
@@ -221,6 +225,48 @@ hr {
 .hobbit blockquote {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.hobbit h1 {
+    font-size: 28px;
+    font-size: 2.8rem;
+}
+
+.hobbit h2 {
+    font-size: 25px;
+    font-size: 2.5rem;
+}
+
+.hobbit h3 {
+    font-size: 22px;
+    font-size: 2.2rem;
+}
+
+.hobbit h4 {
+    font-size: 19px;
+    font-size: 1.9rem;
+}
+
+.hobbit h5 {
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+.hobbit h6 {
+    font-size: 13px;
+    font-size: 1.3rem;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul,
+.hobbit ul ul,
+.hobbit ul ol,
+.hobbit ol ol,
+.hobbit ol ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .hobbit {
@@ -408,12 +454,6 @@ li {
 
 
 /**
- * Menus
- */
-
-
-
-/**
  * Layout
  */
 
@@ -430,239 +470,6 @@ li {
 #footer-wrap {
     padding-left: 20px;
     padding-right: 20px;
-}
-
-@media (min-width: 800px) {
-    #header,
-    #main,
-    #footer {
-        max-width: 960px;
-    }
-    
-    .site-sidebar {
-        margin-top: 0;
-    }
-    
-    /**
-     * Two Columns, Right Sidebar
-     */
-    
-    #container,
-    .layout-content-sidebar #container {
-    	float: left;
-    	margin-right: -270px;
-    	width: 100%;
-    }
-    
-    #content,
-    .layout-content-sidebar #content {
-    	margin-right: 270px;
-    }
-    
-    #primary,
-    .layout-content-sidebar #primary {
-    	float: right;
-    	width: 240px;
-    }
-    
-    /**
-     * Two Columns, Left Sidebar
-     */
-
-    .layout-sidebar-content #container {
-    	float: right;
-    	margin-left: -270px;
-    	margin-right: 0;
-    }
-    
-    .layout-sidebar-content #content {
-    	margin-left: 270px;
-    	margin-right: 0;
-    }
-    
-    .layout-sidebar-content #primary {
-    	float: left;
-    }
-    
-    /**
-     * Three Columns, Left & Right Sidebars
-     */
-    
-    .layout-sidebar-content-sidebar #container {
-    	float: left;
-    	margin-right: 0;
-    }
-    
-    .layout-sidebar-content-sidebar #content {
-    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-    	margin-right: 190px;
-    	margin-left: 170px;
-    }
-    
-    .layout-sidebar-content-sidebar #primary,
-    .layout-sidebar-content-sidebar #secondary {
-    	float: left;
-    }
-    
-    .layout-sidebar-content-sidebar #secondary {
-    	margin-left: -100%;
-    	width: 140px; /** Width of left column */
-    }
-    
-    .layout-sidebar-content-sidebar #primary {
-    	margin-left: -160px; /** Set left margin to -(RightColumnWidth) */
-    	width: 160px; /** Width of right column */
-    }
-    
-    /**
-     * Three Columns, Two Left Sidebars
-     */
-    
-    .layout-sidebar-sidebar-content #container {
-    	float: right;
-    	margin-right: 0;
-    }
-    
-    .layout-sidebar-sidebar-content #content {
-    	margin-right: 0;
-    	margin-left: 360px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-sidebar-sidebar-content #secondary {
-    	float: right;
-    	width: 140px; /** Width of left column in pixels */
-    	margin-right: -330px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-sidebar-sidebar-content #primary {
-    	float: right;
-    	width: 160px; /** Width of right column in pixels */
-    	margin-right: -160px; /** Set margin to -(RightColumnWidth) */
-    }
-    
-    /**
-     * Three Columns, Two Right Sidebars
-     */
-    
-    .layout-content-sidebar-sidebar #container {
-    	float: left;
-    	margin-right: 0;
-    }
-    
-    .layout-content-sidebar-sidebar #content {
-    	margin-right: 360px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-content-sidebar-sidebar #secondary {
-    	float: left;
-    	width: 140px; /** Width of left column in pixels */
-    	margin-left: -330px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-content-sidebar-sidebar #primary {
-    	float: left;
-    	width: 160px; /** Width of right column in pixels */
-    	margin-left: -160px; /** Set margin to -(RightColumnWidth) */
-    }
-    
-    #footer .widget {
-        margin-top: 0;
-        width: 24.5%;
-        padding: 0 15px;
-        display: -moz-inline-stack;
-    	display: inline-block;
-    	zoom: 1;
-    	*display: inline;
-    	vertical-align: top;
-    }
-}
-
-@media (min-width: 920px) {
-    /**
-     * Two Columns, Right Sidebar
-     */
-    
-    #container,
-    .layout-content-sidebar #container {
-    	margin-right: -330px;
-    }
-    
-    #content,
-    .layout-content-sidebar #content {
-    	margin-right: 330px;
-    }
-    
-    #primary,
-    .layout-content-sidebar #primary {
-    	width: 300px;
-    }
-    
-    /**
-     * Two Columns, Left Sidebar
-     */
-
-    .layout-sidebar-content #container {
-    	margin-left: -330px;
-    }
-    
-    .layout-sidebar-content #content {
-    	margin-left: 330px;
-    }
-    
-    /**
-     * Three Columns, Left & Right Sidebars
-     */
-    
-    .layout-sidebar-content-sidebar #content {
-    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-    	margin-right: 270px;
-    	margin-left: 190px;
-    }
-    
-    .layout-sidebar-content-sidebar #secondary {
-    	width: 160px; /** Width of left column */
-    }
-    
-    .layout-sidebar-content-sidebar #primary {
-    	margin-left: -240px; /** Set left margin to -(RightColumnWidth) */
-    	width: 240px; /** Width of right column */
-    }
-    
-    /**
-     * Three Columns, Two Left Sidebars
-     */
-    
-    .layout-sidebar-sidebar-content #content {
-    	margin-left: 460px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-sidebar-sidebar-content #secondary {
-    	width: 160px; /** Width of left column in pixels */
-    	margin-right: -430px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-sidebar-sidebar-content #primary {
-    	width: 240px; /** Width of right column in pixels */
-    	margin-right: -240px; /** Set margin to -(RightColumnWidth) */
-    }
-    
-    /**
-     * Three Columns, Two Right Sidebars
-     */
-    
-    .layout-content-sidebar-sidebar #content {
-    	margin-right: 460px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-content-sidebar-sidebar #secondary {
-    	width: 160px; /** Width of left column in pixels */
-    	margin-left: -430px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-    
-    .layout-content-sidebar-sidebar #primary {
-    	width: 240px; /** Width of right column in pixels */
-    	margin-left: -240px; /** Set margin to -(RightColumnWidth) */
-    }
 }
 
 /**
@@ -792,14 +599,59 @@ table.aligncenter {
 }
 
 /**
+ * Gallery
+ */
+
+.gallery {
+	font-size: 0;
+	line-height: 140%;
+	padding: 15px 5px 5px 15px;
+	background: #f6f6f6;
+}
+
+.gallery-item {
+	font-size: 13px;
+	font-size: 1.3rem;
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	vertical-align: top;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.gallery img {
+	border: 3px solid #eee !important;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.gallery img:hover {
+	border-color: #999 !important;
+}
+
+.gallery-caption {
+	padding: 5px 15px;
+	color: #777;
+}
+
+.gallery-icon a {
+	display: block;
+	line-height: 1px;
+}
+
+/**
  * Blockquotes
  */
 
 blockquote {
-	padding-left: 10px;
+	padding-left: 15px;
 	border-left: 5px solid #ccc;
-	font-size: 18px;
-	font-size: 1.8rem;
+	font-size: 1.2em;
 	color: #999;
 	font-style: italic;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -811,3 +663,586 @@ blockquote {
 	font-size: 26px;
 	font-weight: bold;
 }*/
+
+/**
+ * Menus
+ */
+
+.menu,
+.sub-menu {
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.menu {
+	margin-left: 0;
+	font-size: 0;
+}
+
+.menu ul {
+    margin-left: 15px;
+}
+
+/*.menu a {
+	display: block;
+}*/
+
+.menu li {
+    font-size: 13px; /* Resetting fixes in parent .menu element */
+    font-size: 1.3rem;
+}
+
+/**
+ * Footer
+ */
+
+#footer .widget-area {
+    margin-bottom: 0;
+}
+
+/**
+ * Pagination
+ */
+
+.pagination {
+	line-height: 130%;
+	color: #999;
+	font-size: 14px;
+	font-size: 1.4rem;
+	font-weight: bold;
+	/*text-transform: uppercase;*/
+	margin-bottom: 10px;
+}
+
+.pagination.big,
+.page-links.pagination {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-size: 1.6rem;
+}
+
+.pagination .page-numbers,
+.pagination a {
+	padding: 5px;
+}
+
+.pagination .page-numbers.dots {
+	padding: 0;
+}
+
+.pagination .page-numbers.current {
+	text-decoration: underline;
+}
+
+/**
+ * Posts Shortcode
+ */
+
+.posts-wrap p,
+.posts-wrap hr,
+.posts-wrap div,
+.posts-wrap ul,
+.posts-wrap ol,
+.posts-wrap article,
+.posts-wrap aside,
+.posts-wrap footer,
+.posts-wrap header,
+.posts-wrap nav,
+.posts-wrap section,
+.posts-wrap table,
+.posts-wrap form,
+.posts-wrap h1,
+.posts-wrap h2,
+.posts-wrap h3,
+.posts-wrap h4,
+.posts-wrap h5,
+.posts-wrap h6,
+.posts-wrap pre,
+.posts-wrap dd,
+.posts-wrap address,
+.posts-wrap blockquote {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.posts-wrap.big p,
+.posts-wrap.big hr,
+.posts-wrap.big div,
+.posts-wrap.big ul,
+.posts-wrap.big ol,
+.posts-wrap.big article,
+.posts-wrap.big aside,
+.posts-wrap.big footer,
+.posts-wrap.big header,
+.posts-wrap.big nav,
+.posts-wrap.big section,
+.posts-wrap.big table,
+.posts-wrap.big form,
+.posts-wrap.big h1,
+.posts-wrap.big h2,
+.posts-wrap.big h3,
+.posts-wrap.big h4,
+.posts-wrap.big h5,
+.posts-wrap.big h6,
+.posts-wrap.big pre,
+.posts-wrap.big dd,
+.posts-wrap.big address,
+.posts-wrap.big blockquote {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+article.post-wrap,
+div.posts-wrap {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.posts-wrap.big article.post-wrap,
+div.posts-wrap.big {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.posts-wrap {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	line-height: 140%;
+}
+
+.posts-wrap.show-content {
+	line-height: 160%;
+}
+
+
+
+
+.post-wrap.no-post-thumb,
+.img-align-left .post-wrap.no-post-thumb {
+	padding-left: 15px;
+	border-left: 1px solid #f0f0f0;
+}
+
+.img-align-right .post-wrap.no-post-thumb {
+	padding-left: 0;
+	border-left: 0;
+	padding-right: 15px;
+	border-right: 1px solid #f0f0f0;
+}
+
+.posts-wrap .entry-title {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 14px;
+	font-size: 1.4rem;
+}
+
+.posts-wrap.big .entry-title {
+	font-size: 30px;
+	font-size: 3.0rem;
+}
+
+.post-wrap .entry-meta {
+	font-size: 13px;
+	font-size: 1.3rem;
+	color: #999;
+}
+
+.post-wrap .before-title a,
+.post-wrap .after-title a {
+	color: #999;
+}
+
+.post-wrap .before-title a:hover,
+.post-wrap .after-title a:active {
+	color: #999;
+}
+
+.post-wrap .entry-meta .views-period {
+	font-style: italic;
+}
+
+li.post-wrap,
+li.post-wrap .entry-title,
+li.post-wrap .entry-meta,
+li.post-wrap .entry-summary {
+	margin-bottom: 5px;
+}
+
+li.post-wrap .entry-title {
+	font-weight: normal;
+	font-size: 14px;
+	font-size: 1.4rem;
+}
+
+/** Achive Posts */
+
+div.posts-wrap.archive-posts .post-wrap {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	margin-top: 0;
+}
+
+div.posts-wrap.archive-posts li.post-wrap {
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+.archive-posts .post-wrap:last-child,
+.archive-posts .post-wrap.big:last-child,
+.show-content.archive-posts .post-wrap:last-child,
+.archive-posts li.post-wrap:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+@media (min-width: 800px) {
+    /**
+     * Layout
+     */
+    
+    #header,
+    #main,
+    #footer {
+        max-width: 960px;
+    }
+    
+    .site-sidebar {
+        margin-top: 0;
+    }
+    
+    .page-template-default.layout-one-column .entry-content,
+    .single.layout-one-column .entry-content {
+    	max-width: 700px;
+    }
+    
+    /**
+     * Two Columns, Right Sidebar
+     */
+    
+    #container,
+    .layout-content-sidebar #container {
+    	float: left;
+    	margin-right: -270px;
+    	width: 100%;
+    }
+    
+    #content,
+    .layout-content-sidebar #content {
+    	margin-right: 270px;
+    }
+    
+    #primary,
+    .layout-content-sidebar #primary {
+    	float: right;
+    	width: 240px;
+    }
+    
+    /**
+     * Two Columns, Left Sidebar
+     */
+
+    .layout-sidebar-content #container {
+    	float: right;
+    	margin-left: -270px;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-content #content {
+    	margin-left: 270px;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-content #primary {
+    	float: left;
+    }
+    
+    /**
+     * Three Columns, Left & Right Sidebars
+     */
+    
+    .layout-sidebar-content-sidebar #container {
+    	float: left;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-content-sidebar #content {
+    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
+    	margin-right: 190px;
+    	margin-left: 170px;
+    }
+    
+    .layout-sidebar-content-sidebar #primary,
+    .layout-sidebar-content-sidebar #secondary {
+    	float: left;
+    }
+    
+    .layout-sidebar-content-sidebar #secondary {
+    	margin-left: -100%;
+    	width: 140px; /** Width of left column */
+    }
+    
+    .layout-sidebar-content-sidebar #primary {
+    	margin-left: -160px; /** Set left margin to -(RightColumnWidth) */
+    	width: 160px; /** Width of right column */
+    }
+    
+    /**
+     * Three Columns, Two Left Sidebars
+     */
+    
+    .layout-sidebar-sidebar-content #container {
+    	float: right;
+    	margin-right: 0;
+    }
+    
+    .layout-sidebar-sidebar-content #content {
+    	margin-right: 0;
+    	margin-left: 360px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #secondary {
+    	float: right;
+    	width: 140px; /** Width of left column in pixels */
+    	margin-right: -330px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #primary {
+    	float: right;
+    	width: 160px; /** Width of right column in pixels */
+    	margin-right: -160px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    /**
+     * Three Columns, Two Right Sidebars
+     */
+    
+    .layout-content-sidebar-sidebar #container {
+    	float: left;
+    	margin-right: 0;
+    }
+    
+    .layout-content-sidebar-sidebar #content {
+    	margin-right: 360px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #secondary {
+    	float: left;
+    	width: 140px; /** Width of left column in pixels */
+    	margin-left: -330px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #primary {
+    	float: left;
+    	width: 160px; /** Width of right column in pixels */
+    	margin-left: -160px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    #footer .widget-area {
+        font-size: 0;
+    }
+    
+    #footer .widget {
+        font-size: 13px;
+        font-size: 1.3rem;
+        margin-top: 0;
+        width: 25%;
+        padding: 0 15px;
+        display: -moz-inline-stack;
+    	display: inline-block;
+    	zoom: 1;
+    	*display: inline;
+    	vertical-align: top;
+    }
+    
+    /**
+     * Global overrides
+     */
+    
+    #container {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 920px) {
+    /**
+     * Two Columns, Right Sidebar
+     */
+    
+    #container,
+    .layout-content-sidebar #container {
+    	margin-right: -330px;
+    }
+    
+    #content,
+    .layout-content-sidebar #content {
+    	margin-right: 330px;
+    }
+    
+    #primary,
+    .layout-content-sidebar #primary {
+    	width: 300px;
+    }
+    
+    /**
+     * Two Columns, Left Sidebar
+     */
+
+    .layout-sidebar-content #container {
+    	margin-left: -330px;
+    }
+    
+    .layout-sidebar-content #content {
+    	margin-left: 330px;
+    }
+    
+    /**
+     * Three Columns, Left & Right Sidebars
+     */
+    
+    .layout-sidebar-content-sidebar #content {
+    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
+    	margin-right: 270px;
+    	margin-left: 190px;
+    }
+    
+    .layout-sidebar-content-sidebar #secondary {
+    	width: 160px; /** Width of left column */
+    }
+    
+    .layout-sidebar-content-sidebar #primary {
+    	margin-left: -240px; /** Set left margin to -(RightColumnWidth) */
+    	width: 240px; /** Width of right column */
+    }
+    
+    /**
+     * Three Columns, Two Left Sidebars
+     */
+    
+    .layout-sidebar-sidebar-content #content {
+    	margin-left: 460px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #secondary {
+    	width: 160px; /** Width of left column in pixels */
+    	margin-right: -430px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-sidebar-sidebar-content #primary {
+    	width: 240px; /** Width of right column in pixels */
+    	margin-right: -240px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    /**
+     * Three Columns, Two Right Sidebars
+     */
+    
+    .layout-content-sidebar-sidebar #content {
+    	margin-right: 460px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #secondary {
+    	width: 160px; /** Width of left column in pixels */
+    	margin-left: -430px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    }
+    
+    .layout-content-sidebar-sidebar #primary {
+    	width: 240px; /** Width of right column in pixels */
+    	margin-left: -240px; /** Set margin to -(RightColumnWidth) */
+    }
+    
+    /**
+     * Menus
+     */
+    
+    #header .menu {
+        padding: 5px 0;
+    }
+    
+    #header .menu li {
+    	position: relative;
+    	margin: 0;
+    	margin-left: 5px;
+    	margin-right: 5px;
+    	font-size: 14px;
+        font-size: 1.4rem;
+    	font-weight: bold;
+    
+    	display: -moz-inline-stack;
+    	display: inline-block;
+    	zoom: 1;
+    	*display: inline;
+    	vertical-align: top;
+    }
+    
+    #header .menu a {
+    	display: block;
+    }
+    
+    #header .menu ul {
+    	width: 200px;
+    	position: absolute;
+    	top: 22px;
+    	left: 0;
+    	margin: 0;
+    	padding: 0;
+    	list-style-type: none;
+    }
+    
+    #header .menu ul ul {
+    	top: 0;
+    	left: 195px;
+    }
+    
+    #header .sub-menu li {
+    	display: list-item;
+    	margin: 0;
+    	padding: 0;
+    	font-size: 13px;
+        font-size: 1.3rem;
+    	font-weight: normal;
+    }
+    
+    #header .menu ul,
+    #header .menu li:hover ul ul,
+    #header .menu li li:hover ul ul,
+    #header .menu li li li:hover ul ul /*,
+    #header .menu li li li li:hover ul ul,
+    #header .menu li li li li li:hover ul ul*/ {
+    	display: none; /* Required to hide menu when inactive */
+    }
+    
+    #header .menu li:hover ul,
+    #header .menu li li:hover ul,
+    #header .menu li li li:hover ul /*,
+    #header .menu li li li li:hover ul,
+    #header .menu li li li li li:hover ul*/ {
+    	display: block;
+    	z-index: 1;
+    }
+}
+
+/**
+ * Global overrides
+ */
+
+*:first-child,
+.hobbit *:first-child {
+    margin-top: 0;
+}
+
+*:last-child,
+.hobbit *:last-child {
+    margin-bottom: 0;
+}
+
+p:empty {
+    display: none;
+}
+
+#footer .widget:last-child {
+    margin-bottom: 20px;
+}
+
+#wrapper {
+    margin-bottom: 0;
+}

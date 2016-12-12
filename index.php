@@ -11,62 +11,64 @@
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
- * @since			MagPress 1.0.0
+ * @since			Jentil 0.1.0
  */
 
 global $post;
 
-$excerpt = is_search() ? '200' : 'content';
-$search = is_search() ? get_search_query() : '';
-$img = is_search() ? 'nano-thumb' : '';
-$num = is_singular() ? 1 : absint( get_option( 'posts_per_page' ) );
-$pag_pos = is_singular() ? '' : 'bottom';
+$template = new \GrottoPress\Jentil\Template\Template();
 
-$after_title = ! is_singular() ? 'published_date,comments_link' : '';
-$after_title = is_search() ? 'post_type,published_date' : $after_title;
-$after_title = is_singular( 'post' ) ? 'single_post_entry_meta' : $after_title;
+$excerpt			= $template->is( 'search' ) ? '200' : 'content';
+$search 			= $template->is( 'search' ) ? get_search_query() : '';
+$img				= $template->is( 'search' ) ? 'nano-thumb' : '';
+$num				= $template->is( 'singular' ) ? 1 : absint( get_option( 'posts_per_page' ) );
+$pag_pos			= $template->is( 'singular' ) ? '' : 'bottom';
 
-$after_content = is_archive() ? 'category,post_tag' : '';
+$after_title		= ! $template->is( 'singular' ) ? 'published_date,comments_link' : '';
+$after_title		= $template->is( 'search' ) ? 'post_type,published_date' : $after_title;
+$after_title		= $template->is( 'singular', 'post' ) ? 'single_post_entry_meta' : $after_title;
 
-$wrap_class = is_singular() ? '' : 'archive-posts';
-$wrap_class .= is_search() ? 'small' : 'big';
+$after_content		= $template->is( 'home' ) || $template->is( 'archive' ) ? 'category, post_tag' : '';
 
-$title_tag = is_singular() ? 'h1' : 'h2';
-$title_link = is_singular() ? 'false' : '';
+$wrap_class 		= $template->is( 'singular' ) ? 'singular-post' : 'archive-posts';
+$wrap_class 		.= $template->is( 'search' ) ? 'small' : 'big';
 
-$orderby = is_search() ? 'all_time_views' : '';
-$orderby_2 = is_search() ? 'comment_count' : '';
+$title_tag			= $template->is( 'singular' ) ? 'h1' : 'h2';
+$title_link 		= $template->is( 'singular' ) ? 'false' : '';
 
-$day = get_query_var( 'day' );
-$month = get_query_var( 'monthnum' );
-$year = get_query_var( 'year' );
+$orderby			= $template->is( 'search' ) ? 'all_time_views' : '';
+$orderby_2			= $template->is( 'search' ) ? 'comment_count' : '';
 
-$cat_id = get_query_var( 'cat' );
-$cat_inc = join( ',', get_query_var( 'category__in' ) );
-$cat_exc = join( ',', get_query_var( 'category__not_in' ) );
-$cat_int = join( ',', get_query_var( 'category__and' ) );
+$day				= get_query_var( 'day' );
+$month				= get_query_var( 'monthnum' );
+$year				= get_query_var( 'year' );
 
-$tag_id = get_query_var( 'tag_id' );
-$tag_inc = join( ',', get_query_var( 'tag__in' ) );
-$tag_exc = join( ',', get_query_var( 'tag__not_in' ) );
-$tag_int = join( ',', get_query_var( 'tag__and' ) );
+$cat_id 			= get_query_var( 'cat' );
+$cat_inc			= join( ',', get_query_var( 'category__in' ) );
+$cat_exc			= join( ',', get_query_var( 'category__not_in' ) );
+$cat_int			= join( ',', get_query_var( 'category__and' ) );
 
-$tax_slug = get_query_var( 'taxonomy' );
-//$tax_name = ! empty( $tax_slug ) ? get_taxonomy( $tax_slug )->labels->singular_name : '';
-$term_id = get_query_var( 'term_id' );
-//$term_name = ! empty( $term_slug ) ? get_term_by( 'slug', $term_slug, $tax_slug )->name : '';
+$tag_id 			= get_query_var( 'tag_id' );
+$tag_inc			= join( ',', get_query_var( 'tag__in' ) );
+$tag_exc			= join( ',', get_query_var( 'tag__not_in' ) );
+$tag_int			= join( ',', get_query_var( 'tag__and' ) );
 
-$author_id = get_query_var( 'author' );
-//$author_slug = get_query_var( 'author_name' );
+$tax_slug			= get_query_var( 'taxonomy' );
+//$tax_name 		= ! empty( $tax_slug ) ? get_taxonomy( $tax_slug )->labels->singular_name : '';
+$term_id			= get_query_var( 'term_id' );
+//$term_name		= ! empty( $term_slug ) ? get_term_by( 'slug', $term_slug, $tax_slug )->name : '';
 
-$post_type = get_query_var( 'post_type' ) ? get_query_var( 'post_type' ) : '';
-$post_type = is_search() ? get_post_types( array( 'public' => true ) ) : $post_type;
-$post_type = is_singular() ? $post->post_type : $post_type;
-$post_type = is_home() ? 'post' : $post_type; //get_post_types( array( 'public' => true, 'hierarchical' => false ) )
-$post_type = is_array( $post_type ) ? join( ',', $post_type ) : $post_type;
+$author_id			= get_query_var( 'author' );
+//$author_slug		= get_query_var( 'author_name' );
 
-$post_id = is_single() ? $post->ID : '';
-$page_id = is_page() ? $post->ID : '';
+$post_type			= get_query_var( 'post_type' ) ? get_query_var( 'post_type' ) : '';
+$post_type			= $template->is( 'search' ) ? get_post_types( array( 'public' => true ) ) : $post_type;
+$post_type			= $template->is( 'singular' ) ? $post->post_type : $post_type;
+$post_type			= $template->is( 'home' ) ? 'post' : $post_type; //get_post_types( array( 'public' => true, 'hierarchical' => false ) )
+$post_type			= is_array( $post_type ) ? join( ',', $post_type ) : $post_type;
+
+$post_id			= $template->is( 'single' ) ? $post->ID : '';
+$page_id			= $template->is( 'page' ) ? $post->ID : '';
 
 // Testing
 //echo $post_id . ' ';
@@ -74,9 +76,7 @@ $page_id = is_page() ? $post->ID : '';
 //echo $post_type . ' ';
 //echo get_query_var( 'post_type' );
 
-$query = do_shortcode( '[magpack_posts post_type="' . $post_type . '" cat_id="' . $cat_id . '" cat_inc="' . $cat_inc . '" cat_exc="' . $cat_exc . '" cat_int="' . $cat_int . '" tag_id="' . $tag_id . '" tag_inc="' . $tag_inc . '" tag_exc="' . $tag_exc . '" tag_int="' . $tag_exc . '" tax="' . $tax_slug . '" tax_term="' . $term_id . '" num="' . $num . '" title_pos="top" img="' . $img . '" after_title="' . $after_title . '" after_content="' . $after_content . '" before_title="" excerpt="' . $excerpt . '" date_year="' . $year . '" date_month="' . $month . '" date_day="' . $day . '" author_id="' . $author_id . '" content_pag="true" pag="nav,num" pag_pos="' . $pag_pos . '" wrap_class="' . $wrap_class . '" search="' . $search . '" post_id="' . $post_id . '" page_id="' . $page_id . '" id="" title_tag="' . $title_tag . '" title_link="' . $title_link . '" orderby="' . $orderby . '" orderby_2="' . $orderby_2 . '"]' );
-
-$template = new \GrottoPress\Jentil\Template();
+$query = do_shortcode( '[magpack_posts post_type="' . $post_type . '" cat_id="' . $cat_id . '" cat_inc="' . $cat_inc . '" cat_exc="' . $cat_exc . '" cat_int="' . $cat_int . '" tag_id="' . $tag_id . '" tag_inc="' . $tag_inc . '" tag_exc="' . $tag_exc . '" tag_int="' . $tag_exc . '" tax="' . $tax_slug . '" tax_term="' . $term_id . '" num="' . $num . '" title_pos="top" img="' . $img . '" after_title="' . $after_title . '" after_content="' . $after_content . '" before_title="" excerpt="' . $excerpt . '" date_year="' . $year . '" date_month="' . $month . '" date_day="' . $day . '" author_id="' . $author_id . '" content_pag="true" pag="nav,num" pag_pos="' . $pag_pos . '" class="' . $wrap_class . '" search="' . $search . '" post_id="' . $post_id . '" page_id="' . $page_id . '" id="" title_tag="' . $title_tag . '" title_link="' . $title_link . '" orderby="' . $orderby . '" orderby_2="' . $orderby_2 . '"]' );
 
 get_header();
 
@@ -87,13 +87,13 @@ get_header();
 		
 		<?php do_action( 'jentil_before_title' ); ?>
 		
-		<?php if ( ! is_singular() ) { ?>
+		<?php if ( ! $template->is( 'singular' ) ) { ?>
 		
 			<h1 class="page-title entry-title" itemprop="name"><?php echo $template->title(); ?></h1>
 			
 		<?php } ?>
 			
-		<?php if ( is_category() ) {
+		<?php if ( $template->is( 'category' ) ) {
 			$category_description = category_description();
 			
 			if ( ! empty( $category_description ) ) { ?>
@@ -101,7 +101,7 @@ get_header();
 				<div class="archive-description category-description"><?php echo $category_description; ?></div>
 				
 			<?php }
-		} elseif ( is_tag() ) {
+		} elseif ( $template->is( 'tag' ) ) {
 			$tag_description = tag_description();
 			
 			if ( ! empty( $tag_description ) ) { ?>
@@ -109,7 +109,7 @@ get_header();
 				<div class="archive-description tag-description"><?php echo $tag_description; ?></div>
 				
 			<?php }
-		} elseif ( is_author() ) {
+		} elseif ( $template->is( 'author' ) ) {
 			$author_description = get_the_author_meta( 'description', $author_id );
 			
 			if ( ! empty( $author_description ) ) { ?>
@@ -117,11 +117,11 @@ get_header();
 				<div class="archive-description author-description"><?php echo $author_description; ?></div>
 				
 			<?php }
-		} elseif ( is_search() ) {
+		} elseif ( $template->is( 'search' ) ) {
 			get_search_form( true );
 		}
 		
-		if ( is_404() || empty( $query ) ) { ?>
+		if ( $template->is( '404' ) || empty( $query ) ) { ?>
 		
 			<div class="posts-container">
 				<article class="post-0 self-clear" itemscope itemtype="http://schema.org/Article">
@@ -137,7 +137,7 @@ get_header();
 			echo $query;
 		}
 		
-		if ( is_singular() ) {
+		if ( $template->is( 'singular' ) ) {
 			the_post();
 			
 			if ( 'open' == get_option( 'default_ping_status' ) ) {

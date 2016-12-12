@@ -9,7 +9,7 @@
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
  * @subpackage 	    jentil/includes
- * @since		    jentil 1.0.0
+ * @since		    Jentil 0.1.0
  */
 
 namespace GrottoPress\Jentil;
@@ -23,7 +23,7 @@ namespace GrottoPress\Jentil;
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
- * @since			jentil 1.0.0
+ * @since			jentil 0.1.0
  */
 class Parts {
     /**
@@ -229,20 +229,10 @@ class Parts {
     public function body_class( $classes ) {
         //global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         global $post;
-        
-    	if ( is_home() ) {
-    		$classes[] = 'posts-page';
-    	}
     	
     	if ( is_singular() ) {
             if ( is_post_type_hierarchical( $post->post_type ) ) {
-        	    $template = get_page_template_slug( $post->ID );
-        	    
-        	    if ( ! empty( $template ) ) {
-        			$classes[] = sanitize_title( $template );
-        		}
-        		
-        		if ( ! empty( $post->post_parent ) ) {
+                if ( ! empty( $post->post_parent ) ) {
         			$parent_id = $post->post_parent;
         			
         			while ( $parent_id ) {
@@ -253,6 +243,12 @@ class Parts {
         		}
     	    }
     	    
+    	    $template = get_page_template_slug( $post->ID );
+    	    
+    	    if ( ! empty( $template ) ) {
+    			$classes[] = sanitize_title( $template );
+    		}
+    	    
     	    if ( post_type_supports( $post->post_type, 'comments' ) ) {
         	    $classes[] = get_option( 'show_avatars' ) ? 'show-avatars' : 'hide-avatars';
         	    $classes[] = get_option( 'thread_comments' ) ? 'threaded-comments' : 'unthreaded-comments';
@@ -260,13 +256,15 @@ class Parts {
     	    }
     	}
     	
-    	//$layout = ''; // @TODO
-    	//if ( ! empty( $layout ) ) {
-    		//$classes[] = sanitize_title( 'layout-' . str_replace( '_', '-', $layout ) );
-    		//$classes[] = sanitize_title( 'layout-' . str_replace( '_', '-', $this->get_layout_column( $layout ) ) );
-    	//}
+    	$template = new \GrottoPress\Jentil\Template\Template();
+        $layout = $template->layout();
+        $layout_column = $template->get_layout()->column();
     	
-    	//$classes[] = 'layout-content-sidebar-sidebar';
+    	if ( ! empty( $layout ) ) {
+    		$classes[] = sanitize_title( 'layout-' . $layout );
+    		$classes[] = sanitize_title( 'layout-' . $layout_column );
+    	}
+    	
     	return $classes;
     }
     
