@@ -1187,11 +1187,11 @@ label > * {
     display: inline;
 }
 
-.attachment .pagination a:first-child {
+.attachment .pagination a:nth-child(1) {
     float: left;
 }
 
-.attachment .pagination a:last-child {
+.attachment .pagination a:nth-child(2) {
     float: right;
 }
 
@@ -1200,7 +1200,7 @@ label > * {
     text-align: center;
 }
 
-.entry-attachment {
+.entry-attachment.image {
     background-color: #000;
     line-height: 1px;
 }

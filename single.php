@@ -36,7 +36,7 @@ get_header();
 		<div class="posts-wrap show-content big singular-post">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 				<header>
-					<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
 					
 					<?php rewind_posts(); ?>
 					

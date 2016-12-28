@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Default page template
+ * Attachment template
  * 
  * @see 			http://codex.wordpress.org/Template_Hierarchy
  *
@@ -33,6 +33,12 @@ get_header();
 		
 		<?php the_post(); ?>
 		
+		<?php if ( $post->post_parent ) { ?>
+			<h2 class="parent entry-title">
+			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( get_the_title( $post->post_parent ) ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
+	        </h2>
+		<?php } ?>
+		
 		<div class="posts-wrap show-content big singular-post">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 				<header>
@@ -60,9 +66,23 @@ get_header();
 				 *
 				 * @since       Jentil 0.1.0
 				 */
-			 	do_action( 'jentil_before_content' ); ?>
+			 	do_action( 'jentil_before_content' );
+			 	
+			 	echo do_shortcode( '[audio src="' . wp_get_attachment_url( $post->ID ) . '"]' ); ?>
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
+					<p class="entry-attachment">
+					    <a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url">
+					        <?php echo basename( $post->guid ); ?>
+					    </a>
+			        </p>
+					
+					<?php if ( ! empty( $post->post_excerpt ) ) { ?>
+						<p class="entry-caption" itemprop="description">
+							<?php echo wp_kses_data( $post->post_excerpt ); ?>
+						</p>
+					<?php } ?>
+		
 					<?php echo $magpack_post->content( true ); ?>
 				</div><!-- .entry-content -->
 			</article>

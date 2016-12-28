@@ -78,7 +78,6 @@ class Jentil {
 		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
 		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
 		add_filter( 'body_class', array( $parts, 'body_class' ) );
-		add_filter( 'the_content', array( $parts, 'image_attachment' ), 0 );
 		
 		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ) );
 		add_action( 'jentil_after_title', array( $parts, 'single_post_entry_meta' ) );
@@ -89,8 +88,6 @@ class Jentil {
 		
 		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ) );
 		add_action( 'jentil_inside_footer', array( $parts, 'colophon' ) );
-		
-		add_action( 'jentil_before_content', array( $parts, 'image_attachment_navigation' ) );
 	}
 	
 	/**
