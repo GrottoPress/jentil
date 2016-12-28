@@ -197,7 +197,11 @@ class Layout {
 	 * @access      private
 	 */
 	private function category_layout() {
-		return get_theme_mod( 'category_layout' );
+		if ( ! taxonomy_exists( 'category' ) ) {
+            return false;
+        }
+		
+		return get_theme_mod( 'category_archive_layout' );
 	}
 	
 	/**
@@ -207,7 +211,11 @@ class Layout {
 	 * @access      private
 	 */
 	private function tag_layout() {
-		return get_theme_mod( 'tag_layout' );
+		if ( ! taxonomy_exists( 'post_tag' ) ) {
+            return false;
+        }
+		
+		return get_theme_mod( 'tag_archive_layout' );
 	}
 	
 	/**
@@ -217,7 +225,7 @@ class Layout {
 	 * @access      private
 	 */
 	private function author_layout() {
-		return get_theme_mod( 'author_layout' );
+		return get_theme_mod( 'author_archive_layout' );
 	}
 	
 	/**
@@ -227,7 +235,7 @@ class Layout {
 	 * @access      private
 	 */
 	private function date_layout() {
-		return get_theme_mod( 'date_layout' );
+		return get_theme_mod( 'date_archive_layout' );
 	}
 	
 	/**
@@ -237,7 +245,11 @@ class Layout {
 	 * @access      private
 	 */
 	private function tax_layout() {
-		return get_theme_mod( 'taxonomy_layout' );
+		$tax_slug = get_query_var( 'taxonomy' );
+		$tax_slug = is_array( $tax_slug ) ? $tax_slug[0] : $tax_slug;
+		$tax = get_taxonomy( $tax_slug );
+		
+		return get_theme_mod( sanitize_key( $tax->name ) . '_taxonomy_archive_layout' );
 	}
 	
 	/**
@@ -247,7 +259,10 @@ class Layout {
 	 * @access      private
 	 */
 	private function post_type_archive_layout() {
-		return get_theme_mod( 'post_type_layout' );
+		$post_type = get_query_var( 'post_type' );
+		$post_type = is_array( $post_type ) ? $post_type[0] : $post_type;
+		
+		return get_theme_mod( sanitize_key( $post_type ) . '_post_type_archive_layout' );
 	}
 	
 	/**
@@ -262,7 +277,7 @@ class Layout {
 		if ( is_post_type_hierarchical( $post->post_type ) ) {
         	return get_post_meta( $post->ID, 'layout', true );
         } else {
-            return get_theme_mod( $post->post_type . '_layout' );
+            return get_theme_mod( 'single_' . sanitize_key( $post->post_type ) . '_layout' );
         }
 	}
 	
@@ -283,7 +298,7 @@ class Layout {
 	 * @access      private
 	 */
 	private function home_layout() {
-		return get_theme_mod( 'home_layout' );
+		return get_theme_mod( 'post_archive_layout' );
 	}
 	
 	/**
@@ -293,6 +308,6 @@ class Layout {
 	 * @access      private
 	 */
 	private function layout_404() {
-		return get_theme_mod( 'layout_404' );
+		return get_theme_mod( 'error_404_layout' );
 	}
 }

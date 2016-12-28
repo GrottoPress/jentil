@@ -37,14 +37,34 @@ class Customizer {
     private $layout;
     
     /**
-     * Footer credits customizer
+     * Colophon customizer
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 * 
-	 * @var         \GrottoPress\Jentil\Customizer\Credits         $credits       Footer credits customizer
+	 * @var         \GrottoPress\Jentil\Customizer\Colophon         $colophon       Colophon
 	 */
-    //private $credits;
+    private $colophon;
+    
+    /**
+     * Logo customizer
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 * 
+	 * @var         \GrottoPress\Jentil\Customizer\Logo         $logo           Logo
+	 */
+    private $logo;
+    
+    /**
+     * Content customizer
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 * 
+	 * @var         \GrottoPress\Jentil\Customizer\Content\Content         $content           Content
+	 */
+    private $content;
     
     /**
 	 * Constructor
@@ -54,7 +74,9 @@ class Customizer {
 	 */
 	public function __construct() {
         $this->layout = new Layout();
-        //$this->credits = new Credits();
+        $this->colophon = new Colophon();
+        $this->logo = new Logo();
+        $this->content = new Content\Content();
 	}
     
     /**
@@ -81,7 +103,9 @@ class Customizer {
      */
     private function add_settings( $wp_customize ) {
         $this->layout->add_settings( $wp_customize );
-         //$this->credits->add_settings( $wp_customize );
+        $this->colophon->add_settings( $wp_customize );
+        $this->logo->add_settings( $wp_customize );
+        $this->content->add_settings( $wp_customize );
     }
     
     /**
@@ -92,7 +116,9 @@ class Customizer {
      */
     private function add_controls( $wp_customize ) {
         $this->layout->add_controls( $wp_customize );
-        //$this->credits->add_controls( $wp_customize );
+        $this->colophon->add_controls( $wp_customize );
+        $this->logo->add_controls( $wp_customize );
+        $this->content->add_controls( $wp_customize );
     }
     
     /**
@@ -103,18 +129,19 @@ class Customizer {
      */
     private function add_sections( $wp_customize ) {
         $this->layout->add_section( $wp_customize );
-        //$this->credits->add_section( $wp_customize );
+        $this->colophon->add_section( $wp_customize );
+        $this->content->add_sections( $wp_customize );
     }
     
     /**
-     * Live preview
+     * Enqueue scripts
      * 
      * @action      customize_preview_init
      * 
      * @since       Jentil 0.1.0
 	 * @access      public
      */
-    public function live_preview() {
+    public function enqueue_scripts() {
         wp_enqueue_script( 'jentil-customizer',
         get_template_directory_uri() . '/assets/javascript/customizer.js',
             array( 'jquery', 'customize-preview' ),

@@ -27,6 +27,26 @@ namespace GrottoPress\Jentil;
  */
 class Parts {
     /**
+     * Template
+	 *
+	 * @since       MagPack 0.1.0
+	 * @access      private
+	 * 
+	 * @var         \GrottoPress\Jentil\Template\Template         $template       Template
+	 */
+	private $template;
+	
+	/**
+	 * Constructor
+	 *
+	 * @since       MagPack 0.1.0
+	 * @access      public
+	 */
+	public function __construct() {
+	    $this->template = new \GrottoPress\Jentil\Template\Template();
+	}
+    
+    /**
      * Microdata schema
      * 
 	 * Use schema.org's vocabulary to provide microdata
@@ -42,9 +62,9 @@ class Parts {
     public function html_microdata( $output ) {
     	$output .= ' itemscope itemtype="http://schema.org/';
         
-        if ( is_author() ) {
+        if ( $this->template->is( 'author' ) ) {
             $output .= 'ProfilePage';
-        } elseif ( is_search() ) {
+        } elseif ( $this->template->is( 'search' ) ) {
             $output .= 'SearchResultsPage';
         } else {
             $output .= 'WebPage';
@@ -68,7 +88,7 @@ class Parts {
     public function search_form( $searchform ) {
     	$searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite" itemref="">
     		<meta id="meta-search-website" itemprop="url" content="' . esc_attr( home_url( '/' ) ) . '"/>
-    		<form role="search" method="get" class="form search self-clear" action="' . esc_attr( home_url( '/' ) ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" itemref="">
+    		<form role="search" method="get" class="form search" action="' . esc_attr( home_url( '/' ) ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" itemref="">
     			<meta id="meta-search-target" itemprop="target" content="' . esc_attr( home_url( '/' ) ) . '?s={s}" />
     			<label class="screen-reader-text" for="s">' . esc_html__( 'Search for:', 'jentil' ) . '</label>
     			<input itemprop="query-input" type="search" placeholder="' . esc_attr__( 'Search', 'jentil' ) . '" class="input search" name="s" id="s" value="';
@@ -97,7 +117,9 @@ class Parts {
 	 * @action      jentil_inside_header
      */
     public function header_logo() {
-    	echo '<a class="logo" href="' . esc_attr( home_url( '/' ) ) . '" itemprop="url"><img scr="" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" width="" height="" /></a>';
+    	$logo = new Logo();
+    	
+    	echo $logo->get();
     }
     
     /**
@@ -140,7 +162,7 @@ class Parts {
 	 * @action      jentil_before_title
      */
     public function breadcrumbs() {
-    	if ( is_front_page() && ! is_paged() ) {
+    	if ( $this->template->is( 'front_page' ) && ! is_paged() ) {
     	    return;
     	}
     
@@ -158,28 +180,32 @@ class Parts {
      * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
-	 * @filter      single_post_entry_meta
+	 * @action      jentil_after_title
      */
-    public function single_post_entry_meta( $output, $post_id, $sep ) {
-    	if ( ! is_singular( 'post' ) ) {
+    public function single_post_entry_meta() {
+    	if ( ! $this->template->is( 'singular', 'post' ) ) {
     	    return;
     	}
     	
-    	$magpack_post = new \GrottoPress\MagPack\Post\Post( $post_id );
-    	$avatar = $magpack_post->meta_list( 'avatar__32', '' );
+    	global $post;
+    	
+    	$magpack_post = new \GrottoPress\MagPack\Post\Post( $post->ID );
+    	$avatar = $magpack_post->meta_list( 'avatar__50', '' );
     	$author = $magpack_post->meta_list( 'author_link', '' );
     	
+    	$output = '<div class="entry-meta after-title self-clear">';
+    	
     	if ( ! empty( $avatar ) ) {
-    	    $output .= '<p itemprop="image">' . $avatar . '</p>';
+    	    $output .= $avatar;
     	}
     	
     	if ( ! empty( $author ) ) {
     	    $output .= '<p>' . $author . '</p>';
     	}
     	
-    	$output .= '<p>' . $magpack_post->meta_list( 'published_date, published_time, comments_link' ) . '</p>';
+    	$output .= '<p>' . $magpack_post->meta_list( 'published_date, published_time, comments_link' ) . '</p></div>';
         
-        return $output;
+        echo $output;
     }
     
     /**
@@ -199,21 +225,17 @@ class Parts {
     }
     
     /**
-     * Footer credits
-     * 
-     * @TODO        Use customizr setting
+     * Colophon
      * 
      * @since       Jentil 0.1.0
      * @access      public
      * 
      * @action      jentil_inside_footer
      */
-    public function footer_credits() {
-    	$footer_creds = '<small id="site-info">';
-    		$footer_creds .= sprintf( esc_html__( '&copy; %1$s %2$s. All Rights Reserved.', 'jentil' ), '<span itemprop="copyrightYear">' . date( 'Y' ) . '</span>', '<a class="blog-name" itemprop="url" href="' . esc_attr( home_url( '/' ) ) . '"><span itemprop="copyrightHolder">' . esc_attr( get_bloginfo( 'name' ) ) . '</span></a>' );
-        $footer_creds .= '</small><!-- #site-info -->';
-    
-    	echo $footer_creds;
+    public function colophon() {
+    	$colophon = new Colophon();
+    	
+    	echo '<div id="colophon"><small>' . $colophon->get() . '</small></div><!-- #colophon -->';
     }
     
     /**
@@ -227,10 +249,9 @@ class Parts {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        //global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
-        global $post;
+        global $post; //, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
     	
-    	if ( is_singular() ) {
+    	if ( $this->template->is( 'singular' ) ) {
             if ( is_post_type_hierarchical( $post->post_type ) ) {
                 if ( ! empty( $post->post_parent ) ) {
         			$parent_id = $post->post_parent;
@@ -257,8 +278,8 @@ class Parts {
     	}
     	
     	$template = new \GrottoPress\Jentil\Template\Template();
-        $layout = $template->layout();
-        $layout_column = $template->get_layout()->column();
+        $layout = $template->layout()->get();
+        $layout_column = $template->layout()->column();
     	
     	if ( ! empty( $layout ) ) {
     		$classes[] = sanitize_title( 'layout-' . $layout );
@@ -285,4 +306,100 @@ class Parts {
     		}
     	</style>';
     }
+    
+    /**
+     * Image attachment
+     * 
+     * @since       Jentil 0.1.0
+	 * @access      public
+	 * 
+	 * @filter      the_content
+     */
+    public function image_attachment( $content ) {
+    	if ( ! $this->template->is( 'attachment' ) ) {
+    	    return $content;
+    	}
+    	
+    	global $post;
+    	
+    	if ( ! wp_attachment_is_image( $post->ID ) ) {
+    	    return $content;
+    	}
+    	
+    	$out = '<p class="entry-attachment">';
+	    
+	    /**
+		 * Filter the default image attachment size.
+		 * 
+		 * @var         string          $image_size         Image size. Default 'large'.
+		 *
+		 * @since       Jentil 0.1.0
+		 */
+		$image_size = apply_filters( 'jentil_attachment_size', 'large' );
+				
+		$out .= '<a href="' . wp_get_attachment_url( $post->id ) . '" rel="attachment" itemprop="url">'
+		        . wp_get_attachment_image( $post->ID, $image_size )
+		  . '</a>';
+
+		$out .= '</p>';
+		
+		if ( ! empty( $post->post_excerpt ) ) {
+			$out .= '<p class="entry-caption" itemprop="description">';
+				$out .= wp_kses_data( $post->post_excerpt );
+			$out .= '</p>';
+		}
+		
+		return $out . $content;
+    }
+    
+    /**
+     * Image attachment navigation
+     * 
+     * @since       Jentil 0.1.0
+	 * @access      public
+	 * 
+	 * @action      jentil_before_content
+     */
+    public function image_attachment_navigation( $content ) {
+    	if ( ! $this->template->is( 'attachment' ) ) {
+    	    return $content;
+    	}
+    	
+    	global $post;
+    	
+    	if ( ! wp_attachment_is_image( $post->ID ) ) {
+    	    return $content;
+    	}
+    	
+    	$magpack_post = new \GrottoPress\MagPack\Post\Post( $post->ID );
+    	
+    	/**
+		 * Filter the previous and next labels.
+		 * 
+		 * @var         string          $prev_label         Previous label.
+		 * @var         string          $next_label         Next label.
+		 * 
+		 * @filter		jentil_pagination_prev_label
+		 * @filter		jentil_pagination_next_label
+		 *
+		 * @since       Jentil 0.1.0
+		 */
+		$prev_label = sanitize_text_field( apply_filters( 'jentil_pagination_prev_label', __( '&larr; Previous', 'jentil' ), 'image' ) );
+    	$next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label', __( 'Next &rarr;', 'jentil' ), 'image' ) ); ?>
+    	
+    	<nav id="image-navigation" class="navigation image-navigation pagination self-clear">
+			<?php previous_image_link( false, $prev_label ); ?>
+			<?php next_image_link( false, $next_label ); ?>
+		</nav><!-- .image-navigation -->
+    <?php }
+    
+    /**
+     * Image attachment navigation
+     * 
+     * @since       Jentil 0.1.0
+	 * @access      public
+	 * 
+	 * @filter      the_content
+     */
+    
 }

@@ -23,6 +23,8 @@ require get_template_directory() . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.
+ * 
+ * @action		after_setup_theme
  *
  * @since 		Jentil 0.1.0
  */
@@ -30,4 +32,10 @@ function run() {
 	$jentil = new Jentil();
 	$jentil->run();
 }
+
+/**
+ * Run plugin
+ * 
+ * @since   	Jentil 0.1.0
+ */
 add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );

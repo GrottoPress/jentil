@@ -7,11 +7,22 @@ namespace Composer\Autoload;
 class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
 {
     public static $classMap = array (
+        'GrottoPress\\Jentil\\Colophon' => __DIR__ . '/../..' . '/includes/colophon.php',
+        'GrottoPress\\Jentil\\Customizer\\Colophon' => __DIR__ . '/../..' . '/includes/customizer/colophon.php',
+        'GrottoPress\\Jentil\\Customizer\\Content\\Archive' => __DIR__ . '/../..' . '/includes/customizer/content/archive.php',
+        'GrottoPress\\Jentil\\Customizer\\Content\\Content' => __DIR__ . '/../..' . '/includes/customizer/content/content.php',
+        'GrottoPress\\Jentil\\Customizer\\Content\\Search' => __DIR__ . '/../..' . '/includes/customizer/content/search.php',
+        'GrottoPress\\Jentil\\Customizer\\Content\\Sticky' => __DIR__ . '/../..' . '/includes/customizer/content/sticky.php',
         'GrottoPress\\Jentil\\Customizer\\Customizer' => __DIR__ . '/../..' . '/includes/customizer/customizer.php',
         'GrottoPress\\Jentil\\Customizer\\Layout' => __DIR__ . '/../..' . '/includes/customizer/layout.php',
+        'GrottoPress\\Jentil\\Customizer\\Logo' => __DIR__ . '/../..' . '/includes/customizer/logo.php',
         'GrottoPress\\Jentil\\Jentil' => __DIR__ . '/../..' . '/includes/jentil.php',
+        'GrottoPress\\Jentil\\Logo' => __DIR__ . '/../..' . '/includes/logo.php',
+        'GrottoPress\\Jentil\\Metaboxes' => __DIR__ . '/../..' . '/includes/metaboxes.php',
         'GrottoPress\\Jentil\\Parts' => __DIR__ . '/../..' . '/includes/parts.php',
+        'GrottoPress\\Jentil\\Post\\Sticky' => __DIR__ . '/../..' . '/includes/sticky.php',
         'GrottoPress\\Jentil\\Setup' => __DIR__ . '/../..' . '/includes/setup.php',
+        'GrottoPress\\Jentil\\Template\\Content' => __DIR__ . '/../..' . '/includes/template/content.php',
         'GrottoPress\\Jentil\\Template\\Layout' => __DIR__ . '/../..' . '/includes/template/layout.php',
         'GrottoPress\\Jentil\\Template\\Template' => __DIR__ . '/../..' . '/includes/template/template.php',
         'GrottoPress\\Jentil\\Template\\Title' => __DIR__ . '/../..' . '/includes/template/title.php',

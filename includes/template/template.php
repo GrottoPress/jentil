@@ -30,7 +30,7 @@ class Template {
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 * 
-	 * @var         array         $title       Template title
+	 * @var         \GrottoPress\Jentil\Template\Title         $title       Template title
 	 */
     private $title;
     
@@ -40,9 +40,19 @@ class Template {
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 * 
-	 * @var         array         $layout       Template layout
+	 * @var         \GrottoPress\Jentil\Template\Layout         $layout       Template layout
 	 */
     private $layout;
+    
+    /**
+     * Content
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 * 
+	 * @var         \GrottoPress\Jentil\Template\Content         $content       Template content
+	 */
+    private $content;
     
     /**
 	 * Constructor
@@ -53,6 +63,7 @@ class Template {
 	public function __construct() {
 	    $this->title = new Title( $this->get() );
 	    $this->layout = new Layout( $this->get() );
+	    $this->content= new Content( $this->get() );
 	}
     
     /**
@@ -78,6 +89,7 @@ class Template {
 			'post_type_archive',
 			'tag',
 			'tax',
+			'archive',
 			'404',
 			'search',
 		);
@@ -116,11 +128,11 @@ class Template {
 	 * Get template
 	 * 
 	 * @since       Jentil 0.1.0
-	 * @access      private
+	 * @access      public
 	 * 
 	 * @return		array			Template tags applicable to this template
 	 */
-	private function get() {
+	public function get() {
 		$return = array();
 		
 		if ( empty( $this->templates() ) ) {
@@ -139,26 +151,6 @@ class Template {
 	    
 	    return $return;
 	}
-    
-    /**
-     * Template title
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function title() {
-		return $this->title->get();
-	}
-	
-	/**
-     * Template layout
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function layout() {
-		return $this->layout->get();
-	}
 	
 	/**
      * Get template title
@@ -166,7 +158,7 @@ class Template {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function get_title() {
+	public function title() {
 		return $this->title;
 	}
 	
@@ -176,7 +168,17 @@ class Template {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function get_layout() {
+	public function layout() {
 		return $this->layout;
+	}
+	
+	/**
+     * Get template content
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      public
+	 */
+	public function content() {
+		return $this->content;
 	}
 }

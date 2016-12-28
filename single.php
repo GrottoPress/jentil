@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Attachment template
+ * Single post template
  * 
  * @see 			http://codex.wordpress.org/Template_Hierarchy
  *
@@ -29,15 +29,9 @@ get_header();
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_before_title' ); ?>
+		 do_action( 'jentil_before_title' ); ?>
 		
 		<?php the_post(); ?>
-		
-		<?php if ( $post->post_parent ) { ?>
-			<h2 class="parent entry-title">
-			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( get_the_title( $post->post_parent ) ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
-	        </h2>
-		<?php } ?>
 		
 		<div class="posts-wrap show-content big singular-post">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
@@ -54,7 +48,7 @@ get_header();
 					 *
 					 * @since       Jentil 0.1.0
 					 */
-			 		do_action( 'jentil_after_title' ); ?>
+		 			do_action( 'jentil_after_title' ); ?>
 			 		
 				</header>
 				
@@ -66,7 +60,7 @@ get_header();
 				 *
 				 * @since       Jentil 0.1.0
 				 */
-			 	do_action( 'jentil_before_content' ); ?>
+		 		do_action( 'jentil_before_content' ); ?>
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
 					<?php echo $magpack_post->content( true ); ?>

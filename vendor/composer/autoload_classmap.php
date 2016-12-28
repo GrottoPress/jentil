@@ -6,11 +6,22 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'GrottoPress\\Jentil\\Colophon' => $baseDir . '/includes/colophon.php',
+    'GrottoPress\\Jentil\\Customizer\\Colophon' => $baseDir . '/includes/customizer/colophon.php',
+    'GrottoPress\\Jentil\\Customizer\\Content\\Archive' => $baseDir . '/includes/customizer/content/archive.php',
+    'GrottoPress\\Jentil\\Customizer\\Content\\Content' => $baseDir . '/includes/customizer/content/content.php',
+    'GrottoPress\\Jentil\\Customizer\\Content\\Search' => $baseDir . '/includes/customizer/content/search.php',
+    'GrottoPress\\Jentil\\Customizer\\Content\\Sticky' => $baseDir . '/includes/customizer/content/sticky.php',
     'GrottoPress\\Jentil\\Customizer\\Customizer' => $baseDir . '/includes/customizer/customizer.php',
     'GrottoPress\\Jentil\\Customizer\\Layout' => $baseDir . '/includes/customizer/layout.php',
+    'GrottoPress\\Jentil\\Customizer\\Logo' => $baseDir . '/includes/customizer/logo.php',
     'GrottoPress\\Jentil\\Jentil' => $baseDir . '/includes/jentil.php',
+    'GrottoPress\\Jentil\\Logo' => $baseDir . '/includes/logo.php',
+    'GrottoPress\\Jentil\\Metaboxes' => $baseDir . '/includes/metaboxes.php',
     'GrottoPress\\Jentil\\Parts' => $baseDir . '/includes/parts.php',
+    'GrottoPress\\Jentil\\Post\\Sticky' => $baseDir . '/includes/sticky.php',
     'GrottoPress\\Jentil\\Setup' => $baseDir . '/includes/setup.php',
+    'GrottoPress\\Jentil\\Template\\Content' => $baseDir . '/includes/template/content.php',
     'GrottoPress\\Jentil\\Template\\Layout' => $baseDir . '/includes/template/layout.php',
     'GrottoPress\\Jentil\\Template\\Template' => $baseDir . '/includes/template/template.php',
     'GrottoPress\\Jentil\\Template\\Title' => $baseDir . '/includes/template/title.php',

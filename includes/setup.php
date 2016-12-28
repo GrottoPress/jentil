@@ -114,7 +114,7 @@ class Setup {
     		'name'          => esc_html__( 'Primary', 'jentil' ),
     		'id'            => 'primary-widget-area',
     		'description'   => esc_html__( 'Primary widget area', 'jentil' ),
-    		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+    		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
     		'after_widget'  => '</aside>',
     		'before_title'  => '<h3 class="widget-title">',
     		'after_title'   => '</h3>',
@@ -296,6 +296,9 @@ class Setup {
      * @action      after_setup_theme
      */
     public function enable_custom_logo() {
-        add_theme_support( 'custom-logo' );
+        add_theme_support( 'custom-logo', array(
+           'height'      => 60,
+           'width'       => 180,
+        ) );
     }
 }
