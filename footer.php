@@ -8,25 +8,53 @@
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
- * @since			jentil 1.0.0
+ * @since			Jentil 1.0.0
  */
 
 ?>
+				
 				</div><!-- #main -->
 			</div><!-- #main-wrap -->
 			
-			<?php do_action( 'jentil_before_footer' ); ?>
+			<?php
+			/**
+			 * Do action before footer
+			 * 
+			 * @action		jentil_before_footer
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_before_footer' ); ?>
 			
 			<div id="footer-wrap">
 				<footer id="footer" class="site-footer hobbit" itemscope itemtype="http://schema.org/WPFooter">
 				
-					<?php do_action( 'jentil_inside_footer' ); ?>
+					<?php
+					/**
+					 * Do action inside footer
+					 * 
+					 * @action		jentil_inside_footer
+					 *
+					 * @since       Jentil 0.1.0
+					 */
+					do_action( 'jentil_inside_footer' ); ?>
 					
 				</footer><!-- #footer -->
     		</div><!-- #footer-wrap -->
     	</div><!-- #wrapper -->
 		
-		<?php wp_footer(); ?>
+		<?php
+		/**
+		 * Do the WordPress footer action
+		 * 
+		 * This is required by most plugins to include their
+		 * own code into the footer of the theme.
+		 * 
+		 * @action		wp_footer
+		 *
+		 * @since       Jentil 0.1.0
+		 */
+		wp_footer(); ?>
 		
 	</body>
 </html>

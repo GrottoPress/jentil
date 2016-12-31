@@ -88,7 +88,7 @@ get_header();
 				</nav><!-- .image-navigation -->
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
-					<p class="entry-attachment image">
+					<figure class="entry-attachment image aligncenter">
 	    				
 	    				<?php
 					    /**
@@ -103,13 +103,14 @@ get_header();
 						<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url">
 							<?php echo wp_get_attachment_image( $post->ID, $image_size ); ?>
 						</a>
-					</p>
 						
-					<?php if ( ! empty( $post->post_excerpt ) ) { ?>
-						<p class="entry-caption" itemprop="description">
-							<?php echo wp_kses_data( $post->post_excerpt ); ?>
-						</p>
-					<?php } ?>
+						<?php if ( ! empty( $post->post_excerpt ) ) { ?>
+							<figcaption class="entry-caption wp-caption-text" itemprop="description">
+								<?php echo wp_kses_data( $post->post_excerpt ); ?>
+							</figcaption>
+						<?php } ?>
+						
+					</figure>
 		
 					<?php echo $magpack_post->content( true ); ?>
 				</div><!-- .entry-content -->

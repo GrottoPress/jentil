@@ -139,7 +139,7 @@ class Layout {
             'post_archive_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -155,7 +155,7 @@ class Layout {
             'error_404_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -171,7 +171,7 @@ class Layout {
             'search_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -191,7 +191,7 @@ class Layout {
             'category_archive_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -211,7 +211,7 @@ class Layout {
             'tag_archive_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -227,7 +227,7 @@ class Layout {
             'author_archive_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -243,7 +243,7 @@ class Layout {
             'date_archive_layout',
             array(
                 'default'    =>  $this->default,
-                'transport'  =>  'postMessage',
+                //'transport'  =>  'postMessage',
             )
         );
     }
@@ -260,7 +260,7 @@ class Layout {
                 sanitize_key( $tax->name ) . '_taxonomy_archive_layout',
                 array(
                     'default'    =>  $this->default,
-                    'transport'  =>  'postMessage',
+                    //'transport'  =>  'postMessage',
                 )
             );
         }
@@ -278,7 +278,7 @@ class Layout {
                 sanitize_key( $post_type->name ) . '_post_type_archive_layout',
                 array(
                     'default'    =>  $this->default,
-                    'transport'  =>  'postMessage',
+                    //'transport'  =>  'postMessage',
                 )
             );
         }
@@ -300,7 +300,7 @@ class Layout {
                 'single_' . sanitize_key( $post_type->name ) . '_layout',
                 array(
                     'default'    =>  $this->default,
-                    'transport'  =>  'postMessage',
+                    //'transport'  =>  'postMessage',
                 )
             );
        }

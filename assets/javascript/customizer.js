@@ -17,7 +17,7 @@
      * Layout
      */
     
-    var bodyClasses = $( 'body' ).attr( 'class' ).split( ' ' );
+    /*var bodyClasses = $( 'body' ).attr( 'class' ).split( ' ' );
     var bodyClassesNum = bodyClasses.length;
     
     var dynamic = 'wont-work';
@@ -51,7 +51,7 @@
         }
     }
     
-    /** Hide sidebars initially, depending on layout */
+    // Hide sidebars initially, depending on layout
     switch ( initialLayoutClass ) {
         case 'layout-one-column':
             $( '.site-sidebar' ).hide();
@@ -115,7 +115,7 @@
             
             break;
         }
-	}
+	}*/
 	
 	/**
 	 * Footer credits

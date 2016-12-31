@@ -84,6 +84,7 @@ class Jentil {
 		
 		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ) );
 		add_action( 'jentil_inside_header', array( $parts, 'header_search' ), 20 );
+		add_action( 'jentil_inside_header', array( $parts, 'mobile_header_menu' ), 30 );
 		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ), 30 );
 		
 		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ) );

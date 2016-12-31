@@ -139,6 +139,10 @@ strong {
 	font-weight: bold;
 }
 
+*:focus {
+    outline: none;
+}
+
 em,
 i,
 q,
@@ -657,8 +661,16 @@ li {
     display: none;
 }
 
+#header .menu-max-screen-920 .search-wrap {
+    display: block;
+}
+
 #header .site-navigation {
     clear: both;
+    margin-top: 20px;
+}
+
+#header .menu-max-screen-920 {
     margin-top: 20px;
 }
 
@@ -893,20 +905,60 @@ blockquote {
     margin-left: 15px;
 }
 
-/*.menu a {
+.menu a {
 	display: block;
-}*/
+}
 
 .menu li {
-    font-size: 13px; /* Resetting fixes in parent .menu element */
+    font-size: 14px; /* Resetting fixes in parent .menu element */
+    font-size: 1.4rem;
+    position: relative;
+}
+
+.sub-menu li {
+    font-size: 13px;
     font-size: 1.3rem;
 }
 
-/**
- * Footer
- */
+.mobile-menu {
+    text-align: center;
+}
 
+.mobile-menu a:before {
+    content: "\2261";
+    line-height: 14px;
+    margin-right: 5px;
+}
 
+.menu-min-screen-920 {
+    display: none;
+}
+
+/** Toggle buttons */
+
+.sub-menu-toggle {
+    background-color: transparent;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 14px;
+    width: auto;
+    padding: 4px 7px;
+    margin: 0;
+    position: absolute;
+    top: -2px;
+    right: 10px;
+    z-index: 1;
+}
+
+.sub-menu-toggle:before {
+    content: "\25B4";
+    font-weight: bold;
+    color: #999;
+}
+
+.sub-menu-toggle.closed:before {
+    content: "\25BE";
+}
 
 /**
  * Comments
@@ -1098,8 +1150,7 @@ button {
 input:focus,
 textarea:focus,
 select:focus {
-	border: 1px solid #ddd;
-	outline: 0;
+	border-color: #ddd;
 }
 
 input,
@@ -1135,6 +1186,11 @@ button {
 	text-align: center;
 }
 
+input[type="submit"]:focus,
+input[type="button"]:focus {
+    border-width: 0;
+}
+
 label {
 	font-size: 13px;
 	font-size: 1.3rem;
@@ -1146,8 +1202,56 @@ label > * {
 	font-size: 1.4rem;
 }
 
+/** Search form */
+
 .form.search {
     margin: 0;
+    border: 1px solid #eee;
+    padding: 1px;
+    position: relative;
+    
+    -moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.form.search:focus {
+    border-color: #ddd;
+}
+
+.form.search input[type="search"],
+.form.search input[type="submit"] {
+    display: inline;
+}
+
+.form.search input[type="search"] {
+    border: 0;
+    width: 100%;
+    margin-bottom: 0;
+    float: left;
+    
+    -moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+
+.form.search input[type="submit"] {
+    border: 0;
+    width: auto;
+    float: right;
+    font-size: 12px;
+    font-size: 1.2rem;
+    text-align: right;
+    /*background-color: transparent;*/
+    padding: 7px 10px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    z-index: 1;
 }
 
 /**
@@ -1200,16 +1304,18 @@ label > * {
     text-align: center;
 }
 
-.entry-attachment.image {
+.entry-attachment.image a {
     background-color: #000;
     line-height: 1px;
+    display: block;
 }
 
 .attachment .entry-caption {
     font-size: 14px;
     font-size: 1.4rem;
     line-height: 160%;
-    color: #999;
+    margin-top: 10px;
+    /*color: #999;*/
 }
 
 /** Sticky posts */
@@ -1250,9 +1356,14 @@ label > * {
     }
     
     #header .search-wrap {
-        width: 30%;
+        width: 35%;
         float: right;
         display: inline;
+        margin-top: 15px;
+    }
+    
+    #header .menu-max-screen-920 .search-wrap {
+        display: none;
     }
     
     /**
@@ -1551,14 +1662,17 @@ label > * {
         padding: 5px 0;
     }*/
     
+    .menu-min-screen-920 {
+        display: block;
+    }
+    
+    .menu-max-screen-920 {
+        display: none !important;
+    }
+    
     #header .menu li {
-    	position: relative;
     	margin: 0;
-    	margin-left: 5px;
-    	margin-right: 5px;
-    	font-size: 14px;
-        font-size: 1.4rem;
-    	font-weight: bold;
+    	margin-left: 20px;
     
     	display: -moz-inline-stack;
     	display: inline-block;
@@ -1567,16 +1681,20 @@ label > * {
     	vertical-align: top;
     }
     
+    #header .menu.has-js .menu-item-has-children {
+        padding-right: 22px;
+    }
+    
+    #header .menu.has-js .menu-item-has-children + li {
+        margin-left: 13px;
+    }
+    
     #header .menu li:first-child {
     	margin-left: 0;
     }
     
     #header .menu li:last-child {
     	margin-right: 0;
-    }
-    
-    #header .menu a {
-    	display: block;
     }
     
     #header .menu ul {
@@ -1598,9 +1716,6 @@ label > * {
     	display: list-item;
     	margin: 0;
     	padding: 0;
-    	font-size: 13px;
-        font-size: 1.3rem;
-    	font-weight: normal;
     }
     
     #header .menu ul,
@@ -1619,5 +1734,19 @@ label > * {
     #header .menu li li li li li:hover ul*/ {
     	display: block;
     	z-index: 1;
+    }
+    
+    /** Toggle buttons */
+
+    .menu > li > .sub-menu-toggle {
+        right: 0;
+    }
+    
+    .sub-menu .sub-menu-toggle:before {
+        content: "\25C2";
+    }
+    
+    .sub-menu .sub-menu-toggle.closed:before {
+        content: "\25B8";
     }
 }

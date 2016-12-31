@@ -66,11 +66,11 @@ get_header();
 				 *
 				 * @since       Jentil 0.1.0
 				 */
-			 	do_action( 'jentil_before_content' );
-			 	
-			 	echo do_shortcode( '[audio src="' . wp_get_attachment_url( $post->ID ) . '"]' ); ?>
+			 	do_action( 'jentil_before_content' ); ?>
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
+					<?php echo do_shortcode( '[audio src="' . wp_get_attachment_url( $post->ID ) . '"]' ); ?>
+					
 					<p class="entry-attachment">
 					    <a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url">
 					        <?php echo basename( $post->guid ); ?>
@@ -78,7 +78,7 @@ get_header();
 			        </p>
 					
 					<?php if ( ! empty( $post->post_excerpt ) ) { ?>
-						<p class="entry-caption" itemprop="description">
+						<p class="entry-caption wp-caption-text" itemprop="description">
 							<?php echo wp_kses_data( $post->post_excerpt ); ?>
 						</p>
 					<?php } ?>

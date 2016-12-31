@@ -88,7 +88,7 @@ class Parts {
     public function search_form( $searchform ) {
     	$searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite" itemref="">
     		<meta id="meta-search-website" itemprop="url" content="' . esc_attr( home_url( '/' ) ) . '"/>
-    		<form role="search" method="get" class="form search" action="' . esc_attr( home_url( '/' ) ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" itemref="">
+    		<form role="search" method="get" class="form search self-clear" action="' . esc_attr( home_url( '/' ) ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" itemref="">
     			<meta id="meta-search-target" itemprop="target" content="' . esc_attr( home_url( '/' ) ) . '?s={s}" />
     			<label class="screen-reader-text" for="s">' . esc_html__( 'Search for:', 'jentil' ) . '</label>
     			<input itemprop="query-input" type="search" placeholder="' . esc_attr__( 'Search', 'jentil' ) . '" class="input search" name="s" id="s" value="';
@@ -143,12 +143,47 @@ class Parts {
 	 * @action      jentil_inside_header
      */
     public function header_menu() {
-    	echo '<nav role="navigation" class="site-navigation main-navigation">
+    	echo '<nav role="navigation" class="site-navigation main-navigation menu-min-screen-920">
     	    <div class="screen-reader-text skip-link">
     	        <a href="#content">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
             </div>';
             
-        wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
+            wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
+            
+        echo '</nav>';
+    }
+    
+    /**
+     * Mobile header menu
+     * 
+     * @since       Jentil 0.1.0
+	 * @access      public
+	 * 
+	 * @action      jentil_inside_header
+     */
+    public function mobile_header_menu() {
+    	$status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
+    	$pagination = new \GrottoPress\MagPack\Pagination();
+    	
+    	echo '<div class="site-navigation main-navigation menu-max-screen-920">
+    	    <div class="screen-reader-text skip-link">
+    	        <a href="#content">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
+            </div>
+            
+            <div class="menu-mobile-menu-container">
+    	        <ul class="menu mobile-menu">
+    	            <li class="menu-item hamburger">
+    	                <a href="' . esc_url( add_query_arg( array(
+    		                'menu' => ( $status == 'off' ? 'on' : 'off' ),
+    	                ), $pagination->get_current_page_url( true, true ) ) ) . '">' . esc_html__( 'Menu', 'jentil' ) . '</a>
+    	            </li>
+    	        </ul>
+            </div>
+        </div>
+    	
+    	<nav role="navigation" class="menu-max-screen-920" ' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>';
+            
+            get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
             
         echo '</nav>';
     }
