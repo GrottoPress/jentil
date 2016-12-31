@@ -4,7 +4,190 @@
  * This file is automatically loaded by WordPress. It includes
  * right-to-left language style declarations for this theme.
  *
- * @link              https://magpress.itechplus.org
- * @package           magpress
- * @since             MagPress 1.0.0
+ * @link              https://jentil.grottopress.com
+ * @package           jentil
+ * @since             Jentil 0.1.0
  */
+
+body {
+  	text-align: right;
+}
+
+/**
+ * Lists
+ */
+
+ul,
+ol {
+	margin-right: 30px;
+	padding-right: 0;
+}
+
+/**
+ * Header elements
+ */
+
+#header > * {
+    text-align: right;
+}
+
+/**
+ * Gallery
+ */
+
+.gallery {
+	padding: 15px 15px 5px 5px;
+}
+
+/**
+ * Blockquotes
+ */
+
+blockquote {
+	padding-left: 0;
+	padding-right: 15px;
+	border-left: 0;
+	border-right-width: 5px;
+}
+
+/**
+ * Menus
+ */
+
+.menu {
+	margin-right: 0;
+}
+
+.menu ul {
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+.mobile-menu a:before {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/** Toggle buttons */
+
+.sub-menu-toggle {
+    right: auto;
+    left: 10px;
+}
+
+/**
+ * Comments
+ */
+
+.comment-author .avatar {
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/**
+ * Form elements
+ */
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: #ddd;
+}
+
+input[type="submit"],
+input[type="button"],
+button {
+	border: 0;
+	border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
+}
+
+/** Search form */
+
+.form.search input[type="submit"] {
+    left: 1px;
+}
+
+/**
+ * Post elements
+ */
+
+/** Attachment */
+
+.attachment .pagination a:nth-child(1) {
+    float: right;
+}
+
+.attachment .pagination a:nth-child(2) {
+    float: left;
+}
+
+/** Single posts */
+
+.singular-post .entry-meta p {
+    margin: 0 60px 5px 0;
+}
+
+.singular-post .post-wrap .entry-meta .avatar {
+	float: right;
+}
+
+@media (min-width: 800px) {
+    /**
+     * Header elements
+     */
+    
+    #header {
+        text-align: right;
+    }
+    
+    #header .search-wrap {
+        float: left;
+    }
+}
+
+@media (min-width: 920px) {
+    /**
+     * Menus
+     */
+    
+    #header .menu li {
+    	margin: 0;
+    	margin-right: 20px;
+    }
+    
+    #header .menu.has-js .menu-item-has-children {
+        padding-right: 0;
+        padding-left: 22px;
+    }
+    
+    #header .menu.has-js .menu-item-has-children + li {
+        margin-left: 0;
+        margin-right: 13px;
+    }
+    
+    #header .menu li:first-child {
+    	margin-right: 0;
+    }
+    
+    #header .menu li:last-child {
+    	margin-left: 0;
+    }
+    
+    #header .menu ul {
+    	left: auto;
+    	right: 0;
+    }
+    
+    #header .menu ul ul {
+    	left: auto;
+    	right: 195px;
+    }
+    
+    /** Toggle buttons */
+
+    #header .menu > li > .sub-menu-toggle {
+        right: auto;
+        left: 0;
+    }
+}

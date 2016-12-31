@@ -67,7 +67,7 @@ a:focus {
 }
 
 a:focus {
-	outline: 0;
+	outline: none;
 }
 
 /**
@@ -601,8 +601,6 @@ li {
     font-size: 1.8rem;
 }
 
-
-
 /**
  * Footer elements
  */
@@ -825,7 +823,7 @@ table.aligncenter {
  */
 
 .gallery {
-	font-size: 0;
+	font-size: 0; /* Inline-block whitespace fix */
 	line-height: 160%;
 	padding: 15px 5px 5px 15px;
 	background: #f6f6f6;
@@ -1230,7 +1228,6 @@ label > * {
     border: 0;
     width: 100%;
     margin-bottom: 0;
-    float: left;
     
     -moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -1242,7 +1239,6 @@ label > * {
 .form.search input[type="submit"] {
     border: 0;
     width: auto;
-    float: right;
     font-size: 12px;
     font-size: 1.2rem;
     text-align: right;
@@ -1387,9 +1383,7 @@ label > * {
         max-width: none;
     }
     
-    /**
-     * Two Columns, Right Sidebar
-     */
+    /** Two Columns, Right Sidebar */
     
     #container,
     .layout-content-sidebar #container {
@@ -1415,9 +1409,7 @@ label > * {
         margin: 0;
     }
     
-    /**
-     * Two Columns, Left Sidebar
-     */
+    /** Two Columns, Left Sidebar */
 
     .layout-sidebar-content #container {
     	float: right;
@@ -1434,9 +1426,7 @@ label > * {
     	float: left;
     }
     
-    /**
-     * Three Columns, Left & Right Sidebars
-     */
+    /** Three Columns, Left & Right Sidebars */
     
     .layout-sidebar-content-sidebar #container {
     	float: left;
@@ -1464,9 +1454,7 @@ label > * {
     	width: 160px; /** Width of right column */
     }
     
-    /**
-     * Three Columns, Two Left Sidebars
-     */
+    /** Three Columns, Two Left Sidebars */
     
     .layout-sidebar-sidebar-content #container {
     	float: right;
@@ -1490,9 +1478,7 @@ label > * {
     	margin-right: -160px; /** Set margin to -(RightColumnWidth) */
     }
     
-    /**
-     * Three Columns, Two Right Sidebars
-     */
+    /** Three Columns, Two Right Sidebars */
     
     .layout-content-sidebar-sidebar #container {
     	float: left;
@@ -1515,6 +1501,10 @@ label > * {
     	margin-left: -160px; /** Set margin to -(RightColumnWidth) */
     }
     
+    /**
+     * Footer elements
+     */
+    
     #footer .widget-area {
         font-size: 0; /** Fixing whitespace on inline-block child elements */
     }
@@ -1534,9 +1524,8 @@ label > * {
     	vertical-align: top;
     }
     
-    /**
-     * Full width columns
-     */
+    /** Full width columns */
+    
     .layout-content #container {
     	margin-right: 0;
     	float: none;
@@ -1557,8 +1546,10 @@ label > * {
 
 @media (min-width: 920px) {
     /**
-     * Two Columns, Right Sidebar
+     * Layouts
      */
+    
+    /** Two Columns, Right Sidebar */
     
     #container,
     .layout-content-sidebar #container {
@@ -1575,9 +1566,7 @@ label > * {
     	width: 300px;
     }
     
-    /**
-     * Two Columns, Left Sidebar
-     */
+    /** Two Columns, Left Sidebar */
 
     .layout-sidebar-content #container {
     	margin-left: -320px;
@@ -1587,9 +1576,7 @@ label > * {
     	margin-left: 320px;
     }
     
-    /**
-     * Three Columns, Left & Right Sidebars
-     */
+    /** Three Columns, Left & Right Sidebars */
     
     .layout-sidebar-content-sidebar #content {
     	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
@@ -1606,9 +1593,7 @@ label > * {
     	width: 240px; /** Width of right column */
     }
     
-    /**
-     * Three Columns, Two Left Sidebars
-     */
+    /** Three Columns, Two Left Sidebars */
     
     .layout-sidebar-sidebar-content #content {
     	margin-left: 440px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
@@ -1624,9 +1609,7 @@ label > * {
     	margin-right: -240px; /** Set margin to -(RightColumnWidth) */
     }
     
-    /**
-     * Three Columns, Two Right Sidebars
-     */
+    /** Three Columns, Two Right Sidebars */
     
     .layout-content-sidebar-sidebar #content {
     	margin-right: 440px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
@@ -1642,9 +1625,8 @@ label > * {
     	margin-left: -240px; /** Set margin to -(RightColumnWidth) */
     }
     
-    /**
-     * Full width columns
-     */
+    /** Full width columns */
+    
     .layout-content #container {
     	margin-right: 0;
     	float: none;
@@ -1721,32 +1703,32 @@ label > * {
     #header .menu ul,
     #header .menu li:hover ul ul,
     #header .menu li li:hover ul ul,
-    #header .menu li li li:hover ul ul /*,
+    #header .menu li li li:hover ul ul ,
     #header .menu li li li li:hover ul ul,
-    #header .menu li li li li li:hover ul ul*/ {
+    #header .menu li li li li li:hover ul ul {
     	display: none; /* Required to hide menu when inactive */
     }
     
     #header .menu li:hover ul,
     #header .menu li li:hover ul,
-    #header .menu li li li:hover ul /*,
+    #header .menu li li li:hover ul ,
     #header .menu li li li li:hover ul,
-    #header .menu li li li li li:hover ul*/ {
+    #header .menu li li li li li:hover ul {
     	display: block;
     	z-index: 1;
     }
     
     /** Toggle buttons */
 
-    .menu > li > .sub-menu-toggle {
+    #header .menu > li > .sub-menu-toggle {
         right: 0;
     }
     
-    .sub-menu .sub-menu-toggle:before {
+    #header .sub-menu .sub-menu-toggle:before {
         content: "\25C2";
     }
     
-    .sub-menu .sub-menu-toggle.closed:before {
+    #header .sub-menu .sub-menu-toggle.closed:before {
         content: "\25B8";
     }
 }
