@@ -190,4 +190,12 @@ button {
         right: auto;
         left: 0;
     }
+    
+    #header .sub-menu .sub-menu-toggle:before {
+        content: "\25B8";
+    }
+    
+    #header .sub-menu .sub-menu-toggle.closed:before {
+        content: "\25C2";
+    }
 }
