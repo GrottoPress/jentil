@@ -225,7 +225,7 @@ class Parts {
     	global $post;
     	
     	$magpack_post = new \GrottoPress\MagPack\Post\Post( $post->ID );
-    	$avatar = $magpack_post->meta_list( 'avatar__50', '' );
+    	$avatar = $magpack_post->meta_list( 'avatar__40', '' );
     	$author = $magpack_post->meta_list( 'author_link', '' );
     	
     	$output = '<div class="entry-meta after-title self-clear">';

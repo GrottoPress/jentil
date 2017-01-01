@@ -42,8 +42,12 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
 		$comment_count = absint( get_comments_number() ); ?>
 
     	<div id="comments-list">
-    		<h3 class="comments-title"><?php printf( _n( '1 Comment on &ldquo;%2$s&rdquo;', '%1$s Comments on &ldquo;%2$s&rdquo;', $comment_count, 'jentil' ), number_format_i18n( $comment_count ), '<span>' . get_the_title() . '</span>' ); ?></h3>
-    
+    		<h3 class="comments-title"><?php printf( _n(
+    			'1 Comment',
+    			'%1$s Comments',
+    			$comment_count, 'jentil'
+    		), number_format_i18n( $comment_count ) ); ?></h3>
+
     		<?php /** Top navigation */
     		if ( $total_pages > 1 && get_option( 'page_comments' ) ) { ?>
     			

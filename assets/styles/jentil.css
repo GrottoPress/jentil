@@ -354,6 +354,7 @@ ol ul:last-child {
 .hobbit pre,
 .hobbit dd,
 .hobbit blockquote,
+blockquote p,
 .hobbit .search-wrap {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -374,6 +375,7 @@ ol ul:last-child {
 .hobbit pre:first-child,
 .hobbit dd:first-child,
 .hobbit blockquote:first-child,
+blockquote p:first-child,
 .hobbit .search-wrap:first-child {
     margin-top: 0;
 }
@@ -393,6 +395,7 @@ ol ul:last-child {
 .hobbit pre:last-child,
 .hobbit dd:last-child,
 .hobbit blockquote:last-child,
+blockquote p:last-child,
 .hobbit .search-wrap:last-child {
     margin-bottom: 0;
 }
@@ -611,11 +614,18 @@ li {
 
 #colophon {
     text-align: center;
+    font-size: 13px;
+    font-size: 1.3rem;
+    line-height: 160%;
 }
 
 #colophon small {
     font-size: 13px;
     font-size: 1.3rem;
+}
+
+#footer .widget {
+    margin-bottom: 20px;
 }
 
 /**
@@ -870,7 +880,9 @@ table.aligncenter {
  */
 
 blockquote {
-	padding-left: 15px;
+	margin-left: 20px;
+	margin-right: 0;
+	padding-left: 10px;
 	border-left: 5px solid #ccc;
 	font-size: 1.2em;
 	color: #999;
@@ -976,7 +988,9 @@ blockquote {
 .commentlist h6,
 .commentlist pre,
 .commentlist dd,
-.commentlist blockquote {
+.commentlist blockquote,
+.comment-meta,
+.comment-content {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -995,7 +1009,9 @@ blockquote {
 .commentlist h6:first-child,
 .commentlist pre:first-child,
 .commentlist dd:first-child,
-.commentlist blockquote:first-child {
+.commentlist blockquote:first-child,
+.comment-meta:first-child,
+.comment-content:first-child {
     margin-top: 0;
 }
 
@@ -1013,7 +1029,9 @@ blockquote {
 .commentlist h6:last-child,
 .commentlist pre:last-child,
 .commentlist dd:last-child,
-.commentlist blockquote:last-child {
+.commentlist blockquote:last-child,
+.comment-meta:last-child,
+.comment-content:last-child {
     margin-bottom: 0;
 }
 
@@ -1047,6 +1065,7 @@ blockquote {
     font-size: 1.3rem;
 }
 
+.commentlist li,
 .commentlist ul ul,
 .commentlist ul ol,
 .commentlist ol ol,
@@ -1055,6 +1074,7 @@ blockquote {
     margin-bottom: 5px;
 }
 
+.commentlist li:first-child,
 .commentlist ul ul:first-child,
 .commentlist ul ol:first-child,
 .commentlist ol ol:first-child,
@@ -1062,11 +1082,48 @@ blockquote {
     margin-top: 0;
 }
 
+.commentlist li:last-child,
 .commentlist ul ul:last-child,
 .commentlist ul ol:last-child,
 .commentlist ol ol:last-child,
 .commentlist ol ul:last-child {
     margin-bottom: 0;
+}
+
+.commentlist > li,
+.children > li {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.commentlist > li:last-child,
+.children > li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom-width: 0;
+}
+
+.commentlist {
+    margin-left: 0;
+    margin-bottom: 12px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.commentlist .children {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.commentlist .children:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top-width: 0;
 }
 
 /*.commentlist {
@@ -1083,13 +1140,49 @@ blockquote {
     margin-bottom: 20px;
 }
 
+.comment-meta,
+.commentlist .reply,
+#cancel-comment-reply-link {
+    font-size: 13px;
+    font-size: 1.3rem;
+    line-height: 160%;
+}
+
+.comment-meta,
+.commentlist .reply {
+    color: #999;
+}
+
+/*.comment-meta a,
+.commentlist .reply a,
+#cancel-comment-reply-link {
+    color: #999;
+}*/
+
+.comment-meta .edit-link:before {
+    content: "| ";
+}
+
+.commentlist .reply,
+#cancel-comment-reply-link {
+    text-align: right;
+}
+
+#cancel-comment-reply-link {
+    font-weight: normal;
+}
+
+#reply-title > small {
+    margin-left: 20px;
+}
+
 .comment-author .avatar {
     float: left;
     display: inline;
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
-.form-submit {
+.comment-form .form-submit {
     margin-bottom: 0;
 }
 
@@ -1103,6 +1196,26 @@ blockquote {
 .required {
     color: red;
 }
+
+.comment-meta:after,
+.comment-content:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+* html .comment-meta,
+* html .comment-content {
+    zoom: 1;
+} /* IE6 */
+
+*:first-child+html .comment-meta,
+*:first-child+html .comment-content {
+    zoom: 1;
+} /* IE7 */
 
 /**
  * Form elements
@@ -1334,12 +1447,22 @@ label > * {
 }
 
 .singular-post .entry-meta p {
-    margin: 0 0 5px 60px;
+    margin: 0 0 0 52px;
 }
 
 .singular-post .post-wrap .entry-meta .avatar {
 	display: inline;
 	float: left;
+}
+
+/** Avatar */
+
+.avatar {
+    -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
 }
 
 @media (min-width: 800px) {
@@ -1513,7 +1636,6 @@ label > * {
         font-size: 14px;
         font-size: 1.4rem; /** Overriding zero font-size on parent */
         margin-top: 0;
-        margin-bottom: 20px;
         width: 25%;
         padding: 0 10px;
         

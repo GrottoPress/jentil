@@ -44,10 +44,12 @@ ol {
  */
 
 blockquote {
+	margin-left: 0;
+	margin-right: 20px;
 	padding-left: 0;
-	padding-right: 15px;
-	border-left: 0;
-	border-right-width: 5px;
+	padding-right: 10px;
+	border-left-width: 0;
+	border-right: 5px solid #ccc;
 }
 
 /**
@@ -79,10 +81,24 @@ blockquote {
  * Comments
  */
 
+.commentlist {
+    margin-right: 0;
+}
+
 .comment-author .avatar {
     float: right;
     margin-right: 0;
-    margin-left: 10px;
+    margin-left: 12px;
+}
+
+.commentlist .reply,
+#cancel-comment-reply-link {
+    text-align: left;
+}
+
+#reply-title > small {
+    margin-right: 0;
+    margin-left: 20px;
 }
 
 /**
@@ -125,11 +141,12 @@ button {
 /** Single posts */
 
 .singular-post .entry-meta p {
-    margin: 0 60px 5px 0;
+    margin: 0 52px 0 0;
 }
 
 .singular-post .post-wrap .entry-meta .avatar {
 	float: right;
+	margin-right: 0;
 }
 
 @media (min-width: 800px) {
