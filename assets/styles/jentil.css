@@ -256,7 +256,6 @@ blockquote,
     margin-bottom: 20px;
 }
 
-*:first-child,
 p:first-child,
 hr:first-child,
 ul:first-child,
@@ -283,7 +282,6 @@ blockquote:first-child,
     margin-top: 0;
 }
 
-*:last-child,
 p:last-child,
 hr:last-child,
 ul:last-child,
@@ -1090,6 +1088,10 @@ blockquote {
     margin-bottom: 0;
 }
 
+#comments {
+    margin-top: 20px;
+}
+
 .commentlist > li,
 .children > li {
     margin-top: 10px;
@@ -1809,6 +1811,7 @@ label > * {
     	margin: 0;
     	padding: 0;
     	list-style-type: none;
+    	z-index: 1;
     }
     
     #header .menu ul ul {
@@ -1837,7 +1840,7 @@ label > * {
     #header .menu li li li li:hover ul,
     #header .menu li li li li li:hover ul {
     	display: block;
-    	z-index: 1;
+    	/*z-index: 1;*/
     }
     
     /** Toggle buttons */
