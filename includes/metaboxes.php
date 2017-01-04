@@ -4,10 +4,10 @@
  * Metaboxes
  *
  * @link            http://example.com
- * @since           MagPack 0.1.0
+ * @since           Jentil 0.1.0
  *
- * @package         MagPack
- * @subpackage      MagPack/includes
+ * @package         jentil
+ * @subpackage      jentil/includes
  */
 
 namespace GrottoPress\Jentil;
@@ -21,11 +21,11 @@ if ( ! defined( 'WPINC' ) ) {
  * 
  * Render and process meta boxes
  *
- * @package         MagPack
- * @subpackage      MagPack/includes
+ * @package         jentil
+ * @subpackage      jentil/includes
  * @author          N Atta Kusi Adusei
  */
-class Metaboxes {
+class Metaboxes extends \GrottoPress\MagPack\Singleton {
     /**
      * Layouts
 	 *
@@ -39,10 +39,10 @@ class Metaboxes {
     /**
 	 * Constructor
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
+	protected function __construct() {
 	    $template = new \GrottoPress\Jentil\Template\Template();
         $this->layouts = $template->layout()->layouts_ids_names();
 	}
@@ -50,7 +50,7 @@ class Metaboxes {
     /**
 	 * Meta boxes setup.
 	 *
-	 * @since    	MagPack 0.1.0
+	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 * 
 	 * @action      load-post.php
@@ -76,7 +76,7 @@ class Metaboxes {
 	 * 
 	 * @see 		$this->setup()
 	 *
-	 * @since    	MagPack 0.1.0
+	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 */
 	public function add( $post_type, $post ) {
@@ -111,7 +111,7 @@ class Metaboxes {
 	 *
 	 * @var 		$post_id 		integer 		The post ID
 	 *
-	 * @since    	MagPack 0.1.0
+	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 */
 	function save( $post_id ) {
@@ -133,7 +133,7 @@ class Metaboxes {
 	/**
 	 * Meta boxes.
 	 * 
-	 * @since    	MagPack 0.1.0
+	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 */
 	public function boxes( $post_type ) {

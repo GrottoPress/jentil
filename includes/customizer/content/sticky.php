@@ -27,14 +27,14 @@ namespace GrottoPress\Jentil\Customizer\Content;
  */
 class Sticky {
     /**
-     * Template
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      private
-	 * 
-	 * @var         array         $template       Template
-	 */
-    private $template;
+     * Content customizer
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Customizer\Content\Content      $content    Content customizer object
+     */
+    private $content;
     
     /**
 	 * Constructor
@@ -42,8 +42,8 @@ class Sticky {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
-	    $this->template = new \GrottoPress\Jentil\Template\Template();
+	public function __construct( Content $content ) {
+	    $this->content = $content;
 	}
     
     /**
@@ -344,7 +344,7 @@ class Sticky {
                 'section'   => 'sticky_content',
                 'label'     => esc_html__( 'Title position', 'jentil' ),
                 'type'      => 'select',
-                'choices'   => $this->template->content()->title_positions(),
+                'choices'   => $this->content->title_positions(),
             )
         );
     }
@@ -396,7 +396,7 @@ class Sticky {
                 'section'   => 'sticky_content',
                 'label'     => esc_html__( 'Align image', 'jentil' ),
                 'type'      => 'select',
-                'choices'   => $this->template->content()->image_alignments(),
+                'choices'   => $this->content->image_alignments(),
             )
         );
     }
@@ -465,7 +465,7 @@ class Sticky {
                 'section'   => 'sticky_content',
                 'label'     => esc_html__( 'Show pagination', 'jentil' ),
                 'type'      => 'select',
-                'choices'   => $this->template->content()->pagination_positions(),
+                'choices'   => $this->content->pagination_positions(),
             )
         );
     }

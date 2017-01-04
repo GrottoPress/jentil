@@ -13,6 +13,7 @@
  */
 
 namespace GrottoPress\Jentil\Customizer\Content;
+use \GrottoPress\Jentil\Customizer\Customizer as Customizer;
 
 /**
  * Content customizer
@@ -26,6 +27,16 @@ namespace GrottoPress\Jentil\Customizer\Content;
  * @since			jentil 0.1.0
  */
 class Content {
+    /**
+     * Customizer
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Customizer\Customizer     $customizer       Customizer instance
+     */
+    private $customizer;
+
     /**
      * Contents
 	 *
@@ -42,7 +53,8 @@ class Content {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
+	public function __construct( Customizer $customizer ) {
+        $this->customizer = $customizer;
         $this->contents = $this->contents();
 	}
 	
@@ -55,9 +67,9 @@ class Content {
 	private function contents() {
 	    $contents = array();
 	    
-	    $contents[] = new Archive();
-	    $contents[] = new Search();
-	    $contents[] = new Sticky();
+	    $contents[] = new Archive( $this );
+	    $contents[] = new Search( $this );
+	    $contents[] = new Sticky( $this );
 	    
 	    return $contents;
 	}
@@ -109,4 +121,51 @@ class Content {
 	        $content->add_controls( $wp_customize );
 	    }
 	}
+
+	/**
+     * Title positions
+     * 
+     * @since		Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      array          Title positions
+     */
+    public function title_positions() {
+        return array(
+            'side' => esc_html__( 'Side', 'jentil' ),
+            'top' => esc_html__( 'Top', 'jentil' ),
+        );
+    }
+    
+    /**
+     * Image alignments
+     * 
+     * @since		Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      array          Image alignments
+     */
+    public function image_alignments() {
+        return array(
+            'none' => esc_html__( 'none', 'jentil' ),
+            'left' => esc_html__( 'Left', 'jentil' ),
+            'right' => esc_html__( 'Right', 'jentil' ),
+        );
+    }
+    
+    /**
+     * Pagination positions
+     * 
+     * @since		Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      array          Pagination positions
+     */
+    public function pagination_positions() {
+        return array(
+            'top' => esc_html__( 'Top', 'jentil' ),
+            'bottom' => esc_html__( 'Bottom', 'jentil' ),
+            'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
+        );
+    }
 }

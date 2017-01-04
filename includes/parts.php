@@ -25,7 +25,7 @@ namespace GrottoPress\Jentil;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Parts {
+class Parts extends \GrottoPress\MagPack\Singleton {
     /**
      * Template
 	 *
@@ -42,7 +42,7 @@ class Parts {
 	 * @since       MagPack 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
+	protected function __construct() {
 	    $this->template = new \GrottoPress\Jentil\Template\Template();
 	}
 
@@ -316,9 +316,8 @@ class Parts {
     	    }
     	}
 
-    	$template = new \GrottoPress\Jentil\Template\Template();
-        $layout = $template->layout()->get();
-        $layout_column = $template->layout()->column();
+    	$layout = $this->template->layout()->get();
+        $layout_column = $this->template->layout()->column();
 
     	if ( ! empty( $layout ) ) {
     		$classes[] = sanitize_title( 'layout-' . $layout );

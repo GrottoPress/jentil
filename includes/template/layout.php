@@ -26,7 +26,7 @@ class Layout {
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 * 
-	 * @var         array         $template       Template
+	 * @var         \GrottoPress\Jentil\Template\Template         $template       Template
 	 */
     private $template;
     
@@ -36,8 +36,8 @@ class Layout {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( $template ) {
-	    $this->template = (array) $template;
+	public function __construct( Template $template ) {
+	    $this->template = $template;
 	}
 	
 	/**
@@ -131,13 +131,13 @@ class Layout {
     public function get() {
         $default = 'content-sidebar';
         
-        if ( empty( $this->template ) ) {
+        if ( empty( $this->template->get() ) ) {
 			return $default;
 		}
 		
 		$layout = $default;
 		
-        foreach ( $this->template as $template ) {
+        foreach ( $this->template->get() as $template ) {
 			$is_template = 'is_' . $template;
 	    	
 	    	if ( is_callable( $is_template ) ) {

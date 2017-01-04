@@ -25,7 +25,7 @@ namespace GrottoPress\Jentil;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Jentil {
+class Jentil extends \GrottoPress\MagPack\Singleton {
     /**
      * Run the theme
 	 *
@@ -46,7 +46,7 @@ class Jentil {
 	 * @access      private
 	 */
 	private function setup() {
-		$setup = new Setup();
+		$setup = Setup::get_instance();
 		
 		add_action( 'after_setup_theme', array( $setup, 'set_content_width' ) );
 		add_action( 'after_setup_theme', array( $setup, 'enable_translation' ) );
@@ -73,7 +73,7 @@ class Jentil {
 	 * @access      private
 	 */
 	private function parts() {
-		$parts = new Parts();
+		$parts = Parts::get_instance();
 		
 		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
 		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
@@ -98,7 +98,7 @@ class Jentil {
 	 * @access      private
 	 */
 	private function customizer() {
-		$customizer = new Customizer\Customizer();
+		$customizer = Customizer\Customizer::get_instance();
 		
 		add_action( 'customize_register', array( $customizer, 'register' ) );
 		add_action( 'customize_preview_init', array( $customizer, 'enqueue_scripts' ) );
@@ -111,7 +111,7 @@ class Jentil {
 	 * @access      private
 	 */
 	private function metaboxes() {
-		$boxes = new Metaboxes();
+		$boxes = Metaboxes::get_instance();
 		
 		add_action( 'load-post.php', array( $boxes, 'setup' ) );
 		add_action( 'load-post-new.php', array( $boxes, 'setup' ) );

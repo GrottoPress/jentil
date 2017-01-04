@@ -29,7 +29,7 @@ require get_template_directory() . '/vendor/autoload.php';
  * @since 		Jentil 0.1.0
  */
 function run() {
-	$jentil = new Jentil();
+	$jentil = Jentil::get_instance();
 	$jentil->run();
 }
 

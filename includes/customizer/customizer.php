@@ -25,7 +25,7 @@ namespace GrottoPress\Jentil\Customizer;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Customizer {
+class Customizer extends \GrottoPress\MagPack\Singleton {
     /**
      * Layout customizer
 	 *
@@ -72,11 +72,11 @@ class Customizer {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
-        $this->layout = new Layout();
-        $this->colophon = new Colophon();
-        $this->logo = new Logo();
-        $this->content = new Content\Content();
+	protected function __construct() {
+        $this->layout = new Layout( $this );
+        $this->colophon = new Colophon( $this );
+        $this->logo = new Logo( $this );
+        $this->content = new Content\Content( $this );
 	}
     
     /**

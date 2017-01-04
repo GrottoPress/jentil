@@ -27,6 +27,16 @@ namespace GrottoPress\Jentil\Customizer;
  */
 class Logo {
     /**
+     * Customizer
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Customizer\Customizer     $customizer       Customizer instance
+     */
+    private $customizer;
+
+    /**
      * Default layout
 	 *
 	 * @since       Jentil 0.1.0
@@ -52,7 +62,9 @@ class Logo {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
+	public function __construct( Customizer $customizer ) {
+        $this->customizer = $customizer;
+
         $this->default = '';
         $this->custom_logo_supported = function_exists( 'get_custom_logo' );
 	}

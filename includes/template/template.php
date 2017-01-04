@@ -61,9 +61,9 @@ class Template {
 	 * @access      public
 	 */
 	public function __construct() {
-	    $this->title = new Title( $this->get() );
-	    $this->layout = new Layout( $this->get() );
-	    $this->content= new Content( $this->get() );
+	    $this->title = new Title( $this );
+	    $this->layout = new Layout( $this );
+	    $this->content= new Content( $this );
 	}
     
     /**

@@ -27,6 +27,16 @@ namespace GrottoPress\Jentil\Customizer;
  */
 class Layout {
     /**
+     * Customizer
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Customizer\Customizer     $customizer       Customizer instance
+     */
+    private $customizer;
+
+    /**
      * Layouts
 	 *
 	 * @since       Jentil 0.1.0
@@ -82,9 +92,12 @@ class Layout {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
+	public function __construct( Customizer $customizer ) {
+        $this->customizer = $customizer;
+
         $template = new \GrottoPress\Jentil\Template\Template();
         $this->layouts = $template->layout()->layouts_ids_names();
+        
         $this->default = 'content-sidebar';
         $this->post_types = get_post_types( array( 'public' => true ), 'objects' );
         $this->custom_post_types = get_post_types( array( 'public' => true, '_builtin' => false ), 'objects' );

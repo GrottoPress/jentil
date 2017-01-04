@@ -30,7 +30,7 @@ class Content {
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 * 
-	 * @var         array         $template       Template
+	 * @var         \GrottoPress\Jentil\Template\Template         $template       Template
 	 */
     private $template;
     
@@ -50,57 +50,10 @@ class Content {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( $template ) {
-	    $this->template = (array) $template;
-	    $this->template_ = in_array( 'search', $this->template ) ? 'search' : 'archive';
+	public function __construct( Template $template ) {
+	    $this->template = $template;
+	    $this->template_ = in_array( 'search', $this->template->get() ) ? 'search' : 'archive';
 	}
-	
-	/**
-     * Title positions
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Title positions
-     */
-    public function title_positions() {
-        return array(
-            'side' => esc_html__( 'Side', 'jentil' ),
-            'top' => esc_html__( 'Top', 'jentil' ),
-        );
-    }
-    
-    /**
-     * Image alignments
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Image alignments
-     */
-    public function image_alignments() {
-        return array(
-            'none' => esc_html__( 'none', 'jentil' ),
-            'left' => esc_html__( 'Left', 'jentil' ),
-            'right' => esc_html__( 'Right', 'jentil' ),
-        );
-    }
-    
-    /**
-     * Pagination positions
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Pagination positions
-     */
-    public function pagination_positions() {
-        return array(
-            'top' => esc_html__( 'Top', 'jentil' ),
-            'bottom' => esc_html__( 'Bottom', 'jentil' ),
-            'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
-        );
-    }
 	
 	/**
      * Get setting

@@ -27,6 +27,16 @@ namespace GrottoPress\Jentil\Customizer;
  */
 class Colophon {
     /**
+     * Customizer
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Customizer\Customizer     $customizer       Customizer instance
+     */
+    private $customizer;
+
+    /**
      * Default layout
 	 *
 	 * @since       Jentil 0.1.0
@@ -42,8 +52,12 @@ class Colophon {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct() {
-        $this->default = sprintf( esc_html__( '&copy; %1$s %2$s. All Rights Reserved.', 'jentil' ), '<span itemprop="copyrightYear">{{this_year}}</span>', '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>' );
+	public function __construct( Customizer $customizer ) {
+        $this->customizer = $customizer;
+
+        $this->default = sprintf( esc_html__( '&copy; %1$s %2$s. All Rights Reserved.', 'jentil' ),
+            '<span itemprop="copyrightYear">{{this_year}}</span>',
+            '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>' );
 	}
     
     /**

@@ -25,7 +25,7 @@ namespace GrottoPress\Jentil;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Setup {
+class Setup extends \GrottoPress\MagPack\Singleton {
     /**
      * Content width
      * 
