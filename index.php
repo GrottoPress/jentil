@@ -16,7 +16,7 @@
 
 global $post;
 
-$template = new \GrottoPress\Jentil\Template\Template();
+$template = new \GrottoPress\Jentil\Utilities\Template\Template();
 
 /**
  * Get variables relevant to our
@@ -87,7 +87,7 @@ $post_exc			= ! $template->is( 'singular' ) && $sticky_posts ? 'sticky_posts' : 
  * Get sticky post options
  */
 
-$sticky = new \GrottoPress\Jentil\Post\Sticky();
+$sticky = new \GrottoPress\Jentil\Utilities\Sticky();
 
 $sticky_img 				= $sticky->get( 'thumbnail' );
 $sticky_img_align			= $sticky->get( 'thumbnail_alignment' );

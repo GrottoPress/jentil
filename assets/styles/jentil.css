@@ -459,8 +459,7 @@ blockquote p:last-child,
  * Screen reader text
  */
 
-.screen-reader-text,
-.skip-link {
+.screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
 	/*left: -9999px;
@@ -663,22 +662,26 @@ li {
 	vertical-align: top;
 }
 
-#header .search-wrap {
-    display: none;
-}
-
-#header .menu-max-screen-920 .search-wrap {
-    display: block;
-}
-
-#header .site-navigation {
+#header .site-navigation,
+#header .menu-toggle {
     clear: both;
+}
+
+#header .site-navigation.max-screen-920 {
+    padding-top: 20px;
+}
+
+#header .menu-toggle {
     margin-top: 20px;
 }
 
-#header .menu-max-screen-920 {
+#header .site-navigation.min-screen-920 {
     margin-top: 20px;
 }
+
+/*#header .max-screen-920 {
+    margin-top: 20px;
+}*/
 
 /**
  * Layout
@@ -928,18 +931,14 @@ blockquote {
     font-size: 1.3rem;
 }
 
-.mobile-menu {
+.menu-toggle .menu {
     text-align: center;
 }
 
-.mobile-menu a:before {
+.menu-toggle .menu a:before {
     content: "\2261";
     line-height: 14px;
     margin-right: 5px;
-}
-
-.menu-min-screen-920 {
-    display: none;
 }
 
 /** Toggle buttons */
@@ -966,6 +965,28 @@ blockquote {
 
 .sub-menu-toggle.closed:before {
     content: "\25BE";
+}
+
+/**
+ * Toggle elements
+ */
+
+.min-screen-800,
+.min-screen-920 {
+    display: none;
+}
+
+/*.max-screen-920,
+.max-screen-800 {
+    display: block;
+}*/
+
+#header .search-wrap {
+    display: none;
+}
+
+#header .site-navigation.max-screen-920 .search-wrap {
+    display: block;
 }
 
 /**
@@ -1476,6 +1497,18 @@ label > * {
         text-align: left;
     }
 
+    /**
+     * Toggle elements
+     */
+
+    .max-screen-800 {
+        display: none;
+    }
+
+    .min-screen-800 {
+        display: block;
+    }
+
     #header .search-wrap {
         width: 35%;
         float: right;
@@ -1483,7 +1516,7 @@ label > * {
         margin-top: 15px;
     }
 
-    #header .menu-max-screen-920 .search-wrap {
+    #header .site-navigation.max-screen-920 .search-wrap {
         display: none;
     }
 
@@ -1763,20 +1796,28 @@ label > * {
     }
 
     /**
+     * Toggle elements
+     */
+
+    .max-screen-920 {
+        display: none;
+    }
+
+    .min-screen-920 {
+        display: block;
+    }
+
+    .site-navigation.max-screen-920 {
+        display: none !important;
+    }
+
+    /**
      * Menus
      */
 
     /*#header .menu {
         padding: 5px 0;
     }*/
-
-    .menu-min-screen-920 {
-        display: block;
-    }
-
-    .menu-max-screen-920 {
-        display: none !important;
-    }
 
     #header .menu li {
     	margin: 0;
@@ -1789,11 +1830,11 @@ label > * {
     	vertical-align: top;
     }
 
-    #header .menu.has-js .menu-item-has-children {
+    #header .menu.has-js > .menu-item-has-children {
         padding-right: 22px;
     }
 
-    #header .menu.has-js .menu-item-has-children + li {
+    #header .menu.has-js > .menu-item-has-children + li {
         margin-left: 13px;
     }
 
@@ -1813,7 +1854,7 @@ label > * {
     	margin: 0;
     	padding: 0;
     	list-style-type: none;
-    	z-index: 1;
+    	z-index: 99;
     }
 
     #header .menu ul ul {

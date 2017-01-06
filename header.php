@@ -28,8 +28,8 @@
     	<?php } ?>
     	
     	<!--[if lt IE 9]>
-      		<script src="<?php echo esc_attr( get_template_directory_uri() ); ?>/dependencies/html5shiv/html5shiv.min.js"></script>
-      		<script src="<?php echo esc_attr( get_template_directory_uri() ); ?>/dependencies/respondjs/respond.min.js"></script>
+      		<script src="<?php echo esc_attr( get_template_directory_uri() ); ?>/vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>
+      		<script src="<?php echo esc_attr( get_template_directory_uri() ); ?>/vendor/rogeriopradoj/respond/dest/respond.min.js"></script>
     	<![endif]-->
 		
 		<?php

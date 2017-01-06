@@ -1,5 +1,10 @@
 {
     "autoload": {
         "classmap": ["includes/"]
+    },
+    "require": {
+        "afarkas/html5shiv": "^3.7",
+        "rogeriopradoj/respond": "^1.4",
+        "fortawesome/font-awesome": "^4.7"
     }
 }

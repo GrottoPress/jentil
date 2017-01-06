@@ -10,7 +10,7 @@
  * @since			Jentil 0.1.0
  */
 
-$template = new \GrottoPress\Jentil\Template\Template();
+$template = new \GrottoPress\Jentil\Utilities\Template\Template();
 $layout = $template->layout()->get();
 $layout_column = $template->layout()->column();
 

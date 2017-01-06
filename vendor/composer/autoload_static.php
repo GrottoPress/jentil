@@ -6,31 +6,69 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
 {
+    public static $files = array (
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Component\\Process\\' => 26,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'C' => 
+        array (
+            'ComponentInstaller' => 
+            array (
+                0 => __DIR__ . '/..' . '/robloach/component-installer/src',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
-        'GrottoPress\\Jentil\\Colophon' => __DIR__ . '/../..' . '/includes/colophon.php',
-        'GrottoPress\\Jentil\\Customizer\\Colophon' => __DIR__ . '/../..' . '/includes/customizer/colophon.php',
-        'GrottoPress\\Jentil\\Customizer\\Content\\Archive' => __DIR__ . '/../..' . '/includes/customizer/content/archive.php',
-        'GrottoPress\\Jentil\\Customizer\\Content\\Content' => __DIR__ . '/../..' . '/includes/customizer/content/content.php',
-        'GrottoPress\\Jentil\\Customizer\\Content\\Search' => __DIR__ . '/../..' . '/includes/customizer/content/search.php',
-        'GrottoPress\\Jentil\\Customizer\\Content\\Sticky' => __DIR__ . '/../..' . '/includes/customizer/content/sticky.php',
-        'GrottoPress\\Jentil\\Customizer\\Customizer' => __DIR__ . '/../..' . '/includes/customizer/customizer.php',
-        'GrottoPress\\Jentil\\Customizer\\Layout' => __DIR__ . '/../..' . '/includes/customizer/layout.php',
-        'GrottoPress\\Jentil\\Customizer\\Logo' => __DIR__ . '/../..' . '/includes/customizer/logo.php',
-        'GrottoPress\\Jentil\\Jentil' => __DIR__ . '/../..' . '/includes/jentil.php',
-        'GrottoPress\\Jentil\\Logo' => __DIR__ . '/../..' . '/includes/logo.php',
-        'GrottoPress\\Jentil\\Metaboxes' => __DIR__ . '/../..' . '/includes/metaboxes.php',
-        'GrottoPress\\Jentil\\Parts' => __DIR__ . '/../..' . '/includes/parts.php',
-        'GrottoPress\\Jentil\\Post\\Sticky' => __DIR__ . '/../..' . '/includes/sticky.php',
-        'GrottoPress\\Jentil\\Setup' => __DIR__ . '/../..' . '/includes/setup.php',
-        'GrottoPress\\Jentil\\Template\\Content' => __DIR__ . '/../..' . '/includes/template/content.php',
-        'GrottoPress\\Jentil\\Template\\Layout' => __DIR__ . '/../..' . '/includes/template/layout.php',
-        'GrottoPress\\Jentil\\Template\\Template' => __DIR__ . '/../..' . '/includes/template/template.php',
-        'GrottoPress\\Jentil\\Template\\Title' => __DIR__ . '/../..' . '/includes/template/title.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Colophon' => __DIR__ . '/../..' . '/includes/setup/customizer/colophon.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Archive' => __DIR__ . '/../..' . '/includes/setup/customizer/content/archive.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Content' => __DIR__ . '/../..' . '/includes/setup/customizer/content/content.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Search' => __DIR__ . '/../..' . '/includes/setup/customizer/content/search.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Sticky' => __DIR__ . '/../..' . '/includes/setup/customizer/content/sticky.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Customizer' => __DIR__ . '/../..' . '/includes/setup/customizer/customizer.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Layout' => __DIR__ . '/../..' . '/includes/setup/customizer/layout.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Logo' => __DIR__ . '/../..' . '/includes/setup/customizer/logo.php',
+        'GrottoPress\\Jentil\\Setup\\Features' => __DIR__ . '/../..' . '/includes/setup/features.php',
+        'GrottoPress\\Jentil\\Setup\\Jentil' => __DIR__ . '/../..' . '/includes/setup/jentil.php',
+        'GrottoPress\\Jentil\\Setup\\Metaboxes' => __DIR__ . '/../..' . '/includes/setup/metaboxes.php',
+        'GrottoPress\\Jentil\\Setup\\Parts' => __DIR__ . '/../..' . '/includes/setup/parts.php',
+        'GrottoPress\\Jentil\\Utilities\\Colophon' => __DIR__ . '/../..' . '/includes/utilities/colophon.php',
+        'GrottoPress\\Jentil\\Utilities\\Logo' => __DIR__ . '/../..' . '/includes/utilities/logo.php',
+        'GrottoPress\\Jentil\\Utilities\\Sticky' => __DIR__ . '/../..' . '/includes/utilities/sticky.php',
+        'GrottoPress\\Jentil\\Utilities\\Template\\Content' => __DIR__ . '/../..' . '/includes/utilities/template/content.php',
+        'GrottoPress\\Jentil\\Utilities\\Template\\Layout' => __DIR__ . '/../..' . '/includes/utilities/template/layout.php',
+        'GrottoPress\\Jentil\\Utilities\\Template\\Template' => __DIR__ . '/../..' . '/includes/utilities/template/template.php',
+        'GrottoPress\\Jentil\\Utilities\\Template\\Title' => __DIR__ . '/../..' . '/includes/utilities/template/title.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef::$classMap;
 
         }, null, ClassLoader::class);

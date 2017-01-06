@@ -13,11 +13,11 @@
     'use strict';
     
     // Make the mobile menu work
-    $( 'nav.menu-max-screen-920' ).hide();
+    $( '.site-navigation.max-screen-920' ).hide();
 	$( '.hamburger.menu-item' ).on( 'click', function( event ) {
         event.preventDefault();
         
-        $( 'nav.menu-max-screen-920' ).slideToggle({
+        $( '.site-navigation.max-screen-920' ).slideToggle({
             'duration': 200
         });
     });
@@ -28,7 +28,7 @@
     // Add icons to all parent menu items
     $( '.menu li > ul' ).before( '<button role="button" class="sub-menu-toggle closed"><span class="screen-reader-text">Menu</span></button>' );
     
-    // Make menus work
+    // Sub-menus toggle
     $( '.sub-menu-toggle' ).next( 'ul' ).hide();
     $( '.sub-menu-toggle' ).prev( 'a' ).on( 'click', function( event ) {
         if ( '#' == $( this ).attr( 'href' ) ) {

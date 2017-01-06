@@ -11,7 +11,7 @@
  */
 
 the_post();
-$magpack_post = new \GrottoPress\MagPack\Post\Post( get_the_ID() );
+$magpack_post = new \GrottoPress\MagPack\Utilities\Post\Post( get_the_ID() );
 rewind_posts();
 
 get_header();
