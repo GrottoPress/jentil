@@ -89,7 +89,7 @@ class Jentil extends Singleton {
 		add_action( 'jentil_inside_header', array( $parts, 'header_search' ), 200 );
 		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ), 300 );
 		add_action( 'jentil_inside_header', array( $parts, 'mobile_header_menu_toggle' ), 400 );
-		add_action( 'jentil_inside_header', array( $parts, 'mobile_header_menu' ), 500 );
+		add_action( 'jentil_after_header', array( $parts, 'mobile_header_menu' ), 100 );
 		
 		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ), 100 );
 		add_action( 'jentil_inside_footer', array( $parts, 'colophon' ), 200 );

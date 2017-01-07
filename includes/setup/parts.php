@@ -106,6 +106,7 @@ class Parts extends Singleton {
     public function enqueue_styles() {
         wp_enqueue_style( 'normalize', get_template_directory_uri() . '/resources/normalize-css/normalize.css' );
         wp_enqueue_style( 'jentil', get_template_directory_uri() . '/assets/styles/jentil.css', array( 'normalize' ) );
+        wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/fortawesome/font-awesome/css/font-awesome.min.css', array( 'normalize' ) );
         
         if ( is_rtl() ) {
             wp_enqueue_style( 'jentil-rtl', get_template_directory_uri() . '/assets/styles/rtl.css', array( 'jentil' ) );
@@ -164,7 +165,9 @@ class Parts extends Singleton {
     				}
 
     				$searchform .= '" required />
-                    <input type="submit" class="input submit" value="' . esc_attr__( 'Search', 'jentil' ) . '" />
+                    <button type="submit" class="button submit">
+                        <span class="fa fa-search" aria-hidden="true"></span> <span class="search-button-text">' . esc_html__( 'Search', 'jentil' ) . '</span>
+                    </button>
     		</form>
     	</div>';
 
@@ -211,7 +214,7 @@ class Parts extends Singleton {
     public function header_menu() {
     	echo '<nav role="navigation" class="site-navigation main-navigation min-screen-920">
     	    <div class="screen-reader-text skip-link">
-    	        <a href="#content">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
+    	        <a href="#menu-max-screen-920">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
             </div>';
 
             wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
@@ -233,7 +236,7 @@ class Parts extends Singleton {
 
     	echo '<div class="menu-toggle max-screen-920">
     	    <div class="screen-reader-text">
-    	        <a href="#content">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
+    	        <a href="#menu-max-screen-920">' . esc_html__( 'Skip to menu', 'jentil' ) . '</a>
             </div>
 
             <div class="menu-mobile-menu-container">
@@ -241,7 +244,7 @@ class Parts extends Singleton {
     	            <li class="menu-item hamburger">
     	                <a href="' . esc_url( add_query_arg( array(
     		                'menu' => ( $status == 'off' ? 'on' : 'off' ),
-    	                ), $pagination->get_current_page_url( true, true ) ) ) . '">' . esc_html__( 'Menu', 'jentil' ) . '</a>
+    	                ), $pagination->get_current_page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> ' . esc_html__( 'Menu', 'jentil' ) . '</a>
     	            </li>
     	        </ul>
             </div>
@@ -259,11 +262,13 @@ class Parts extends Singleton {
     public function mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<nav role="navigation" class="site-navigation main-navigation max-screen-920" ' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>';
+        echo '<div id="menu-max-screen-920" class="navigation-wrap max-screen-920"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>
+            <nav role="navigation" class="site-navigation main-navigation">';
 
             get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
 
-        echo '</nav>';
+        echo '</nav>
+        </div>';
     }
 
     /**

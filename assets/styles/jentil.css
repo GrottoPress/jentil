@@ -667,14 +667,8 @@ li {
     clear: both;
 }
 
-#header .site-navigation.max-screen-920 {
-    padding-top: 20px;
-}
-
-#header .menu-toggle {
-    margin-top: 20px;
-}
-
+.navigation-wrap.max-screen-920,
+#header .menu-toggle,
 #header .site-navigation.min-screen-920 {
     margin-top: 20px;
 }
@@ -689,7 +683,8 @@ li {
 
 #header,
 #main,
-#footer {
+#footer,
+.navigation-wrap.max-screen-920 .site-navigation {
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
@@ -697,7 +692,8 @@ li {
 
 #header-wrap,
 #main-wrap,
-#footer-wrap {
+#footer-wrap,
+.navigation-wrap.max-screen-920 {
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -935,29 +931,27 @@ blockquote {
     text-align: center;
 }
 
-.menu-toggle .menu a:before {
+/*.menu-toggle .menu a:before {
     content: "\2261";
     line-height: 14px;
     margin-right: 5px;
-}
+}*/
 
 /** Toggle buttons */
 
 .sub-menu-toggle {
     background-color: transparent;
-    font-size: 14px;
-    font-size: 1.4rem;
-    line-height: 14px;
+    font-size: inherit;
     width: auto;
     padding: 4px 7px;
     margin: 0;
     position: absolute;
-    top: -2px;
-    right: 10px;
+    top: 0;
+    right: 0;
     z-index: 1;
 }
 
-.sub-menu-toggle:before {
+/*.sub-menu-toggle:before {
     content: "\25B4";
     font-weight: bold;
     color: #999;
@@ -965,7 +959,7 @@ blockquote {
 
 .sub-menu-toggle.closed:before {
     content: "\25BE";
-}
+}*/
 
 /**
  * Toggle elements
@@ -985,7 +979,7 @@ blockquote {
     display: none;
 }
 
-#header .site-navigation.max-screen-920 .search-wrap {
+.navigation-wrap.max-screen-920 .search-wrap {
     display: block;
 }
 
@@ -1114,7 +1108,7 @@ blockquote {
 }
 
 .commentlist > li,
-.children > li {
+.commentlist .children > li {
     margin-top: 10px;
     margin-bottom: 12px;
     padding-bottom: 10px;
@@ -1122,7 +1116,7 @@ blockquote {
 }
 
 .commentlist > li:last-child,
-.children > li:last-child {
+.commentlist .children > li:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom-width: 0;
@@ -1155,7 +1149,7 @@ blockquote {
 }*/
 
 .commentlist,
-.children {
+.commentlist .children {
     list-style-type: none;
 }
 
@@ -1273,6 +1267,7 @@ button {
 	padding: 5px 7px;
 	margin-bottom: 4px;
 	width: 100%;
+    background-color: #fff;
 
 	-moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -1318,6 +1313,7 @@ button {
 	font-size: 1.3rem;
 	line-height: 100%;
 	text-align: center;
+    background-color: #ccc;
 }
 
 input[type="submit"]:focus,
@@ -1356,14 +1352,13 @@ label > * {
 }
 
 .form.search input[type="search"],
-.form.search input[type="submit"] {
-    display: inline;
+.form.search button[type="submit"] {
+    margin-bottom: 0;
 }
 
 .form.search input[type="search"] {
     border: 0;
     width: 100%;
-    margin-bottom: 0;
 
     -moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -1372,13 +1367,12 @@ label > * {
 	border-radius: 0;
 }
 
-.form.search input[type="submit"] {
+.form.search button[type="submit"] {
     border: 0;
     width: auto;
     font-size: 12px;
     font-size: 1.2rem;
     text-align: right;
-    /*background-color: transparent;*/
     padding: 7px 10px;
     position: absolute;
     top: 1px;
@@ -1516,7 +1510,7 @@ label > * {
         margin-top: 15px;
     }
 
-    #header .site-navigation.max-screen-920 .search-wrap {
+    .navigation-wrap.max-screen-920 .search-wrap {
         display: none;
     }
 
@@ -1526,7 +1520,8 @@ label > * {
 
     #header,
     #main,
-    #footer {
+    #footer,
+    .navigation-wrap.max-screen-920 .site-navigation {
         max-width: 960px;
     }
 
@@ -1807,7 +1802,7 @@ label > * {
         display: block;
     }
 
-    .site-navigation.max-screen-920 {
+    .navigation-wrap.max-screen-920 {
         display: none !important;
     }
 
@@ -1830,13 +1825,13 @@ label > * {
     	vertical-align: top;
     }
 
-    #header .menu.has-js > .menu-item-has-children {
+    #header .menu.has-js > .menu-item-has-children a {
         padding-right: 22px;
     }
 
-    #header .menu.has-js > .menu-item-has-children + li {
+    /*#header .menu.has-js > .menu-item-has-children + li {
         margin-left: 13px;
-    }
+    }*/
 
     #header .menu li:first-child {
     	margin-left: 0;
@@ -1859,7 +1854,7 @@ label > * {
 
     #header .menu ul ul {
     	top: 0;
-    	left: 195px;
+    	left: 200px;
     }
 
     #header .sub-menu li {
@@ -1888,15 +1883,15 @@ label > * {
 
     /** Toggle buttons */
 
-    #header .menu > li > .sub-menu-toggle {
+    /*#header .menu > li > .sub-menu-toggle {
         right: 0;
-    }
+    }*/
 
-    #header .sub-menu .sub-menu-toggle:before {
+    /*#header .sub-menu .sub-menu-toggle:before {
         content: "\25C2";
     }
 
     #header .sub-menu .sub-menu-toggle.closed:before {
         content: "\25B8";
-    }
+    }*/
 }

@@ -12,40 +12,49 @@
 (function( $ ) {
     'use strict';
     
+    function subMenuToggle( selector ) {
+        var html = $( selector ).html();
+
+        if ( html.indexOf( 'fa-caret-up' ) >= 0 ) {
+            $( selector ).html( '<span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span>' );
+        } else {
+            $( selector ).html( '<span class="fa fa-caret-up" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span>' );
+        }
+        
+        $( selector ).toggleClass( 'closed' );
+        $( selector ).next( 'ul' ).slideToggle({
+            'duration': 200
+        }).css({ 'display':'block' }); // override `display:none;` in CSS for hover
+    }
+
     // Make the mobile menu work
-    $( '.site-navigation.max-screen-920' ).hide();
+    $( '.navigation-wrap.max-screen-920' ).hide();
 	$( '.hamburger.menu-item' ).on( 'click', function( event ) {
         event.preventDefault();
         
-        $( '.site-navigation.max-screen-920' ).slideToggle({
+        $( '.navigation-wrap.max-screen-920' ).slideToggle({
             'duration': 200
-        });
+        }).css({ 'display':'block' }); // override `display:none;` in CSS for hover
     });
     
     // Add has-js class
     $( '.menu' ).addClass( 'has-js' );
     
     // Add icons to all parent menu items
-    $( '.menu li > ul' ).before( '<button role="button" class="sub-menu-toggle closed"><span class="screen-reader-text">Menu</span></button>' );
+    $( '.menu li > ul' ).before( '<button role="button" class="sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
     
     // Sub-menus toggle
     $( '.sub-menu-toggle' ).next( 'ul' ).hide();
     $( '.sub-menu-toggle' ).prev( 'a' ).on( 'click', function( event ) {
         if ( '#' == $( this ).attr( 'href' ) ) {
             event.preventDefault();
-            
-            $( this ).next( 'button' ).toggleClass( 'closed' );
-            $( this ).next( 'button' ).next( 'ul' ).slideToggle({
-                'duration': 200
-            });
+
+            subMenuToggle( $( this ).next( 'button' ) );
         }
     });
     $( '.sub-menu-toggle' ).on( 'click', function( event ) {
         event.preventDefault();
-        
-        $( this ).toggleClass( 'closed' );
-        $( this ).next( 'ul' ).slideToggle({
-            'duration': 200
-        });
+
+        subMenuToggle( this );
     });
 })( jQuery );
