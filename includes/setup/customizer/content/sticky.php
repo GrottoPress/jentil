@@ -14,6 +14,10 @@
 
 namespace GrottoPress\Jentil\Setup\Customizer\Content;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Sticky customizer
  *
@@ -35,6 +39,26 @@ class Sticky {
      * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content      $content    Content customizer object
      */
     private $content;
+
+    /**
+     * Name as used in setting
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     string      $name       Name
+     */
+    private $name;
+
+    /**
+     * Section name
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     string      $name       Name
+     */
+    private $section;
     
     /**
 	 * Constructor
@@ -44,6 +68,9 @@ class Sticky {
 	 */
 	public function __construct( Content $content ) {
 	    $this->content = $content;
+
+        $this->name = 'sticky';
+        $this->section = $this->name . '_content';
 	}
     
     /**
@@ -55,10 +82,14 @@ class Sticky {
 	 * @access      public
      */
     public function add_section( $wp_customize ) {
+        if ( ! post_type_exists( 'post' ) ) {
+            return;
+        }
+
         $wp_customize->add_section(
-            'sticky_content',
+            $this->section,
             array(
-                'title'     => esc_html__( 'Sticky Content', 'jentil' ),
+                'title'     => esc_html__( 'Sticky Posts', 'jentil' ),
                 //'priority'  => 99,
             )
         );
@@ -71,7 +102,12 @@ class Sticky {
      * @access      public
      */
     public function add_settings( $wp_customize ) {
+        if ( ! post_type_exists( 'post' ) ) {
+            return;
+        }
+
         $this->add_class_setting( $wp_customize );
+        $this->add_number_setting( $wp_customize );
         $this->add_before_title_setting( $wp_customize );
         $this->add_title_setting( $wp_customize );
         $this->add_title_position_setting( $wp_customize );
@@ -92,9 +128,25 @@ class Sticky {
      */
     private function add_class_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_class',
+            $this->content->template()->content()->class_name( $this->name ),
             array(
                 'default'    =>  'sticky-posts big',
+                //'transport'  =>  'postMessage',
+            )
+        );
+    }
+
+    /**
+     * Add number setting
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_number_setting( $wp_customize ) {
+        $wp_customize->add_setting(
+            $this->content->template()->content()->number_name( $this->name ),
+            array(
+                'default'    =>  -1,
                 //'transport'  =>  'postMessage',
             )
         );
@@ -108,7 +160,7 @@ class Sticky {
      */
     private function add_before_title_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_before_title',
+            $this->content->template()->content()->before_title_name( $this->name ),
             array(
                 'default'    =>  '',
                 //'transport'  =>  'postMessage',
@@ -124,7 +176,7 @@ class Sticky {
      */
     private function add_title_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_title',
+            $this->content->template()->content()->title_words_name( $this->name ),
             array(
                 'default'    =>  -1,
                 //'transport'  =>  'postMessage',
@@ -140,7 +192,7 @@ class Sticky {
      */
     private function add_title_position_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_title_position',
+            $this->content->template()->content()->title_position_name( $this->name ),
             array(
                 'default'    =>  'side',
                 //'transport'  =>  'postMessage',
@@ -156,9 +208,9 @@ class Sticky {
      */
     private function add_after_title_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_after_title',
+            $this->content->template()->content()->after_title_name( $this->name ),
             array(
-                'default'    =>  'published_date,comments_link',
+                'default'    =>  'published_date, comments_link',
                 //'transport'  =>  'postMessage',
             )
         );
@@ -172,7 +224,7 @@ class Sticky {
      */
     private function add_thumbnail_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_thumbnail',
+            $this->content->template()->content()->thumbnail_name( $this->name ),
             array(
                 'default'    =>  'post-thumbnail',
                 //'transport'  =>  'postMessage',
@@ -188,7 +240,7 @@ class Sticky {
      */
     private function add_thumbnail_alignment_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_thumbnail_alignment',
+            $this->content->template()->content()->thumbnail_alignment_name( $this->name ),
             array(
                 'default'    =>  'left',
                 //'transport'  =>  'postMessage',
@@ -204,7 +256,7 @@ class Sticky {
      */
     private function add_text_offset_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_text_offset',
+            $this->content->template()->content()->text_offset_name( $this->name ),
             array(
                 'default'    =>  0,
                 //'transport'  =>  'postMessage',
@@ -220,7 +272,7 @@ class Sticky {
      */
     private function add_excerpt_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_excerpt',
+            $this->content->template()->content()->excerpt_name( $this->name ),
             array(
                 'default'    =>  '300',
                 //'transport'  =>  'postMessage',
@@ -236,9 +288,9 @@ class Sticky {
      */
     private function add_after_content_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_after_content',
+            $this->content->template()->content()->after_content_name( $this->name ),
             array(
-                'default'    =>  'category,post_tag',
+                'default'    =>  'category, post_tag',
                 //'transport'  =>  'postMessage',
             )
         );
@@ -252,7 +304,7 @@ class Sticky {
      */
     private function add_pagination_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'sticky_pagination',
+            $this->content->template()->content()->pagination_name( $this->name ),
             array(
                 'default'    =>  'bottom',
                 //'transport'  =>  'postMessage',
@@ -267,7 +319,12 @@ class Sticky {
      * @access      public
      */
     public function add_controls( $wp_customize ) {
+        if ( ! post_type_exists( 'post' ) ) {
+            return;
+        }
+
         $this->add_class_control( $wp_customize );
+        $this->add_number_control( $wp_customize );
         $this->add_before_title_control( $wp_customize );
         $this->add_title_control( $wp_customize );
         $this->add_title_position_control( $wp_customize );
@@ -288,11 +345,28 @@ class Sticky {
      */
     private function add_class_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_class',
+            $this->content->template()->content()->class_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Wrapper class', 'jentil' ),
                 'type'      => 'text',
+            )
+        );
+    }
+
+    /**
+     * Add 'number' control
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_number_control( $wp_customize ) {
+        $wp_customize->add_control(
+            $this->content->template()->content()->number_name( $this->name ),
+            array(
+                'section'   => $this->section,
+                'label'     => esc_html__( 'Number', 'jentil' ),
+                'type'      => 'number',
             )
         );
     }
@@ -305,9 +379,9 @@ class Sticky {
      */
     private function add_before_title_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_before_title',
+            $this->content->template()->content()->before_title_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Before title', 'jentil' ),
                 'type'      => 'text',
             )
@@ -322,9 +396,9 @@ class Sticky {
      */
     private function add_title_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_title',
+            $this->content->template()->content()->title_words_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Title length', 'jentil' ),
                 'type'      => 'number',
             )
@@ -339,9 +413,9 @@ class Sticky {
      */
     private function add_title_position_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_title_position',
+            $this->content->template()->content()->title_position_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Title position', 'jentil' ),
                 'type'      => 'select',
                 'choices'   => $this->content->title_positions(),
@@ -357,9 +431,9 @@ class Sticky {
      */
     private function add_after_title_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_after_title',
+            $this->content->template()->content()->after_title_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'After title', 'jentil' ),
                 'type'      => 'text',
             )
@@ -374,9 +448,9 @@ class Sticky {
      */
     private function add_thumbnail_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_thumbnail',
+            $this->content->template()->content()->thumbnail_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Image size', 'jentil' ),
                 'type'      => 'text',
             )
@@ -391,9 +465,9 @@ class Sticky {
      */
     private function add_thumbnail_alignment_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_thumbnail_alignment',
+            $this->content->template()->content()->thumbnail_alignment_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Align image', 'jentil' ),
                 'type'      => 'select',
                 'choices'   => $this->content->image_alignments(),
@@ -409,9 +483,9 @@ class Sticky {
      */
     private function add_text_offset_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_text_offset',
+            $this->content->template()->content()->text_offset_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Text offset from image side', 'jentil' ),
                 'type'      => 'number',
             )
@@ -426,9 +500,9 @@ class Sticky {
      */
     private function add_excerpt_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_excerpt',
+            $this->content->template()->content()->excerpt_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Excerpt length', 'jentil' ),
                 'type'      => 'text',
             )
@@ -443,9 +517,9 @@ class Sticky {
      */
     private function add_after_content_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_after_content',
+            $this->content->template()->content()->after_content_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'After content', 'jentil' ),
                 'type'      => 'text',
             )
@@ -460,9 +534,9 @@ class Sticky {
      */
     private function add_pagination_control( $wp_customize ) {
         $wp_customize->add_control(
-            'sticky_pagination',
+            $this->content->template()->content()->pagination_name( $this->name ),
             array(
-                'section'   => 'sticky_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Show pagination', 'jentil' ),
                 'type'      => 'select',
                 'choices'   => $this->content->pagination_positions(),

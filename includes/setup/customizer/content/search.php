@@ -14,6 +14,10 @@
 
 namespace GrottoPress\Jentil\Setup\Customizer\Content;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Search customizer
  *
@@ -35,6 +39,26 @@ class Search {
      * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content      $content    Content customizer object
      */
     private $content;
+
+    /**
+     * Name as used in setting
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     string      $name       Name
+     */
+    private $name;
+
+    /**
+     * Section name
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     string      $name       Name
+     */
+    private $section;
     
     /**
 	 * Constructor
@@ -44,6 +68,9 @@ class Search {
 	 */
 	public function __construct( Content $content ) {
 	    $this->content = $content;
+
+        $this->name = 'search';
+        $this->section = $this->name . '_content';
 	}
     
     /**
@@ -56,7 +83,7 @@ class Search {
      */
     public function add_section( $wp_customize ) {
         $wp_customize->add_section(
-            'search_content',
+            $this->section,
             array(
                 'title'     => esc_html__( 'Search Content', 'jentil' ),
                 //'priority'  => 99,
@@ -72,7 +99,8 @@ class Search {
      */
     public function add_settings( $wp_customize ) {
         $this->add_class_setting( $wp_customize );
-        //$this->add_sticky_posts_setting( $wp_customize );
+        $this->add_layout_control( $wp_customize );
+        $this->add_number_setting( $wp_customize );
         $this->add_before_title_setting( $wp_customize );
         $this->add_title_setting( $wp_customize );
         $this->add_title_position_setting( $wp_customize );
@@ -93,25 +121,41 @@ class Search {
      */
     private function add_class_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_class',
+            $this->content->template()->content()->class_name( $this->name ),
             array(
                 'default'    =>  'archive-posts',
                 //'transport'  =>  'postMessage',
             )
         );
     }
-    
+
     /**
-     * Add sticky posts setting
+     * Add layout setting
      * 
      * @since       Jentil 0.1.0
      * @access      private
      */
-    private function add_sticky_posts_setting( $wp_customize ) {
+    private function add_layout_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_sticky_posts',
+            $this->content->template()->content()->layout_name( $this->name ),
             array(
-                'default'    =>  0,
+                'default'    =>  'stack',
+                //'transport'  =>  'postMessage',
+            )
+        );
+    }
+
+    /**
+     * Add number setting
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_number_setting( $wp_customize ) {
+        $wp_customize->add_setting(
+            $this->content->template()->content()->number_name( $this->name ),
+            array(
+                'default'    =>  ( int ) get_option( 'posts_per_page' ),
                 //'transport'  =>  'postMessage',
             )
         );
@@ -125,7 +169,7 @@ class Search {
      */
     private function add_before_title_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_before_title',
+            $this->content->template()->content()->before_title_name( $this->name ),
             array(
                 'default'    =>  '',
                 //'transport'  =>  'postMessage',
@@ -141,7 +185,7 @@ class Search {
      */
     private function add_title_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_title',
+            $this->content->template()->content()->title_words_name( $this->name ),
             array(
                 'default'    =>  -1,
                 //'transport'  =>  'postMessage',
@@ -157,7 +201,7 @@ class Search {
      */
     private function add_title_position_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_title_position',
+            $this->content->template()->content()->title_position_name( $this->name ),
             array(
                 'default'    =>  'top',
                 //'transport'  =>  'postMessage',
@@ -173,7 +217,7 @@ class Search {
      */
     private function add_after_title_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_after_title',
+            $this->content->template()->content()->after_title_name( $this->name ),
             array(
                 'default'    =>  'post_type,published_date',
                 //'transport'  =>  'postMessage',
@@ -189,7 +233,7 @@ class Search {
      */
     private function add_thumbnail_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_thumbnail',
+            $this->content->template()->content()->thumbnail_name( $this->name ),
             array(
                 'default'    =>  'nano-thumb',
                 //'transport'  =>  'postMessage',
@@ -205,7 +249,7 @@ class Search {
      */
     private function add_thumbnail_alignment_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_thumbnail_alignment',
+            $this->content->template()->content()->thumbnail_alignment_name( $this->name ),
             array(
                 'default'    =>  'left',
                 //'transport'  =>  'postMessage',
@@ -221,7 +265,7 @@ class Search {
      */
     private function add_text_offset_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_text_offset',
+            $this->content->template()->content()->text_offset_name( $this->name ),
             array(
                 'default'    =>  0,
                 //'transport'  =>  'postMessage',
@@ -237,7 +281,7 @@ class Search {
      */
     private function add_excerpt_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_excerpt',
+            $this->content->template()->content()->excerpt_name( $this->name ),
             array(
                 'default'    =>  '200',
                 //'transport'  =>  'postMessage',
@@ -253,7 +297,7 @@ class Search {
      */
     private function add_after_content_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_after_content',
+            $this->content->template()->content()->after_content_name( $this->name ),
             array(
                 'default'    =>  'category,post_tag',
                 //'transport'  =>  'postMessage',
@@ -269,7 +313,7 @@ class Search {
      */
     private function add_pagination_setting( $wp_customize ) {
         $wp_customize->add_setting(
-            'search_pagination',
+            $this->content->template()->content()->pagination_name( $this->name ),
             array(
                 'default'    =>  'bottom',
                 //'transport'  =>  'postMessage',
@@ -285,7 +329,8 @@ class Search {
      */
     public function add_controls( $wp_customize ) {
         $this->add_class_control( $wp_customize );
-        //$this->add_sticky_posts_control( $wp_customize );
+        $this->add_layout_control( $wp_customize );
+        $this->add_number_control( $wp_customize );
         $this->add_before_title_control( $wp_customize );
         $this->add_title_control( $wp_customize );
         $this->add_title_position_control( $wp_customize );
@@ -306,28 +351,46 @@ class Search {
      */
     private function add_class_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_class',
+            $this->content->template()->content()->class_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Wrapper class', 'jentil' ),
                 'type'      => 'text',
             )
         );
     }
-    
+
     /**
-     * Add sticky posts control
+     * Add 'layout' control
      * 
      * @since       Jentil 0.1.0
      * @access      private
      */
-    private function add_sticky_posts_control( $wp_customize ) {
+    private function add_layout_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_sticky_posts',
+            $this->content->template()->content()->layout_name( $this->name ),
             array(
-                'section'   => 'search_content',
-                'label'     => esc_html__( 'Show sticky posts', 'jentil' ),
-                'type'      => 'checkbox',
+                'section'   => $this->section,
+                'label'     => esc_html__( 'Layout', 'jentil' ),
+                'type'      => 'select',
+                'choices'   => $this->content->layouts()
+            )
+        );
+    }
+
+    /**
+     * Add 'number' control
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_number_control( $wp_customize ) {
+        $wp_customize->add_control(
+            $this->content->template()->content()->number_name( $this->name ),
+            array(
+                'section'   => $this->section,
+                'label'     => esc_html__( 'Number', 'jentil' ),
+                'type'      => 'number',
             )
         );
     }
@@ -340,9 +403,9 @@ class Search {
      */
     private function add_before_title_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_before_title',
+            $this->content->template()->content()->before_title_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Before title', 'jentil' ),
                 'type'      => 'text',
             )
@@ -357,9 +420,9 @@ class Search {
      */
     private function add_title_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_title',
+            $this->content->template()->content()->title_words_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Title length', 'jentil' ),
                 'type'      => 'number',
             )
@@ -374,9 +437,9 @@ class Search {
      */
     private function add_title_position_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_title_position',
+            $this->content->template()->content()->title_position_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Title position', 'jentil' ),
                 'type'      => 'select',
                 'choices'   => $this->content->title_positions(),
@@ -392,9 +455,9 @@ class Search {
      */
     private function add_after_title_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_after_title',
+            $this->content->template()->content()->after_title_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'After title', 'jentil' ),
                 'type'      => 'text',
             )
@@ -409,9 +472,9 @@ class Search {
      */
     private function add_thumbnail_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_thumbnail',
+            $this->content->template()->content()->thumbnail_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Image size', 'jentil' ),
                 'type'      => 'text',
             )
@@ -426,9 +489,9 @@ class Search {
      */
     private function add_thumbnail_alignment_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_thumbnail_alignment',
+            $this->content->template()->content()->thumbnail_alignment_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Align image', 'jentil' ),
                 'type'      => 'select',
                 'choices'   => $this->content->image_alignments(),
@@ -444,9 +507,9 @@ class Search {
      */
     private function add_text_offset_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_text_offset',
+            $this->content->template()->content()->text_offset_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Text offset from image side', 'jentil' ),
                 'type'      => 'number',
             )
@@ -461,9 +524,9 @@ class Search {
      */
     private function add_excerpt_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_excerpt',
+            $this->content->template()->content()->excerpt_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Excerpt length', 'jentil' ),
                 'type'      => 'text',
             )
@@ -478,9 +541,9 @@ class Search {
      */
     private function add_after_content_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_after_content',
+            $this->content->template()->content()->after_content_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'After content', 'jentil' ),
                 'type'      => 'text',
             )
@@ -495,9 +558,9 @@ class Search {
      */
     private function add_pagination_control( $wp_customize ) {
         $wp_customize->add_control(
-            'search_pagination',
+            $this->content->template()->content()->pagination_name( $this->name ),
             array(
-                'section'   => 'search_content',
+                'section'   => $this->section,
                 'label'     => esc_html__( 'Show pagination', 'jentil' ),
                 'type'      => 'select',
                 'choices'   => $this->content->pagination_positions(),

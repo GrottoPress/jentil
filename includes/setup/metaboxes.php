@@ -12,9 +12,13 @@
 
 namespace GrottoPress\Jentil\Setup;
 
-use \GrottoPress\MagPack\Utilities\Singleton as Singleton;
-use \GrottoPress\Jentil\Utilities\Template\Template as Template;
-use \GrottoPress\MagPack\Utilities\Metabox as Metabox;
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
+use GrottoPress\MagPack\Utilities\Singleton;
+use GrottoPress\Jentil\Utilities\Template\Template;
+use GrottoPress\MagPack\Utilities\Metabox;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;

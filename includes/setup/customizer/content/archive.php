@@ -14,6 +14,10 @@
 
 namespace GrottoPress\Jentil\Setup\Customizer\Content;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Archive customizer
  *
@@ -35,6 +39,16 @@ class Archive {
      * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content      $content    Content customizer object
      */
     private $content;
+
+    /**
+     * Post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     array      $post_types    Post types
+     */
+    private $post_types;
     
     /**
 	 * Constructor
@@ -44,6 +58,9 @@ class Archive {
 	 */
 	public function __construct( Content $content ) {
 	    $this->content = $content;
+
+        $this->post_types = get_post_types( array( 'public' => true, '_builtin' => false ) );
+        $this->post_types[] = post_type_exists( 'post' ) ? 'post' : null;
 	}
     
     /**
@@ -55,13 +72,21 @@ class Archive {
 	 * @access      public
      */
     public function add_section( $wp_customize ) {
-        $wp_customize->add_section(
-            'archive_content',
-            array(
-                'title'     => esc_html__( 'Archive Content', 'jentil' ),
-                //'priority'  => 99,
-            )
-        );
+        if ( empty( $this->post_types ) ) {
+            return;
+        }
+
+        foreach ( $this->post_types as $post_type ) {
+            $object = get_post_type_object( $post_type );
+
+            $wp_customize->add_section(
+                $this->section( $post_type ),
+                array(
+                    'title'     => sprintf( esc_html__( '%s Content', 'jentil' ), $object->labels->singular_name ),
+                    //'priority'  => 99,
+                )
+            );
+        }
     }
     
     /**
@@ -71,8 +96,14 @@ class Archive {
      * @access      public
      */
     public function add_settings( $wp_customize ) {
+        if ( empty( $this->post_types ) ) {
+            return;
+        }
+
         $this->add_sticky_posts_setting( $wp_customize );
         $this->add_class_setting( $wp_customize );
+        $this->add_layout_setting( $wp_customize );
+        $this->add_number_setting( $wp_customize );
         $this->add_before_title_setting( $wp_customize );
         $this->add_title_setting( $wp_customize );
         $this->add_title_position_setting( $wp_customize );
@@ -84,6 +115,28 @@ class Archive {
         $this->add_after_content_setting( $wp_customize );
         $this->add_pagination_setting( $wp_customize );
     }
+
+    /**
+     * Add sticky posts setting
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_sticky_posts_setting( $wp_customize ) {
+        foreach ( $this->post_types as $post_type ) {
+            if ( 'post' == $post_type ) {
+                $wp_customize->add_setting(
+                    $this->content->template()->content()->sticky_posts_name( $post_type ),
+                    array(
+                        'default'    =>  1,
+                        //'transport'  =>  'postMessage',
+                    )
+                );
+
+                break;
+            }
+        }
+    }
     
     /**
      * Add wrapper class setting
@@ -92,29 +145,51 @@ class Archive {
      * @access      private
      */
     private function add_class_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_class',
-            array(
-                'default'    =>  'archive-posts big',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->class_name( $post_type ),
+                array(
+                    'default'    =>  'archive-posts big',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
-    
+
     /**
-     * Add sticky posts setting
+     * Add layout setting
      * 
      * @since       Jentil 0.1.0
      * @access      private
      */
-    private function add_sticky_posts_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_sticky_posts',
-            array(
-                'default'    =>  1,
-                //'transport'  =>  'postMessage',
-            )
-        );
+    private function add_layout_setting( $wp_customize ) {
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->layout_name( $post_type ),
+                array(
+                    'default'    =>  'stack',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
+    }
+
+    /**
+     * Add number setting
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_number_setting( $wp_customize ) {
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->number_name( $post_type ),
+                array(
+                    'default'    =>  ( int ) get_option( 'posts_per_page' ),
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -124,13 +199,15 @@ class Archive {
      * @access      private
      */
     private function add_before_title_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_before_title',
-            array(
-                'default'    =>  '',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->before_title_name( $post_type ),
+                array(
+                    'default'    =>  '',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -140,13 +217,15 @@ class Archive {
      * @access      private
      */
     private function add_title_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_title',
-            array(
-                'default'    =>  -1,
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->title_words_name( $post_type ),
+                array(
+                    'default'    =>  -1,
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -156,13 +235,15 @@ class Archive {
      * @access      private
      */
     private function add_title_position_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_title_position',
-            array(
-                'default'    =>  'side',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->title_position_name( $post_type ),
+                array(
+                    'default'    =>  'side',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -172,13 +253,15 @@ class Archive {
      * @access      private
      */
     private function add_after_title_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_after_title',
-            array(
-                'default'    =>  'published_date,comments_link',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->after_title_name( $post_type ),
+                array(
+                    'default'    =>  'published_date, comments_link',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -188,13 +271,15 @@ class Archive {
      * @access      private
      */
     private function add_thumbnail_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_thumbnail',
-            array(
-                'default'    =>  'post-thumbnail',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->thumbnail_name( $post_type ),
+                array(
+                    'default'    =>  'post-thumbnail',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -204,13 +289,15 @@ class Archive {
      * @access      private
      */
     private function add_thumbnail_alignment_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_thumbnail_alignment',
-            array(
-                'default'    =>  'left',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->thumbnail_alignment_name( $post_type ),
+                array(
+                    'default'    =>  'left',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -220,13 +307,15 @@ class Archive {
      * @access      private
      */
     private function add_text_offset_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_text_offset',
-            array(
-                'default'    =>  0,
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->text_offset_name( $post_type ),
+                array(
+                    'default'    =>  0,
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -236,13 +325,15 @@ class Archive {
      * @access      private
      */
     private function add_excerpt_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_excerpt',
-            array(
-                'default'    =>  '300',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->excerpt_name( $post_type ),
+                array(
+                    'default'    =>  '300',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -252,13 +343,15 @@ class Archive {
      * @access      private
      */
     private function add_after_content_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_after_content',
-            array(
-                'default'    =>  'category,post_tag',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->after_content_name( $post_type ),
+                array(
+                    'default'    =>  'category,post_tag',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -268,13 +361,15 @@ class Archive {
      * @access      private
      */
     private function add_pagination_setting( $wp_customize ) {
-        $wp_customize->add_setting(
-            'archive_pagination',
-            array(
-                'default'    =>  'bottom',
-                //'transport'  =>  'postMessage',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_setting(
+                $this->content->template()->content()->pagination_name( $post_type ),
+                array(
+                    'default'    =>  'bottom',
+                    //'transport'  =>  'postMessage',
+                )
+            );
+        }
     }
     
     /**
@@ -284,8 +379,14 @@ class Archive {
      * @access      public
      */
     public function add_controls( $wp_customize ) {
+        if ( empty( $this->post_types ) ) {
+            return;
+        }
+
         $this->add_sticky_posts_control( $wp_customize );
         $this->add_class_control( $wp_customize );
+        $this->add_layout_control( $wp_customize );
+        $this->add_number_control( $wp_customize );
         $this->add_before_title_control( $wp_customize );
         $this->add_title_control( $wp_customize );
         $this->add_title_position_control( $wp_customize );
@@ -297,6 +398,29 @@ class Archive {
         $this->add_after_content_control( $wp_customize );
         $this->add_pagination_control( $wp_customize );
     }
+
+    /**
+     * Add sticky posts control
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_sticky_posts_control( $wp_customize ) {
+        foreach ( $this->post_types as $post_type ) {
+            if ( 'post' == $post_type ) {
+                $wp_customize->add_control(
+                    $this->content->template()->content()->sticky_posts_name( $post_type ),
+                    array(
+                        'section'   => $this->section( $post_type ),
+                        'label'     => esc_html__( 'Show sticky posts', 'jentil' ),
+                        'type'      => 'checkbox',
+                    )
+                );
+
+                break;
+            }
+        }
+    }
     
     /**
      * Add 'class' control
@@ -305,31 +429,55 @@ class Archive {
      * @access      private
      */
     private function add_class_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_class',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Wrapper class', 'jentil' ),
-                'type'      => 'text',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->class_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Wrapper class', 'jentil' ),
+                    'type'      => 'text',
+                )
+            );
+        }
     }
-    
+
     /**
-     * Add sticky posts control
+     * Add 'layout' control
      * 
      * @since       Jentil 0.1.0
      * @access      private
      */
-    private function add_sticky_posts_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_sticky_posts',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Show sticky posts', 'jentil' ),
-                'type'      => 'checkbox',
-            )
-        );
+    private function add_layout_control( $wp_customize ) {
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->layout_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Layout', 'jentil' ),
+                    'type'      => 'select',
+                    'choices'   => $this->content->layouts()
+                )
+            );
+        }
+    }
+
+    /**
+     * Add 'number' control
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_number_control( $wp_customize ) {
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->number_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Number', 'jentil' ),
+                    'type'      => 'number',
+                )
+            );
+        }
     }
     
     /**
@@ -339,14 +487,16 @@ class Archive {
      * @access      private
      */
     private function add_before_title_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_before_title',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Before title', 'jentil' ),
-                'type'      => 'text',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->before_title_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Before title', 'jentil' ),
+                    'type'      => 'text',
+                )
+            );
+        }
     }
     
     /**
@@ -356,14 +506,16 @@ class Archive {
      * @access      private
      */
     private function add_title_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_title',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Title length', 'jentil' ),
-                'type'      => 'number',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->title_words_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Title length', 'jentil' ),
+                    'type'      => 'number',
+                )
+            );
+        }
     }
     
     /**
@@ -373,15 +525,17 @@ class Archive {
      * @access      private
      */
     private function add_title_position_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_title_position',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Title position', 'jentil' ),
-                'type'      => 'select',
-                'choices'   => $this->content->title_positions(),
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->title_position_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Title position', 'jentil' ),
+                    'type'      => 'select',
+                    'choices'   => $this->content->title_positions(),
+                )
+            );
+        }
     }
     
     /**
@@ -391,14 +545,16 @@ class Archive {
      * @access      private
      */
     private function add_after_title_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_after_title',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'After title', 'jentil' ),
-                'type'      => 'text',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->after_title_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'After title', 'jentil' ),
+                    'type'      => 'text',
+                )
+            );
+        }
     }
     
     /**
@@ -408,14 +564,16 @@ class Archive {
      * @access      private
      */
     private function add_thumbnail_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_thumbnail',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Image size', 'jentil' ),
-                'type'      => 'text',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+               $this->content->template()->content()->thumbnail_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Image size', 'jentil' ),
+                    'type'      => 'text',
+                )
+            );
+        }
     }
     
     /**
@@ -425,15 +583,17 @@ class Archive {
      * @access      private
      */
     private function add_thumbnail_alignment_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_thumbnail_alignment',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Align image', 'jentil' ),
-                'type'      => 'select',
-                'choices'   => $this->content->image_alignments(),
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->thumbnail_alignment_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Align image', 'jentil' ),
+                    'type'      => 'select',
+                    'choices'   => $this->content->image_alignments(),
+                )
+            );
+        }
     }
     
     /**
@@ -443,14 +603,16 @@ class Archive {
      * @access      private
      */
     private function add_text_offset_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_text_offset',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Text offset from image side', 'jentil' ),
-                'type'      => 'number',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->text_offset_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Text offset from image side', 'jentil' ),
+                    'type'      => 'number',
+                )
+            );
+        }
     }
     
     /**
@@ -460,14 +622,16 @@ class Archive {
      * @access      private
      */
     private function add_excerpt_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_excerpt',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Excerpt length', 'jentil' ),
-                'type'      => 'text',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->excerpt_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Excerpt length', 'jentil' ),
+                    'type'      => 'text',
+                )
+            );
+        }
     }
     
     /**
@@ -477,14 +641,16 @@ class Archive {
      * @access      private
      */
     private function add_after_content_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_after_content',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'After content', 'jentil' ),
-                'type'      => 'text',
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->after_content_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'After content', 'jentil' ),
+                    'type'      => 'text',
+                )
+            );
+        }
     }
     
     /**
@@ -494,14 +660,28 @@ class Archive {
      * @access      private
      */
     private function add_pagination_control( $wp_customize ) {
-        $wp_customize->add_control(
-            'archive_pagination',
-            array(
-                'section'   => 'archive_content',
-                'label'     => esc_html__( 'Show pagination', 'jentil' ),
-                'type'      => 'select',
-                'choices'   => $this->content->pagination_positions(),
-            )
-        );
+        foreach ( $this->post_types as $post_type ) {
+            $wp_customize->add_control(
+                $this->content->template()->content()->pagination_name( $post_type ),
+                array(
+                    'section'   => $this->section( $post_type ),
+                    'label'     => esc_html__( 'Show pagination', 'jentil' ),
+                    'type'      => 'select',
+                    'choices'   => $this->content->pagination_positions(),
+                )
+            );
+        }
+    }
+
+    /**
+     * Section name
+     * 
+     * @var         string      $post_type      Post type name
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function section( $post_type ) {
+        return sanitize_key( $post_type . '_content' );
     }
 }

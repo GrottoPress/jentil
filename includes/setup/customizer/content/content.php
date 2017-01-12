@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Content customizer
+ * Content customizer sections
  *
  * The sections, settings and controls for our Content
- * options in the customizer
+ * sections in the customizer.
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -14,13 +14,18 @@
 
 namespace GrottoPress\Jentil\Setup\Customizer\Content;
 
-use \GrottoPress\Jentil\Setup\Customizer\Customizer as Customizer;
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
+use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use GrottoPress\Jentil\Utilities\Template\Template;
 
 /**
- * Content customizer
+ * Content customizer sections
  *
  * The sections, settings and controls for our Content
- * options in the customizer
+ * sections in the customizer
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
@@ -37,6 +42,16 @@ class Content {
      * @var     \GrottoPress\Jentil\Setup\Customizer\Customizer     $customizer       Customizer instance
      */
     private $customizer;
+
+    /**
+     * Template
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Utilities\Template\Template     $customizer       Customizer instance
+     */
+    private $template;
 
     /**
      * Contents
@@ -57,10 +72,21 @@ class Content {
 	public function __construct( Customizer $customizer ) {
         $this->customizer = $customizer;
         $this->contents = $this->contents();
+        $this->template = new Template();
+	}
+
+	/**
+	 * Get template
+	 *
+	 * @since 		Jentil 0.1.0
+	 * @access 		public
+	 */
+	public function template() {
+		return $this->template;
 	}
 	
 	/**
-	 * Templates
+	 * Contents
 	 * 
 	 * @since       Jentil 0.1.0
 	 * @access      private
@@ -164,9 +190,25 @@ class Content {
      */
     public function pagination_positions() {
         return array(
+            'none' => esc_html__( 'None', 'jentil' ),
             'top' => esc_html__( 'Top', 'jentil' ),
             'bottom' => esc_html__( 'Bottom', 'jentil' ),
             'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
+        );
+    }
+
+    /**
+     * Layouts
+     * 
+     * @since		Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      array          Layouts
+     */
+    public function layouts() {
+        return array(
+            'stack' => esc_html__( 'Stack', 'jentil' ),
+            'grid' => esc_html__( 'Grid', 'jentil' ),
         );
     }
 }

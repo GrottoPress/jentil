@@ -13,6 +13,10 @@
 
 namespace GrottoPress\Jentil\Utilities;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Colophon
  *

@@ -34,14 +34,17 @@ get_header();
 		<?php the_post(); ?>
 		
 		<?php if ( $post->post_parent ) { ?>
+
 			<h2 class="parent entry-title">
 			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( get_the_title( $post->post_parent ) ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
 	        </h2>
+
 		<?php } ?>
 		
 		<div class="posts-wrap show-content big singular-post">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 				<header>
+
 					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
 					
 					<?php rewind_posts(); ?>
@@ -83,8 +86,10 @@ get_header();
 		    	$next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label', __( 'Next &rarr;', 'jentil' ), 'image' ) ); ?>
 			 	
 			 	<nav id="image-navigation" class="navigation image-navigation pagination self-clear">
+
 			 		<?php previous_image_link( false, $prev_label );
 					next_image_link( false, $next_label ); ?>
+					
 				</nav><!-- .image-navigation -->
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
@@ -101,18 +106,25 @@ get_header();
 						$image_size = apply_filters( 'jentil_attachment_size', 'large' ); ?>
 								
 						<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url">
+
 							<?php echo wp_get_attachment_image( $post->ID, $image_size ); ?>
+
 						</a>
 						
 						<?php if ( ! empty( $post->post_excerpt ) ) { ?>
+
 							<figcaption class="entry-caption wp-caption-text" itemprop="description">
+
 								<?php echo wp_kses_data( $post->post_excerpt ); ?>
+
 							</figcaption>
+
 						<?php } ?>
 						
 					</figure>
 		
 					<?php echo $magpack_post->content( true ); ?>
+
 				</div><!-- .entry-content -->
 			</article>
 		</div>

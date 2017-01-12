@@ -11,6 +11,10 @@
 
 namespace GrottoPress\Jentil\Utilities\Template;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Template
  *
@@ -52,7 +56,7 @@ class Title {
 	public function get() {
 		$title = get_bloginfo( 'name' );
 		
-		if ( empty( $this->template->get() ) ) {
+		if ( ! $this->template->get() ) {
 			return $title;
 		}
 		
@@ -148,7 +152,7 @@ class Title {
 	 */
 	private function tax_title() {
 		$tax_slug = get_query_var( 'taxonomy' );
-		$tax_name = ! empty( $tax_slug ) ? get_taxonomy( $tax_slug )->labels->singular_name : '';
+		$tax_name = $tax_slug ? get_taxonomy( $tax_slug )->labels->singular_name : '';
 		
 		return sprintf( esc_html__( '%1$s: %2$s', 'jentil' ), $tax_name, '<span>' . single_term_title( '', false ) . '</span>' );
 	}

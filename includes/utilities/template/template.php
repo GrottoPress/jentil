@@ -13,6 +13,10 @@
 
 namespace GrottoPress\Jentil\Utilities\Template;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Template
  *
@@ -45,6 +49,16 @@ class Template {
     private $layout;
     
     /**
+     * Sticky Posts
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 * 
+	 * @var         \GrottoPress\Jentil\Utilities\Template\Content         $sticky       Sticky posts
+	 */
+    private $sticky;
+
+    /**
      * Content
 	 *
 	 * @since       Jentil 0.1.0
@@ -63,7 +77,7 @@ class Template {
 	public function __construct() {
 	    $this->title = new Title( $this );
 	    $this->layout = new Layout( $this );
-	    $this->content= new Content( $this );
+	    $this->sticky = new Content( $this, 'sticky' );
 	}
     
     /**
@@ -92,6 +106,8 @@ class Template {
 			'archive',
 			'404',
 			'search',
+			// 'customize_preview',
+			// 'admin',
 		);
 	}
 	
@@ -105,7 +121,7 @@ class Template {
 	 * @access      public
 	 */
 	public function is( $template, $args = '' ) {
-		if ( empty( $this->get() ) ) {
+		if ( ! $this->get() ) {
 			return false;
 		}
 		
@@ -135,7 +151,7 @@ class Template {
 	public function get() {
 		$return = array();
 		
-		if ( empty( $this->templates() ) ) {
+		if ( ! $this->templates() ) {
 			return $return;
 		}
 		

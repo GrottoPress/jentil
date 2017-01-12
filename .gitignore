@@ -114,3 +114,4 @@ sftp-config.json
 
 # composer
 vendor
+components/

@@ -13,7 +13,11 @@
 
 namespace GrottoPress\Jentil\Setup;
 
-use \GrottoPress\MagPack\Utilities\Singleton as Singleton;
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
+use GrottoPress\MagPack\Utilities\Singleton;
 
 /**
  * Features

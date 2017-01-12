@@ -14,6 +14,28 @@
 
 namespace GrottoPress\Jentil;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
+/**
+ * Check dependencies
+ *
+ * @var 		boolean 		$satisfied 		Whether or not dependencies are satisfied.
+ *
+ * @since 		Jentil 0.1.0
+ */
+
+$satisfied = true;
+
+if ( ! class_exists( '\GrottoPress\MagPack\Setup\MagPack' ) ) {
+	$satisfied = false;
+
+	if ( ! is_admin() ) {
+		wp_die( esc_html__( 'This theme requires MagPack plugin. Kindly install that first.' ) );
+	}
+}
+
 /**
  * Autoload
  * 
@@ -38,4 +60,6 @@ function run() {
  * 
  * @since   	Jentil 0.1.0
  */
-add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );
+if ( $satisfied ) {
+	add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );
+}

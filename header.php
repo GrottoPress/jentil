@@ -47,7 +47,7 @@
 		
 	</head>
 	
-	<body <?php body_class(); ?>>
+	<body <?php body_class(); /** Apply body classes. @filter body_class */ ?>>
 		
 		<?php
 		/**
@@ -60,21 +60,26 @@
 		do_action( 'jentil_before_header' ); ?>
 		
 		<div id="wrapper" class="hfeed site">
-			<div id="header-wrap">
-				<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
-					
-					<?php
-					/**
-					 * Do action inside header
-					 * 
-					 * @action		jentil_inside_header
-					 *
-					 * @since       Jentil 0.1.0
-					 */
-					do_action( 'jentil_inside_header' ); ?>
-					
-				</header><!-- #header -->
-			</div><!-- #header-wrap -->
+
+			<?php if ( has_action( 'jentil_inside_header' ) ) { ?>
+
+				<div id="header-wrap">
+					<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
+						
+						<?php
+						/**
+						 * Do action inside header
+						 * 
+						 * @action		jentil_inside_header
+						 *
+						 * @since       Jentil 0.1.0
+						 */
+						do_action( 'jentil_inside_header' ); ?>
+						
+					</header><!-- #header -->
+				</div><!-- #header-wrap -->
+
+			<?php } ?>
 			
 			<?php
 			/**

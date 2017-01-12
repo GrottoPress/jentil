@@ -13,6 +13,10 @@
 
 namespace GrottoPress\Jentil\Utilities\Template;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Content
  * 
@@ -35,14 +39,14 @@ class Content {
     private $template;
     
     /**
-     * Search or archive
+     * Context
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 * 
-	 * @var         string         $template_       Search or archive
+	 * @var         string         $context       Context
 	 */
-    private $template_;
+    private $context;
     
     /**
 	 * Constructor
@@ -50,172 +54,200 @@ class Content {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Template $template ) {
+	public function __construct( Template $template, $context = '' ) {
 	    $this->template = $template;
-	    $this->template_ = in_array( 'search', $this->template->get() ) ? 'search' : 'archive';
+	    $this->context = sanitize_key( $context );
 	}
+
+    // $this->template->is( 'search' )
+    //         ? 'search' : sanitize_key( get_query_var( 'post_type' ) );
 	
 	/**
      * Get setting
      * 
      * @var         string      $setting        Setting to retrieve
+     * @var         mixed       $default        Default setting
      * 
      * @since		Jentil 0.1.0
      * @access      public
      * 
      * @return      mixed          Setting value
      */
-    public function get( $setting ) {
-        $setting = sanitize_key( $setting );
-        
-        if ( ! is_callable( array( $this, $setting ) ) ) {
+    public function get( $setting, $default = '' ) {
+        $setting_name = $setting . '_name';
+
+        if ( ! is_callable( array( $this, $setting_name ) ) ) {
             return false;
         }
-        
-        return $this->$setting();
+
+        return get_theme_mod( $this->$setting_name( $this->context ), $default );
     }
-	
-	/**
-     * Get sticky posts setting
-     * 
-     * @since		Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Sticky posts setting
-     */
-    private function sticky_posts() {
-        return absint( get_theme_mod( $this->template_ . '_sticky_posts' ) );
-    }
-    
+
     /**
-     * Get 'before title' setting
+     * Get sticky post setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          'Before title' setting
+     * @return      string          sticky posts setting name
      */
-    private function before_title() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_before_title' ) );
+    public function sticky_posts_name( $template ) {
+        return sanitize_key( $template . '_content_sticky_posts' );
     }
-    
+
     /**
-     * Get 'title length' setting
+     * Get class setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      integer          Title length
+     * @return      string          Setting name
      */
-    private function title() {
-        return (int) get_theme_mod( $this->template_ . '_title' );
+    public function class_name( $template ) {
+        return sanitize_key( $template . '_content_class' );
     }
-    
+
     /**
-     * Get title position setting
+     * Get layout setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          Title position
+     * @return      string          Layout setting name
      */
-    private function title_position() {
-        return sanitize_key( get_theme_mod( $this->template_ . '_title_position' ) );
+    public function layout_name( $template ) {
+        return sanitize_key( $template . '_content_layout' );
     }
-    
+
     /**
-     * Get 'after title' setting
+     * Get number setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          After title
+     * @return      string          Number of posts setting name
      */
-    private function after_title() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_after_title' ) );
+    public function number_name( $template ) {
+        return sanitize_key( $template . '_content_number' );
     }
-    
+
     /**
-     * Get thumbnail setting
+     * Get 'before_title' setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          Thumbnail size
+     * @return      string          'before_title' setting name
      */
-    private function thumbnail() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_thumbnail' ) );
+    public function before_title_name( $template ) {
+        return sanitize_key( $template . '_content_before_title' );
     }
-    
+
     /**
-     * Get thumbnail alignment setting
+     * Get title length setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          Thumbnail alignment
+     * @return      string          Title length setting name
      */
-    private function thumbnail_alignment() {
-        return sanitize_key( get_theme_mod( $this->template_ . '_thumbnail_alignment' ) );
+    public function title_words_name( $template ) {
+        return sanitize_key( $template . '_content_title_words' );
     }
-    
+
     /**
-     * Get text offset setting
+     * Get title position setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      integer          Text offset relative to image side
+     * @return      string          Title position setting name
      */
-    private function text_offset() {
-        return absint( get_theme_mod( $this->template_ . '_text_offset' ) );
+    public function title_position_name( $template ) {
+        return sanitize_key( $template . '_content_title_position' );
     }
-    
+
     /**
-     * Get excerpt length setting
+     * Get after title setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          Excerpt length
+     * @return      string          After title setting name
      */
-    private function excerpt() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_excerpt' ) );
+    public function after_title_name( $template ) {
+        return sanitize_key( $template . '_content_after_title' );
     }
-    
+
     /**
-     * Get 'after content' setting
+     * Get thumbnail size setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          After content
+     * @return      string          Thumbnail size setting name
      */
-    private function after_content() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_after_content' ) );
+    public function thumbnail_name( $template ) {
+        return sanitize_key( $template . '_content_thumbnail' );
     }
-    
+
     /**
-     * Get pagination setting
+     * Get thumbnail alignment setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          Pagination
+     * @return      string          Thumbnail alignment setting name
      */
-    private function pagination() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_pagination' ) );
+    public function thumbnail_alignment_name( $template ) {
+        return sanitize_key( $template . '_content_thumbnail_alignment' );
     }
-    
+
     /**
-     * Get 'class' setting
+     * Get text offset setting name
      * 
-     * @since		Jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @return      string          Wrapper classes
+     * @return      string          Text offset setting name
      */
-    private function classes() {
-        return sanitize_text_field( get_theme_mod( $this->template_ . '_class' ) );
+    public function text_offset_name( $template ) {
+        return sanitize_key( $template . '_content_text_offset' );
+    }
+
+    /**
+     * Get excerpt length setting name
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          Excerpt length setting name
+     */
+    public function excerpt_name( $template ) {
+        return sanitize_key( $template . '_content_excerpt' );
+    }
+
+    /**
+     * Get after content setting name
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          After content setting name
+     */
+    public function after_content_name( $template ) {
+        return sanitize_key( $template . '_content_after_content' );
+    }
+
+    /**
+     * Get pagination setting name
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          Pagination setting name
+     */
+    public function pagination_name( $template ) {
+        return sanitize_key( $template . '_content_pagination' );
     }
 }

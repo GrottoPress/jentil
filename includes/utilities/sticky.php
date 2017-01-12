@@ -11,6 +11,10 @@
 
 namespace GrottoPress\Jentil\Utilities;
 
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
 /**
  * Sticky Posts
  *
@@ -170,5 +174,17 @@ class Sticky {
      */
     private function classes() {
         return sanitize_text_field( get_theme_mod( 'sticky_class' ) );
+    }
+
+    /**
+     * Get 'number' setting
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          Wrapper classes
+     */
+    private function number() {
+        return sanitize_text_field( get_theme_mod( 'sticky_number' ) );
     }
 }

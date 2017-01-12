@@ -14,7 +14,11 @@
 
 namespace GrottoPress\Jentil\Setup;
 
-use \GrottoPress\MagPack\Utilities\Singleton as Singleton;
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
+use GrottoPress\MagPack\Utilities\Singleton;
 
 /**
  * Jentil
@@ -83,7 +87,7 @@ class Jentil extends Singleton {
 		add_action( 'wp_enqueue_scripts', array( $parts, 'enqueue_styles' ) );
 		
 		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ), 100 );
-		add_action( 'jentil_after_title', array( $parts, 'single_post_entry_meta' ), 100 );
+		add_filter( 'jentil_single_post_after_title', array( $parts, 'single_post_after_title' ), 100 );
 		
 		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ), 100 );
 		add_action( 'jentil_inside_header', array( $parts, 'header_search' ), 200 );
@@ -104,8 +108,8 @@ class Jentil extends Singleton {
 	private function customizer() {
 		$customizer = Customizer\Customizer::get_instance();
 		
-		add_action( 'customize_register', array( $customizer, 'register' ) );
-		add_action( 'customize_preview_init', array( $customizer, 'enqueue_scripts' ) );
+		add_action( 'customize_register', array( $customizer, 'add' ) );
+		add_action( 'customize_preview_init', array( $customizer, 'enqueue' ) );
 	}
 	
 	/**

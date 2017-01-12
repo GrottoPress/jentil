@@ -85,28 +85,28 @@ h6 {
 }
 
 h1 {
-    font-size: 34px;
-    font-size: 3.4rem;
+    font-size: 29px;
+    font-size: 2.9rem;
 }
 
 h2 {
-    font-size: 30px;
-    font-size: 3rem;
-}
-
-h3 {
     font-size: 26px;
     font-size: 2.6rem;
 }
 
+h3 {
+    font-size: 23px;
+    font-size: 2.3rem;
+}
+
 h4 {
-    font-size: 22px;
-    font-size: 2.2rem;
+    font-size: 20px;
+    font-size: 2.0rem;
 }
 
 h5 {
-    font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 17px;
+    font-size: 1.7rem;
 }
 
 h6 {
@@ -131,6 +131,7 @@ dt {
  * Miscellaneous
  */
 
+header:empty,
 p:empty {
     display: none;
 }
@@ -171,7 +172,7 @@ tt {
 
 pre {
 	padding: 15px;
-	border: 1px solid #eee;
+	border: 1px solid #ddd;
 	overflow: auto;
 	background: #f6f6f6;
 	font-size: 13px;
@@ -214,7 +215,7 @@ sub {
 
 hr {
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #ddd;
 }
 
 .inline-block {
@@ -399,23 +400,23 @@ blockquote p:last-child,
 }
 
 .hobbit h1 {
-    font-size: 28px;
-    font-size: 2.8rem;
+    font-size: 24px;
+    font-size: 2.4rem;
 }
 
 .hobbit h2 {
-    font-size: 25px;
-    font-size: 2.5rem;
-}
-
-.hobbit h3 {
     font-size: 22px;
     font-size: 2.2rem;
 }
 
+.hobbit h3 {
+    font-size: 20px;
+    font-size: 2rem;
+}
+
 .hobbit h4 {
-    font-size: 19px;
-    font-size: 1.9rem;
+    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 .hobbit h5 {
@@ -424,8 +425,8 @@ blockquote p:last-child,
 }
 
 .hobbit h6 {
-    font-size: 13px;
-    font-size: 1.3rem;
+    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .hobbit ul ul,
@@ -708,8 +709,8 @@ table {
 	line-height: 160%;
 	/*table-layout: fixed;*/
 	width: 100%;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	/*border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;*/
 }
 
 tr,
@@ -731,8 +732,8 @@ tbody {
 
 tr:nth-child(even) {
 	background-color: #f6f6f6;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
 
 thead tr,
@@ -764,12 +765,12 @@ tr:nth-child(even) th {
 
 thead {
 	font-weight: bold;
-	border-top: 1px solid #eee;
+	border-top: 1px solid #ddd;
 }
 
 tfoot {
 	font-style: italic;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #ddd;
 }
 
 /**
@@ -850,7 +851,7 @@ table.aligncenter {
 }
 
 .gallery img {
-	border: 3px solid #eee !important;
+	border: 3px solid #ddd !important;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-ms-border-radius: 3px;
@@ -859,7 +860,7 @@ table.aligncenter {
 }
 
 .gallery img:hover {
-	border-color: #999 !important;
+	border-color: #ccc !important;
 }
 
 .gallery-caption {
@@ -880,7 +881,7 @@ blockquote {
 	margin-left: 20px;
 	margin-right: 0;
 	padding-left: 10px;
-	border-left: 5px solid #ccc;
+	border-left: 5px solid #ddd;
 	font-size: 1.2em;
 	color: #999;
 	font-style: italic;
@@ -1112,7 +1113,7 @@ blockquote {
     margin-top: 10px;
     margin-bottom: 12px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
 }
 
 .commentlist > li:last-child,
@@ -1127,14 +1128,14 @@ blockquote {
     margin-bottom: 12px;
     padding-top: 12px;
     padding-bottom: 10px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .commentlist .children {
     margin-top: 12px;
     padding-top: 10px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #ddd;
 }
 
 .commentlist .children:first-child {
@@ -1263,7 +1264,7 @@ input,
 textarea,
 select,
 button {
-	border: 1px solid #eee;
+	border: 1px solid #ddd;
 	padding: 5px 7px;
 	margin-bottom: 4px;
 	width: 100%;
@@ -1279,7 +1280,7 @@ button {
 input:focus,
 textarea:focus,
 select:focus {
-	border-color: #ddd;
+	border-color: #ccc;
 }
 
 input,
@@ -1313,7 +1314,7 @@ button {
 	font-size: 1.3rem;
 	line-height: 100%;
 	text-align: center;
-    background-color: #ccc;
+    background-color: #ddd;
 }
 
 input[type="submit"]:focus,
@@ -1336,7 +1337,7 @@ label > * {
 
 .form.search {
     margin: 0;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     padding: 1px;
     position: relative;
 
@@ -1348,7 +1349,7 @@ label > * {
 }
 
 .form.search:focus {
-    border-color: #ddd;
+    border-color: #ccc;
 }
 
 .form.search input[type="search"],
@@ -1392,7 +1393,8 @@ label > * {
 	margin-right: 20px;
 }
 
-.page-title {
+.page-title,
+.page.has-magpack-posts #content > .posts-wrap > .post-wrap > header > .entry-title {
     color: #999;
     font-size: 22px;
     font-size: 2.2rem;
@@ -1459,17 +1461,22 @@ label > * {
 
 /** Single posts */
 
-.singular-post .entry-meta {
+.singular-post > .post-wrap > header > .entry-meta {
     line-height: 160%;
 }
 
-.singular-post .entry-meta p {
+.singular-post > .post-wrap > header > .entry-meta p {
     margin: 0 0 0 52px;
 }
 
-.singular-post .post-wrap .entry-meta .avatar {
+.singular-post > .post-wrap > header > .entry-meta .avatar {
 	display: inline;
 	float: left;
+}
+
+.singular-post > .post-wrap > header > .entry-title {
+    font-size: 29px;
+    font-size: 2.9rem;
 }
 
 /** Avatar */
@@ -1483,6 +1490,70 @@ label > * {
 }
 
 @media (min-width: 800px) {
+    /**
+     * Headings
+     */
+
+    h1 {
+        font-size: 34px;
+        font-size: 3.4rem;
+    }
+
+    h2 {
+        font-size: 30px;
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 26px;
+        font-size: 2.6rem;
+    }
+
+    h4 {
+        font-size: 22px;
+        font-size: 2.2rem;
+    }
+
+    h5 {
+        font-size: 18px;
+        font-size: 1.8rem;
+    }
+
+    h6 {
+        font-size: 14px;
+        font-size: 1.4rem;
+    }
+
+    .hobbit h1 {
+        font-size: 29px;
+        font-size: 2.9rem;
+    }
+
+    .hobbit h2 {
+        font-size: 26px;
+        font-size: 2.6rem;
+    }
+
+    .hobbit h3 {
+        font-size: 23px;
+        font-size: 2.3rem;
+    }
+
+    .hobbit h4 {
+        font-size: 20px;
+        font-size: 2rem;
+    }
+
+    .hobbit h5 {
+        font-size: 17px;
+        font-size: 1.7rem;
+    }
+
+    .hobbit h6 {
+        font-size: 14px;
+        font-size: 1.4rem;
+    }
+
     /**
      * Header elements
      */
@@ -1525,11 +1596,16 @@ label > * {
         max-width: 960px;
     }
 
-    /*.page-template-default.layout-one-column .entry-content,*/
-    .single.layout-one-column #content {
-    	max-width: 800px;
+    .page.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content,
+    .single.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content {
+    	max-width: 700px;
     	margin-left: auto;
     	margin-right: auto;
+    }
+
+    .page.has-magpack-posts.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content,
+    .attachment.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content {
+        max-width: none;
     }
 
     .attachment.layout-one-column .entry-content {
@@ -1689,6 +1765,13 @@ label > * {
     	margin-right: 0;
     }
 
+    /** Single posts */
+
+    .singular-post > .post-wrap > header > .entry-title {
+        font-size: 34px;
+        font-size: 3.4rem;
+    }
+
     /**
      * Global overrides
      */
@@ -1810,13 +1893,12 @@ label > * {
      * Menus
      */
 
-    /*#header .menu {
-        padding: 5px 0;
-    }*/
-
     #header .menu li {
-    	margin: 0;
-    	margin-left: 20px;
+        margin: 0;
+    }
+
+    #header .menu > li {
+    	margin-left: 2%;
 
     	display: -moz-inline-stack;
     	display: inline-block;
@@ -1833,11 +1915,11 @@ label > * {
         margin-left: 13px;
     }*/
 
-    #header .menu li:first-child {
+    #header .menu > li:first-child {
     	margin-left: 0;
     }
 
-    #header .menu li:last-child {
+    #header .menu > li:last-child {
     	margin-right: 0;
     }
 
@@ -1857,12 +1939,6 @@ label > * {
     	left: 200px;
     }
 
-    #header .sub-menu li {
-    	display: list-item;
-    	margin: 0;
-    	padding: 0;
-    }
-
     #header .menu ul,
     #header .menu li:hover ul ul,
     #header .menu li li:hover ul ul,
@@ -1878,7 +1954,6 @@ label > * {
     #header .menu li li li li:hover ul,
     #header .menu li li li li li:hover ul {
     	display: block;
-    	/*z-index: 1;*/
     }
 
     /** Toggle buttons */

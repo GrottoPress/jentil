@@ -14,13 +14,17 @@
 
 namespace GrottoPress\Jentil\Setup;
 
-use \GrottoPress\Jentil\Utilities\Template\Template as Template;
-use \GrottoPress\Jentil\Utilities\Logo as Logo;
-use \GrottoPress\Jentil\Utilities\Colophon as Colophon;
-use \GrottoPress\MagPack\Utilities\Singleton as Singleton;
-use \GrottoPress\MagPack\Utilities\Pagination as Pagination;
-use \GrottoPress\MagPack\Utilities\Breadcrumbs as Breadcrumbs;
-use \GrottoPress\MagPack\Utilities\Post\Post as Post;
+if ( ! defined( 'WPINC' ) ) {
+    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+}
+
+use GrottoPress\Jentil\Utilities\Template\Template;
+use GrottoPress\Jentil\Utilities\Logo;
+use GrottoPress\Jentil\Utilities\Colophon;
+use GrottoPress\MagPack\Utilities\Singleton;
+use GrottoPress\MagPack\Utilities\Pagination;
+use GrottoPress\MagPack\Utilities\Breadcrumbs;
+use GrottoPress\MagPack\Utilities\Post\Post;
 
 /**
  * Template
@@ -293,16 +297,16 @@ class Parts extends Singleton {
     }
 
     /**
-     * Single post entry meta
+     * Single post after title
      *
      * @since       Jentil 0.1.0
 	 * @access      public
 	 *
-	 * @action      jentil_after_title
+	 * @filter      jentil_single_post_after_title
      */
-    public function single_post_entry_meta() {
+    public function single_post_after_title() {
     	if ( ! $this->template->is( 'singular', 'post' ) ) {
-    	    return;
+    	    return '';
     	}
 
     	global $post;
@@ -311,7 +315,7 @@ class Parts extends Singleton {
     	$avatar = $magpack_post->info( 'avatar__40', '' )->get();
     	$author = $magpack_post->info( 'author_link', '' )->get();
 
-    	$output = '<div class="entry-meta after-title self-clear">';
+    	$output = '<!--<div class="entry-meta after-title self-clear">-->';
 
     	if ( ! empty( $avatar ) ) {
     	    $output .= $avatar;
@@ -321,9 +325,9 @@ class Parts extends Singleton {
     	    $output .= '<p>' . $author . '</p>';
     	}
 
-    	$output .= '<p>' . $magpack_post->info( 'published_date, published_time, comments_link' )->get() . '</p></div>';
+    	$output .= '<p>' . $magpack_post->info( 'published_date, published_time, comments_link' )->get() . '</p><!--</div>-->';
 
-        echo $output;
+        return $output;
     }
 
     /**
@@ -397,6 +401,10 @@ class Parts extends Singleton {
         	    $classes[] = get_option( 'thread_comments' ) ? 'threaded-comments' : 'unthreaded-comments';
         	    $classes[] = comments_open( $post->ID ) ? 'comments-open' : 'comments-closed';
     	    }
+
+            if ( has_shortcode( $post->post_content, 'magpack_posts' ) ) {
+                $classes[] = 'has-magpack-posts';
+            }
     	}
 
     	$layout = $this->template->layout()->get();
