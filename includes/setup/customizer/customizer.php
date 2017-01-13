@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack\Utilities\Singleton;
+use GrottoPress\Jentil\Utilities\Template\Template;
 
 /**
  * Customizer
@@ -43,16 +44,86 @@ class Customizer extends Singleton {
      * @var         array         $sections           Sections
      */
     private $sections;
+
+    /**
+     * Post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     array      $post_types       Post types
+     */
+    private $post_types;
+
+    /**
+     * Taxonomies
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     array      $taxonomies       Taxonomies
+     */
+    private $taxonomies;
+
+    /**
+     * Template instance
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var         \GrottoPress\Jentil\Utilities\Template\Template        $template         Template
+     */
+    private $template;
     
     /**
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      public
+	 * @access      protected
 	 */
 	protected function __construct() {
+        $this->post_types = get_post_types( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+        $this->taxonomies = get_taxonomies( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+        $this->template = new Template();
+
         $this->sections = $this->sections();
 	}
+
+    /**
+     * Get post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function post_types() {
+        return $this->post_types;
+    }
+
+    /**
+     * Get taxonomies
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function taxonomies() {
+        return $this->taxonomies;
+    }
+
+    /**
+     * Get template instance
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function template() {
+        return $this->template;
+    }
 
     /**
      * Get sections
@@ -66,7 +137,46 @@ class Customizer extends Singleton {
         $sections[] = new Colophon\Colophon( $this );
         $sections[] = new Layout\Layout( $this );
         $sections[] = new Logo\Logo( $this );
-        // $sections[] = new Content\Content( $this );
+
+        $sections[] = new Content\Content( $this, array(
+            'name' => 'sticky_posts',
+            'title' => esc_html__( 'Sticky', 'jentil' ),
+        ) );
+
+        $sections[] = new Content\Content( $this, array(
+            'name' => 'author_archive',
+            'title' => esc_html__( 'Author Archive', 'jentil' ),
+        ) );
+
+        $sections[] = new Content\Content( $this, array(
+            'name' => 'date_archive',
+            'title' => esc_html__( 'Date Archive', 'jentil' ),
+        ) );
+
+        $sections[] = new Content\Content( $this, array(
+            'name' => 'search',
+            'title' => esc_html__( 'Search', 'jentil' ),
+        ) );
+
+        if ( $this->taxonomies ) {
+            foreach ( $this->taxonomies as $taxonomy ) {
+                $sections[] = new Content\Content( $this, array(
+                    'name' => $taxonomy->name . '_archive',
+                    'title' => sprintf( esc_html__( '%s Archive', 'jentil' ), $taxonomy->labels->singular_name ),
+                ) );
+            }
+        }
+
+        if ( $this->post_types ) {
+            foreach ( $this->post_types as $post_type ) {
+                if ( $post_type->has_archive /*|| ! is_post_type_hierarchical( $post_type->name )*/ ) {
+                    $sections[] = new Content\Content( $this, array(
+                        'name' => $post_type->name . '_archive',
+                        'title' => sprintf( esc_html__( '%s Archive', 'jentil' ), $post_type->labels->singular_name ),
+                    ) );
+                }
+            }
+        }
 
         return $sections;
     }

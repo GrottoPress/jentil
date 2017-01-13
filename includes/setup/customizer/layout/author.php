@@ -3,7 +3,7 @@
 /**
  * Author template layout customizer setting
  *
- * Add settings and controls for our author template
+ * Add setting and control for our author template
  * layout options in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -23,7 +23,7 @@ use GrottoPress\Jentil\Setup\Customizer;
 /**
  * Author template layout customizer setting
  *
- * Add settings and controls for our author template
+ * Add setting and control for our author template
  * layout options in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -60,7 +60,7 @@ class Author extends Customizer\Setting {
             'section'   => $this->layout->name(),
             'label'     => esc_html__( 'Author archive', 'jentil' ),
             'type'      => 'select',
-            'choices'   => $this->layout->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
         );
 	}
 }

@@ -60,7 +60,7 @@ class Error_404 extends Customizer\Setting {
             'section'   => $this->layout->name(),
             'label'     => esc_html__( 'Error 404', 'jentil' ),
             'type'      => 'select',
-            'choices'   => $this->layout->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
         );
 	}
 }

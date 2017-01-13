@@ -18,8 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer\Customizer;
-use GrottoPress\Jentil\Utilities\Template\Template;
+use GrottoPress\Jentil\Setup\Customizer;
 
 /**
  * Content customizer sections
@@ -32,122 +31,76 @@ use GrottoPress\Jentil\Utilities\Template\Template;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Content {
+class Content extends Customizer\Section {
     /**
-     * Customizer
+     * Context
      *
      * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Customizer     $customizer       Customizer instance
+     * @var     array      $context       Context
      */
-    private $customizer;
+    private $context;
 
-    /**
-     * Template
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Utilities\Template\Template     $customizer       Customizer instance
-     */
-    private $template;
-
-    /**
-     * Contents
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      private
-	 * 
-	 * @var         array           $contents       An array of content customizer objects
-	 */
-    private $contents;
-    
     /**
 	 * Constructor
+     *
+     * @var         array          $context      Type of content section to add
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer $customizer ) {
-        $this->customizer = $customizer;
-        $this->contents = $this->contents();
-        $this->template = new Template();
+	public function __construct( Customizer\Customizer $customizer, $context ) {
+        $this->context = $context;
+        $this->name = sanitize_key( $this->context['name'] . '_content' );
+        $this->args = array(
+            'title' => sprintf( esc_html__( '%s Content', 'jentil' ), $this->context['title'] ),
+            //'priority' => ( int ) $this->context['priority'],
+        );
+
+        parent::__construct( $customizer );
 	}
 
-	/**
-	 * Get template
-	 *
-	 * @since 		Jentil 0.1.0
-	 * @access 		public
-	 */
-	public function template() {
-		return $this->template;
-	}
-	
-	/**
-	 * Contents
-	 * 
-	 * @since       Jentil 0.1.0
-	 * @access      private
-	 */
-	private function contents() {
-	    $contents = array();
-	    
-	    $contents[] = new Archive( $this );
-	    $contents[] = new Search( $this );
-	    $contents[] = new Sticky( $this );
-	    
-	    return $contents;
-	}
-    
     /**
-	 * Add sections
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function add_sections( $wp_customize ) {
-	    if ( empty( $this->contents ) ) {
-	        return;
-	    }
-	    
-	    foreach ( $this->contents as $content ) {
-	        $content->add_section( $wp_customize );
-	    }
-	}
-    
-    /**
-	 * Add settings
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function add_settings( $wp_customize ) {
-	    if ( empty( $this->contents ) ) {
-	        return;
-	    }
-	    
-	    foreach ( $this->contents as $content ) {
-	        $content->add_settings( $wp_customize );
-	    }
-	}
-	
+     * Get context
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    // public function context() {
+    //     return $this->context;
+    // }
+
 	/**
-	 * Add controls
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function add_controls( $wp_customize ) {
-	    if ( empty( $this->contents ) ) {
-	        return;
-	    }
-	    
-	    foreach ( $this->contents as $content ) {
-	        $content->add_controls( $wp_customize );
-	    }
-	}
+     * Get settings
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function settings() {
+        $settings = array();
+
+        if ( 'sticky_posts' != $this->context['name'] ) {
+            $settings[] = new Sticky_Posts( $this );
+        }
+
+        $settings[] = new Wrap_Class( $this );
+        $settings[] = new Layout( $this );
+        $settings[] = new Number( $this );
+        $settings[] = new Before_Title( $this );
+        $settings[] = new Title_Words( $this );
+        $settings[] = new Title_Position( $this );
+        $settings[] = new After_Title( $this );
+        $settings[] = new Image( $this );
+        $settings[] = new Image_Alignment( $this );
+        $settings[] = new Image_Margin( $this );
+        $settings[] = new Text_Offset( $this );
+        $settings[] = new Excerpt( $this );
+        $settings[] = new After_Content( $this );
+        $settings[] = new Pagination_Position( $this );
+
+        return $settings;
+    }
 
 	/**
      * Title positions

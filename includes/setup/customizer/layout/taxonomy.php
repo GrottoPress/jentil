@@ -60,7 +60,7 @@ class Taxonomy extends Customizer\Setting {
             'section'   => $this->layout->name(),
             'label'     => sprintf( esc_html__( '%s taxonomy archive', 'jentil' ), $taxonomy->labels->singular_name ),
             'type'      => 'select',
-            'choices'   => $this->layout->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
         );
 	}
 }

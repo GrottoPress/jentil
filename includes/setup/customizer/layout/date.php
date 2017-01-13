@@ -3,8 +3,8 @@
 /**
  * Date template layout customizer setting
  *
- * Add settings and controls for our Date template
- * layout options in the customizer.
+ * Add setting and control for our Date template
+ * layout setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -23,8 +23,8 @@ use GrottoPress\Jentil\Setup\Customizer;
 /**
  * Date template layout customizer setting
  *
- * Add settings and controls for our Date template
- * layout options in the customizer.
+ * Add setting and control for our Date template
+ * layout setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
@@ -60,7 +60,7 @@ class Date extends Customizer\Setting {
             'section'   => $this->layout->name(),
             'label'     => esc_html__( 'Date archive', 'jentil' ),
             'type'      => 'select',
-            'choices'   => $this->layout->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
         );
 	}
 }

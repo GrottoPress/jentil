@@ -69,6 +69,16 @@ abstract class Setting {
     //protected $default;
 
     /**
+     * Get name
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function name() {
+        return $this->name;
+    }
+
+    /**
      * Add setting
      * 
      * @since       Jentil 0.1.0

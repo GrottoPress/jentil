@@ -60,7 +60,7 @@ class Single extends Customizer\Setting {
             'section'   => $this->layout->name(),
             'label'     => sprintf( esc_html__( 'Single %s', 'jentil' ), $post_type->labels->singular_name ),
             'type'      => 'select',
-            'choices'   => $this->layout->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
         );
 	}
 }
