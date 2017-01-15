@@ -274,8 +274,8 @@ class Parts extends Singleton {
     	global $post;
 
     	$magpack_post = new Post( $post->ID );
-    	$avatar = $magpack_post->info( 'avatar__40', '' )->get();
-    	$author = $magpack_post->info( 'author_link', '' )->get();
+    	$avatar = $magpack_post->info( 'avatar__40', '' )->list();
+    	$author = $magpack_post->info( 'author_link', '' )->list();
 
     	$output = '<!--<div class="entry-meta after-title self-clear">-->';
 
@@ -287,7 +287,9 @@ class Parts extends Singleton {
     	    $output .= '<p>' . $author . '</p>';
     	}
 
-    	$output .= '<p>' . $magpack_post->info( 'published_date, published_time, comments_link' )->get() . '</p><!--</div>-->';
+    	$output .= '<p>' . $magpack_post->info( 'published_date, published_time, comments_link' )->list() . '</p><!--</div>-->
+
+        <div class="self-clear"></div>';
 
         return $output;
     }
