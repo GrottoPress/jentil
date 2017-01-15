@@ -33,6 +33,16 @@ use GrottoPress\Jentil\Setup\Customizer;
  */
 class Layout extends Customizer\Section {
     /**
+     * Default layout
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     string      $default       Default layout
+     */
+    protected $default;
+
+    /**
      * Constructor
      *
      * @since       Jentil 0.1.0
@@ -44,6 +54,7 @@ class Layout extends Customizer\Section {
             'title'     => esc_html__( 'Layout', 'jentil' ),
             //'priority'  => 200,
         );
+        $this->default = 'content-sidebar';
 
         parent::__construct( $customizer );
     }
@@ -57,51 +68,37 @@ class Layout extends Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Author( $this );
-        $settings[] = new Date( $this );
-        $settings[] = new Error_404( $this );
-        $settings[] = new Search( $this );
+        $settings[] = new Settings\Author( $this );
+        $settings[] = new Settings\Date( $this );
+        $settings[] = new Settings\Error_404( $this );
+        $settings[] = new Settings\Search( $this );
 
-        if ( ( $taxonomies = $this->customizer->taxonomies() ) ) {
+        if ( ( $taxonomies = $this->customizer->get( 'taxonomies' ) ) ) {
             foreach ( $taxonomies as $taxonmy ) {
-                $settings[] = new Taxonomy( $this, $taxonmy );
+                $settings[] = new Settings\Taxonomy( $this, $taxonmy );
             }
         }
 
-        if ( ( $post_types = $this->customizer->post_types() ) ) {
+        if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
-                if ( $post_type->has_archive || ! is_post_type_hierarchical( $post_type->name ) ) {
-                    $settings[] = new Post_Type( $this, $post_type );
+                if (
+                    $post_type->has_archive
+                    || (
+                        'post' == $post_type->name
+                        && post_type_exists( 'post' )
+                    )
+                ) {
+                    $settings[] = new Settings\Post_Type( $this, $post_type );
                 }
             }
 
             foreach ( $post_types as $post_type ) {
                 if ( ! is_post_type_hierarchical( $post_type->name ) ) {
-                    $settings[] = new Single( $this, $post_type );
+                    $settings[] = new Settings\Single( $this, $post_type );
                 }
             }
         }
 
         return $settings;
-    }
-
-    /**
-     * Get customizer instance
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
-     */
-    public function customizer() {
-        return $this->customizer;
-    }
-
-    /**
-     * Get default layout
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
-     */
-    public function default() {
-        return 'content-sidebar';
     }
 }

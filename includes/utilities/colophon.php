@@ -36,8 +36,8 @@ class Colophon {
      *
      * @return      string          The colophon text
      */
-    public function get() {
-        $colophon = get_theme_mod( 'colophon' );
+    public function get_mod( $default = '' ) {
+        $colophon = get_theme_mod( 'colophon', $default );
 
         $colophon = str_ireplace( '{{site_name}}', esc_attr( get_bloginfo( 'name' ) ), $colophon );
         $colophon = str_ireplace( '{{site_url}}', esc_attr( home_url( '/' ) ), $colophon );

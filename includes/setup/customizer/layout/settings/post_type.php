@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Layout;
+namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -50,17 +50,17 @@ class Post_Type extends Customizer\Setting {
 	 */
 	public function __construct( Customizer\Layout\Layout $layout, $post_type ) {
         $this->layout = $layout;
-        $this->name = sanitize_key( $post_type->name . '_taxonomy_archive_layout' );
+        $this->name = sanitize_key( $post_type->name . '_post_type_layout' );
         $this->args = array(
-            'default'       =>  $this->layout->default(),
+            'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',
         );
 
         $this->control = array(
-            'section'   => $this->layout->name(),
+            'section'   => $this->layout->get( 'name' ),
             'label'     => sprintf( esc_html__( '%s post type archive', 'jentil' ), $post_type->labels->singular_name ),
             'type'      => 'select',
-            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
         );
 	}
 }

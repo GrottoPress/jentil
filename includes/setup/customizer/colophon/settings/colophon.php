@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Colophon;
+namespace GrottoPress\Jentil\Setup\Customizer\Colophon\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Colophon_ extends Customizer\Setting {
+class Colophon extends Customizer\Setting {
     /**
      * Colophon section
      *
@@ -60,7 +60,7 @@ class Colophon_ extends Customizer\Setting {
             'transport'  =>  'postMessage',
         );
         $this->control = array(
-            'section'   => $this->colophon->name(),
+            'section'   => $this->colophon->get( 'name' ),
             'label'     => esc_html__( 'Colophon', 'jentil' ),
             'type'      => 'text',
         );

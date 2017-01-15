@@ -80,44 +80,6 @@ class Parts extends Singleton {
     }
 
     /**
-     * Enqueue JavaScript
-     * 
-     * Add JavaScript libraries.
-     * 
-     * @since       jentil 0.1.0
-     * @access      public
-     * 
-     * @action      wp_enqueue_scripts
-     */
-    public function enqueue_scripts() {
-        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-            wp_enqueue_script( 'comment-reply' );
-        }
-        
-        wp_enqueue_script( 'jentil-menu', get_template_directory_uri() . '/assets/javascript/menu.js', array( 'jquery' ), '', true );
-    }
-    
-    /**
-     * Enqueue Styles
-     * 
-     * Add stylesheets.
-     * 
-     * @since       jentil 0.1.0
-     * @access      public
-     * 
-     * @action      wp_enqueue_scripts
-     */
-    public function enqueue_styles() {
-        wp_enqueue_style( 'normalize', get_template_directory_uri() . '/resources/normalize-css/normalize.css' );
-        wp_enqueue_style( 'jentil', get_template_directory_uri() . '/assets/styles/jentil.css', array( 'normalize' ) );
-        wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/fortawesome/font-awesome/css/font-awesome.min.css', array( 'normalize' ) );
-        
-        if ( is_rtl() ) {
-            wp_enqueue_style( 'jentil-rtl', get_template_directory_uri() . '/assets/styles/rtl.css', array( 'jentil' ) );
-        }
-    }
-
-    /**
      * Microdata schema
      *
 	 * Use schema.org's vocabulary to provide microdata
@@ -192,7 +154,7 @@ class Parts extends Singleton {
     public function header_logo() {
     	$logo = new Logo();
 
-    	echo $logo->get();
+    	echo $logo->get_markup();
     }
 
     /**
@@ -357,11 +319,11 @@ class Parts extends Singleton {
     public function colophon() {
     	$colophon = new Colophon();
 
-        if ( ! ( $get = $colophon->get() ) ) {
+        if ( ! ( $mod = $colophon->get_mod() ) ) {
             return '';
         }
 
-    	echo '<div id="colophon"><small>' . $get . '</small></div><!-- #colophon -->';
+    	echo '<div id="colophon"><small>' . $mod . '</small></div><!-- #colophon -->';
     }
 
     /**
@@ -407,12 +369,13 @@ class Parts extends Singleton {
             }
     	}
 
-    	$layout = $this->template->layout()->get();
-        $layout_column = $this->template->layout()->column();
+    	$layout = $this->template->get( 'layout' );
+        $mod = $layout->get_mod();
+        $column = $layout->column();
 
     	if ( ! empty( $layout ) ) {
-    		$classes[] = sanitize_title( 'layout-' . $layout );
-    		$classes[] = sanitize_title( 'layout-' . $layout_column );
+    		$classes[] = sanitize_title( 'layout-' . $mod );
+    		$classes[] = sanitize_title( 'layout-' . $column );
     	}
 
     	return $classes;

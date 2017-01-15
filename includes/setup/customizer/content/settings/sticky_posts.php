@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Content layout setting
+ * Sticky posts toggle setting
  *
- * Add setting and control for our content layout
- * setting in the customizer.
+ * Add setting and control for our sticky posts
+ * toggle in the customizer.
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,17 +21,17 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content layout setting
+ * Sticky posts toggle setting
  *
- * Add setting and control for our content layout
- * setting in the customizer.
+ * Add setting and control for our sticky posts
+ * toggle in the customizer.
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Layout extends Customizer\Setting {
+class Sticky_Posts extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,19 +48,18 @@ class Layout extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_layout' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_sticky_posts' );
         $this->args = array(
-            'default' => 'stack',
+            'default' => 1,
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label'     => esc_html__( 'Layout', 'jentil' ),
-            'type'      => 'select',
-            'choices'   => $this->content->layouts(),
+            'section' => $this->content->get( 'name' ),
+            'label' => esc_html__( 'Show sticky posts?', 'jentil' ),
+            'type' => 'checkbox',
         );
 	}
 }

@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -48,16 +48,16 @@ class Excerpt extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_excerpt' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_excerpt' );
         $this->args = array(
             'default' => '300',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
+            'section' => $this->content->get( 'name' ),
             'label' => esc_html__( 'Excerpt', 'jentil' ),
             'type' => 'text',
         );

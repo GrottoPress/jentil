@@ -32,7 +32,10 @@ if ( ! class_exists( '\GrottoPress\MagPack\Setup\MagPack' ) ) {
 	$satisfied = false;
 
 	if ( ! is_admin() ) {
-		wp_die( esc_html__( 'This theme requires MagPack plugin. Kindly install that first.' ) );
+		wp_die( esc_html__(
+			'This theme requires <a href="#">MagPack</a> plugin. Kindly install and activate that first.',
+			'jentil'
+		) );
 	}
 }
 

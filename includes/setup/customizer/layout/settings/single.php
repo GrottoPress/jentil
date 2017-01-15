@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Search template layout customizer setting
+ * Single template layout customizer setting
  *
- * Add settings and controls for our Search template
+ * Add settings and controls for our Single template
  * layout options in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Layout;
+namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Search template layout customizer setting
+ * Single template layout customizer setting
  *
- * Add settings and controls for our Search template
+ * Add settings and controls for our Single template
  * layout options in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Search extends Customizer\Setting {
+class Single extends Customizer\Setting {
     /**
      * Layout section
      *
@@ -48,19 +48,19 @@ class Search extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Layout\Layout $layout ) {
+	public function __construct( Customizer\Layout\Layout $layout, $post_type ) {
         $this->layout = $layout;
-        $this->name = 'search_layout';
+        $this->name = sanitize_key( 'single_' . $post_type->name . '_layout' );
         $this->args = array(
-            'default'       =>  $this->layout->default(),
+            'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',
         );
 
         $this->control = array(
-            'section'   => $this->layout->name(),
-            'label'     => esc_html__( 'Search', 'jentil' ),
+            'section'   => $this->layout->get( 'name' ),
+            'label'     => sprintf( esc_html__( 'Single %s', 'jentil' ), $post_type->labels->singular_name ),
             'type'      => 'select',
-            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
         );
 	}
 }

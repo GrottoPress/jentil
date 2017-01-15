@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content 'text offset' setting
+ * Content title length setting
  *
- * Add setting and control for our content 'text offset'
+ * Add setting and control for our content title length
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content 'text offset' setting
+ * Content title setting
  *
- * Add setting and control for our content 'text offset'
+ * Add setting and control for our content title length
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Text_Offset extends Customizer\Setting {
+class Title_Words extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,18 +48,18 @@ class Text_Offset extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_text_offset' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_title_words' );
         $this->args = array(
-            'default' => 0,
+            'default' => -1,
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label' => esc_html__( 'Text offset (from image align side)', 'jentil' ),
-            'type' => 'number',
+            'section' => $this->content->get( 'name' ),
+            'label'     => esc_html__( 'Title length (number of words)', 'jentil' ),
+            'type'      => 'number',
         );
 	}
 }

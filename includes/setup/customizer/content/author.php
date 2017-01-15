@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Logo customizer section
+ * Author archive content customizer section
  *
- * Add section, settings and controls for our logo
+ * The sections, settings and controls for our Author archive content
  * section in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Logo;
+namespace GrottoPress\Jentil\Setup\Customizer\Content;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,17 +21,17 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Logo customizer section
+ * Author archive content customizer section
  *
- * Add section, settings and controls for our logo
+ * The sections, settings and controls for our Author archive content
  * section in the customizer.
  *
  * @link            https://jentil.grotttopress.com
  * @package         jentil
  * @subpackage      jentil/includes
- * @since           jentil 0.1.0
+ * @since           Jentil 0.1.0
  */
-class Logo extends Customizer\Section {
+class Author extends Content {
     /**
      * Constructor
      *
@@ -39,26 +39,12 @@ class Logo extends Customizer\Section {
      * @access      public
      */
     public function __construct( Customizer\Customizer $customizer ) {
-        $this->name = '';
+        $this->name = 'author_content';
         $this->args = array(
-            'title'     => esc_html__( 'Layout', 'jentil' ),
-            //'priority'  => 200,
+            'title' => esc_html__( 'Author Content', 'jentil' ),
+            //'priority' => 200,
         );
 
         parent::__construct( $customizer );
-    }
-
-    /**
-     * Get settings
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     */
-    protected function settings() {
-        $settings = array();
-
-        $settings[] = new Settings\Logo( $this );
-
-        return $settings;
     }
 }

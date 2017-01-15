@@ -572,27 +572,6 @@ li {
 }
 
 /**
- * Self-Clear
- */
-
-.self-clear:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
-}
-
-* html .self-clear {
-    zoom: 1;
-} /* IE6 */
-
-*:first-child+html .self-clear {
-    zoom: 1;
-} /* IE7 */
-
-/**
  * Widgets
  */
 

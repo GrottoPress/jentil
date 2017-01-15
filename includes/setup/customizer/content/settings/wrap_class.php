@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content title position setting
+ * Content class setting
  *
- * Add setting and control for our content title position
+ * Add setting and control for our content class
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content title position setting
+ * Content class setting
  *
- * Add setting and control for our content title position
+ * Add setting and control for our content class
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Title_Position extends Customizer\Setting {
+class Wrap_Class extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,19 +48,18 @@ class Title_Position extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_title_position' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_class' );
         $this->args = array(
-            'default' => 'side',
+            'default' => 'archive-posts big',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label' => esc_html__( 'Title position (relative to image)', 'jentil' ),
-            'type' => 'select',
-            'choices' => $this->content->title_positions(),
+            'section' => $this->content->get( 'name' ),
+            'label'     => esc_html__( 'Wrapper class', 'jentil' ),
+            'type'      => 'text',
         );
 	}
 }

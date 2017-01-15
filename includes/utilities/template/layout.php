@@ -52,20 +52,23 @@ class Layout {
      * 
      * @return      string      The layout type
      */
-    public function get() {
-        $default = 'content-sidebar';
+    public function get_mod( $default = '' ) {
+        $default = sanitize_title( $default );
+        $layout = ! $default ? 'content-sidebar' : $default;
         
-        if ( ! $this->template->get() ) {
-			return $default;
+        if ( ! ( $name = $this->get_mod_name() ) ) {
+			return $layout;
 		}
+
+		global $post;
 		
-		$layout = $default;
-		
-        foreach ( $this->template->get() as $template ) {
-			if ( $this->template->is( $template ) ) {
-	    		$layout = get_theme_mod( $this->setting_name( $template ), $default );
-	    		break;
-	    	}
+		if (
+			$this->template->is( 'singular' )
+			&& is_post_type_hierarchical( $post->post_type )
+		) {
+			$layout = get_post_meta( $post->ID, $name, true );
+		} else {
+			$layout = get_theme_mod( $name, $default );
 		}
 		
 		if ( ! in_array( $layout, $this->layouts_ids() ) ) {
@@ -76,15 +79,45 @@ class Layout {
     }
 
     /**
-     * Get template layout setting name
+     * Get setting name
      * 
      * @since       Jentil 0.1.0
-     * @access      private
+     * @access      public
      * 
-     * @return      string          Template layout setting name
+     * @return      string          Setting name
      */
-    public function setting_name( $template ) {
-        return sanitize_key( $template . '_layout' );
+    public function get_mod_name() {
+        $name = '';
+
+        if ( $this->template->is( 'singular' ) ) {
+        	global $post;
+
+        	if ( is_post_type_hierarchical( $post->post_type ) ) {
+        		$name = 'layout';
+        	} else {
+        		$name = 'single_' . $post->post_type . '_layout';
+        	}
+        } elseif ( $this->template->is( 'tax' ) ) {
+            $name = get_query_var( 'taxonomy' ) . '_taxonomy_layout';
+        } elseif ( $this->template->is( 'category' ) ) {
+            $name = 'category_taxonomy_layout';
+        } elseif ( $this->template->is( 'tag' ) ) {
+            $name = 'tag_taxonomy_layout';
+        } elseif ( $this->template->is( 'post_type_archive' ) ) {
+            $name = get_query_var( 'post_type' ) . '_post_type_layout';
+        } elseif ( $this->template->is( 'home' ) ) {
+            $name = 'post_post_type_layout';
+        } elseif ( $this->template->is( 'date' ) ) {
+            $name = 'date_layout';
+        } elseif ( $this->template->is( 'search' ) ) {
+            $name = 'search_layout';
+        } elseif ( $this->template->is( 'author' ) ) {
+            $name = 'author_layout';
+        } elseif ( $this->template->is( '404' ) ) {
+            $name = 'error_404_layout';
+        }
+
+        return sanitize_key( $name );
     }
     
     /**
@@ -185,7 +218,7 @@ class Layout {
 	    
     	foreach ( $this->layouts() as $column_slug => $layouts ) {
     		foreach ( $layouts as $layout_id => $layout_name ) {
-    			if ( $this->get() == $layout_id ) {
+    			if ( $this->get_mod() == $layout_id ) {
     				return $column_slug;
     			}
     		}

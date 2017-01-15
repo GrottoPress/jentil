@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content image/thumbnail setting
+ * Content 'after title' setting
  *
- * Add setting and control for our content image/thumbnail
+ * Add setting and control for our content 'after title'
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content image/thumbnail setting
+ * Content 'after title' setting
  *
- * Add setting and control for our content image/thumbnail
+ * Add setting and control for our content 'after title'
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Image extends Customizer\Setting {
+class After_Title extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,17 +48,17 @@ class Image extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_image' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_after_title' );
         $this->args = array(
-            'default' => 'mini-thumb',
+            'default' => 'published_date, comments_link',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label' => esc_html__( 'Image size', 'jentil' ),
+            'section' => $this->content->get( 'name' ),
+            'label' => esc_html__( 'After title (comma-separated)', 'jentil' ),
             'type' => 'text',
         );
 	}

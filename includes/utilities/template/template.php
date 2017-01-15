@@ -47,16 +47,6 @@ class Template {
 	 * @var         \GrottoPress\Jentil\Utilities\Template\Layout         $layout       Template layout
 	 */
     private $layout;
-    
-    /**
-     * Sticky Posts
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      private
-	 * 
-	 * @var         \GrottoPress\Jentil\Utilities\Template\Content         $sticky       Sticky posts
-	 */
-    private $sticky;
 
     /**
      * Content
@@ -77,8 +67,24 @@ class Template {
 	public function __construct() {
 	    $this->title = new Title( $this );
 	    $this->layout = new Layout( $this );
-	    $this->sticky = new Content( $this, 'sticky' );
+	    $this->content = new Content( $this );
 	}
+
+	/**
+     * Get attributes
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function get( $attribute ) {
+        $disallow = array();
+
+        if ( in_array( $attribute, $disallow ) ) {
+            return null;
+        }
+
+        return $this->$attribute;
+    }
     
     /**
 	 * Add breadcrumb links
@@ -121,80 +127,50 @@ class Template {
 	 * @access      public
 	 */
 	public function is( $template, $args = '' ) {
-		if ( ! $this->get() ) {
+		if ( ! ( $type = $this->type() ) ) {
 			return false;
 		}
 		
-		$is_this_template = in_array( $template, $this->get() );
+		$is_this_template = in_array( $template, $type );
 		
 		if ( empty( $args ) ) {
 			return $is_this_template;
 		}
 		
-		$is_template = 'is_' . $template;
+		$function = 'is_' . $template;
 		
-		if ( $is_this_template && is_callable( $is_template ) ) {
-			return $is_template( $args );
+		if ( $is_this_template && is_callable( $function ) ) {
+			return $function( $args );
 		}
 		
 		return false;
 	}
 	
 	/**
-	 * Get template
+	 * Get template type
 	 * 
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 * 
 	 * @return		array			Template tags applicable to this template
 	 */
-	public function get() {
+	public function type() {
 		$return = array();
 		
-		if ( ! $this->templates() ) {
+		if ( ! ( $templates = $this->templates() ) ) {
 			return $return;
 		}
 		
-		foreach ( $this->templates() as $template ) {
-	    	$is_template = 'is_' . $template;
+		foreach ( $templates as $template ) {
+	    	$function = 'is_' . $template;
 	    	
-	    	if ( is_callable( $is_template ) ) {
-	    		if ( $is_template() ) {
+	    	if ( is_callable( $function ) ) {
+	    		if ( $function() ) {
 	    			$return[] = $template;
 	    		}
 	    	}
 	    }
 	    
 	    return $return;
-	}
-	
-	/**
-     * Get template title
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function title() {
-		return $this->title;
-	}
-	
-	/**
-     * Get template layout
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function layout() {
-		return $this->layout;
-	}
-	
-	/**
-     * Get template content
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	public function content() {
-		return $this->content;
 	}
 }

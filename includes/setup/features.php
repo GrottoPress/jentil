@@ -48,21 +48,6 @@ class Features extends Singleton {
     }
     
     /**
-     * Translations.
-     *
-     * Make theme available for translation. Translations can
-     * be filed in the '/languages' directory.
-     *
-     * @since 		jentil 0.1.0
-	 * @access 		public
-	 * 
-	 * @action      after_setup_theme
-     */
-    public function enable_translation() {
-	    load_theme_textdomain( 'jentil', get_template_directory() . '/languages' );
-    }
-    
-    /**
      * Title tag.
      * 
      * Add support for the title tag.
@@ -193,7 +178,7 @@ class Features extends Singleton {
      * 
      * @action      after_setup_theme
      */
-    public function add_feed_support() {
+    public function enable_feeds() {
     	add_theme_support( 'automatic-feed-links' );
     }
     

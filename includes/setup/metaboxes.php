@@ -52,7 +52,7 @@ class Metaboxes extends Singleton {
 	 */
 	protected function __construct() {
 	    $template = new Template();
-        $this->layouts = $template->layout()->layouts_ids_names();
+        $this->layouts = $template->get( 'layout' )->layouts_ids_names();
 	}
     
     /**

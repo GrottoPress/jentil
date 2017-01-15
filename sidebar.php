@@ -11,13 +11,14 @@
  */
 
 $template = new \GrottoPress\Jentil\Utilities\Template\Template();
-$layout = $template->layout()->get();
-$layout_column = $template->layout()->column();
+$layout = $template->get( 'layout' );
+// $mod = $layout->get_mod();
+$column = $layout->column();
 
 /**
  * Do not show sidebars if page layout is one_column
  */
-if ( 'one-column' == $layout_column ) {
+if ( 'one-column' == $column ) {
 	return;
 }
 
@@ -33,7 +34,7 @@ if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
 /**
  * Secondary sidebar
  */
-if ( 'three-columns' == $layout_column ) {
+if ( 'three-columns' == $column ) {
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) { ?>
 		<div id="secondary" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 			<?php dynamic_sidebar( 'secondary-widget-area' ); ?>

@@ -96,33 +96,19 @@ class Customizer extends Singleton {
 	}
 
     /**
-     * Get post types
+     * Get attributes
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function post_types() {
-        return $this->post_types;
-    }
+    public function get( $attribute ) {
+        $disallow = array( 'sections' );
 
-    /**
-     * Get taxonomies
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
-     */
-    public function taxonomies() {
-        return $this->taxonomies;
-    }
+        if ( in_array( $attribute, $disallow ) ) {
+            return null;
+        }
 
-    /**
-     * Get template instance
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
-     */
-    public function template() {
-        return $this->template;
+        return $this->$attribute;
     }
 
     /**
@@ -137,43 +123,27 @@ class Customizer extends Singleton {
         $sections[] = new Colophon\Colophon( $this );
         $sections[] = new Layout\Layout( $this );
         $sections[] = new Logo\Logo( $this );
-
-        $sections[] = new Content\Content( $this, array(
-            'name' => 'sticky_posts',
-            'title' => esc_html__( 'Sticky', 'jentil' ),
-        ) );
-
-        $sections[] = new Content\Content( $this, array(
-            'name' => 'author_archive',
-            'title' => esc_html__( 'Author Archive', 'jentil' ),
-        ) );
-
-        $sections[] = new Content\Content( $this, array(
-            'name' => 'date_archive',
-            'title' => esc_html__( 'Date Archive', 'jentil' ),
-        ) );
-
-        $sections[] = new Content\Content( $this, array(
-            'name' => 'search',
-            'title' => esc_html__( 'Search', 'jentil' ),
-        ) );
+        $sections[] = new Content\Sticky( $this );
+        $sections[] = new Content\Author( $this );
+        $sections[] = new Content\Date( $this );
+        $sections[] = new Content\Search( $this );
 
         if ( $this->taxonomies ) {
             foreach ( $this->taxonomies as $taxonomy ) {
-                $sections[] = new Content\Content( $this, array(
-                    'name' => $taxonomy->name . '_archive',
-                    'title' => sprintf( esc_html__( '%s Archive', 'jentil' ), $taxonomy->labels->singular_name ),
-                ) );
+                $sections[] = new Content\Taxonomy( $this, $taxonomy );
             }
         }
 
         if ( $this->post_types ) {
             foreach ( $this->post_types as $post_type ) {
-                if ( $post_type->has_archive /*|| ! is_post_type_hierarchical( $post_type->name )*/ ) {
-                    $sections[] = new Content\Content( $this, array(
-                        'name' => $post_type->name . '_archive',
-                        'title' => sprintf( esc_html__( '%s Archive', 'jentil' ), $post_type->labels->singular_name ),
-                    ) );
+                if (
+                    $post_type->has_archive
+                    || (
+                        'post' == $post_type->name
+                        && post_type_exists( 'post' )
+                    )
+                ) {
+                    $sections[] = new Content\Post_Type( $this, $post_type );
                 }
             }
         }
@@ -208,8 +178,9 @@ class Customizer extends Singleton {
 	 * @access      public
      */
     public function enqueue() {
-        wp_enqueue_script( 'jentil-customizer',
-        get_template_directory_uri() . '/assets/javascript/customizer.js',
+        wp_enqueue_script(
+            'jentil-customizer',
+            get_template_directory_uri() . '/assets/javascript/customizer.js',
             array( 'jquery', 'customize-preview' ),
             '',
             true

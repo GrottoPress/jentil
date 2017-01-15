@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content 'before title' setting
+ * Content image alignment setting
  *
- * Add setting and control for our content 'before title'
+ * Add setting and control for our content image alignment
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content 'before title' setting
+ * Content image alignment setting
  *
- * Add setting and control for our content 'before title'
+ * Add setting and control for our content image alignment
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Before_Title extends Customizer\Setting {
+class Image_Alignment extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,18 +48,19 @@ class Before_Title extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_before_title' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_image_align' );
         $this->args = array(
-            'default' => '',
+            'default' => 'left',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label'     => esc_html__( 'Before title (comma-separated)', 'jentil' ),
-            'type'      => 'text',
+            'section' => $this->content->get( 'name' ),
+            'label' => esc_html__( 'Image alignment', 'jentil' ),
+            'type' => 'select',
+            'choices' => $this->content->get( 'image_alignments' ),
         );
 	}
 }

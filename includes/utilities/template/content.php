@@ -39,28 +39,14 @@ class Content {
     private $template;
     
     /**
-     * Context
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      private
-	 * 
-	 * @var         string         $context       Context
-	 */
-    private $context;
-    
-    /**
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Template $template, $context = '' ) {
+	public function __construct( Template $template ) {
 	    $this->template = $template;
-	    $this->context = sanitize_key( $context );
 	}
-
-    // $this->template->is( 'search' )
-    //         ? 'search' : sanitize_key( get_query_var( 'post_type' ) );
 	
 	/**
      * Get setting
@@ -73,181 +59,43 @@ class Content {
      * 
      * @return      mixed          Setting value
      */
-    public function get( $setting, $default = '' ) {
-        $setting_name = $setting . '_name';
-
-        if ( ! is_callable( array( $this, $setting_name ) ) ) {
+    public function get_mod( $setting, $default = '' ) {
+        if ( ! ( $name = $this->get_mod_name( $setting ) ) ) {
             return false;
         }
 
-        return get_theme_mod( $this->$setting_name( $this->context ), $default );
+        return get_theme_mod( $name, $default );
     }
 
     /**
-     * Get sticky post setting name
+     * Get setting name
      * 
      * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          sticky posts setting name
-     */
-    public function sticky_posts_name( $template ) {
-        return sanitize_key( $template . '_content_sticky_posts' );
-    }
-
-    /**
-     * Get class setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
+     * @access      public
      * 
      * @return      string          Setting name
      */
-    public function class_name( $template ) {
-        return sanitize_key( $template . '_content_class' );
-    }
+    public function get_mod_name( $setting ) {
+        $name = '';
 
-    /**
-     * Get layout setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Layout setting name
-     */
-    public function layout_name( $template ) {
-        return sanitize_key( $template . '_content_layout' );
-    }
+        if ( $this->template->is( 'tax' ) ) {
+            $name = get_query_var( 'taxonomy' ) . '_taxonomy_content_' . $setting;
+        } elseif ( $this->template->is( 'category' ) ) {
+            $name = 'category_taxonomy_content_' . $setting;
+        } elseif ( $this->template->is( 'tag' ) ) {
+            $name = 'tag_taxonomy_content_' . $setting;
+        } elseif ( $this->template->is( 'post_type_archive' ) ) {
+            $name = get_query_var( 'post_type' ) . '_post_type_content_' . $setting;
+        } elseif ( $this->template->is( 'home' ) ) {
+            $name = 'post_post_type_content_' . $setting;
+        } elseif ( $this->template->is( 'date' ) ) {
+            $name = 'date_content_' . $setting;
+        } elseif ( $this->template->is( 'search' ) ) {
+            $name = 'search_content_' . $setting;
+        } elseif ( $this->template->is( 'author' ) ) {
+            $name = 'author_content_' . $setting;
+        }
 
-    /**
-     * Get number setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Number of posts setting name
-     */
-    public function number_name( $template ) {
-        return sanitize_key( $template . '_content_number' );
-    }
-
-    /**
-     * Get 'before_title' setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          'before_title' setting name
-     */
-    public function before_title_name( $template ) {
-        return sanitize_key( $template . '_content_before_title' );
-    }
-
-    /**
-     * Get title length setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Title length setting name
-     */
-    public function title_words_name( $template ) {
-        return sanitize_key( $template . '_content_title_words' );
-    }
-
-    /**
-     * Get title position setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Title position setting name
-     */
-    public function title_position_name( $template ) {
-        return sanitize_key( $template . '_content_title_position' );
-    }
-
-    /**
-     * Get after title setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          After title setting name
-     */
-    public function after_title_name( $template ) {
-        return sanitize_key( $template . '_content_after_title' );
-    }
-
-    /**
-     * Get thumbnail size setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Thumbnail size setting name
-     */
-    public function thumbnail_name( $template ) {
-        return sanitize_key( $template . '_content_thumbnail' );
-    }
-
-    /**
-     * Get thumbnail alignment setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Thumbnail alignment setting name
-     */
-    public function thumbnail_alignment_name( $template ) {
-        return sanitize_key( $template . '_content_thumbnail_alignment' );
-    }
-
-    /**
-     * Get text offset setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Text offset setting name
-     */
-    public function text_offset_name( $template ) {
-        return sanitize_key( $template . '_content_text_offset' );
-    }
-
-    /**
-     * Get excerpt length setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Excerpt length setting name
-     */
-    public function excerpt_name( $template ) {
-        return sanitize_key( $template . '_content_excerpt' );
-    }
-
-    /**
-     * Get after content setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          After content setting name
-     */
-    public function after_content_name( $template ) {
-        return sanitize_key( $template . '_content_after_content' );
-    }
-
-    /**
-     * Get pagination setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Pagination setting name
-     */
-    public function pagination_name( $template ) {
-        return sanitize_key( $template . '_content_pagination' );
+        return sanitize_key( $name );
     }
 }

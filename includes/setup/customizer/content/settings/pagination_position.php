@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content class setting
+ * Content pagination setting
  *
- * Add setting and control for our content class
+ * Add setting and control for our content pagination
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content class setting
+ * Content pagination setting
  *
- * Add setting and control for our content class
+ * Add setting and control for our content pagination
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Wrap_Class extends Customizer\Setting {
+class Pagination_Position extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,18 +48,19 @@ class Wrap_Class extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_class' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_pagination_position' );
         $this->args = array(
-            'default' => 'archive-posts big',
+            'default' => 'bottom',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label'     => esc_html__( 'Wrapper class', 'jentil' ),
-            'type'      => 'text',
+            'section' => $this->content->get( 'name' ),
+            'label' => esc_html__( 'Pagination position', 'jentil' ),
+            'type' => 'select',
+            'choices' => $this->content->get( 'pagination_positions' ),
         );
 	}
 }

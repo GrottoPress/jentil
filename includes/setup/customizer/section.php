@@ -83,13 +83,19 @@ abstract class Section {
 	}
 
     /**
-     * Get section name
+     * Get attributes
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function name() {
-        return $this->name;
+    public function get( $attribute ) {
+        $disallow = array( 'args' );
+
+        if ( in_array( $attribute, $disallow ) ) {
+            return null;
+        }
+
+        return $this->$attribute;
     }
 
     /**

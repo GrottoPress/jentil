@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Author template layout customizer setting
+ * Error 404 template layout customizer setting
  *
- * Add setting and control for our author template
+ * Add settings and controls for our Error 404 template
  * layout options in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Layout;
+namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Author template layout customizer setting
+ * Error 404 template layout customizer setting
  *
- * Add setting and control for our author template
+ * Add settings and controls for our Error 404 template
  * layout options in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Author extends Customizer\Setting {
+class Error_404 extends Customizer\Setting {
     /**
      * Layout section
      *
@@ -50,17 +50,17 @@ class Author extends Customizer\Setting {
 	 */
 	public function __construct( Customizer\Layout\Layout $layout ) {
         $this->layout = $layout;
-        $this->name = 'author_archive_layout';
+        $this->name = 'error_404_layout';
         $this->args = array(
-            'default'       =>  $this->layout->default(),
+            'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',
         );
 
         $this->control = array(
-            'section'   => $this->layout->name(),
-            'label'     => esc_html__( 'Author archive', 'jentil' ),
+            'section'   => $this->layout->get( 'name' ),
+            'label'     => esc_html__( 'Error 404', 'jentil' ),
             'type'      => 'select',
-            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
         );
 	}
 }

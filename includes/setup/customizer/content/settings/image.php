@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content 'after title' setting
+ * Content image/thumbnail setting
  *
- * Add setting and control for our content 'after title'
+ * Add setting and control for our content image/thumbnail
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content 'after title' setting
+ * Content image/thumbnail setting
  *
- * Add setting and control for our content 'after title'
+ * Add setting and control for our content image/thumbnail
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class After_Title extends Customizer\Setting {
+class Image extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,17 +48,17 @@ class After_Title extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_after_title' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_image' );
         $this->args = array(
-            'default' => 'published_date, comments_link',
+            'default' => 'mini-thumb',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label' => esc_html__( 'After title (comma-separated)', 'jentil' ),
+            'section' => $this->content->get( 'name' ),
+            'label' => esc_html__( 'Image size', 'jentil' ),
             'type' => 'text',
         );
 	}

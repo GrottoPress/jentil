@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Date template layout customizer setting
+ * Taxonomy template layout customizer setting
  *
- * Add setting and control for our Date template
- * layout setting in the customizer.
+ * Add settings and controls for our Taxonomy template
+ * layout options in the customizer.
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Layout;
+namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,17 +21,17 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Date template layout customizer setting
+ * Taxonomy template layout customizer setting
  *
- * Add setting and control for our Date template
- * layout setting in the customizer.
+ * Add settings and controls for our Taxonomy template
+ * layout options in the customizer.
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Date extends Customizer\Setting {
+class Taxonomy extends Customizer\Setting {
     /**
      * Layout section
      *
@@ -48,19 +48,19 @@ class Date extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Layout\Layout $layout ) {
+	public function __construct( Customizer\Layout\Layout $layout, $taxonomy ) {
         $this->layout = $layout;
-        $this->name = 'date_archive_layout';
+        $this->name = sanitize_key( $taxonomy->name . '_taxonomy_layout' );
         $this->args = array(
-            'default'       =>  $this->layout->default(),
+            'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',
         );
 
         $this->control = array(
-            'section'   => $this->layout->name(),
-            'label'     => esc_html__( 'Date archive', 'jentil' ),
+            'section'   => $this->layout->get( 'name' ),
+            'label'     => sprintf( esc_html__( '%s taxonomy archive', 'jentil' ), $taxonomy->labels->singular_name ),
             'type'      => 'select',
-            'choices'   => $this->layout->customizer()->template()->layout()->layouts_ids_names(),
+            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
         );
 	}
 }

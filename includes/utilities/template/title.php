@@ -53,30 +53,24 @@ class Title {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function get() {
+	public function get_it() {
 		$title = get_bloginfo( 'name' );
 		
-		if ( ! $this->template->get() ) {
+		if ( ! ( $type = $this->template->type() ) ) {
 			return $title;
 		}
 		
-		foreach ( $this->template->get() as $template ) {
-			$is_template = 'is_' . $template;
-	    	
-	    	if ( is_callable( $is_template ) ) {
-	    		$template_title = $template . '_title';
-	    		$title_template = 'title_' . $template;
-	    		
-	    		if ( $is_template() ) {
-	    			if ( is_callable( array( $this, $template_title ) ) ) {
-	    				$title = $this->$template_title();
-	    				break;
-	    			} elseif ( is_callable( array( $this, $title_template ) ) ) {
-	    				$title = $this->$title_template();
-	    				break;
-	    			}
-	    		}
-	    	}
+		foreach ( $type as $template ) {
+			$template_title = $template . '_title';
+    		$title_template = 'title_' . $template;
+    		
+    		if ( is_callable( array( $this, $template_title ) ) ) {
+				$title = $this->$template_title();
+				break;
+			} elseif ( is_callable( array( $this, $title_template ) ) ) {
+				$title = $this->$title_template();
+				break;
+			}
 		}
 		
 		return apply_filters( 'jentil_template_title', $title, $template );

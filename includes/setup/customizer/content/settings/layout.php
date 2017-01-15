@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content image alignment setting
+ * Content layout setting
  *
- * Add setting and control for our content image alignment
+ * Add setting and control for our content layout
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content image alignment setting
+ * Content layout setting
  *
- * Add setting and control for our content image alignment
+ * Add setting and control for our content layout
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Image_Alignment extends Customizer\Setting {
+class Layout extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,19 +48,19 @@ class Image_Alignment extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_image_align' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_layout' );
         $this->args = array(
-            'default' => 'left',
+            'default' => 'stack',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label' => esc_html__( 'Image alignment', 'jentil' ),
-            'type' => 'select',
-            'choices' => $this->content->image_alignments(),
+            'section' => $this->content->get( 'name' ),
+            'label'     => esc_html__( 'Layout', 'jentil' ),
+            'type'      => 'select',
+            'choices'   => $this->content->get( 'layouts' ),
         );
 	}
 }

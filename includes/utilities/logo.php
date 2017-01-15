@@ -34,12 +34,12 @@ class Logo {
      * 
      * @return      string      The logo markup limked to home
      */
-    public function get() {
+    public function get_markup() {
         if ( function_exists( 'get_custom_logo' ) ) {
             return get_custom_logo();
         }
         
-        $custom_logo_id = get_theme_mod( 'custom_logo' );
+        $custom_logo_id = $this->get_mod();
 
         if ( $custom_logo_id ) {
             return sprintf( '<a href=\'%1$s\' class=\'custom-logo-link\' rel=\'home\' itemprop=\'url\'>%2$s</a>',
@@ -55,6 +55,18 @@ class Logo {
             return sprintf( '<a href=\'%1$s\' class=\'custom-logo-link jentil-logo-link\' style=\'display:none;\'><img class=\'custom-logo\' data-width=\'%2$s\' data-height=\'%3$s\' data-src=\'%4$s\' data-alt=\'%5$s\' itemprop=\'logo\' /></a>',
             esc_url( home_url( '/' ) ), esc_attr( $this->width() ), esc_attr( $this->height() ), esc_attr( $this->URL() ), esc_attr( '' ) );
         }
+    }
+
+    /**
+     * Get colophon
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @return      string          The colophon text
+     */
+    public function get_mod( $default = '' ) {
+        return absint( get_theme_mod( 'custom_logo', $default ) );
     }
     
     /**

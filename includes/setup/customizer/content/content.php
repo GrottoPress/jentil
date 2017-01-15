@@ -31,45 +31,79 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Content extends Customizer\Section {
+abstract class Content extends Customizer\Section {
     /**
-     * Context
+     * Pagination positions
      *
      * @since       Jentil 0.1.0
-     * @access      private
+     * @access      protected
      * 
-     * @var     array      $context       Context
+     * @var     array      $pagination_positions       Pagination positions
      */
-    private $context;
+    protected $pagination_positions;
+
+    /**
+     * Title positions
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $title_positions       Title positions
+     */
+    protected $title_positions;
+
+    /**
+     * Layouts
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $layouts       Layouts
+     */
+    protected $layouts;
+
+    /**
+     * Image alignments
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $image_alignments       Image alignments
+     */
+    protected $image_alignments;
 
     /**
 	 * Constructor
-     *
-     * @var         array          $context      Type of content section to add
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      public
+	 * @access      protected
 	 */
-	public function __construct( Customizer\Customizer $customizer, $context ) {
-        $this->context = $context;
-        $this->name = sanitize_key( $this->context['name'] . '_content' );
-        $this->args = array(
-            'title' => sprintf( esc_html__( '%s Content', 'jentil' ), $this->context['title'] ),
-            //'priority' => ( int ) $this->context['priority'],
+	protected function __construct( Customizer\Customizer $customizer ) {
+       $this->title_positions = array(
+            'side' => esc_html__( 'Side', 'jentil' ),
+            'top' => esc_html__( 'Top', 'jentil' ),
+        );
+
+        $this->image_alignments = array(
+            'none' => esc_html__( 'none', 'jentil' ),
+            'left' => esc_html__( 'Left', 'jentil' ),
+            'right' => esc_html__( 'Right', 'jentil' ),
+        );
+
+        $this->pagination_positions = array(
+            'none' => esc_html__( 'None', 'jentil' ),
+            'top' => esc_html__( 'Top', 'jentil' ),
+            'bottom' => esc_html__( 'Bottom', 'jentil' ),
+            'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
+        );
+
+        $this->layouts = array(
+            'stack' => esc_html__( 'Stack', 'jentil' ),
+            'grid' => esc_html__( 'Grid', 'jentil' ),
         );
 
         parent::__construct( $customizer );
 	}
-
-    /**
-     * Get context
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
-     */
-    // public function context() {
-    //     return $this->context;
-    // }
 
 	/**
      * Get settings
@@ -80,88 +114,22 @@ class Content extends Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        if ( 'sticky_posts' != $this->context['name'] ) {
-            $settings[] = new Sticky_Posts( $this );
-        }
-
-        $settings[] = new Wrap_Class( $this );
-        $settings[] = new Layout( $this );
-        $settings[] = new Number( $this );
-        $settings[] = new Before_Title( $this );
-        $settings[] = new Title_Words( $this );
-        $settings[] = new Title_Position( $this );
-        $settings[] = new After_Title( $this );
-        $settings[] = new Image( $this );
-        $settings[] = new Image_Alignment( $this );
-        $settings[] = new Image_Margin( $this );
-        $settings[] = new Text_Offset( $this );
-        $settings[] = new Excerpt( $this );
-        $settings[] = new After_Content( $this );
-        $settings[] = new Pagination_Position( $this );
+        $settings[] = new Settings\Sticky_Posts( $this );
+        $settings[] = new Settings\Wrap_Class( $this );
+        $settings[] = new Settings\Layout( $this );
+        $settings[] = new Settings\Number( $this );
+        $settings[] = new Settings\Before_Title( $this );
+        $settings[] = new Settings\Title_Words( $this );
+        $settings[] = new Settings\Title_Position( $this );
+        $settings[] = new Settings\After_Title( $this );
+        $settings[] = new Settings\Image( $this );
+        $settings[] = new Settings\Image_Alignment( $this );
+        $settings[] = new Settings\Image_Margin( $this );
+        $settings[] = new Settings\Text_Offset( $this );
+        $settings[] = new Settings\Excerpt( $this );
+        $settings[] = new Settings\After_Content( $this );
+        $settings[] = new Settings\Pagination_Position( $this );
 
         return $settings;
-    }
-
-	/**
-     * Title positions
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Title positions
-     */
-    public function title_positions() {
-        return array(
-            'side' => esc_html__( 'Side', 'jentil' ),
-            'top' => esc_html__( 'Top', 'jentil' ),
-        );
-    }
-    
-    /**
-     * Image alignments
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Image alignments
-     */
-    public function image_alignments() {
-        return array(
-            'none' => esc_html__( 'none', 'jentil' ),
-            'left' => esc_html__( 'Left', 'jentil' ),
-            'right' => esc_html__( 'Right', 'jentil' ),
-        );
-    }
-    
-    /**
-     * Pagination positions
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Pagination positions
-     */
-    public function pagination_positions() {
-        return array(
-            'none' => esc_html__( 'None', 'jentil' ),
-            'top' => esc_html__( 'Top', 'jentil' ),
-            'bottom' => esc_html__( 'Bottom', 'jentil' ),
-            'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
-        );
-    }
-
-    /**
-     * Layouts
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array          Layouts
-     */
-    public function layouts() {
-        return array(
-            'stack' => esc_html__( 'Stack', 'jentil' ),
-            'grid' => esc_html__( 'Grid', 'jentil' ),
-        );
     }
 }

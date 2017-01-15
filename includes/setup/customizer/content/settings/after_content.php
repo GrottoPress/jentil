@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content title length setting
+ * Content 'after content' setting
  *
- * Add setting and control for our content title length
+ * Add setting and control for our content 'after content'
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content title setting
+ * Content 'after content' setting
  *
- * Add setting and control for our content title length
+ * Add setting and control for our content 'after content'
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Title_Words extends Customizer\Setting {
+class After_Content extends Customizer\Setting {
     /**
      * Content section
      *
@@ -44,22 +44,24 @@ class Title_Words extends Customizer\Setting {
     
     /**
 	 * Constructor
+     *
+     * @var         object      $content        Instance of section of this setting
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_title_words' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_after_content' );
         $this->args = array(
-            'default' => -1,
+            'default' => 'category, post_tag',
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label'     => esc_html__( 'Title length (number of words)', 'jentil' ),
-            'type'      => 'number',
+            'section' => $this->content->get( 'name' ),
+            'label' => esc_html__( 'After content (comma-separated)', 'jentil' ),
+            'type' => 'text',
         );
 	}
 }

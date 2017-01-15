@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Content image margin setting
+ * Content number setting
  *
- * Add setting and control for our content image margin
+ * Add setting and control for our content number
  * setting in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,9 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup\Customizer;
 
 /**
- * Content image margin setting
+ * Content number setting
  *
- * Add setting and control for our content image margin
+ * Add setting and control for our content number
  * setting in the customizer.
  *
  * @link			https://jentil.grotttopress.com
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Image_Margin extends Customizer\Setting {
+class Number extends Customizer\Setting {
     /**
      * Content section
      *
@@ -48,18 +48,18 @@ class Image_Margin extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Content\Content $content ) {
+	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->name() . '_image_margin' );
+        $this->name = sanitize_key( $this->content->get( 'name' ) . '_number' );
         $this->args = array(
-            'default' => '',
+            'default' => ( int ) get_option( 'posts_per_page' ),
             //'transport' => 'postMessage',
         );
 
         $this->control = array(
-            'section' => $this->content->name(),
-            'label' => esc_html__( 'Image margin', 'jentil' ),
-            'type' => 'text',
+            'section' => $this->content->get( 'name' ),
+            'label'     => esc_html__( 'Number of posts', 'jentil' ),
+            'type'      => 'number',
         );
 	}
 }

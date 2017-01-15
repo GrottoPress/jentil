@@ -12,7 +12,7 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Logo;
+namespace GrottoPress\Jentil\Setup\Customizer\Logo\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -32,7 +32,7 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Logo_ extends Customizer\Setting {
+class Logo extends Customizer\Setting {
     /**
      * Logo section
      *
