@@ -50,10 +50,7 @@ class Metaboxes extends Singleton {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	protected function __construct() {
-	    $template = new Template();
-        $this->layouts = $template->get( 'layout' )->layouts_ids_names();
-	}
+	protected function __construct() {}
     
     /**
 	 * Meta boxes setup.
@@ -65,7 +62,10 @@ class Metaboxes extends Singleton {
 	 * @action      load-post-new.php
 	 */
 	public function setup() {
-		add_action( 'add_meta_boxes', array( $this, 'add' ), 10, 2 );
+		$template = new Template();
+        $this->layouts = $template->get( 'layout' )->layouts_ids_names();
+
+        add_action( 'add_meta_boxes', array( $this, 'add' ), 10, 2 );
 		add_action( 'save_post', array( $this, 'save' ) );
 		
 		/**

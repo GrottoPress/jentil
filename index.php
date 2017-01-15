@@ -179,8 +179,9 @@ if ( $template->is( 'singular' ) ) {
 // Debugging
 // echo 'classes: ' . $wrap_class . '<br />';
 // echo 'title_pos: ' . $title_pos . '<br />';
-echo 'excerpt: ' . $excerpt . '<br />';
+//echo 'excerpt: ' . $excerpt . '<br />';
 // echo 'Template: '; print_r( $template->get() );
+//echo '<pre>'; print_r( get_taxonomy( 'category' ) ); echo '</pre>';
 // End debugging
 
 /**

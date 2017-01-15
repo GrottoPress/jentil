@@ -81,19 +81,7 @@ class Customizer extends Singleton {
 	 * @since       Jentil 0.1.0
 	 * @access      protected
 	 */
-	protected function __construct() {
-        $this->post_types = get_post_types( array(
-            'public' => true,
-            'show_ui' => true,
-        ), 'objects' );
-        $this->taxonomies = get_taxonomies( array(
-            'public' => true,
-            'show_ui' => true,
-        ), 'objects' );
-        $this->template = new Template();
-
-        $this->sections = $this->sections();
-	}
+	protected function __construct() {}
 
     /**
      * Get attributes
@@ -160,6 +148,18 @@ class Customizer extends Singleton {
      * @access      public
      */
     public function add( $wp_customize ) {
+        $this->template = new Template();
+        $this->post_types = get_post_types( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+        $this->taxonomies = get_taxonomies( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+
+        $this->sections = $this->sections();
+
         if ( empty( $this->sections ) ) {
             return;
         }

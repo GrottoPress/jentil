@@ -58,7 +58,11 @@ class Taxonomy extends Customizer\Setting {
 
         $this->control = array(
             'section'   => $this->layout->get( 'name' ),
-            'label'     => sprintf( esc_html__( '%s taxonomy archive', 'jentil' ), $taxonomy->labels->singular_name ),
+            'label'     => sprintf(
+                esc_html__('%1$s %2$s taxonomy archive', 'jentil' ),
+                ucwords( $taxonomy->object_type[0] ),
+                $taxonomy->labels->singular_name
+            ),
             'type'      => 'select',
             'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
         );
