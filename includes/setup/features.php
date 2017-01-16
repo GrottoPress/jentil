@@ -207,7 +207,7 @@ class Features extends Singleton {
      * @action      after_setup_theme
      */
     public function add_image_sizes() {
-        set_post_thumbnail_size( 480, 260, true );
+        set_post_thumbnail_size( 600, 400, true );
         
     	add_image_size( 'mini-thumb', 100, 100, true );
     	add_image_size( 'micro-thumb', 75, 75, true );

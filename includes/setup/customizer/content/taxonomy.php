@@ -53,11 +53,12 @@ class Taxonomy extends Content {
     public function __construct( Customizer\Customizer $customizer, $taxonomy ) {
         $this->taxonomy = $taxonomy;
         $this->name = sanitize_key( $this->taxonomy->name . '_taxonomy_content' );
+        $post_type = $this->taxonomy->object_type[0];
         $this->args = array(
             'title' => sprintf(
                 esc_html__( '%1$s %2$s Content', 'jentil' ),
-                ucwords( $this->taxonomy->object_type[0] ),
-                $this->taxonomy->labels->singular_name
+                ( 'post' == $post_type ? '' : ucwords( $post_type ) ),
+                str_ireplace( $post_type, '', $this->taxonomy->labels->singular_name )
             ),
             //'priority' => 200,
         );
@@ -90,6 +91,7 @@ class Taxonomy extends Content {
         $settings[] = new Settings\Image_Margin( $this );
         $settings[] = new Settings\Text_Offset( $this );
         $settings[] = new Settings\Excerpt( $this );
+        $settings[] = new Settings\More_Link( $this );
         $settings[] = new Settings\After_Content( $this );
         $settings[] = new Settings\Pagination_Position( $this );
 

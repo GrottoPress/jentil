@@ -89,6 +89,7 @@ class Post_Type extends Content {
         $settings[] = new Settings\Image_Margin( $this );
         $settings[] = new Settings\Text_Offset( $this );
         $settings[] = new Settings\Excerpt( $this );
+        $settings[] = new Settings\More_Link( $this );
         $settings[] = new Settings\After_Content( $this );
         $settings[] = new Settings\Pagination_Position( $this );
 

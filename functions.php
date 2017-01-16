@@ -28,14 +28,17 @@ if ( ! defined( 'WPINC' ) ) {
 
 $satisfied = true;
 
-if ( ! class_exists( '\GrottoPress\MagPack\Setup\MagPack' ) ) {
+if ( ! is_plugin_active( 'magpack/magpack.php' ) ) {
 	$satisfied = false;
 
-	if ( ! is_admin() ) {
-		wp_die( esc_html__(
-			'This theme requires <a href="#">MagPack</a> plugin. Kindly install and activate that first.',
-			'jentil'
-		) );
+	$message = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Kindly install and activate that first.', 'jentil' );
+
+	if ( is_admin() ) {
+		add_action( 'admin_notices', function () use ( $message ) {
+			echo '<div class="notice notice-error"><p>' . $message . '</p></div>';
+		} );
+	} else {
+		wp_die( $message );
 	}
 }
 

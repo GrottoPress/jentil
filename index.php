@@ -38,6 +38,7 @@ if ( $template->is( 'singular' ) ) {
 	$text_offset = '';
 	$wrap_class = 'singular-post';
 	$layout	= 'stack';
+	$more_link = '';
 
 	$pag = '';
 	$pag_pos = '';
@@ -94,6 +95,7 @@ if ( $template->is( 'singular' ) ) {
 	$text_offset = $template_content->get_mod( 'text_offset' );
 	$wrap_class = $template_content->get_mod( 'class', 'archive-posts big' );
 	$layout	= $template_content->get_mod( 'layout', 'stack' );
+	$more_link = $template_content->get_mod( 'more_link', esc_html__( 'read more', 'jentil' ) );
 
 	$pag = 'nav, num';
 	$pag_pos = $template_content->get_mod( 'pagination_position', 'bottom' );
@@ -229,7 +231,8 @@ if ( ! $template->is( 'singular' ) && $sticky_posts ) {
 			title_link="' . $title_link . '" 
 			orderby="' . $orderby . '" 
 			orderby_2="' . $orderby_2 . '" 
-			text_offset="' . $s_text_offset . '"
+			text_offset="' . $s_text_offset . '" 
+			more_link ="' . $more_link . '"
 		]'
 	);
 }
@@ -273,7 +276,8 @@ $query .= do_shortcode(
 		title_link="' . $title_link . '" 
 		orderby="' . $orderby . '" 
 		orderby_2="' . $orderby_2 . '" 
-		text_offset="' . $text_offset . '"
+		text_offset="' . $text_offset . '" 
+		more_link ="' . $more_link . '"
 	]'
 );
 

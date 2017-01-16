@@ -653,6 +653,10 @@ li {
     margin-top: 20px;
 }
 
+.navigation-wrap.max-screen-920 {
+    margin-bottom: 20px;
+}
+
 /*#header .max-screen-920 {
     margin-top: 20px;
 }*/
