@@ -114,14 +114,15 @@ abstract class Content extends Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Sticky_Posts( $this );
         $settings[] = new Settings\Wrap_Class( $this );
         $settings[] = new Settings\Layout( $this );
         $settings[] = new Settings\Number( $this );
         $settings[] = new Settings\Before_Title( $this );
+        $settings[] = new Settings\Before_Title_Separator( $this );
         $settings[] = new Settings\Title_Words( $this );
         $settings[] = new Settings\Title_Position( $this );
         $settings[] = new Settings\After_Title( $this );
+        $settings[] = new Settings\After_Title_Separator( $this );
         $settings[] = new Settings\Image( $this );
         $settings[] = new Settings\Image_Alignment( $this );
         $settings[] = new Settings\Image_Margin( $this );
@@ -129,7 +130,10 @@ abstract class Content extends Customizer\Section {
         $settings[] = new Settings\Excerpt( $this );
         $settings[] = new Settings\More_Link( $this );
         $settings[] = new Settings\After_Content( $this );
+        $settings[] = new Settings\After_Content_Separator( $this );
         $settings[] = new Settings\Pagination_Position( $this );
+        $settings[] = new Settings\Pagination_Previous_Label( $this );
+        $settings[] = new Settings\Pagination_Next_Label( $this );
 
         return $settings;
     }

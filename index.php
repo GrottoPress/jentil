@@ -42,14 +42,19 @@ if ( $template->is( 'singular' ) ) {
 
 	$pag = '';
 	$pag_pos = '';
+	$pag_prev_label = '';
+	$pag_next_label = '';
 
 	$img = '';
 	$img_align = '';
 	$img_margin = '';
 
 	$before_title = '';
+	$before_title_sep = '';
 	$after_title = $template->is( 'singular', 'post' ) ? 'jentil_single_post_after_title' : '';
+	$after_title_sep = '';
 	$after_content= '';
+	$after_content_sep = '';
 
 	$title = -1;
 	$title_pos = 'top';
@@ -99,14 +104,19 @@ if ( $template->is( 'singular' ) ) {
 
 	$pag = 'nav, num';
 	$pag_pos = $template_content->get_mod( 'pagination_position', 'bottom' );
+	$pag_prev_label = $template_content->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) );
+	$pag_next_label = $template_content->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) );
 
 	$img = $template_content->get_mod( 'image', 'mini-thumb' );
 	$img_align = $template_content->get_mod( 'image_alignment', 'left' );
 	$img_margin = $template_content->get_mod( 'image_margin' );
 
 	$before_title = $template_content->get_mod( 'before_title' );
+	$before_title_sep = $template_content->get_mod( 'before_title_separator', ' | ' );
 	$after_title = $template_content->get_mod( 'after_title', 'published_date, comments_link' );
+	$after_title_sep = $template_content->get_mod( 'after_title_separator', ' | ' );
 	$after_content = $template_content->get_mod( 'after_content', 'category, post_tag' );
+	$after_content_sep = $template_content->get_mod( 'after_content_separator', ' | ' );
 
 	$title = $template_content->get_mod( 'title_words', -1 );
 	$title_pos = $template_content->get_mod( 'title_position', 'side' );
@@ -167,15 +177,21 @@ if ( $template->is( 'singular' ) ) {
 	$s_num = $sticky->get_mod( 'number', 3 );
 	$s_wrap_class = $sticky->get_mod( 'class', 'sticky-posts big' );
 	$s_text_offset = $sticky->get_mod( 'text_offset' );
-	$s_pag_pos = $sticky->get_mod( 'pagination_position', 'none' );
 	$s_layout = $sticky->get_mod( 'layout', 'stack' );
+
+	$s_pag_pos = $sticky->get_mod( 'pagination_position', 'none' );
+	$s_pag_prev_label = $sticky->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) );
+	$s_pag_next_label = $sticky->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) );
 
 	$s_title_pos = $sticky->get_mod( 'title_position', 'side' );
 	$s_title = $sticky->get_mod( 'title_words', -1 );
 
 	$s_before_title	= $sticky->get_mod( 'before_title' );
+	$s_before_title_sep = $sticky->get_mod( 'before_title_separator', ' | ' );
 	$s_after_title = $sticky->get_mod( 'after_title', 'published_date, comments_link' );
+	$s_after_title_sep = $sticky->get_mod( 'after_title_separator', ' | ' );
 	$s_after_content = $sticky->get_mod( 'after_content', 'category, post_tag' );
+	$s_after_content_sep = $sticky->get_mod( 'after_content_separator', ' | ' );
 }
 
 // Debugging
@@ -200,37 +216,56 @@ if ( ! $template->is( 'singular' ) && $sticky_posts ) {
 			num="' . $s_num . '" 
 			layout="' . $s_layout . '" 
 			post_type="' . $post_type . '" 
+
 			cat_id="' . $cat_id . '" 
 			cat_in="' . $cat_in . '" 
 			cat_not_in="' . $cat_not_in . '" 
 			cat_and="' . $cat_and . '" 
+
 			tag_id="' . $tag_id . '" 
 			tag_in="' . $tag_in . '" 
 			tag_not_in="' . $tag_not_in . '" 
 			tag_and="' . $tag_and . '" 
+
 			tax="' . $tax_slug . '" 
 			tax_term="' . $term_id . '" 
+
 			date_year="' . $year . '" 
 			date_month="' . $month . '" 
 			date_day="' . $day . '" 
+
 			author_in="' . $author_id . '" 
-			title_pos="' . $s_title_pos . '" 
+
 			img="' . $s_img . '" 
 			img_align="' . $s_img_align . '" 
+
 			after_title="' . $s_after_title . '" 
+			after_title_sep="' . $s_after_title_sep . '" 
 			after_content="' . $s_after_content . '" 
+			after_content_sep="' . $s_after_content_sep . '" 
 			before_title="' . $s_before_title . '" 
+			before_title_sep="' . $s_before_title_sep . '" 
+
 			excerpt="' . $s_excerpt . '" 
 			content_pag="1" 
+
 			pag="' . $pag . '" 
 			pag_pos="' . $s_pag_pos . '" 
+			pag_prev_label="' . $s_pag_prev_label . '" 
+			pag_next_label="' . $s_pag_next_label . '" 
+
 			class="' . $s_wrap_class . '" 
-			post_in="sticky_posts" 
 			id="sticky-posts" 
+
+			post_in="sticky_posts" 
+
+			title_pos="' . $s_title_pos . '" 
 			title_tag="' . $title_tag . '" 
 			title_link="' . $title_link . '" 
+
 			orderby="' . $orderby . '" 
 			orderby_2="' . $orderby_2 . '" 
+
 			text_offset="' . $s_text_offset . '" 
 			more_link ="' . $more_link . '"
 		]'
@@ -242,40 +277,60 @@ $query .= do_shortcode(
 		num="' . $num . '" 
 		layout="' . $layout . '" 
 		post_type="' . $post_type . '" 
+
 		cat_id="' . $cat_id . '" 
 		cat_in="' . $cat_in . '" 
 		cat_not_in="' . $cat_not_in . '" 
 		cat_and="' . $cat_and . '" 
+
 		tag_id="' . $tag_id . '" 
 		tag_in="' . $tag_in . '" 
 		tag_not_in="' . $tag_not_in . '" 
 		tag_and="' . $tag_and . '" 
+
 		tax="' . $tax_slug . '" 
 		tax_term="' . $term_id . '" 
-		title_pos="' . $title_pos . '" 
+
 		img="' . $img . '" 
 		img_align="' . $img_align . '" 
+
 		after_title="' . $after_title . '" 
+		after_title_sep="' . $after_title_sep . '" 
 		after_content="' . $after_content . '" 
+		after_content_sep="' . $after_content_sep . '" 
 		before_title="' . $before_title . '" 
-		excerpt="' . $excerpt . '" 
+		before_title_sep="' . $before_title_sep . '" 
+
 		date_year="' . $year . '" 
 		date_month="' . $month . '" 
 		date_day="' . $day . '" 
+
 		author_in="' . $author_id . '" 
+
+		excerpt="' . $excerpt . '" 
 		content_pag="1" 
+
 		pag="' . $pag . '" 
 		pag_pos="' . $pag_pos . '" 
-		class="' . $wrap_class . '" 
+		pag_prev_label="' . $pag_prev_label . '" 
+		pag_next_label="' . $pag_next_label . '" 
+
 		search="' . $search . '" 
+
 		post_in="' . $post_id . '" 
 		post_not_in="' . $post_not_in . '" 
 		page_id="' . $page_id . '" 
+
 		id="" 
+		class="' . $wrap_class . '" 
+
+		title_pos="' . $title_pos . '" 
 		title_tag="' . $title_tag . '" 
 		title_link="' . $title_link . '" 
+
 		orderby="' . $orderby . '" 
 		orderby_2="' . $orderby_2 . '" 
+
 		text_offset="' . $text_offset . '" 
 		more_link ="' . $more_link . '"
 	]'

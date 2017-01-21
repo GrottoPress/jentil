@@ -47,4 +47,18 @@ class Date extends Content {
 
         parent::__construct( $customizer );
     }
+
+    /**
+     * Get settings
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function settings() {
+        $settings = array();
+
+        $settings[] = new Settings\Sticky_Posts( $this );
+
+        return array_merge( $settings, parent::settings() );
+    }
 }
