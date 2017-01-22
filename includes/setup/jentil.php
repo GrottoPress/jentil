@@ -54,7 +54,7 @@ class Jentil extends Singleton {
 	 * @access      private
 	 */
 	private function language() {
-		$language = Language::get_instance();
+		$language = Language::get_instance( $this );
 		
 		add_action( 'after_setup_theme', array( $language, 'enable_translation' ) );
 	}
@@ -66,7 +66,7 @@ class Jentil extends Singleton {
 	 * @access      private
 	 */
 	private function features() {
-		$setup = Features::get_instance();
+		$setup = Features::get_instance( $this );
 		
 		add_action( 'after_setup_theme', array( $setup, 'set_content_width' ) );
 		add_action( 'after_setup_theme', array( $setup, 'enable_title_tag' ) );
@@ -87,7 +87,7 @@ class Jentil extends Singleton {
 	 * @access      private
 	 */
 	private function parts() {
-		$parts = Parts::get_instance();
+		$parts = Parts::get_instance( $this );
 		
 		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
 		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
@@ -112,7 +112,7 @@ class Jentil extends Singleton {
 	 * @access      private
 	 */
 	private function enqueue() {
-		$enqueue = Enqueue::get_instance();
+		$enqueue = Enqueue::get_instance( $this );
 		
 		add_action( 'wp_enqueue_scripts', array( $enqueue, 'scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $enqueue, 'styles' ) );
@@ -125,7 +125,7 @@ class Jentil extends Singleton {
 	 * @access      private
 	 */
 	private function customizer() {
-		$customizer = Customizer\Customizer::get_instance();
+		$customizer = Customizer\Customizer::get_instance( $this );
 		
 		add_action( 'customize_register', array( $customizer, 'add' ) );
 		add_action( 'customize_preview_init', array( $customizer, 'enqueue' ) );
@@ -138,7 +138,7 @@ class Jentil extends Singleton {
 	 * @access      private
 	 */
 	private function metaboxes() {
-		$boxes = Metaboxes::get_instance();
+		$boxes = Metaboxes::get_instance( $this );
 		
 		add_action( 'load-post.php', array( $boxes, 'setup' ) );
 		add_action( 'load-post-new.php', array( $boxes, 'setup' ) );
