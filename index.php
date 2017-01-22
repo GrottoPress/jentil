@@ -122,9 +122,9 @@ if ( $template->is( 'singular' ) ) {
 			);
 		}
 
-		if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
+		// if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
 			$sticky_args['post_type'] = $post_type;
-		}
+		// }
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
 			$sticky_args['cat']	= $cat;
@@ -231,9 +231,9 @@ if ( $template->is( 'singular' ) ) {
 		);
 	}
 
-	if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
-		$args['post_type'] = $post_type;
-	}
+	// if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
+		$args['post_type'] = get_query_var( 'post_type' );
+	// }
 
 	if ( ( $cat = get_query_var( 'cat' ) ) ) {
 		$args['cat']	= $cat;
