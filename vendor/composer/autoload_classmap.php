@@ -26,6 +26,7 @@ return array(
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Layout' => $baseDir . '/includes/setup/customizer/content/settings/layout.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\More_Link' => $baseDir . '/includes/setup/customizer/content/settings/more_link.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Number' => $baseDir . '/includes/setup/customizer/content/settings/number.php',
+    'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination' => $baseDir . '/includes/setup/customizer/content/settings/pagination.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination_Next_Label' => $baseDir . '/includes/setup/customizer/content/settings/pagination_next_label.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination_Position' => $baseDir . '/includes/setup/customizer/content/settings/pagination_position.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination_Previous_Label' => $baseDir . '/includes/setup/customizer/content/settings/pagination_previous_label.php',

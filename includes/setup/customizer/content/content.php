@@ -33,6 +33,16 @@ use GrottoPress\Jentil\Setup\Customizer;
  */
 abstract class Content extends Customizer\Section {
     /**
+     * Pagination types
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $pagination_types       Pagination types
+     */
+    protected $pagination_types;
+
+    /**
      * Pagination positions
      *
      * @since       Jentil 0.1.0
@@ -97,6 +107,11 @@ abstract class Content extends Customizer\Section {
             'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
         );
 
+        $this->pagination_types = array(
+            'normal' => esc_html__( 'Default', 'jentil' ),
+            'infinite_scroll' => esc_html__( 'infinite_scroll', 'jentil' ),
+        );
+
         $this->layouts = array(
             'stack' => esc_html__( 'Stack', 'jentil' ),
             'grid' => esc_html__( 'Grid', 'jentil' ),
@@ -131,6 +146,7 @@ abstract class Content extends Customizer\Section {
         $settings[] = new Settings\More_Link( $this );
         $settings[] = new Settings\After_Content( $this );
         $settings[] = new Settings\After_Content_Separator( $this );
+        $settings[] = new Settings\Pagination( $this );
         $settings[] = new Settings\Pagination_Position( $this );
         $settings[] = new Settings\Pagination_Previous_Label( $this );
         $settings[] = new Settings\Pagination_Next_Label( $this );

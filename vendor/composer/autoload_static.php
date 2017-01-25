@@ -62,6 +62,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Layout' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/layout.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\More_Link' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/more_link.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Number' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/number.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/pagination.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination_Next_Label' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/pagination_next_label.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination_Position' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/pagination_position.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Pagination_Previous_Label' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/pagination_previous_label.php',

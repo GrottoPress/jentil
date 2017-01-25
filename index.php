@@ -23,7 +23,7 @@ $template_title = $template->get( 'title' );
 $sticky_posts = $template_content->get_mod( 'sticky_posts', 1 );
 
 $posts_per_page = get_option( 'posts_per_page' );
-$pag = isset( $_GET['pag'] ) ? absint( $_GET['pag'] ) : 1;
+$page_number = isset( $_GET['pag'] ) ? absint( $_GET['pag'] ) : 1;
 
 /**
  * The query
@@ -62,7 +62,7 @@ if ( $template->is( 'singular' ) ) {
 
 	$query .= ( new MagPack\Utilities\Query( $args ) )->run();
 } else {
-	if ( $sticky_posts && $pag === 1 ) {
+	if ( $sticky_posts && $page_number === 1 ) {
 		$sticky = new Jentil\Utilities\Sticky();
 
 		$sticky_args = array(
@@ -81,7 +81,7 @@ if ( $template->is( 'singular' ) ) {
 			'excerpt' 				=> $sticky->get_mod( 'excerpt', '300' ),
 			'content_pag'			=> 1,
 
-			'pag' 					=> $pag,
+			'pag' 					=> $sticky->get_mod( 'pagination' ),
 			'pag_pos' 				=> $sticky->get_mod( 'pagination_position', 'none' ),
 			'pag_prev_label' 		=> $sticky->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
 			'pag_next_label' 		=> $sticky->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
@@ -99,6 +99,7 @@ if ( $template->is( 'singular' ) ) {
 
 			'posts_per_page' 		=> $sticky->get_mod( 'number', 3 ),
 			'post__in'				=> get_option( 'sticky_posts' ),
+			'post_status' 			=> 'publish',
 			'ignore_sticky_posts' 	=> 1,
 		);
 
@@ -189,13 +190,13 @@ if ( $template->is( 'singular' ) ) {
 		'excerpt' 				=> $template_content->get_mod( 'excerpt', '300' ),
 		'content_pag'			=> 1,
 
-		// 'pag' 					=> '',
+		'pag' 					=> $template_content->get_mod( 'pagination' ),
 		'pag_pos' 				=> $template_content->get_mod( 'pagination_position', 'bottom' ),
 		'pag_prev_label' 		=> $template_content->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
 		'pag_next_label' 		=> $template_content->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
 		'class' 				=> $template_content->get_mod( 'class', 'archive-posts big' ),
-		// 'id' 					=> '',
+		'id' 					=> 'main-query',
 
 		'title_words' 			=> $template_content->get_mod( 'title_words', -1 ),
 		'title_pos' 			=> $template_content->get_mod( 'title_position', 'side' ),
@@ -208,6 +209,7 @@ if ( $template->is( 'singular' ) ) {
 		'posts_per_page' 		=> $template_content->get_mod( 'number', $posts_per_page ),
 		's' 					=> get_search_query(),
 		'post__not_in'			=> ( $sticky_posts ? get_option( 'sticky_posts' ) : null ),
+		'post_status' 			=> 'publish',
 		'ignore_sticky_posts' 	=> 1,
 	);
 
