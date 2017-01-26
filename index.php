@@ -82,6 +82,7 @@ if ( $template->is( 'singular' ) ) {
 			'content_pag'			=> 1,
 
 			'pag' 					=> $sticky->get_mod( 'pagination' ),
+			'pag_max' 				=> $sticky->get_mod( 'pagination_maximum' ),
 			'pag_pos' 				=> $sticky->get_mod( 'pagination_position', 'none' ),
 			'pag_prev_label' 		=> $sticky->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
 			'pag_next_label' 		=> $sticky->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
@@ -191,6 +192,7 @@ if ( $template->is( 'singular' ) ) {
 		'content_pag'			=> 1,
 
 		'pag' 					=> $template_content->get_mod( 'pagination' ),
+		'pag_max' 				=> $template_content->get_mod( 'pagination_maximum' ),
 		'pag_pos' 				=> $template_content->get_mod( 'pagination_position', 'bottom' ),
 		'pag_prev_label' 		=> $template_content->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
 		'pag_next_label' 		=> $template_content->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
