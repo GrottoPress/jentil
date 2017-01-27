@@ -217,6 +217,10 @@ if ( $template->is( 'singular' ) ) {
 		'ignore_sticky_posts' 	=> 1,
 	);
 
+	if ( $template->is( 'search' ) ) {
+		$args['orderby'] = 'all_time_views comment_count';
+	}
+
 	if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
 		$args['tax_query'] = array( 
 			array(
