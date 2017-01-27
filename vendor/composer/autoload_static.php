@@ -72,6 +72,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Title_Position' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/title_position.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Title_Words' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/title_words.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Wrap_Class' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/wrap_class.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Wrap_Tag' => __DIR__ . '/../..' . '/includes/setup/customizer/content/settings/wrap_tag.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Sticky' => __DIR__ . '/../..' . '/includes/setup/customizer/content/sticky.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Taxonomy' => __DIR__ . '/../..' . '/includes/setup/customizer/content/taxonomy.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Customizer' => __DIR__ . '/../..' . '/includes/setup/customizer/customizer.php',

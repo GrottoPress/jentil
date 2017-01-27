@@ -36,6 +36,7 @@ return array(
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Title_Position' => $baseDir . '/includes/setup/customizer/content/settings/title_position.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Title_Words' => $baseDir . '/includes/setup/customizer/content/settings/title_words.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Wrap_Class' => $baseDir . '/includes/setup/customizer/content/settings/wrap_class.php',
+    'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Settings\\Wrap_Tag' => $baseDir . '/includes/setup/customizer/content/settings/wrap_tag.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Sticky' => $baseDir . '/includes/setup/customizer/content/sticky.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Content\\Taxonomy' => $baseDir . '/includes/setup/customizer/content/taxonomy.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Customizer' => $baseDir . '/includes/setup/customizer/customizer.php',

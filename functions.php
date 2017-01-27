@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 $satisfied = true;
 
-if ( ! is_plugin_active( 'magpack/magpack.php' ) ) {
+if ( ! function_exists( '\GrottoPress\MagPack\run' ) ) {
 	$satisfied = false;
 
 	$message = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Kindly install and activate that first.', 'jentil' );

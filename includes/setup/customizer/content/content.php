@@ -130,6 +130,7 @@ abstract class Content extends Customizer\Section {
         $settings = array();
 
         $settings[] = new Settings\Wrap_Class( $this );
+        $settings[] = new Settings\Wrap_Tag( $this );
         $settings[] = new Settings\Layout( $this );
         $settings[] = new Settings\Number( $this );
         $settings[] = new Settings\Before_Title( $this );

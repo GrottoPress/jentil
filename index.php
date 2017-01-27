@@ -20,7 +20,7 @@ use GrottoPress\MagPack;
 $template = new Jentil\Utilities\Template\Template();
 $template_content = $template->get( 'content' );
 $template_title = $template->get( 'title' );
-$sticky_posts = $template_content->get_mod( 'sticky_posts', 1 );
+$sticky_posts = $template_content->get_mod( 'sticky_posts' );
 
 $posts_per_page = get_option( 'posts_per_page' );
 $page_number = isset( $_GET['pag'] ) ? absint( $_GET['pag'] ) : 1;
@@ -87,6 +87,7 @@ if ( $template->is( 'singular' ) ) {
 			'pag_prev_label' 		=> $sticky->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
 			'pag_next_label' 		=> $sticky->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
+			'wrap_tag' 				=> $sticky->get_mod( 'wrap_tag', 'div' ),
 			'class' 				=> $sticky->get_mod( 'class', 'sticky-posts big' ),
 			'id' 					=> 'sticky-posts',
 
@@ -197,6 +198,7 @@ if ( $template->is( 'singular' ) ) {
 		'pag_prev_label' 		=> $template_content->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
 		'pag_next_label' 		=> $template_content->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
+		'wrap_tag' 				=> $template_content->get_mod( 'wrap_tag', 'div' ),
 		'class' 				=> $template_content->get_mod( 'class', 'archive-posts big' ),
 		'id' 					=> 'main-query',
 
