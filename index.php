@@ -24,6 +24,7 @@ $sticky_posts = $template_content->get_mod( 'sticky_posts' );
 
 $posts_per_page = get_option( 'posts_per_page' );
 $page_number = isset( $_GET['pag'] ) ? absint( $_GET['pag'] ) : 1;
+$version = get_bloginfo( 'version' );
 
 /**
  * The query
@@ -218,7 +219,13 @@ if ( $template->is( 'singular' ) ) {
 	);
 
 	if ( $template->is( 'search' ) ) {
-		$args['orderby'] = 'all_time_views comment_count';
+		if ( version_compare( $version, '4.0', '>=' ) ) {
+			$args['orderby']['all_time_views'] = 'DESC';
+			$args['orderby']['comment_count'] = 'DESC';
+		} else {
+			$args['orderby'] = 'all_time_views';
+			$args['order'] = 'DESC';
+		}
 	}
 
 	if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
