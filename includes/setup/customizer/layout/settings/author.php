@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Author template layout customizer setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Author extends Customizer\Setting {
+final class Author extends Setup\Customizer\Setting {
     /**
      * Layout section
      *
@@ -48,7 +48,7 @@ class Author extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Layout\Layout $layout ) {
+	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
         $this->layout = $layout;
         $this->name = 'author_layout';
         $this->args = array(

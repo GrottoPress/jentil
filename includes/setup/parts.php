@@ -18,13 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Utilities\Template\Template;
-use GrottoPress\Jentil\Utilities\Logo;
-use GrottoPress\Jentil\Utilities\Colophon;
-use GrottoPress\MagPack\Utilities\Singleton;
-use GrottoPress\MagPack\Utilities\Pagination;
-use GrottoPress\MagPack\Utilities\Breadcrumbs;
-use GrottoPress\MagPack\Utilities\Post\Post;
+use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Template
@@ -37,7 +32,7 @@ use GrottoPress\MagPack\Utilities\Post\Post;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Parts extends Singleton {
+final class Parts extends MagPack\Utilities\Singleton {
     /**
      * Template
 	 *
@@ -55,7 +50,7 @@ class Parts extends Singleton {
 	 * @access      public
 	 */
 	protected function __construct() {
-	    $this->template = new Template();
+	    $this->template = new Utilities\Template\Template();
 	}
 
     /**
@@ -152,9 +147,9 @@ class Parts extends Singleton {
 	 * @action      jentil_inside_header
      */
     public function header_logo() {
-    	$logo = new Logo();
+    	$logo = new Utilities\Logo();
 
-    	echo $logo->get_markup();
+    	echo $logo->markup();
     }
 
     /**
@@ -198,7 +193,7 @@ class Parts extends Singleton {
      */
     public function mobile_header_menu_toggle() {
     	$status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
-    	$pagination = new Pagination();
+    	$pagination = new MagPack\Utilities\Pagination();
 
     	echo '<div class="menu-toggle max-screen-920">
     	    <div class="screen-reader-text">
@@ -254,7 +249,7 @@ class Parts extends Singleton {
             'before' => esc_html__( 'Path: ', 'jentil' ),
         );
 
-    	$breadcrumbs = new Breadcrumbs( $args );
+    	$breadcrumbs = new MagPack\Utilities\Breadcrumbs( $args );
     	echo $breadcrumbs->trail();
     }
 
@@ -273,7 +268,7 @@ class Parts extends Singleton {
 
     	global $post;
 
-    	$magpack_post = new Post( $post->ID );
+    	$magpack_post = new MagPack\Utilities\Post\Post( $post->ID );
     	$avatar = $magpack_post->info( 'avatar__40', '' )->list();
     	$author = $magpack_post->info( 'author_link', '' )->list();
 
@@ -319,9 +314,9 @@ class Parts extends Singleton {
      * @action      jentil_inside_footer
      */
     public function colophon() {
-    	$colophon = new Colophon();
+    	$colophon = new Utilities\Colophon();
 
-        if ( ! ( $mod = $colophon->get_mod() ) ) {
+        if ( ! ( $mod = $colophon->mod() ) ) {
             return '';
         }
 
@@ -372,7 +367,7 @@ class Parts extends Singleton {
     	}
 
     	$layout = $this->template->get( 'layout' );
-        $mod = $layout->get_mod();
+        $mod = $layout->mod();
         $column = $layout->column();
 
     	if ( ! empty( $layout ) ) {

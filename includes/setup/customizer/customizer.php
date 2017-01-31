@@ -18,8 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack\Utilities\Singleton;
-use GrottoPress\Jentil\Utilities\Template\Template;
+use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Customizer
@@ -34,7 +34,7 @@ use GrottoPress\Jentil\Utilities\Template\Template;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Customizer extends Singleton {
+final class Customizer extends MagPack\Utilities\Singleton {
     /**
      * Customizer sections
      *
@@ -103,7 +103,7 @@ class Customizer extends Singleton {
      * Get sections
      *
      * @since       Jentil 0.1.0
-     * @access      public
+     * @access      private
      */
     private function sections() {
         $sections = array();
@@ -128,7 +128,6 @@ class Customizer extends Singleton {
                     $post_type->has_archive
                     || (
                         'post' == $post_type->name
-                        && post_type_exists( 'post' )
                     )
                 ) {
                     $sections[] = new Content\Post_Type( $this, $post_type );
@@ -148,7 +147,7 @@ class Customizer extends Singleton {
      * @access      public
      */
     public function add( $wp_customize ) {
-        $this->template = new Template();
+        $this->template = new Utilities\Template\Template();
         $this->post_types = get_post_types( array(
             'public' => true,
             'show_ui' => true,

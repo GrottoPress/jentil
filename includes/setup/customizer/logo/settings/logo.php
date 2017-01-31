@@ -8,7 +8,7 @@
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
- * @subpackage 	    jentil/includes
+ * @subpackage 	    jentil/includes/setup
  * @since		    Jentil 0.1.0
  */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities;
 
 /**
@@ -29,10 +29,10 @@ use GrottoPress\Jentil\Utilities;
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
- * @subpackage 	    jentil/includes
- * @since			jentil 0.1.0
+ * @subpackage 	    jentil/includes/setup
+ * @since			Jentil 0.1.0
  */
-class Logo extends Customizer\Setting {
+final class Logo extends Setup\Customizer\Setting {
     /**
      * Logo section
      *
@@ -49,12 +49,12 @@ class Logo extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Logo\Logo $logo ) {
+	public function __construct( Setup\Customizer\Logo\Logo $logo ) {
         $this->logo = $logo;
         $this->name = 'custom_logo';
         $this->args = array(
             'default'       =>  '',
-            //'transport'   =>  'postMessage',
+            'transport'   =>  'postMessage',
         );
 	}
 
@@ -79,10 +79,10 @@ class Logo extends Customizer\Setting {
                 'label'         => esc_html__( 'Logo', 'jentil' ),
                 'section'       => 'title_tagline',
                 'priority'      => 8,
-                'height'        => $logo_raw['height'],
-                'width'         => $logo_raw['width'],
-                'flex_height'   => $logo_raw['flex-height'],
-                'flex_width'    => $logo_raw['flex-width'],
+                'height'        => absint( $logo_raw['height'] ),
+                'width'         => absint( $logo_raw['width'] ),
+                'flex_height'   => ( bool ) $logo_raw['flex-height'],
+                'flex_width'    => ( bool ) $logo_raw['flex-width'],
                 'button_labels' => array(
                     'select'       => esc_html__( 'Select logo', 'jentil' ),
                     'change'       => esc_html__( 'Change logo', 'jentil' ),
@@ -98,7 +98,7 @@ class Logo extends Customizer\Setting {
         $wp_customize->selective_refresh->add_partial( 'custom_logo', array(
             'settings'            => array( 'custom_logo' ),
             'selector'            => '.custom-logo-link',
-            'render_callback'     => array( $logo, 'get' ),
+            'render_callback'     => array( $logo, 'markup' ),
             'container_inclusive' => true,
         ) );
     }

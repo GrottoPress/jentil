@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content 'more link label' setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class More_Link extends Customizer\Setting {
+final class More_Link extends Setup\Customizer\Setting {
     /**
      * Content section
      *
@@ -50,7 +50,7 @@ class More_Link extends Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->get( 'name' ) . '_more_link' );
+        $this->name = $this->content->get( 'name' ) . '_more_link';
         $this->args = array(
             'default' => 'read more',
             //'transport' => 'postMessage',

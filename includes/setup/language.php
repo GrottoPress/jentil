@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack\Utilities\Singleton;
+use GrottoPress\MagPack;
 
 /**
  * Language
@@ -28,7 +28,7 @@ use GrottoPress\MagPack\Utilities\Singleton;
  * @subpackage		jentil/includes/setup
  * @author			N Atta Kusi Adusei
  */
-class Language extends Singleton {
+final class Language extends MagPack\Utilities\Singleton {
     /**
      * Constructor
      *

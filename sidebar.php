@@ -12,7 +12,7 @@
 
 $template = new \GrottoPress\Jentil\Utilities\Template\Template();
 $layout = $template->get( 'layout' );
-// $mod = $layout->get_mod();
+// $mod = $layout->mod();
 $column = $layout->column();
 
 /**

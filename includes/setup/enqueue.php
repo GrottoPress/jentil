@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack\Utilities\Singleton;
+use GrottoPress\MagPack;
 
 /**
  * Enqueue scripts and styles
@@ -27,7 +27,7 @@ use GrottoPress\MagPack\Utilities\Singleton;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-class Enqueue extends Singleton {
+final class Enqueue extends MagPack\Utilities\Singleton {
 	/**
      * Constructor
      *

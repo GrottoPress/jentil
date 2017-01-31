@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content title setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Title_Words extends Customizer\Setting {
+final class Title_Words extends Setup\Customizer\Setting {
     /**
      * Content section
      *
@@ -50,7 +50,7 @@ class Title_Words extends Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->get( 'name' ) . '_title_words' );
+        $this->name = $this->content->get( 'name' ) . '_title_words';
         $this->args = array(
             'default' => -1,
             //'transport' => 'postMessage',

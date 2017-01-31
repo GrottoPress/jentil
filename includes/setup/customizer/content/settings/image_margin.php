@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content image margin setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Image_Margin extends Customizer\Setting {
+final class Image_Margin extends Setup\Customizer\Setting {
     /**
      * Content section
      *
@@ -50,7 +50,7 @@ class Image_Margin extends Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->get( 'name' ) . '_image_margin' );
+        $this->name = $this->content->get( 'name' ) . '_image_margin';
         $this->args = array(
             'default' => '',
             //'transport' => 'postMessage',

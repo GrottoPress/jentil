@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Sticky {
+final class Sticky {
     /**
      * Get setting
      * 
@@ -35,8 +35,8 @@ class Sticky {
      * 
      * @return      mixed          Setting value
      */
-    public function get_mod( $setting, $default = '' ) {
-        if ( ! ( $name = $this->get_mod_name( $setting ) ) ) {
+    public function mod( $setting, $default = '' ) {
+        if ( ! ( $name = $this->mod_name( $setting ) ) ) {
             return false;
         }
 
@@ -47,11 +47,11 @@ class Sticky {
      * Get setting name
      * 
      * @since       Jentil 0.1.0
-     * @access      public
+     * @access      private
      * 
      * @return      string          Setting name
      */
-    public function get_mod_name( $setting ) {
+    private function mod_name( $setting ) {
         return sanitize_key( 'sticky_content_' . $setting );
     }
 }

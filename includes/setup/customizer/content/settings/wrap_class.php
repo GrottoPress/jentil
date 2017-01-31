@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content class setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Wrap_Class extends Customizer\Setting {
+final class Wrap_Class extends Setup\Customizer\Setting {
     /**
      * Content section
      *
@@ -50,7 +50,7 @@ class Wrap_Class extends Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->get( 'name' ) . '_class' );
+        $this->name = $this->content->get( 'name' ) . '_class';
         $this->args = array(
             'default' => 'archive-posts big',
             //'transport' => 'postMessage',

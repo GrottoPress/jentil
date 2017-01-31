@@ -16,9 +16,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack\Utilities\Singleton;
-use GrottoPress\Jentil\Utilities\Template\Template;
-use GrottoPress\MagPack\Utilities\Metabox;
+use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -33,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage      jentil/includes
  * @author          N Atta Kusi Adusei
  */
-class Metaboxes extends Singleton {
+final class Metaboxes extends MagPack\Utilities\Singleton {
     /**
      * Layouts
 	 *
@@ -62,7 +61,7 @@ class Metaboxes extends Singleton {
 	 * @action      load-post-new.php
 	 */
 	public function setup() {
-		$template = new Template();
+		$template = new Utilities\Template\Template();
         $this->layouts = $template->get( 'layout' )->layouts_ids_names();
 
         add_action( 'add_meta_boxes', array( $this, 'add' ), 10, 2 );
@@ -109,7 +108,7 @@ class Metaboxes extends Singleton {
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			$args['notes'] = isset( $boxes[ $id ]['notes'] ) ? $boxes[ $id ]['notes'] : null;
 			
-			$metabox = new Metabox( $args );
+			$metabox = new MagPack\Utilities\Metabox( $args );
 			$metabox->add();
 		}
 	}
@@ -122,7 +121,7 @@ class Metaboxes extends Singleton {
 	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 */
-	function save( $post_id ) {
+	public function save( $post_id ) {
 		$post_type = get_post_type( $post_id );
 		$boxes = $this->boxes( $post_type );
 		
@@ -133,7 +132,7 @@ class Metaboxes extends Singleton {
 			$args['type'] = isset( $boxes[ $id ]['type'] ) ? sanitize_key( $boxes[ $id ]['type'] ) : '';
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			
-			$metabox = new Metabox( $args );
+			$metabox = new MagPack\Utilities\Metabox( $args );
 			$metabox->save( $post_id );
 		}
 	}
@@ -142,9 +141,9 @@ class Metaboxes extends Singleton {
 	 * Meta boxes.
 	 * 
 	 * @since    	Jentil 0.1.0
-	 * @access  	public
+	 * @access  	private
 	 */
-	public function boxes( $post_type ) {
+	private function boxes( $post_type ) {
 	    $boxes = array();
 	    
 	    if ( is_post_type_hierarchical( $post_type ) ) {

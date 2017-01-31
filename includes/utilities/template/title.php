@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			jentil 1.0.0
  */
-class Title {
+final class Title {
     /**
      * Template
 	 *
@@ -53,7 +53,7 @@ class Title {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function get_it() {
+	public function title() {
 		$title = get_bloginfo( 'name' );
 		
 		if ( ! ( $type = $this->template->type() ) ) {

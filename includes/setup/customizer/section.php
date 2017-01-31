@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Colophon customizer section
@@ -77,7 +77,7 @@ abstract class Section {
 	 * @since       Jentil 0.1.0
 	 * @access      protected
 	 */
-	protected function __construct( Customizer $customizer ) {
+	protected function __construct( Setup\Customizer\Customizer $customizer ) {
         $this->customizer = $customizer;
         $this->settings = $this->settings();
 	}

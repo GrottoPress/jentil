@@ -8,7 +8,7 @@
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
- * @subpackage 	    jentil/includes
+ * @subpackage 	    jentil/includes/setup
  * @since		    Jentil 0.1.0
  */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content customizer sections
@@ -28,10 +28,10 @@ use GrottoPress\Jentil\Setup\Customizer;
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
- * @subpackage 	    jentil/includes
- * @since			jentil 0.1.0
+ * @subpackage 	    jentil/includes/setup
+ * @since			Jentil 0.1.0
  */
-abstract class Content extends Customizer\Section {
+abstract class Content extends Setup\Customizer\Section {
     /**
      * Pagination types
      *
@@ -88,7 +88,7 @@ abstract class Content extends Customizer\Section {
 	 * @since       Jentil 0.1.0
 	 * @access      protected
 	 */
-	protected function __construct( Customizer\Customizer $customizer ) {
+	protected function __construct( Setup\Customizer\Customizer $customizer ) {
        $this->title_positions = array(
             'side' => esc_html__( 'Side', 'jentil' ),
             'top' => esc_html__( 'Top', 'jentil' ),

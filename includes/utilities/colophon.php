@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Colophon {
+final class Colophon {
     /**
      * Get colophon
      *
@@ -36,7 +36,7 @@ class Colophon {
      *
      * @return      string          The colophon text
      */
-    public function get_mod( $default = '' ) {
+    public function mod( $default = '' ) {
         $colophon = get_theme_mod( 'colophon', $default );
 
         $colophon = str_ireplace( '{{site_name}}', esc_attr( get_bloginfo( 'name' ) ), $colophon );

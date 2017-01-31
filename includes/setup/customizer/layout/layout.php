@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Template Layout customizer section
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage      jentil/includes
  * @since           jentil 0.1.0
  */
-class Layout extends Customizer\Section {
+final class Layout extends Setup\Customizer\Section {
     /**
      * Default layout
      *
@@ -48,7 +48,7 @@ class Layout extends Customizer\Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Customizer\Customizer $customizer ) {
+    public function __construct( Setup\Customizer\Customizer $customizer ) {
         $this->name = 'layout';
         $this->args = array(
             'title'     => esc_html__( 'Layout', 'jentil' ),
@@ -85,7 +85,6 @@ class Layout extends Customizer\Section {
                     $post_type->has_archive
                     || (
                         'post' == $post_type->name
-                        && post_type_exists( 'post' )
                     )
                 ) {
                     $settings[] = new Settings\Post_Type( $this, $post_type );

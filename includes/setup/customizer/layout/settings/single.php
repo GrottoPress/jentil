@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Single template layout customizer setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Single extends Customizer\Setting {
+final class Single extends Setup\Customizer\Setting {
     /**
      * Layout section
      *
@@ -48,7 +48,7 @@ class Single extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Layout\Layout $layout, $post_type ) {
+	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
         $this->layout = $layout;
         $this->name = sanitize_key( 'single_' . $post_type->name . '_layout' );
         $this->args = array(

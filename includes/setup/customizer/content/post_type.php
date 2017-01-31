@@ -8,7 +8,7 @@
  *
  * @link            https://jentil.grotttopress.com
  * @package         jentil
- * @subpackage      jentil/includes
+ * @subpackage      jentil/includes/setup
  * @since           Jentil 0.1.0
  */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Post type archive content customizer section
@@ -28,10 +28,10 @@ use GrottoPress\Jentil\Setup\Customizer;
  *
  * @link            https://jentil.grotttopress.com
  * @package         jentil
- * @subpackage      jentil/includes
+ * @subpackage      jentil/includes/setup
  * @since           Jentil 0.1.0
  */
-class Post_Type extends Content {
+final class Post_Type extends Content {
     /**
      * Post type
      *
@@ -50,13 +50,13 @@ class Post_Type extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Customizer\Customizer $customizer, $post_type ) {
+    public function __construct( Setup\Customizer\Customizer $customizer, $post_type ) {
         $this->post_type = $post_type;
         $this->name = sanitize_key( $this->post_type->name . '_post_type_content' );
         $this->args = array(
             'title' => sprintf(
                 esc_html__( '%s Archive Content', 'jentil' ),
-                $this->post_type->labels->singular_name
+                sanitize_text_field( $this->post_type->labels->singular_name )
             ),
             //'priority' => 200,
         );

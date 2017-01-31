@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			jentil 1.0.0
  */
-class Layout {
+final class Layout {
     /**
      * Template
 	 *
@@ -52,11 +52,11 @@ class Layout {
      * 
      * @return      string      The layout type
      */
-    public function get_mod( $default = '' ) {
+    public function mod( $default = '' ) {
         $default = sanitize_title( $default );
         $layout = ! $default ? 'content-sidebar' : $default;
         
-        if ( ! ( $name = $this->get_mod_name() ) ) {
+        if ( ! ( $name = $this->mod_name() ) ) {
 			return $layout;
 		}
 
@@ -82,11 +82,11 @@ class Layout {
      * Get setting name
      * 
      * @since       Jentil 0.1.0
-     * @access      public
+     * @access      private
      * 
      * @return      string          Setting name
      */
-    public function get_mod_name() {
+    private function mod_name() {
         $name = '';
 
         if ( $this->template->is( 'singular' ) ) {
@@ -144,7 +144,7 @@ class Layout {
     		),
     	);
 
-	    return apply_filters( 'jentil_template_layouts', $layouts );
+	    return ( array ) apply_filters( 'jentil_template_layouts', $layouts );
 	}
 
     /**
@@ -159,7 +159,7 @@ class Layout {
 	    $layout_ids = array();
 	    
     	foreach ( $this->layouts_ids_names() as $layout_id => $layout_name ) {
-			$layout_ids[] = $layout_id;
+			$layout_ids[] = sanitize_title( $layout_id );
 		}
     
     	return $layout_ids;
@@ -180,7 +180,7 @@ class Layout {
 	    
     	foreach ( $this->layouts() as $column_type => $layouts ) {
     		foreach ( $layouts as $layout_id => $layout_name ) {
-    			$return[ $layout_id ] = $layout_name;
+    			$return[ sanitize_title( $layout_id ) ] = sanitize_text_field( $layout_name );
     		}
     	}
     
@@ -199,7 +199,7 @@ class Layout {
 	    $layout_columns = array();
 	    
     	foreach ( $this->layouts() as $column_slug => $layouts ) {
-    		$layout_columns[] = $column_slug;
+    		$layout_columns[] = sanitize_title( $column_slug );
     	}
     
     	return $layout_columns;
@@ -218,8 +218,8 @@ class Layout {
 	    
     	foreach ( $this->layouts() as $column_slug => $layouts ) {
     		foreach ( $layouts as $layout_id => $layout_name ) {
-    			if ( $this->get_mod() == $layout_id ) {
-    				return $column_slug;
+    			if ( $this->mod() == $layout_id ) {
+    				return sanitize_title( $column_slug );
     			}
     		}
     	}

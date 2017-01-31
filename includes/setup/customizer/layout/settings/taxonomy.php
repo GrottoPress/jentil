@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Taxonomy template layout customizer setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Taxonomy extends Customizer\Setting {
+final class Taxonomy extends Setup\Customizer\Setting {
     /**
      * Layout section
      *
@@ -48,7 +48,7 @@ class Taxonomy extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Layout\Layout $layout, $taxonomy ) {
+	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy ) {
         $this->layout = $layout;
         $this->name = sanitize_key( $taxonomy->name . '_taxonomy_layout' );
         $this->args = array(
@@ -60,8 +60,10 @@ class Taxonomy extends Customizer\Setting {
             'section'   => $this->layout->get( 'name' ),
             'label'     => sprintf(
                 esc_html__('%1$s %2$s taxonomy archive', 'jentil' ),
-                ucwords( $taxonomy->object_type[0] ),
-                $taxonomy->labels->singular_name
+                sanitize_text_field( ucwords(
+                    str_ireplace( array( '_', '-', 'post' ), ' ', $taxonomy->object_type[0] )
+                ) ),
+                sanitize_text_field( $taxonomy->labels->singular_name )
             ),
             'type'      => 'select',
             'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),

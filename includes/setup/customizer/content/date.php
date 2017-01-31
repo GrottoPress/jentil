@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Date archive content customizer section
@@ -31,14 +31,14 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage      jentil/includes
  * @since           Jentil 0.1.0
  */
-class Date extends Content {
+final class Date extends Content {
     /**
      * Constructor
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Customizer\Customizer $customizer ) {
+    public function __construct( Setup\Customizer\Customizer $customizer ) {
         $this->name = 'date_content';
         $this->args = array(
             'title' => esc_html__( 'Date Content', 'jentil' ),

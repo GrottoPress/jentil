@@ -45,7 +45,7 @@
 	    		</div><!-- #footer-wrap -->
 
     		<?php } ?>
-    		
+    	
     	</div><!-- #wrapper -->
 		
 		<?php

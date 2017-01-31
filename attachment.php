@@ -36,7 +36,7 @@ get_header();
 		<?php if ( $post->post_parent ) { ?>
 
 			<h2 class="parent entry-title">
-			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( get_the_title( $post->post_parent ) ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
+			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
 	        </h2>
 
 		<?php } ?>

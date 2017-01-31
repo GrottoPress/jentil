@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content 'after content' setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class After_Content extends Customizer\Setting {
+final class After_Content extends Setup\Customizer\Setting {
     /**
      * Content section
      *
@@ -52,7 +52,7 @@ class After_Content extends Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->get( 'name' ) . '_after_content' );
+        $this->name = $this->content->get( 'name' ) . '_after_content';
         $this->args = array(
             'default' => 'category, post_tag',
             //'transport' => 'postMessage',

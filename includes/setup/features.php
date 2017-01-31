@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack\Utilities\Singleton;
+use GrottoPress\MagPack;
 
 /**
  * Features
@@ -29,7 +29,7 @@ use GrottoPress\MagPack\Utilities\Singleton;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Features extends Singleton {
+final class Features extends MagPack\Utilities\Singleton {
     /**
      * Content width
      * 

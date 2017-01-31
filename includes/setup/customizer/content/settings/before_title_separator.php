@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Content 'before title separator' setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Before_Title_Separator extends Customizer\Setting {
+final class Before_Title_Separator extends Setup\Customizer\Setting {
     /**
      * Content section
      *
@@ -52,7 +52,7 @@ class Before_Title_Separator extends Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = sanitize_key( $this->content->get( 'name' ) . '_before_title_separator' );
+        $this->name = $this->content->get( 'name' ) . '_before_title_separator';
         $this->args = array(
             'default' => ' | ',
             //'transport' => 'postMessage',

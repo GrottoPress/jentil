@@ -14,16 +14,16 @@
  * @since			Jentil 0.1.0
  */
 
-use GrottoPress\Jentil;
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
-$template = new Jentil\Utilities\Template\Template();
+$template = new Utilities\Template\Template();
 $template_content = $template->get( 'content' );
 $template_title = $template->get( 'title' );
-$sticky_posts = $template_content->get_mod( 'sticky_posts' );
+$sticky_posts = $template_content->mod( 'sticky_posts' );
 
 $posts_per_page = get_option( 'posts_per_page' );
-$page_number = isset( $_GET['pag'] ) ? absint( $_GET['pag'] ) : 1;
+$page_number = isset( $_GET['main-query_pag'] ) ? absint( $_GET['main-query_pag'] ) : 1;
 $version = get_bloginfo( 'version' );
 
 /**
@@ -64,43 +64,43 @@ if ( $template->is( 'singular' ) ) {
 	$query .= ( new MagPack\Utilities\Query( $args ) )->run();
 } else {
 	if ( $sticky_posts && $page_number === 1 ) {
-		$sticky = new Jentil\Utilities\Sticky();
+		$sticky = new Utilities\Sticky();
 
 		$sticky_args = array(
-			'layout' 				=> $sticky->get_mod( 'layout', 'stack' ),
+			'layout' 				=> $sticky->mod( 'layout', 'stack' ),
 
-			'img' 					=> $sticky->get_mod( 'image', 'mini-thumb' ),
-			'img_align' 			=> $sticky->get_mod( 'image_alignment', 'left' ),
+			'img' 					=> $sticky->mod( 'image', 'mini-thumb' ),
+			'img_align' 			=> $sticky->mod( 'image_alignment', 'left' ),
 
-			'after_title' 			=> $sticky->get_mod( 'after_title', 'published_date, comments_link' ),
-			'after_title_sep' 		=> $sticky->get_mod( 'after_title_separator', ' | ' ),
-			'after_content' 		=> $sticky->get_mod( 'after_content', 'category, post_tag' ),
-			'after_content_sep' 	=> $sticky->get_mod( 'after_content_separator', ' | ' ),
-			'before_title' 			=> $sticky->get_mod( 'before_title' ),
-			'before_title_sep' 		=> $sticky->get_mod( 'before_title_separator', ' | ' ),
+			'after_title' 			=> $sticky->mod( 'after_title', 'published_date, comments_link' ),
+			'after_title_sep' 		=> $sticky->mod( 'after_title_separator', ' | ' ),
+			'after_content' 		=> $sticky->mod( 'after_content', 'category, post_tag' ),
+			'after_content_sep' 	=> $sticky->mod( 'after_content_separator', ' | ' ),
+			'before_title' 			=> $sticky->mod( 'before_title' ),
+			'before_title_sep' 		=> $sticky->mod( 'before_title_separator', ' | ' ),
 
-			'excerpt' 				=> $sticky->get_mod( 'excerpt', '300' ),
+			'excerpt' 				=> $sticky->mod( 'excerpt', '300' ),
 			'content_pag'			=> 1,
 
-			'pag' 					=> $sticky->get_mod( 'pagination' ),
-			'pag_max' 				=> $sticky->get_mod( 'pagination_maximum' ),
-			'pag_pos' 				=> $sticky->get_mod( 'pagination_position', 'none' ),
-			'pag_prev_label' 		=> $sticky->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
-			'pag_next_label' 		=> $sticky->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
+			'pag' 					=> $sticky->mod( 'pagination' ),
+			'pag_max' 				=> $sticky->mod( 'pagination_maximum' ),
+			'pag_pos' 				=> $sticky->mod( 'pagination_position', 'none' ),
+			'pag_prev_label' 		=> $sticky->mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
+			'pag_next_label' 		=> $sticky->mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
-			'wrap_tag' 				=> $sticky->get_mod( 'wrap_tag', 'div' ),
-			'class' 				=> $sticky->get_mod( 'class', 'sticky-posts big' ),
+			'wrap_tag' 				=> $sticky->mod( 'wrap_tag', 'div' ),
+			'class' 				=> $sticky->mod( 'class', 'sticky-posts big' ),
 			'id' 					=> 'sticky-posts',
 
-			'title_words' 			=> $sticky->get_mod( 'title_words', -1 ),
-			'title_pos' 			=> $sticky->get_mod( 'title_position', 'side' ),
+			'title_words' 			=> $sticky->mod( 'title_words', -1 ),
+			'title_pos' 			=> $sticky->mod( 'title_position', 'side' ),
 			'title_tag' 			=> 'h2',
 			'title_link' 			=> 1,
 
-			'text_offset' 			=> $sticky->get_mod( 'text_offset' ),
-			'more_link' 			=> $sticky->get_mod( 'more_link', esc_html__( 'read more', 'jentil' ) ),
+			'text_offset' 			=> $sticky->mod( 'text_offset' ),
+			'more_link' 			=> $sticky->mod( 'more_link', esc_html__( 'read more', 'jentil' ) ),
 
-			'posts_per_page' 		=> $sticky->get_mod( 'number', 3 ),
+			'posts_per_page' 		=> $sticky->mod( 'number', 3 ),
 			'post__in'				=> get_option( 'sticky_posts' ),
 			'post_status' 			=> 'publish',
 			'ignore_sticky_posts' 	=> 1,
@@ -178,40 +178,40 @@ if ( $template->is( 'singular' ) ) {
 	}
 
 	$args = array(
-		'layout' 				=> $template_content->get_mod( 'layout', 'stack' ),
+		'layout' 				=> $template_content->mod( 'layout', 'stack' ),
 
-		'img' 					=> $template_content->get_mod( 'image', 'mini-thumb' ),
-		'img_align' 			=> $template_content->get_mod( 'image_alignment', 'left' ),
+		'img' 					=> $template_content->mod( 'image', 'mini-thumb' ),
+		'img_align' 			=> $template_content->mod( 'image_alignment', 'left' ),
 
-		'after_title' 			=> $template_content->get_mod( 'after_title', 'published_date, comments_link' ),
-		'after_title_sep' 		=> $template_content->get_mod( 'after_title_separator', ' | ' ),
-		'after_content' 		=> $template_content->get_mod( 'after_content', 'category, post_tag' ),
-		'after_content_sep' 	=> $template_content->get_mod( 'after_content_separator', ' | ' ),
-		'before_title' 			=> $template_content->get_mod( 'before_title' ),
-		'before_title_sep' 		=> $template_content->get_mod( 'before_title_separator', ' | ' ),
+		'after_title' 			=> $template_content->mod( 'after_title', 'published_date, comments_link' ),
+		'after_title_sep' 		=> $template_content->mod( 'after_title_separator', ' | ' ),
+		'after_content' 		=> $template_content->mod( 'after_content', 'category, post_tag' ),
+		'after_content_sep' 	=> $template_content->mod( 'after_content_separator', ' | ' ),
+		'before_title' 			=> $template_content->mod( 'before_title' ),
+		'before_title_sep' 		=> $template_content->mod( 'before_title_separator', ' | ' ),
 
-		'excerpt' 				=> $template_content->get_mod( 'excerpt', '300' ),
+		'excerpt' 				=> $template_content->mod( 'excerpt', '300' ),
 		'content_pag'			=> 1,
 
-		'pag' 					=> $template_content->get_mod( 'pagination' ),
-		'pag_max' 				=> $template_content->get_mod( 'pagination_maximum' ),
-		'pag_pos' 				=> $template_content->get_mod( 'pagination_position', 'bottom' ),
-		'pag_prev_label' 		=> $template_content->get_mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
-		'pag_next_label' 		=> $template_content->get_mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
+		'pag' 					=> $template_content->mod( 'pagination' ),
+		'pag_max' 				=> $template_content->mod( 'pagination_maximum' ),
+		'pag_pos' 				=> $template_content->mod( 'pagination_position', 'bottom' ),
+		'pag_prev_label' 		=> $template_content->mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
+		'pag_next_label' 		=> $template_content->mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
-		'wrap_tag' 				=> $template_content->get_mod( 'wrap_tag', 'div' ),
-		'class' 				=> $template_content->get_mod( 'class', 'archive-posts big' ),
+		'wrap_tag' 				=> $template_content->mod( 'wrap_tag', 'div' ),
+		'class' 				=> $template_content->mod( 'class', 'archive-posts big' ),
 		'id' 					=> 'main-query',
 
-		'title_words' 			=> $template_content->get_mod( 'title_words', -1 ),
-		'title_pos' 			=> $template_content->get_mod( 'title_position', 'side' ),
+		'title_words' 			=> $template_content->mod( 'title_words', -1 ),
+		'title_pos' 			=> $template_content->mod( 'title_position', 'side' ),
 		'title_tag' 			=> 'h2',
 		'title_link' 			=> 1,
 
-		'text_offset' 			=> $template_content->get_mod( 'text_offset' ),
-		'more_link' 			=> $template_content->get_mod( 'more_link', esc_html__( 'read more', 'jentil' ) ),
+		'text_offset' 			=> $template_content->mod( 'text_offset' ),
+		'more_link' 			=> $template_content->mod( 'more_link', esc_html__( 'read more', 'jentil' ) ),
 
-		'posts_per_page' 		=> $template_content->get_mod( 'number', $posts_per_page ),
+		'posts_per_page' 		=> $template_content->mod( 'number', $posts_per_page ),
 		's' 					=> get_search_query(),
 		'post__not_in'			=> ( $sticky_posts ? get_option( 'sticky_posts' ) : null ),
 		'post_status' 			=> 'publish',
@@ -327,7 +327,7 @@ get_header();
 			<header>
 				<h1 class="page-title entry-title" itemprop="name">
 
-					<?php echo $template_title->get_it(); ?>
+					<?php echo $template_title->title(); ?>
 					
 				</h1>
 				

@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-class Content {
+final class Content {
     /**
      * Template
 	 *
@@ -59,8 +59,8 @@ class Content {
      * 
      * @return      mixed          Setting value
      */
-    public function get_mod( $setting, $default = '' ) {
-        if ( ! ( $name = $this->get_mod_name( $setting ) ) ) {
+    public function mod( $setting, $default = '' ) {
+        if ( ! ( $name = $this->mod_name( $setting ) ) ) {
             return false;
         }
 
@@ -71,19 +71,19 @@ class Content {
      * Get setting name
      * 
      * @since       Jentil 0.1.0
-     * @access      public
+     * @access      private
      * 
      * @return      string          Setting name
      */
-    public function get_mod_name( $setting ) {
+    private function mod_name( $setting ) {
         $name = '';
 
-        if ( $this->template->is( 'tax' ) ) {
-            $name = get_query_var( 'taxonomy' ) . '_taxonomy_content_' . $setting;
-        } elseif ( $this->template->is( 'category' ) ) {
+        if ( $this->template->is( 'category' ) ) {
             $name = 'category_taxonomy_content_' . $setting;
         } elseif ( $this->template->is( 'tag' ) ) {
             $name = 'tag_taxonomy_content_' . $setting;
+        } elseif ( $this->template->is( 'tax' ) ) {
+            $name = get_query_var( 'taxonomy' ) . '_taxonomy_content_' . $setting;
         } elseif ( $this->template->is( 'post_type_archive' ) ) {
             $name = get_query_var( 'post_type' ) . '_post_type_content_' . $setting;
         } elseif ( $this->template->is( 'home' ) ) {

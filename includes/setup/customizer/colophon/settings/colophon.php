@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Colophon customizer setting
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-class Colophon extends Customizer\Setting {
+final class Colophon extends Setup\Customizer\Setting {
     /**
      * Colophon section
      *
@@ -48,7 +48,7 @@ class Colophon extends Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Customizer\Colophon\Colophon $colophon ) {
+	public function __construct( Setup\Customizer\Colophon\Colophon $colophon ) {
         $this->colophon = $colophon;
         $this->name = 'colophon';
         $this->args = array(

@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup\Customizer;
+use GrottoPress\Jentil\Setup;
 
 /**
  * Taxonomy archive content customizer section
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup\Customizer;
  * @subpackage      jentil/includes
  * @since           Jentil 0.1.0
  */
-class Taxonomy extends Content {
+final class Taxonomy extends Content {
     /**
      * Taxonomy
      *
@@ -50,15 +50,15 @@ class Taxonomy extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Customizer\Customizer $customizer, $taxonomy ) {
+    public function __construct( Setup\Customizer\Customizer $customizer, $taxonomy ) {
         $this->taxonomy = $taxonomy;
         $this->name = sanitize_key( $this->taxonomy->name . '_taxonomy_content' );
-        $post_type = $this->taxonomy->object_type[0];
+        $post_type = sanitize_key( $this->taxonomy->object_type[0] );
         $this->args = array(
             'title' => sprintf(
                 esc_html__( '%1$s %2$s Content', 'jentil' ),
-                ( 'post' == $post_type ? '' : ucwords( $post_type ) ),
-                str_ireplace( $post_type, '', $this->taxonomy->labels->singular_name )
+                ucwords( str_ireplace( 'post' , '', $post_type ) ),
+                sanitize_text_field( str_ireplace( $post_type, '', $this->taxonomy->labels->singular_name ) )
             ),
             //'priority' => 200,
         );
