@@ -118,7 +118,7 @@ h6 {
  * Definition Lists
  */
 
-dl	{
+dl {
 	margin-left: 30px;
 	margin-right: 30px;
 }
@@ -488,7 +488,7 @@ fieldset {
     border: 0;
     margin: 0;
     padding: 0;
-	clear: both;
+	/*clear: both;*/
 }
 
 figure {
@@ -861,7 +861,7 @@ table.aligncenter {
  */
 
 blockquote {
-	margin-left: 20px;
+	margin-left: 10px;
 	margin-right: 0;
 	padding-left: 10px;
 	border-left: 5px solid #ddd;
@@ -1094,9 +1094,14 @@ blockquote {
 .commentlist > li,
 .commentlist .children > li {
     margin-top: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+}
+
+.commentlist > li:first-child,
+.commentlist .children > li:first-child {
+    margin-top: 0;
 }
 
 .commentlist > li:last-child,
@@ -1108,15 +1113,15 @@ blockquote {
 
 .commentlist {
     margin-left: 0;
-    margin-bottom: 12px;
-    padding-top: 12px;
+    margin-bottom: 10px;
+    padding-top: 10px;
     padding-bottom: 10px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
 
 .commentlist .children {
-    margin-top: 12px;
+    margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid #ddd;
 }
@@ -1180,7 +1185,7 @@ blockquote {
 .comment-author .avatar {
     float: left;
     display: inline;
-    margin-right: 12px;
+    margin-right: 10px;
 }
 
 .comment-form .form-submit {
@@ -1449,7 +1454,7 @@ label > * {
 }
 
 .singular-post > .post-wrap > header > .entry-meta p {
-    margin: 0 0 0 52px;
+    margin: 0;
 }
 
 .singular-post > .post-wrap > header > .entry-meta .avatar {
@@ -1713,6 +1718,17 @@ label > * {
     	margin-left: -160px; /** Set margin to -(RightColumnWidth) */
     }
 
+    /** Full width columns */
+
+    .layout-content #container {
+        margin-right: 0;
+        float: none;
+    }
+
+    .layout-content #content {
+        margin-right: 0;
+    }
+
     /**
      * Footer elements
      */
@@ -1737,16 +1753,9 @@ label > * {
     	vertical-align: top;
     }
 
-    /** Full width columns */
-
-    .layout-content #container {
-    	margin-right: 0;
-    	float: none;
-    }
-
-    .layout-content #content {
-    	margin-right: 0;
-    }
+    /**
+     * Post elements
+     */
 
     /** Single posts */
 
@@ -1890,20 +1899,12 @@ label > * {
     	vertical-align: top;
     }
 
-    #header .menu.has-js > .menu-item-has-children a {
+    #header .menu.has-js .menu-item-has-children > a {
         padding-right: 22px;
     }
 
-    /*#header .menu.has-js > .menu-item-has-children + li {
-        margin-left: 13px;
-    }*/
-
     #header .menu > li:first-child {
     	margin-left: 0;
-    }
-
-    #header .menu > li:last-child {
-    	margin-right: 0;
     }
 
     #header .menu ul {

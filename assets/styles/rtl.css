@@ -10,7 +10,16 @@
  */
 
 body {
-  	text-align: right;
+    text-align: right;
+}
+
+/**
+ * Screen reader text
+ */
+
+.screen-reader-text:focus {
+    left: auto;
+    right: 5px;
 }
 
 /**
@@ -19,8 +28,9 @@ body {
 
 ul,
 ol {
-	margin-right: 30px;
-	padding-right: 0;
+    margin-left: 0;
+    margin-right: 30px;
+    padding-right: 0;
 }
 
 /**
@@ -32,11 +42,32 @@ ol {
 }
 
 /**
+ * Align
+ */
+
+/*.alignleft {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.alignright {
+    float: left;
+    margin-left: 0;
+    margin-right: 20px
+}*/
+
+/**
  * Gallery
  */
 
 .gallery {
-	padding: 15px 15px 5px 5px;
+    padding: 15px 15px 5px 5px;
+}
+
+.gallery-item {
+    margin-right: 0;
+    margin-left: 10px;
 }
 
 /**
@@ -44,12 +75,12 @@ ol {
  */
 
 blockquote {
-	margin-left: 0;
-	margin-right: 20px;
-	padding-left: 0;
-	padding-right: 10px;
-	border-left-width: 0;
-	border-right: 5px solid #ccc;
+    margin-right: 10px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 10px;
+    border-left: 0;
+    border-right: 5px solid #ddd;
 }
 
 /**
@@ -57,7 +88,7 @@ blockquote {
  */
 
 .menu {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 .menu ul {
@@ -65,16 +96,11 @@ blockquote {
     margin-right: 15px;
 }
 
-.mobile-menu a:before {
-    margin-right: 0;
-    margin-left: 5px;
-}
-
 /** Toggle buttons */
 
 .sub-menu-toggle {
     right: auto;
-    left: 10px;
+    left: 0;
 }
 
 /**
@@ -85,42 +111,33 @@ blockquote {
     margin-right: 0;
 }
 
-.comment-author .avatar {
-    float: right;
-    margin-right: 0;
-    margin-left: 12px;
-}
-
 .commentlist .reply,
 #cancel-comment-reply-link {
     text-align: left;
 }
 
-#reply-title > small {
+.comment-author .avatar {
+    float: right;
     margin-right: 0;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 /**
  * Form elements
  */
 
-input:focus,
-textarea:focus,
-select:focus {
-	border-color: #ddd;
-}
-
 input[type="submit"],
 input[type="button"],
 button {
-	border: 0;
-	border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
+    border: 0;
+    border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
 }
 
 /** Search form */
 
-.form.search input[type="submit"] {
+.form.search button[type="submit"] {
+    text-align: left;
+    right: auto;
     left: 1px;
 }
 
@@ -140,24 +157,23 @@ button {
 
 /** Single posts */
 
-.singular-post .entry-meta p {
-    margin: 0 52px 0 0;
-}
-
-.singular-post .post-wrap .entry-meta .avatar {
-	float: right;
-	margin-right: 0;
+.singular-post > .post-wrap > header > .entry-meta .avatar {
+    float: right;
 }
 
 @media (min-width: 800px) {
     /**
      * Header elements
      */
-    
+
     #header {
         text-align: right;
     }
-    
+
+    /**
+     * Toggle elements
+     */
+
     #header .search-wrap {
         float: left;
     }
@@ -167,52 +183,32 @@ button {
     /**
      * Menus
      */
-    
+
     #header .menu li {
-    	margin: 0;
-    	margin-right: 20px;
+        margin: 0;
     }
-    
-    #header .menu.has-js .menu-item-has-children {
+
+    #header .menu > li {
+        margin-left: 0;
+        margin-right: 2%;
+    }
+
+    #header .menu.has-js .menu-item-has-children > a {
         padding-right: 0;
         padding-left: 22px;
     }
-    
-    #header .menu.has-js .menu-item-has-children + li {
-        margin-left: 0;
-        margin-right: 13px;
-    }
-    
-    #header .menu li:first-child {
-    	margin-right: 0;
-    }
-    
-    #header .menu li:last-child {
-    	margin-left: 0;
-    }
-    
-    #header .menu ul {
-    	left: auto;
-    	right: 0;
-    }
-    
-    #header .menu ul ul {
-    	left: auto;
-    	right: 195px;
-    }
-    
-    /** Toggle buttons */
 
-    #header .menu > li > .sub-menu-toggle {
-        right: auto;
-        left: 0;
+    #header .menu > li:first-child {
+        margin-right: 0;
     }
-    
-    #header .sub-menu .sub-menu-toggle:before {
-        content: "\25B8";
+
+    #header .menu ul {
+        left: auto;
+        right: 0;
     }
-    
-    #header .sub-menu .sub-menu-toggle.closed:before {
-        content: "\25C2";
+
+    #header .menu ul ul {
+        left: auto;
+        right: 200px;
     }
 }
