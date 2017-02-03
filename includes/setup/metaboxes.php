@@ -37,19 +37,11 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
      * Layouts
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      private
+	 * @access      protected
 	 * 
 	 * @var         array         $layouts       Associative array of layouts ids to layouts names
 	 */
-    private $layouts;
-    
-    /**
-	 * Constructor
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 */
-	protected function __construct() {}
+    protected $layouts;
     
     /**
 	 * Meta boxes setup.

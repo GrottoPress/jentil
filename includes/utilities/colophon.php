@@ -17,6 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
+use GrottoPress\MagPack;
+
 /**
  * Colophon
  *
@@ -27,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Colophon {
+final class Colophon extends MagPack\Utilities\Wizard {
     /**
      * Get colophon
      *

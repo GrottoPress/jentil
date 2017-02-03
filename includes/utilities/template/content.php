@@ -17,6 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
+use GrottoPress\MagPack;
+
 /**
  * Content
  * 
@@ -27,16 +29,16 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Content {
+final class Content extends MagPack\Utilities\Wizard {
     /**
      * Template
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      private
+	 * @access      protected
 	 * 
 	 * @var         \GrottoPress\Jentil\Utilities\Template\Template         $template       Template
 	 */
-    private $template;
+    protected $template;
     
     /**
 	 * Constructor

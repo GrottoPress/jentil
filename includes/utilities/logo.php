@@ -15,6 +15,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
+use GrottoPress\MagPack;
+
 /**
  * Logo
  * 
@@ -25,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Logo {
+final class Logo extends MagPack\Utilities\Wizard {
     /**
      * Get logo
      * 

@@ -14,7 +14,6 @@
  * @since			Jentil 0.1.0
  */
 
-use GrottoPress\MagPack;
 use GrottoPress\Jentil\Utilities;
 
 $template = new Utilities\Template\Template();
@@ -24,7 +23,6 @@ $sticky_posts = $template_content->mod( 'sticky_posts' );
 
 $posts_per_page = get_option( 'posts_per_page' );
 $page_number = isset( $_GET['main-query_pag'] ) ? absint( $_GET['main-query_pag'] ) : 1;
-$version = get_bloginfo( 'version' );
 
 /**
  * The query
@@ -61,7 +59,7 @@ if ( $template->is( 'singular' ) ) {
 		'ignore_sticky_posts' 	=> 1,
 	);
 
-	$query .= ( new MagPack\Utilities\Query( $args ) )->run();
+	$query .= $template->query( $args )->run();
 } else {
 	if ( $sticky_posts && $page_number === 1 ) {
 		$sticky = new Utilities\Sticky();
@@ -174,7 +172,7 @@ if ( $template->is( 'singular' ) ) {
 			$sticky_args['author__not_in'] = $author_not_in;
 		}
 
-		$query .= ( new MagPack\Utilities\Query( $sticky_args ) )->run();
+		$query .= $template->query( $sticky_args )->run();
 	}
 
 	$args = array(
@@ -296,7 +294,7 @@ if ( $template->is( 'singular' ) ) {
 		$args['author__not_in'] = $author_not_in;
 	}
 
-	$query .= ( new MagPack\Utilities\Query( $args ) )->run();	
+	$query .= $template->query( $args )->run();	
 }
 
 /**

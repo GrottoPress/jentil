@@ -39,64 +39,55 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * Customizer sections
      *
      * @since       Jentil 0.1.0
-     * @access      private
+     * @access      protected
      * 
      * @var         array         $sections           Sections
      */
-    private $sections;
+    protected $sections;
 
     /**
      * Post types
      *
      * @since       Jentil 0.1.0
-     * @access      private
+     * @access      protected
      * 
      * @var     array      $post_types       Post types
      */
-    private $post_types;
+    protected $post_types;
 
     /**
      * Taxonomies
      *
      * @since       Jentil 0.1.0
-     * @access      private
+     * @access      protected
      * 
      * @var     array      $taxonomies       Taxonomies
      */
-    private $taxonomies;
+    protected $taxonomies;
 
     /**
      * Template instance
      *
      * @since       Jentil 0.1.0
-     * @access      private
+     * @access      protected
      * 
      * @var         \GrottoPress\Jentil\Utilities\Template\Template        $template         Template
      */
-    private $template;
-    
-    /**
-	 * Constructor
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      protected
-	 */
-	protected function __construct() {}
+    protected $template;
 
     /**
-     * Get attributes
+     * Allow get
      *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * Defines the attributes that can be retrieved
+     * with our getter.
+     *
+     * @since       MagPack 0.1.0
+     * @access      protected
+     *
+     * @return      array       Attributes.
      */
-    public function get( $attribute ) {
-        $disallow = array( 'sections' );
-
-        if ( in_array( $attribute, $disallow ) ) {
-            return null;
-        }
-
-        return $this->$attribute;
+    protected function allow_get() {
+        return array( 'sections' );
     }
 
     /**

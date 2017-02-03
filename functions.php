@@ -18,6 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
+global $pagenow;
+
 /**
  * Check dependencies
  *
@@ -26,20 +28,10 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 		Jentil 0.1.0
  */
 
-$satisfied = true;
+$messages = array();
 
 if ( ! function_exists( '\GrottoPress\MagPack\run' ) ) {
-	$satisfied = false;
-
-	$message = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Kindly install and activate that first.', 'jentil' );
-
-	if ( is_admin() ) {
-		add_action( 'admin_notices', function () use ( $message ) {
-			echo '<div class="notice notice-error"><p>' . $message . '</p></div>';
-		} );
-	} else {
-		wp_die( $message );
-	}
+	$messages[] = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Kindly install and activate that first.', 'jentil' );
 }
 
 /**
@@ -57,7 +49,7 @@ require get_template_directory() . '/vendor/autoload.php';
  * @since 		Jentil 0.1.0
  */
 function run() {
-	$jentil = Setup\Jentil::get_instance();
+	$jentil = Setup\Jentil::instance();
 	$jentil->run();
 }
 
@@ -66,6 +58,16 @@ function run() {
  * 
  * @since   	Jentil 0.1.0
  */
-if ( $satisfied ) {
+if ( $messages ) {
+	if ( is_admin() ) {
+		foreach ( $messages as $message ) {
+			add_action( 'admin_notices', function () use ( $message ) {
+				echo '<div class="notice notice-error"><p>' . $message . '</p></div>';
+			} );
+		}
+	} elseif ( $pagenow !== 'wp-login.php' && $pagenow !== 'wp-signup.php' ) {
+		wp_die( $messages[0] );
+	}
+} else {
 	add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );
 }

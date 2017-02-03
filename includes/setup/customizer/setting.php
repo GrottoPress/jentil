@@ -17,6 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
+use GrottoPress\MagPack;
+
 /**
  * Customizer setting
  *
@@ -27,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-abstract class Setting {
+abstract class Setting extends MagPack\Utilities\Wizard {
    /**
      * Setting name
      *
@@ -69,19 +71,18 @@ abstract class Setting {
     //protected $default;
 
     /**
-     * Get attributes
+     * Allow get
      *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * Defines the attributes that can be retrieved
+     * with our getter.
+     *
+     * @since       MagPack 0.1.0
+     * @access      protected
+     *
+     * @return      array       Attributes.
      */
-    public function get( $attribute ) {
-        $disallow = array( 'args', 'control' );
-
-        if ( in_array( $attribute, $disallow ) ) {
-            return null;
-        }
-
-        return $this->$attribute;
+    protected function allow_get() {
+        return array( 'args', 'control' );
     }
 
     /**

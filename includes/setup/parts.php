@@ -37,11 +37,11 @@ final class Parts extends MagPack\Utilities\Singleton {
      * Template
 	 *
 	 * @since       MagPack 0.1.0
-	 * @access      private
+	 * @access      protected
 	 *
 	 * @var         \GrottoPress\Jentil\Template\Template         $template       Template
 	 */
-	private $template;
+	protected $template;
 
 	/**
 	 * Constructor
@@ -193,8 +193,7 @@ final class Parts extends MagPack\Utilities\Singleton {
      */
     public function mobile_header_menu_toggle() {
     	$status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
-    	$pagination = new MagPack\Utilities\Pagination();
-
+    	
     	echo '<div class="menu-toggle max-screen-920">
     	    <div class="screen-reader-text">
     	        <a href="#menu-max-screen-920">' . esc_html__( 'Skip to menu', 'jentil' ) . '</a>
@@ -205,7 +204,7 @@ final class Parts extends MagPack\Utilities\Singleton {
     	            <li class="menu-item hamburger">
     	                <a href="' . esc_url( add_query_arg( array(
     		                'menu' => ( $status == 'off' ? 'on' : 'off' ),
-    	                ), $pagination->get_current_page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> ' . esc_html__( 'Menu', 'jentil' ) . '</a>
+    	                ), $this->template->pagination()->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> ' . esc_html__( 'Menu', 'jentil' ) . '</a>
     	            </li>
     	        </ul>
             </div>
@@ -241,7 +240,7 @@ final class Parts extends MagPack\Utilities\Singleton {
 	 * @action      jentil_before_title
      */
     public function breadcrumbs() {
-    	if ( $this->template->is( 'front_page' ) && ! is_paged() ) {
+    	if ( $this->template->is( 'front_page' ) && ! $this->template->pagination()->is_paged() ) {
     	    return;
     	}
 
@@ -249,8 +248,7 @@ final class Parts extends MagPack\Utilities\Singleton {
             'before' => esc_html__( 'Path: ', 'jentil' ),
         );
 
-    	$breadcrumbs = new MagPack\Utilities\Breadcrumbs( $args );
-    	echo $breadcrumbs->trail();
+    	echo $this->template->breadcrumbs( $args )->trail();
     }
 
     /**

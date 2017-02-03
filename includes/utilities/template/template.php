@@ -29,36 +29,36 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes/utilities
  * @since			Jentil 0.1.0
  */
-final class Template extends MagPack\Utilities\Template {
+final class Template extends MagPack\Utilities\Template\Template {
     /**
      * Title
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      private
+	 * @access      protected
 	 * 
 	 * @var         \GrottoPress\Jentil\Utilities\Template\Title         $title       Template title
 	 */
-    private $title;
+    protected $title;
     
     /**
      * Layout
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      private
+	 * @access      protected
 	 * 
 	 * @var         \GrottoPress\Jentil\Utilities\Template\Layout         $layout       Template layout
 	 */
-    private $layout;
+    protected $layout;
 
     /**
      * Content
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      private
+	 * @access      protected
 	 * 
 	 * @var         \GrottoPress\Jentil\Utilities\Template\Content         $content       Template content
 	 */
-    private $content;
+    protected $content;
     
     /**
 	 * Constructor
@@ -70,21 +70,22 @@ final class Template extends MagPack\Utilities\Template {
 	    $this->title = new Title( $this );
 	    $this->layout = new Layout( $this );
 	    $this->content = new Content( $this );
+
+	    parent::__construct();
 	}
 
 	/**
-     * Get attributes
+     * Allow get
      *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * Defines the attributes that can be retrieved
+     * with our getter.
+     *
+     * @since       MagPack 0.1.0
+     * @access      protected
+     *
+     * @return      array       Attributes.
      */
-    public function get( $attribute ) {
-        $disallow = array();
-
-        if ( in_array( $attribute, $disallow ) ) {
-            return null;
-        }
-
-        return $this->$attribute;
+    protected function allow_get() {
+        return array( 'title', 'layout', 'content' );
     }
 }
