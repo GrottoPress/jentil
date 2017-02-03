@@ -88,7 +88,7 @@ if ( $template->is( 'singular' ) ) {
 
 			'wrap_tag' 				=> $sticky->mod( 'wrap_tag', 'div' ),
 			'class' 				=> $sticky->mod( 'class', 'sticky-posts big' ),
-			'id' 					=> 'sticky-posts',
+			'id' 					=> 'main-query-sticky-posts',
 
 			'title_words' 			=> $sticky->mod( 'title_words', -1 ),
 			'title_pos' 			=> $sticky->mod( 'title_position', 'side' ),
@@ -125,7 +125,7 @@ if ( $template->is( 'singular' ) ) {
 		}
 
 		// if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
-			$sticky_args['post_type'] = $post_type;
+			$sticky_args['post_type'] = get_query_var( 'post_type' );
 		// }
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
