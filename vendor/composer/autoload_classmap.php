@@ -56,6 +56,7 @@ return array(
     'GrottoPress\\Jentil\\Setup\\Features' => $baseDir . '/includes/setup/features.php',
     'GrottoPress\\Jentil\\Setup\\Jentil' => $baseDir . '/includes/setup/jentil.php',
     'GrottoPress\\Jentil\\Setup\\Language' => $baseDir . '/includes/setup/language.php',
+    'GrottoPress\\Jentil\\Setup\\Layout' => $baseDir . '/includes/setup/layout.php',
     'GrottoPress\\Jentil\\Setup\\Metaboxes' => $baseDir . '/includes/setup/metaboxes.php',
     'GrottoPress\\Jentil\\Setup\\Parts' => $baseDir . '/includes/setup/parts.php',
     'GrottoPress\\Jentil\\Utilities\\Colophon' => $baseDir . '/includes/utilities/colophon.php',
@@ -63,6 +64,7 @@ return array(
     'GrottoPress\\Jentil\\Utilities\\Sticky' => $baseDir . '/includes/utilities/sticky.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Content' => $baseDir . '/includes/utilities/template/content.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Layout' => $baseDir . '/includes/utilities/template/layout.php',
+    'GrottoPress\\Jentil\\Utilities\\Template\\Posts' => $baseDir . '/includes/utilities/template/posts.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Template' => $baseDir . '/includes/utilities/template/template.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Title' => $baseDir . '/includes/utilities/template/title.php',
 );

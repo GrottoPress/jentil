@@ -42,6 +42,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->language();
 		$this->features();
 		$this->enqueue();
+		$this->layout();
 		$this->parts();
 		$this->customizer();
 		$this->metaboxes();
@@ -79,7 +80,19 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_action( 'after_setup_theme', array( $setup, 'enable_custom_logo' ) );
 		add_action( 'widgets_init', array( $setup, 'register_widget_areas' ) );
 	}
-	
+
+	/**
+     * Define layout hooks
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function layout() {
+		$layout = Layout::instance( $this );
+		
+		add_filter( 'body_class', array( $layout, 'body_class' ) );
+	}
+
 	/**
      * Define template parts hooks
 	 *
@@ -92,7 +105,6 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
 		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
 		add_filter( 'body_class', array( $parts, 'body_class' ) );
-		//add_action( 'wp_head', array( $parts, 'dynamic_styles' ) );
 		add_action( 'wp_head', array( $parts, 'render_title' ) );
 		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ), 100 );
 		add_filter( 'jentil_single_post_after_title', array( $parts, 'single_post_after_title' ), 100 );

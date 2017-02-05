@@ -39,9 +39,19 @@ final class Parts extends MagPack\Utilities\Singleton {
 	 * @since       MagPack 0.1.0
 	 * @access      protected
 	 *
-	 * @var         \GrottoPress\Jentil\Template\Template         $template       Template
+	 * @var    \GrottoPress\Jentil\Utilities\Template\Template      $template       Template
 	 */
 	protected $template;
+
+    /**
+     * Pagination
+     *
+     * @since       MagPack 0.1.0
+     * @access      protected
+     *
+     * @var     \GrottoPress\MagPack\Utilities\Pagination\Pagination    $pagination     Pagination
+     */
+    protected $pagination;
 
 	/**
 	 * Constructor
@@ -51,6 +61,7 @@ final class Parts extends MagPack\Utilities\Singleton {
 	 */
 	protected function __construct() {
 	    $this->template = new Utilities\Template\Template();
+        $this->pagination = new MagPack\Utilities\Pagination\Pagination();
 	}
 
     /**
@@ -204,7 +215,7 @@ final class Parts extends MagPack\Utilities\Singleton {
     	            <li class="menu-item hamburger">
     	                <a href="' . esc_url( add_query_arg( array(
     		                'menu' => ( $status == 'off' ? 'on' : 'off' ),
-    	                ), $this->template->pagination()->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> ' . esc_html__( 'Menu', 'jentil' ) . '</a>
+    	                ), $this->pagination->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> ' . esc_html__( 'Menu', 'jentil' ) . '</a>
     	            </li>
     	        </ul>
             </div>
@@ -240,7 +251,7 @@ final class Parts extends MagPack\Utilities\Singleton {
 	 * @action      jentil_before_title
      */
     public function breadcrumbs() {
-    	if ( $this->template->is( 'front_page' ) && ! $this->template->pagination()->is_paged() ) {
+    	if ( $this->template->is( 'front_page' ) && ! $this->pagination->is_paged() ) {
     	    return;
     	}
 
@@ -332,7 +343,7 @@ final class Parts extends MagPack\Utilities\Singleton {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        global $post; //, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
+        global $post;
 
     	if ( $this->template->is( 'singular' ) ) {
             if ( is_post_type_hierarchical( $post->post_type ) ) {
@@ -364,33 +375,6 @@ final class Parts extends MagPack\Utilities\Singleton {
             }
     	}
 
-    	$layout = $this->template->get( 'layout' );
-        $mod = $layout->mod();
-        $column = $layout->column();
-
-    	if ( ! empty( $layout ) ) {
-    		$classes[] = sanitize_title( 'layout-' . $mod );
-    		$classes[] = sanitize_title( 'layout-' . $column );
-    	}
-
     	return $classes;
-    }
-
-    /**
-     * Dynamic styles
-     *
-     * Add dynamic styles to theme
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
-     *
-     * @action      wp_head
-     */
-    public function dynamic_styles() {
-    	echo '<style type="text/css" media="all">
-    		.comment.depth-' . absint( get_option( 'thread_comments_depth' ) ) . ' {
-    			padding-bottom: 15px;
-    		}
-    	</style>';
     }
 }

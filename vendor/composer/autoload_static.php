@@ -92,6 +92,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Setup\\Features' => __DIR__ . '/../..' . '/includes/setup/features.php',
         'GrottoPress\\Jentil\\Setup\\Jentil' => __DIR__ . '/../..' . '/includes/setup/jentil.php',
         'GrottoPress\\Jentil\\Setup\\Language' => __DIR__ . '/../..' . '/includes/setup/language.php',
+        'GrottoPress\\Jentil\\Setup\\Layout' => __DIR__ . '/../..' . '/includes/setup/layout.php',
         'GrottoPress\\Jentil\\Setup\\Metaboxes' => __DIR__ . '/../..' . '/includes/setup/metaboxes.php',
         'GrottoPress\\Jentil\\Setup\\Parts' => __DIR__ . '/../..' . '/includes/setup/parts.php',
         'GrottoPress\\Jentil\\Utilities\\Colophon' => __DIR__ . '/../..' . '/includes/utilities/colophon.php',
@@ -99,6 +100,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Utilities\\Sticky' => __DIR__ . '/../..' . '/includes/utilities/sticky.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Content' => __DIR__ . '/../..' . '/includes/utilities/template/content.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Layout' => __DIR__ . '/../..' . '/includes/utilities/template/layout.php',
+        'GrottoPress\\Jentil\\Utilities\\Template\\Posts' => __DIR__ . '/../..' . '/includes/utilities/template/posts.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Template' => __DIR__ . '/../..' . '/includes/utilities/template/template.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Title' => __DIR__ . '/../..' . '/includes/utilities/template/title.php',
     );
