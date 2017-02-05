@@ -82,7 +82,7 @@ abstract class Setting extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'args', 'control' );
+        return array( 'args', 'control', 'name' );
     }
 
     /**

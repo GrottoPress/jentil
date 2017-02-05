@@ -87,7 +87,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'sections' );
+        return array( 'sections', 'template' );
     }
 
     /**

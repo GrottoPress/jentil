@@ -58,7 +58,7 @@ abstract class Section extends MagPack\Utilities\Wizard {
      * @since       Jentil 0.1.0
      * @access      protected
      * 
-     * @var     array      $args       Setting arguments
+     * @var     array      $args       Section arguments
      */
     protected $args;
 
@@ -95,7 +95,7 @@ abstract class Section extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'args' );
+        return array( 'customizer', 'name', 'args', 'settings' );
     }
 
     /**

@@ -29,14 +29,19 @@ get_header();
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_before_title' ); ?>
+		do_action( 'jentil_before_title' );
 		
-		<?php the_post(); ?>
+		the_post();
 		
-		<?php if ( $post->post_parent ) { ?>
+		if ( $post->post_parent ) { ?>
 
 			<h2 class="parent entry-title">
-			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
+			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" rev="attachment">
+			    	<span class="meta-nav">&laquo;</span> <?php
+
+			    	echo get_the_title( $post->post_parent );
+
+			    ?></a>
 	        </h2>
 
 		<?php } ?>
@@ -45,11 +50,10 @@ get_header();
 			<article data-post-id="<?php the_ID(); ?>" id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 				<header>
 
-					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
 					
-					<?php rewind_posts(); ?>
+					rewind_posts();
 					
-					<?php
 					/**
 					 * Do action after title
 					 * 
@@ -73,24 +77,24 @@ get_header();
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
 					<p class="entry-attachment">
-					    <a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url">
+					    <a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url"><?php
 
-					        <?php echo basename( $post->guid ); ?>
+					    	echo basename( $post->guid );
 
-					    </a>
+					   ?></a>
 			        </p>
 					
 					<?php if ( ! empty( $post->post_excerpt ) ) { ?>
 
-						<p class="entry-caption" itemprop="description">
+						<p class="entry-caption" itemprop="description"><?php
 
-							<?php echo wp_kses_data( $post->post_excerpt ); ?>
+							echo wp_kses_data( $post->post_excerpt );
 
-						</p>
+						?></p>
 
-					<?php } ?>
+					<?php }
 		
-					<?php echo $magpack_post->content( true ); ?>
+					echo $magpack_post->content( true ); ?>
 					
 				</div><!-- .entry-content -->
 			</article>
@@ -104,17 +108,17 @@ get_header();
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_after_content' ); ?>
+		do_action( 'jentil_after_content' );
 		
-		<?php the_post(); ?>
+		the_post();
 		
-		<?php if ( 'open' == get_option( 'default_ping_status' ) ) {
+		if ( 'open' == get_option( 'default_ping_status' ) ) {
 			echo '<!--'; trackback_rdf(); echo '-->' ."\n";
-		} ?>
+		}
 		
-		<?php comments_template( '', true ); ?>
+		comments_template( '', true );
 		
-		<?php rewind_posts(); ?>
+		rewind_posts(); ?>
 		
 	</main><!-- #content -->
 </div><!-- #container -->

@@ -51,10 +51,9 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     		<?php /** Top navigation */
     		if ( $total_pages > 1 && get_option( 'page_comments' ) ) { ?>
     			
-    			<nav role="navigation" class="navigation top-nav self-clear comments-pagination">
+    			<nav role="navigation" class="navigation top-nav self-clear comments-pagination"><?php
     				
-    				<?php
-    				/**
+                    /**
 					 * Filter the previous and next labels.
 					 * 
 					 * @var         string          $prev_label         Previous label.
@@ -71,9 +70,9 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     				paginate_comments_links( array(
     					'prev_text' => $prev_label,
     					'next_text' => $next_label,
-    				) ); ?>
+    				) );
     			
-    			</nav>
+    			?></nav>
     		
     		<?php }
     

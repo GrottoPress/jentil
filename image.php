@@ -29,14 +29,19 @@ get_header();
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_before_title' ); ?>
+		do_action( 'jentil_before_title' );
 		
-		<?php the_post(); ?>
+		the_post();
 		
-		<?php if ( $post->post_parent ) { ?>
+		if ( $post->post_parent ) { ?>
 
 			<h2 class="parent entry-title">
-			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" rev="attachment"><span class="meta-nav">&laquo;</span> <?php echo get_the_title( $post->post_parent ); ?></a>
+			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" rev="attachment">
+			    	<span class="meta-nav">&laquo;</span> <?php
+
+			    	echo get_the_title( $post->post_parent );
+
+			    ?></a>
 	        </h2>
 
 		<?php } ?>
@@ -45,11 +50,10 @@ get_header();
 			<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 				<header>
 
-					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
 					
-					<?php rewind_posts(); ?>
+					rewind_posts();
 					
-					<?php
 					/**
 					 * Do action after title
 					 * 
@@ -85,12 +89,12 @@ get_header();
 				$prev_label = sanitize_text_field( apply_filters( 'jentil_pagination_prev_label', __( '&larr; Previous', 'jentil' ), 'image' ) );
 		    	$next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label', __( 'Next &rarr;', 'jentil' ), 'image' ) ); ?>
 			 	
-			 	<nav id="image-navigation" class="navigation image-navigation pagination self-clear">
-
-			 		<?php previous_image_link( false, $prev_label );
-					next_image_link( false, $next_label ); ?>
+			 	<nav id="image-navigation" class="navigation image-navigation pagination self-clear"><?php
+			 	
+			 		previous_image_link( false, $prev_label );
+					next_image_link( false, $next_label );
 					
-				</nav><!-- .image-navigation -->
+				?></nav><!-- .image-navigation -->
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
 					<figure class="entry-attachment image aligncenter">
@@ -105,19 +109,19 @@ get_header();
 						 */
 						$image_size = apply_filters( 'jentil_attachment_size', 'large' ); ?>
 								
-						<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url">
+						<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url"><?php
 
-							<?php echo wp_get_attachment_image( $post->ID, $image_size ); ?>
+							echo wp_get_attachment_image( $post->ID, $image_size );
 
-						</a>
+						?></a>
 						
 						<?php if ( ! empty( $post->post_excerpt ) ) { ?>
 
-							<figcaption class="entry-caption wp-caption-text" itemprop="description">
+							<figcaption class="entry-caption wp-caption-text" itemprop="description"><?php
 
-								<?php echo wp_kses_data( $post->post_excerpt ); ?>
+								echo wp_kses_data( $post->post_excerpt );
 
-							</figcaption>
+							?></figcaption>
 
 						<?php } ?>
 						
@@ -137,17 +141,17 @@ get_header();
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_after_content' ); ?>
+		do_action( 'jentil_after_content' );
 		
-		<?php the_post(); ?>
+		the_post();
 		
-		<?php if ( 'open' == get_option( 'default_ping_status' ) ) {
+		if ( 'open' == get_option( 'default_ping_status' ) ) {
 			echo '<!--'; trackback_rdf(); echo '-->' ."\n";
-		} ?>
+		}
 		
-		<?php comments_template( '', true ); ?>
+		comments_template( '', true );
 		
-		<?php rewind_posts(); ?>
+		rewind_posts(); ?>
 		
 	</main><!-- #content -->
 </div><!-- #container -->

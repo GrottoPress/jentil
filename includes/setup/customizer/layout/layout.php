@@ -60,6 +60,22 @@ final class Layout extends Setup\Customizer\Section {
     }
 
     /**
+     * Allow get
+     *
+     * Defines the attributes that can be retrieved
+     * with our getter.
+     *
+     * @since       MagPack 0.1.0
+     * @access      protected
+     *
+     * @return      array       Attributes.
+     */
+    protected function allow_get() {
+        return array_merge( parent::allow_get(),
+            array( 'default' ) );
+    }
+
+    /**
      * Get settings
      *
      * @since       Jentil 0.1.0

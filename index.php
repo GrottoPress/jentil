@@ -60,11 +60,11 @@ get_header();
 		if ( ! $template->is( 'singular' ) ) { ?>
 		
 			<header>
-				<h1 class="page-title entry-title" itemprop="name">
+				<h1 class="page-title entry-title" itemprop="name"><?php
 
-					<?php echo $template->get( 'title' )->title(); ?>
-					
-				</h1>
+					echo $template->get( 'title' )->title();
+
+				?></h1>
 				
 				<?php
 				/**
@@ -77,27 +77,33 @@ get_header();
 				do_action( 'jentil_after_title' );
 		
 				if ( $template->is( 'category' ) ) {
-					$category_description = category_description();
+					if ( ( $category_description = category_description() ) ) { ?>
 					
-					if ( $category_description ) { ?>
-					
-						<div class="archive-description category-description"><?php echo $category_description; ?></div>
+						<div class="archive-description category-description"><?php
+
+							echo $category_description;
+
+						?></div>
 						
 					<?php }
 				} elseif ( $template->is( 'tag' ) ) {
-					$tag_description = tag_description();
-					
-					if ( $tag_description ) { ?>
-					
-						<div class="archive-description tag-description"><?php echo $tag_description; ?></div>
+					if ( ( $tag_description = tag_description() ) ) { ?>
+
+						<div class="archive-description tag-description"><?php
+
+							echo $tag_description;
+
+						?></div>
 						
 					<?php }
 				} elseif ( $template->is( 'author' ) ) {
-					$author_description = get_the_author_meta( 'description', $author_id );
+					if ( ( $author_description = get_the_author_meta( 'description', get_query_var( 'author' ) ) ) ) { ?>
 					
-					if ( $author_description ) { ?>
-					
-						<div class="archive-description author-description"><?php echo $author_description; ?></div>
+						<div class="archive-description author-description"><?php
+
+							echo $author_description;
+
+						?></div>
 						
 					<?php }
 				} ?>
@@ -107,7 +113,7 @@ get_header();
 		<?php }
 		
 		if ( $template->is( 'search' ) ) {
-			get_search_form( true );
+			get_search_form();
 		}
 		
 		/**
@@ -123,11 +129,8 @@ get_header();
 		
 			<div class="posts-wrap">
 				<article class="post-wrap post-0" itemscope itemtype="http://schema.org/Article">
-					<h2 class="entry-title" itemprop="name headline"><?php esc_html_e( 'Nothing found', 'jentil' ); ?></h2>
-				
-					<div class="entry-content self-clear" itemprop="articleBody">
-						
-						<?php
+					<div class="entry-content self-clear" itemprop="articleBody"><?php
+
 						/**
 						 * Filter the nothing found page content.
 						 * 
@@ -138,13 +141,15 @@ get_header();
 						 */
 						$not_found_content = wp_kses_post( apply_filters(
 							'jentil_not_found_content',
-							'<p>' . esc_html__( 'Sorry, nothing here ):', 'jentil' ) . '</p>',
+							'<h2 class="entry-title" itemprop="name headline">' . esc_html__( 'Nothing found', 'jentil' ) . '</h2>'
+							
+							. '<p>' . esc_html__( 'Sorry, nothing here ):', 'jentil' ) . '</p>',
 							$template->type()
 						) );
 						
-						echo $not_found_content; ?>
-						
-					</div><!-- .entry-content -->
+						echo $not_found_content;
+
+					?></div><!-- .entry-content -->
 				</article>
 			</div>
 		
