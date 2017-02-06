@@ -83,6 +83,16 @@ abstract class Content extends Setup\Customizer\Section {
     protected $image_alignments;
 
     /**
+     * Default
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $default       Default settings
+     */
+    protected $default;
+
+    /**
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
@@ -117,8 +127,57 @@ abstract class Content extends Setup\Customizer\Section {
             'grid' => esc_html__( 'Grid', 'jentil' ),
         );
 
+        $this->default = array(
+            'wrap_class' => 'archive-posts big',
+            'wrap_tag' => 'div',
+            'layout' => 'stack',
+            'number' => ( int ) get_option( 'posts_per_page' ),
+            'before_title' => '',
+            'before_title_separator' => ' | ',
+            'title_words' => -1,
+            'title_position' => 'side',
+            'after_title' => 'published_date, comments_link',
+            'after_title_separator' => ' | ',
+            'image' => 'mini-thumb',
+            'image_alignment' => 'left',
+            'image_margin' => '',
+            'text_offset' => 0,
+            'excerpt' => 300,
+            'more_link' => 'read more',
+            'after_content' => 'category, post_tag',
+            'after_content_separator' => ' | ',
+            'pagination' => '',
+            'pagination_maximum' => -1,
+            'pagination_position' => 'bottom',
+            'pagination_previous_label' => __( '&larr; Previous', 'jentil' ),
+            'pagination_next_label' => __( 'Next &rarr;', 'jentil' ),
+            'sticky_posts' => 1,
+        );
+
         parent::__construct( $customizer );
 	}
+
+    /**
+     * Allow get
+     *
+     * Defines the attributes that can be retrieved
+     * with our getter.
+     *
+     * @since       MagPack 0.1.0
+     * @access      protected
+     *
+     * @return      array       Attributes.
+     */
+    protected function allow_get() {
+        return array_merge( parent::allow_get(), array(
+            'default',
+            'pagination_positions',
+            'title_positions',
+            'pagination_types',
+            'layouts',
+            'image_alignments',
+        ) );
+    }
 
 	/**
      * Get settings

@@ -50,9 +50,11 @@ final class Title_Position extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_title_position';
+        
         $this->args = array(
-            'default' => 'side',
+            'default' => ( $this->content->get( 'default' ) )['title_position'],
             //'transport' => 'postMessage',
         );
 

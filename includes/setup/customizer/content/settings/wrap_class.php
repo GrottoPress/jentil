@@ -50,9 +50,11 @@ final class Wrap_Class extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = $this->content->get( 'name' ) . '_class';
+
+        $this->name = $this->content->get( 'name' ) . '_wrap_class';
+        
         $this->args = array(
-            'default' => 'archive-posts big',
+            'default' => ( $this->content->get( 'default' ) )['wrap_class'],
             //'transport' => 'postMessage',
         );
 

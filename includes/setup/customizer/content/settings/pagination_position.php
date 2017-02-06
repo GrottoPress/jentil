@@ -50,9 +50,11 @@ final class Pagination_Position extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_pagination_position';
+        
         $this->args = array(
-            'default' => 'bottom',
+            'default' => ( $this->content->get( 'default' ) )['pagination_position'],
             //'transport' => 'postMessage',
         );
 

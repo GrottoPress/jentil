@@ -163,7 +163,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'pag_next_label' 		=> $content->mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
 			'wrap_tag' 				=> $content->mod( 'wrap_tag', 'div' ),
-			'class' 				=> $content->mod( 'class', 'archive-posts big' ),
+			'class' 				=> $content->mod( 'wrap_class', 'archive-posts big' ),
 			'id' 					=> 'main-query',
 
 			'title_words' 			=> $content->mod( 'title_words', -1 ),
@@ -189,6 +189,10 @@ final class Posts extends MagPack\Utilities\Wizard {
 				$args['orderby'] = 'all_time_views';
 				$args['order'] = 'DESC';
 			}
+
+			$args['img'] = $content->mod( 'image', 'micro-thumb' );
+			$args['title_position'] = $content->mod( 'title_position', 'top' );
+			$args['after_title'] = $content->mod( 'after_title', 'post_type, comments_link' );
 		}
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
@@ -308,7 +312,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'pag_next_label' 		=> $sticky->mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
 
 			'wrap_tag' 				=> $sticky->mod( 'wrap_tag', 'div' ),
-			'class' 				=> $sticky->mod( 'class', 'sticky-posts big' ),
+			'class' 				=> $sticky->mod( 'wrap_class', 'sticky-posts big' ),
 			'id' 					=> 'main-query-sticky-posts',
 
 			'title_words' 			=> $sticky->mod( 'title_words', -1 ),

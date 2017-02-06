@@ -52,9 +52,11 @@ final class After_Title_Separator extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_after_title_separator';
+        
         $this->args = array(
-            'default' => ' | ',
+            'default' => ( $this->content->get( 'default' ) )['after_title_separator'],
             //'transport' => 'postMessage',
         );
 

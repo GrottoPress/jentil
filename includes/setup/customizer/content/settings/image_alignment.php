@@ -50,9 +50,11 @@ final class Image_Alignment extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
-        $this->name = $this->content->get( 'name' ) . '_image_align';
+
+        $this->name = $this->content->get( 'name' ) . '_image_alignment';
+        
         $this->args = array(
-            'default' => 'left',
+            'default' => ( $this->content->get( 'default' ) )['image_alignment'],
             //'transport' => 'postMessage',
         );
 

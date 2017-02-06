@@ -50,9 +50,11 @@ final class Excerpt extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_excerpt';
+        
         $this->args = array(
-            'default' => '300',
+            'default' => ( $this->content->get( 'default' ) )['excerpt'],
             //'transport' => 'postMessage',
         );
 

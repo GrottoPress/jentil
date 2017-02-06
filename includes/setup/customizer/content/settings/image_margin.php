@@ -50,9 +50,11 @@ final class Image_Margin extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_image_margin';
+        
         $this->args = array(
-            'default' => '',
+            'default' => ( $this->content->get( 'default' ) )['image_margin'],
             //'transport' => 'postMessage',
         );
 

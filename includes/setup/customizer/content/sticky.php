@@ -47,4 +47,18 @@ final class Sticky extends Content {
 
         parent::__construct( $customizer );
     }
+
+    /**
+     * Get settings
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function settings() {
+        $this->default['number'] = 3;
+        $this->default['wrap_class'] = 'sticky-posts big';
+        $this->default['pagination_position'] = 'none';
+
+        return parent::settings();
+    }
 }

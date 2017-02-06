@@ -50,9 +50,11 @@ final class Before_Title extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_before_title';
+        
         $this->args = array(
-            'default' => '',
+            'default' => ( $this->content->get( 'default' ) )['before_title'],
             //'transport' => 'postMessage',
         );
 

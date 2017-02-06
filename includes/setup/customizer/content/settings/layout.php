@@ -50,9 +50,11 @@ final class Layout extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_layout';
+        
         $this->args = array(
-            'default' => 'stack',
+            'default' => ( $this->content->get( 'default' ) )['layout'],
             //'transport' => 'postMessage',
         );
 

@@ -52,9 +52,11 @@ final class Pagination_Previous_Label extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_pagination_previous_label';
+        
         $this->args = array(
-            'default' => __( '&larr; Previous', 'jentil' ),
+            'default' => ( $this->content->get( 'default' ) )['pagination_previous_label'],
             //'transport' => 'postMessage',
         );
 

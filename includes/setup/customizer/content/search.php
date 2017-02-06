@@ -47,4 +47,18 @@ final class Search extends Content {
 
         parent::__construct( $customizer );
     }
+
+    /**
+     * Get settings
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function settings() {
+        $this->default['image'] = 'micro-thumb';
+        $this->default['title_position'] = 'top';
+        $this->default['after_title'] = 'post_type, comments_link';
+
+        return parent::settings();
+    }
 }

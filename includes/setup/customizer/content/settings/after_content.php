@@ -52,9 +52,11 @@ final class After_Content extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_after_content';
+        
         $this->args = array(
-            'default' => 'category, post_tag',
+            'default' => ( $this->content->get( 'default' ) )['after_content'],
             //'transport' => 'postMessage',
         );
 

@@ -50,9 +50,11 @@ final class Number extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_number';
+        
         $this->args = array(
-            'default' => ( int ) get_option( 'posts_per_page' ),
+            'default' => ( $this->content->get( 'default' ) )['number'],
             //'transport' => 'postMessage',
         );
 

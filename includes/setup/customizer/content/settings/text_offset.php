@@ -50,9 +50,11 @@ final class Text_Offset extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_text_offset';
+        
         $this->args = array(
-            'default' => 0,
+            'default' => ( $this->content->get( 'default' ) )['text_offset'],
             //'transport' => 'postMessage',
         );
 

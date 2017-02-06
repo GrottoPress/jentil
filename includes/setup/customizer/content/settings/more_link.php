@@ -50,9 +50,11 @@ final class More_Link extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_more_link';
+        
         $this->args = array(
-            'default' => 'read more',
+            'default' => ( $this->content->get( 'default' ) )['more_link'],
             //'transport' => 'postMessage',
         );
 

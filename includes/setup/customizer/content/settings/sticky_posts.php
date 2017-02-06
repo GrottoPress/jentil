@@ -50,9 +50,11 @@ final class Sticky_Posts extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_sticky_posts';
+        
         $this->args = array(
-            'default' => 0,
+            'default' => ( $this->content->get( 'default' ) )['sticky_posts'],
             //'transport' => 'postMessage',
         );
 

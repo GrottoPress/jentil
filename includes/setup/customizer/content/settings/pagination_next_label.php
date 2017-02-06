@@ -52,9 +52,11 @@ final class Pagination_Next_Label extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_pagination_next_label';
+        
         $this->args = array(
-            'default' => __( 'Next &rarr;', 'jentil' ),
+            'default' => ( $this->content->get( 'default' ) )['pagination_next_label'],
             //'transport' => 'postMessage',
         );
 

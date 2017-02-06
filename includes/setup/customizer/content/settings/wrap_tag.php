@@ -50,9 +50,11 @@ final class Wrap_Tag extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+        
         $this->name = $this->content->get( 'name' ) . '_wrap_tag';
+
         $this->args = array(
-            'default' => 'div',
+            'default' => ( $this->content->get( 'default' ) )['wrap_tag'],
             //'transport' => 'postMessage',
         );
 

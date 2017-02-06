@@ -50,9 +50,11 @@ final class Pagination_Maximum extends Setup\Customizer\Setting {
      */
     public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_pagination_maximum';
+        
         $this->args = array(
-            'default' => -1,
+            'default' => ( $this->content->get( 'default' ) )['pagination_maximum'],
             //'transport' => 'postMessage',
         );
 

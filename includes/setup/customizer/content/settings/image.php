@@ -50,9 +50,11 @@ final class Image extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_image';
+        
         $this->args = array(
-            'default' => 'mini-thumb',
+            'default' => ( $this->content->get( 'default' ) )['image'],
             //'transport' => 'postMessage',
         );
 

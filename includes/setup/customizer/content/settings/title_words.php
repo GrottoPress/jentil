@@ -50,9 +50,11 @@ final class Title_Words extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_title_words';
+        
         $this->args = array(
-            'default' => -1,
+            'default' => ( $this->content->get( 'default' ) )['title_words'],
             //'transport' => 'postMessage',
         );
 

@@ -50,9 +50,11 @@ final class After_Title extends Setup\Customizer\Setting {
 	 */
 	public function __construct( $content ) {
         $this->content = $content;
+
         $this->name = $this->content->get( 'name' ) . '_after_title';
+        
         $this->args = array(
-            'default' => 'published_date, comments_link',
+            'default' => ( $this->content->get( 'default' ) )['after_title'],
             //'transport' => 'postMessage',
         );
 
