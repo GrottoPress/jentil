@@ -325,7 +325,7 @@ final class Parts extends MagPack\Utilities\Singleton {
     public function colophon() {
     	$colophon = new Utilities\Colophon();
 
-        if ( ! ( $mod = $colophon->mod() ) ) {
+        if ( ! ( $mod = $colophon->mod() ) && ! $this->template->is( 'customize_preview' ) ) {
             return '';
         }
 

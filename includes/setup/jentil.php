@@ -1,14 +1,14 @@
 <?php
 
 /**
- * jentil
+ * Jentil
  *
  * This hooks methods into actions and filters
  * that enables standard theme functionality.
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
- * @subpackage 	    jentil/includes
+ * @subpackage 	    jentil/includes/setup
  * @since		    Jentil 0.1.0
  */
 
@@ -28,8 +28,8 @@ use GrottoPress\MagPack;
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
- * @subpackage 	    jentil/includes
- * @since			jentil 0.1.0
+ * @subpackage 	    jentil/includes/setup
+ * @since			Jentil 0.1.0
  */
 final class Jentil extends MagPack\Utilities\Singleton {
     /**

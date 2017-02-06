@@ -334,6 +334,14 @@ ol ul:last-child {
     margin-bottom: 0;
 }
 
+#main-wrap:first-child #main {
+    padding-top: 20px;
+}
+
+#main-wrap:last-child #main {
+    padding-bottom: 20px;
+}
+
 /**
  * Hobbit: Areas that require smaller dimensions/sizes
  */
