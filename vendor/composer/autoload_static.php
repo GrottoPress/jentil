@@ -98,6 +98,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Utilities\\Colophon' => __DIR__ . '/../..' . '/includes/utilities/colophon.php',
         'GrottoPress\\Jentil\\Utilities\\Logo' => __DIR__ . '/../..' . '/includes/utilities/logo.php',
         'GrottoPress\\Jentil\\Utilities\\Sticky' => __DIR__ . '/../..' . '/includes/utilities/sticky.php',
+        'GrottoPress\\Jentil\\Utilities\\Template\\Breadcrumbs' => __DIR__ . '/../..' . '/includes/utilities/template/breadcrumbs.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Content' => __DIR__ . '/../..' . '/includes/utilities/template/content.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Layout' => __DIR__ . '/../..' . '/includes/utilities/template/layout.php',
         'GrottoPress\\Jentil\\Utilities\\Template\\Posts' => __DIR__ . '/../..' . '/includes/utilities/template/posts.php',

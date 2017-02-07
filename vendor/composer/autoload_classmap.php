@@ -62,6 +62,7 @@ return array(
     'GrottoPress\\Jentil\\Utilities\\Colophon' => $baseDir . '/includes/utilities/colophon.php',
     'GrottoPress\\Jentil\\Utilities\\Logo' => $baseDir . '/includes/utilities/logo.php',
     'GrottoPress\\Jentil\\Utilities\\Sticky' => $baseDir . '/includes/utilities/sticky.php',
+    'GrottoPress\\Jentil\\Utilities\\Template\\Breadcrumbs' => $baseDir . '/includes/utilities/template/breadcrumbs.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Content' => $baseDir . '/includes/utilities/template/content.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Layout' => $baseDir . '/includes/utilities/template/layout.php',
     'GrottoPress\\Jentil\\Utilities\\Template\\Posts' => $baseDir . '/includes/utilities/template/posts.php',

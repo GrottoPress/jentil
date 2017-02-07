@@ -34,16 +34,6 @@ if ( ! defined( 'WPINC' ) ) {
  */
 final class Metaboxes extends MagPack\Utilities\Singleton {
     /**
-     * Layouts
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      protected
-	 * 
-	 * @var         array         $layouts       Associative array of layouts ids to layouts names
-	 */
-    protected $layouts;
-    
-    /**
 	 * Meta boxes setup.
 	 *
 	 * @since    	Jentil 0.1.0
@@ -53,9 +43,6 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 * @action      load-post-new.php
 	 */
 	public function setup() {
-		$template = new Utilities\Template\Template();
-        $this->layouts = $template->get( 'layout' )->layouts_ids_names();
-
         add_action( 'add_meta_boxes', array( $this, 'add' ), 10, 2 );
 		add_action( 'save_post', array( $this, 'save' ) );
 		
@@ -100,8 +87,7 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			$args['notes'] = isset( $boxes[ $id ]['notes'] ) ? $boxes[ $id ]['notes'] : null;
 			
-			$metabox = new MagPack\Utilities\Metabox( $args );
-			$metabox->add();
+			( new MagPack\Utilities\Admin\Metabox( $args ) )->add();
 		}
 	}
 	
@@ -124,8 +110,7 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 			$args['type'] = isset( $boxes[ $id ]['type'] ) ? sanitize_key( $boxes[ $id ]['type'] ) : '';
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			
-			$metabox = new MagPack\Utilities\Metabox( $args );
-			$metabox->save( $post_id );
+			( new MagPack\Utilities\Admin\Metabox( $args ) )->save( $post_id );
 		}
 	}
 	
@@ -137,22 +122,27 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 */
 	private function boxes( $post_type ) {
 	    $boxes = array();
+
+	    $template = new Utilities\Template\Template();
+        $layouts = $template->get( 'layout' )->layouts_ids_names();
 	    
 	    if ( is_post_type_hierarchical( $post_type ) ) {
-	        $boxes['jentil-layout'] = array(
-				'title' => esc_html__( 'Layout', 'jentil' ),
-				'context' => 'side',
-				'priority' => 'default',
-				'callback' => '',
-				'fields' => array(
-					'layout' => array(
-						'type' => 'select',
-						'choices' => $this->layouts,
-						'label' => esc_html__( 'Select layout', 'jentil' ),
+			if ( $layouts ) {
+		        $boxes['jentil-layout'] = array(
+					'title' => esc_html__( 'Layout', 'jentil' ),
+					'context' => 'side',
+					'priority' => 'default',
+					'callback' => '',
+					'fields' => array(
+						'layout' => array(
+							'type' => 'select',
+							'choices' => $layouts,
+							'label' => esc_html__( 'Select layout', 'jentil' ),
+						),
 					),
-				),
-				'notes' => __( 'Need help? Check out the <a href="#" target="_blank">documentation</a>.' ),
-			);
+					'notes' => __( 'Need help? Check out the <a href="#" target="_blank">documentation</a>.' ),
+				);
+		    }
 	    }
 	    
 	    return $boxes;
