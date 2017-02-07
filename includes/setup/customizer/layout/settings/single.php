@@ -50,7 +50,9 @@ final class Single extends Setup\Customizer\Setting {
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
         $this->layout = $layout;
+
         $this->name = sanitize_key( 'single_' . $post_type->name . '_layout' );
+        
         $this->args = array(
             'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',

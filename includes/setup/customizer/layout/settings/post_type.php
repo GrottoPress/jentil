@@ -50,7 +50,9 @@ final class Post_Type extends Setup\Customizer\Setting {
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
         $this->layout = $layout;
+
         $this->name = sanitize_key( $post_type->name . '_post_type_layout' );
+        
         $this->args = array(
             'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',

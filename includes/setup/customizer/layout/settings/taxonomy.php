@@ -50,7 +50,9 @@ final class Taxonomy extends Setup\Customizer\Setting {
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy ) {
         $this->layout = $layout;
+
         $this->name = sanitize_key( $taxonomy->name . '_taxonomy_layout' );
+        
         $this->args = array(
             'default'       =>  $this->layout->get( 'default' ),
             //'transport'   =>  'postMessage',

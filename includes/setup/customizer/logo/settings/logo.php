@@ -51,7 +51,9 @@ final class Logo extends Setup\Customizer\Setting {
 	 */
 	public function __construct( Setup\Customizer\Logo\Logo $logo ) {
         $this->logo = $logo;
+
         $this->name = 'custom_logo';
+        
         $this->args = array(
             'default'       =>  '',
             'transport'   =>  'postMessage',
