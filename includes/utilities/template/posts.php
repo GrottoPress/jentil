@@ -190,9 +190,11 @@ final class Posts extends MagPack\Utilities\Wizard {
 				$args['order'] = 'DESC';
 			}
 
-			$args['img'] = $content->mod( 'image', 'micro-thumb' );
+			$args['class'] = $content->mod( 'wrap_class', 'archive-posts' );
+			$args['img'] = $content->mod( 'image', 'nano-thumb' );
 			$args['title_position'] = $content->mod( 'title_position', 'top' );
 			$args['after_title'] = $content->mod( 'after_title', 'post_type, comments_link' );
+			$args['excerpt'] = $content->mod( 'excerpt', '160' );
 		}
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {

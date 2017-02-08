@@ -204,6 +204,6 @@ final class Title extends MagPack\Utilities\Wizard {
 	 * @access      private
 	 */
 	private function title_404() {
-		return esc_html__( 'Page Not Found', 'jentil' );
+		return esc_html__( 'Not Found', 'jentil' );
 	}
 }

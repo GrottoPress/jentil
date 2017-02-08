@@ -55,9 +55,11 @@ final class Search extends Content {
      * @access      protected
      */
     protected function settings() {
-        $this->default['image'] = 'micro-thumb';
+        $this->default['wrap_class'] = 'archive-posts';
+        $this->default['image'] = 'nano-thumb';
         $this->default['title_position'] = 'top';
         $this->default['after_title'] = 'post_type, comments_link';
+        $this->default['excerpt'] = '160';
 
         return parent::settings();
     }
