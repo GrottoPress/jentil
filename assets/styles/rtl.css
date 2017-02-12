@@ -193,7 +193,7 @@ button {
         margin-right: 2%;
     }
 
-    #header .menu.has-js .menu-item-has-children > a {
+    .has-js #header .menu .menu-item-has-children > a {
         padding-right: 0;
         padding-left: 22px;
     }

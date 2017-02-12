@@ -1907,7 +1907,7 @@ label > * {
     	vertical-align: top;
     }
 
-    #header .menu.has-js .menu-item-has-children > a {
+    .has-js #header .menu .menu-item-has-children > a {
         padding-right: 22px;
     }
 

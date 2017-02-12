@@ -38,7 +38,7 @@
     });
     
     // Add has-js class
-    $( '.menu' ).addClass( 'has-js' );
+    $( 'html' ).removeClass( 'has-js' ).addClass( 'has-js' );
     
     // Add icons to all parent menu items
     $( '.menu li > ul' ).before( '<button role="button" class="sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
