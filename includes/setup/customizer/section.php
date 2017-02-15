@@ -121,7 +121,7 @@ abstract class Section extends MagPack\Utilities\Wizard {
         $this->settings = $this->settings();
 
         if ( $this->settings ) {
-            foreach ( $this->settings as $setting ) {
+            foreach ( $this->settings as $name => $setting ) {
                 $setting->add( $wp_customize );
             }
         }

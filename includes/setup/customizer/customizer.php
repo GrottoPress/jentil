@@ -43,7 +43,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * 
      * @var         array         $panels           Panels
      */
-    protected $panels;
+    // protected $panels;
 
     /**
      * Customizer sections
@@ -121,14 +121,14 @@ final class Customizer extends MagPack\Utilities\Singleton {
             'show_ui' => true,
         ), 'objects' );
 
-        $this->panels = $this->panels();
+        // $this->panels = $this->panels();
         $this->sections = $this->sections();
 
-        if ( $this->panels ) {
-            foreach ( $this->panels as $panel ) {
-                $panel->add( $wp_customize );
-            }
-        }
+        // if ( $this->panels ) {
+        //     foreach ( $this->panels as $panel ) {
+        //         $panel->add( $wp_customize );
+        //     }
+        // }
 
         if ( $this->sections ) {
             foreach ( $this->sections as $section ) {
@@ -146,13 +146,13 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @since       Jentil 0.1.0
      * @access      private
      */
-    private function panels() {
-        $panels = array();
+    // private function panels() {
+    //     $panels = array();
 
-        $panels[] = new Content\Content( $this );
+    //     $panels[] = new Content\Content( $this );
 
-        return $panels;
-    }
+    //     return $panels;
+    // }
 
     /**
      * Get sections
@@ -166,9 +166,34 @@ final class Customizer extends MagPack\Utilities\Singleton {
     private function sections() {
         $sections = array();
 
-        $sections[] = new Colophon\Colophon( $this );
-        $sections[] = new Layout\Layout( $this );
         $sections[] = new Logo\Logo( $this );
+
+        $sections[] = new Posts\Sticky( $this );
+        $sections[] = new Posts\Author( $this );
+        $sections[] = new Posts\Date( $this );
+        $sections[] = new Posts\Search( $this );
+
+        if ( ( $taxonomies = $this->taxonomies ) ) {
+            foreach ( $taxonomies as $taxonomy ) {
+                $sections[] = new Posts\Taxonomy( $this, $taxonomy );
+            }
+        }
+
+        if ( ( $post_types = $this->post_types ) ) {
+            foreach ( $post_types as $post_type ) {
+                if (
+                    $post_type->has_archive
+                    || (
+                        'post' == $post_type->name
+                    )
+                ) {
+                    $sections[] = new Posts\Post_Type( $this, $post_type );
+                }
+            }
+        }
+
+        $sections[] = new Layout\Layout( $this );
+        $sections[] = new Colophon\Colophon( $this );
 
         return $sections;
     }

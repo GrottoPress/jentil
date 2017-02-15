@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Logo customizer section
+ * Author archive content customizer section
  *
- * Add section, settings and controls for our logo
+ * The sections, settings and controls for our Author archive content
  * section in the customizer.
  *
  * @link            https://jentil.grotttopress.com
@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Logo;
+namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -21,17 +21,17 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup;
 
 /**
- * Logo customizer section
+ * Author archive content customizer section
  *
- * Add section, settings and controls for our logo
+ * The sections, settings and controls for our Author archive content
  * section in the customizer.
  *
  * @link            https://jentil.grotttopress.com
  * @package         jentil
  * @subpackage      jentil/includes
- * @since           jentil 0.1.0
+ * @since           Jentil 0.1.0
  */
-final class Logo extends Setup\Customizer\Section {
+final class Author extends Section {
     /**
      * Constructor
      *
@@ -39,12 +39,13 @@ final class Logo extends Setup\Customizer\Section {
      * @access      public
      */
     public function __construct( Setup\Customizer\Customizer $customizer ) {
-        $this->name = '';
-        $this->args = array(
-            'title'     => esc_html__( 'Logo', 'jentil' ),
-        );
-
         parent::__construct( $customizer );
+
+        $this->name = 'author_posts';
+
+        $this->args['active_callback'] = function () {
+            return $this->customizer->get( 'template' )->is( 'author' );
+        };
     }
 
     /**
@@ -56,8 +57,8 @@ final class Logo extends Setup\Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Logo( $this );
+        $settings[] = new Settings\Sticky_Posts( $this );
 
-        return $settings;
+        return array_merge( $settings, parent::settings() );
     }
 }
