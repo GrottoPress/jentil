@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Sections;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -38,27 +38,18 @@ final class Sticky extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        $this->name = 'sticky_content';
+    public function __construct( Setup\Customizer\Content\Content $content ) {
+        parent::__construct( $content );
+
+        $this->name = 'sticky_' . $this->content->get( 'name' );
+
         $this->args = array(
             'title' => esc_html__( 'Sticky Content', 'jentil' ),
-            //'priority' => 200,
+            'panel' => $this->content->get( 'name' ),
         );
 
-        parent::__construct( $customizer );
-    }
-
-    /**
-     * Get settings
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     */
-    protected function settings() {
         $this->default['number'] = 3;
         $this->default['wrap_class'] = 'sticky-posts big';
         $this->default['pagination_position'] = 'none';
-
-        return parent::settings();
     }
 }

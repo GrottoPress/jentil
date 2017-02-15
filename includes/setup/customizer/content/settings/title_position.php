@@ -56,6 +56,7 @@ final class Title_Position extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['title_position'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_key',
         );
 
         $this->control = array(

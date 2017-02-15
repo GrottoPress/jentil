@@ -36,6 +36,16 @@ use GrottoPress\Jentil\Utilities;
  */
 final class Customizer extends MagPack\Utilities\Singleton {
     /**
+     * Customizer panels
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         array         $panels           Panels
+     */
+    protected $panels;
+
+    /**
      * Customizer sections
      *
      * @since       Jentil 0.1.0
@@ -91,7 +101,64 @@ final class Customizer extends MagPack\Utilities\Singleton {
     }
 
     /**
+     * Register theme customizer
+     * 
+     * @action      customize_register
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function add( $wp_customize ) {
+        $this->template = new Utilities\Template\Template();
+
+        $this->post_types = get_post_types( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+
+        $this->taxonomies = get_taxonomies( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+
+        $this->panels = $this->panels();
+        $this->sections = $this->sections();
+
+        if ( $this->panels ) {
+            foreach ( $this->panels as $panel ) {
+                $panel->add( $wp_customize );
+            }
+        }
+
+        if ( $this->sections ) {
+            foreach ( $this->sections as $section ) {
+                $section->add( $wp_customize );
+            }
+        }
+    }
+
+    /**
+     * Get panels
+     *
+     * Panels comprise sections which, in turn,
+     * comprise fields.
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function panels() {
+        $panels = array();
+
+        $panels[] = new Content\Content( $this );
+
+        return $panels;
+    }
+
+    /**
      * Get sections
+     *
+     * These sections come under no panel. Each section
+     * comprises its settings.
      *
      * @since       Jentil 0.1.0
      * @access      private
@@ -102,61 +169,8 @@ final class Customizer extends MagPack\Utilities\Singleton {
         $sections[] = new Colophon\Colophon( $this );
         $sections[] = new Layout\Layout( $this );
         $sections[] = new Logo\Logo( $this );
-        $sections[] = new Content\Sticky( $this );
-        $sections[] = new Content\Author( $this );
-        $sections[] = new Content\Date( $this );
-        $sections[] = new Content\Search( $this );
-
-        if ( $this->taxonomies ) {
-            foreach ( $this->taxonomies as $taxonomy ) {
-                $sections[] = new Content\Taxonomy( $this, $taxonomy );
-            }
-        }
-
-        if ( $this->post_types ) {
-            foreach ( $this->post_types as $post_type ) {
-                if (
-                    $post_type->has_archive
-                    || (
-                        'post' == $post_type->name
-                    )
-                ) {
-                    $sections[] = new Content\Post_Type( $this, $post_type );
-                }
-            }
-        }
 
         return $sections;
-    }
-
-    /**
-     * Register theme customizer
-     * 
-     * @action      customize_register
-     * 
-     * @since       Jentil 0.1.0
-     * @access      public
-     */
-    public function add( $wp_customize ) {
-        $this->template = new Utilities\Template\Template();
-        $this->post_types = get_post_types( array(
-            'public' => true,
-            'show_ui' => true,
-        ), 'objects' );
-        $this->taxonomies = get_taxonomies( array(
-            'public' => true,
-            'show_ui' => true,
-        ), 'objects' );
-
-        $this->sections = $this->sections();
-
-        if ( empty( $this->sections ) ) {
-            return;
-        }
-
-        foreach ( $this->sections as $section ) {
-            $section->add( $wp_customize );
-        }
     }
     
     /**

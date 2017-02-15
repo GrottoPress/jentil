@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Single extends Setup\Customizer\Setting {
-    /**
-     * Layout section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Layout\Layout     $layout     Layout section instance
-     */
-    private $layout;
-    
+final class Single extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,16 @@ final class Single extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
-        $this->layout = $layout;
+        parent::__construct( $layout );
 
-        $this->name = sanitize_key( 'single_' . $post_type->name . '_layout' );
+        $this->name = sanitize_key( 'single_' . $post_type->name . '_' . $this->layout->get( 'name' ) );
         
-        $this->args = array(
-            'default'       =>  $this->layout->get( 'default' ),
-            //'transport'   =>  'postMessage',
-        );
+        $this->control['active_callback'] = function () use ( $post_type ) {
+            if ( is_post_type_hierarchical( $post_type->name ) ) {
+                return false;
+            }
 
-        $this->control = array(
-            'section'   => $this->layout->get( 'name' ),
-            'label'     => sprintf( esc_html__( 'Single %s', 'jentil' ), $post_type->labels->singular_name ),
-            'type'      => 'select',
-            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
-        );
+            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'singular', $post_type->name );
+        };
 	}
 }

@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Sections;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -50,18 +50,19 @@ final class Post_Type extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer, $post_type ) {
+    public function __construct( Setup\Customizer\Content\Content $content, $post_type ) {
+        parent::__construct( $content );
+
         $this->post_type = $post_type;
-        $this->name = sanitize_key( $this->post_type->name . '_post_type_content' );
+        $this->name = sanitize_key( $this->post_type->name . '_post_type_' . $this->content->get( 'name' ) );
+
         $this->args = array(
             'title' => sprintf(
                 esc_html__( '%s Archive Content', 'jentil' ),
                 sanitize_text_field( $this->post_type->labels->singular_name )
             ),
-            //'priority' => 200,
+            'panel' => $this->content->get( 'name' ),
         );
-
-        parent::__construct( $customizer );
     }
 
     /**
@@ -74,7 +75,7 @@ final class Post_Type extends Content {
         $settings = array();
 
         if ( 'post' == $this->post_type->name ) {
-            $settings[] = new Settings\Sticky_Posts( $this );
+            $settings[] = new Setup\Customizer\Content\Settings\Sticky_Posts( $this );
         }
 
         return array_merge( $settings, parent::settings() );

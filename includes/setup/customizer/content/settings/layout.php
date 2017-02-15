@@ -56,6 +56,7 @@ final class Layout extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['layout'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_key',
         );
 
         $this->control = array(

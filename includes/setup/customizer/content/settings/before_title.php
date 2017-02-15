@@ -56,6 +56,7 @@ final class Before_Title extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['before_title'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
         );
 
         $this->control = array(

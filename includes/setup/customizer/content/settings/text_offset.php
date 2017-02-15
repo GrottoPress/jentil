@@ -56,6 +56,7 @@ final class Text_Offset extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['text_offset'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'absint',
         );
 
         $this->control = array(

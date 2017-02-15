@@ -58,6 +58,7 @@ final class After_Content extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['after_content'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
         );
 
         $this->control = array(

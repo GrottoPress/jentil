@@ -56,6 +56,7 @@ final class Pagination_Maximum extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['pagination_maximum'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'intval',
         );
 
         $this->control = array(

@@ -56,6 +56,7 @@ final class Number extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['number'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'intval',
         );
 
         $this->control = array(

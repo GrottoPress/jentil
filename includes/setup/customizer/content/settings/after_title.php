@@ -56,6 +56,7 @@ final class After_Title extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['after_title'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
         );
 
         $this->control = array(

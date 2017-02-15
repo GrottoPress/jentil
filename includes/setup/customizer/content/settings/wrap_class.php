@@ -56,6 +56,7 @@ final class Wrap_Class extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['wrap_class'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
         );
 
         $this->control = array(

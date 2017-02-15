@@ -61,16 +61,6 @@ abstract class Setting extends MagPack\Utilities\Wizard {
     protected $control = array();
 
     /**
-     * Setting default
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     * 
-     * @var     string      $default       Default setting
-     */
-    //protected $default;
-
-    /**
      * Allow get
      *
      * Defines the attributes that can be retrieved

@@ -33,46 +33,19 @@ use GrottoPress\Jentil\Setup;
  */
 final class Layout extends Setup\Customizer\Section {
     /**
-     * Default layout
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     * 
-     * @var     string      $default       Default layout
-     */
-    protected $default;
-
-    /**
      * Constructor
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
     public function __construct( Setup\Customizer\Customizer $customizer ) {
-        $this->name = 'layout';
-        $this->args = array(
-            'title'     => esc_html__( 'Layout', 'jentil' ),
-            //'priority'  => 200,
-        );
-        $this->default = 'content-sidebar';
-
         parent::__construct( $customizer );
-    }
 
-    /**
-     * Allow get
-     *
-     * Defines the attributes that can be retrieved
-     * with our getter.
-     *
-     * @since       MagPack 0.1.0
-     * @access      protected
-     *
-     * @return      array       Attributes.
-     */
-    protected function allow_get() {
-        return array_merge( parent::allow_get(),
-            array( 'default' ) );
+        $this->name = 'layout';
+        
+        $this->args = array(
+            'title' => esc_html__( 'Layout', 'jentil' ),
+        );
     }
 
     /**

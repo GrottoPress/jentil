@@ -55,8 +55,9 @@ final class Logo extends Setup\Customizer\Setting {
         $this->name = 'custom_logo';
         
         $this->args = array(
-            'default'       =>  '',
-            'transport'   =>  'postMessage',
+            'default' => '',
+            'transport' => 'postMessage',
+            'sanitize_callback' => 'absint',
         );
 	}
 

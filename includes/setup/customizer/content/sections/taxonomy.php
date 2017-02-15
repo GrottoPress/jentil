@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Sections;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -50,20 +50,22 @@ final class Taxonomy extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer, $taxonomy ) {
+    public function __construct( Setup\Customizer\Content\Content $content, $taxonomy ) {
+        parent::__construct( $content );
+
         $this->taxonomy = $taxonomy;
-        $this->name = sanitize_key( $this->taxonomy->name . '_taxonomy_content' );
+        $this->name = sanitize_key( $this->taxonomy->name . '_taxonomy_' . $this->content->get( 'name' ) );
+
         $post_type = sanitize_key( $this->taxonomy->object_type[0] );
+        
         $this->args = array(
             'title' => sprintf(
                 esc_html__( '%1$s %2$s Content', 'jentil' ),
                 ucwords( str_ireplace( 'post' , '', $post_type ) ),
                 sanitize_text_field( str_ireplace( $post_type, '', $this->taxonomy->labels->singular_name ) )
             ),
-            //'priority' => 200,
+            'panel' => $this->content->get( 'name' ),
         );
-
-        parent::__construct( $customizer );
     }
 
     /**
@@ -76,7 +78,7 @@ final class Taxonomy extends Content {
         $settings = array();
 
         if ( 'post' == $this->taxonomy->object_type[0] ) {
-            $settings[] = new Settings\Sticky_Posts( $this );
+            $settings[] = new Setup\Customizer\Content\Settings\Sticky_Posts( $this );
         }
 
         return array_merge( $settings, parent::settings() );

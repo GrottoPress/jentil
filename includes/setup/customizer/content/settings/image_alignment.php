@@ -56,6 +56,7 @@ final class Image_Alignment extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['image_alignment'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_title',
         );
 
         $this->control = array(

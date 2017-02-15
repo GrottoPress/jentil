@@ -56,6 +56,7 @@ final class Sticky_Posts extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['sticky_posts'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'absint',
         );
 
         $this->control = array(

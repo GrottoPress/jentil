@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Customizer section
+ * Customizer panel
  *
- * The template for all customizer section classes.
+ * The template for all customizer panel classes.
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
- * @subpackage 	    jentil/includes
+ * @subpackage 	    jentil/includes/setup
  * @since		    Jentil 0.1.0
  */
 
@@ -23,15 +23,15 @@ use GrottoPress\Jentil\Setup;
 /**
  * Colophon customizer section
  *
- * Add settings and controls for our colophon
- * section in the customizer.
+ * Add sections, settings and controls for our content
+ * panel in the customizer.
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-abstract class Section extends MagPack\Utilities\Wizard {
+abstract class Panel extends MagPack\Utilities\Wizard {
     /**
      * Customizer
      *
@@ -63,14 +63,14 @@ abstract class Section extends MagPack\Utilities\Wizard {
     protected $args;
 
     /**
-     * Settings
+     * Sections
      *
      * @since       Jentil 0.1.0
      * @access      protected
      * 
-     * @var     array      $settings       Settings
+     * @var     array      $sections       Sections
      */
-    protected $settings;
+    protected $sections;
     
     /**
 	 * Constructor
@@ -94,19 +94,19 @@ abstract class Section extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'customizer', 'name', 'args', 'settings' );
+        return array( 'customizer', 'name', 'args', 'sections' );
     }
 
     /**
-     * Get settings
+     * Get sections
      *
      * @since       Jentil 0.1.0
      * @access      protected
      */
-    protected abstract function settings();
+    protected abstract function sections();
 
     /**
-     * Add section
+     * Add panel
      *
      * @since       Jentil 0.1.0
      * @access      public
@@ -116,13 +116,13 @@ abstract class Section extends MagPack\Utilities\Wizard {
             return;
         }
 
-        $wp_customize->add_section( $this->name, $this->args );
+        $wp_customize->add_panel( $this->name, $this->args );
 
-        $this->settings = $this->settings();
+        $this->sections = $this->sections();
 
-        if ( $this->settings ) {
-            foreach ( $this->settings as $setting ) {
-                $setting->add( $wp_customize );
+        if ( $this->sections ) {
+            foreach ( $this->sections as $section ) {
+                $section->add( $wp_customize );
             }
         }
     }

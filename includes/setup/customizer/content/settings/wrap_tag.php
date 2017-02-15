@@ -56,6 +56,7 @@ final class Wrap_Tag extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['wrap_tag'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_key',
         );
 
         $this->control = array(

@@ -58,6 +58,7 @@ final class Pagination_Next_Label extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['pagination_next_label'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
         );
 
         $this->control = array(

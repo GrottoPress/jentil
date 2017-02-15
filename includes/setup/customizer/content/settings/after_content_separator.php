@@ -58,6 +58,7 @@ final class After_Content_Separator extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['after_content_separator'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'esc_attr',
         );
 
         $this->control = array(

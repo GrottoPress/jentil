@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Post_Type extends Setup\Customizer\Setting {
-    /**
-     * Layout section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Layout\Layout     $layout     Layout section instance
-     */
-    private $layout;
-    
+final class Post_Type extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,16 @@ final class Post_Type extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
-        $this->layout = $layout;
+        parent::__construct( $layout );
 
-        $this->name = sanitize_key( $post_type->name . '_post_type_layout' );
+        $this->name = sanitize_key( $post_type->name . '_post_type_' . $this->layout->get( 'name' ) );
         
-        $this->args = array(
-            'default'       =>  $this->layout->get( 'default' ),
-            //'transport'   =>  'postMessage',
-        );
+        $this->control['active_callback'] = function () use ( $post_type ) {
+            if ( 'post' == $post_type->name ) {
+                return $this->layout->get( 'customizer' )->get( 'template' )->is( 'home' );
+            }
 
-        $this->control = array(
-            'section'   => $this->layout->get( 'name' ),
-            'label'     => sprintf( esc_html__( '%s post type archive', 'jentil' ), $post_type->labels->singular_name ),
-            'type'      => 'select',
-            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
-        );
+            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'post_type_archive', $post_type->name );
+        };
 	}
 }

@@ -56,6 +56,7 @@ final class Title_Words extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['title_words'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'intval',
         );
 
         $this->control = array(

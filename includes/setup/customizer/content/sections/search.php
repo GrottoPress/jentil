@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Sections;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -38,29 +38,19 @@ final class Search extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        $this->name = 'search_content';
+    public function __construct( Setup\Customizer\Content\Content $content ) {
+        parent::__construct( $content );
+
+        $this->name = 'search_' . $this->content->get( 'name' );
         $this->args = array(
             'title' => esc_html__( 'Search Content', 'jentil' ),
-            //'priority' => 200,
+            'panel' => $this->content->get( 'name' ),
         );
 
-        parent::__construct( $customizer );
-    }
-
-    /**
-     * Get settings
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     */
-    protected function settings() {
         $this->default['wrap_class'] = 'archive-posts';
         $this->default['image'] = 'nano-thumb';
         $this->default['title_position'] = 'top';
         $this->default['after_title'] = 'post_type, comments_link';
         $this->default['excerpt'] = '160';
-
-        return parent::settings();
     }
 }

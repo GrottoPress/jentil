@@ -58,6 +58,7 @@ final class Before_Title_Separator extends Setup\Customizer\Setting {
         $this->args = array(
             'default' => ( $this->content->get( 'default' ) )['before_title_separator'],
             //'transport' => 'postMessage',
+            'sanitize_callback' => 'esc_attr',
         );
 
         $this->control = array(

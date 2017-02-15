@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Taxonomy extends Setup\Customizer\Setting {
-    /**
-     * Layout section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Layout\Layout     $layout     Layout section instance
-     */
-    private $layout;
-    
+final class Taxonomy extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,26 +39,18 @@ final class Taxonomy extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy ) {
-        $this->layout = $layout;
+        parent::__construct( $layout );
 
-        $this->name = sanitize_key( $taxonomy->name . '_taxonomy_layout' );
+        $this->name = sanitize_key( $taxonomy->name . '_taxonomy_' . $this->layout->get( 'name' ) );
         
-        $this->args = array(
-            'default'       =>  $this->layout->get( 'default' ),
-            //'transport'   =>  'postMessage',
-        );
+        $this->control['active_callback'] = function () use ( $taxonomy ) {
+            if ( 'post_tag' == $taxonomy->name ) {
+                return $this->layout->get( 'customizer' )->get( 'template' )->is( 'tag' );
+            } elseif ( 'category' == $taxonomy->name ) {
+                return $this->layout->get( 'customizer' )->get( 'template' )->is( 'category' );
+            }
 
-        $this->control = array(
-            'section'   => $this->layout->get( 'name' ),
-            'label'     => sprintf(
-                esc_html__('%1$s %2$s taxonomy archive', 'jentil' ),
-                sanitize_text_field( ucwords(
-                    str_ireplace( array( '_', '-', 'post' ), ' ', $taxonomy->object_type[0] )
-                ) ),
-                sanitize_text_field( $taxonomy->labels->singular_name )
-            ),
-            'type'      => 'select',
-            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
-        );
+            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'tax', $taxonomy->name );
+        };
 	}
 }

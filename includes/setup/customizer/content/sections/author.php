@@ -12,7 +12,7 @@
  * @since           Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Setup\Customizer\Content;
+namespace GrottoPress\Jentil\Setup\Customizer\Content\Sections;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
@@ -38,14 +38,14 @@ final class Author extends Content {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        $this->name = 'author_content';
+    public function __construct( Setup\Customizer\Content\Content $content ) {
+        parent::__construct( $content );
+
+        $this->name = 'author_' . $this->content->get( 'name' );
         $this->args = array(
             'title' => esc_html__( 'Author Content', 'jentil' ),
-            //'priority' => 200,
+            'panel' => $this->content->get( 'name' ),
         );
-
-        parent::__construct( $customizer );
     }
 
     /**
@@ -57,7 +57,7 @@ final class Author extends Content {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Sticky_Posts( $this );
+        $settings[] = new Setup\Customizer\Content\Settings\Sticky_Posts( $this );
 
         return array_merge( $settings, parent::settings() );
     }
