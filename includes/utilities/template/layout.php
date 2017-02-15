@@ -54,12 +54,11 @@ final class Layout extends MagPack\Utilities\Wizard {
      * 
      * @return      string      The layout type
      */
-    public function mod( $default = '' ) {
-        $default = sanitize_title( $default );
-        $layout = ! $default ? 'content-sidebar' : $default;
-        
+    public function mod() {
+        $default = $this->mod_default();
+
         if ( ! ( $name = $this->mod_name() ) ) {
-			return $layout;
+			return $default;
 		}
 
 		global $post;
@@ -120,6 +119,18 @@ final class Layout extends MagPack\Utilities\Wizard {
         }
 
         return sanitize_key( $name );
+    }
+
+    /**
+     * Get default mod
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          Default mod
+     */
+    private function mod_default() {
+    	return 'content-sidebar';
     }
     
     /**

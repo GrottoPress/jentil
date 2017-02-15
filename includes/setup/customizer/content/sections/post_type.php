@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage      jentil/includes/setup
  * @since           Jentil 0.1.0
  */
-final class Post_Type extends Content {
+final class Post_Type extends Section {
     /**
      * Post type
      *

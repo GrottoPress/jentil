@@ -54,10 +54,11 @@ final class Colophon extends Setup\Customizer\Setting {
         $this->name = 'colophon';
 
         $this->args = array(
-            'default'    =>  sprintf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'jentil' ),
+            'default' => sprintf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'jentil' ),
                 '<span itemprop="copyrightYear">{{this_year}}</span>',
                 '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>' ),
-            'transport'  =>  'postMessage',
+            'transport' => 'postMessage',
+            'sanitize_callback' => 'wp_kses_data',
         );
         
         $this->control = array(

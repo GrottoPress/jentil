@@ -31,15 +31,15 @@ use GrottoPress\MagPack;
  */
 final class Colophon extends MagPack\Utilities\Wizard {
     /**
-     * Get colophon
+     * Get mod
      *
      * @since		Jentil 0.1.0
      * @access      public
      *
-     * @return      string          The colophon text
+     * @return      string          The colophon mod
      */
-    public function mod( $default = '' ) {
-        $colophon = get_theme_mod( 'colophon', $default );
+    public function mod() {
+        $colophon = get_theme_mod( $this->mod_name(), $this->mod_default() );
 
         $colophon = str_ireplace( '{{site_name}}', esc_attr( get_bloginfo( 'name' ) ), $colophon );
         $colophon = str_ireplace( '{{site_url}}', esc_attr( home_url( '/' ) ), $colophon );
@@ -47,5 +47,31 @@ final class Colophon extends MagPack\Utilities\Wizard {
         $colophon = str_ireplace( '{{site_description}}', esc_attr( date( 'Y' ) ), $colophon );
 
         return wp_kses_data( $colophon );
+    }
+
+    /**
+     * Mod name
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      string          Mdo name
+     */
+    private function mod_name() {
+        return 'colophon';
+    }
+
+    /**
+     * Default mod
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      string          Default mod
+     */
+    private function mod_default() {
+        return sprintf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'jentil' ),
+            '<span itemprop="copyrightYear">{{this_year}}</span>',
+            '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>' );
     }
 }

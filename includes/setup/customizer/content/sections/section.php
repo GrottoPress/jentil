@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Content customizer sections
+ * Content customizer sections template
  *
  * The sections, settings and controls for our Content
  * sections in the customizer.
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Setup;
 
 /**
- * Content customizer sections
+ * Content customizer sections template
  *
  * The sections, settings and controls for our Content
  * sections in the customizer
@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes/setup
  * @since			Jentil 0.1.0
  */
-abstract class Content extends Setup\Customizer\Section {
+abstract class Section extends Setup\Customizer\Section {
     /**
      * Pagination types
      *

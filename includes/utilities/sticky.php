@@ -56,4 +56,16 @@ final class Sticky extends MagPack\Utilities\Wizard {
     private function mod_name( $setting ) {
         return sanitize_key( 'sticky_content_' . $setting );
     }
+
+    /**
+     * Get default mod
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          Default mod
+     */
+    private function mod_default( $setting ) {
+
+    }
 }

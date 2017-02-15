@@ -100,4 +100,16 @@ final class Content extends MagPack\Utilities\Wizard {
 
         return sanitize_key( $name );
     }
+
+    /**
+     * Get default mod
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      string          Default mod
+     */
+    private function mod_default( $setting ) {
+
+    }
 }

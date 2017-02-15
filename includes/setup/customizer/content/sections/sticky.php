@@ -31,7 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage      jentil/includes
  * @since           Jentil 0.1.0
  */
-final class Sticky extends Content {
+final class Sticky extends Section {
     /**
      * Constructor
      *
