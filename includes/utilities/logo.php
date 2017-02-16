@@ -67,8 +67,8 @@ final class Logo extends MagPack\Utilities\Wizard {
      *
      * @return      string          The colophon text
      */
-    public function mod( $default = '' ) {
-        return absint( get_theme_mod( 'custom_logo', $default ) );
+    public function mod() {
+        return ( new Mods\Logo() )->mod();
     }
     
     /**

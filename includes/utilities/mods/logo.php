@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Colophon
- *
- * Footer credits and related stuff
+ * Logo mods
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -11,34 +9,41 @@
  * @since		    Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil\Utilities;
+namespace GrottoPress\Jentil\Utilities\Mods;
 
 if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack;
-
 /**
- * Colophon
- *
- * Footer credits and related stuff
+ * Logo Mods
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Colophon extends MagPack\Utilities\Wizard {
+final class Logo extends Mod {
+    /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function __construct() {
+        $this->name = 'custom_logo';
+        $this->default = '';
+    }
+
     /**
      * Get mod
      *
      * @since		Jentil 0.1.0
      * @access      public
      *
-     * @return      string          The colophon mod
+     * @return      string          Mod
      */
     public function mod() {
-        return ( new Mods\Colophon() )->mod();
+        return absint( get_theme_mod( $this->name, $this->default ) );
     }
 }

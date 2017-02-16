@@ -16,6 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Template layout
@@ -55,82 +56,28 @@ final class Layout extends MagPack\Utilities\Wizard {
      * @return      string      The layout type
      */
     public function mod() {
-        $default = $this->mod_default();
+        $template = $this->template->type();
+        $specific = '';
 
-        if ( ! ( $name = $this->mod_name() ) ) {
-			return $default;
-		}
+        foreach ( $template as $type ) {
+            if ( 'post_type_archive' == $type ) {
+                $specific = get_query_var( 'post_type' );
+            } elseif ( 'tax' == $type ) {
+                $specific = get_query_var( 'taxonomy' );
+            } elseif ( 'singular' == $type ) {
+            	global $post;
 
-		global $post;
-		
-		if (
-			$this->template->is( 'singular' )
-			&& is_post_type_hierarchical( $post->post_type )
-		) {
-			$layout = get_post_meta( $post->ID, $name, true );
-		} else {
-			$layout = get_theme_mod( $name, $default );
-		}
-		
-		if ( ! in_array( $layout, $this->layouts_ids() ) ) {
-		    return $default;
-		}
-		
-        return sanitize_title( $layout );
-    }
+            	$specific = $post->post_type;
+            }
 
-    /**
-     * Get setting name
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Setting name
-     */
-    private function mod_name() {
-        $name = '';
+            if ( is_array( $specific ) ) {
+                $specific = $specific[0];
+            }
 
-        if ( $this->template->is( 'singular' ) ) {
-        	global $post;
-
-        	if ( is_post_type_hierarchical( $post->post_type ) ) {
-        		$name = 'layout';
-        	} else {
-        		$name = 'single_' . $post->post_type . '_layout';
-        	}
-        } elseif ( $this->template->is( 'tax' ) ) {
-            $name = get_query_var( 'taxonomy' ) . '_taxonomy_layout';
-        } elseif ( $this->template->is( 'category' ) ) {
-            $name = 'category_taxonomy_layout';
-        } elseif ( $this->template->is( 'tag' ) ) {
-            $name = 'tag_taxonomy_layout';
-        } elseif ( $this->template->is( 'post_type_archive' ) ) {
-            $name = get_query_var( 'post_type' ) . '_post_type_layout';
-        } elseif ( $this->template->is( 'home' ) ) {
-            $name = 'post_post_type_layout';
-        } elseif ( $this->template->is( 'date' ) ) {
-            $name = 'date_layout';
-        } elseif ( $this->template->is( 'search' ) ) {
-            $name = 'search_layout';
-        } elseif ( $this->template->is( 'author' ) ) {
-            $name = 'author_layout';
-        } elseif ( $this->template->is( '404' ) ) {
-            $name = 'error_404_layout';
+            if ( ( $mod = ( new Utilities\Mods\Layout( $type, $specific ) )->mod() ) ) {
+            	return $mod;
+            }
         }
-
-        return sanitize_key( $name );
-    }
-
-    /**
-     * Get default mod
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      string          Default mod
-     */
-    private function mod_default() {
-    	return 'content-sidebar';
     }
     
     /**

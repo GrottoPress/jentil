@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Post type archive template layout customizer setting
@@ -39,9 +40,9 @@ final class Post_Type extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
-        parent::__construct( $layout );
+        $this->mod = new Utilities\Mods\Layout( 'post_type_archive', $post_type->name );
 
-        $this->name = sanitize_key( $post_type->name . '_post_type_' . $this->layout->get( 'name' ) );
+        parent::__construct( $layout );
         
         $this->control['active_callback'] = function () use ( $post_type ) {
             if ( 'post' == $post_type->name ) {

@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Taxonomy template layout customizer setting
@@ -39,9 +40,9 @@ final class Taxonomy extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy ) {
-        parent::__construct( $layout );
+        $this->mod = new Utilities\Mods\Layout( 'tax', $taxonomy->name );
 
-        $this->name = sanitize_key( $taxonomy->name . '_taxonomy_' . $this->layout->get( 'name' ) );
+        parent::__construct( $layout );
         
         $this->control['active_callback'] = function () use ( $taxonomy ) {
             if ( 'post_tag' == $taxonomy->name ) {

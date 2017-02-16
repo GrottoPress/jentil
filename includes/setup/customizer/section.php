@@ -112,16 +112,14 @@ abstract class Section extends MagPack\Utilities\Wizard {
      * @access      public
      */
     public function add( $wp_customize ) {
-        if ( ! $this->name ) {
-            return;
+        if ( $this->name ) {
+            $wp_customize->add_section( $this->name, $this->args );
         }
-
-        $wp_customize->add_section( $this->name, $this->args );
 
         $this->settings = $this->settings();
 
         if ( $this->settings ) {
-            foreach ( $this->settings as $name => $setting ) {
+            foreach ( $this->settings as $setting ) {
                 $setting->add( $wp_customize );
             }
         }

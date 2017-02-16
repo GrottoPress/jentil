@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Date template layout customizer setting
@@ -39,9 +40,9 @@ final class Date extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
-        parent::__construct( $layout );
+        $this->mod = new Utilities\Mods\Layout( 'date' );
 
-        $this->name = 'date_' . $this->layout->get( 'name' );
+        parent::__construct( $layout );
 
         $this->control['active_callback'] = function () {
             return $this->layout->get( 'customizer' )->get( 'template' )->is( 'date' );

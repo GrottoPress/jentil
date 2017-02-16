@@ -39,12 +39,13 @@ final class Logo extends Setup\Customizer\Section {
      * @access      public
      */
     public function __construct( Setup\Customizer\Customizer $customizer ) {
+        parent::__construct( $customizer );
+
         $this->name = '';
+        
         $this->args = array(
             'title'     => esc_html__( 'Logo', 'jentil' ),
         );
-
-        parent::__construct( $customizer );
     }
 
     /**

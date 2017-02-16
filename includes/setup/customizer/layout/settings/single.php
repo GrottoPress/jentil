@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Single template layout customizer setting
@@ -39,9 +40,9 @@ final class Single extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
-        parent::__construct( $layout );
+        $this->mod = new Utilities\Mods\Layout( 'singular', $post_type->name );
 
-        $this->name = sanitize_key( 'single_' . $post_type->name . '_' . $this->layout->get( 'name' ) );
+        parent::__construct( $layout );
         
         $this->control['active_callback'] = function () use ( $post_type ) {
             if ( is_post_type_hierarchical( $post_type->name ) ) {

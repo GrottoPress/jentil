@@ -39,13 +39,13 @@ final class Colophon extends Setup\Customizer\Section {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Customizer $customizer ) {
+        parent::__construct( $customizer );
+
         $this->name = 'colophon';
+        
         $this->args = array(
             'title'     => esc_html__( 'Colophon', 'jentil' ),
-            //'priority'  => 200,
         );
-
-        parent::__construct( $customizer );
 	}
 
     /**

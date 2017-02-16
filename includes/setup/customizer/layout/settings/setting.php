@@ -41,6 +41,16 @@ abstract class Setting extends Setup\Customizer\Setting {
     protected $layout;
 
     /**
+     * Mod
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     \GrottoPress\Jentil\Utilities\Mod\Layout     $mod    Layout mod
+     */
+    protected $mod;
+
+    /**
      * Constructor
      *
      * @since       Jentil 0.1.0
@@ -49,8 +59,10 @@ abstract class Setting extends Setup\Customizer\Setting {
     protected function __construct( Setup\Customizer\Layout\Layout $layout ) {
         $this->layout = $layout;
 
+        $this->name = $this->mod->get( 'name' );
+
         $this->args = array(
-            'default'           => 'content-sidebar',
+            'default'           => $this->mod->get( 'default' ),
             'sanitize_callback' => 'sanitize_title',
         );
 

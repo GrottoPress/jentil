@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Colophon customizer setting
@@ -38,9 +39,19 @@ final class Colophon extends Setup\Customizer\Setting {
      * @since       Jentil 0.1.0
      * @access      private
      * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon     $colophon       Colophon section instance
+     * @var     \GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon     $colophon    Colophon
      */
     private $colophon;
+
+    /**
+     * Mod
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     \GrottoPress\Jentil\Utilities\Mod\Colophon     $mod    Colophon mod
+     */
+    private $mod;
     
     /**
 	 * Constructor
@@ -51,12 +62,12 @@ final class Colophon extends Setup\Customizer\Setting {
 	public function __construct( Setup\Customizer\Colophon\Colophon $colophon ) {
         $this->colophon = $colophon;
 
-        $this->name = 'colophon';
+        $this->mod = new Utilities\Mods\Colophon();
+
+        $this->name = $this->mod->get( 'name' );
 
         $this->args = array(
-            'default' => sprintf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'jentil' ),
-                '<span itemprop="copyrightYear">{{this_year}}</span>',
-                '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>' ),
+            'default' => $this->mod->get( 'default' ),
             'transport' => 'postMessage',
             'sanitize_callback' => 'wp_kses_data',
         );

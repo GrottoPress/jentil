@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Author template layout customizer setting
@@ -39,9 +40,9 @@ final class Author extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
-        parent::__construct( $layout );
+        $this->mod = new Utilities\Mods\Layout( 'author' );
 
-        $this->name = 'author_' . $this->layout->get( 'name' );
+        parent::__construct( $layout );
 
         $this->control['active_callback'] = function () {
             return $this->layout->get( 'customizer' )->get( 'template' )->is( 'author' );

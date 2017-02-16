@@ -121,14 +121,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
             'show_ui' => true,
         ), 'objects' );
 
-        // $this->panels = $this->panels();
         $this->sections = $this->sections();
-
-        // if ( $this->panels ) {
-        //     foreach ( $this->panels as $panel ) {
-        //         $panel->add( $wp_customize );
-        //     }
-        // }
 
         if ( $this->sections ) {
             foreach ( $this->sections as $section ) {
@@ -136,23 +129,6 @@ final class Customizer extends MagPack\Utilities\Singleton {
             }
         }
     }
-
-    /**
-     * Get panels
-     *
-     * Panels comprise sections which, in turn,
-     * comprise fields.
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     */
-    // private function panels() {
-    //     $panels = array();
-
-    //     $panels[] = new Content\Content( $this );
-
-    //     return $panels;
-    // }
 
     /**
      * Get sections
