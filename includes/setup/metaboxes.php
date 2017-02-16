@@ -125,6 +125,9 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 
 	    $template = new Utilities\Template\Template();
         $layouts = $template->get( 'layout' )->layouts_ids_names();
+
+        $mod = new Utilities\Mods\Layout( 'singular', $post_type );
+        $mod_name = $mod->get( 'name' );
 	    
 	    if ( is_post_type_hierarchical( $post_type ) ) {
 			if ( $layouts ) {
@@ -134,7 +137,7 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 					'priority' => 'default',
 					'callback' => '',
 					'fields' => array(
-						'layout' => array(
+						$mod_name => array(
 							'type' => 'select',
 							'choices' => $layouts,
 							'label' => esc_html__( 'Select layout', 'jentil' ),
