@@ -63,25 +63,36 @@ final class Layout extends Setup\Customizer\Section {
         $settings[] = new Settings\Search( $this );
 
         if ( ( $taxonomies = $this->customizer->get( 'taxonomies' ) ) ) {
-            foreach ( $taxonomies as $taxonmy ) {
-                $settings[] = new Settings\Taxonomy( $this, $taxonmy );
+            foreach ( $taxonomies as $taxonomy ) {
+                if ( is_taxonomy_hierarchical( $taxonomy->name ) ) {
+                    if ( version_compare( get_bloginfo( 'version' ), '4.5', '<=' ) ) {
+                        $terms = get_terms( $taxonomy->name );
+                    } else {
+                        $terms = get_terms( array( 'taxonomy' => $taxonomy->name ) );
+                    }
+
+                    foreach ( $terms as $term ) {
+                        $settings[] = new Settings\Taxonomy( $this, $taxonomy, $term );
+                    }
+                } else {
+                    $settings[] = new Settings\Taxonomy( $this, $taxonomy );
+                }
             }
         }
 
         if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
-                if (
-                    $post_type->has_archive
-                    || (
-                        'post' == $post_type->name
-                    )
-                ) {
+                if ( $post_type->has_archive || 'post' == $post_type->name ) {
                     $settings[] = new Settings\Post_Type( $this, $post_type );
                 }
             }
 
             foreach ( $post_types as $post_type ) {
-                if ( ! is_post_type_hierarchical( $post_type->name ) ) {
+                if ( 'page' == $post_type->name && ( $pages = $this->customizer->get( 'pages' ) ) ) {
+                    foreach ( $pages as $page ) {
+                        $settings[] = new Settings\Single( $this, $post_type, $page );
+                    }
+                } else {
                     $settings[] = new Settings\Single( $this, $post_type );
                 }
             }

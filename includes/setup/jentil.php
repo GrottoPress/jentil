@@ -45,7 +45,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->layout();
 		$this->parts();
 		$this->customizer();
-		$this->metaboxes();
+		// $this->metaboxes();
 	}
 
 	/**

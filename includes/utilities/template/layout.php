@@ -58,23 +58,48 @@ final class Layout extends MagPack\Utilities\Wizard {
     public function mod() {
         $template = $this->template->type();
         $specific = '';
+        $more_specific = '';
 
         foreach ( $template as $type ) {
             if ( 'post_type_archive' == $type ) {
                 $specific = get_query_var( 'post_type' );
             } elseif ( 'tax' == $type ) {
                 $specific = get_query_var( 'taxonomy' );
+
+                if ( is_taxonomy_hierarchical( $specific ) ) {
+                	$more_specific = get_query_var( 'term_id' );
+                }
+            } elseif ( 'category' == $type ) {
+            	$specific = 'category';
+
+            	if ( is_taxonomy_hierarchical( $specific ) ) {
+            		$more_specific = get_query_var( 'cat' );
+            	}
+            } elseif ( 'tag' == $type ) {
+            	$specific = 'post_tag';
+
+                if ( is_taxonomy_hierarchical( $specific ) ) {
+                    $more_specific = get_query_var( 'tag_id' );
+                }
             } elseif ( 'singular' == $type ) {
             	global $post;
 
             	$specific = $post->post_type;
+
+            	if ( 'page' == $post->post_type ) {
+            		$more_specific = $post->ID;
+            	}
             }
 
             if ( is_array( $specific ) ) {
                 $specific = $specific[0];
             }
 
-            if ( ( $mod = ( new Utilities\Mods\Layout( $type, $specific ) )->mod() ) ) {
+            if ( is_array( $more_specific ) ) {
+                $more_specific = $more_specific[0];
+            }
+
+            if ( ( $mod = ( new Utilities\Mods\Layout( $type, $specific, $more_specific ) )->mod() ) ) {
             	return $mod;
             }
         }

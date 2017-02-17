@@ -149,7 +149,7 @@ final class Logo extends MagPack\Utilities\Wizard {
         return ( array ) apply_filters( 'jentil_logo', array(
             'height' => 60,
             'width' => 180,
-            'flex-height' => false,
+            'flex-width' => false,
             'flex-height' => false,
         ) );
     }

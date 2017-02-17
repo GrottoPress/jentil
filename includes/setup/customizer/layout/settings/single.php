@@ -39,17 +39,25 @@ final class Single extends Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
-        $this->mod = new Utilities\Mods\Layout( 'singular', $post_type->name );
+	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type, $post = '' ) {
+        if ( $post ) {
+            $this->mod = new Utilities\Mods\Layout( 'singular', $post_type->name, $post->ID );
+        } else {
+            $this->mod = new Utilities\Mods\Layout( 'singular', $post_type->name );
+        }
 
         parent::__construct( $layout );
         
-        $this->control['active_callback'] = function () use ( $post_type ) {
-            if ( is_post_type_hierarchical( $post_type->name ) ) {
-                return false;
+        $this->control['active_callback'] = function () use ( $post_type, $post ) {
+            $template = $this->layout->get( 'customizer' )->get( 'template' );
+
+            if ( $post ) {
+                return ( $template->is( 'page', $post->ID )
+                    || $template->is( 'single', $post->ID )
+                    || $template->is( 'attachment', $post->ID ) );
             }
 
-            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'singular', $post_type->name );
+            return $template->is( 'singular', $post_type->name );
         };
 	}
 }

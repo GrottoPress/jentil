@@ -66,7 +66,7 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 * @access  	public
 	 */
 	public function add( $post_type, $post ) {
-		$boxes = $this->boxes( $post_type );
+		$boxes = $this->boxes( $post->ID );
 		
 		foreach ( $boxes as $id => $attr ) {
 			$args = array();
@@ -100,8 +100,7 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 * @access  	public
 	 */
 	public function save( $post_id ) {
-		$post_type = get_post_type( $post_id );
-		$boxes = $this->boxes( $post_type );
+		$boxes = $this->boxes( $post_id );
 		
 		foreach ( $boxes as $id => $attr ) {
 			$args = array();
@@ -120,16 +119,21 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 * @since    	Jentil 0.1.0
 	 * @access  	private
 	 */
-	private function boxes( $post_type ) {
-	    $boxes = array();
+	private function boxes( $post_id ) {
+	    $post_type = get_post_type( $post_id );
 
 	    $template = new Utilities\Template\Template();
         $layouts = $template->get( 'layout' )->layouts_ids_names();
 
         $mod = new Utilities\Mods\Layout( 'singular', $post_type );
         $mod_name = $mod->get( 'name' );
+
+        $boxes = array();
 	    
-	    if ( is_post_type_hierarchical( $post_type ) ) {
+	    if (
+	    	is_post_type_hierarchical( $post_type )
+	    	&& $post_id != get_option( 'page_for_posts' )
+	    ) {
 			if ( $layouts ) {
 		        $boxes['jentil-layout'] = array(
 					'title' => esc_html__( 'Layout', 'jentil' ),

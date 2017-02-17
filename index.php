@@ -135,6 +135,7 @@ get_header();
 						 * Filter the nothing found page content.
 						 * 
 						 * @var         string          $not_found_content         Not found page content.
+						 *
 						 * @filter		jentil_not_found_content
 						 *
 						 * @since       Jentil 0.1.0

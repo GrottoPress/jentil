@@ -39,19 +39,33 @@ final class Taxonomy extends Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy ) {
-        $this->mod = new Utilities\Mods\Layout( 'tax', $taxonomy->name );
+	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy, $term = '' ) {
+        if ( $term ) {
+            $this->mod = new Utilities\Mods\Layout( 'tax', $taxonomy->name, $term->term_id );
+        } else {
+            $this->mod = new Utilities\Mods\Layout( 'tax', $taxonomy->name );
+        }
 
         parent::__construct( $layout );
         
-        $this->control['active_callback'] = function () use ( $taxonomy ) {
-            if ( 'post_tag' == $taxonomy->name ) {
-                return $this->layout->get( 'customizer' )->get( 'template' )->is( 'tag' );
-            } elseif ( 'category' == $taxonomy->name ) {
-                return $this->layout->get( 'customizer' )->get( 'template' )->is( 'category' );
+        $this->control['active_callback'] = function () use ( $taxonomy, $term ) {
+            $template = $this->layout->get( 'customizer' )->get( 'template' );
+
+            if ( $term ) {
+                return ( $template->is( 'tag', $term->term_id )
+                    || $template->is( 'category', $term->term_id )
+                    || $template->is( 'tax', $taxonomy, $term->term_id ) );
             }
 
-            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'tax', $taxonomy->name );
+            if ( 'post_tag' == $taxonomy->name ) {
+                return $template->is( 'tag' );
+            }
+
+            if ( 'category' == $taxonomy->name ) {
+                return $template->is( 'category' );
+            }
+
+            return $template->is( 'tax', $taxonomy );
         };
 	}
 }
