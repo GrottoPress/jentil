@@ -38,13 +38,16 @@ final class Date extends Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct( Posts $posts ) {
+        parent::__construct( $posts );
 
         $this->name = 'date_posts';
 
+        $this->mod_args['context'] = 'date';
+
+        $this->args['title'] = esc_html__( 'Date', 'jentil' );
         $this->args['active_callback'] = function () {
-            return $this->customizer->get( 'template' )->is( 'date' );
+            return $this->posts->get( 'customizer' )->get( 'template' )->is( 'date' );
         };
     }
 

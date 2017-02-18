@@ -43,7 +43,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * 
      * @var         array         $panels           Panels
      */
-    // protected $panels;
+    protected $panels;
 
     /**
      * Customizer sections
@@ -107,7 +107,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'sections', 'template', 'post_types', 'taxonomies', 'pages' );
+        return array( 'template', 'post_types', 'taxonomies', 'pages' );
     }
 
     /**
@@ -137,6 +137,14 @@ final class Customizer extends MagPack\Utilities\Singleton {
             'post_status' => 'publish',
         ) );
 
+        $this->panels = $this->panels();
+
+        if ( $this->panels ) {
+            foreach ( $this->panels as $panel ) {
+                $panel->add( $wp_customize );
+            }
+        }
+
         $this->sections = $this->sections();
 
         if ( $this->sections ) {
@@ -144,6 +152,23 @@ final class Customizer extends MagPack\Utilities\Singleton {
                 $section->add( $wp_customize );
             }
         }
+    }
+
+    /**
+     * Get panels
+     *
+     * Panels comprise sections which, in turn,
+     * comprise settings.
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function panels() {
+        $panels = array();
+
+        $panels[] = new Posts\Posts( $this );
+
+        return $panels;
     }
 
     /**
@@ -160,29 +185,23 @@ final class Customizer extends MagPack\Utilities\Singleton {
 
         $sections[] = new Logo\Logo( $this );
 
-        $sections[] = new Posts\Sticky( $this );
-        $sections[] = new Posts\Author( $this );
-        $sections[] = new Posts\Date( $this );
-        $sections[] = new Posts\Search( $this );
+        // $sections[] = new Posts\Author( $this );
+        // $sections[] = new Posts\Date( $this );
+        // $sections[] = new Posts\Search( $this );
 
-        if ( ( $taxonomies = $this->taxonomies ) ) {
-            foreach ( $taxonomies as $taxonomy ) {
-                $sections[] = new Posts\Taxonomy( $this, $taxonomy );
-            }
-        }
+        // if ( ( $taxonomies = $this->taxonomies ) ) {
+        //     foreach ( $taxonomies as $taxonomy ) {
+        //         $sections[] = new Posts\Taxonomy( $this, $taxonomy );
+        //     }
+        // }
 
-        if ( ( $post_types = $this->post_types ) ) {
-            foreach ( $post_types as $post_type ) {
-                if (
-                    $post_type->has_archive
-                    || (
-                        'post' == $post_type->name
-                    )
-                ) {
-                    $sections[] = new Posts\Post_Type( $this, $post_type );
-                }
-            }
-        }
+        // if ( ( $post_types = $this->post_types ) ) {
+        //     foreach ( $post_types as $post_type ) {
+        //         if ( $post_type->has_archive || 'post' == $post_type->name ) {
+        //             $sections[] = new Posts\Post_Type( $this, $post_type );
+        //         }
+        //     }
+        // }
 
         $sections[] = new Layout\Layout( $this );
         $sections[] = new Colophon\Colophon( $this );

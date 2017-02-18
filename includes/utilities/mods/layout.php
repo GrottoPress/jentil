@@ -27,14 +27,14 @@ use GrottoPress\Jentil\Utilities;
  */
 final class Layout extends Mod {
     /**
-     * Template
+     * Context
      *
      * @since       Jentil 0.1.0
      * @access      protected
      * 
-     * @var     string     $template   Template type
+     * @var     string     $context   Template type
      */
-    protected $template;
+    protected $context;
 
     /**
      * Specific template
@@ -57,27 +57,17 @@ final class Layout extends Mod {
     protected $more_specific;
 
     /**
-     * Names
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     * 
-     * @var     array     $names   Template names
-     */
-    protected $names;
-
-    /**
      * Constructor
      * 
-     * @var         string      $template       Template name
+     * @var         string      $context       Template name
      * @var         string      $specific       Post type name or taxonomy name
      * @var         string      $more_specific  Post ID or term ID
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( $template, $specific = '', $more_specific = '' ) {
-        $this->template = sanitize_key( $template );
+    public function __construct( $context, $specific = '', $more_specific = '' ) {
+        $this->context = sanitize_key( $context );
 
         $specific = sanitize_key( $specific );
         $this->specific = post_type_exists( $specific ) || taxonomy_exists( $specific )
@@ -85,9 +75,9 @@ final class Layout extends Mod {
 
         $this->more_specific = sanitize_key( $more_specific );
 
-        $this->names = $this->names();
-        $this->name = isset( $this->names[ $this->template ] )
-            ? sanitize_key( $this->names[ $this->template ] ) : '';
+        $names = $this->names();
+        $this->name = isset( $names[ $this->context ] )
+            ? sanitize_key( $names[ $this->context ] ) : '';
 
         $this->default = 'content-sidebar';
     }
@@ -124,13 +114,14 @@ final class Layout extends Mod {
         /**
          * Filter the layout mod names
          * 
-         * @var         string          $names         Not found page content.
+         * @var         string          $names      Layout mod names.
          *
          * @filter      jentil_layout_mod_names
          *
          * @since       Jentil 0.1.0
          */
-        return apply_filters( 'jentil_layout_mod_names', $names, $this->template, $this->specific );
+        return apply_filters( 'jentil_layout_mod_names', $names,
+            $this->context, $this->specific, $this->more_specific );
     }
 
     /**

@@ -38,19 +38,49 @@ final class Sticky extends Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct( Posts $posts ) {
+        parent::__construct( $posts );
 
         $this->name = 'sticky_posts';
 
-        $this->args['title'] = esc_html__( 'Sticky Posts', 'jentil' );
-        $this->args['active_callback'] = function () {
-            return ( ! $this->customizer->get( 'template' )->is( 'search' )
-                && ! $this->customizer->get( 'template' )->is( 'singular' ) );
-        };
+        $this->mod_args['context'] = 'sticky';
 
-        $this->default['number'] = 3;
-        $this->default['wrap_class'] = 'sticky-posts big';
-        $this->default['pagination_position'] = 'none';
+        $this->args['title'] = esc_html__( 'Sticky Posts', 'jentil' );
+        // $this->args['panel'] = '';
+        $this->args['active_callback'] = function () {
+            $template = $this->posts->get( 'customizer' )->get( 'template' );
+
+            $post_type = get_query_var( 'post_type' );
+
+            if ( $template->is( 'home' ) || $template->is( 'tag' ) || $template->is( 'category' ) ) {
+                $post_type = 'post';
+            }
+
+            if ( is_array( $post_type ) ) {
+                $post_type = $post_type[0];
+            }
+
+            return $this->has_sticky( $post_type );
+        };
+    }
+
+    /**
+     * Does post type have sticky posts?
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function has_sticky( $post_type = '' ) {
+        if ( ! $post_type || ! post_type_exists( $post_type ) ) {
+            return false;
+        }
+
+        $sticky_posts = get_option( 'sticky_posts' );
+
+        $has_sticky = array_map( function ( $value ) use ( $post_type ) {
+            return ( get_post_type( $value ) == $post_type );
+        }, $sticky_posts );
+
+        return in_array( true, $has_sticky );
     }
 }

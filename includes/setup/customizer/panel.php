@@ -112,11 +112,9 @@ abstract class Panel extends MagPack\Utilities\Wizard {
      * @access      public
      */
     public function add( $wp_customize ) {
-        if ( ! $this->name ) {
-            return;
+        if ( $this->name ) {
+            $wp_customize->add_panel( $this->name, $this->args );
         }
-
-        $wp_customize->add_panel( $this->name, $this->args );
 
         $this->sections = $this->sections();
 

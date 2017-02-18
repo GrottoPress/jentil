@@ -31,7 +31,14 @@ global $pagenow;
 $messages = array();
 
 if ( ! function_exists( '\GrottoPress\MagPack\run' ) ) {
-	$messages[] = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Kindly install and activate that first.', 'jentil' );
+	$messages[] = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Install and activate that first.', 'jentil' );
+}
+
+$required_wp = '4.3';
+$current_wp = get_bloginfo( 'version' );
+
+if ( version_compare( $current_wp, $required_wp, '<' ) ) {
+	$messages[] = sprintf( esc_html__( 'This theme requires WordPress version %1$s or newer. Update WordPress.', 'jentil' ), $required_wp, $current_wp );
 }
 
 /**

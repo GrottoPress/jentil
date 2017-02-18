@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Before_Title_Separator extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Before_Title_Separator extends Setting {
     /**
 	 * Constructor
      *
@@ -51,20 +41,16 @@ final class Before_Title_Separator extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_before_title_separator';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['before_title_separator'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'esc_attr',
-        );
+        $this->mod = $this->mod( 'before_title_separator' );
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Before title separator', 'jentil' ),
-            'type' => 'text',
-        );
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'esc_attr';
+
+        $this->control['label'] = esc_html__( 'Before title separator', 'jentil' );
+        $this->control['type'] = 'text';
 	}
 }

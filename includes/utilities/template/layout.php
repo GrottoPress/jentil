@@ -48,15 +48,16 @@ final class Layout extends MagPack\Utilities\Wizard {
 	}
 	
 	/**
-     * Get Layout
+     * Layout mod
      * 
      * @since		Jentil 0.1.0
      * @access      public
      * 
-     * @return      string      The layout type
+     * @return      string      Layout mod
      */
     public function mod() {
         $template = $this->template->type();
+
         $specific = '';
         $more_specific = '';
 
@@ -99,10 +100,14 @@ final class Layout extends MagPack\Utilities\Wizard {
                 $more_specific = $more_specific[0];
             }
 
-            if ( ( $mod = ( new Utilities\Mods\Layout( $type, $specific, $more_specific ) )->mod() ) ) {
-            	return $mod;
+            $mod = new Utilities\Mods\Layout( $type, $specific, $more_specific );
+
+            if ( $mod->get( 'name' ) ) {
+            	return $mod->mod();
             }
         }
+
+        return $mod->get( 'default' );
     }
     
     /**

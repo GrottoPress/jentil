@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class More_Link extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class More_Link extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,16 @@ final class More_Link extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_more_link';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['more_link'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_text_field',
-        );
+        $this->mod = $this->mod( 'more_link' );
+        
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'sanitize_text_field';
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label'     => esc_html__( 'More link label', 'jentil' ),
-            'type'      => 'text',
-        );
+        $this->control['label'] = esc_html__( 'More link label', 'jentil' );
+        $this->control['type'] = 'text';
 	}
 }

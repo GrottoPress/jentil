@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Text_Offset extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Text_Offset extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,17 @@ final class Text_Offset extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_text_offset';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['text_offset'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'absint',
-        );
+        $this->mod = $this->mod( 'text_offset' );
+        
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'absint';
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Text offset (from image align side)', 'jentil' ),
-            'type' => 'number',
-        );
+        $this->control['label'] = esc_html__( 'Text offset', 'jentil' );
+        $this->control['description'] = esc_html__( 'From image align side (px)', 'jentil' );
+        $this->control['type'] = 'number';
 	}
 }

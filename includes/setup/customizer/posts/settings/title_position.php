@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Title_Position extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Title_Position extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,21 +39,18 @@ final class Title_Position extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_title_position';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['title_position'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_key',
-        );
+        $this->mod = $this->mod( 'title_position' );
+        
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'sanitize_key';
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Title position (relative to image)', 'jentil' ),
-            'type' => 'select',
-            'choices' => $this->content->get( 'title_positions' ),
-        );
+        $this->control['label'] = esc_html__( 'Title position', 'jentil' );
+        $this->control['description'] = esc_html__( 'Relative to image', 'jentil' );
+        $this->control['type'] = 'select';
+        $this->control['choices'] = $this->content->get( 'title_positions' );
 	}
 }

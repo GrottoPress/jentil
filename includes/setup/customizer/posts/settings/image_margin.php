@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Image_Margin extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Image_Margin extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,16 @@ final class Image_Margin extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_image_margin';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['image_margin'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_text_field',
-        );
+        $this->mod = $this->mod( 'image_margin' );
+      
+      	$this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'sanitize_text_field';
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Image margin', 'jentil' ),
-            'type' => 'text',
-        );
+        $this->control['label'] = esc_html__( 'Image margin', 'jentil' );
+        $this->control['type'] = 'text';
 	}
 }

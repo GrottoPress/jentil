@@ -59,5 +59,11 @@ final class Single extends Setting {
 
             return $template->is( 'singular', $post_type->name );
         };
+
+        if ( $post ) {
+            $this->control['label'] = sprintf( esc_html__( '%1$s: %2$s', 'jentil' ), $post_type->labels->singular_name, $post->post_title );
+        } else {
+            $this->control['label'] = $post_type->labels->name;
+        }
 	}
 }

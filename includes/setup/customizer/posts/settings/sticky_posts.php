@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Sticky_Posts extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Sticky_Posts extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,16 @@ final class Sticky_Posts extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_sticky_posts';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['sticky_posts'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'absint',
-        );
+        $this->mod = $this->mod( 'sticky_posts' );
+      
+      	$this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'absint';
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Show sticky posts?', 'jentil' ),
-            'type' => 'checkbox',
-        );
+        $this->control['label'] = esc_html__( 'Show sticky posts?', 'jentil' );
+        $this->control['type'] = 'checkbox';
 	}
 }

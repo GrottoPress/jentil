@@ -40,10 +40,18 @@ final class Taxonomy extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $taxonomy, $term = '' ) {
+        $mod_context = 'tax';
+        
+        if ( 'post_tag' == $taxonomy->name ) {
+            $mod_context = 'tag';
+        } elseif ( 'category' == $taxonomy->name ) {
+            $mod_context = 'category';
+        }
+
         if ( $term ) {
-            $this->mod = new Utilities\Mods\Layout( 'tax', $taxonomy->name, $term->term_id );
+            $this->mod = new Utilities\Mods\Layout( $mod_context, $taxonomy->name, $term->term_id );
         } else {
-            $this->mod = new Utilities\Mods\Layout( 'tax', $taxonomy->name );
+            $this->mod = new Utilities\Mods\Layout( $mod_context, $taxonomy->name );
         }
 
         parent::__construct( $layout );
@@ -65,7 +73,14 @@ final class Taxonomy extends Setting {
                 return $template->is( 'category' );
             }
 
-            return $template->is( 'tax', $taxonomy );
+            return $template->is( 'tax', $taxonomy->name );
         };
+
+        if ( $term ) {
+            $this->control['label'] = sprintf( esc_html__( '%1$s: %2$s', 'jentil' ),
+                $taxonomy->labels->singular_name, $term->name );
+        } else {
+            $this->control['label'] = $taxonomy->labels->name;
+        }
 	}
 }

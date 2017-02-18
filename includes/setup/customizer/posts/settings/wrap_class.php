@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Wrap_Class extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Wrap_Class extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,17 @@ final class Wrap_Class extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_wrap_class';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['wrap_class'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_text_field',
-        );
+        $this->mod = $this->mod( 'wrap_class' );
+        
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'sanitize_text_field';
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label'     => esc_html__( 'Wrapper class', 'jentil' ),
-            'type'      => 'text',
-        );
+        $this->control['label'] = esc_html__( 'Wrapper class', 'jentil' );
+        $this->control['description'] = esc_html__( 'Comma- or space-separated', 'jentil' );
+        $this->control['type'] = 'text';
 	}
 }

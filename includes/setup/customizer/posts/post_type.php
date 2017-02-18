@@ -50,19 +50,25 @@ final class Post_Type extends Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer, $post_type ) {
-        parent::__construct( $customizer );
+    public function __construct( Posts $posts, $post_type ) {
+        parent::__construct( $posts );
 
         $this->post_type = $post_type;
 
         $this->name = sanitize_key( $this->post_type->name . '_post_type_posts' );
 
+        $this->mod_args['context'] = ( 'post' == $post_type->name ? 'home' : 'post_type_archive' );
+        $this->mod_args['specific'] = $post_type->name;
+
+        $this->args['title'] = sprintf( esc_html__( 'Post type: %s', 'jentil' ), $post_type->labels->singular_name );
         $this->args['active_callback'] = function () {
+            $template = $this->posts->get( 'customizer' )->get( 'template' );
+
             if ( 'post' == $this->post_type->name ) {
-                return $this->customizer->get( 'template' )->is( 'home' );
+                return $template->is( 'home' );
             }
 
-            return $this->customizer->get( 'template' )->is( 'post_type_archive', $this->post_type->name );
+            return $template->is( 'post_type_archive', $this->post_type->name );
         };
     }
 
@@ -75,10 +81,26 @@ final class Post_Type extends Section {
     protected function settings() {
         $settings = array();
 
-        if ( 'post' == $this->post_type->name ) {
+        if ( $this->has_sticky() ) {
             $settings[] = new Settings\Sticky_Posts( $this );
         }
 
         return array_merge( $settings, parent::settings() );
+    }
+
+    /**
+     * Does post type have sticky posts?
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function has_sticky() {
+        $sticky_posts = get_option( 'sticky_posts' );
+
+        $has_sticky = array_map( function ( $value ) {
+            return ( get_post_type( $value ) == $this->post_type->name );
+        }, $sticky_posts );
+
+        return in_array( true, $has_sticky );
     }
 }

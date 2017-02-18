@@ -47,5 +47,7 @@ final class Author extends Setting {
         $this->control['active_callback'] = function () {
             return $this->layout->get( 'customizer' )->get( 'template' )->is( 'author' );
         };
+
+        $this->control['label'] = esc_html__( 'Author', 'jentil' );
 	}
 }

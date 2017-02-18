@@ -138,43 +138,41 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      array 		Args to pass to \GrottoPress\MagPack\Utilities\Query\Posts
      */
     private function archives_query_args() {
-        $content = $this->template->get( 'content' );
-
         $args = array(
-			'layout' 				=> $content->mod( 'layout', 'stack' ),
+			'layout' 				=> $this->mod( 'layout' ),
 
-			'img' 					=> $content->mod( 'image', 'mini-thumb' ),
-			'img_align' 			=> $content->mod( 'image_alignment', 'left' ),
+			'img' 					=> $this->mod( 'image' ),
+			'img_align' 			=> $this->mod( 'image_alignment' ),
 
-			'after_title' 			=> $content->mod( 'after_title', 'published_date, comments_link' ),
-			'after_title_sep' 		=> $content->mod( 'after_title_separator', ' | ' ),
-			'after_content' 		=> $content->mod( 'after_content', 'category, post_tag' ),
-			'after_content_sep' 	=> $content->mod( 'after_content_separator', ' | ' ),
-			'before_title' 			=> $content->mod( 'before_title' ),
-			'before_title_sep' 		=> $content->mod( 'before_title_separator', ' | ' ),
+			'after_title' 			=> $this->mod( 'after_title' ),
+			'after_title_sep' 		=> $this->mod( 'after_title_separator' ),
+			'after_content' 		=> $this->mod( 'after_content' ),
+			'after_content_sep' 	=> $this->mod( 'after_content_separator' ),
+			'before_title' 			=> $this->mod( 'before_title' ),
+			'before_title_sep' 		=> $this->mod( 'before_title_separator' ),
 
-			'excerpt' 				=> $content->mod( 'excerpt', '300' ),
+			'excerpt' 				=> $this->mod( 'excerpt' ),
 			'content_pag'			=> 1,
 
-			'pag' 					=> $content->mod( 'pagination' ),
-			'pag_max' 				=> $content->mod( 'pagination_maximum' ),
-			'pag_pos' 				=> $content->mod( 'pagination_position', 'bottom' ),
-			'pag_prev_label' 		=> $content->mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
-			'pag_next_label' 		=> $content->mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
+			'pag' 					=> $this->mod( 'pagination' ),
+			'pag_max' 				=> $this->mod( 'pagination_maximum' ),
+			'pag_pos' 				=> $this->mod( 'pagination_position' ),
+			'pag_prev_label' 		=> $this->mod( 'pagination_previous_label' ),
+			'pag_next_label' 		=> $this->mod( 'pagination_next_label' ),
 
-			'wrap_tag' 				=> $content->mod( 'wrap_tag', 'div' ),
-			'class' 				=> $content->mod( 'wrap_class', 'archive-posts big' ),
+			'wrap_tag' 				=> $this->mod( 'wrap_tag' ),
+			'class' 				=> $this->mod( 'wrap_class' ),
 			'id' 					=> 'main-query',
 
-			'title_words' 			=> $content->mod( 'title_words', -1 ),
-			'title_pos' 			=> $content->mod( 'title_position', 'side' ),
+			'title_words' 			=> $this->mod( 'title_words' ),
+			'title_pos' 			=> $this->mod( 'title_position' ),
 			'title_tag' 			=> 'h2',
 			'title_link' 			=> 1,
 
-			'text_offset' 			=> $content->mod( 'text_offset' ),
-			'more_link' 			=> $content->mod( 'more_link', esc_html__( 'read more', 'jentil' ) ),
+			'text_offset' 			=> $this->mod( 'text_offset' ),
+			'more_link' 			=> $this->mod( 'more_link' ),
 
-			'posts_per_page' 		=> $content->mod( 'number', get_option( 'posts_per_page' ) ),
+			'posts_per_page' 		=> $this->mod( 'number' ),
 			's' 					=> get_search_query(),
 			'post__not_in'			=> ( $this->has_sticky() ? get_option( 'sticky_posts' ) : null ),
 			'post_status' 			=> 'publish',
@@ -189,12 +187,6 @@ final class Posts extends MagPack\Utilities\Wizard {
 				$args['orderby'] = 'all_time_views';
 				$args['order'] = 'DESC';
 			}
-
-			$args['class'] = $content->mod( 'wrap_class', 'archive-posts' );
-			$args['img'] = $content->mod( 'image', 'nano-thumb' );
-			$args['title_position'] = $content->mod( 'title_position', 'top' );
-			$args['after_title'] = $content->mod( 'after_title', 'post_type, comments_link' );
-			$args['excerpt'] = $content->mod( 'excerpt', '160' );
 		}
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
@@ -277,7 +269,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      boolean 		Do we have sticky posts enabled?
      */
     private function has_sticky() {
-        return ( $this->template->get( 'content' )->mod( 'sticky_posts' ) );
+        return $this->mod( 'sticky_posts' );
     }
 
     /**
@@ -289,43 +281,41 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      array 		Args to pass to \GrottoPress\MagPack\Utilities\Query\Posts
      */
     private function sticky_query_args() {
-        $sticky = new Utilities\Sticky();
+        $args = array(
+			'layout' 				=> $this->sticky_mod( 'layout' ),
 
-		$args = array(
-			'layout' 				=> $sticky->mod( 'layout', 'stack' ),
+			'img' 					=> $this->sticky_mod( 'image' ),
+			'img_align' 			=> $this->sticky_mod( 'image_alignment' ),
 
-			'img' 					=> $sticky->mod( 'image', 'mini-thumb' ),
-			'img_align' 			=> $sticky->mod( 'image_alignment', 'left' ),
+			'after_title' 			=> $this->sticky_mod( 'after_title' ),
+			'after_title_sep' 		=> $this->sticky_mod( 'after_title_separator' ),
+			'after_content' 		=> $this->sticky_mod( 'after_content' ),
+			'after_content_sep' 	=> $this->sticky_mod( 'after_content_separator' ),
+			'before_title' 			=> $this->sticky_mod( 'before_title' ),
+			'before_title_sep' 		=> $this->sticky_mod( 'before_title_separator' ),
 
-			'after_title' 			=> $sticky->mod( 'after_title', 'published_date, comments_link' ),
-			'after_title_sep' 		=> $sticky->mod( 'after_title_separator', ' | ' ),
-			'after_content' 		=> $sticky->mod( 'after_content', 'category, post_tag' ),
-			'after_content_sep' 	=> $sticky->mod( 'after_content_separator', ' | ' ),
-			'before_title' 			=> $sticky->mod( 'before_title' ),
-			'before_title_sep' 		=> $sticky->mod( 'before_title_separator', ' | ' ),
-
-			'excerpt' 				=> $sticky->mod( 'excerpt', '300' ),
+			'excerpt' 				=> $this->sticky_mod( 'excerpt' ),
 			'content_pag'			=> 1,
 
-			'pag' 					=> $sticky->mod( 'pagination' ),
-			'pag_max' 				=> $sticky->mod( 'pagination_maximum' ),
-			'pag_pos' 				=> $sticky->mod( 'pagination_position', 'none' ),
-			'pag_prev_label' 		=> $sticky->mod( 'pagination_previous_label', __( '&larr; Previous', 'jentil' ) ),
-			'pag_next_label' 		=> $sticky->mod( 'pagination_next_label', __( 'Next &rarr;', 'jentil' ) ),
+			'pag' 					=> $this->sticky_mod( 'pagination' ),
+			'pag_max' 				=> $this->sticky_mod( 'pagination_maximum' ),
+			'pag_pos' 				=> $this->sticky_mod( 'pagination_position' ),
+			'pag_prev_label' 		=> $this->sticky_mod( 'pagination_previous_label' ),
+			'pag_next_label' 		=> $this->sticky_mod( 'pagination_next_label' ),
 
-			'wrap_tag' 				=> $sticky->mod( 'wrap_tag', 'div' ),
-			'class' 				=> $sticky->mod( 'wrap_class', 'sticky-posts big' ),
+			'wrap_tag' 				=> $this->sticky_mod( 'wrap_tag' ),
+			'class' 				=> $this->sticky_mod( 'wrap_class' ),
 			'id' 					=> 'main-query-sticky-posts',
 
-			'title_words' 			=> $sticky->mod( 'title_words', -1 ),
-			'title_pos' 			=> $sticky->mod( 'title_position', 'side' ),
+			'title_words' 			=> $this->sticky_mod( 'title_words' ),
+			'title_pos' 			=> $this->sticky_mod( 'title_position' ),
 			'title_tag' 			=> 'h2',
 			'title_link' 			=> 1,
 
-			'text_offset' 			=> $sticky->mod( 'text_offset' ),
-			'more_link' 			=> $sticky->mod( 'more_link', esc_html__( 'read more', 'jentil' ) ),
+			'text_offset' 			=> $this->sticky_mod( 'text_offset' ),
+			'more_link' 			=> $this->sticky_mod( 'more_link' ),
 
-			'posts_per_page' 		=> $sticky->mod( 'number', 3 ),
+			'posts_per_page' 		=> $this->sticky_mod( 'number' ),
 			'post__in'				=> get_option( 'sticky_posts' ),
 			'post_status' 			=> 'publish',
 			'ignore_sticky_posts' 	=> 1,
@@ -400,5 +390,87 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		return $args;
+    }
+
+    /**
+     * Sticky posts mod
+     * 
+     * @since		Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      mixed 		Sticky posts mod
+     */
+    public function sticky_mod( $setting ) {
+    	return $this->mod( $setting, array( 'context' => 'sticky' ) );
+    }
+
+    /**
+     * Posts mods
+     * 
+     * @since		Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      mixed 		Posts mod
+     */
+    public function mod( $setting, $args = array(
+        'context' => '',
+        'specific' => '',
+        'more_specific' => '',
+    ) ) {
+    	if ( $args['context'] ) {
+        	return ( new Utilities\Mods\Posts( $setting, $args ) )->mod();
+        }
+
+    	$template = $this->template->type();
+
+	    foreach ( $template as $type ) {
+            $args['context'] = $type;
+
+            if ( 'post_type_archive' == $type ) {
+                $args['specific'] = get_query_var( 'post_type' );
+            } elseif ( 'tax' == $type ) {
+                $args['specific'] = get_query_var( 'taxonomy' );
+
+                if ( is_taxonomy_hierarchical( $args['specific'] ) ) {
+                	$args['more_specific'] = get_query_var( 'term_id' );
+                }
+            } elseif ( 'category' == $type ) {
+            	$args['specific'] = 'category';
+
+            	if ( is_taxonomy_hierarchical( $args['specific'] ) ) {
+            		$args['more_specific'] = get_query_var( 'cat' );
+            	}
+            } elseif ( 'tag' == $type ) {
+            	$args['specific'] = 'post_tag';
+
+                if ( is_taxonomy_hierarchical( $args['specific'] ) ) {
+                    $args['more_specific'] = get_query_var( 'tag_id' );
+                }
+            } elseif ( 'singular' == $type ) {
+            	global $post;
+
+            	$args['specific'] = $post->post_type;
+
+            	if ( 'page' == $post->post_type ) {
+            		$args['more_specific'] = $post->ID;
+            	}
+            }
+
+            if ( is_array( $args['specific'] ) ) {
+                $args['specific'] = $args['specific'][0];
+            }
+
+            if ( is_array( $args['more_specific'] ) ) {
+                $args['more_specific'] = $args['more_specific'][0];
+            }
+
+            $mod = new Utilities\Mods\Posts( $setting, $args );
+
+            if ( $mod->get( 'name' ) ) {
+            	return $mod->mod();
+            }
+        }
+
+        return $mod->get( 'default' );
     }
 }

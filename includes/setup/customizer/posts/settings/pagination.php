@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage      jentil/includes
  * @since           Jentil 0.1.0
  */
-final class Pagination extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Pagination extends Setting {
     /**
      * Constructor
      *
@@ -49,21 +39,16 @@ final class Pagination extends Setup\Customizer\Setting {
      * @access      public
      */
     public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_pagination';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['pagination'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_key',
-        );
+        $this->mod = $this->mod( 'pagination' );
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Pagination type', 'jentil' ),
-            'type' => 'text',
-            // 'choices' => $this->content->get( 'pagination_types' ),
-        );
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'sanitize_key';
+
+        $this->control['label'] = esc_html__( 'Pagination type', 'jentil' );
+        $this->control['type'] = 'text';
     }
 }

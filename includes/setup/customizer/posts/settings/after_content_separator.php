@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class After_Content_Separator extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class After_Content_Separator extends Setting {
     /**
 	 * Constructor
      *
@@ -51,20 +41,16 @@ final class After_Content_Separator extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_after_content_separator';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['after_content_separator'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'esc_attr',
-        );
+        $this->mod = $this->mod( 'after_content_separator' );
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'After content separator', 'jentil' ),
-            'type' => 'text',
-        );
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'esc_attr';
+
+        $this->control['label'] = esc_html__( 'After content separator', 'jentil' );
+        $this->control['type'] = 'text';
 	}
 }

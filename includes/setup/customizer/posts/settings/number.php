@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Number extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Number extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,18 @@ final class Number extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_number';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['number'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'intval',
-        );
+        $this->mod = $this->mod( 'number' );
+        
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = function ( $value ) {
+            return intval( $value );
+        };
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label'     => esc_html__( 'Number of posts', 'jentil' ),
-            'type'      => 'number',
-        );
+        $this->control['label'] = esc_html__( 'Number of posts', 'jentil' );
+        $this->control['type'] = 'number';
 	}
 }

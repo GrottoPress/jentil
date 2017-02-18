@@ -18,8 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\Jentil\Setup;
-
 /**
  * Author archive content customizer section
  *
@@ -38,13 +36,16 @@ final class Author extends Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct( Posts $posts ) {
+        parent::__construct( $posts );
 
         $this->name = 'author_posts';
+        
+        $this->mod_args['context'] = 'author';
 
+        $this->args['title'] = esc_html__( 'Author', 'jentil' );
         $this->args['active_callback'] = function () {
-            return $this->customizer->get( 'template' )->is( 'author' );
+            return $this->posts->get( 'customizer' )->get( 'template' )->is( 'author' );
         };
     }
 

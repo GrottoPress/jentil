@@ -51,16 +51,6 @@ final class Template extends MagPack\Utilities\Template\Template {
     protected $layout;
 
     /**
-     * Content
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      protected
-	 * 
-	 * @var         \GrottoPress\Jentil\Utilities\Template\Content         $content       Template content
-	 */
-    protected $content;
-
-    /**
      * Posts
 	 *
 	 * @since       Jentil 0.1.0
@@ -79,7 +69,6 @@ final class Template extends MagPack\Utilities\Template\Template {
 	public function __construct() {
 	    $this->title = new Title( $this );
 	    $this->layout = new Layout( $this );
-	    $this->content = new Content( $this );
 	    $this->posts = new Posts( $this );
 
 	    parent::__construct();
@@ -97,6 +86,6 @@ final class Template extends MagPack\Utilities\Template\Template {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array_merge( parent::allow_get(), array( 'title', 'layout', 'content', 'posts' ) );
+        return array_merge( parent::allow_get(), array( 'title', 'layout', 'posts' ) );
     }
 }

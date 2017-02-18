@@ -38,19 +38,16 @@ final class Search extends Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct( Posts $posts ) {
+        parent::__construct( $posts );
 
         $this->name = 'search_posts';
 
-        $this->args['active_callback'] = function () {
-            return $this->customizer->get( 'template' )->is( 'search' );
-        };
+        $this->mod_args['context'] = 'search';
 
-        $this->default['wrap_class'] = 'archive-posts';
-        $this->default['image'] = 'nano-thumb';
-        $this->default['title_position'] = 'top';
-        $this->default['after_title'] = 'post_type, comments_link';
-        $this->default['excerpt'] = '160';
+        $this->args['title'] = esc_html__( 'Search', 'jentil' );
+        $this->args['active_callback'] = function () {
+            return $this->posts->get( 'customizer' )->get( 'template' )->is( 'search' );
+        };
     }
 }

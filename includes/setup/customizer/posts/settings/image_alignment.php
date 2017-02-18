@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Image_Alignment extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Image_Alignment extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,21 +39,17 @@ final class Image_Alignment extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_image_alignment';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['image_alignment'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_title',
-        );
+        $this->mod = $this->mod( 'image_alignment' );
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label' => esc_html__( 'Image alignment', 'jentil' ),
-            'type' => 'select',
-            'choices' => $this->content->get( 'image_alignments' ),
-        );
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = 'sanitize_title';
+
+        $this->control['label'] = esc_html__( 'Image alignment', 'jentil' );
+        $this->control['type'] = 'select';
+        $this->control['choices'] = $this->content->get( 'image_alignments' );
 	}
 }

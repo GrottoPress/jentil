@@ -40,16 +40,22 @@ final class Post_Type extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
-        $this->mod = new Utilities\Mods\Layout( 'post_type_archive', $post_type->name );
+        $mod_context = ( 'post' == $post_type->name ? 'home' : 'post_type_archive' );
+
+        $this->mod = new Utilities\Mods\Layout( $mod_context, $post_type->name );
 
         parent::__construct( $layout );
         
         $this->control['active_callback'] = function () use ( $post_type ) {
+            $template = $this->layout->get( 'customizer' )->get( 'template' );
+
             if ( 'post' == $post_type->name ) {
-                return $this->layout->get( 'customizer' )->get( 'template' )->is( 'home' );
+                return $template->is( 'home' );
             }
 
-            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'post_type_archive', $post_type->name );
+            return $template->is( 'post_type_archive', $post_type->name );
         };
+
+        $this->control['label'] = sprintf( esc_html__( 'Post type: %s', 'jentil' ), $post_type->labels->singular_name );
 	}
 }

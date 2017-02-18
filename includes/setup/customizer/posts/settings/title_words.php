@@ -31,17 +31,7 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Title_Words extends Setup\Customizer\Setting {
-    /**
-     * Content section
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     \GrottoPress\Jentil\Setup\Customizer\Content\Content     $content     Content section instance
-     */
-    private $content;
-    
+final class Title_Words extends Setting {
     /**
 	 * Constructor
 	 *
@@ -49,20 +39,19 @@ final class Title_Words extends Setup\Customizer\Setting {
 	 * @access      public
 	 */
 	public function __construct( $content ) {
-        $this->content = $content;
-
-        $this->name = $this->content->get( 'name' ) . '_title_words';
+        parent::__construct( $content );
         
-        $this->args = array(
-            'default' => ( $this->content->get( 'default' ) )['title_words'],
-            //'transport' => 'postMessage',
-            'sanitize_callback' => 'intval',
-        );
+        $this->mod = $this->mod( 'title_words' );
+        
+        $this->name = $this->mod->get( 'name' );
+        
+        $this->args['default'] = $this->mod->get( 'default' );
+        $this->args['sanitize_callback'] = function ( $value ) {
+            return intval( $value );
+        };
 
-        $this->control = array(
-            'section' => $this->content->get( 'name' ),
-            'label'     => esc_html__( 'Title length (number of words)', 'jentil' ),
-            'type'      => 'number',
-        );
+        $this->control['label'] = esc_html__( 'Title length', 'jentil' );
+        $this->control['description'] = esc_html__( 'Number of words', 'jentil' );
+        $this->control['type'] = 'number';
 	}
 }

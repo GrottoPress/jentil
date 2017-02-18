@@ -50,21 +50,55 @@ final class Taxonomy extends Section {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Setup\Customizer\Customizer $customizer, $taxonomy ) {
-        parent::__construct( $customizer );
+    public function __construct( Posts $posts, $taxonomy, $term = '' ) {
+        parent::__construct( $posts );
 
         $this->taxonomy = $taxonomy;
 
-        $this->name = sanitize_key( $this->taxonomy->name . '_taxonomy_posts' );
+        if ( $term ) {
+            $this->name = sanitize_key( $this->taxonomy->name . '_' . $term->term_id . '_taxonomy_posts' );
+        } else {
+            $this->name = sanitize_key( $this->taxonomy->name . '_taxonomy_posts' );
+        }
 
-        $this->args['active_callback'] = function () {
-            if ( 'post_tag' == $this->taxonomy->name ) {
-                return $this->customizer->get( 'template' )->is( 'tag' );
-            } elseif ( 'category' == $this->taxonomy->name ) {
-                return $this->customizer->get( 'template' )->is( 'category' );
+        $this->mod_args['context'] = 'tax';
+        
+        if ( 'post_tag' == $taxonomy->name ) {
+            $this->mod_args['context'] = 'tag';
+        } elseif ( 'category' == $taxonomy->name ) {
+            $this->mod_args['context'] = 'category';
+        }
+
+        $this->mod_args['specific'] = $this->taxonomy->name;
+        $this->mod_args['more_specific'] = ( $term ? $term->term_id : '' );
+
+        // echo '<pre>'; print_r( $this->mod_args ); echo '</pre>';
+
+        if ( $term ) {
+            $this->args['title'] = sprintf( esc_html__( '%1$s: %2$s', 'jentil' ),
+                $this->taxonomy->labels->singular_name, $term->name );
+        } else {
+            $this->args['title'] = $this->taxonomy->labels->name;
+        }
+        
+        $this->args['active_callback'] = function () use ( $term ) {
+            $template = $this->posts->get( 'customizer' )->get( 'template' );
+
+            if ( $term ) {
+                return ( $template->is( 'tag', $term->term_id )
+                    || $template->is( 'category', $term->term_id )
+                    || $template->is( 'tax', $this->taxonomy->name, $term->term_id ) );
             }
 
-            return $this->customizer->get( 'template' )->is( 'tax', $this->taxonomy->name );
+            if ( 'post_tag' == $this->taxonomy->name ) {
+                return $template->is( 'tag' );
+            }
+
+            if ( 'category' == $this->taxonomy->name ) {
+                return $template->is( 'category' );
+            }
+
+            return $template->is( 'tax', $this->taxonomy->name );
         };
     }
 
@@ -77,10 +111,26 @@ final class Taxonomy extends Section {
     protected function settings() {
         $settings = array();
 
-        if ( 'post' == $this->taxonomy->object_type[0] ) {
+        if ( $this->has_sticky() ) {
             $settings[] = new Settings\Sticky_Posts( $this );
         }
 
         return array_merge( $settings, parent::settings() );
+    }
+
+    /**
+     * Does post type have sticky posts?
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function has_sticky() {
+        $sticky_posts = get_option( 'sticky_posts' );
+
+        $has_sticky = array_map( function ( $value ) {
+            return in_array( get_post_type( $value ), $this->taxonomy->object_type );
+        }, $sticky_posts );
+
+        return in_array( true, $has_sticky );
     }
 }

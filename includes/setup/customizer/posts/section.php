@@ -83,14 +83,14 @@ abstract class Section extends Setup\Customizer\Section {
     protected $image_alignments;
 
     /**
-     * Default
+     * Mod args
      *
      * @since       Jentil 0.1.0
      * @access      protected
      * 
-     * @var     array      $default       Default settings
+     * @var     array      $mod_args       Arguments to pass to mod
      */
-    protected $default;
+    protected $mod_args;
 
     /**
 	 * Constructor
@@ -98,8 +98,10 @@ abstract class Section extends Setup\Customizer\Section {
 	 * @since       Jentil 0.1.0
 	 * @access      protected
 	 */
-	protected function __construct( Setup\Customizer\Customizer $customizer ) {
-       parent::__construct( $customizer );
+	protected function __construct( Posts $posts ) {
+       $this->posts = $posts;
+
+       parent::__construct( $this->posts->get( 'customizer' ) );
 
        $this->title_positions = array(
             'side' => esc_html__( 'Side', 'jentil' ),
@@ -129,35 +131,15 @@ abstract class Section extends Setup\Customizer\Section {
             'grid' => esc_html__( 'Grid', 'jentil' ),
         );
 
-        $this->default = array(
-            'wrap_class' => 'archive-posts big',
-            'wrap_tag' => 'div',
-            'layout' => 'stack',
-            'number' => ( int ) get_option( 'posts_per_page' ),
-            'before_title' => '',
-            'before_title_separator' => ' | ',
-            'title_words' => -1,
-            'title_position' => 'side',
-            'after_title' => 'published_date, comments_link',
-            'after_title_separator' => ' | ',
-            'image' => 'mini-thumb',
-            'image_alignment' => 'left',
-            'image_margin' => '',
-            'text_offset' => 0,
-            'excerpt' => 300,
-            'more_link' => 'read more',
-            'after_content' => 'category, post_tag',
-            'after_content_separator' => ' | ',
-            'pagination' => '',
-            'pagination_maximum' => -1,
-            'pagination_position' => 'bottom',
-            'pagination_previous_label' => __( '&larr; Previous', 'jentil' ),
-            'pagination_next_label' => __( 'Next &rarr;', 'jentil' ),
-            'sticky_posts' => 1,
-        );
-
         $this->args = array(
             'title' => esc_html__( 'Posts', 'jentil' ),
+            'panel' => $this->posts->get( 'name' ),
+        );
+
+        $this->mod_args = array(
+            'context' => '',
+            'specific' => '',
+            'more_specific' => '',
         );
 	}
 
@@ -174,12 +156,12 @@ abstract class Section extends Setup\Customizer\Section {
      */
     protected function allow_get() {
         return array_merge( parent::allow_get(), array(
-            'default',
             'pagination_positions',
             'title_positions',
             'pagination_types',
             'layouts',
             'image_alignments',
+            'mod_args',
         ) );
     }
 
@@ -193,8 +175,8 @@ abstract class Section extends Setup\Customizer\Section {
         $settings = array();
 
         $settings[] = new Settings\Wrap_Class( $this );
-        $settings[] = new Settings\Wrap_Tag( $this );
-        $settings[] = new Settings\Layout( $this );
+        // $settings[] = new Settings\Wrap_Tag( $this );
+        // $settings[] = new Settings\Layout( $this );
         $settings[] = new Settings\Number( $this );
         $settings[] = new Settings\Before_Title( $this );
         $settings[] = new Settings\Before_Title_Separator( $this );

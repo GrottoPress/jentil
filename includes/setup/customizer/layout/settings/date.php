@@ -47,5 +47,7 @@ final class Date extends Setting {
         $this->control['active_callback'] = function () {
             return $this->layout->get( 'customizer' )->get( 'template' )->is( 'date' );
         };
+
+        $this->control['label'] = esc_html__( 'Date', 'jentil' );
 	}
 }
