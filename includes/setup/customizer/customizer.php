@@ -184,25 +184,6 @@ final class Customizer extends MagPack\Utilities\Singleton {
         $sections = array();
 
         $sections[] = new Logo\Logo( $this );
-
-        // $sections[] = new Posts\Author( $this );
-        // $sections[] = new Posts\Date( $this );
-        // $sections[] = new Posts\Search( $this );
-
-        // if ( ( $taxonomies = $this->taxonomies ) ) {
-        //     foreach ( $taxonomies as $taxonomy ) {
-        //         $sections[] = new Posts\Taxonomy( $this, $taxonomy );
-        //     }
-        // }
-
-        // if ( ( $post_types = $this->post_types ) ) {
-        //     foreach ( $post_types as $post_type ) {
-        //         if ( $post_type->has_archive || 'post' == $post_type->name ) {
-        //             $sections[] = new Posts\Post_Type( $this, $post_type );
-        //         }
-        //     }
-        // }
-
         $sections[] = new Layout\Layout( $this );
         $sections[] = new Colophon\Colophon( $this );
 
