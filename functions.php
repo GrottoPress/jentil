@@ -38,7 +38,14 @@ $required_wp = '4.3';
 $current_wp = get_bloginfo( 'version' );
 
 if ( version_compare( $current_wp, $required_wp, '<' ) ) {
-	$messages[] = sprintf( esc_html__( 'This theme requires WordPress version %1$s or newer. Update WordPress.', 'jentil' ), $required_wp, $current_wp );
+	if ( current_user_can( 'update_core' ) ) {
+		$string = esc_html__( 'This theme requires WordPress version %1$s or newer. Your current version is %2$s.', 'jentil' );
+		$string .= ' <a href="' . network_admin_url( '/update-core.php' ) . '">' . esc_html__( 'Update WordPress', 'jentil' ) . '</a>.';
+	} else {
+		$string = esc_html__( 'This theme requires WordPress version %1$s or newer.', 'jentil' );
+	}
+
+	$messages[] = sprintf( $string, $required_wp, $current_wp );
 }
 
 /**
