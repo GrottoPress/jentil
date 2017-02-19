@@ -50,10 +50,12 @@ final class Sticky extends Section {
         $this->args['active_callback'] = function () {
             $template = $this->posts->get( 'customizer' )->get( 'template' );
 
-            $post_type = get_query_var( 'post_type' );
-
-            if ( $template->is( 'home' ) || $template->is( 'tag' ) || $template->is( 'category' ) ) {
+            if ( $template->is( 'home' ) ) {
                 $post_type = 'post';
+            } elseif ( $template->is( 'post_type_archive' ) ) {
+                $post_type = get_query_var( 'post_type' );
+            } else {
+                return false;
             }
 
             if ( is_array( $post_type ) ) {

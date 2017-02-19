@@ -101,36 +101,4 @@ final class Taxonomy extends Section {
             return $template->is( 'tax', $this->taxonomy->name );
         };
     }
-
-    /**
-     * Get settings
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     */
-    protected function settings() {
-        $settings = array();
-
-        if ( $this->has_sticky() ) {
-            $settings[] = new Settings\Sticky_Posts( $this );
-        }
-
-        return array_merge( $settings, parent::settings() );
-    }
-
-    /**
-     * Does post type have sticky posts?
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     */
-    private function has_sticky() {
-        $sticky_posts = get_option( 'sticky_posts' );
-
-        $has_sticky = array_map( function ( $value ) {
-            return in_array( get_post_type( $value ), $this->taxonomy->object_type );
-        }, $sticky_posts );
-
-        return in_array( true, $has_sticky );
-    }
 }

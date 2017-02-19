@@ -107,14 +107,13 @@ final class Posts extends Mod {
     private function names() {
         $names = array(
             'home' => 'post_post_type_posts',
-            'singular' => 'singular_' . $this->specific . '_' . $this->more_specific . '_posts',
+            // 'singular' => 'singular_' . $this->specific . '_' . $this->more_specific . '_posts',
             'author' => 'author_posts',
             'category' => 'category_' . $this->more_specific . '_taxonomy_posts',
             'date' => 'date_posts',
             'post_type_archive' => $this->specific . '_post_type_posts',
             'tag' => 'post_tag_' . $this->more_specific . '_taxonomy_posts',
             'tax' => $this->specific . '_' . $this->more_specific . '_taxonomy_posts',
-            '404' => 'error_404_posts',
             'search' => 'search_posts',
             'sticky' => 'sticky_posts',
         );
@@ -173,7 +172,7 @@ final class Posts extends Mod {
             'pagination_position' => 'bottom',
             'pagination_previous_label' => __( '&larr; Previous', 'jentil' ),
             'pagination_next_label' => __( 'Next &rarr;', 'jentil' ),
-            'sticky_posts' => 1,
+            'sticky_posts' => 0,
         );
 
         if ( 'search' == $this->context ) {
@@ -182,23 +181,25 @@ final class Posts extends Mod {
             $defaults['title_position'] = 'top';
             $defaults['after_title'] = 'post_type, comments_link';
             $defaults['excerpt'] = '160';
-
-            unset( $defaults['sticky_posts'] );
         }
 
         if ( 'sticky' == $this->context ) {
             $defaults['number'] = 3;
             $defaults['wrap_class'] = 'sticky-posts big';
             $defaults['pagination_position'] = 'none';
-            
+        }
+
+        if ( ! in_array( $this->context, array(
+            'post_type_archive',
+            'home',
+        ) ) ) {
             unset( $defaults['sticky_posts'] );
         }
 
         if ( in_array( $this->context, array(
-            'post_type_archive',
-            'tax',
+            'home',
         ) ) ) {
-            $defaults['sticky_posts'] = 0;
+            $defaults['sticky_posts'] = 1;
         }
 
         /**
