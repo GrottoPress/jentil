@@ -41,7 +41,7 @@ final class Posts extends Setup\Customizer\Panel {
 	public function __construct( Setup\Customizer\Customizer $customizer ) {
         parent::__construct( $customizer );
 
-        $this->name = 'content';
+        $this->name = 'posts';
 
         $this->args = array(
             'title' => esc_html__( 'Posts', 'jentil' ),

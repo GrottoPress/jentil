@@ -1445,6 +1445,19 @@ label > * {
 /** Sticky posts */
 
 .sticky-posts {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sticky-posts:first-child {
+    margin-top: 0;
+}
+
+.sticky-posts:last-child {
+    margin-bottom: 0;
+}
+
+.sticky-posts {
     padding: 20px;
     background-color: #f6f6f6;
 
@@ -1453,6 +1466,15 @@ label > * {
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     border-radius: 3px;
+}
+
+.sticky-posts.layout-grid {
+    padding-top: 0;
+    margin-top: 20px;
+}
+
+.sticky-posts.layout-grid:first-child {
+    margin-top: 0;
 }
 
 /** Single posts */
