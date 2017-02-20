@@ -44,13 +44,25 @@ final class Colophon extends Mod {
      * @return      string          Mod
      */
     public function mod() {
-        $colophon = get_theme_mod( $this->name, $this->default );
+        return $this->parse_placeholders( get_theme_mod( $this->name, $this->default ) );
+    }
 
-        $colophon = str_ireplace( '{{site_name}}', esc_attr( get_bloginfo( 'name' ) ), $colophon );
-        $colophon = str_ireplace( '{{site_url}}', esc_attr( home_url( '/' ) ), $colophon );
-        $colophon = str_ireplace( '{{this_year}}', esc_attr( date( 'Y' ) ), $colophon );
-        $colophon = str_ireplace( '{{site_description}}', esc_attr( date( 'Y' ) ), $colophon );
+    /**
+     * Parse placeholders
+     *
+     * Replace placeholders with actual info
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      string          Mod with placeholders replaced
+     */
+    private function parse_placeholders( $mod ) {
+        $mod = str_ireplace( '{{site_name}}', esc_attr( get_bloginfo( 'name' ) ), $mod );
+        $mod = str_ireplace( '{{site_url}}', esc_attr( home_url( '/' ) ), $mod );
+        $mod = str_ireplace( '{{this_year}}', esc_attr( date( 'Y' ) ), $mod );
+        $mod = str_ireplace( '{{site_description}}', esc_attr( date( 'Y' ) ), $mod );
 
-        return $colophon;
+        return $mod;
     }
 }
