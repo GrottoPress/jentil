@@ -79,7 +79,7 @@ get_header();
 				if ( $template->is( 'category' ) ) {
 					if ( ( $category_description = category_description() ) ) { ?>
 					
-						<div class="archive-description category-description"><?php
+						<div class="archive-description category-description" itemprop="description"><?php
 
 							echo $category_description;
 
@@ -89,7 +89,7 @@ get_header();
 				} elseif ( $template->is( 'tag' ) ) {
 					if ( ( $tag_description = tag_description() ) ) { ?>
 
-						<div class="archive-description tag-description"><?php
+						<div class="archive-description tag-description" itemprop="description"><?php
 
 							echo $tag_description;
 
@@ -99,7 +99,7 @@ get_header();
 				} elseif ( $template->is( 'author' ) ) {
 					if ( ( $author_description = get_the_author_meta( 'description', get_query_var( 'author' ) ) ) ) { ?>
 					
-						<div class="archive-description author-description"><?php
+						<div class="archive-description author-description" itemprop="description"><?php
 
 							echo $author_description;
 
