@@ -51,6 +51,6 @@ final class Colophon extends Mod {
         $colophon = str_ireplace( '{{this_year}}', esc_attr( date( 'Y' ) ), $colophon );
         $colophon = str_ireplace( '{{site_description}}', esc_attr( date( 'Y' ) ), $colophon );
 
-        return wp_kses_data( $colophon );
+        return $colophon;
     }
 }
