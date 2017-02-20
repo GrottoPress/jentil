@@ -96,8 +96,18 @@ get_header();
 						?></div>
 						
 					<?php }
+				} elseif ( $template->is( 'tax' ) ) {
+					if ( ( $tax_description = term_description() ) ) { ?>
+
+						<div class="archive-description tax-description" itemprop="description"><?php
+
+							echo $tax_description;
+
+						?></div>
+						
+					<?php }
 				} elseif ( $template->is( 'author' ) ) {
-					if ( ( $author_description = get_the_author_meta( 'description', get_query_var( 'author' ) ) ) ) { ?>
+					if ( ( $author_description = get_the_author_meta( 'description' ) ) ) { ?>
 					
 						<div class="archive-description author-description" itemprop="description"><?php
 
