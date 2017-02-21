@@ -113,7 +113,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 
 			'p' 					=> $post->ID,
 
-			'id' 					=> 'singular-post', 
+			'id' 					=> 'main-query',
 			'class' 				=> 'singular-post',
 
 			'title_words' 			=> -1,
