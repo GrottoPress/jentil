@@ -184,6 +184,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
         $sections = array();
 
         $sections[] = new Logo\Logo( $this );
+        $sections[] = new Title\Title( $this );
         $sections[] = new Layout\Layout( $this );
         $sections[] = new Colophon\Colophon( $this );
 
