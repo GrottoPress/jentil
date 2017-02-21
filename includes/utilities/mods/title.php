@@ -190,18 +190,29 @@ final class Title extends Mod {
      * @return      string          Mod with placeholders replaced
      */
     private function parse_placeholders( $mod ) {
-        $mod = str_ireplace( '{{author}}', get_the_author_meta( 'display_name' ), $mod );
-        $mod = str_ireplace( '{{category}}', single_cat_title( '', false ), $mod );
-        $mod = str_ireplace( '{{tag}}', single_tag_title( '', false ), $mod );
-        $mod = str_ireplace( '{{term}}', single_term_title( '', false ), $mod );
-        $mod = str_ireplace( '{{taxonomy}}', get_query_var( 'taxonomy' ), $mod );
-        $mod = str_ireplace( '{{post_type}}', post_type_archive_title( '', false ), $mod );
-        $mod = str_ireplace( '{{day}}', get_the_date(), $mod );
-        $mod = str_ireplace( '{{month}}', get_the_date( 'F Y' ), $mod );
-        $mod = str_ireplace( '{{year}}', get_the_date( 'Y' ), $mod );
-        $mod = str_ireplace( '{{search_query}}', get_search_query(), $mod );
-
-
-        return esc_attr( $mod );
+        return str_ireplace( array(
+            '{{author}}',
+            '{{category}}',
+            '{{tag}}',
+            '{{term}}',
+            '{{taxonomy}}',
+            '{{post_type}}',
+            '{{day}}',
+            '{{month}}',
+            '{{year}}',
+            '{{search_query}}',
+        ), array(
+            esc_attr( get_the_author_meta( 'display_name' ) ),
+            esc_attr( single_cat_title( '', false ) ),
+            esc_attr( single_tag_title( '', false ) ),
+            esc_attr( single_term_title( '', false ) ),
+            esc_attr( get_query_var( 'taxonomy' ) ),
+            esc_attr( post_type_archive_title( '', false ) ),
+            esc_attr( get_the_date() ),
+            esc_attr( get_the_date( 'F Y' ) ),
+            esc_attr( get_the_date( 'Y' ) ),
+            esc_attr( get_search_query() ),
+        ),
+        $mod );
     }
 }

@@ -57,68 +57,48 @@ get_header();
 		 */
 		do_action( 'jentil_before_title' );
 		
-		if ( ! $template->is( 'singular' ) ) { ?>
-		
-			<header>
+		if ( ! $template->is( 'singular' ) ) {
+			$title = $template->get( 'title' )->mod();
+			$description = $template->description();
+
+			if ( $description || $title ) { ?>
+				
+				<header>
+
+			<?php }
+
+			if ( $title ) { ?>
 				<h1 class="page-title entry-title" itemprop="name"><?php
 
-					echo $template->get( 'title' )->title();
+					echo $title;
 
 				?></h1>
+			<?php }
 				
-				<?php
-				/**
-				 * Do action after title
-				 * 
-				 * @action		jentil_after_title
-				 *
-				 * @since       Jentil 0.1.0
-				 */
-				do_action( 'jentil_after_title' );
-		
-				if ( $template->is( 'category' ) ) {
-					if ( ( $category_description = category_description() ) ) { ?>
+			/**
+			 * Do action after title
+			 * 
+			 * @action		jentil_after_title
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_after_title' );
+	
+			if ( $description ) { ?>
+				
+				<div class="archive-description" itemprop="description"><?php
+
+					echo $description;
+
+				?></div>
 					
-						<div class="archive-description category-description" itemprop="description"><?php
+			<?php }
 
-							echo $category_description;
-
-						?></div>
-						
-					<?php }
-				} elseif ( $template->is( 'tag' ) ) {
-					if ( ( $tag_description = tag_description() ) ) { ?>
-
-						<div class="archive-description tag-description" itemprop="description"><?php
-
-							echo $tag_description;
-
-						?></div>
-						
-					<?php }
-				} elseif ( $template->is( 'tax' ) ) {
-					if ( ( $tax_description = term_description() ) ) { ?>
-
-						<div class="archive-description tax-description" itemprop="description"><?php
-
-							echo $tax_description;
-
-						?></div>
-						
-					<?php }
-				} elseif ( $template->is( 'author' ) ) {
-					if ( ( $author_description = get_the_author_meta( 'description' ) ) ) { ?>
-					
-						<div class="archive-description author-description" itemprop="description"><?php
-
-							echo $author_description;
-
-						?></div>
-						
-					<?php }
-				} ?>
+			if ( $description || $title ) { ?>
 			
-			</header>
+				</header>
+
+			<?php } ?>
 		
 		<?php }
 		
