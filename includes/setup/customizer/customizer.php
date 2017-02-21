@@ -202,7 +202,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
     public function enqueue() {
         wp_enqueue_script(
             'jentil-customizer',
-            get_template_directory_uri() . '/assets/javascript/customizer.js',
+            get_template_directory_uri() . '/assets/javascript/customize-preview.js',
             array( 'jquery', 'customize-preview' ),
             '',
             true

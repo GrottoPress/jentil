@@ -88,4 +88,28 @@ final class Template extends MagPack\Utilities\Template\Template {
     protected function allow_get() {
         return array_merge( parent::allow_get(), array( 'title', 'layout', 'posts' ) );
     }
+
+    /**
+     * Description
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @return      string       Description.
+     */
+    public function description() {
+    	$description = '';
+
+		if ( $this->is( 'category' ) ) {
+			$description = category_description();
+		} elseif ( $this->is( 'tag' ) ) {
+			$description = tag_description();
+		} elseif ( $this->is( 'tax' ) ) {
+			$description = term_description();
+		} elseif ( $this->is( 'author' ) ) {
+			$description = get_the_author_meta( 'description' );
+		}
+
+		return $description;
+    }
 }
