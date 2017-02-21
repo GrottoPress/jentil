@@ -58,11 +58,11 @@ final class Colophon extends Mod {
      * @return      string          Mod with placeholders replaced
      */
     private function parse_placeholders( $mod ) {
-        $mod = str_ireplace( '{{site_name}}', esc_attr( get_bloginfo( 'name' ) ), $mod );
-        $mod = str_ireplace( '{{site_url}}', esc_attr( home_url( '/' ) ), $mod );
-        $mod = str_ireplace( '{{this_year}}', esc_attr( date( 'Y' ) ), $mod );
-        $mod = str_ireplace( '{{site_description}}', esc_attr( date( 'Y' ) ), $mod );
+        $mod = str_ireplace( '{{site_name}}', get_bloginfo( 'name' ), $mod );
+        $mod = str_ireplace( '{{site_url}}', home_url( '/' ), $mod );
+        $mod = str_ireplace( '{{this_year}}', date( 'Y' ), $mod );
+        $mod = str_ireplace( '{{site_description}}', date( 'Y' ), $mod );
 
-        return $mod;
+        return esc_attr( $mod );
     }
 }
