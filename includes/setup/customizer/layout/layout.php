@@ -65,30 +65,7 @@ final class Layout extends Setup\Customizer\Section {
 
         if ( ( $taxonomies = $this->customizer->get( 'taxonomies' ) ) ) {
             foreach ( $taxonomies as $taxonomy ) {
-                if ( is_taxonomy_hierarchical( $taxonomy->name ) ) {
-                    if ( version_compare( get_bloginfo( 'version' ), '4.5', '<' ) ) {
-                        $terms = get_terms( $taxonomy->name, array(
-                            'hide_empty' => 0,
-                            // 'parent' => 0,
-                        ) );
-                    } else {
-                        $terms = get_terms( array(
-                            'taxonomy' => $taxonomy->name,
-                            'hide_empty' => 0,
-                            // 'parent' => 0,
-                        ) );
-                    }
-
-                    if ( ! $terms || is_wp_error( $terms ) ) {
-                        continue;
-                    }
-
-                    foreach ( $terms as $term ) {
-                        $settings[] = new Settings\Taxonomy( $this, $taxonomy, $term );
-                    }
-                } else {
-                    $settings[] = new Settings\Taxonomy( $this, $taxonomy );
-                }
+                $settings[] = new Settings\Taxonomy( $this, $taxonomy );
             }
         }
 

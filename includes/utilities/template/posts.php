@@ -430,30 +430,10 @@ final class Posts extends MagPack\Utilities\Wizard {
                 $args['specific'] = get_query_var( 'post_type' );
             } elseif ( 'tax' == $type ) {
                 $args['specific'] = get_query_var( 'taxonomy' );
-
-                if ( is_taxonomy_hierarchical( $args['specific'] ) ) {
-                	$args['more_specific'] = get_query_var( 'term_id' );
-                }
             } elseif ( 'category' == $type ) {
             	$args['specific'] = 'category';
-
-            	if ( is_taxonomy_hierarchical( $args['specific'] ) ) {
-            		$args['more_specific'] = get_query_var( 'cat' );
-            	}
             } elseif ( 'tag' == $type ) {
             	$args['specific'] = 'post_tag';
-
-                if ( is_taxonomy_hierarchical( $args['specific'] ) ) {
-                    $args['more_specific'] = get_query_var( 'tag_id' );
-                }
-            } elseif ( 'singular' == $type ) {
-            	global $post;
-
-            	$args['specific'] = $post->post_type;
-
-            	if ( 'page' == $post->post_type ) {
-            		$args['more_specific'] = $post->ID;
-            	}
             }
 
             if ( is_array( $args['specific'] ) ) {

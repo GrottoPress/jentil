@@ -66,22 +66,10 @@ final class Layout extends MagPack\Utilities\Wizard {
                 $specific = get_query_var( 'post_type' );
             } elseif ( 'tax' == $type ) {
                 $specific = get_query_var( 'taxonomy' );
-
-                if ( is_taxonomy_hierarchical( $specific ) ) {
-                	$more_specific = get_query_var( 'term_id' );
-                }
             } elseif ( 'category' == $type ) {
             	$specific = 'category';
-
-            	if ( is_taxonomy_hierarchical( $specific ) ) {
-            		$more_specific = get_query_var( 'cat' );
-            	}
             } elseif ( 'tag' == $type ) {
             	$specific = 'post_tag';
-
-                if ( is_taxonomy_hierarchical( $specific ) ) {
-                    $more_specific = get_query_var( 'tag_id' );
-                }
             } elseif ( 'singular' == $type ) {
             	global $post;
 
