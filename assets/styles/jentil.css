@@ -1614,7 +1614,7 @@ label > * {
         max-width: 960px;
     }
 
-    .page.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content,
+    /*.page.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content,
     .single.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content {
     	max-width: 700px;
     	margin-left: auto;
@@ -1628,7 +1628,7 @@ label > * {
 
     .attachment.layout-one-column .entry-content {
         max-width: none;
-    }
+    }*/
 
     /** Two Columns, Right Sidebar */
 
