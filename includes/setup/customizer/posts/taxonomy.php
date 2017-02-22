@@ -101,4 +101,26 @@ final class Taxonomy extends Section {
             return $template->is( 'tax', $this->taxonomy->name );
         };
     }
+
+    /**
+     * Get settings
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function settings() {
+        $settings = array();
+
+        $settings[] = new Settings\Number( $this );
+
+        $settings = array_merge( $settings, parent::settings() );
+
+        $settings[] = new Settings\Pagination( $this );
+        $settings[] = new Settings\Pagination_Maximum( $this );
+        $settings[] = new Settings\Pagination_Position( $this );
+        $settings[] = new Settings\Pagination_Previous_Label( $this );
+        $settings[] = new Settings\Pagination_Next_Label( $this );
+
+        return $settings;
+    }
 }

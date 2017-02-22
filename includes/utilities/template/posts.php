@@ -315,7 +315,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'text_offset' 			=> $this->sticky_mod( 'text_offset' ),
 			'more_link' 			=> $this->sticky_mod( 'more_link' ),
 
-			'posts_per_page' 		=> $this->sticky_mod( 'number' ),
+			'posts_per_page' 		=> -1,
 			'post__in'				=> get_option( 'sticky_posts' ),
 			'post_status' 			=> 'publish',
 			'ignore_sticky_posts' 	=> 1,

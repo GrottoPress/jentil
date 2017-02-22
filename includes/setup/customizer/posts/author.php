@@ -59,7 +59,16 @@ final class Author extends Section {
         $settings = array();
 
         $settings[] = new Settings\Sticky_Posts( $this );
+        $settings[] = new Settings\Number( $this );
 
-        return array_merge( $settings, parent::settings() );
+        $settings = array_merge( $settings, parent::settings() );
+
+        $settings[] = new Settings\Pagination( $this );
+        $settings[] = new Settings\Pagination_Maximum( $this );
+        $settings[] = new Settings\Pagination_Position( $this );
+        $settings[] = new Settings\Pagination_Previous_Label( $this );
+        $settings[] = new Settings\Pagination_Next_Label( $this );
+
+        return $settings;
     }
 }

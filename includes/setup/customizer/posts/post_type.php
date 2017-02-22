@@ -85,7 +85,17 @@ final class Post_Type extends Section {
             $settings[] = new Settings\Sticky_Posts( $this );
         }
 
-        return array_merge( $settings, parent::settings() );
+        $settings[] = new Settings\Number( $this );
+
+        $settings = array_merge( $settings, parent::settings() );
+
+        $settings[] = new Settings\Pagination( $this );
+        $settings[] = new Settings\Pagination_Maximum( $this );
+        $settings[] = new Settings\Pagination_Position( $this );
+        $settings[] = new Settings\Pagination_Previous_Label( $this );
+        $settings[] = new Settings\Pagination_Next_Label( $this );
+
+        return $settings;
     }
 
     /**

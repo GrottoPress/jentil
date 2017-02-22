@@ -177,7 +177,6 @@ abstract class Section extends Setup\Customizer\Section {
         $settings[] = new Settings\Wrap_Class( $this );
         // $settings[] = new Settings\Wrap_Tag( $this );
         // $settings[] = new Settings\Layout( $this );
-        $settings[] = new Settings\Number( $this );
         $settings[] = new Settings\Before_Title( $this );
         $settings[] = new Settings\Before_Title_Separator( $this );
         $settings[] = new Settings\Title_Words( $this );
@@ -192,12 +191,7 @@ abstract class Section extends Setup\Customizer\Section {
         $settings[] = new Settings\More_Link( $this );
         $settings[] = new Settings\After_Content( $this );
         $settings[] = new Settings\After_Content_Separator( $this );
-        $settings[] = new Settings\Pagination( $this );
-        $settings[] = new Settings\Pagination_Maximum( $this );
-        $settings[] = new Settings\Pagination_Position( $this );
-        $settings[] = new Settings\Pagination_Previous_Label( $this );
-        $settings[] = new Settings\Pagination_Next_Label( $this );
-
+        
         return $settings;
     }
 }
