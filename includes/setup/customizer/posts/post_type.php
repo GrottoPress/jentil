@@ -57,10 +57,12 @@ final class Post_Type extends Section {
 
         $this->name = sanitize_key( $this->post_type->name . '_post_type_posts' );
 
-        $this->mod_args['context'] = ( 'post' == $post_type->name ? 'home' : 'post_type_archive' );
-        $this->mod_args['specific'] = $post_type->name;
+        $this->mod_args['context'] = ( 'post' == $this->post_type->name
+            ? 'home' : 'post_type_archive' );
+        
+        $this->mod_args['specific'] = $this->post_type->name;
 
-        $this->args['title'] = sprintf( esc_html__( 'Post type: %s', 'jentil' ), $post_type->labels->singular_name );
+        $this->args['title'] = sprintf( esc_html__( 'Post type: %s', 'jentil' ), $this->post_type->labels->singular_name );
         $this->args['active_callback'] = function () {
             $template = $this->posts->get( 'customizer' )->get( 'template' );
 

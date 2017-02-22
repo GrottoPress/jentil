@@ -58,7 +58,8 @@ abstract class Setting extends Setup\Customizer\Setting {
         $this->name = $this->mod->get( 'name' );
 
         $this->args = array(
-            'default'           => $this->mod->get( 'default' ),
+            'default' => $this->mod->get( 'default' ),
+            // 'transport' => 'postMessage',
             'sanitize_callback' => 'wp_kses_data',
         );
 

@@ -115,7 +115,7 @@ final class Posts extends Mod {
             'tag' => 'post_tag_' . $this->more_specific . '_taxonomy_posts',
             'tax' => $this->specific . '_' . $this->more_specific . '_taxonomy_posts',
             'search' => 'search_posts',
-            'sticky' => 'sticky_posts',
+            'sticky' => $this->specific . '_sticky_posts',
         );
 
         $names = array_map( function ( $value ) {

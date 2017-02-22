@@ -40,6 +40,26 @@ final class Posts extends MagPack\Utilities\Wizard {
 	 * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$template 	Template
 	 */
     protected $template;
+
+    /**
+     * Sticky posts enabled?
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      protected
+	 * 
+	 * @var 	boolean 	$sticky_enabled 	Is sticky posts enabled?
+	 */
+    protected $sticky_enabled;
+
+    /**
+     * Get sticky posts
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      protected
+	 * 
+	 * @var 	array 	$sticky_posts 	Sticky posts IDs
+	 */
+    protected $sticky_posts;
     
     /**
 	 * Constructor
@@ -49,6 +69,10 @@ final class Posts extends MagPack\Utilities\Wizard {
 	 */
 	public function __construct( Template $template ) {
 	    $this->template = $template;
+
+	    $this->sticky_enabled = $this->sticky_enabled();
+
+	    $this->sticky_posts = $this->sticky_posts();
 	}
 
 	/**
@@ -65,9 +89,8 @@ final class Posts extends MagPack\Utilities\Wizard {
         $page_number = isset( $_GET['main-query_pag'] ) ? absint( $_GET['main-query_pag'] ) : 1;
 
         if (
-        	$this->has_sticky()
-        	&& $page_number === 1
-        	&& ! $this->template->is( 'singular' )
+        	$this->sticky_enabled && $this->sticky_posts
+        	&& $page_number === 1 && ! $this->template->is( 'singular' )
         ) {
         	$out .= ( new MagPack\Utilities\Query\Posts( $this->sticky_query_args() ) )->run();
         }
@@ -130,6 +153,18 @@ final class Posts extends MagPack\Utilities\Wizard {
     }
 
     /**
+     * Get sticky posts
+     * 
+     * @since		Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      array 		Sticky posts
+     */
+    private function sticky_posts() {
+    	return array_map( 'absint', get_option( 'sticky_posts' ) );
+    }
+
+    /**
      * Archives Posts Query Args
      * 
      * @since		Jentil 0.1.0
@@ -174,7 +209,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 
 			'posts_per_page' 		=> $this->mod( 'number' ),
 			's' 					=> get_search_query(),
-			'post__not_in'			=> ( $this->has_sticky() ? get_option( 'sticky_posts' ) : null ),
+			'post__not_in'			=> ( $this->sticky_enabled ? $this->sticky_posts : null ),
 			'post_status' 			=> 'publish',
 			'ignore_sticky_posts' 	=> 1,
 		);
@@ -261,14 +296,14 @@ final class Posts extends MagPack\Utilities\Wizard {
     }
 
     /**
-     * Has sticky posts?
+     * Sticky posts enabled?
      * 
      * @since		Jentil 0.1.0
      * @access      private
      * 
      * @return      boolean 		Do we have sticky posts enabled?
      */
-    private function has_sticky() {
+    private function sticky_enabled() {
         return $this->mod( 'sticky_posts' );
     }
 
@@ -310,7 +345,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'more_link' 			=> $this->sticky_mod( 'more_link' ),
 
 			'posts_per_page' 		=> -1,
-			'post__in'				=> get_option( 'sticky_posts' ),
+			'post__in'				=> $this->sticky_posts,
 			'post_status' 			=> 'publish',
 			'ignore_sticky_posts' 	=> 1,
 		);
@@ -395,7 +430,21 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      mixed 		Sticky posts mod
      */
     public function sticky_mod( $setting ) {
-    	return $this->mod( $setting, array( 'context' => 'sticky' ) );
+    	$args = array(
+    		'context' => 'sticky',
+    	);
+
+    	if ( $this->template->is( 'home' ) ) {
+    		$args['specific'] = 'post';
+    	} elseif ( $this->template->is( 'post_type_archive' ) ) {
+    		$args['specific'] = get_query_var( 'post_type' );
+    	}
+
+    	if ( is_array( $args['specific'] ) ) {
+    		$args['specific'] = $args['specific'][0];
+    	}
+
+    	return $this->mod( $setting, $args );
     }
 
     /**
