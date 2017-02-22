@@ -52,7 +52,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Post_Type' => __DIR__ . '/../..' . '/includes/setup/customizer/layout/settings/post_type.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Search' => __DIR__ . '/../..' . '/includes/setup/customizer/layout/settings/search.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Setting' => __DIR__ . '/../..' . '/includes/setup/customizer/layout/settings/setting.php',
-        'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Single' => __DIR__ . '/../..' . '/includes/setup/customizer/layout/settings/single.php',
+        'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Singular' => __DIR__ . '/../..' . '/includes/setup/customizer/layout/settings/singular.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Taxonomy' => __DIR__ . '/../..' . '/includes/setup/customizer/layout/settings/taxonomy.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Logo\\Logo' => __DIR__ . '/../..' . '/includes/setup/customizer/logo/logo.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Logo\\Settings\\Logo' => __DIR__ . '/../..' . '/includes/setup/customizer/logo/settings/logo.php',

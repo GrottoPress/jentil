@@ -32,7 +32,7 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Single extends Setting {
+final class Singular extends Setting {
     /**
 	 * Constructor
 	 *

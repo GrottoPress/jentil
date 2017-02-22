@@ -16,7 +16,7 @@ return array(
     'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Post_Type' => $baseDir . '/includes/setup/customizer/layout/settings/post_type.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Search' => $baseDir . '/includes/setup/customizer/layout/settings/search.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Setting' => $baseDir . '/includes/setup/customizer/layout/settings/setting.php',
-    'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Single' => $baseDir . '/includes/setup/customizer/layout/settings/single.php',
+    'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Singular' => $baseDir . '/includes/setup/customizer/layout/settings/singular.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Layout\\Settings\\Taxonomy' => $baseDir . '/includes/setup/customizer/layout/settings/taxonomy.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Logo\\Logo' => $baseDir . '/includes/setup/customizer/logo/logo.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Logo\\Settings\\Logo' => $baseDir . '/includes/setup/customizer/logo/settings/logo.php',

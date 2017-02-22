@@ -77,12 +77,8 @@ final class Layout extends Setup\Customizer\Section {
             }
 
             foreach ( $post_types as $post_type ) {
-                if ( 'page' == $post_type->name && ( $pages = $this->customizer->get( 'pages' ) ) ) {
-                    foreach ( $pages as $page ) {
-                        $settings[] = new Settings\Single( $this, $post_type, $page );
-                    }
-                } else {
-                    $settings[] = new Settings\Single( $this, $post_type );
+                if ( ! is_post_type_hierarchical( $post_type->name ) ) {
+                    $settings[] = new Settings\Singular( $this, $post_type );
                 }
             }
         }

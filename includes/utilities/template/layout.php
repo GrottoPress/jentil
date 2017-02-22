@@ -75,7 +75,7 @@ final class Layout extends MagPack\Utilities\Wizard {
 
             	$specific = $post->post_type;
 
-            	if ( 'page' == $post->post_type ) {
+            	if ( is_post_type_hierarchical( $post->post_type ) ) {
             		$more_specific = $post->ID;
             	}
             }

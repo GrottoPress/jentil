@@ -93,7 +93,8 @@ final class Layout extends Mod {
     private function names() {
         $names = array(
             'home' => 'post_post_type_layout',
-            'singular' => 'singular_' . $this->specific . '_' . $this->more_specific . '_layout',
+            'singular' => ( $this->is_post_type_hierarchical() ? 'layout'
+                : 'singular_' . $this->specific . '_' . $this->more_specific . '_layout' ),
             'author' => 'author_layout',
             'category' => 'category_' . $this->more_specific . '_taxonomy_layout',
             'date' => 'date_layout',
@@ -137,6 +138,22 @@ final class Layout extends Mod {
             return false;
         }
 
+        if ( $this->is_post_type_hierarchical() ) {
+            return get_post_meta( $this->more_specific, $this->name, true );
+        }
+
         return sanitize_title( get_theme_mod( $this->name, $this->default ) );
+    }
+
+    /**
+     * Get mod
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      string          Mod
+     */
+    private function is_post_type_hierarchical() {
+        return is_post_type_hierarchical( $this->specific );
     }
 }

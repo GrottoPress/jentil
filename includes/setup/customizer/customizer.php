@@ -76,16 +76,6 @@ final class Customizer extends MagPack\Utilities\Singleton {
     protected $taxonomies;
 
     /**
-     * Pages
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     * 
-     * @var     array      $pages       Pages
-     */
-    protected $pages;
-
-    /**
      * Template instance
      *
      * @since       Jentil 0.1.0
@@ -107,7 +97,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'template', 'post_types', 'taxonomies', 'pages' );
+        return array( 'template', 'post_types', 'taxonomies' );
     }
 
     /**
@@ -130,12 +120,6 @@ final class Customizer extends MagPack\Utilities\Singleton {
             'public' => true,
             'show_ui' => true,
         ), 'objects' );
-
-        $this->pages = get_posts( array(
-            'post_type' => 'page',
-            'posts_per_page' => -1,
-            'post_status' => 'publish',
-        ) );
 
         $this->panels = $this->panels();
 
