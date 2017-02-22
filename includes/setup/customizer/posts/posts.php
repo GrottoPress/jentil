@@ -56,22 +56,25 @@ final class Posts extends Setup\Customizer\Panel {
      * @access      protected
      */
     protected function sections() {
+        $post_types = $this->customizer->get( 'post_types' );
+        $taxonomies = $this->customizer->get( 'taxonomies' );
+
         $sections = array();
 
-        $sections[] = new Sticky( $this );
         $sections[] = new Author( $this );
         $sections[] = new Date( $this );
         $sections[] = new Search( $this );
 
-        if ( ( $taxonomies = $this->customizer->get( 'taxonomies' ) ) ) {
+        if ( $taxonomies ) {
             foreach ( $taxonomies as $taxonomy ) {
                 $sections[] = new Taxonomy( $this, $taxonomy );
             }
         }
 
-        if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
+        if ( $post_types ) {
             foreach ( $post_types as $post_type ) {
                 if ( $post_type->has_archive ||  'post' == $post_type->name ) {
+                    $sections[] = new Sticky( $this, $post_type );
                     $sections[] = new Post_Type( $this, $post_type );
                 }
             }

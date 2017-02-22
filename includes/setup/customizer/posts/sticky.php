@@ -33,36 +33,45 @@ use GrottoPress\Jentil\Setup;
  */
 final class Sticky extends Section {
     /**
+     * Post type
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     \WP_Post_Type      $post_type       Post type object
+     */
+    protected $post_type;
+
+    /**
      * Constructor
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( Posts $posts ) {
+    public function __construct( Posts $posts, $post_type ) {
         parent::__construct( $posts );
 
-        $this->name = 'sticky_posts';
+        $this->post_type = $post_type;
+
+        $this->name = sanitize_key( $this->post_type->name . '_sticky_posts' );
 
         $this->mod_args['context'] = 'sticky';
+        $this->mod_args['specific'] = $this->post_type->name;
 
-        $this->args['title'] = esc_html__( 'Sticky Posts', 'jentil' );
+        $this->args['title'] = sprintf( esc_html__( 'Sticky %s', 'jentil' ),
+            $this->post_type->labels->name );
         // $this->args['panel'] = '';
         $this->args['active_callback'] = function () {
             $template = $this->posts->get( 'customizer' )->get( 'template' );
+            $has_sticky = $this->has_sticky( $this->post_type->name );
 
-            if ( $template->is( 'home' ) ) {
-                $post_type = 'post';
-            } elseif ( $template->is( 'post_type_archive' ) ) {
-                $post_type = get_query_var( 'post_type' );
-            } else {
-                return false;
+            if ( 'post' == $this->post_type->name ) {
+                return ( $template->is( 'home' ) && $has_sticky );
+            } elseif ( post_type_exists( $this->post_type->name ) ) {
+                return ( $template->is( 'post_type_archive' ) && $has_sticky );
             }
 
-            if ( is_array( $post_type ) ) {
-                $post_type = $post_type[0];
-            }
-
-            return $this->has_sticky( $post_type );
+            return false;
         };
     }
 

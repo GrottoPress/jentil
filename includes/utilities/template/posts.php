@@ -430,7 +430,21 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      mixed 		Sticky posts mod
      */
     public function sticky_mod( $setting ) {
-    	return $this->mod( $setting, array( 'context' => 'sticky' ) );
+    	$args = array(
+    		'context' => 'sticky',
+    	);
+
+    	if ( $this->template->is( 'home' ) ) {
+    		$args['specific'] = 'post';
+    	} elseif ( $this->template->is( 'post_type_archive' ) ) {
+    		$args['specific'] = get_query_var( 'post_type' );
+    	}
+
+    	if ( is_array( $args['specific'] ) ) {
+    		$args['specific'] = $args['specific'][0];
+    	}
+
+    	return $this->mod( $setting, $args );
     }
 
     /**
