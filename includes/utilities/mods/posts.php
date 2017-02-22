@@ -164,7 +164,7 @@ final class Posts extends Mod {
             'image_margin' => '',
             'text_offset' => 0,
             'excerpt' => 300,
-            'more_link' => 'read more',
+            'more_link' => esc_html__( 'read more', 'jentil' ),
             'after_content' => 'category, post_tag',
             'after_content_separator' => ' | ',
             'pagination' => '',
@@ -186,7 +186,13 @@ final class Posts extends Mod {
         if ( 'sticky' == $this->context ) {
             $defaults['number'] = 3;
             $defaults['wrap_class'] = 'sticky-posts big';
-            $defaults['pagination_position'] = 'none';
+
+            unset( $defaults['number'] );
+            unset( $defaults['pagination'] );
+            unset( $defaults['pagination_maximum'] );
+            unset( $defaults['pagination_position'] );
+            unset( $defaults['pagination_previous_label'] );
+            unset( $defaults['pagination_next_label'] );
         }
 
         if ( ! in_array( $this->context, array(

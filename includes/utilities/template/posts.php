@@ -160,7 +160,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'pag_prev_label' 		=> $this->mod( 'pagination_previous_label' ),
 			'pag_next_label' 		=> $this->mod( 'pagination_next_label' ),
 
-			'wrap_tag' 				=> $this->mod( 'wrap_tag' ),
+			// 'wrap_tag' 				=> $this->mod( 'wrap_tag' ),
 			'class' 				=> $this->mod( 'wrap_class' ),
 			'id' 					=> 'main-query',
 
@@ -297,13 +297,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'excerpt' 				=> $this->sticky_mod( 'excerpt' ),
 			'content_pag'			=> 1,
 
-			'pag' 					=> $this->sticky_mod( 'pagination' ),
-			'pag_max' 				=> $this->sticky_mod( 'pagination_maximum' ),
-			'pag_pos' 				=> $this->sticky_mod( 'pagination_position' ),
-			'pag_prev_label' 		=> $this->sticky_mod( 'pagination_previous_label' ),
-			'pag_next_label' 		=> $this->sticky_mod( 'pagination_next_label' ),
-
-			'wrap_tag' 				=> $this->sticky_mod( 'wrap_tag' ),
+			// 'wrap_tag' 				=> $this->sticky_mod( 'wrap_tag' ),
 			'class' 				=> $this->sticky_mod( 'wrap_class' ),
 			'id' 					=> 'main-query-sticky-posts',
 
