@@ -139,10 +139,12 @@ final class Layout extends Mod {
         }
 
         if ( $this->is_post_type_hierarchical() ) {
-            return sanitize_title( get_post_meta( $this->more_specific, $this->name, true ) );
+            $mod = get_post_meta( $this->more_specific, $this->name, true );
+        } else {
+            $mod = get_theme_mod( $this->name, $this->default );
         }
 
-        return sanitize_title( get_theme_mod( $this->name, $this->default ) );
+        return sanitize_title( $mod );
     }
 
     /**
