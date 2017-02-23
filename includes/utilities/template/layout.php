@@ -88,14 +88,12 @@ final class Layout extends MagPack\Utilities\Wizard {
                 $more_specific = $more_specific[0];
             }
 
-            $mod = new Utilities\Mods\Layout( $type, $specific, $more_specific );
-
-            if ( $mod->get( 'name' ) ) {
-            	return $mod->mod();
+            if ( ( $mod = ( new Utilities\Mods\Layout( $type, $specific, $more_specific ) )->mod() ) ) {
+            	return $mod;
             }
         }
 
-        return $mod->get( 'default' );
+        return ( new Utilities\Mods\Layout() )->get( 'default' );
     }
     
     /**

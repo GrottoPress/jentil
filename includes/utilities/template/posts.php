@@ -487,13 +487,11 @@ final class Posts extends MagPack\Utilities\Wizard {
                 $args['more_specific'] = $args['more_specific'][0];
             }
 
-            $mod = new Utilities\Mods\Posts( $setting, $args );
-
-            if ( $mod->get( 'name' ) ) {
-            	return $mod->mod();
+            if ( ( $mod = ( new Utilities\Mods\Posts( $setting, $args ) )->mod() ) ) {
+            	return $mod;
             }
         }
 
-        return $mod->get( 'default' );
+        return ( new Utilities\Mods\Posts( $setting, $args ) )->get( 'default' );
     }
 }

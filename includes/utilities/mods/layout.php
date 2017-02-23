@@ -66,7 +66,7 @@ final class Layout extends Mod {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( $context, $specific = '', $more_specific = '' ) {
+    public function __construct( $context = '', $specific = '', $more_specific = '' ) {
         $this->context = sanitize_key( $context );
 
         $specific = sanitize_key( $specific );
