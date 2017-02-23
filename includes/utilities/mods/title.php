@@ -138,14 +138,14 @@ final class Title extends Mod {
         $defaults = array(
             'home' => esc_html__( 'Latest Posts', 'jentil' ),
             // 'singular' => '',
-            'author' => '{{author}}',
-            'category' => '{{category}}',
+            'author' => '{{author_name}}',
+            'category' => '{{category_name}}',
             'day' => '{{day}}',
             'month' => '{{month}}',
             'year' => '{{year}}',
-            'post_type_archive' => '{{post_type}}',
-            'tag' => '{{tag}}',
-            'tax' => '{{term}}',
+            'post_type_archive' => '{{post_type_name}}',
+            'tag' => '{{tag_name}}',
+            'tax' => '{{term_name}}',
             '404' => esc_html__( 'Not Found', 'jentil' ),
             'search' => '&ldquo;{{search_query}}&rdquo;',
         );
@@ -191,12 +191,12 @@ final class Title extends Mod {
      */
     private function parse_placeholders( $mod ) {
         return str_ireplace( array(
-            '{{author}}',
-            '{{category}}',
-            '{{tag}}',
-            '{{term}}',
-            '{{taxonomy}}',
-            '{{post_type}}',
+            '{{author_name}}',
+            '{{category_name}}',
+            '{{tag_name}}',
+            '{{term_name}}',
+            '{{taxonomy_name}}',
+            '{{post_type_name}}',
             '{{day}}',
             '{{month}}',
             '{{year}}',
