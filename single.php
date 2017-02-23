@@ -10,10 +10,7 @@
  * @since			Jentil 0.1.0
  */
 
-use GrottoPress\MagPack;
-
 the_post();
-$magpack_post = new MagPack\Utilities\Post\Post( get_the_ID() );
 $title = the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>', false );
 rewind_posts();
 
@@ -39,7 +36,7 @@ get_header();
 		<div class="posts-wrap show-content big singular-post">
 			<article data-post-id="<?php the_ID(); ?>" id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 
-				<?php if ( $title || has_action( 'jentil_after_title' ) ) { ?>
+				<?php if ( $title ) { ?>
 
 					<header>
 
@@ -58,7 +55,7 @@ get_header();
 					 */
 		 			do_action( 'jentil_after_title' );
 
-		 		if ( $title || has_action( 'jentil_after_title' ) ) { ?>
+		 		if ( $title ) { ?>
 			 		
 					</header>
 
@@ -75,8 +72,14 @@ get_header();
 				
 				<div class="entry-content self-clear" itemprop="articleBody">
 
-					<?php echo $magpack_post->content( true ); ?>
+					<?php the_content();
 
+					wp_link_pages( array(
+						'before' => '<p class="page-links pagination">'
+							. esc_html__( 'Pages: ', 'jentil' ),
+						'after' => '</p>',
+					) ); ?>
+					
 				</div><!-- .entry-content -->
 			</article>
 		</div>
