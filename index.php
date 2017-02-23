@@ -71,10 +71,10 @@ get_header();
 				<h1 class="page-title entry-title" itemprop="name"><?php
 
 					echo $title;
-
+					
 				?></h1>
 			<?php }
-				
+			
 			/**
 			 * Do action after title
 			 * 
