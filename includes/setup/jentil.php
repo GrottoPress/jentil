@@ -107,7 +107,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_filter( 'body_class', array( $parts, 'body_class' ) );
 		add_action( 'wp_head', array( $parts, 'render_title' ) );
 		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ), 100 );
-		add_filter( 'jentil_single_post_after_title', array( $parts, 'single_post_after_title' ), 100 );
+		add_filter( 'jentil_singular_after_title', array( $parts, 'single_post_after_title' ), 100, 3 );
+		add_action( 'jentil_after_title', array( $parts, 'single_post_after_title_echo' ) );
 		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ), 100 );
 		add_action( 'jentil_inside_header', array( $parts, 'header_search' ), 200 );
 		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ), 300 );

@@ -144,7 +144,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'title_tag' 			=> 'h1',
 			'title_link' 			=> 0,
 
-			'after_title' 			=> 'jentil_single_post_after_title',
+			'after_title' 			=> 'jentil_singular_after_title',
 
 			'posts_per_page' 		=> 1,
 			'post_type' 			=> $post->post_type,

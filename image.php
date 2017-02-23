@@ -10,8 +10,11 @@
  * @since			Jentil 0.1.0
  */
 
+use GrottoPress\MagPack;
+
 the_post();
-$magpack_post = new \GrottoPress\MagPack\Utilities\Post\Post( get_the_ID() );
+$magpack_post = new MagPack\Utilities\Post\Post( get_the_ID() );
+$title = the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>', false );
 rewind_posts();
 
 get_header();
@@ -48,9 +51,14 @@ get_header();
 		
 		<div class="posts-wrap show-content big singular-post">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
-				<header>
+			
+				<?php if ( $title || has_action( 'jentil_after_title' ) ) { ?>
 
-					<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
+					<header>
+
+				<?php }
+
+					echo $title;
 					
 					rewind_posts();
 					
@@ -61,11 +69,14 @@ get_header();
 					 *
 					 * @since       Jentil 0.1.0
 					 */
-			 		do_action( 'jentil_after_title' ); ?>
+		 			do_action( 'jentil_after_title' );
+
+		 		if ( $title || has_action( 'jentil_after_title' ) ) { ?>
 			 		
-				</header>
-				
-				<?php
+					</header>
+
+				<?php }
+
 				/**
 				 * Do action before content
 				 * 
@@ -146,7 +157,7 @@ get_header();
 		the_post();
 		
 		if ( 'open' == get_option( 'default_ping_status' ) ) {
-			echo '<!--'; trackback_rdf(); echo '-->' ."\n";
+			echo '<!--'; trackback_rdf(); echo '-->';
 		}
 		
 		comments_template( '', true );

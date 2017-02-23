@@ -265,23 +265,21 @@ final class Parts extends MagPack\Utilities\Singleton {
     /**
      * Single post after title
      *
+     * Used for single posts when using the index.php template.
+     *
      * @since       Jentil 0.1.0
 	 * @access      public
 	 *
-	 * @filter      jentil_single_post_after_title
+	 * @filter      jentil_singular_after_title
      */
-    public function single_post_after_title() {
+    public function single_post_after_title( $output, $id, $separator ) {
     	if ( ! $this->template->is( 'singular', 'post' ) ) {
-    	    return '';
+    	    return $output;
     	}
 
-    	global $post;
-
-    	$magpack_post = new MagPack\Utilities\Post\Post( $post->ID );
+    	$magpack_post = new MagPack\Utilities\Post\Post( $id );
     	$avatar = $magpack_post->info( 'avatar__40', '' )->list();
     	$author = $magpack_post->info( 'author_link', '' )->list();
-
-    	$output = '<!--<div class="entry-meta after-title self-clear">-->';
 
     	if ( ! empty( $avatar ) ) {
     	    $output .= $avatar;
@@ -291,11 +289,52 @@ final class Parts extends MagPack\Utilities\Singleton {
     	    $output .= '<p>' . $author . '</p>';
     	}
 
-    	$output .= '<p>' . $magpack_post->info( 'published_date, published_time, comments_link' )->list() . '</p><!--</div>-->
+    	$output .= '<p>' . $magpack_post->info( 'published_date, published_time, comments_link' )->list() . '</p>
 
         <div class="self-clear"></div>';
 
         return $output;
+    }
+
+    /**
+     * Single post after title
+     *
+     * Replicates the functionality above for when
+     * using the single.php template
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @action      jentil_after_title
+     */
+    public function single_post_after_title_echo() {
+        if ( ! $this->template->is( 'singular', 'post' ) ) {
+            return;
+        }
+
+        global $post;
+
+        $magpack_post = new MagPack\Utilities\Post\Post( $post->ID );
+        $avatar = $magpack_post->info( 'avatar__40', '' )->list();
+        $author = $magpack_post->info( 'author_link', '' )->list();
+
+        $output = '<div class="entry-meta after-title self-clear">';
+
+        if ( ! empty( $avatar ) ) {
+            $output .= $avatar;
+        }
+
+        if ( ! empty( $author ) ) {
+            $output .= '<p>' . $author . '</p>';
+        }
+
+        $output .= '<p>'
+            . $magpack_post->info( 'published_date, published_time, comments_link' )->list()
+        . '</p>
+
+        </div>';
+
+        echo $output;
     }
 
     /**
