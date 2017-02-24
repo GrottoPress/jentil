@@ -187,7 +187,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'before_title_sep' 		=> $this->mod( 'before_title_separator' ),
 
 			'excerpt' 				=> $this->mod( 'excerpt' ),
-			'content_pag'			=> 1,
+			'content_pag'			=> 0,
 
 			'pag' 					=> $this->mod( 'pagination' ),
 			'pag_max' 				=> $this->mod( 'pagination_maximum' ),
@@ -330,7 +330,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'before_title_sep' 		=> $this->sticky_mod( 'before_title_separator' ),
 
 			'excerpt' 				=> $this->sticky_mod( 'excerpt' ),
-			'content_pag'			=> 1,
+			'content_pag'			=> 0,
 
 			// 'wrap_tag' 				=> $this->sticky_mod( 'wrap_tag' ),
 			'class' 				=> $this->sticky_mod( 'wrap_class' ),
