@@ -28,11 +28,11 @@
     }
 
     // Make the mobile menu work
-    $( '.navigation-wrap.max-screen-920' ).hide();
+    $( '.navigation-wrap.max-screen-wide' ).hide();
 	$( '.hamburger.menu-item' ).on( 'click', function( event ) {
         event.preventDefault();
         
-        $( '.navigation-wrap.max-screen-920' ).slideToggle({
+        $( '.navigation-wrap.max-screen-wide' ).slideToggle({
             'duration': 200
         }).css({ 'display':'block' }); // override `display:none;` in CSS for hover
     });
