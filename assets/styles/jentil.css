@@ -653,17 +653,17 @@ li {
     clear: both;
 }
 
-.navigation-wrap.max-screen-wide,
+.navigation-wrap.screen-max-wide,
 #header .menu-toggle,
-#header .site-navigation.min-screen-wide {
+#header .site-navigation.screen-min-wide {
     margin-top: 20px;
 }
 
-.navigation-wrap.max-screen-wide {
+.navigation-wrap.screen-max-wide {
     margin-bottom: 20px;
 }
 
-/*#header .max-screen-wide {
+/*#header .screen-max-wide {
     margin-top: 20px;
 }*/
 
@@ -674,7 +674,7 @@ li {
 #header,
 #main,
 #footer,
-.navigation-wrap.max-screen-wide .site-navigation {
+.navigation-wrap.screen-max-wide .site-navigation {
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
@@ -683,7 +683,7 @@ li {
 #header-wrap,
 #main-wrap,
 #footer-wrap,
-.navigation-wrap.max-screen-wide {
+.navigation-wrap.screen-max-wide {
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -955,13 +955,13 @@ blockquote {
  * Toggle elements
  */
 
-.min-screen-small,
-.min-screen-wide {
+.screen-min-small,
+.screen-min-wide {
     display: none;
 }
 
-/*.max-screen-wide,
-.max-screen-small {
+/*.screen-max-wide,
+.screen-max-small {
     display: block;
 }*/
 
@@ -969,7 +969,7 @@ blockquote {
     display: none;
 }
 
-.navigation-wrap.max-screen-wide .search-wrap {
+.navigation-wrap.screen-max-wide .search-wrap {
     display: block;
 }
 
@@ -1582,11 +1582,11 @@ label > * {
      * Toggle elements
      */
 
-    .max-screen-small {
+    .screen-max-small {
         display: none;
     }
 
-    .min-screen-small {
+    .screen-min-small {
         display: block;
     }
 
@@ -1597,7 +1597,7 @@ label > * {
         margin-top: 15px;
     }
 
-    .navigation-wrap.max-screen-wide .search-wrap {
+    .navigation-wrap.screen-max-wide .search-wrap {
         display: none;
     }
 
@@ -1608,7 +1608,7 @@ label > * {
     #header,
     #main,
     #footer,
-    .navigation-wrap.max-screen-wide .site-navigation {
+    .navigation-wrap.screen-max-wide .site-navigation {
         max-width: 960px;
     }
 
@@ -1897,15 +1897,15 @@ label > * {
      * Toggle elements
      */
 
-    .max-screen-wide {
+    .screen-max-wide {
         display: none;
     }
 
-    .min-screen-wide {
+    .screen-min-wide {
         display: block;
     }
 
-    .navigation-wrap.max-screen-wide {
+    .navigation-wrap.screen-max-wide {
         display: none !important;
     }
 

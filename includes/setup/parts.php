@@ -184,9 +184,9 @@ final class Parts extends MagPack\Utilities\Singleton {
 	 * @action      jentil_inside_header
      */
     public function header_menu() {
-    	echo '<nav role="navigation" class="site-navigation main-navigation min-screen-wide">
+    	echo '<nav role="navigation" class="site-navigation main-navigation screen-min-wide">
     	    <div class="screen-reader-text skip-link">
-    	        <a href="#menu-max-screen-wide">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
+    	        <a href="#menu-screen-max-wide">' . esc_html__( 'Skip to content', 'jentil' ) . '</a>
             </div>';
 
             wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
@@ -205,9 +205,9 @@ final class Parts extends MagPack\Utilities\Singleton {
     public function mobile_header_menu_toggle() {
     	$status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
     	
-    	echo '<div class="menu-toggle max-screen-wide">
+    	echo '<div class="menu-toggle screen-max-wide">
     	    <div class="screen-reader-text">
-    	        <a href="#menu-max-screen-wide">' . esc_html__( 'Skip to menu', 'jentil' ) . '</a>
+    	        <a href="#menu-screen-max-wide">' . esc_html__( 'Skip to menu', 'jentil' ) . '</a>
             </div>
 
             <div class="menu-mobile-menu-container">
@@ -233,7 +233,7 @@ final class Parts extends MagPack\Utilities\Singleton {
     public function mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<div id="menu-max-screen-wide" class="navigation-wrap max-screen-wide"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>
+        echo '<div id="menu-screen-max-wide" class="navigation-wrap screen-max-wide"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>
             <nav role="navigation" class="site-navigation main-navigation">';
 
             get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
