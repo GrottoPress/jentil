@@ -228,8 +228,8 @@ final class Posts extends MagPack\Utilities\Wizard {
 			$args['tax_query'] = array( 
 				array(
 					'taxonomy' 		=> $taxonomy,
-					'terms' 		=> get_query_var( 'term_id' ),
-					'field' 		=> 'term_id',
+					'terms' 		=> get_query_var( 'term' ),
+					'field' 		=> 'slug',
 				),
 			);
 		}
@@ -244,9 +244,9 @@ final class Posts extends MagPack\Utilities\Wizard {
 			);
 		}
 
-		// if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
-			$args['post_type'] = get_query_var( 'post_type' );
-		// }
+		if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
+			$args['post_type'] = $post_type;
+		}
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
 			$args['cat']	= $cat;
