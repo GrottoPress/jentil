@@ -10,10 +10,6 @@
  * @since			Jentil 0.1.0
  */
 
-the_post();
-$title = the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>', false );
-rewind_posts();
-
 get_header();
 
 ?>
@@ -32,7 +28,7 @@ get_header();
 		do_action( 'jentil_before_title' );
 		
 		the_post();
-		
+
 		if ( $post->post_parent ) { ?>
 
 			<h2 class="parent entry-title">
@@ -42,14 +38,15 @@ get_header();
 			    	echo get_the_title( $post->post_parent );
 
 			    ?></a>
-	        </h2>
+		    </h2>
 
 		<?php } ?>
-		
+
 		<div class="posts-wrap show-content big singular-post">
 			<article data-post-id="<?php the_ID(); ?>" id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 
-				<?php if ( $title ) { ?>
+				<?php if ( ( $title = the_title( '<h1 class="entry-title" itemprop="headline">',
+					'</h1>', false ) ) ) { ?>
 
 					<header>
 
@@ -81,50 +78,35 @@ get_header();
 				 *
 				 * @since       Jentil 0.1.0
 				 */
-			 	do_action( 'jentil_before_content' ); ?>
-				
-				<div class="entry-content self-clear" itemprop="articleBody">
-					<p class="entry-attachment">
-					    <a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url"><?php
+			 	do_action( 'jentil_before_content' );
 
-					    	echo basename( $post->guid );
+			 	the_post();
 
-					   ?></a>
-			        </p>
-					
-					<?php if ( ! empty( $post->post_excerpt ) ) { ?>
+			 	if ( wp_attachment_is_image( $post->ID ) ) {
+			 	 	get_template_part( 'parts/attachment', 'image' );
+			 	} elseif ( wp_attachment_is( 'audio', $post->ID ) ) {
+			 		get_template_part( 'parts/attachment', 'audio' );
+			 	} elseif ( wp_attachment_is( 'video', $post->ID ) ) {
+			 		get_template_part( 'parts/attachment', 'video' );
+			 	} else {
+			 		get_template_part( 'parts/attachment' );
+			 	}
 
-						<p class="entry-caption" itemprop="description"><?php
-
-							echo wp_kses_data( $post->post_excerpt );
-
-						?></p>
-
-					<?php }
+	 			rewind_posts();
 		
-					the_content();
+				/**
+				 * Do action after content
+				 * 
+				 * @action		jentil_after_content
+				 *
+				 * @since       Jentil 0.1.0
+				 */
+				do_action( 'jentil_after_content' ); ?>
 
-					wp_link_pages( array(
-						'before' => '<p class="page-links pagination">'
-							. esc_html__( 'Pages: ', 'jentil' ),
-						'after' => '</p>',
-					) ); ?>
-					
-				</div><!-- .entry-content -->
 			</article>
 		</div>
 		
-		<?php
-		/**
-		 * Do action after content
-		 * 
-		 * @action		jentil_after_content
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_after_content' );
-		
-		the_post();
+		<?php the_post();
 		
 		if ( 'open' == get_option( 'default_ping_status' ) ) {
 			echo '<!--'; trackback_rdf(); echo '-->';

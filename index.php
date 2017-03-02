@@ -19,20 +19,20 @@ use GrottoPress\Jentil\Utilities;
 /**
  * Template
  *
- * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$template 	Template
+ * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
  * 
  * @since		Jentil 0.1.0
  */
-$template = new Utilities\Template\Template();
+$jentil_template = new Utilities\Template\Template();
 
 /**
  * Posts
  *
- * @var 		string 		$query 		Queried posts
+ * @var 		string 		$jentil_posts 		Queried posts
  * 
  * @since		Jentil 0.1.0
  */
-$query = $template->get( 'posts' )->query();
+$jentil_posts = $jentil_template->get( 'posts' )->query();
 
 /**
  * Begin template rendering
@@ -57,9 +57,9 @@ get_header();
 		 */
 		do_action( 'jentil_before_title' );
 		
-		if ( ! $template->is( 'singular' ) ) {
-			$title = $template->get( 'title' )->mod();
-			$description = $template->description();
+		if ( ! $jentil_template->is( 'singular' ) ) {
+			$title = $jentil_template->get( 'title' )->mod();
+			$description = $jentil_template->description();
 
 			if ( $description || $title ) { ?>
 				
@@ -102,7 +102,7 @@ get_header();
 		
 		<?php }
 		
-		if ( $template->is( 'search' ) ) {
+		if ( $jentil_template->is( 'search' ) ) {
 			get_search_form();
 		}
 		
@@ -115,37 +115,10 @@ get_header();
 		 */
 		do_action( 'jentil_before_content' );
 		
-		if ( $template->is( '404' ) || ! $query ) { ?>
-		
-			<div class="posts-wrap">
-				<article class="post-wrap post-0" itemscope itemtype="http://schema.org/Article">
-					<div class="entry-content self-clear" itemprop="articleBody"><?php
-
-						/**
-						 * Filter the nothing found page content.
-						 * 
-						 * @var         string 		$not_found_content 		Not found page content.
-						 *
-						 * @filter		jentil_not_found_content
-						 *
-						 * @since       Jentil 0.1.0
-						 */
-						$not_found_content = wp_kses_post( apply_filters(
-							'jentil_not_found_content',
-							'<h2 class="entry-title" itemprop="name headline">' . esc_html__( 'Nothing found', 'jentil' ) . '</h2>'
-							
-							. '<p>' . esc_html__( 'Sorry, nothing here ):', 'jentil' ) . '</p>',
-							$template->type()
-						) );
-						
-						echo $not_found_content;
-
-					?></div><!-- .entry-content -->
-				</article>
-			</div>
-		
-		<?php } else {
-			echo $query;
+		if ( $jentil_template->is( '404' ) || ! $jentil_posts ) {
+			get_template_part( 'parts/none' );
+		} else {
+			echo $jentil_posts;
 		}
 		
 		/**
@@ -157,7 +130,7 @@ get_header();
 		 */
 		do_action( 'jentil_after_content' );
 		
-		if ( $template->is( 'singular' ) ) {
+		if ( $jentil_template->is( 'singular' ) ) {
 			the_post();
 			
 			if ( 'open' == get_option( 'default_ping_status' ) ) {

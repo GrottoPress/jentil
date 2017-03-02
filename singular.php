@@ -29,7 +29,7 @@ get_header();
 		
 		the_post();
 
-		get_template_part( 'parts/content', 'singular' );
+		get_template_part( 'parts/singular', $post->post_type );
 
 		rewind_posts();
 
