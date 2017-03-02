@@ -124,7 +124,7 @@ final class Logo extends Setup\Customizer\Setting {
             $wp_customize->add_control( new \WP_Customize_Cropped_Image_Control(
                  $wp_customize, $this->name, $this->control
             ) );
-        } //else {
+        } //else { // Saves image URL (not ID)
             // $wp_customize->add_control( new \WP_Customize_Image_Control(
             //     $wp_customize, $this->name, $this->control
             // ) );
