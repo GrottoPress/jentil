@@ -207,6 +207,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'text_offset' 			=> $this->mod( 'text_offset' ),
 			'more_link' 			=> $this->mod( 'more_link' ),
 
+			'post_type' 			=> get_query_var( 'post_type' ),
 			'posts_per_page' 		=> $this->mod( 'number' ),
 			's' 					=> get_search_query(),
 			'post__not_in'			=> ( $this->sticky_enabled ? $this->sticky_posts : null ),
@@ -242,10 +243,6 @@ final class Posts extends MagPack\Utilities\Wizard {
 					'day' 			=> get_query_var( 'day' ),
 				),
 			);
-		}
-
-		if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
-			$args['post_type'] = $post_type;
 		}
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
