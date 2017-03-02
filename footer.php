@@ -41,7 +41,17 @@
 					
 				</footer><!-- #footer -->
     		</div><!-- #footer-wrap -->
-    	
+
+    		<?php
+			/**
+			 * Do action after footer
+			 * 
+			 * @action		jentil_after_footer
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_after_footer' ); ?>
+			
     	</div><!-- #wrapper -->
 		
 		<?php

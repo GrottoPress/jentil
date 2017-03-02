@@ -48,19 +48,18 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		
-		<?php
-		/**
-		 * Do action before header
-		 * 
-		 * @action		jentil_before_header
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_before_header' ); ?>
-		
 		<div id="wrapper" class="hfeed site">
 
+			<?php
+			/**
+			 * Do action before header
+			 * 
+			 * @action		jentil_before_header
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_before_header' ); ?>
+		
 			<div id="header-wrap">
 				<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
 					
