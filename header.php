@@ -48,43 +48,42 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		<div id="wrapper" class="hfeed site">
-
-			<?php
-			/**
-			 * Do action before header
-			 * 
-			 * @action		jentil_before_header
-			 *
-			 * @since       Jentil 0.1.0
-			 */
-			do_action( 'jentil_before_header' ); ?>
 		
-			<div id="header-wrap">
-				<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
-					
-					<?php
-					/**
-					 * Do action inside header
-					 * 
-					 * @action		jentil_inside_header
-					 *
-					 * @since       Jentil 0.1.0
-					 */
-					do_action( 'jentil_inside_header' ); ?>
-					
-				</header><!-- #header -->
-			</div><!-- #header-wrap -->
-			
-			<?php
-			/**
-			 * Do action after header
-			 * 
-			 * @action		jentil_after_header
-			 *
-			 * @since       Jentil 0.1.0
-			 */
-			do_action( 'jentil_after_header' ); ?>
-			
-			<div id="main-wrap">
-				<div id="main" class="self-clear">
+		<?php
+		/**
+		 * Do action before header
+		 * 
+		 * @action		jentil_before_header
+		 *
+		 * @since       Jentil 0.1.0
+		 */
+		do_action( 'jentil_before_header' ); ?>
+	
+		<div id="header-wrap">
+			<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
+				
+				<?php
+				/**
+				 * Do action inside header
+				 * 
+				 * @action		jentil_inside_header
+				 *
+				 * @since       Jentil 0.1.0
+				 */
+				do_action( 'jentil_inside_header' ); ?>
+				
+			</header><!-- #header -->
+		</div><!-- #header-wrap -->
+		
+		<?php
+		/**
+		 * Do action after header
+		 * 
+		 * @action		jentil_after_header
+		 *
+		 * @since       Jentil 0.1.0
+		 */
+		do_action( 'jentil_after_header' ); ?>
+		
+		<div id="main-wrap">
+			<div id="main" class="self-clear">

@@ -13,46 +13,34 @@
 
 ?>
 				
-				</div><!-- #main -->
-			</div><!-- #main-wrap -->
-			
-			<?php
-			/**
-			 * Do action before footer
-			 * 
-			 * @action		jentil_before_footer
-			 *
-			 * @since       Jentil 0.1.0
-			 */
-			do_action( 'jentil_before_footer' ); ?>
+			</div><!-- #main -->
+		</div><!-- #main-wrap -->
+		
+		<?php
+		/**
+		 * Do action before footer
+		 * 
+		 * @action		jentil_before_footer
+		 *
+		 * @since       Jentil 0.1.0
+		 */
+		do_action( 'jentil_before_footer' ); ?>
 
-			<div id="footer-wrap">
-				<footer id="footer" class="site-footer hobbit" itemscope itemtype="http://schema.org/WPFooter">
+		<div id="footer-wrap">
+			<footer id="footer" class="site-footer hobbit" itemscope itemtype="http://schema.org/WPFooter">
+			
+				<?php
+				/**
+				 * Do action inside footer
+				 * 
+				 * @action		jentil_inside_footer
+				 *
+				 * @since       Jentil 0.1.0
+				 */
+				do_action( 'jentil_inside_footer' ); ?>
 				
-					<?php
-					/**
-					 * Do action inside footer
-					 * 
-					 * @action		jentil_inside_footer
-					 *
-					 * @since       Jentil 0.1.0
-					 */
-					do_action( 'jentil_inside_footer' ); ?>
-					
-				</footer><!-- #footer -->
-    		</div><!-- #footer-wrap -->
-
-    		<?php
-			/**
-			 * Do action after footer
-			 * 
-			 * @action		jentil_after_footer
-			 *
-			 * @since       Jentil 0.1.0
-			 */
-			do_action( 'jentil_after_footer' ); ?>
-			
-    	</div><!-- #wrapper -->
+			</footer><!-- #footer -->
+		</div><!-- #footer-wrap -->
 		
 		<?php
 		/**
