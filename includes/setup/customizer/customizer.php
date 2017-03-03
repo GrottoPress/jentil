@@ -200,4 +200,22 @@ final class Customizer extends MagPack\Utilities\Singleton {
             true
         );
     }
+
+    /**
+     * Selective refresh
+     * 
+     * Add selective refresh support to elements
+     * in the customizer.
+     * 
+     * @see     https://make.wordpress.org/core/2016/03/22/implementing-selective-refresh-support-for-widgets/
+     *
+     * @since       jentil 0.1.0
+     * @since       WordPress 4.5
+     * @access      public
+     * 
+     * @action      after_setup_theme
+     */
+    public function selective_refresh() {
+        add_theme_support( 'customize-selective-refresh-widgets' );
+    }
 }
