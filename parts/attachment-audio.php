@@ -12,18 +12,16 @@
 
 ?>
 
-<div class="entry-content self-clear" itemprop="articleBody">
+<div class="entry-attachment">
 
 	<?php echo do_shortcode( '[audio src="' . wp_get_attachment_url( $post->ID ) . '"]' ); ?>
-	
-	<p class="entry-attachment">
-	    <a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url"><?php
+
+	<p><a href="<?php echo wp_get_attachment_url( $post->ID ); ?>" rel="attachment" itemprop="url"><?php
 
 	    	echo basename( $post->guid );
 
-	    ?></a>
-    </p>
-	
+	?></a></p>
+
 	<?php if ( ! empty( $post->post_excerpt ) ) { ?>
 
 		<p class="entry-caption wp-caption-text" itemprop="description"><?php
@@ -32,14 +30,6 @@
 
 		?></p>
 
-	<?php }
+	<?php } ?>
 
-	the_content();
-
-	wp_link_pages( array(
-		'before' => '<p class="page-links pagination">'
-			. esc_html__( 'Pages: ', 'jentil' ),
-		'after' => '</p>',
-	) ); ?>
-	
-</div><!-- .entry-content -->
+</div>

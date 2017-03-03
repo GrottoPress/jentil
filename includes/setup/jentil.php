@@ -105,14 +105,21 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
 		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
 		add_filter( 'body_class', array( $parts, 'body_class' ) );
+
 		add_action( 'wp_head', array( $parts, 'render_title' ) );
-		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ), 100 );
-		add_filter( 'jentil_singular_after_title', array( $parts, 'single_post_after_title' ), 100, 3 );
+
+		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ) );
+		// add_action( 'jentil_before_title', array( $parts, 'post_parent_link' ) );
+		add_action( 'jentil_before_content', array( $parts, 'attachment' ) );
+
+		add_filter( 'jentil_singular_after_title', array( $parts, 'single_post_after_title' ), 10, 3 );
 		add_action( 'jentil_after_title', array( $parts, 'single_post_after_title_echo' ) );
-		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ), 100 );
-		add_action( 'jentil_inside_header', array( $parts, 'header_search' ), 200 );
-		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ), 300 );
-		add_action( 'jentil_inside_header', array( $parts, 'mobile_header_menu_toggle' ), 400 );
+
+		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ) );
+		add_action( 'jentil_inside_header', array( $parts, 'header_search' ) );
+		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ) );
+		add_action( 'jentil_inside_header', array( $parts, 'mobile_header_menu_toggle' ) );
+
 		add_action( 'jentil_after_header', array( $parts, 'mobile_header_menu' ), 100 );
 		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ), 100 );
 		add_action( 'jentil_inside_footer', array( $parts, 'colophon' ), 200 );

@@ -1400,7 +1400,7 @@ label > * {
 
 /** Attachment */
 
-.attachment .parent.entry-title {
+.parent.entry-title {
     font-size: 14px;
     font-size: 1.4rem;
 }

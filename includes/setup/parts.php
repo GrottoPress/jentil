@@ -416,4 +416,54 @@ final class Parts extends MagPack\Utilities\Singleton {
 
     	return $classes;
     }
+
+    /**
+     * Post parent link
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @action      jentil_before_title
+     */
+    public function post_parent_link() {
+        global $post;
+
+        if ( ! $post->post_parent ) {
+            return;
+        }
+
+        echo '<h4 class="parent entry-title">
+            <a href="' . get_permalink( $post->post_parent ) . '">
+                <span class="meta-nav">&laquo;</span> ' . get_the_title( $post->post_parent )
+            . '</a>
+        </h4>';
+    }
+
+    /**
+     * Attachment
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @action      jentil_before_content
+     */
+    public function attachment() {
+        if ( ! $this->template->is( 'attachment' ) ) {
+            return;
+        }
+
+        remove_filter( 'the_content', 'prepend_attachment' );
+
+        global $post;
+
+        if ( wp_attachment_is_image( $post->ID ) ) {
+            get_template_part( 'parts/attachment', 'image' );
+        } elseif ( wp_attachment_is( 'audio', $post->ID ) ) {
+            get_template_part( 'parts/attachment', 'audio' );
+        } elseif ( wp_attachment_is( 'video', $post->ID ) ) {
+            get_template_part( 'parts/attachment', 'video' );
+        } else {
+            get_template_part( 'parts/attachment' );
+        }
+    }
 }
