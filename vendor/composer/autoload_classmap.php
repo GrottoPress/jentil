@@ -69,6 +69,7 @@ return array(
     'GrottoPress\\Jentil\\Setup\\Jentil' => $baseDir . '/includes/setup/jentil.php',
     'GrottoPress\\Jentil\\Setup\\Language' => $baseDir . '/includes/setup/language.php',
     'GrottoPress\\Jentil\\Setup\\Layout' => $baseDir . '/includes/setup/layout.php',
+    'GrottoPress\\Jentil\\Setup\\Logo' => $baseDir . '/includes/setup/logo.php',
     'GrottoPress\\Jentil\\Setup\\Metaboxes' => $baseDir . '/includes/setup/metaboxes.php',
     'GrottoPress\\Jentil\\Setup\\Parts' => $baseDir . '/includes/setup/parts.php',
     'GrottoPress\\Jentil\\Utilities\\Colophon' => $baseDir . '/includes/utilities/colophon.php',

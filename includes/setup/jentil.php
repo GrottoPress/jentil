@@ -43,6 +43,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->features();
 		$this->enqueue();
 		$this->layout();
+		$this->logo();
+
 		$this->parts();
 		$this->customizer();
 		$this->metaboxes();
@@ -77,7 +79,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_action( 'after_setup_theme', array( $setup, 'enable_feeds' ) );
 		add_action( 'after_setup_theme', array( $setup, 'enable_featured_images' ) );
 		add_action( 'after_setup_theme', array( $setup, 'add_image_sizes' ) );
-		add_action( 'after_setup_theme', array( $setup, 'enable_custom_logo' ) );
+		
 		add_action( 'widgets_init', array( $setup, 'register_widget_areas' ) );
 	}
 
@@ -91,6 +93,19 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$layout = Layout::instance( $this );
 		
 		add_filter( 'body_class', array( $layout, 'body_class' ) );
+	}
+
+	/**
+     * Define logo hooks
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function logo() {
+		$logo = Logo::instance( $this );
+
+		add_action( 'after_setup_theme', array( $logo, 'enable' ) );
+		add_action( 'jentil_inside_header', array( $logo, 'render' ) );
 	}
 
 	/**

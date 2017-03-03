@@ -105,6 +105,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Setup\\Jentil' => __DIR__ . '/../..' . '/includes/setup/jentil.php',
         'GrottoPress\\Jentil\\Setup\\Language' => __DIR__ . '/../..' . '/includes/setup/language.php',
         'GrottoPress\\Jentil\\Setup\\Layout' => __DIR__ . '/../..' . '/includes/setup/layout.php',
+        'GrottoPress\\Jentil\\Setup\\Logo' => __DIR__ . '/../..' . '/includes/setup/logo.php',
         'GrottoPress\\Jentil\\Setup\\Metaboxes' => __DIR__ . '/../..' . '/includes/setup/metaboxes.php',
         'GrottoPress\\Jentil\\Setup\\Parts' => __DIR__ . '/../..' . '/includes/setup/parts.php',
         'GrottoPress\\Jentil\\Utilities\\Colophon' => __DIR__ . '/../..' . '/includes/utilities/colophon.php',
