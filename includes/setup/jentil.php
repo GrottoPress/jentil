@@ -33,6 +33,14 @@ use GrottoPress\MagPack;
  */
 final class Jentil extends MagPack\Utilities\Singleton {
     /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    protected function __construct() {}
+
+    /**
      * Run the theme
 	 *
 	 * @since       Jentil 0.1.0

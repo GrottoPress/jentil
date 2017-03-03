@@ -30,6 +30,14 @@ use GrottoPress\MagPack;
  */
 final class Language extends MagPack\Utilities\Singleton {
     /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    protected function __construct() {}
+
+    /**
      * Translations.
      *
      * Make theme available for translation. Translations can

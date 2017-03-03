@@ -31,6 +31,14 @@ use GrottoPress\MagPack;
  */
 final class Features extends MagPack\Utilities\Singleton {
     /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    protected function __construct() {}
+
+    /**
      * Content width
      * 
      * Set the content width based on the theme's design

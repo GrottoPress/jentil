@@ -86,6 +86,14 @@ final class Customizer extends MagPack\Utilities\Singleton {
     protected $template;
 
     /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    protected function __construct() {}
+
+    /**
      * Allow get
      *
      * Defines the attributes that can be retrieved
