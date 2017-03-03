@@ -48,20 +48,27 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 */
 	public function run() {
 		$this->language();
-		$this->features();
 		$this->enqueue();
+		$this->thumbnails();
+		$this->feeds();
+		$this->HTML5();
+		$this->title_tag();
 		$this->layout();
 		$this->logo();
-
-		$this->parts();
+		$this->search();
+		$this->menus();
+		$this->breadcrumbs();
+		$this->posts();
+		$this->widgets();
+		$this->colophon();
 		$this->customizer();
 		$this->metaboxes();
 	}
 
 	/**
-     * Define language hooks
+     * Language
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
 	private function language() {
@@ -71,28 +78,71 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
     /**
-     * Define setup hooks
+     * Enqueue
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
-	private function features() {
-		$setup = Features::instance( $this );
+	private function enqueue() {
+		$enqueue = Enqueue::instance( $this );
 		
-		add_action( 'after_setup_theme', array( $setup, 'set_content_width' ) );
-		add_action( 'after_setup_theme', array( $setup, 'enable_title_tag' ) );
-		add_action( 'after_setup_theme', array( $setup, 'enable_html5' ) );
-		add_action( 'after_setup_theme', array( $setup, 'enable_customizer_selective_refresh' ) );
-		add_action( 'after_setup_theme', array( $setup, 'register_menus' ) );
-		add_action( 'after_setup_theme', array( $setup, 'enable_feeds' ) );
-		add_action( 'after_setup_theme', array( $setup, 'enable_featured_images' ) );
-		add_action( 'after_setup_theme', array( $setup, 'add_image_sizes' ) );
-		
-		add_action( 'widgets_init', array( $setup, 'register_widget_areas' ) );
+		add_action( 'wp_enqueue_scripts', array( $enqueue, 'scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $enqueue, 'styles' ) );
 	}
 
 	/**
-     * Define layout hooks
+     * Thumbnails
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function thumbnails() {
+		$thumbnails = Thumbnails::instance( $this );
+		
+		add_action( 'after_setup_theme', array( $thumbnails, 'enable' ) );
+		add_action( 'after_setup_theme', array( $thumbnails, 'sizes' ) );
+	}
+
+	/**
+     * Feeds (Atom, RSS etc)
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function feeds() {
+		$feeds = Feeds::instance( $this );
+		
+		add_action( 'after_setup_theme', array( $feeds, 'enable' ) );
+	}
+
+	/**
+     * HTML5
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function HTML5() {
+		$HTML5 = HTML5::instance( $this );
+		
+		add_action( 'after_setup_theme', array( $HTML5, 'enable' ) );
+		add_filter( 'language_attributes', array( $HTML5, 'html_tag_schema' ) );
+	}
+
+	/**
+     * Title tag
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function title_tag() {
+		$title_tag = Title_Tag::instance( $this );
+		
+		add_action( 'after_setup_theme', array( $title_tag, 'enable' ) );
+		add_action( 'wp_head', array( $title_tag, 'render' ) );
+	}
+
+	/**
+     * Layout
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
@@ -104,7 +154,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
 	/**
-     * Define logo hooks
+     * Logo
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
@@ -117,52 +167,88 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
 	/**
-     * Define template parts hooks
+     * Search
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
-	private function parts() {
-		$parts = Parts::instance( $this );
-		
-		add_filter( 'language_attributes', array( $parts, 'html_microdata' ) );
-		add_filter( 'get_search_form', array( $parts, 'search_form' ) );
-		add_filter( 'body_class', array( $parts, 'body_class' ) );
+	private function search() {
+		$search = Search::instance( $this );
 
-		add_action( 'wp_head', array( $parts, 'render_title' ) );
-
-		add_action( 'jentil_before_title', array( $parts, 'breadcrumbs' ) );
-		// add_action( 'jentil_before_title', array( $parts, 'post_parent_link' ) );
-		add_action( 'jentil_before_content', array( $parts, 'attachment' ) );
-
-		add_filter( 'jentil_singular_after_title', array( $parts, 'single_post_after_title' ), 10, 3 );
-		add_action( 'jentil_after_title', array( $parts, 'single_post_after_title_echo' ) );
-
-		add_action( 'jentil_inside_header', array( $parts, 'header_logo' ) );
-		add_action( 'jentil_inside_header', array( $parts, 'header_search' ) );
-		add_action( 'jentil_inside_header', array( $parts, 'header_menu' ) );
-		add_action( 'jentil_inside_header', array( $parts, 'mobile_header_menu_toggle' ) );
-
-		add_action( 'jentil_after_header', array( $parts, 'mobile_header_menu' ), 100 );
-		add_action( 'jentil_inside_footer', array( $parts, 'footer_widgets' ), 100 );
-		add_action( 'jentil_inside_footer', array( $parts, 'colophon' ), 200 );
+		add_action( 'get_search_form', array( $search, 'form' ) );
+		add_action( 'jentil_inside_header', array( $search, 'render' ) );
 	}
 
 	/**
-     * Define setup hooks
+     * Menus
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
-	private function enqueue() {
-		$enqueue = Enqueue::instance( $this );
-		
-		add_action( 'wp_enqueue_scripts', array( $enqueue, 'scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $enqueue, 'styles' ) );
+	private function menus() {
+		$menus = Menus::instance( $this );
+
+		add_action( 'after_setup_theme', array( $menus, 'register' ) );
+		add_action( 'jentil_inside_header', array( $menus, 'header_menu' ) );
+		add_action( 'jentil_inside_header', array( $menus, 'mobile_header_menu_toggle' ) );
+		add_action( 'jentil_after_header', array( $menus, 'mobile_header_menu' ) );
 	}
-	
+
 	/**
-     * Define customizer hooks
+     * Breadcrumbs
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function breadcrumbs() {
+		$breadcrumbs = Breadcrumbs::instance( $this );
+
+		add_action( 'jentil_before_title', array( $breadcrumbs, 'render' ) );
+	}
+
+	/**
+     * Posts
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function posts() {
+		$posts = Posts::instance( $this );
+		
+		add_filter( 'body_class', array( $posts, 'body_class' ) );
+		// add_action( 'jentil_before_title', array( $parts, 'post_parent_link' ) );
+		add_action( 'jentil_before_content', array( $posts, 'attachment' ) );
+		// add_filter( 'jentil_singular_after_title', array( $posts, 'single_post_after_title_' ), 10, 3 );
+		add_action( 'jentil_after_title', array( $posts, 'single_post_after_title' ) );
+	}
+
+	/**
+     * Widgets
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function widgets() {
+		$widgets = Widgets::instance( $this );
+
+		add_action( 'widgets_init', array( $widgets, 'register' ) );
+		add_action( 'jentil_inside_footer', array( $widgets, 'footer_widgets' ) );
+	}
+
+	/**
+     * Colophon
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function colophon() {
+		$colophon = Colophon::instance( $this );
+
+		add_action( 'jentil_inside_footer', array( $colophon, 'render' ) );
+	}
+
+	/**
+     * Customizer
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
@@ -172,10 +258,11 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		
 		add_action( 'customize_register', array( $customizer, 'add' ) );
 		add_action( 'customize_preview_init', array( $customizer, 'enqueue' ) );
+		add_action( 'after_setup_theme', array( $customizer, 'selective_refresh' ) );
 	}
 	
 	/**
-     * Define meta boxes hooks
+     * Metaboxes
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private

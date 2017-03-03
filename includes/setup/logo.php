@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setup Logo
+ * Logo
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -19,7 +19,7 @@ use GrottoPress\MagPack;
 use GrottoPress\Jentil\Utilities;
 
 /**
- * Setup Logo
+ * Logo
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
