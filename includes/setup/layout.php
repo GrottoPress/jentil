@@ -30,6 +30,14 @@ use GrottoPress\Jentil\Utilities;
  */
 final class Layout extends MagPack\Utilities\Singleton {
 	/**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    protected function __construct() {}
+
+    /**
      * Body class
      *
      * @since       MagPress MagPack 0.1.0

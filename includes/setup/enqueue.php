@@ -29,6 +29,14 @@ use GrottoPress\MagPack;
  */
 final class Enqueue extends MagPack\Utilities\Singleton {
 	/**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    protected function __construct() {}
+
+    /**
      * Enqueue JavaScript
      * 
      * @since 		Jentil 0.1.0
