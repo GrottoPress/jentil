@@ -104,8 +104,8 @@ final class Menus extends MagPack\Utilities\Singleton {
     public function mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<div id="menu-screen-max-wide" class="navigation-wrap screen-max-wide"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>
-            <nav role="navigation" class="site-navigation main-navigation">'
+        echo '<div id="menu-screen-max-wide" class="navigation-wrap screen-max-wide wrapper"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>
+            <nav role="navigation" class="site-navigation main-navigation inner">'
                 . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
                 get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );

@@ -243,11 +243,10 @@ h6,
 pre,
 dd,
 blockquote,
-#main-wrap,
+.wrapper,
 .widget,
 #container,
 .site-sidebar,
-#header-wrap,
 .search-wrap,
 .archive-description,
 #content > header {
@@ -270,11 +269,10 @@ h6:first-child,
 pre:first-child,
 dd:first-child,
 blockquote:first-child,
-#main-wrap:first-child,
+.wrapper:first-child,
 .widget:first-child,
 #container:first-child,
 .site-sidebar:first-child,
-#header-wrap:first-child,
 .search-wrap:first-child,
 .archive-description:first-child,
 #content > header:first-child {
@@ -296,11 +294,10 @@ h6:last-child,
 pre:last-child,
 dd:last-child,
 blockquote:last-child,
-#main-wrap:last-child,
+.wrapper:last-child,
 .widget:last-child,
 #container:last-child,
 .site-sidebar:last-child,
-#header-wrap:last-child,
 .search-wrap:last-child,
 .archive-description:last-child,
 #content > header:last-child {
@@ -671,21 +668,19 @@ li {
  * Layout
  */
 
-#header,
-#main,
-#footer,
-.navigation-wrap.screen-max-wide .site-navigation {
+.wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.inner {
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
 }
 
-#header-wrap,
-#main-wrap,
-#footer-wrap,
-.navigation-wrap.screen-max-wide {
-    padding-left: 20px;
-    padding-right: 20px;
+#footer-wrap {
+    margin-bottom: 0;
 }
 
 /**
@@ -1605,10 +1600,7 @@ label > * {
      * Layout
      */
 
-    #header,
-    #main,
-    #footer,
-    .navigation-wrap.screen-max-wide .site-navigation {
+    .inner {
         max-width: 960px;
     }
 

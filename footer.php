@@ -26,8 +26,8 @@
 		 */
 		do_action( 'jentil_before_footer' ); ?>
 
-		<div id="footer-wrap">
-			<footer id="footer" class="site-footer hobbit" itemscope itemtype="http://schema.org/WPFooter">
+		<div id="footer-wrap" class="wrapper">
+			<footer id="footer" class="site-footer hobbit inner" itemscope itemtype="http://schema.org/WPFooter">
 			
 				<?php
 				/**

@@ -59,8 +59,8 @@
 		 */
 		do_action( 'jentil_before_header' ); ?>
 	
-		<div id="header-wrap">
-			<header id="header" class="site-header hobbit" itemscope itemtype="http://schema.org/WPHeader">
+		<div id="header-wrap" class="wrapper">
+			<header id="header" class="site-header hobbit inner" itemscope itemtype="http://schema.org/WPHeader">
 				
 				<?php
 				/**
@@ -85,5 +85,5 @@
 		 */
 		do_action( 'jentil_after_header' ); ?>
 		
-		<div id="main-wrap">
-			<div id="main" class="self-clear">
+		<div id="main-wrap" class="wrapper">
+			<div id="main" class="self-clear inner">
