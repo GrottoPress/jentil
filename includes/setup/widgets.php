@@ -87,7 +87,7 @@ final class Widgets extends MagPack\Utilities\Singleton {
             return;
         } ?>
 
-        <div class="widget-area">
+        <div id="footer-widget-area" class="widget-area">
             <?php dynamic_sidebar( 'footer-widget-area' ); ?>
         </div><!-- .widget-area -->
     <?php }

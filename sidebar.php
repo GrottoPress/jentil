@@ -29,7 +29,7 @@ if ( 'one-column' == $column ) {
  * @since 		Jentil 0.1.0
  */
 if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
-	<div id="primary" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
+	<div id="primary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 		<?php dynamic_sidebar( 'primary-widget-area' ); ?>
 	</div><!-- #primary -->
 <?php }
@@ -41,7 +41,7 @@ if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
  */
 if ( 'three-columns' == $column ) {
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) { ?>
-		<div id="secondary" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
+		<div id="secondary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 			<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
 		</div><!-- #secondary -->
 	<?php }
