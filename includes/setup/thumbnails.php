@@ -59,7 +59,7 @@ final class Thumbnails extends MagPack\Utilities\Singleton {
      * @action      after_setup_theme
      */
     public function sizes() {
-        set_post_thumbnail_size( 600, 400, true );
+        set_post_thumbnail_size( 640, 360, true );
         
         add_image_size( 'mini-thumb', 100, 100, true );
         add_image_size( 'micro-thumb', 75, 75, true );
