@@ -47,7 +47,7 @@
 		
 	</head>
 	
-	<body <?php body_class(); ?>>
+	<body <?php body_class( array( 'inner' ) ); ?>>
 		
 		<?php
 		/**
@@ -59,21 +59,19 @@
 		 */
 		do_action( 'jentil_before_header' ); ?>
 	
-		<div id="header-wrap" class="wrapper">
-			<header id="header" class="site-header hobbit inner" itemscope itemtype="http://schema.org/WPHeader">
-				
-				<?php
-				/**
-				 * Do action inside header
-				 * 
-				 * @action		jentil_inside_header
-				 *
-				 * @since       Jentil 0.1.0
-				 */
-				do_action( 'jentil_inside_header' ); ?>
-				
-			</header><!-- #header -->
-		</div><!-- #header-wrap -->
+		<header id="header" class="site-header hobbit margin-vertical" itemscope itemtype="http://schema.org/WPHeader">
+			
+			<?php
+			/**
+			 * Do action inside header
+			 * 
+			 * @action		jentil_inside_header
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_inside_header' ); ?>
+			
+		</header><!-- #header -->
 		
 		<?php
 		/**
@@ -85,5 +83,4 @@
 		 */
 		do_action( 'jentil_after_header' ); ?>
 		
-		<div id="main-wrap" class="wrapper">
-			<div id="main" class="self-clear inner">
+		<div id="main" class="self-clear margin-vertical">

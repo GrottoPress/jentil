@@ -14,7 +14,7 @@ get_header();
 
 ?>
 
-<div id="content-wrap">
+<div id="content-wrap" class="margin-vertical">
 	<main id="content">
 		
 		<?php
@@ -34,7 +34,7 @@ get_header();
 
 				<?php if ( $post->post_title ) { ?>
 
-					<header>
+					<header class="margin-vertical">
 
 				<?php }
 

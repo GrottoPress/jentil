@@ -59,7 +59,7 @@ final class Menus extends MagPack\Utilities\Singleton {
      * @action      jentil_inside_header
      */
     public function header_menu() {
-        echo '<nav role="navigation" class="site-navigation main-navigation screen-min-wide">'
+        echo '<nav role="navigation" class="site-navigation screen-min-wide margin-vertical">'
             . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
             wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
@@ -78,7 +78,7 @@ final class Menus extends MagPack\Utilities\Singleton {
         $pagination = new MagPack\Utilities\Pagination\Pagination();
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<div class="menu-toggle screen-max-wide">'
+        echo '<div class="menu-toggle screen-max-wide margin-vertical">'
             . $this->skip_to( 'menu-screen-max-wide', esc_html__( 'Skip to menu', 'jentil' ) )
 
             . '<div class="menu-mobile-menu-container">
@@ -104,13 +104,11 @@ final class Menus extends MagPack\Utilities\Singleton {
     public function mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<div id="menu-screen-max-wide" class="navigation-wrap screen-max-wide wrapper"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>
-            <nav role="navigation" class="site-navigation main-navigation inner">'
-                . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
+        echo '<nav role="navigation" class="site-navigation screen-max-wide margin-vertical"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
+            . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
-                get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
-            echo '</nav>
-        </div>';
+            get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
+        echo '</nav>';
     }
 
     /**
