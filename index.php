@@ -44,7 +44,7 @@ get_header();
 
 ?>
 
-<div id="content-wrap">
+<div id="content-wrap" class="margin-vertical">
 	<main id="content" class="site-content">
 		
 		<?php
@@ -63,7 +63,7 @@ get_header();
 
 			if ( $description || $title ) { ?>
 				
-				<header>
+				<header class="margin-vertical">
 
 			<?php }
 
@@ -86,7 +86,7 @@ get_header();
 	
 			if ( $description ) { ?>
 				
-				<div class="archive-description" itemprop="description"><?php
+				<div class="archive-description margin-vertical" itemprop="description"><?php
 
 					echo $description;
 
