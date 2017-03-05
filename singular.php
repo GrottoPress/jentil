@@ -15,7 +15,7 @@ get_header();
 ?>
 
 <div id="content-wrap" class="margin-vertical">
-	<main id="content">
+	<main id="content" class="site-content">
 		
 		<?php
 		/**

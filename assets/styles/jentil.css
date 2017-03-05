@@ -1598,133 +1598,144 @@ label > * {
         max-width: none;
     }*/
 
-    /** Two Columns, Right Sidebar */
+    #content-wrap {
+        width: 100%;
+    }
 
     #content-wrap,
-    .layout-content-sidebar #content-wrap {
-    	float: left;
-    	width: 100%;
-    	margin: 0;
-    	margin-right: -33.89%;
-    }
-
-    #content,
-    .layout-content-sidebar #content {
-    	margin-right: 33.89%;
-    }
-
-    #primary-widget-area,
-    .layout-content-sidebar #primary-widget-area {
-    	float: right;
-    	width: 31.25%;
-    	margin: 0;
-    }
-
-    #secondary-widget-area {
+    #primary-widget-area-wrap,
+    #secondary-widget-area-wrap {
         margin: 0;
     }
 
-    /** Two Columns, Left Sidebar */
+    /** Two Columns */
+
+    .layout-two-columns #primary-widget-area-wrap {
+        width: 33.34%;
+    }
+
+    /** Two Columns: Right Sidebar */
+
+    .layout-content-sidebar #content-wrap {
+    	float: left;
+    	margin-right: -33.34%;
+    }
+
+    .layout-content-sidebar #content {
+    	margin-right: 33.34%;
+    }
+
+    .layout-content-sidebar #primary-widget-area-wrap {
+    	float: right;
+        padding-left: 20px;
+    }
+
+    /*#secondary-widget-area-wrap {
+        margin: 0;
+        padding-right: 20px;
+    }*/
+
+    /** Two Columns: Left Sidebar */
 
     .layout-sidebar-content #content-wrap {
     	float: right;
-    	margin-left: -33.89%;
-    	margin-right: 0;
+    	margin-left: -33.34%;
     }
 
     .layout-sidebar-content #content {
-    	margin-left: 33.89%;
-    	margin-right: 0;
+    	margin-left: 33.34%;
     }
 
-    .layout-sidebar-content #primary-widget-area {
+    .layout-sidebar-content #primary-widget-area-wrap {
     	float: left;
+        padding-right: 20px;
     }
 
-    /** Three Columns, Left & Right Sidebars */
+    /** Three Columns */
+
+    .layout-three-columns #primary-widget-area-wrap {
+        width: 26.32%;
+    }
+
+    .layout-three-columns #secondary-widget-area-wrap {
+        width: 21.06%;
+    }
+
+    /** Three Columns: Left & Right Sidebars */
 
     .layout-sidebar-content-sidebar #content-wrap {
     	float: left;
-    	margin-right: 0;
     }
 
     .layout-sidebar-content-sidebar #content {
     	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-    	margin-right: 26.33%;
-    	margin-left: 21.07%;
+    	margin-right: 26.32%;
+    	margin-left: 21.06%;
     }
 
-    .layout-sidebar-content-sidebar #primary-widget-area,
-    .layout-sidebar-content-sidebar #secondary-widget-area {
+    .layout-sidebar-content-sidebar #primary-widget-area-wrap,
+    .layout-sidebar-content-sidebar #secondary-widget-area-wrap {
     	float: left;
     }
 
-    .layout-sidebar-content-sidebar #secondary-widget-area {
+    .layout-sidebar-content-sidebar #secondary-widget-area-wrap {
     	margin-left: -100%;
-    	width: 18.43%; /** Width of left column */
+        padding-right: 20px;
     }
 
-    .layout-sidebar-content-sidebar #primary-widget-area {
-    	margin-left: -23.69%; /** Set left margin to -(RightColumnWidth) */
-    	width: 23.69%; /** Width of right column */
+    .layout-sidebar-content-sidebar #primary-widget-area-wrap {
+    	margin-left: -26.32%; /** Set left margin to -(RightColumnWidth) */
+        padding-left: 20px;
     }
 
-    /** Three Columns, Two Left Sidebars */
+    /** Three Columns: Two Left Sidebars */
 
     .layout-sidebar-sidebar-content #content-wrap {
     	float: right;
-    	margin-right: 0;
     }
 
     .layout-sidebar-sidebar-content #content {
-    	margin-right: 0;
-    	margin-left: 47.39%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    	margin-left: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
-    .layout-sidebar-sidebar-content #secondary-widget-area {
+    .layout-sidebar-sidebar-content #secondary-widget-area-wrap,
+    .layout-sidebar-sidebar-content #primary-widget-area-wrap {
+        padding-right: 20px;
+    }
+
+    .layout-sidebar-sidebar-content #secondary-widget-area-wrap {
     	float: right;
-    	width: 18.43%; /** Width of left column in pixels */
-    	margin-right: -44.76%; /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
+    	margin-right: -47.38%; /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
-    .layout-sidebar-sidebar-content #primary-widget-area {
+    .layout-sidebar-sidebar-content #primary-widget-area-wrap {
     	float: right;
-    	width: 23.69%; /** Width of right column in pixels */
-    	margin-right: -23.69%; /** Set margin to -(RightColumnWidth) */
+    	margin-right: -26.32%; /** Set margin to -(RightColumnWidth) */
     }
 
-    /** Three Columns, Two Right Sidebars */
+    /** Three Columns: Two Right Sidebars */
 
     .layout-content-sidebar-sidebar #content-wrap {
     	float: left;
-    	margin-right: 0;
     }
 
     .layout-content-sidebar-sidebar #content {
-    	margin-right: 47.39%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    	margin-right: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
-    .layout-content-sidebar-sidebar #secondary-widget-area {
+    .layout-content-sidebar-sidebar #secondary-widget-area-wrap,
+    .layout-content-sidebar-sidebar #primary-widget-area-wrap {
+        padding-left: 20px;
+    }
+
+    .layout-content-sidebar-sidebar #secondary-widget-area-wrap {
     	float: left;
-    	width: 18.43%; /** Width of left column in pixels */
-    	margin-left: -44.76%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    	margin-left: -47.38%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
-    .layout-content-sidebar-sidebar #primary-widget-area {
+    .layout-content-sidebar-sidebar #primary-widget-area-wrap {
     	float: left;
-    	width: 23.69%; /** Width of right column in pixels */
-    	margin-left: -23.69%; /** Set margin to -(RightColumnWidth) */
-    }
-
-    /** Full width columns */
-
-    .layout-content #content-wrap {
-        margin-right: 0;
-        float: none;
-    }
-
-    .layout-content #content {
-        margin-right: 0;
+    	margin-left: -26.32%; /** Set margin to -(RightColumnWidth) */
     }
 
     /**
@@ -1772,71 +1783,6 @@ label > * {
 }
 
 @media (min-width: 920px) {
-    /**
-     * Layouts
-     */
-
-    /** Two Columns, Right Sidebar */
-
-    #content-wrap,
-    .layout-content-sidebar #content-wrap {
-        margin-right: -33.53%;
-    }
-
-    #content,
-    .layout-content-sidebar #content {
-        margin-right: 33.53%;
-    }
-
-    /** Two Columns, Left Sidebar */
-
-    .layout-sidebar-content #content-wrap {
-        margin-left: -33.53%;
-    }
-
-    .layout-sidebar-content #content {
-        margin-left: 33.53%;
-    }
-
-    /** Three Columns, Left & Right Sidebars */
-
-    .layout-sidebar-content-sidebar #content {
-        /** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-        margin-right: 25.97%;
-        margin-left: 20.71%;
-    }
-
-    /** Three Columns, Two Left Sidebars */
-
-    .layout-sidebar-sidebar-content #content {
-        margin-left: 46.67%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-    }
-
-    .layout-sidebar-sidebar-content #secondary-widget-area {
-        margin-right: -44.4%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-
-    /** Three Columns, Two Right Sidebars */
-
-    .layout-content-sidebar-sidebar #content {
-        margin-right: 46.67%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-    }
-
-    .layout-content-sidebar-sidebar #secondary-widget-area {
-        margin-left: -44.4%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-
-    /** Full width columns */
-
-    .layout-content #content-wrap {
-        margin-right: 0;
-        float: none;
-    }
-
-    .layout-content #content {
-        margin-right: 0;
-    }
-
     /**
      * Toggle elements
      */
