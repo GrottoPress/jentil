@@ -32,14 +32,13 @@ get_header();
 		<div class="posts-wrap show-content big singular-post">
 			<article data-post-id="<?php the_ID(); ?>" id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
 
-				<?php if ( ( $title = the_title( '<h1 class="entry-title" itemprop="headline">',
-					'</h1>', false ) ) ) { ?>
+				<?php if ( $post->post_title ) { ?>
 
 					<header>
 
 				<?php }
 
-					echo $title;
+					the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
 					
 					rewind_posts();
 					
@@ -52,7 +51,7 @@ get_header();
 					 */
 		 			do_action( 'jentil_after_title' );
 
-		 		if ( $title ) { ?>
+		 		if ( $post->post_title ) { ?>
 			 		
 					</header>
 
