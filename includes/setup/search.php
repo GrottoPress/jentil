@@ -61,7 +61,7 @@ final class Search extends MagPack\Utilities\Singleton {
                 $searchform .= '" required />
 
                 <button type="submit" class="button submit">
-                    <span class="fa fa-search" aria-hidden="true"></span> <span class="search-button-text">' . esc_html__( 'Search', 'jentil' ) . '</span>
+                    <span class="fa fa-search" aria-hidden="true"></span> <span class="search-button-text icon-text">' . esc_html__( 'Search', 'jentil' ) . '</span>
                 </button>
             </form>
         </div>';

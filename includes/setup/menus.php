@@ -86,7 +86,7 @@ final class Menus extends MagPack\Utilities\Singleton {
                     <li class="menu-item hamburger">
                         <a href="' . esc_url( add_query_arg( array(
                             'menu' => ( $status == 'off' ? 'on' : 'off' ),
-                        ), $pagination->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> ' . esc_html__( 'Menu', 'jentil' ) . '</a>
+                        ), $pagination->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
                     </li>
                 </ul>
             </div>
