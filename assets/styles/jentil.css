@@ -245,7 +245,7 @@ dd,
 blockquote,
 .wrapper,
 .widget,
-#container,
+#content-wrap,
 .site-sidebar,
 .search-wrap,
 .archive-description,
@@ -271,7 +271,7 @@ dd:first-child,
 blockquote:first-child,
 .wrapper:first-child,
 .widget:first-child,
-#container:first-child,
+#content-wrap:first-child,
 .site-sidebar:first-child,
 .search-wrap:first-child,
 .archive-description:first-child,
@@ -296,7 +296,7 @@ dd:last-child,
 blockquote:last-child,
 .wrapper:last-child,
 .widget:last-child,
-#container:last-child,
+#content-wrap:last-child,
 .site-sidebar:last-child,
 .search-wrap:last-child,
 .archive-description:last-child,
@@ -1622,8 +1622,8 @@ label > * {
 
     /** Two Columns, Right Sidebar */
 
-    #container,
-    .layout-content-sidebar #container {
+    #content-wrap,
+    .layout-content-sidebar #content-wrap {
     	float: left;
     	width: 100%;
     	margin: 0;
@@ -1648,7 +1648,7 @@ label > * {
 
     /** Two Columns, Left Sidebar */
 
-    .layout-sidebar-content #container {
+    .layout-sidebar-content #content-wrap {
     	float: right;
     	margin-left: -33.89%;
     	margin-right: 0;
@@ -1665,7 +1665,7 @@ label > * {
 
     /** Three Columns, Left & Right Sidebars */
 
-    .layout-sidebar-content-sidebar #container {
+    .layout-sidebar-content-sidebar #content-wrap {
     	float: left;
     	margin-right: 0;
     }
@@ -1693,7 +1693,7 @@ label > * {
 
     /** Three Columns, Two Left Sidebars */
 
-    .layout-sidebar-sidebar-content #container {
+    .layout-sidebar-sidebar-content #content-wrap {
     	float: right;
     	margin-right: 0;
     }
@@ -1717,7 +1717,7 @@ label > * {
 
     /** Three Columns, Two Right Sidebars */
 
-    .layout-content-sidebar-sidebar #container {
+    .layout-content-sidebar-sidebar #content-wrap {
     	float: left;
     	margin-right: 0;
     }
@@ -1740,7 +1740,7 @@ label > * {
 
     /** Full width columns */
 
-    .layout-content #container {
+    .layout-content #content-wrap {
         margin-right: 0;
         float: none;
     }
@@ -1788,7 +1788,7 @@ label > * {
      * Global overrides
      */
 
-    #container {
+    #content-wrap {
         margin-bottom: 0;
     }
 }
@@ -1800,8 +1800,8 @@ label > * {
 
     /** Two Columns, Right Sidebar */
 
-    #container,
-    .layout-content-sidebar #container {
+    #content-wrap,
+    .layout-content-sidebar #content-wrap {
         margin-right: -33.53%;
     }
 
@@ -1812,7 +1812,7 @@ label > * {
 
     /** Two Columns, Left Sidebar */
 
-    .layout-sidebar-content #container {
+    .layout-sidebar-content #content-wrap {
         margin-left: -33.53%;
     }
 
@@ -1850,7 +1850,7 @@ label > * {
 
     /** Full width columns */
 
-    .layout-content #container {
+    .layout-content #content-wrap {
         margin-right: 0;
         float: none;
     }

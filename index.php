@@ -44,7 +44,7 @@ get_header();
 
 ?>
 
-<div id="container">
+<div id="content-wrap">
 	<main id="content" class="site-content">
 		
 		<?php
@@ -143,7 +143,7 @@ get_header();
 		} ?>
 		
 	</main><!-- #content -->
-</div><!-- #container -->
+</div><!-- #content-wrap -->
 
 <?php
 
