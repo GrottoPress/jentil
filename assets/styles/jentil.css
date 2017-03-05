@@ -1627,18 +1627,18 @@ label > * {
     	float: left;
     	width: 100%;
     	margin: 0;
-    	margin-right: -260px;
+    	margin-right: -33.89%;
     }
 
     #content,
     .layout-content-sidebar #content {
-    	margin-right: 260px;
+    	margin-right: 33.89%;
     }
 
     #primary,
     .layout-content-sidebar #primary {
     	float: right;
-    	width: 240px;
+    	width: 31.25%;
     	margin: 0;
     }
 
@@ -1650,12 +1650,12 @@ label > * {
 
     .layout-sidebar-content #container {
     	float: right;
-    	margin-left: -260px;
+    	margin-left: -33.89%;
     	margin-right: 0;
     }
 
     .layout-sidebar-content #content {
-    	margin-left: 260px;
+    	margin-left: 33.89%;
     	margin-right: 0;
     }
 
@@ -1672,8 +1672,8 @@ label > * {
 
     .layout-sidebar-content-sidebar #content {
     	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-    	margin-right: 180px;
-    	margin-left: 160px;
+    	margin-right: 26.33%;
+    	margin-left: 21.07%;
     }
 
     .layout-sidebar-content-sidebar #primary,
@@ -1683,12 +1683,12 @@ label > * {
 
     .layout-sidebar-content-sidebar #secondary {
     	margin-left: -100%;
-    	width: 140px; /** Width of left column */
+    	width: 18.43%; /** Width of left column */
     }
 
     .layout-sidebar-content-sidebar #primary {
-    	margin-left: -160px; /** Set left margin to -(RightColumnWidth) */
-    	width: 160px; /** Width of right column */
+    	margin-left: -23.69%; /** Set left margin to -(RightColumnWidth) */
+    	width: 23.69%; /** Width of right column */
     }
 
     /** Three Columns, Two Left Sidebars */
@@ -1700,19 +1700,19 @@ label > * {
 
     .layout-sidebar-sidebar-content #content {
     	margin-right: 0;
-    	margin-left: 340px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    	margin-left: 47.39%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-sidebar-sidebar-content #secondary {
     	float: right;
-    	width: 140px; /** Width of left column in pixels */
-    	margin-right: -320px; /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
+    	width: 18.43%; /** Width of left column in pixels */
+    	margin-right: -44.76%; /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-sidebar-sidebar-content #primary {
     	float: right;
-    	width: 160px; /** Width of right column in pixels */
-    	margin-right: -160px; /** Set margin to -(RightColumnWidth) */
+    	width: 23.69%; /** Width of right column in pixels */
+    	margin-right: -23.69%; /** Set margin to -(RightColumnWidth) */
     }
 
     /** Three Columns, Two Right Sidebars */
@@ -1723,19 +1723,19 @@ label > * {
     }
 
     .layout-content-sidebar-sidebar #content {
-    	margin-right: 340px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    	margin-right: 47.39%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-content-sidebar-sidebar #secondary {
     	float: left;
-    	width: 140px; /** Width of left column in pixels */
-    	margin-left: -320px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    	width: 18.43%; /** Width of left column in pixels */
+    	margin-left: -44.76%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-content-sidebar-sidebar #primary {
     	float: left;
-    	width: 160px; /** Width of right column in pixels */
-    	margin-left: -160px; /** Set margin to -(RightColumnWidth) */
+    	width: 23.69%; /** Width of right column in pixels */
+    	margin-left: -23.69%; /** Set margin to -(RightColumnWidth) */
     }
 
     /** Full width columns */
@@ -1802,87 +1802,61 @@ label > * {
 
     #container,
     .layout-content-sidebar #container {
-    	margin-right: -320px;
+        margin-right: -33.53%;
     }
 
     #content,
     .layout-content-sidebar #content {
-    	margin-right: 320px;
-    }
-
-    #primary,
-    .layout-content-sidebar #primary {
-    	width: 300px;
+        margin-right: 33.53%;
     }
 
     /** Two Columns, Left Sidebar */
 
     .layout-sidebar-content #container {
-    	margin-left: -320px;
+        margin-left: -33.53%;
     }
 
     .layout-sidebar-content #content {
-    	margin-left: 320px;
+        margin-left: 33.53%;
     }
 
     /** Three Columns, Left & Right Sidebars */
 
     .layout-sidebar-content-sidebar #content {
-    	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-    	margin-right: 260px;
-    	margin-left: 180px;
-    }
-
-    .layout-sidebar-content-sidebar #secondary {
-    	width: 160px; /** Width of left column */
-    }
-
-    .layout-sidebar-content-sidebar #primary {
-    	margin-left: -240px; /** Set left margin to -(RightColumnWidth) */
-    	width: 240px; /** Width of right column */
+        /** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
+        margin-right: 25.97%;
+        margin-left: 20.71%;
     }
 
     /** Three Columns, Two Left Sidebars */
 
     .layout-sidebar-sidebar-content #content {
-    	margin-left: 440px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+        margin-left: 46.67%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-sidebar-sidebar-content #secondary {
-    	width: 160px; /** Width of left column in pixels */
-    	margin-right: -420px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-
-    .layout-sidebar-sidebar-content #primary {
-    	width: 240px; /** Width of right column in pixels */
-    	margin-right: -240px; /** Set margin to -(RightColumnWidth) */
+        margin-right: -44.4%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
     /** Three Columns, Two Right Sidebars */
 
     .layout-content-sidebar-sidebar #content {
-    	margin-right: 440px; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+        margin-right: 46.67%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-content-sidebar-sidebar #secondary {
-    	width: 160px; /** Width of left column in pixels */
-    	margin-left: -420px; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-    }
-
-    .layout-content-sidebar-sidebar #primary {
-    	width: 240px; /** Width of right column in pixels */
-    	margin-left: -240px; /** Set margin to -(RightColumnWidth) */
+        margin-left: -44.4%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
     /** Full width columns */
 
     .layout-content #container {
-    	margin-right: 0;
-    	float: none;
+        margin-right: 0;
+        float: none;
     }
 
     .layout-content #content {
-    	margin-right: 0;
+        margin-right: 0;
     }
 
     /**
