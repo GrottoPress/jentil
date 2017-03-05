@@ -75,7 +75,6 @@ return array(
     'GrottoPress\\Jentil\\Setup\\Logo' => $baseDir . '/includes/setup/logo.php',
     'GrottoPress\\Jentil\\Setup\\Menus' => $baseDir . '/includes/setup/menus.php',
     'GrottoPress\\Jentil\\Setup\\Metaboxes' => $baseDir . '/includes/setup/metaboxes.php',
-    'GrottoPress\\Jentil\\Setup\\Parts' => $baseDir . '/includes/setup/parts.php',
     'GrottoPress\\Jentil\\Setup\\Posts' => $baseDir . '/includes/setup/posts.php',
     'GrottoPress\\Jentil\\Setup\\Search' => $baseDir . '/includes/setup/search.php',
     'GrottoPress\\Jentil\\Setup\\Thumbnails' => $baseDir . '/includes/setup/thumbnails.php',

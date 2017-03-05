@@ -111,7 +111,6 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
         'GrottoPress\\Jentil\\Setup\\Logo' => __DIR__ . '/../..' . '/includes/setup/logo.php',
         'GrottoPress\\Jentil\\Setup\\Menus' => __DIR__ . '/../..' . '/includes/setup/menus.php',
         'GrottoPress\\Jentil\\Setup\\Metaboxes' => __DIR__ . '/../..' . '/includes/setup/metaboxes.php',
-        'GrottoPress\\Jentil\\Setup\\Parts' => __DIR__ . '/../..' . '/includes/setup/parts.php',
         'GrottoPress\\Jentil\\Setup\\Posts' => __DIR__ . '/../..' . '/includes/setup/posts.php',
         'GrottoPress\\Jentil\\Setup\\Search' => __DIR__ . '/../..' . '/includes/setup/search.php',
         'GrottoPress\\Jentil\\Setup\\Thumbnails' => __DIR__ . '/../..' . '/includes/setup/thumbnails.php',

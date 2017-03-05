@@ -1544,14 +1544,6 @@ label > * {
     }
 
     /**
-     * Header elements
-     */
-
-    #header {
-        text-align: left;
-    }
-
-    /**
      * Toggle elements
      */
 
@@ -1561,17 +1553,6 @@ label > * {
 
     .screen-min-small {
         display: block;
-    }
-
-    #header .search-wrap {
-        width: 35%;
-        float: right;
-        display: inline;
-        margin-top: 15px;
-    }
-
-    .site-navigation.screen-max-wide .search-wrap {
-        display: none;
     }
 
     /**
@@ -1782,7 +1763,15 @@ label > * {
     }
 }
 
-@media (min-width: 920px) {
+@media (min-width: 960px) {
+    /**
+     * Header elements
+     */
+
+    #header {
+        text-align: left;
+    }
+
     /**
      * Toggle elements
      */
@@ -1797,6 +1786,17 @@ label > * {
 
     .site-navigation.screen-max-wide {
         display: none !important;
+    }
+
+    #header .search-wrap {
+        width: 35%;
+        float: right;
+        display: inline;
+        margin-top: 15px;
+    }
+
+    .site-navigation.screen-max-wide .search-wrap {
+        display: none;
     }
 
     /**
