@@ -49,7 +49,7 @@ final class Enqueue extends MagPack\Utilities\Singleton {
             wp_enqueue_script( 'comment-reply' );
         }
         
-        wp_enqueue_script( 'jentil-menu', get_template_directory_uri() . '/assets/javascript/menu.js', array( 'jquery' ), '', true );
+        wp_enqueue_script( 'jentil', get_template_directory_uri() . '/assets/javascript/jentil.js', array( 'jquery' ), '', true );
     }
     
     /**

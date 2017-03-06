@@ -11,6 +11,16 @@
 
 (function( $ ) {
     'use strict';
+
+    /**
+     * Add has-js class to `<html>` tag
+     */
+
+    $( 'html' ).removeClass( 'has-js' ).addClass( 'has-js' );
+
+    /**
+     * Mobile Menu
+     */
     
     function subMenuToggle( selector ) {
         var html = $( selector ).html();
@@ -24,35 +34,32 @@
         $( selector ).toggleClass( 'closed' );
         $( selector ).next( 'ul' ).slideToggle({
             'duration': 200
-        }).css({ 'display':'block' }); // override `display:none;` in CSS for hover
+        }); // override `display:none;` in CSS for hover
     }
 
-    // Make the mobile menu work
-    $( '.site-navigation.screen-max-wide' ).hide();
-	$( '.hamburger.menu-item' ).on( 'click', function( event ) {
+    // Make the mobile menu button work
+    $( '.js-mobile-menu' ).hide();
+	$( '.js-mobile-menu-button' ).on( 'click', function( event ) {
         event.preventDefault();
         
-        $( '.site-navigation.screen-max-wide' ).slideToggle({
+        $( '.js-mobile-menu' ).slideToggle({
             'duration': 200
-        }).css({ 'display':'block' }); // override `display:none;` in CSS for hover
+        });
     });
     
-    // Add has-js class
-    $( 'html' ).removeClass( 'has-js' ).addClass( 'has-js' );
-    
     // Add icons to all parent menu items
-    $( '.menu li > ul' ).before( '<button role="button" class="sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
+    $( '.menu li > ul' ).before( '<button role="button" class="js-sub-menu-button sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
     
     // Sub-menus toggle
-    $( '.sub-menu-toggle' ).next( 'ul' ).hide();
-    $( '.sub-menu-toggle' ).prev( 'a' ).on( 'click', function( event ) {
+    $( '.js-sub-menu-button' ).next( 'ul' ).hide();
+    $( '.js-sub-menu-button' ).prev( 'a' ).on( 'click', function( event ) {
         if ( '#' == $( this ).attr( 'href' ) ) {
             event.preventDefault();
 
             subMenuToggle( $( this ).next( 'button' ) );
         }
     });
-    $( '.sub-menu-toggle' ).on( 'click', function( event ) {
+    $( '.js-sub-menu-button' ).on( 'click', function( event ) {
         event.preventDefault();
 
         subMenuToggle( this );

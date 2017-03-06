@@ -651,6 +651,7 @@ html,
     padding-right: 20px;
 }
 
+body,
 .inner {
     max-width: 480px;
     margin-left: auto;
@@ -1157,7 +1158,7 @@ blockquote {
     font-weight: normal;
 }
 
-#reply-title > small {
+#reply-title small {
     margin-left: 20px;
 }
 
@@ -1559,6 +1560,7 @@ label > * {
      * Layout
      */
 
+     body,
     .inner {
         max-width: 960px;
     }
@@ -1850,6 +1852,12 @@ label > * {
     	display: none; /* Required to hide menu when inactive */
     }
 
+    .has-js #header .menu ul,
+    .has-js #header .menu li:hover ul ul,
+    .has-js #header .menu li li:hover ul ul,
+    .has-js #header .menu li li li:hover ul ul ,
+    .has-js #header .menu li li li li:hover ul ul,
+    .has-js #header .menu li li li li li:hover ul ul,
     #header .menu li:hover ul,
     #header .menu li li:hover ul,
     #header .menu li li li:hover ul ,

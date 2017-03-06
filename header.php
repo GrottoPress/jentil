@@ -47,7 +47,7 @@
 		
 	</head>
 	
-	<body <?php body_class( array( 'inner' ) ); ?>>
+	<body <?php body_class(); ?>>
 		
 		<?php
 		/**
