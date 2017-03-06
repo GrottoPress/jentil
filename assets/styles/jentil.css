@@ -651,6 +651,7 @@ html,
     padding-right: 20px;
 }
 
+body,
 .inner {
     max-width: 480px;
     margin-left: auto;
@@ -1559,6 +1560,7 @@ label > * {
      * Layout
      */
 
+     body,
     .inner {
         max-width: 960px;
     }
