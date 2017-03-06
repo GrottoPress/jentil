@@ -84,7 +84,7 @@ final class Menus extends MagPack\Utilities\Singleton {
             . '<div class="menu-mobile-menu-container">
                 <ul class="menu">
                     <li class="menu-item hamburger">
-                        <a href="' . esc_url( add_query_arg( array(
+                        <a class="js-mobile-menu-button" href="' . esc_url( add_query_arg( array(
                             'menu' => ( $status == 'off' ? 'on' : 'off' ),
                         ), $pagination->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
                     </li>
@@ -104,7 +104,7 @@ final class Menus extends MagPack\Utilities\Singleton {
     public function mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<nav role="navigation" class="site-navigation screen-max-wide margin-vertical"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
+        echo '<nav role="navigation" class="js-mobile-menu site-navigation screen-max-wide margin-vertical"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
             . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
             get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
