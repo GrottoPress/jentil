@@ -63,7 +63,7 @@ final class Enqueue extends MagPack\Utilities\Singleton {
      * @action      wp_enqueue_scripts
      */
     public function styles() {
-    	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/resources/normalize-css/normalize.css' );
+    	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/node_modules/normalize.css/normalize.css' );
         wp_enqueue_style( 'jentil', get_template_directory_uri() . '/assets/styles/jentil.css', array( 'normalize' ) );
         wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/fortawesome/font-awesome/css/font-awesome.min.css', array( 'normalize' ) );
         

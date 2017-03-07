@@ -115,3 +115,6 @@ sftp-config.json
 # composer
 vendor
 components/
+
+# npm
+node_modules
