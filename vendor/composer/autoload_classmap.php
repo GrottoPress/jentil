@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'GrottoPress\\Jentil\\Setup\\Activator' => $baseDir . '/includes/setup/activator.php',
     'GrottoPress\\Jentil\\Setup\\Breadcrumbs' => $baseDir . '/includes/setup/breadcrumbs.php',
     'GrottoPress\\Jentil\\Setup\\Colophon' => $baseDir . '/includes/setup/colophon.php',
     'GrottoPress\\Jentil\\Setup\\Customizer\\Colophon\\Colophon' => $baseDir . '/includes/setup/customizer/colophon/colophon.php',

@@ -47,6 +47,10 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      public
 	 */
 	public function run() {
+		if ( ! $this->checks() ) {
+			return;
+		}
+
 		$this->language();
 		$this->enqueue();
 		$this->thumbnails();
@@ -63,6 +67,18 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->colophon();
 		$this->customizer();
 		$this->metaboxes();
+	}
+
+	/**
+     * Checks
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 *
+	 * @return      boolean         Whether or not the checks passed
+	 */
+	private function checks() {
+		return ( Activator::instance() )->checks();
 	}
 
 	/**

@@ -18,36 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-global $pagenow;
-
-/**
- * Check dependencies
- *
- * @var 		boolean 		$satisfied 		Whether or not dependencies are satisfied.
- *
- * @since 		Jentil 0.1.0
- */
-
-$messages = array();
-
-if ( ! function_exists( '\GrottoPress\MagPack\run' ) ) {
-	$messages[] = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Install and activate that first.', 'jentil' );
-}
-
-$required_wp = '4.3';
-$current_wp = get_bloginfo( 'version' );
-
-if ( version_compare( $current_wp, $required_wp, '<' ) ) {
-	if ( current_user_can( 'update_core' ) ) {
-		$string = esc_html__( 'This theme requires WordPress version %1$s or newer. Your current version is %2$s.', 'jentil' );
-		$string .= ' <a href="' . network_admin_url( '/update-core.php' ) . '">' . esc_html__( 'Update WordPress', 'jentil' ) . '</a>.';
-	} else {
-		$string = esc_html__( 'This theme requires WordPress version %1$s or newer.', 'jentil' );
-	}
-
-	$messages[] = sprintf( $string, $required_wp, $current_wp );
-}
-
 /**
  * Autoload
  * 
@@ -72,16 +42,4 @@ function run() {
  * 
  * @since   	Jentil 0.1.0
  */
-if ( $messages ) {
-	if ( is_admin() ) {
-		foreach ( $messages as $message ) {
-			add_action( 'admin_notices', function () use ( $message ) {
-				echo '<div class="notice notice-error"><p>' . $message . '</p></div>';
-			} );
-		}
-	} elseif ( $pagenow !== 'wp-login.php' && $pagenow !== 'wp-signup.php' ) {
-		wp_die( $messages[0] );
-	}
-} else {
-	add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );
-}
+add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );

@@ -42,6 +42,7 @@ class ComposerStaticInitbbd965b745388cb284d4d62a0fe247ef
     );
 
     public static $classMap = array (
+        'GrottoPress\\Jentil\\Setup\\Activator' => __DIR__ . '/../..' . '/includes/setup/activator.php',
         'GrottoPress\\Jentil\\Setup\\Breadcrumbs' => __DIR__ . '/../..' . '/includes/setup/breadcrumbs.php',
         'GrottoPress\\Jentil\\Setup\\Colophon' => __DIR__ . '/../..' . '/includes/setup/colophon.php',
         'GrottoPress\\Jentil\\Setup\\Customizer\\Colophon\\Colophon' => __DIR__ . '/../..' . '/includes/setup/customizer/colophon/colophon.php',
