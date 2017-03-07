@@ -1,11 +1,9 @@
 <?php
 
 /**
- * Functions and definitions
+ * Functions
  *
- * Set up the theme and provides some helper functions, which are used in the
- * theme as custom template tags. Others are attached to action and filter
- * hooks in WordPress to change core functionality.
+ * Sets up the theme.
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
