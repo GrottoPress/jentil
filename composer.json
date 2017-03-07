@@ -1,10 +1,20 @@
 {
-    "autoload": {
-        "classmap": ["includes/"]
-    },
+    "name": "grottopress/jentil",
+    "description": "Jentil is a responsive, SEO parent theme for WordPress. This theme requires MagPack.",
+    "type": "project",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "GrottoPress.com",
+            "email": "info@grottopress.com"
+        }
+    ],
     "require": {
         "afarkas/html5shiv": "^3.7",
         "fortawesome/font-awesome": "^4.7",
         "rogeriopradoj/respond": "^1.4"
+    },
+    "autoload": {
+        "classmap": ["includes/"]
     }
 }
