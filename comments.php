@@ -8,7 +8,7 @@
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
- * @since			jentil 1.0.0
+ * @since			Jentil 0.1.0
  */
 
 if ( post_password_required() ) {

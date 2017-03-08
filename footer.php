@@ -8,7 +8,7 @@
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
- * @since			Jentil 1.0.0
+ * @since			Jentil 0.1.0
  */
 
 ?>
