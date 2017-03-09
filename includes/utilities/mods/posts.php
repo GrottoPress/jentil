@@ -163,7 +163,7 @@ final class Posts extends Mod {
             'image_alignment' => 'left',
             'image_margin' => '',
             'text_offset' => 0,
-            'excerpt' => 300,
+            'excerpt' => -1,
             'more_link' => esc_html__( 'read more', 'jentil' ),
             'after_content' => 'category, post_tag',
             'after_content_separator' => ' | ',
@@ -180,11 +180,10 @@ final class Posts extends Mod {
             $defaults['image'] = 'nano-thumb';
             $defaults['title_position'] = 'top';
             $defaults['after_title'] = 'post_type, comments_link';
-            $defaults['excerpt'] = '160';
+            $defaults['excerpt'] = 40;
         }
 
         if ( 'sticky' == $this->context ) {
-            $defaults['number'] = 3;
             $defaults['wrap_class'] = 'sticky-posts big';
 
             unset( $defaults['number'] );
