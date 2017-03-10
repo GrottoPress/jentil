@@ -199,7 +199,7 @@ final class Posts extends MagPack\Utilities\Singleton {
 
         global $post;
 
-        $magpack_post = new MagPack\Utilities\Post\Post( $post->ID );
+        $magpack_post = new MagPack\Utilities\Post\Post( $post );
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 
