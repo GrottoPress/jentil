@@ -47,7 +47,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      public
 	 */
 	public function run() {
-		if ( ! $this->checks() ) {
+		if ( ! $this->activator()->checks() ) {
 			return;
 		}
 
@@ -70,15 +70,15 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
 	/**
-     * Checks
+     * Activator
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 *
-	 * @return      boolean         Whether or not the checks passed
+	 * @return      \GrottoPress\Jentil\Setup\Activator         Activator
 	 */
-	private function checks() {
-		return ( Activator::instance() )->checks();
+	private function activator() {
+		return Activator::instance();
 	}
 
 	/**
