@@ -40,13 +40,11 @@ final class Logo extends MagPack\Utilities\Wizard {
         if ( function_exists( 'get_custom_logo' ) ) {
             return get_custom_logo();
         }
-        
-        $custom_logo_id = $this->mod();
 
-        if ( $custom_logo_id ) {
+        if ( ( $mod = $this->mod() ) ) {
             return sprintf( '<a href=\'%1$s\' class=\'custom-logo-link\' rel=\'home\' itemprop=\'url\'>%2$s</a>',
                 home_url( '/' ),
-                wp_get_attachment_image( $custom_logo_id, 'full', false, array(
+                wp_get_attachment_image( $mod, 'full', false, array(
                     'class'    => 'custom-logo',
                     'itemprop' => 'logo',
                 ) )
