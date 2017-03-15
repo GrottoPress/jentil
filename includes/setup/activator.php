@@ -68,6 +68,13 @@ final class Activator extends MagPack\Utilities\Singleton {
 	 */
 	protected function __construct() {
 	    $this->WP_version = get_bloginfo( 'version' );
+
+        /**
+         * Why we require this version
+         *
+         * - Use of singular.php template
+         * - 
+         */
 	    $this->required_WP = '4.3';
 
         $this->messages = array();
