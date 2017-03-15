@@ -62,6 +62,18 @@ final class Logo extends Setup\Customizer\Setting {
      * @var     \GrottoPress\Jentil\Utilities\Logo\Logo     $ulogo       Logo utility
      */
     private $ulogo;
+
+    /**
+     * Are we using WordPress 4.3 or newer
+     *
+     * Does \WP_Customize_Cropped_Image_Control exist?
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @var     boolean     $cropped_image_control      \WP_Customize_Cropped_Image_Control exists?
+     */
+    private $cropped_image_control;
     
     /**
 	 * Constructor
@@ -73,6 +85,7 @@ final class Logo extends Setup\Customizer\Setting {
         $this->logo = $logo;
 
         $this->ulogo = new Utilities\Logo();
+        $this->cropped_image_control = class_exists( '\WP_Customize_Cropped_Image_Control' );
 
         $this->mod = new Utilities\Mods\Logo();
 
@@ -81,7 +94,13 @@ final class Logo extends Setup\Customizer\Setting {
         $this->args = array(
             'transport' => 'postMessage',
             'default' => $this->mod->get( 'default' ),
-            'sanitize_callback' => 'absint',
+            'sanitize_callback' => function ( $logo ) {
+                if ( $this->cropped_image_control ) {
+                    return absint( $logo );
+                }
+
+                return attachment_url_to_postid( $logo );
+            },
         );
 
         $logo_raw = $this->ulogo->raw_attributes();
@@ -120,15 +139,15 @@ final class Logo extends Setup\Customizer\Setting {
 
         $wp_customize->add_setting( $this->name, $this->args );
 
-        if ( class_exists( '\WP_Customize_Cropped_Image_Control' ) ) {
+        if ( $this->cropped_image_control ) {
             $wp_customize->add_control( new \WP_Customize_Cropped_Image_Control(
                  $wp_customize, $this->name, $this->control
             ) );
-        } //else { // Saves image URL (not ID)
-            // $wp_customize->add_control( new \WP_Customize_Image_Control(
-            //     $wp_customize, $this->name, $this->control
-            // ) );
-        // }
+        } else { // Saves image URL (not ID)
+            $wp_customize->add_control( new \WP_Customize_Image_Control(
+                $wp_customize, $this->name, $this->control
+            ) );
+        }
 
         if ( isset( $wp_customize->selective_refresh ) ) {
             $wp_customize->selective_refresh->add_partial( $this->name, array(

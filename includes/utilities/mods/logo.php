@@ -41,7 +41,7 @@ final class Logo extends Mod {
      * @since		Jentil 0.1.0
      * @access      public
      *
-     * @return      string          Mod
+     * @return      integer          Mod
      */
     public function mod() {
         return absint( get_theme_mod( $this->name, $this->default ) );
