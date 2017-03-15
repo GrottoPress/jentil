@@ -216,7 +216,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 		);
 
 		if ( $this->template->is( 'search' ) ) {
-			if ( function_exists( 'is_customize_preview' ) { // If WP >= 4.0
+			if ( function_exists( 'is_customize_preview' ) ) { // If WP >= 4.0
 				$args['orderby']['all_time_views'] = 'DESC';
 				$args['orderby']['comment_count'] = 'DESC';
 			} else {
