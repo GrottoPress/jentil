@@ -16,7 +16,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
-use GrottoPress\Jentil\Utilities;
 
 /**
  * Breadcrumbs
@@ -44,10 +43,11 @@ final class Breadcrumbs extends MagPack\Utilities\Singleton {
      * @action      jentil_before_title
      */
     public function render() {
-        $template = new Utilities\Template\Template();
+        global $jentil_template;
+
         $pagination = new MagPack\Utilities\Pagination\Pagination();
 
-        if ( $template->is( 'front_page' ) && ! $pagination->is_paged() ) {
+        if ( $jentil_template->is( 'front_page' ) && ! $pagination->is_paged() ) {
             return;
         }
 
@@ -55,6 +55,6 @@ final class Breadcrumbs extends MagPack\Utilities\Singleton {
             'before' => esc_html__( 'Path: ', 'jentil' ),
         );
 
-        echo $template->breadcrumbs( $args )->trail();
+        echo $jentil_template->breadcrumbs( $args )->trail();
     }
 }

@@ -10,9 +10,9 @@
  * @since			Jentil 0.1.0
  */
 
-use GrottoPress\Jentil\Utilities;
+global $jentil_template;
 
-$column = ( new Utilities\Template\Template() )->get( 'layout' )->column();
+$column = $jentil_template->get( 'layout' )->column();
 
 /**
  * Do not show sidebars if page layout is one column

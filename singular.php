@@ -10,6 +10,23 @@
  * @since			Jentil 0.1.0
  */
 
+use GrottoPress\Jentil\Utilities;
+
+/**
+ * Template
+ *
+ * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
+ * 
+ * @since		Jentil 0.1.0
+ */
+$jentil_template = new Utilities\Template\Template();
+
+/**
+ * Begin template rendering
+ * 
+ * @since		Jentil 0.1.0
+ */
+
 get_header();
 
 ?>

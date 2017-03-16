@@ -26,15 +26,6 @@ use GrottoPress\Jentil\Utilities;
 $jentil_template = new Utilities\Template\Template();
 
 /**
- * Posts
- *
- * @var 		string 		$jentil_posts 		Queried posts
- * 
- * @since		Jentil 0.1.0
- */
-$jentil_posts = $jentil_template->get( 'posts' )->query();
-
-/**
  * Begin template rendering
  * 
  * @since		Jentil 0.1.0
@@ -115,7 +106,10 @@ get_header();
 		 */
 		do_action( 'jentil_before_content' );
 		
-		if ( $jentil_template->is( '404' ) || ! $jentil_posts ) {
+		if (
+			$jentil_template->is( '404' )
+			|| ! ( $jentil_posts = $jentil_template->get( 'posts' )->query() )
+		) {
 			get_template_part( 'parts/none' );
 		} else {
 			echo $jentil_posts;

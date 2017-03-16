@@ -16,7 +16,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
-use GrottoPress\Jentil\Utilities;
 
 /**
  * Posts
@@ -28,24 +27,12 @@ use GrottoPress\Jentil\Utilities;
  */
 final class Posts extends MagPack\Utilities\Singleton {
     /**
-     * Template
-     *
-     * @since       MagPack 0.1.0
-     * @access      protected
-     *
-     * @var    \GrottoPress\Jentil\Utilities\Template\Template      $template       Template
-     */
-    protected $template;
-
-    /**
 	 * Constructor
 	 *
 	 * @since       MagPack 0.1.0
 	 * @access      public
 	 */
-	protected function __construct() {
-        $this->template = new Utilities\Template\Template();
-    }
+	protected function __construct() {}
 
     /**
      * Add <body> classes
@@ -56,7 +43,9 @@ final class Posts extends MagPack\Utilities\Singleton {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        if ( ! $this->template->is( 'singular' ) ) {
+        global $jentil_template;
+
+        if ( ! $jentil_template->is( 'singular' ) ) {
             return $classes;
         }
 
@@ -102,7 +91,9 @@ final class Posts extends MagPack\Utilities\Singleton {
      * @action      jentil_before_title
      */
     public function parent_link() {
-        if ( ! $this->template->is( 'singular' ) ) {
+        global $jentil_template;
+
+        if ( ! $jentil_template->is( 'singular' ) ) {
             return;
         }
 
@@ -128,7 +119,9 @@ final class Posts extends MagPack\Utilities\Singleton {
      * @action      jentil_before_content
      */
     public function attachment() {
-        if ( ! $this->template->is( 'attachment' ) ) {
+        global $jentil_template;
+
+        if ( ! $jentil_template->is( 'attachment' ) ) {
             return;
         }
 
@@ -158,7 +151,9 @@ final class Posts extends MagPack\Utilities\Singleton {
      * @filter      jentil_singular_after_title
      */
     public function single_post_after_title_( $output, $id, $separator ) {
-        if ( ! $this->template->is( 'singular', 'post' ) ) {
+        global $jentil_template;
+
+        if ( ! $jentil_template->is( 'singular', 'post' ) ) {
             return $output;
         }
 
@@ -193,7 +188,9 @@ final class Posts extends MagPack\Utilities\Singleton {
      * @action      jentil_after_title
      */
     public function single_post_after_title() {
-        if ( ! $this->template->is( 'singular', 'post' ) ) {
+        global $jentil_template;
+
+        if ( ! $jentil_template->is( 'singular', 'post' ) ) {
             return;
         }
 

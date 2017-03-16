@@ -44,9 +44,11 @@ final class Colophon extends MagPack\Utilities\Singleton {
      * @action      jentil_inside_footer
      */
     public function render() {
+        global $jentil_template;
+
         $colophon = new Utilities\Colophon();
 
-        if ( ! ( $mod = $colophon->mod() ) && ! $this->template->is( 'customize_preview' ) ) {
+        if ( ! ( $mod = $colophon->mod() ) && ! $jentil_template->is( 'customize_preview' ) ) {
             return '';
         }
 
