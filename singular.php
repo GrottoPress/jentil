@@ -15,6 +15,9 @@ use GrottoPress\Jentil\Utilities;
 /**
  * Template
  *
+ * This is required, as some functions/parts
+ * may call `global $jentil_template`
+ *
  * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
  * 
  * @since		Jentil 0.1.0
