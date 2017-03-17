@@ -19,8 +19,6 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
-use GrottoPress\MagPack;
-
 /**
  * Deactivator
  *
@@ -29,44 +27,44 @@ use GrottoPress\MagPack;
  * 
  * @author          N Atta Kusi Adusei
  */
-final class Activator extends MagPack\Utilities\Singleton {
+final class Activator {
 	/**
      * Current WordPress version
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      protected
+	 * @access      private
 	 * 
 	 * @var         string         $WP_version       Current WordPress version
 	 */
-	protected $WP_version;
+	private $WP_version;
 
 	/**
      * Required WordPress version
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      protected
+	 * @access      private
 	 * 
 	 * @var         string         $required_WP       Required minimum WordPress version
 	 */
-	protected $required_WP;
+	private $required_WP;
 
     /**
      * Error messages
      *
      * @since       Jentil 0.1.0
-     * @access      protected
+     * @access      private
      * 
      * @var         array         $messages       Error messages
      */
-    protected $messages;
+    private $messages;
 
 	/**
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      protected
+	 * @access      public
 	 */
-	protected function __construct() {
+	public function __construct() {
 	    $this->WP_version = get_bloginfo( 'version' );
 
         /**

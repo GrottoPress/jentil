@@ -31,6 +31,10 @@ require get_template_directory() . '/vendor/autoload.php';
  * @since 		Jentil 0.1.0
  */
 function run() {
+	if ( ! ( new Setup\Activator() )->checks() ) {
+		return;
+	}
+
 	$jentil = Setup\Jentil::instance();
 	$jentil->run();
 }

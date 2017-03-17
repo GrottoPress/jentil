@@ -47,10 +47,6 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      public
 	 */
 	public function run() {
-		if ( ! $this->activator()->checks() ) {
-			return;
-		}
-
 		$this->language();
 		$this->enqueue();
 		$this->thumbnails();
@@ -67,18 +63,6 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->colophon();
 		$this->customizer();
 		$this->metaboxes();
-	}
-
-	/**
-     * Activator
-	 *
-	 * @since       Jentil 0.1.0
-	 * @access      private
-	 *
-	 * @return      \GrottoPress\Jentil\Setup\Activator         Activator
-	 */
-	private function activator() {
-		return Activator::instance();
 	}
 
 	/**
