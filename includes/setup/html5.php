@@ -72,21 +72,21 @@ final class HTML5 extends MagPack\Utilities\Singleton {
      * @filter      language_attributes
      */
     public function html_tag_schema( $output ) {
-        if ( is_admin() ) {
+        $template = new Utilities\Template\Template();
+
+        if ( $template->is( 'admin' ) || $template->is( 'login' ) || $template->is( 'register' ) ) {
             return $output;
         }
 
-        global $jentil_template;
-
         $output .= ' itemscope itemtype="http://schema.org/';
 
-        if ( $jentil_template->is( 'home' ) ) {
+        if ( $template->is( 'home' ) ) {
             $output .= 'Blog';
-        } elseif ( $jentil_template->is( 'author' ) ) {
+        } elseif ( $template->is( 'author' ) ) {
             $output .= 'ProfilePage';
-        } elseif ( $jentil_template->is( 'search' ) ) {
+        } elseif ( $template->is( 'search' ) ) {
             $output .= 'SearchResultsPage';
-        } elseif ( $jentil_template->is( 'singular', 'post' ) ) {
+        } elseif ( $template->is( 'singular', 'post' ) ) {
             $output .= 'BlogPosting';
         } else {
             $output .= 'WebPage';
