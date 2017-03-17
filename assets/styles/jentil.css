@@ -658,6 +658,13 @@ body,
     margin-right: auto;
 }
 
+.full-screen {
+    margin-left: -9999px;
+    margin-right: -9999px;
+    padding-left: 9999px;
+    padding-right: 9999px;
+}
+
 #footer-wrap {
     margin-bottom: 0;
 }
