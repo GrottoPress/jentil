@@ -82,6 +82,6 @@ final class Title extends MagPack\Utilities\Wizard {
             }
         }
 
-        return $mod->get( 'default' );
+        return ( new Utilities\Mods\Title() )->get( 'default' );
     }
 }
