@@ -128,27 +128,33 @@ final class Posts extends MagPack\Utilities\Wizard {
         global $post;
 
 		return array(
-			'layout' 				=> 'stack',
-			'more_link' 			=> '',
+			'layout' => 'stack',
+			'id' => 'main-query',
+			'class' => 'singular-post',
 
-			'excerpt' 				=> 'content',
-			'content_pag' 			=> 1,
+			'excerpt' => array(
+				'length' => -2,
+				'paginate' => 1,
+				'more_text'	=> '',
+			),
 
-			'p' 					=> $post->ID,
+			'title' => array(
+				'length' => -1,
+				'position' => 'top',
+				'tag' => 'h1',
+				'link' => 0,
+			),
 
-			'id' 					=> 'main-query',
-			'class' 				=> 'singular-post',
+			'after_title' => array(
+				'type' => 'jentil_singular_after_title',
+			),
 
-			'title_words' 			=> -1,
-			'title_pos' 			=> 'top',
-			'title_tag' 			=> 'h1',
-			'title_link' 			=> 0,
-
-			'after_title' 			=> 'jentil_singular_after_title',
-
-			'posts_per_page' 		=> 1,
-			'post_type' 			=> $post->post_type,
-			'ignore_sticky_posts' 	=> 1,
+			'wp_query' => array(
+				'posts_per_page' => 1,
+				'post_type' => $post->post_type,
+				'p' => $post->ID,
+				'ignore_sticky_posts' => 1,
+			),
 		);
     }
 
@@ -174,59 +180,75 @@ final class Posts extends MagPack\Utilities\Wizard {
      */
     private function archives_query_args() {
         $args = array(
-			'layout' 				=> $this->mod( 'layout' ),
-
-			'img' 					=> $this->mod( 'image' ),
-			'img_align' 			=> $this->mod( 'image_alignment' ),
-
-			'after_title' 			=> $this->mod( 'after_title' ),
-			'after_title_sep' 		=> $this->mod( 'after_title_separator' ),
-			'after_content' 		=> $this->mod( 'after_content' ),
-			'after_content_sep' 	=> $this->mod( 'after_content_separator' ),
-			'before_title' 			=> $this->mod( 'before_title' ),
-			'before_title_sep' 		=> $this->mod( 'before_title_separator' ),
-
-			'excerpt' 				=> $this->mod( 'excerpt' ),
-			'content_pag'			=> 0,
-
-			'pag' 					=> $this->mod( 'pagination' ),
-			'pag_max' 				=> $this->mod( 'pagination_maximum' ),
-			'pag_pos' 				=> $this->mod( 'pagination_position' ),
-			'pag_prev_label' 		=> $this->mod( 'pagination_previous_label' ),
-			'pag_next_label' 		=> $this->mod( 'pagination_next_label' ),
-
-			// 'wrap_tag' 				=> $this->mod( 'wrap_tag' ),
-			'class' 				=> $this->mod( 'wrap_class' ),
-			'id' 					=> 'main-query',
-
-			'title_words' 			=> $this->mod( 'title_words' ),
-			'title_pos' 			=> $this->mod( 'title_position' ),
-			'title_tag' 			=> 'h2',
-			'title_link' 			=> 1,
-
+        	// 'tag' => $this->mod( 'wrap_tag' ),
+			'class' => $this->mod( 'wrap_class' ),
+			'id' => 'main-query',
+			'layout' => $this->mod( 'layout' ),
 			'text_offset' 			=> $this->mod( 'text_offset' ),
-			'more_link' 			=> $this->mod( 'more_link' ),
 
-			'post_type' 			=> get_query_var( 'post_type' ),
-			'posts_per_page' 		=> $this->mod( 'number' ),
-			's' 					=> get_search_query(),
-			'post__not_in'			=> ( $this->sticky_enabled ? $this->sticky_posts : null ),
-			'post_status' 			=> 'publish',
-			'ignore_sticky_posts' 	=> 1,
+			'image' => array(
+				'size' => $this->mod( 'image' ),
+				'align' => $this->mod( 'image_alignment' ),
+			),
+
+			'after_title' => array(
+				'info' => $this->mod( 'after_title' ),
+				'sep' => $this->mod( 'after_title_separator' ),
+			),
+
+			'after_content' => array(
+				'info' => $this->mod( 'after_content' ),
+				'sep' => $this->mod( 'after_content_separator' ),
+			),
+
+			'before_title' => array(
+				'info' => $this->mod( 'before_title' ),
+				'sep' => $this->mod( 'before_title_separator' ),
+			),
+
+			'excerpt' => array(
+				'length' => $this->mod( 'excerpt' ),
+				'paginate' => 0,
+				'more_text' => $this->mod( 'more_link' ),
+			),
+
+			'pagination' => array(
+				'type' => $this->mod( 'pagination' ),
+				'max' => $this->mod( 'pagination_maximum' ),
+				'position' => $this->mod( 'pagination_position' ),
+				'prev_text' => $this->mod( 'pagination_previous_label' ),
+				'next_text' => $this->mod( 'pagination_next_label' ),
+			),
+
+			'title' => array(
+				'length' => $this->mod( 'title_words' ),
+				'position' => $this->mod( 'title_position' ),
+				'tag' => 'h2',
+				'link' => 1,
+			),
+
+			'wp_query' => array(
+				'post_type' => get_query_var( 'post_type' ),
+				'posts_per_page' => $this->mod( 'number' ),
+				's' => get_search_query(),
+				'post__not_in' => ( $this->sticky_enabled ? $this->sticky_posts : null ),
+				'post_status' => 'publish',
+				'ignore_sticky_posts' => 1,
+			),
 		);
 
 		if ( $this->template->is( 'search' ) ) {
 			if ( function_exists( 'is_customize_preview' ) ) { // If WP >= 4.0
-				$args['orderby']['all_time_views'] = 'DESC';
-				$args['orderby']['comment_count'] = 'DESC';
+				$args['wp_query']['orderby']['all_time_views'] = 'DESC';
+				$args['wp_query']['orderby']['comment_count'] = 'DESC';
 			} else {
-				$args['orderby'] = 'all_time_views';
-				$args['order'] = 'DESC';
+				$args['wp_query']['orderby'] = 'all_time_views';
+				$args['wp_query']['order'] = 'DESC';
 			}
 		}
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
-			$args['tax_query'] = array( 
+			$args['wp_query']['tax_query'] = array( 
 				array(
 					'taxonomy' 		=> $taxonomy,
 					'terms' 		=> get_query_var( 'term' ),
@@ -236,7 +258,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		if ( get_query_var( 'year' ) || get_query_var( 'monthnum' ) || get_query_var( 'day' ) ) {
-			$args['date_query'] = array(
+			$args['wp_query']['date_query'] = array(
 				array(
 					'year' 			=> get_query_var( 'year' ),
 					'month' 		=> get_query_var( 'monthnum' ),
@@ -246,47 +268,47 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
-			$args['cat']	= $cat;
+			$args['wp_query']['cat']	= $cat;
 		}
 
 		if ( ( $cat_in = get_query_var( 'category__in' ) ) ) {
-			$args['category__in']	= $cat_in;
+			$args['wp_query']['category__in']	= $cat_in;
 		}
 
 		if ( ( $cat_not_in = get_query_var( 'category__not_in' ) ) ) {
-			$args['category__not_in']	= $cat_not_in;
+			$args['wp_query']['category__not_in']	= $cat_not_in;
 		}
 
 		if ( ( $cat_and = get_query_var( 'category__and' ) ) ) {
-			$args['category__and']	= $cat_and;
+			$args['wp_query']['category__and']	= $cat_and;
 		}
 
 		if ( ( $tag_id = get_query_var( 'tag_id' ) ) ) {
-			$args['tag_id']	= $tag_id;
+			$args['wp_query']['tag_id']	= $tag_id;
 		}
 
 		if ( ( $tag_in = get_query_var( 'tag__in' ) ) ) {
-			$args['tag__in']	= $tag_in;
+			$args['wp_query']['tag__in']	= $tag_in;
 		}
 
 		if ( ( $tag_not_in = get_query_var( 'tag__not_in' ) ) ) {
-			$args['tag__not_in']	= $tag_not_in;
+			$args['wp_query']['tag__not_in']	= $tag_not_in;
 		}
 
 		if ( ( $tag_and = get_query_var( 'tag__and' ) ) ) {
-			$args['tag__and']	= $tag_and;
+			$args['wp_query']['tag__and']	= $tag_and;
 		}
 
 		if ( ( $author_id = get_query_var( 'author' ) ) ) {
-			$args['author'] = $author_id;
+			$args['wp_query']['author'] = $author_id;
 		}
 
 		if ( ( $author_in = get_query_var( 'author__in' ) ) ) {
-			$args['author__in'] = $author_in;
+			$args['wp_query']['author__in'] = $author_in;
 		}
 
 		if ( ( $author_not_in = get_query_var( 'author__not_in' ) ) ) {
-			$args['author__not_in'] = $author_not_in;
+			$args['wp_query']['author__not_in'] = $author_not_in;
 		}
 
 		return $args;
@@ -314,41 +336,55 @@ final class Posts extends MagPack\Utilities\Wizard {
      */
     private function sticky_query_args() {
         $args = array(
-			'layout' 				=> $this->sticky_mod( 'layout' ),
+        	// 'tag' => $this->sticky_mod( 'wrap_tag' ),
+			'class' => $this->sticky_mod( 'wrap_class' ),
+			'id' => 'main-query-sticky-posts',
+			'layout' => $this->sticky_mod( 'layout' ),
+			'text_offset' => $this->sticky_mod( 'text_offset' ),
 
-			'img' 					=> $this->sticky_mod( 'image' ),
-			'img_align' 			=> $this->sticky_mod( 'image_alignment' ),
+			'image' => array(
+				'size' => $this->sticky_mod( 'image' ),
+				'align' => $this->sticky_mod( 'image_alignment' ),
+			),
 
-			'after_title' 			=> $this->sticky_mod( 'after_title' ),
-			'after_title_sep' 		=> $this->sticky_mod( 'after_title_separator' ),
-			'after_content' 		=> $this->sticky_mod( 'after_content' ),
-			'after_content_sep' 	=> $this->sticky_mod( 'after_content_separator' ),
-			'before_title' 			=> $this->sticky_mod( 'before_title' ),
-			'before_title_sep' 		=> $this->sticky_mod( 'before_title_separator' ),
+			'after_title' => array(
+				'info' => $this->sticky_mod( 'after_title' ),
+				'sep' => $this->sticky_mod( 'after_title_separator' ),
+			),
 
-			'excerpt' 				=> $this->sticky_mod( 'excerpt' ),
-			'content_pag'			=> 0,
+			'after_content' => array(
+				'info' => $this->sticky_mod( 'after_content' ),
+				'sep' => $this->sticky_mod( 'after_content_separator' ),
+			),
 
-			// 'wrap_tag' 				=> $this->sticky_mod( 'wrap_tag' ),
-			'class' 				=> $this->sticky_mod( 'wrap_class' ),
-			'id' 					=> 'main-query-sticky-posts',
+			'before_title' => array(
+				'info' => $this->sticky_mod( 'before_title' ),
+				'sep' => $this->sticky_mod( 'before_title_separator' ),
+			),
 
-			'title_words' 			=> $this->sticky_mod( 'title_words' ),
-			'title_pos' 			=> $this->sticky_mod( 'title_position' ),
-			'title_tag' 			=> 'h2',
-			'title_link' 			=> 1,
+			'excerpt' => array(
+				'length' => $this->sticky_mod( 'excerpt' ),
+				'paginate' => 0,
+				'more_text' => $this->sticky_mod( 'more_link' ),
+			),
 
-			'text_offset' 			=> $this->sticky_mod( 'text_offset' ),
-			'more_link' 			=> $this->sticky_mod( 'more_link' ),
+			'title' => array(
+				'length' => $this->sticky_mod( 'title_words' ),
+				'position' => $this->sticky_mod( 'title_position' ),
+				'tag' => 'h2',
+				'link' => 1,
+			),
 
-			'posts_per_page' 		=> -1,
-			'post__in'				=> $this->sticky_posts,
-			'post_status' 			=> 'publish',
-			'ignore_sticky_posts' 	=> 1,
+			'wp_query' => array(
+				'posts_per_page' 		=> -1,
+				'post__in'				=> $this->sticky_posts,
+				'post_status' 			=> 'publish',
+				'ignore_sticky_posts' 	=> 1,
+			),
 		);
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
-			$args['tax_query'] = array( 
+			$args['wp_query']['tax_query'] = array( 
 				array(
 					'taxonomy' 		=> $taxonomy,
 					'terms' 		=> get_query_var( 'term_id' ),
@@ -358,7 +394,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		if ( get_query_var( 'year' ) || get_query_var( 'monthnum' ) || get_query_var( 'day' ) ) {
-			$args['date_query'] = array(
+			$args['wp_query']['date_query'] = array(
 				array(
 					'year' 			=> get_query_var( 'year' ),
 					'month' 		=> get_query_var( 'monthnum' ),
@@ -368,51 +404,51 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		// if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
-			$args['post_type'] = get_query_var( 'post_type' );
+			$args['wp_query']['post_type'] = get_query_var( 'post_type' );
 		// }
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
-			$args['cat']	= $cat;
+			$args['wp_query']['cat']	= $cat;
 		}
 
 		if ( ( $cat_in = get_query_var( 'category__in' ) ) ) {
-			$args['category__in']	= $cat_in;
+			$args['wp_query']['category__in']	= $cat_in;
 		}
 
 		if ( ( $cat_not_in = get_query_var( 'category__not_in' ) ) ) {
-			$args['category__not_in']	= $cat_not_in;
+			$args['wp_query']['category__not_in']	= $cat_not_in;
 		}
 
 		if ( ( $cat_and = get_query_var( 'category__and' ) ) ) {
-			$args['category__and']	= $cat_and;
+			$args['wp_query']['category__and']	= $cat_and;
 		}
 
 		if ( ( $tag_id = get_query_var( 'tag_id' ) ) ) {
-			$args['tag_id']	= $tag_id;
+			$args['wp_query']['tag_id']	= $tag_id;
 		}
 
 		if ( ( $tag_in = get_query_var( 'tag__in' ) ) ) {
-			$args['tag__in']	= $tag_in;
+			$args['wp_query']['tag__in']	= $tag_in;
 		}
 
 		if ( ( $tag_not_in = get_query_var( 'tag__not_in' ) ) ) {
-			$args['tag__not_in']	= $tag_not_in;
+			$args['wp_query']['tag__not_in']	= $tag_not_in;
 		}
 
 		if ( ( $tag_and = get_query_var( 'tag__and' ) ) ) {
-			$args['tag__and']	= $tag_and;
+			$args['wp_query']['tag__and']	= $tag_and;
 		}
 
 		if ( ( $author_id = get_query_var( 'author' ) ) ) {
-			$args['author'] = $author_id;
+			$args['wp_query']['author'] = $author_id;
 		}
 
 		if ( ( $author_in = get_query_var( 'author__in' ) ) ) {
-			$args['author__in'] = $author_in;
+			$args['wp_query']['author__in'] = $author_in;
 		}
 
 		if ( ( $author_not_in = get_query_var( 'author__not_in' ) ) ) {
-			$args['author__not_in'] = $author_not_in;
+			$args['wp_query']['author__not_in'] = $author_not_in;
 		}
 
 		return $args;
