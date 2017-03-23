@@ -62,18 +62,6 @@ final class Logo extends Setup\Customizer\Setting {
      * @var     \GrottoPress\Jentil\Utilities\Logo\Logo     $ulogo       Logo utility
      */
     private $ulogo;
-
-    /**
-     * Are we using WordPress 4.3 or newer
-     *
-     * Does \WP_Customize_Cropped_Image_Control exist?
-     *
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @var     boolean     $cropped_image_control      \WP_Customize_Cropped_Image_Control exists?
-     */
-    private $cropped_image_control;
     
     /**
 	 * Constructor
@@ -85,35 +73,34 @@ final class Logo extends Setup\Customizer\Setting {
         $this->logo = $logo;
 
         $this->ulogo = new Utilities\Logo();
-        $this->cropped_image_control = class_exists( '\WP_Customize_Cropped_Image_Control' );
 
         $this->mod = new Utilities\Mods\Logo();
 
         $this->name = $this->mod->get( 'name' );
         
         $this->args = array(
-            'transport' => 'postMessage',
+            // 'transport' => 'postMessage',
             'default' => $this->mod->get( 'default' ),
             'sanitize_callback' => function ( $logo ) {
-                if ( $this->cropped_image_control ) {
-                    return absint( $logo );
+                if ( ( $id = attachment_url_to_postid( $logo ) ) ) {
+                    return $id;
                 }
 
-                return attachment_url_to_postid( $logo );
+                return absint( $logo );
             },
         );
 
-        $logo_raw = $this->ulogo->raw_attributes();
+        $atts = $this->ulogo->attributes();
 
         $this->control = array(
             'label'         => esc_html__( 'Logo', 'jentil' ),
             'section'       => 'title_tagline',
             'settings'      => $this->name,
             'priority'      => 8,
-            'height'        => absint( $logo_raw['height'] ),
-            'width'         => absint( $logo_raw['width'] ),
-            'flex_height'   => ( bool ) $logo_raw['flex-height'],
-            'flex_width'    => ( bool ) $logo_raw['flex-width'],
+            'height'        => absint( $atts['height'] ),
+            'width'         => absint( $atts['width'] ),
+            'flex_height'   => ( bool ) $atts['flex-height'],
+            'flex_width'    => ( bool ) $atts['flex-width'],
             'button_labels' => array(
                 'select'       => esc_html__( 'Select logo', 'jentil' ),
                 'change'       => esc_html__( 'Change logo', 'jentil' ),
@@ -139,7 +126,7 @@ final class Logo extends Setup\Customizer\Setting {
 
         $wp_customize->add_setting( $this->name, $this->args );
 
-        if ( $this->cropped_image_control ) {
+        if ( class_exists( '\WP_Customize_Cropped_Image_Control' ) ) {
             $wp_customize->add_control( new \WP_Customize_Cropped_Image_Control(
                  $wp_customize, $this->name, $this->control
             ) );

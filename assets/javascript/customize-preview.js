@@ -32,15 +32,15 @@
      * Logo
      */
     
-    wp.customize( 'custom_logo', function( value ) {
-        value.bind( function( to ) {
-            var logo = $( '.jentil-logo-link .custom-logo' );
-            var width = logo.attr( 'data-width' );
-            var height = logo.attr( 'data-height' );
-            var src = logo.attr( 'data-src' );
-            var alt = logo.attr( 'data-alt' );
+    // wp.customize( 'custom_logo', function( value ) {
+    //     value.bind( function( to ) {
+    //         var logo = $( '.custom-logo-link .custom-logo' );
+    //         var width = logo.attr( 'data-width' );
+    //         var height = logo.attr( 'data-height' );
+    //         var src = logo.attr( 'data-src' );
+    //         var alt = logo.attr( 'data-alt' );
             
-            $( '.jentil-logo-link' ).removeAttr( 'style' ).html( '<img class="custom-logo" width="' + width + '" height="' + height + '" src="' + src + '" alt="' + alt + '" itemprop="logo" />' );
-        });
-    });
+    //         $( '.custom-logo-link' ).removeAttr( 'style' ).html( '<img class="custom-logo" width="' + width + '" height="' + height + '" src="' + src + '" alt="' + alt + '" itemprop="logo" />' );
+    //     });
+    // });
 })( jQuery );
