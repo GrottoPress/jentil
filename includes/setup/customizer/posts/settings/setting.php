@@ -75,7 +75,7 @@ abstract class Setting extends Setup\Customizer\Setting {
      *
      * @return      \GrottoPress\Jentil\Utilities\Mod\Posts     Posts mod
      */
-    protected function mod( $setting ) {
+    protected final function mod( $setting ) {
         return ( new Utilities\Mods\Posts( $setting, $this->content->get( 'mod_args' ) ) );
     }
 }

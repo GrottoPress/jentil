@@ -111,7 +111,7 @@ abstract class Panel extends MagPack\Utilities\Wizard {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function add( $wp_customize ) {
+    public final function add( $wp_customize ) {
         if ( $this->name ) {
             $wp_customize->add_panel( $this->name, $this->args );
         }
