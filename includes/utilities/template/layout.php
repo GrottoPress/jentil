@@ -134,35 +134,7 @@ final class Layout extends MagPack\Utilities\Wizard {
 	 * @return      array          Layout IDs/slugs
 	 */
 	public function layouts_ids() {
-	    $layout_ids = array();
-	    
-    	foreach ( $this->layouts_ids_names() as $layout_id => $layout_name ) {
-			$layout_ids[] = sanitize_title( $layout_id );
-		}
-    
-    	return $layout_ids;
-	}
-	
-	/**
-	 * Array of layout ids mapping to names
-	 * 
-	 * Used to build a dropdown of layouts.
-	 * 
-	 * @since       Jentil 0.1.0
-	 * @access      public
-	 * 
-	 * @return      array          Layout IDs/slugs
-	 */
-	public function layouts_ids_names() {
-	    $return = array();
-	    
-    	foreach ( $this->layouts() as $column_type => $layouts ) {
-    		foreach ( $layouts as $layout_id => $layout_name ) {
-    			$return[ sanitize_title( $layout_id ) ] = sanitize_text_field( $layout_name );
-    		}
-    	}
-    
-    	return $return;
+        return array_map( 'sanitize_title', array_keys( $this->layouts_ids_names() ) );
 	}
 	
 	/**
@@ -174,14 +146,30 @@ final class Layout extends MagPack\Utilities\Wizard {
 	 * @return      array           Layout columns
 	 */
 	public function layouts_columns() {
-	    $layout_columns = array();
-	    
-    	foreach ( $this->layouts() as $column_slug => $layouts ) {
-    		$layout_columns[] = sanitize_title( $column_slug );
-    	}
-    
-    	return $layout_columns;
+	    return array_map( 'sanitize_title', array_keys( $this->layouts() ) );
 	}
+
+    /**
+     * Array of layout ids mapping to names
+     * 
+     * Used to build a dropdown of layouts.
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      array          Layout IDs/slugs
+     */
+    public function layouts_ids_names() {
+        $return = array();
+        
+        foreach ( $this->layouts() as $column_type => $layouts ) {
+            foreach ( $layouts as $layout_id => $layout_name ) {
+                $return[ sanitize_title( $layout_id ) ] = sanitize_text_field( $layout_name );
+            }
+        }
+    
+        return $return;
+    }
 	
 	/**
 	 * Get column
