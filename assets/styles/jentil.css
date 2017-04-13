@@ -317,11 +317,11 @@ ol ul:last-child {
     margin-bottom: 0;
 }
 
-#main-wrap:first-child #main {
+#main:first-child {
     padding-top: 20px;
 }
 
-#main-wrap:last-child #main {
+#main:last-child {
     padding-bottom: 20px;
 }
 
@@ -663,10 +663,6 @@ body,
     margin-right: -9999px;
     padding-left: 9999px;
     padding-right: 9999px;
-}
-
-#footer-wrap {
-    margin-bottom: 0;
 }
 
 /**
