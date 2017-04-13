@@ -75,10 +75,6 @@ final class Posts extends MagPack\Utilities\Singleton {
             $classes[] = comments_open( $post->ID ) ? 'comments-open' : 'comments-closed';
         }
 
-        if ( has_shortcode( $post->post_content, 'magpack_posts' ) ) {
-            $classes[] = 'has-magpack-posts'; // Move to MagPack?
-        }
-
         return $classes;
     }
 

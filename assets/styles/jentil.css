@@ -1369,7 +1369,7 @@ label > * {
 }
 
 .page-title,
-.page.has-magpack-posts #content > .posts-wrap > .post-wrap > header > .entry-title {
+.page.has-magpack-posts .singular-post > .post-wrap > header > .entry-title {
     color: #999;
     font-size: 22px;
     font-size: 2.2rem;
@@ -1572,15 +1572,15 @@ label > * {
         max-width: 960px;
     }
 
-    /*.page.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content,
-    .single.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content {
+    /*.page.layout-one-column .singular-post > .post-wrap > .entry-content,
+    .single.layout-one-column .singular-post > .post-wrap > .entry-content {
     	max-width: 700px;
     	margin-left: auto;
     	margin-right: auto;
     }
 
-    .page.has-magpack-posts.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content,
-    .attachment.layout-one-column #content > .posts-wrap > .post-wrap > .entry-content {
+    .page.has-magpack-posts.layout-one-column .singular-post > .post-wrap > .entry-content,
+    .attachment.layout-one-column .singular-post > .post-wrap > .entry-content {
         max-width: none;
     }
 
