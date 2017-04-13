@@ -1310,6 +1310,7 @@ label > * {
     margin: 0;
     border: 1px solid #ddd;
     padding: 1px;
+    background-color: #fff;
     position: relative;
 
     -moz-border-radius: 3px;
