@@ -48,6 +48,7 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
+		<div id="wrap" class="site hfeed">
 		
 		<?php
 		/**

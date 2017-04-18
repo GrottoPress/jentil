@@ -13,44 +13,45 @@
 
 ?>
 				
-		</div><!-- #main -->
-		
-		<?php
-		/**
-		 * Do action before footer
-		 * 
-		 * @action		jentil_before_footer
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_before_footer' ); ?>
-
-		<footer id="footer" class="site-footer hobbit margin-vertical" itemscope itemtype="http://schema.org/WPFooter">
-		
+			</div><!-- #main -->
+			
 			<?php
 			/**
-			 * Do action inside footer
+			 * Do action before footer
 			 * 
-			 * @action		jentil_inside_footer
+			 * @action		jentil_before_footer
 			 *
 			 * @since       Jentil 0.1.0
 			 */
-			do_action( 'jentil_inside_footer' ); ?>
+			do_action( 'jentil_before_footer' ); ?>
+
+			<footer id="footer" class="site-footer hobbit margin-vertical" itemscope itemtype="http://schema.org/WPFooter">
 			
-		</footer><!-- #footer -->
+				<?php
+				/**
+				 * Do action inside footer
+				 * 
+				 * @action		jentil_inside_footer
+				 *
+				 * @since       Jentil 0.1.0
+				 */
+				do_action( 'jentil_inside_footer' ); ?>
+				
+			</footer><!-- #footer -->
+			
+			<?php
+			/**
+			 * Do the WordPress footer action
+			 * 
+			 * This is required by most plugins to include their
+			 * own code into the footer of the theme.
+			 * 
+			 * @action		wp_footer
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			wp_footer(); ?>
 		
-		<?php
-		/**
-		 * Do the WordPress footer action
-		 * 
-		 * This is required by most plugins to include their
-		 * own code into the footer of the theme.
-		 * 
-		 * @action		wp_footer
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		wp_footer(); ?>
-		
+		</div><!-- #wrap -->
 	</body>
 </html>

@@ -17,7 +17,7 @@ html {
     font-size: 10px;
     -webkit-text-size-adjust: none;
     text-align: center;
-    overflow-x: hidden !important;
+    overflow-x: hidden;
 }
 
 *,
@@ -34,6 +34,9 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   	line-height: 160%;
   	text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-x: hidden;
 
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
@@ -645,14 +648,7 @@ li {
  * Layout
  */
 
-html,
-.wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-body,
-.inner {
+#wrap {
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
@@ -1564,8 +1560,7 @@ label > * {
      * Layout
      */
 
-     body,
-    .inner {
+    #wrap {
         max-width: 960px;
     }
 
