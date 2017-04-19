@@ -17,7 +17,7 @@ html {
     font-size: 10px;
     -webkit-text-size-adjust: none;
     text-align: center;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 *,
@@ -36,7 +36,7 @@ body {
   	text-align: left;
     padding-left: 20px;
     padding-right: 20px;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
