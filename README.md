@@ -1,7 +1,7 @@
 # Jentil WordPress Theme
 
 * Author: [@grottopress](https://gitlab.com/GrottoPress)
-* Author Website: [https://grottopress.com](https://www.grottopress.com)
+* Author Website: [https://www.grottopress.com](https://www.grottopress.com)
 * Contributor(s): [@akadusei](https://gitlab.com/akadusei)
 * License: [GNU General Public License v2.0 or later](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -9,7 +9,9 @@
 
 Jentil is a modern WordPress theme, suitable for use as a parent theme from which child themes can be derived.
 
-Jentil can be used to build magazine websites, e-commerce sites, corporate websites and more. It integrates seamlessly with most WordPress page builders including:
+Jentil can be used to build magazine websites, e-commerce sites, corporate websites and more.
+
+It integrates seamlessly with most WordPress page builders including:
 
 - [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
 - [SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
@@ -23,12 +25,12 @@ Jentil can be used to build magazine websites, e-commerce sites, corporate websi
 - SEO-ready
 - Responsive (mobile-ready)
 - Six (6) layout options
-  * Content
-  * Content / Sidebar
-  * Sidbar / Content
-  * Sidebar / Content / Sidebar
-  * Content / Sidebar / Sidebar
-  * Sidebar / Sidebar / Content
+ * Content
+ * Content / Sidebar
+ * Sidbar / Content
+ * Sidebar / Content / Sidebar
+ * Content / Sidebar / Sidebar
+ * Sidebar / Sidebar / Content
 - Powerful content options: Configure posts display on archive templates
 - Fully responsive menu with graceful non-javascript fallback
 - Coded according to the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards)
@@ -51,19 +53,19 @@ Lastly, Jentil needs NPM installed.
 
 - Clone this repository
 
-`git clone https://akadusei@gitlab.com/GrottoPress/jentil.git`
+ `git clone https://akadusei@gitlab.com/GrottoPress/jentil.git`
 
 - Change to `jentil` directory
 
-`cd jentil`
+ `cd jentil`
 
 - Update packages (you should have composer installed)
 
-`composer update`
+ `composer update`
 
 - Update npm (you should have npm installed)
 
-`npm update`
+ `npm update`
 
 - You're done.
 
