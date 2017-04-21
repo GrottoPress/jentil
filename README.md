@@ -43,14 +43,28 @@ This theme requires WordPress version **4.3** or newer, and the [MagPack](https:
 
 Minimum required PHP version is **5.3**. The theme requires composer PHP dependency manager.
 
+Lastly, Jentil needs NPM installed.
+
 ## Installation
 
+- Change to your `wp-content/themes` directory.
+
 - Clone this repository
+
 `git clone https://akadusei@gitlab.com/GrottoPress/jentil.git`
-- Change to theme directory
+
+- Change to `jentil` directory
+
 `cd jentil`
+
 - Update packages (you should have composer installed)
+
 `composer update`
+
+- Update npm (you should have npm installed)
+
+`npm update`
+
 - You're done.
 
 ## Showcase
