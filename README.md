@@ -51,23 +51,23 @@ Lastly, Jentil needs NPM installed.
 
 - Change to your `wp-content/themes` directory.
 
-- Clone this repository
+- Clone this repository  
+ `git clone https://gitlab.com/GrottoPress/jentil.git`
 
- `git clone https://akadusei@gitlab.com/GrottoPress/jentil.git`
-
-- Change to `jentil` directory
-
+- Change to `jentil` directory  
  `cd jentil`
 
-- Update packages (you should have composer installed)
-
+- Update packages (you should have composer installed)  
  `composer update`
 
-- Update npm (you should have npm installed)
-
+- Update npm (you should have npm installed)  
  `npm update`
 
 - You're done.
+
+## Example Child theme
+
+Link to be posted soon...
 
 ## Showcase
 
