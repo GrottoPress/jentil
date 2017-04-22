@@ -41,11 +41,11 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Dependencies
 
-This theme requires WordPress version **4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
+This theme requires **WordPress version 4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
 
-Minimum required PHP version is **5.3**. The theme requires composer PHP dependency manager.
+Minimum required **PHP version** is **5.3**. The theme requires [composer](https://getcomposer.org/).
 
-Lastly, Jentil needs NPM installed.
+Lastly, Jentil needs [npm](https://www.npmjs.com/) installed.
 
 ## Installation
 
@@ -57,17 +57,15 @@ Lastly, Jentil needs NPM installed.
 - Change to `jentil` directory  
  `cd jentil`
 
-- Update packages (you should have composer installed)  
- `composer update`
-
-- Update npm (you should have npm installed)  
+- Update packages (you should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed  
+ `composer update`  
  `npm update`
 
 - You're done.
 
-## Example Child theme
+## Example Child Theme
 
-Link to be posted soon...
+Link(s) to be posted soon...
 
 ## Showcase
 
