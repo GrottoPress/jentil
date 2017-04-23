@@ -57,7 +57,7 @@ Lastly, Jentil needs [npm](https://www.npmjs.com/) installed.
 - Change to `jentil` directory  
  `cd jentil`
 
-- Update packages (you should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed  
+- Update packages (you should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed)  
  `composer update`  
  `npm update`
 
@@ -69,6 +69,6 @@ Link(s) to be posted soon...
 
 ## Showcase
 
-The following websites are powered by Jentil (using child themes):
+The following websites are powered by Jentil:
 
 - [GrottoPress](https://www.grottopress.com)
