@@ -1657,8 +1657,7 @@ label > * {
     	margin-left: 21.06%;
     }
 
-    .layout-sidebar-content-sidebar #primary-widget-area-wrap,
-    .layout-sidebar-content-sidebar #secondary-widget-area-wrap {
+    .layout-sidebar-content-sidebar .sidebar-wrap {
     	float: left;
     }
 
@@ -1682,8 +1681,7 @@ label > * {
     	margin-left: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
-    .layout-sidebar-sidebar-content #secondary-widget-area-wrap,
-    .layout-sidebar-sidebar-content #primary-widget-area-wrap {
+    .layout-sidebar-sidebar-content .sidebar-wrap {
         padding-right: 20px;
     }
 
@@ -1707,8 +1705,7 @@ label > * {
     	margin-right: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
-    .layout-content-sidebar-sidebar #secondary-widget-area-wrap,
-    .layout-content-sidebar-sidebar #primary-widget-area-wrap {
+    .layout-content-sidebar-sidebar .sidebar-wrap {
         padding-left: 20px;
     }
 
