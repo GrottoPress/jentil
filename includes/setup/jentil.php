@@ -191,7 +191,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_action( 'after_setup_theme', array( $menus, 'register' ) );
 		add_action( 'jentil_inside_header', array( $menus, 'header_menu' ) );
 		add_action( 'jentil_inside_header', array( $menus, 'mobile_header_menu_toggle' ) );
-		add_action( 'jentil_after_header', array( $menus, 'mobile_header_menu' ) );
+		add_action( 'jentil_inside_header', array( $menus, 'mobile_header_menu' ) );
 	}
 
 	/**

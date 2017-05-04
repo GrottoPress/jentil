@@ -467,11 +467,11 @@ blockquote p:last-child {
 .screen-reader-text:focus {
     clip: auto !important;
     display: block;
-    height: auto;
     left: 5px;
     top: 5px;
     width: auto;
-    z-index: 100000;
+    height: auto;
+    z-index: 9999;
 }
 
 /**
@@ -890,8 +890,14 @@ blockquote {
     font-size: 1.3rem;
 }
 
-.menu-toggle .menu {
+/** Toggle buttons */
+
+#header .menu-toggle {
     text-align: center;
+}
+
+.menu-toggle a {
+    display: block;
 }
 
 /*.menu-toggle .menu a:before {
@@ -899,8 +905,6 @@ blockquote {
     line-height: 14px;
     margin-right: 5px;
 }*/
-
-/** Toggle buttons */
 
 .sub-menu-toggle {
     background-color: transparent;
@@ -942,7 +946,7 @@ blockquote {
     display: none;
 }
 
-.site-navigation.screen-max-wide .search-wrap {
+#header .site-navigation.screen-max-wide .search-wrap {
     display: block;
 }
 
@@ -1795,9 +1799,9 @@ label > * {
         margin-top: 15px;
     }
 
-    .site-navigation.screen-max-wide .search-wrap {
+    /*.site-navigation.screen-max-wide .search-wrap {
         display: none;
-    }
+    }*/
 
     /**
      * Menus
