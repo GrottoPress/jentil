@@ -45,12 +45,12 @@ final class Search extends MagPack\Utilities\Singleton {
      * @filter      get_search_form
      */
     public function form( $searchform ) {
-        $searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite" itemref="">
+        $searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite">
             <meta itemprop="url" content="' . home_url( '/' ) . '"/>
 
-            <form role="search" method="get" class="form search self-clear" action="' . home_url( '/' ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" itemref="">
+            <form role="search" method="get" class="form search self-clear" action="' . home_url( '/' ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
                 <meta itemprop="target" content="' . home_url( '/' ) . '?s={s}" />
-                <label class="screen-reader-text" for="s">' . esc_html__( 'Search for:', 'jentil' ) . '</label>
+                <label><span class="screen-reader-text">' . esc_html__( 'Search for:', 'jentil' ) . '</span>
 
                 <input itemprop="query-input" type="search" placeholder="' . esc_attr__( 'Search', 'jentil' ) . '" class="input search" name="s" value="';
 
@@ -58,7 +58,7 @@ final class Search extends MagPack\Utilities\Singleton {
                         $searchform .= $query;
                     }
 
-                $searchform .= '" required />
+                $searchform .= '" required /></label>
 
                 <button type="submit" class="button submit">
                     <span class="fa fa-search" aria-hidden="true"></span> <span class="search-button-text icon-text">' . esc_html__( 'Search', 'jentil' ) . '</span>
