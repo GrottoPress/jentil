@@ -27,7 +27,7 @@ global $jentil_template;
 			 */
 			$jentil_nothing_found_content = wp_kses_post( apply_filters(
 				'jentil_nothing_found_content',
-				'<h2 class="entry-title" itemprop="name headline">' . esc_html__( 'Nothing found', 'jentil' ) . '</h2>'
+				'<h2 class="entry-title" itemprop="name headline">' . esc_html__( 'Nothing Found', 'jentil' ) . '</h2>'
 				
 				. '<p>' . esc_html__( 'Sorry, nothing here ):', 'jentil' ) . '</p>',
 				$jentil_template->type()

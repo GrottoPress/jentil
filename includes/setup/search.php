@@ -45,20 +45,20 @@ final class Search extends MagPack\Utilities\Singleton {
      * @filter      get_search_form
      */
     public function form( $searchform ) {
-        $searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite" itemref="">
-            <meta id="meta-search-website" itemprop="url" content="' . home_url( '/' ) . '"/>
+        $searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite">
+            <meta itemprop="url" content="' . home_url( '/' ) . '"/>
 
-            <form role="search" method="get" class="form search self-clear" action="' . esc_attr( home_url( '/' ) ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" itemref="">
-                <meta id="meta-search-target" itemprop="target" content="' . esc_attr( home_url( '/' ) ) . '?s={s}" />
-                <label class="screen-reader-text" for="s">' . esc_html__( 'Search for:', 'jentil' ) . '</label>
+            <form role="search" method="get" class="form search self-clear" action="' . home_url( '/' ) . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+                <meta itemprop="target" content="' . home_url( '/' ) . '?s={s}" />
+                <label><span class="screen-reader-text">' . esc_html__( 'Search for:', 'jentil' ) . '</span>
 
-                <input itemprop="query-input" type="search" placeholder="' . esc_attr__( 'Search', 'jentil' ) . '" class="input search" name="s" id="s" value="';
+                <input itemprop="query-input" type="search" placeholder="' . esc_attr__( 'Search', 'jentil' ) . '" class="input search" name="s" value="';
 
                     if ( ( $query = get_search_query() ) ) {
                         $searchform .= $query;
                     }
 
-                $searchform .= '" required />
+                $searchform .= '" required /></label>
 
                 <button type="submit" class="button submit">
                     <span class="fa fa-search" aria-hidden="true"></span> <span class="search-button-text icon-text">' . esc_html__( 'Search', 'jentil' ) . '</span>
@@ -78,11 +78,11 @@ final class Search extends MagPack\Utilities\Singleton {
 	 * @action      jentil_inside_header
      */
     public function render() {
-    	global $jentil_template;
+    	// global $jentil_template;
 
-        if ( $jentil_template->is( 'search' ) ) {
-            return;
-        }
+        // if ( $jentil_template->is( 'search' ) ) {
+        //     return;
+        // }
 
         get_search_form();
     }

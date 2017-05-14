@@ -66,6 +66,16 @@ final class Customizer extends MagPack\Utilities\Singleton {
     protected $post_types;
 
     /**
+     * Archive Post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $archive_post_types       All post types with archive
+     */
+    protected $archive_post_types = array();
+
+    /**
      * Taxonomies
      *
      * @since       Jentil 0.1.0
@@ -105,7 +115,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'template', 'post_types', 'taxonomies' );
+        return array( 'template', 'post_types', 'archive_post_types', 'taxonomies' );
     }
 
     /**
@@ -128,6 +138,14 @@ final class Customizer extends MagPack\Utilities\Singleton {
             'public' => true,
             'show_ui' => true,
         ), 'objects' );
+
+        if ( $this->post_types ) {
+            foreach ( $this->post_types as $post_type ) {
+                if ( $post_type->has_archive || 'post' == $post_type->name ) {
+                    $this->archive_post_types[] = $post_type;
+                }
+            }
+        }
 
         $this->panels = $this->panels();
 
