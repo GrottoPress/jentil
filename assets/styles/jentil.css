@@ -169,15 +169,15 @@ pre,
 code,
 tt {
 	font-family: Monaco, monospace;
+    font-size: 90%;
+    padding: 2px 4px;
+    background-color: #f4f4f4;
 }
 
 pre {
-	padding: 15px;
+	padding: 10px;
 	border: 1px solid #ddd;
 	overflow: auto;
-	background: #f6f6f6;
-	font-size: 13px;
-	font-size: 1.3rem;
 	line-height: 160%;
 
 	-moz-border-radius: 3px;
@@ -666,13 +666,11 @@ li {
  */
 
 table {
-	font-size: 14px;
-	font-size: 1.4rem;
+	font-size: 90%;
 	line-height: 160%;
-	/*table-layout: fixed;*/
 	width: 100%;
-	/*border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;*/
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 tr,
@@ -693,7 +691,7 @@ tbody {
 }*/
 
 tr:nth-child(even) {
-	background-color: #f6f6f6;
+	background-color: #f4f4f4;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
@@ -713,7 +711,6 @@ th {
 
 th {
 	font-weight: bold;
-	text-align: left;
 }
 
 tr:nth-child(even) td,
@@ -796,7 +793,7 @@ table.aligncenter {
 	font-size: 0; /* Inline-block whitespace fix */
 	line-height: 160%;
 	padding: 15px 5px 5px 15px;
-	background: #f6f6f6;
+	background: #f4f4f4;
 }
 
 .gallery-item {
@@ -1260,7 +1257,7 @@ button {
 }
 
 input:disabled {
-	background-color: #f6f6f6 !important;
+	background-color: #f4f4f4 !important;
 	color: initial !important;
 	border-color: initial !important;
 	border-width: 1px !important;
@@ -1437,7 +1434,7 @@ label > * {
 
 .sticky-posts {
     padding: 20px;
-    background-color: #f6f6f6;
+    background-color: #f4f4f4;
 
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
