@@ -60,6 +60,26 @@ final class Posts extends MagPack\Utilities\Wizard {
 	 * @var 	array 	$sticky_posts 	Sticky posts IDs
 	 */
     protected $sticky_posts;
+
+    /**
+     * Get post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array   $post_types     Array of post type objects
+     */
+    protected $post_types;
+
+    /**
+     * Archive Post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     array      $archive_post_types       All post types with archive
+     */
+    protected $archive_post_types = array();
     
     /**
 	 * Constructor
@@ -71,8 +91,20 @@ final class Posts extends MagPack\Utilities\Wizard {
 	    $this->template = $template;
 
 	    $this->sticky_enabled = $this->sticky_enabled();
-
 	    $this->sticky_posts = $this->sticky_posts();
+
+        $this->post_types = get_post_types( array(
+            'public' => true,
+            'show_ui' => true,
+        ), 'objects' );
+
+        if ( $this->post_types ) {
+            foreach ( $this->post_types as $post_type ) {
+                if ( $post_type->has_archive || 'post' == $post_type->name ) {
+                    $this->archive_post_types[] = $post_type->name;
+                }
+            }
+        }
 	}
 
 	/**
@@ -228,7 +260,6 @@ final class Posts extends MagPack\Utilities\Wizard {
 			),
 
 			'wp_query' => array(
-				'post_type' => get_query_var( 'post_type' ),
 				'posts_per_page' => $this->mod( 'number' ),
 				's' => get_search_query(),
 				'post__not_in' => ( $this->sticky_enabled ? $this->sticky_posts : null ),
@@ -236,6 +267,16 @@ final class Posts extends MagPack\Utilities\Wizard {
 				'ignore_sticky_posts' => 1,
 			),
 		);
+
+        if (
+            ( $post_type = get_query_var( 'post_type' ) )
+            || $this->template->is( 'post_type_archive' )
+            || $this->template->is( 'home' )
+        ) {
+            $args['wp_query']['post_type'] = $post_type;
+        } else {
+            $args['wp_query']['post_type'] = $this->archive_post_types;
+        }
 
 		if ( $this->template->is( 'search' ) ) {
 			if ( function_exists( 'is_customize_preview' ) ) { // If WP >= 4.0
@@ -383,6 +424,10 @@ final class Posts extends MagPack\Utilities\Wizard {
 			),
 		);
 
+        // if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
+            $args['wp_query']['post_type'] = get_query_var( 'post_type' );
+        // }
+
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
 			$args['wp_query']['tax_query'] = array( 
 				array(
@@ -402,10 +447,6 @@ final class Posts extends MagPack\Utilities\Wizard {
 				),
 			);
 		}
-
-		// if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
-			$args['wp_query']['post_type'] = get_query_var( 'post_type' );
-		// }
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
 			$args['wp_query']['cat']	= $cat;

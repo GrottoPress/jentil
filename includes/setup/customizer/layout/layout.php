@@ -69,17 +69,10 @@ final class Layout extends Setup\Customizer\Section {
             }
         }
 
-        if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
+        if ( ( $post_types = $this->customizer->get( 'archive_post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
-                if ( $post_type->has_archive || 'post' == $post_type->name ) {
-                    $settings[] = new Settings\Post_Type( $this, $post_type );
-                }
-            }
-
-            foreach ( $post_types as $post_type ) {
-                if ( ! is_post_type_hierarchical( $post_type->name ) ) {
-                    $settings[] = new Settings\Singular( $this, $post_type );
-                }
+                $settings[] = new Settings\Post_Type( $this, $post_type );
+                $settings[] = new Settings\Singular( $this, $post_type );
             }
         }
 

@@ -69,11 +69,9 @@ final class Title extends Setup\Customizer\Section {
             }
         }
 
-        if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
+        if ( ( $post_types = $this->customizer->get( 'archive_post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
-                if ( $post_type->has_archive || 'post' == $post_type->name ) {
-                    $settings[] = new Settings\Post_Type( $this, $post_type );
-                }
+                $settings[] = new Settings\Post_Type( $this, $post_type );
             }
         }
 
