@@ -106,7 +106,7 @@ final class Activator {
             return;
         }
 
-        $this->messages[] = __( 'This theme requires <a href="#" itemprop="url">MagPack</a> plugin. Install and activate that first.', 'jentil' );
+        $this->messages[] = __( 'Jentil theme requires <a href="https://gitlab.com/grottopress/magpack/" itemprop="url">MagPack</a> plugin. Install and activate that first.', 'jentil' );
     }
 
     /**
@@ -121,10 +121,10 @@ final class Activator {
         }
 
         if ( current_user_can( 'update_core' ) ) {
-            $string = esc_html__( 'This theme requires WordPress version %1$s or newer. Your current version is %2$s.', 'jentil' );
+            $string = esc_html__( 'Jentil theme requires WordPress version %1$s or newer. Your current version is %2$s.', 'jentil' );
             $string .= ' <a href="' . network_admin_url( '/update-core.php' ) . '">' . esc_html__( 'Update WordPress', 'jentil' ) . '</a>.';
         } else {
-            $string = esc_html__( 'This theme requires WordPress version %1$s or newer.', 'jentil' );
+            $string = esc_html__( 'Jentil theme requires WordPress version %1$s or newer.', 'jentil' );
         }
 
         $this->messages[] = sprintf( $string, $this->required_WP, $this->WP_version );
