@@ -1,6 +1,6 @@
 # Jentil WordPress Theme
 
-* Author: [@grottopress](https://gitlab.com/GrottoPress)
+* Author: [@GrottoPress](https://gitlab.com/GrottoPress)
 * Author Website: [https://www.grottopress.com](https://www.grottopress.com)
 * Contributor(s): [@akadusei](https://gitlab.com/akadusei)
 * License: [GNU General Public License v2.0 or later](http://www.gnu.org/licenses/gpl-2.0.html)
@@ -9,7 +9,18 @@
 
 Jentil is a modern WordPress theme, suitable for use as a parent theme from which child themes can be derived.
 
-Jentil can be used to build magazine websites, e-commerce sites, corporate websites and more.
+It features powerful content options which allows to configure posts display on archives right from the customizer.
+
+Jentil features six layout options:
+
+ * Content
+ * Content / Sidebar
+ * Sidbar / Content
+ * Sidebar / Content / Sidebar
+ * Content / Sidebar / Sidebar
+ * Sidebar / Sidebar / Content
+
+Jentil can be used to build blogs, magazines, e-commerce, corporate websites and more.
 
 It integrates seamlessly with most WordPress page builders including:
 
@@ -20,10 +31,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Features
 
-- HTML5 / CSS3
-- Microdata markup
-- SEO-ready
-- Responsive (mobile-ready)
+- Powerful content options: Configure posts display on archives right from the customizer.
 - Six (6) layout options
  * Content
  * Content / Sidebar
@@ -31,7 +39,10 @@ It integrates seamlessly with most WordPress page builders including:
  * Sidebar / Content / Sidebar
  * Content / Sidebar / Sidebar
  * Sidebar / Sidebar / Content
-- Powerful content options: Configure posts display on archive templates
+- HTML5 / CSS3
+- HTML5 Microdata
+- SEO-ready
+- Responsive (mobile-ready)
 - Fully responsive menu with graceful non-javascript fallback
 - Coded according to the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards)
 - Cleanly-commented, object-oriented codebase.
@@ -41,11 +52,11 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Dependencies
 
-This theme requires **WordPress version 4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
+This theme requires **WordPress** version **4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
 
-Minimum required **PHP version** is **5.3**. The theme requires [composer](https://getcomposer.org/).
+Minimum required **PHP** version is **5.3**.
 
-Lastly, Jentil needs [npm](https://www.npmjs.com/) installed.
+Jentil needs [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed.
 
 ## Installation
 

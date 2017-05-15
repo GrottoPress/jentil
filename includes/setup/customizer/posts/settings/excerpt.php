@@ -46,7 +46,9 @@ final class Excerpt extends Setting {
         $this->name = $this->mod->get( 'name' );
         
         $this->args['default'] = $this->mod->get( 'default' );
-        $this->args['sanitize_callback'] = 'sanitize_text_field';
+        $this->args['sanitize_callback'] = function ( $value ) {
+            return intval( $value );
+        };
 
         $this->control['label'] = esc_html__( 'Excerpt', 'jentil' );
         $this->control['type'] = 'text';
