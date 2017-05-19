@@ -112,7 +112,7 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
         <?php /** If comments are closed and there are comments, let's leave a little note, shall we? */
     	if ( ! comments_open() ) { ?>
 
-    		<div class="comments-closed margin-vertical">
+    		<div class="comments-closed p">
 
                 <?php echo sanitize_text_field( apply_filters( 'magpack_comments_closed_text', esc_html__( 'Comments closed', 'jentil' ), get_comments_number() ) ); ?>
                 

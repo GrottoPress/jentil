@@ -247,6 +247,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'pagination' => array(
 				'type' => $this->mod( 'pagination' ),
 				'max' => $this->mod( 'pagination_maximum' ),
+                'key' => 'page',
 				'position' => $this->mod( 'pagination_position' ),
 				'prev_text' => $this->mod( 'pagination_previous_label' ),
 				'next_text' => $this->mod( 'pagination_next_label' ),

@@ -24,7 +24,7 @@ get_header();
 
 ?>
 
-<div id="content-wrap" class="margin-vertical">
+<div id="content-wrap" class="p">
 	<main id="content" class="site-content">
 		
 		<?php
@@ -40,7 +40,7 @@ get_header();
 		if ( ! $jentil_template->is( 'singular' ) ) {
 			if ( ( $title = $jentil_template->get( 'title' )->mod() ) ) { ?>
 				
-				<header class="margin-vertical">
+				<header class="p">
 
 			<?php }
 
@@ -78,7 +78,7 @@ get_header();
 
 		if ( ( $description = $jentil_template->description() ) ) { ?>
 				
-			<div class="archive-description margin-vertical entry-summary" itemprop="description"><?php
+			<div class="archive-description p entry-summary" itemprop="description"><?php
 
 				echo $description;
 

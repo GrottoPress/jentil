@@ -45,7 +45,7 @@ final class Breadcrumbs extends MagPack\Utilities\Singleton {
     public function render() {
         global $jentil_template;
 
-        $pagination = new MagPack\Utilities\Pagination\Pagination();
+        $pagination = new MagPack\Utilities\Pagination();
 
         if ( $jentil_template->is( 'front_page' ) && ! $pagination->is_paged() ) {
             return;

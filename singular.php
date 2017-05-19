@@ -20,7 +20,7 @@ get_header();
 
 ?>
 
-<div id="content-wrap" class="margin-vertical">
+<div id="content-wrap" class="p">
 	<main id="content" class="site-content">
 		
 		<?php
@@ -40,7 +40,7 @@ get_header();
 
 				<?php if ( $post->post_title ) { ?>
 
-					<header class="margin-vertical">
+					<header class="p">
 
 				<?php }
 
@@ -88,9 +88,9 @@ get_header();
 					<?php the_content();
 
 					wp_link_pages( array(
-						'before' => '<p class="page-links pagination">'
+						'before' => '<nav class="page-links pagination p">'
 							. esc_html__( 'Pages: ', 'jentil' ),
-						'after' => '</p>',
+						'after' => '</nav>',
 					) ); ?>
 					
 				</div><!-- .entry-content -->

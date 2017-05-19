@@ -23,7 +23,10 @@ use GrottoPress\Jentil\Utilities;
  * 
  * @since		Jentil 0.1.0
  */
-if ( ! isset( $GLOBALS['jentil_template'] ) ) {
+if (
+	! isset( $GLOBALS['jentil_template'] )
+	|| ! ( $GLOBALS['jentil_template'] instanceof \GrottoPress\Jentil\Utilities\Template\Template )
+) {
 	$GLOBALS['jentil_template'] = new Utilities\Template\Template();
 }
 
@@ -76,7 +79,7 @@ if ( ! isset( $GLOBALS['jentil_template'] ) ) {
 			 */
 			do_action( 'jentil_before_header' ); ?>
 		
-			<header id="header" class="site-header hobbit margin-vertical" itemscope itemtype="http://schema.org/WPHeader">
+			<header id="header" class="site-header hobbit p" itemscope itemtype="http://schema.org/WPHeader">
 				
 				<?php
 				/**
@@ -100,4 +103,4 @@ if ( ! isset( $GLOBALS['jentil_template'] ) ) {
 			 */
 			do_action( 'jentil_after_header' ); ?>
 			
-			<div id="main" class="self-clear margin-vertical">
+			<div id="main" class="self-clear p">

@@ -59,7 +59,7 @@ final class Menus extends MagPack\Utilities\Singleton {
      * @action      jentil_inside_header
      */
     public function header_menu() {
-        echo '<nav class="site-navigation screen-min-wide margin-vertical">'
+        echo '<nav class="site-navigation screen-min-wide p">'
             . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
             wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
@@ -75,15 +75,15 @@ final class Menus extends MagPack\Utilities\Singleton {
      * @action      jentil_inside_header
      */
     public function mobile_header_menu_toggle() {
-        $pagination = new MagPack\Utilities\Pagination\Pagination();
+        $pagination = new MagPack\Utilities\Pagination();
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<div class="menu-toggle screen-max-wide margin-vertical">'
+        echo '<div class="menu-toggle screen-max-wide p">'
             . $this->skip_to( 'menu-screen-max-wide', esc_html__( 'Skip to menu', 'jentil' ) )
 
             . '<a class="js-mobile-menu-button hamburger" href="' . esc_url( add_query_arg( array(
                     'menu' => ( $status == 'off' ? 'on' : 'off' ),
-                ), $pagination->page_url( true, true ) ) ) . '"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
+                ), $pagination->page_url( true, true ) ) ) . '" rel="nofollow"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
         </div>';
     }
 
@@ -98,7 +98,7 @@ final class Menus extends MagPack\Utilities\Singleton {
     public function mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide margin-vertical"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
+        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide p"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
             . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
             get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
