@@ -40,7 +40,7 @@ final class Breadcrumbs extends MagPack\Utilities\Singleton {
      * @since       Jentil 0.1.0
      * @access      public
      *
-     * @action      jentil_before_title
+     * @action      jentil_before_before_title
      */
     public function render() {
         global $jentil_template;

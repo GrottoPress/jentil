@@ -203,7 +203,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	private function breadcrumbs() {
 		$breadcrumbs = Breadcrumbs::instance( $this );
 
-		add_action( 'jentil_before_title', array( $breadcrumbs, 'render' ) );
+		add_action( 'jentil_before_before_title', array( $breadcrumbs, 'render' ) );
 	}
 
 	/**
@@ -216,7 +216,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$posts = Posts::instance( $this );
 		
 		add_filter( 'body_class', array( $posts, 'body_class' ) );
-		// add_action( 'jentil_before_title', array( $parts, 'post_parent_link' ) );
+		// add_action( 'jentil_before_before_title', array( $parts, 'post_parent_link' ) );
 		add_action( 'jentil_before_content', array( $posts, 'attachment' ) );
 		// add_filter( 'jentil_singular_after_title', array( $posts, 'single_post_after_title_' ), 10, 3 );
 		add_action( 'jentil_after_title', array( $posts, 'single_post_after_title' ) );
