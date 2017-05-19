@@ -41,7 +41,7 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
 		$total_pages = absint( get_comment_pages_count() );
 		$comment_count = absint( get_comments_number() ); ?>
 
-    	<div id="comments-list">
+    	<section id="comments-list">
     		<h3 class="comments-title"><?php printf( _n(
     			'1 Comment',
     			'%1$s Comments',
@@ -51,7 +51,7 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     		<?php /** Top navigation */
     		if ( $total_pages > 1 && get_option( 'page_comments' ) ) { ?>
     			
-    			<nav role="navigation" class="navigation top-nav self-clear comments-pagination"><?php
+    			<nav class="navigation top-nav self-clear comments-pagination"><?php
     				
                     /**
 					 * Filter the previous and next labels.
@@ -96,7 +96,7 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     		<?php /** Bottom navigation */
     		if ( $total_pages > 1 && get_option( 'page_comments' ) ) { ?>
     		
-    			<nav role="navigation" class="navigation bottom-nav self-clear comments-pagination">
+    			<nav class="navigation bottom-nav self-clear comments-pagination">
     			
     				<?php paginate_comments_links( array(
     					'prev_text' => $prev_label,
@@ -107,16 +107,16 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     			
     		<?php } ?>
     
-    	</div><!-- #comments-list -->
+    	</section><!-- #comments-list -->
     	
         <?php /** If comments are closed and there are comments, let's leave a little note, shall we? */
     	if ( ! comments_open() ) { ?>
 
-    		<p class="comments-closed">
+    		<div class="comments-closed margin-vertical">
 
                 <?php echo sanitize_text_field( apply_filters( 'magpack_comments_closed_text', esc_html__( 'Comments closed', 'jentil' ), get_comments_number() ) ); ?>
                 
-            </p>
+            </div>
             
     	<?php }
 	}

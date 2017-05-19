@@ -30,9 +30,9 @@ if ( 'one-column' == $column ) {
  */
 if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
 	<div id="primary-widget-area-wrap" class="sidebar-wrap margin-vertical">
-		<div id="primary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
+		<aside id="primary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 			<?php dynamic_sidebar( 'primary-widget-area' ); ?>
-		</div><!-- #primary -->
+		</aside><!-- #primary -->
 	</div>
 <?php }
 
@@ -44,9 +44,9 @@ if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
 if ( 'three-columns' == $column ) {
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) { ?>
 		<div id="secondary-widget-area-wrap" class="sidebar-wrap margin-vertical">
-			<div id="secondary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
+			<aside id="secondary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 				<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
-			</div><!-- #secondary -->
+			</aside><!-- #secondary -->
 		</div>
 	<?php }
 }

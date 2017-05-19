@@ -47,8 +47,8 @@ final class Widgets extends MagPack\Utilities\Singleton {
             'name'          => esc_html__( 'Primary', 'jentil' ),
             'id'            => 'primary-widget-area',
             'description'   => esc_html__( 'Primary widget area', 'jentil' ),
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</aside>',
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',
             'after_title'   => '</h3>',
         ) );
@@ -57,8 +57,8 @@ final class Widgets extends MagPack\Utilities\Singleton {
             'name'          => esc_html__( 'Secondary', 'jentil' ),
             'id'            => 'secondary-widget-area',
             'description'   => esc_html__( 'Secondary widget area', 'jentil' ),
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</aside>',
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',
             'after_title'   => '</h3>',
         ) );
@@ -67,8 +67,8 @@ final class Widgets extends MagPack\Utilities\Singleton {
             'name'          => esc_html__( 'Footer', 'jentil' ),
             'id'            => 'footer-widget-area',
             'description'   => esc_html__( 'Footer widget area', 'jentil' ),
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</aside>',
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',
             'after_title'   => '</h3>',
         ) );
@@ -87,8 +87,8 @@ final class Widgets extends MagPack\Utilities\Singleton {
             return;
         } ?>
 
-        <div id="footer-widget-area" class="widget-area">
+        <aside id="footer-widget-area" class="widget-area">
             <?php dynamic_sidebar( 'footer-widget-area' ); ?>
-        </div><!-- .widget-area -->
+        </aside><!-- .widget-area -->
     <?php }
 }

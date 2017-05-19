@@ -84,7 +84,7 @@ final class Posts extends MagPack\Utilities\Singleton {
      * @since       Jentil 0.1.0
      * @access      public
      *
-     * @action      jentil_before_title
+     * @action      jentil_before_before_title
      */
     public function parent_link() {
         global $jentil_template;
@@ -196,7 +196,7 @@ final class Posts extends MagPack\Utilities\Singleton {
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 
-        $output = '<div class="entry-meta after-title self-clear">';
+        $output = '<aside class="entry-meta after-title self-clear">';
 
         if ( ! empty( $avatar ) ) {
             $output .= $avatar;
@@ -210,7 +210,7 @@ final class Posts extends MagPack\Utilities\Singleton {
             . $magpack_post->info( 'published_date, published_time, comments_link' )->list()
         . '</p>
 
-        </div>';
+        </aside>';
 
         echo $output;
     }
