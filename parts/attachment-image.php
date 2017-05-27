@@ -23,7 +23,7 @@
  */
 $prev_label = sanitize_text_field( apply_filters( 'jentil_pagination_prev_label', __( '&larr; Previous', 'jentil' ), 'image' ) );
 $next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label', __( 'Next &rarr;', 'jentil' ), 'image' ) ); ?>
-	
+
 <nav id="image-navigation" class="navigation image-navigation pagination self-clear">
 	<div class="prev"><?php previous_image_link( 0, $prev_label ); ?></div>
 	<div class="next"><?php next_image_link( 0, $next_label ); ?></div>

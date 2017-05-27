@@ -75,20 +75,6 @@ get_header();
 
 			<?php }
 		}
-
-		if ( ( $description = $jentil_template->description() ) ) { ?>
-				
-			<div class="archive-description p entry-summary" itemprop="description"><?php
-
-				echo $description;
-
-			?></div>
-				
-		<?php }
-		
-		if ( $jentil_template->is( 'search' ) ) {
-			get_search_form();
-		}
 		
 		/**
 		 * Do action before content

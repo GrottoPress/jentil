@@ -55,6 +55,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->title_tag();
 		$this->layout();
 		$this->logo();
+		$this->archives();
 		$this->search();
 		$this->menus();
 		$this->breadcrumbs();
@@ -167,6 +168,18 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
 	/**
+     * Archives
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function archives() {
+		$archives = Archives::instance( $this );
+
+		add_action( 'jentil_before_content', array( $archives, 'description' ) );
+	}
+
+	/**
      * Search
 	 *
 	 * @since       Jentil 0.1.0
@@ -177,6 +190,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 
 		add_action( 'get_search_form', array( $search, 'form' ) );
 		add_action( 'jentil_inside_header', array( $search, 'render' ) );
+		add_action( 'jentil_before_content', array( $search, 'search_page_form' ) );
 	}
 
 	/**
