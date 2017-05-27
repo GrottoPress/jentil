@@ -118,11 +118,11 @@ final class Posts extends MagPack\Utilities\Wizard {
     public function query() {
         $out = '';
 
-        $page_number = isset( $_GET['main-query_pag'] ) ? absint( $_GET['main-query_pag'] ) : 1;
+        $pagination = new MagPack\Utilities\Pagination();
 
         if (
         	$this->sticky_enabled && $this->sticky_posts
-        	&& $page_number === 1 && ! $this->template->is( 'singular' )
+        	&& $pagination->current_page() == 1 && ! $this->template->is( 'singular' )
         ) {
         	$out .= ( new MagPack\Utilities\Query\Posts( $this->sticky_query_args() ) )->run();
         }
@@ -211,6 +211,8 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      array 		Args to pass to \GrottoPress\MagPack\Utilities\Query\Posts
      */
     private function archives_query_args() {
+        global $wp_rewrite;
+
         $args = array(
         	// 'tag' => $this->mod( 'wrap_tag' ),
 			'class' => $this->mod( 'wrap_class' ),
@@ -247,7 +249,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 			'pagination' => array(
 				'type' => $this->mod( 'pagination' ),
 				'max' => $this->mod( 'pagination_maximum' ),
-                'key' => 'page',
+                'key' => $wp_rewrite->pagination_base,
 				'position' => $this->mod( 'pagination_position' ),
 				'prev_text' => $this->mod( 'pagination_previous_label' ),
 				'next_text' => $this->mod( 'pagination_next_label' ),
@@ -271,8 +273,8 @@ final class Posts extends MagPack\Utilities\Wizard {
 
         if (
             ( $post_type = get_query_var( 'post_type' ) )
-            || $this->template->is( 'post_type_archive' )
             || $this->template->is( 'home' )
+            || $this->template->is( 'post_type_archive' )
         ) {
             $args['wp_query']['post_type'] = $post_type;
         } else {

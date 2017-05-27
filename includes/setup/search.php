@@ -78,12 +78,6 @@ final class Search extends MagPack\Utilities\Singleton {
 	 * @action      jentil_inside_header
      */
     public function render() {
-    	// global $jentil_template;
-
-        // if ( $jentil_template->is( 'search' ) ) {
-        //     return;
-        // }
-
-        get_search_form();
+    	get_search_form();
     }
 }
