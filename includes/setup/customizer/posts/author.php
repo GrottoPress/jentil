@@ -43,7 +43,7 @@ final class Author extends Section {
         
         $this->mod_args['context'] = 'author';
 
-        $this->args['title'] = esc_html__( 'Author', 'jentil' );
+        $this->args['title'] = esc_html__( 'Author Archives', 'jentil' );
         $this->args['active_callback'] = function () {
             return $this->posts->get( 'customizer' )->get( 'template' )->is( 'author' );
         };

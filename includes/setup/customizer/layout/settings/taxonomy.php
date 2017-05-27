@@ -77,10 +77,11 @@ final class Taxonomy extends Setting {
         };
 
         if ( $term ) {
-            $this->control['label'] = sprintf( esc_html__( '%1$s: %2$s', 'jentil' ),
+            $this->control['label'] = sprintf( esc_html__( '%1$s Archive: %2$s', 'jentil' ),
                 $taxonomy->labels->singular_name, $term->name );
         } else {
-            $this->control['label'] = $taxonomy->labels->name;
+            $this->control['label'] = sprintf( esc_html__( '%1$s Archives', 'jentil' ),
+                $taxonomy->labels->singular_name );
         }
 	}
 }

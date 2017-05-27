@@ -62,7 +62,7 @@ final class Post_Type extends Section {
         
         $this->mod_args['specific'] = $this->post_type->name;
 
-        $this->args['title'] = sprintf( esc_html__( 'Post type: %s', 'jentil' ), $this->post_type->labels->singular_name );
+        $this->args['title'] = sprintf( esc_html__( '%s Archive', 'jentil' ), $this->post_type->labels->name );
         $this->args['active_callback'] = function () {
             $template = $this->posts->get( 'customizer' )->get( 'template' );
 

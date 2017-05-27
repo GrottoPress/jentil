@@ -48,6 +48,6 @@ final class Author extends Setting {
             return $this->layout->get( 'customizer' )->get( 'template' )->is( 'author' );
         };
 
-        $this->control['label'] = esc_html__( 'Author', 'jentil' );
+        $this->control['label'] = esc_html__( 'Author Archives', 'jentil' );
 	}
 }

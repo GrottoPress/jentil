@@ -75,10 +75,10 @@ final class Taxonomy extends Section {
         // echo '<pre>'; print_r( $this->mod_args ); echo '</pre>';
 
         if ( $term ) {
-            $this->args['title'] = sprintf( esc_html__( '%1$s: %2$s', 'jentil' ),
+            $this->args['title'] = sprintf( esc_html__( '%1$s Archive: %2$s', 'jentil' ),
                 $this->taxonomy->labels->singular_name, $term->name );
         } else {
-            $this->args['title'] = $this->taxonomy->labels->name;
+            $this->args['title'] = sprintf( esc_html__( '%s Archives', 'jentil' ), $this->taxonomy->labels->singular_name );
         }
         
         $this->args['active_callback'] = function () use ( $term ) {
