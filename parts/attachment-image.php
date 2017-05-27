@@ -24,12 +24,10 @@
 $prev_label = sanitize_text_field( apply_filters( 'jentil_pagination_prev_label', __( '&larr; Previous', 'jentil' ), 'image' ) );
 $next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label', __( 'Next &rarr;', 'jentil' ), 'image' ) ); ?>
 	
-<nav id="image-navigation" class="navigation image-navigation pagination self-clear"><?php
-	
-	previous_image_link( false, $prev_label );
-	next_image_link( false, $next_label );
-	
-?></nav><!-- .image-navigation -->
+<nav id="image-navigation" class="navigation image-navigation pagination self-clear">
+	<div class="prev"><?php previous_image_link( 0, $prev_label ); ?></div>
+	<div class="next"><?php next_image_link( 0, $next_label ); ?></div>
+</nav><!-- .image-navigation -->
 
 <figure class="entry-attachment image aligncenter">
 	
@@ -43,11 +41,11 @@ $next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label'
 	 */
 	$image_size = apply_filters( 'jentil_attachment_size', 'large' ); ?>
 			
-	<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url"><?php
+	<div class="image-wrap"><a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url"><?php
 
 		echo wp_get_attachment_image( $post->ID, $image_size );
 
-	?></a>
+	?></a></div>
 	
 	<?php if ( ! empty( $post->post_excerpt ) ) { ?>
 

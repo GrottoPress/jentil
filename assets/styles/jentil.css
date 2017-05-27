@@ -1382,19 +1382,20 @@ label > * {
     font-size: 1.4rem;
 }
 
-/*.attachment .pagination {
+/*.attachment .image-navigation {
     text-align: center;
 }*/
 
-.attachment .pagination a {
+.attachment .image-navigation .prev,
+.attachment .image-navigation .next {
     display: inline;
 }
 
-.attachment .pagination a:nth-child(1) {
+.attachment .image-navigation .prev {
     float: left;
 }
 
-.attachment .pagination a:nth-child(2) {
+.attachment .image-navigation .next {
     float: right;
 }
 
@@ -1403,10 +1404,9 @@ label > * {
     text-align: center;
 }
 
-.entry-attachment.image a {
+.entry-attachment.image .image-wrap {
     background-color: #000;
     line-height: 1px;
-    display: block;
 }
 
 .attachment .entry-caption {
