@@ -76,8 +76,11 @@ final class Layout extends Setup\Customizer\Section {
             }
         }
 
-        if ( post_type_exists( 'attachment' ) ) {
-            $settings[] = new Settings\Singular( $this, get_post_type_object( 'attachment' ) );
+        if (
+            ( $post_types = $this->customizer->get( 'post_types' ) )
+            && isset( $post_types['attachment'] )
+        ) {
+            $settings[] = new Settings\Singular( $this, $post_types['attachment'] );
         }
 
         return $settings;

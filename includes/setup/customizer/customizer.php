@@ -146,7 +146,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
                     || 'post' == $post_type->name
                     // || 'attachment' == $post_type->name
                 ) {
-                    $this->archive_post_types[] = $post_type;
+                    $this->archive_post_types[ $post_type->name ] = $post_type;
                 }
             }
         }
