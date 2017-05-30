@@ -48,6 +48,6 @@ final class Date extends Setting {
             return $this->title->get( 'customizer' )->get( 'template' )->is( 'date' );
         };
 
-        $this->control['label'] = esc_html__( 'Date', 'jentil' );
+        $this->control['label'] = esc_html__( 'Date Archives', 'jentil' );
 	}
 }

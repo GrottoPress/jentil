@@ -131,18 +131,22 @@ final class Customizer extends MagPack\Utilities\Singleton {
 
         $this->post_types = get_post_types( array(
             'public' => true,
-            'show_ui' => true,
+            // 'show_ui' => true,
         ), 'objects' );
 
         $this->taxonomies = get_taxonomies( array(
             'public' => true,
-            'show_ui' => true,
+            // 'show_ui' => true,
         ), 'objects' );
 
         if ( $this->post_types ) {
             foreach ( $this->post_types as $post_type ) {
-                if ( $post_type->has_archive || 'post' == $post_type->name ) {
-                    $this->archive_post_types[] = $post_type;
+                if (
+                    $post_type->has_archive
+                    || 'post' == $post_type->name
+                    // || 'attachment' == $post_type->name
+                ) {
+                    $this->archive_post_types[ $post_type->name ] = $post_type;
                 }
             }
         }

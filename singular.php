@@ -10,20 +10,6 @@
  * @since			Jentil 0.1.0
  */
 
-use GrottoPress\Jentil\Utilities;
-
-/**
- * Template
- *
- * This is required, as some functions/parts
- * may call `global $jentil_template`
- *
- * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
- * 
- * @since		Jentil 0.1.0
- */
-$jentil_template = new Utilities\Template\Template();
-
 /**
  * Begin template rendering
  * 
@@ -34,18 +20,18 @@ get_header();
 
 ?>
 
-<div id="content-wrap" class="margin-vertical">
+<div id="content-wrap" class="p">
 	<main id="content" class="site-content">
 		
 		<?php
 		/**
 		 * Do action before title
 		 * 
-		 * @action		jentil_before_title
+		 * @action		jentil_before_before_title
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_before_title' );
+		do_action( 'jentil_before_before_title' );
 		
 		the_post(); ?>
 
@@ -54,9 +40,18 @@ get_header();
 
 				<?php if ( $post->post_title ) { ?>
 
-					<header class="margin-vertical">
+					<header class="p">
 
 				<?php }
+
+					/**
+					 * Do action before title
+					 * 
+					 * @action		jentil_before_title
+					 *
+					 * @since       Jentil 0.1.0
+					 */
+					do_action( 'jentil_before_title' );
 
 					the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
 					
@@ -93,12 +88,23 @@ get_header();
 					<?php the_content();
 
 					wp_link_pages( array(
-						'before' => '<p class="page-links pagination">'
+						'before' => '<nav class="page-links pagination p">'
 							. esc_html__( 'Pages: ', 'jentil' ),
-						'after' => '</p>',
+						'after' => '</nav>',
 					) ); ?>
 					
 				</div><!-- .entry-content -->
+
+				<?php
+				/**
+				 * Do action after content
+				 * 
+				 * @action		jentil_after_content
+				 *
+				 * @since       Jentil 0.1.0
+				 */
+				do_action( 'jentil_after_content' ); ?>
+
 			</article>
 		</div>
 
@@ -107,11 +113,11 @@ get_header();
 		/**
 		 * Do action after content
 		 * 
-		 * @action		jentil_after_content
+		 * @action		jentil_after_after_content
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_after_content' );
+		do_action( 'jentil_after_after_content' );
 		
 		the_post();
 		

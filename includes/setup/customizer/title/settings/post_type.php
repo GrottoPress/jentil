@@ -56,6 +56,6 @@ final class Post_Type extends Setting {
             return $template->is( 'post_type_archive', $post_type->name );
         };
 
-        $this->control['label'] = sprintf( esc_html__( 'Post type: %s', 'jentil' ), $post_type->labels->singular_name );
+        $this->control['label'] = sprintf( esc_html__( '%s Archive', 'jentil' ), $post_type->labels->name );
 	}
 }

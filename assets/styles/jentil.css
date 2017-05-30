@@ -248,7 +248,7 @@ dd,
 blockquote,
 .widget,
 .site-navigation .search-wrap,
-.margin-vertical {
+.p {
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -270,7 +270,7 @@ dd:first-child,
 blockquote:first-child,
 .widget:first-child,
 .site-navigation .search-wrap:first-child,
-.margin-vertical:first-child {
+.p:first-child {
     margin-top: 0;
 }
 
@@ -291,7 +291,7 @@ dd:last-child,
 blockquote:last-child,
 .widget:last-child,
 .site-navigation .search-wrap:last-child,
-.margin-vertical:last-child {
+.p:last-child {
     margin-bottom: 0;
 }
 
@@ -1382,19 +1382,20 @@ label > * {
     font-size: 1.4rem;
 }
 
-/*.attachment .pagination {
+/*.attachment .image-navigation {
     text-align: center;
 }*/
 
-.attachment .pagination a {
+.attachment .image-navigation .prev,
+.attachment .image-navigation .next {
     display: inline;
 }
 
-.attachment .pagination a:nth-child(1) {
+.attachment .image-navigation .prev {
     float: left;
 }
 
-.attachment .pagination a:nth-child(2) {
+.attachment .image-navigation .next {
     float: right;
 }
 
@@ -1403,10 +1404,9 @@ label > * {
     text-align: center;
 }
 
-.entry-attachment.image a {
+.entry-attachment.image .image-wrap {
     background-color: #000;
     line-height: 1px;
-    display: block;
 }
 
 .attachment .entry-caption {

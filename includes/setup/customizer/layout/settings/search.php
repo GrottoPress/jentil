@@ -48,6 +48,6 @@ final class Search extends Setting {
             return $this->layout->get( 'customizer' )->get( 'template' )->is( 'search' );
         };
 
-        $this->control['label'] = esc_html__( 'Search', 'jentil' );
+        $this->control['label'] = esc_html__( 'Search Results', 'jentil' );
 	}
 }

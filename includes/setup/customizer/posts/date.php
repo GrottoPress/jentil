@@ -45,7 +45,7 @@ final class Date extends Section {
 
         $this->mod_args['context'] = 'date';
 
-        $this->args['title'] = esc_html__( 'Date', 'jentil' );
+        $this->args['title'] = esc_html__( 'Date Archives', 'jentil' );
         $this->args['active_callback'] = function () {
             return $this->posts->get( 'customizer' )->get( 'template' )->is( 'date' );
         };

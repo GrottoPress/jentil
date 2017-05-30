@@ -14,20 +14,6 @@
  * @since			Jentil 0.1.0
  */
 
-use GrottoPress\Jentil\Utilities;
-
-/**
- * Template
- *
- * This is required, as some functions/parts
- * may call `global $jentil_template`
- *
- * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
- * 
- * @since		Jentil 0.1.0
- */
-$jentil_template = new Utilities\Template\Template();
-
 /**
  * Begin template rendering
  * 
@@ -38,37 +24,42 @@ get_header();
 
 ?>
 
-<div id="content-wrap" class="margin-vertical">
+<div id="content-wrap" class="p">
 	<main id="content" class="site-content">
 		
 		<?php
 		/**
 		 * Do action before title
 		 * 
-		 * @action		jentil_before_title
+		 * @action		jentil_before_before_title
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_before_title' );
+		do_action( 'jentil_before_before_title' );
 		
 		if ( ! $jentil_template->is( 'singular' ) ) {
-			$title = $jentil_template->get( 'title' )->mod();
-			$description = $jentil_template->description();
-
-			if ( $description || $title ) { ?>
+			if ( ( $title = $jentil_template->get( 'title' )->mod() ) ) { ?>
 				
-				<header class="margin-vertical">
+				<header class="p">
 
 			<?php }
 
-			if ( $title ) { ?>
-				<h1 class="page-title entry-title" itemprop="name"><?php
+			/**
+			 * Do action before title
+			 * 
+			 * @action		jentil_before_title
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_before_title' ); ?>
 
-					echo $title;
-					
-				?></h1>
-			<?php }
-			
+			<h1 class="page-title entry-title" itemprop="name"><?php
+
+				echo $title;
+				
+			?></h1>
+
+			<?php
 			/**
 			 * Do action after title
 			 * 
@@ -77,27 +68,12 @@ get_header();
 			 * @since       Jentil 0.1.0
 			 */
 			do_action( 'jentil_after_title' );
-	
-			if ( $description ) { ?>
-				
-				<div class="archive-description margin-vertical" itemprop="description"><?php
 
-					echo $description;
-
-				?></div>
-					
-			<?php }
-
-			if ( $description || $title ) { ?>
+			if ( $title ) { ?>
 			
 				</header>
 
-			<?php } ?>
-		
-		<?php }
-		
-		if ( $jentil_template->is( 'search' ) ) {
-			get_search_form();
+			<?php }
 		}
 		
 		/**
@@ -121,11 +97,11 @@ get_header();
 		/**
 		 * Do action after content
 		 * 
-		 * @action		jentil_after_content
+		 * @action		jentil_after_after_content
 		 *
 		 * @since       Jentil 0.1.0
 		 */
-		do_action( 'jentil_after_content' );
+		do_action( 'jentil_after_after_content' );
 		
 		if ( $jentil_template->is( 'singular' ) ) {
 			the_post();

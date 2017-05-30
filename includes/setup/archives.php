@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Breadcrumbs
+ * Archive Setup
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -18,14 +18,14 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\MagPack;
 
 /**
- * Breadcrumbs
+ * Archive Setup
  *
  * @link			https://jentil.grotttopress.com
  * @package			jentil
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Breadcrumbs extends MagPack\Utilities\Singleton {
+final class Archives extends MagPack\Utilities\Singleton {
     /**
 	 * Constructor
 	 *
@@ -35,26 +35,22 @@ final class Breadcrumbs extends MagPack\Utilities\Singleton {
 	protected function __construct() {}
 
     /**
-     * Render
+     * Description
      *
      * @since       Jentil 0.1.0
      * @access      public
      *
-     * @action      jentil_before_before_title
+     * @action      jentil_before_content
      */
-    public function render() {
+    public function description() {
         global $jentil_template;
 
-        $pagination = new MagPack\Utilities\Pagination();
-
-        if ( $jentil_template->is( 'front_page' ) && ! $pagination->is_paged() ) {
+        if ( ! ( $description = $jentil_template->description() ) ) {
             return;
         }
 
-        $args = array(
-            'before' => esc_html__( 'Path: ', 'jentil' ),
-        );
-
-        echo $jentil_template->breadcrumbs( $args )->trail();
+        echo '<div class="archive-description p entry-summary" itemprop="description">'
+            . $description
+        . '</div>';
     }
 }

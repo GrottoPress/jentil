@@ -45,7 +45,7 @@ final class Search extends Section {
 
         $this->mod_args['context'] = 'search';
 
-        $this->args['title'] = esc_html__( 'Search', 'jentil' );
+        $this->args['title'] = esc_html__( 'Search Results', 'jentil' );
         $this->args['active_callback'] = function () {
             return $this->posts->get( 'customizer' )->get( 'template' )->is( 'search' );
         };

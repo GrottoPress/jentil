@@ -11,6 +11,25 @@
  * @since	    	Jentil 0.1.0
  */
 
+use GrottoPress\Jentil\Utilities;
+
+/**
+ * Set global $jentil_template variable
+ *
+ * This is required, as some functions/parts
+ * may call `global $jentil_template`
+ *
+ * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
+ * 
+ * @since		Jentil 0.1.0
+ */
+if (
+	! isset( $GLOBALS['jentil_template'] )
+	|| ! ( $GLOBALS['jentil_template'] instanceof \GrottoPress\Jentil\Utilities\Template\Template )
+) {
+	$GLOBALS['jentil_template'] = new Utilities\Template\Template();
+}
+
 ?><!DOCTYPE html>
 <html data-site-name="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" data-site-decription="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" <?php language_attributes(); ?>>
 	<head>
@@ -50,38 +69,38 @@
 	<body <?php body_class(); ?>>
 		<div id="wrap" class="site hfeed">
 		
-		<?php
-		/**
-		 * Do action before header
-		 * 
-		 * @action		jentil_before_header
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_before_header' ); ?>
-	
-		<header id="header" class="site-header hobbit margin-vertical" itemscope itemtype="http://schema.org/WPHeader">
-			
 			<?php
 			/**
-			 * Do action inside header
+			 * Do action before header
 			 * 
-			 * @action		jentil_inside_header
+			 * @action		jentil_before_header
 			 *
 			 * @since       Jentil 0.1.0
 			 */
-			do_action( 'jentil_inside_header' ); ?>
+			do_action( 'jentil_before_header' ); ?>
+		
+			<header id="header" class="site-header hobbit p" itemscope itemtype="http://schema.org/WPHeader">
+				
+				<?php
+				/**
+				 * Do action inside header
+				 * 
+				 * @action		jentil_inside_header
+				 *
+				 * @since       Jentil 0.1.0
+				 */
+				do_action( 'jentil_inside_header' ); ?>
+				
+			</header><!-- #header -->
 			
-		</header><!-- #header -->
-		
-		<?php
-		/**
-		 * Do action after header
-		 * 
-		 * @action		jentil_after_header
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_after_header' ); ?>
-		
-		<div id="main" class="self-clear margin-vertical">
+			<?php
+			/**
+			 * Do action after header
+			 * 
+			 * @action		jentil_after_header
+			 *
+			 * @since       Jentil 0.1.0
+			 */
+			do_action( 'jentil_after_header' ); ?>
+			
+			<div id="main" class="self-clear p">
