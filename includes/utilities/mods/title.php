@@ -189,8 +189,6 @@ final class Title extends Mod {
      * @return      string          Mod with placeholders replaced
      */
     private function parse_placeholders( $mod ) {
-        the_post();
-
         return str_ireplace( array(
             '{{author_name}}',
             '{{category_name}}',
@@ -215,7 +213,5 @@ final class Title extends Mod {
             esc_attr( get_search_query() ),
         ),
         $mod );
-
-        rewind_posts();
     }
 }
