@@ -70,7 +70,8 @@ final class Title extends Mod {
         $this->context = sanitize_key( $context );
 
         $specific = sanitize_key( $specific );
-        $this->specific = post_type_exists( $specific ) || taxonomy_exists( $specific )
+        $this->specific = post_type_exists( $specific )
+            || taxonomy_exists( $specific )
             ? $specific : '';
 
         $this->more_specific = sanitize_key( $more_specific );
@@ -140,9 +141,7 @@ final class Title extends Mod {
             // 'singular' => '',
             'author' => '{{author_name}}',
             'category' => '{{category_name}}',
-            'day' => '{{day}}',
-            'month' => '{{month}}',
-            'year' => '{{year}}',
+            'date' => '{{date}}',
             'post_type_archive' => '{{post_type_name}}',
             'tag' => '{{tag_name}}',
             'tax' => '{{term_name}}',
@@ -190,6 +189,8 @@ final class Title extends Mod {
      * @return      string          Mod with placeholders replaced
      */
     private function parse_placeholders( $mod ) {
+        the_post();
+
         return str_ireplace( array(
             '{{author_name}}',
             '{{category_name}}',
@@ -197,9 +198,7 @@ final class Title extends Mod {
             '{{term_name}}',
             '{{taxonomy_name}}',
             '{{post_type_name}}',
-            '{{day}}',
-            '{{month}}',
-            '{{year}}',
+            '{{date}}',
             '{{search_query}}',
         ), array(
             esc_attr( get_the_author_meta( 'display_name' ) ),
@@ -208,11 +207,15 @@ final class Title extends Mod {
             esc_attr( single_term_title( '', false ) ),
             esc_attr( get_query_var( 'taxonomy' ) ),
             esc_attr( post_type_archive_title( '', false ) ),
-            esc_attr( get_the_date() ),
-            esc_attr( get_the_date( 'F Y' ) ),
-            esc_attr( get_the_date( 'Y' ) ),
+            esc_attr( get_query_var( 'day' )
+                ? get_the_date()
+                : ( get_query_var( 'monthnum' )
+                    ? get_the_date( 'F Y' )
+                    : get_the_date( 'Y' ) ) ),
             esc_attr( get_search_query() ),
         ),
         $mod );
+
+        rewind_posts();
     }
 }
