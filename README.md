@@ -60,6 +60,8 @@ Jentil needs [composer](https://getcomposer.org/) and [npm](https://www.npmjs.co
 
 ## Installation
 
+**Disclaimer:** *This software is still in development. Use at your own risk.*
+
 - Change to your `wp-content/themes` directory.
 
 - Clone this repository  
