@@ -36,6 +36,7 @@ It integrates seamlessly with most WordPress page builders including:
 - SEO-ready
 - Responsive (mobile-ready)
 - Fully responsive menu with graceful non-javascript fallback
+- Numerous action and filter hooks to allow easy extension via child themes
 - Coded according to the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards)
 - Cleanly-commented, object-oriented codebase.
 
