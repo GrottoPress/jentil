@@ -11,14 +11,7 @@ Jentil is a modern WordPress theme, suitable for use as a parent theme from whic
 
 It features powerful content options which allows to configure posts display on archives right from the customizer.
 
-Jentil features six layout options:
-
- * Content
- * Content / Sidebar
- * Sidbar / Content
- * Sidebar / Content / Sidebar
- * Content / Sidebar / Sidebar
- * Sidebar / Sidebar / Content
+Jentil features six layout options, configured via the customizer and post meta boxes.
 
 Jentil can be used to build blogs, magazines, e-commerce, corporate websites and more.
 
@@ -31,7 +24,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Features
 
-- Powerful content options: Configure posts display on archives right from the customizer.
+- Powerful posts/content display options via the customizer.
 - Six (6) layout options
  * Content
  * Content / Sidebar
@@ -40,7 +33,6 @@ It integrates seamlessly with most WordPress page builders including:
  * Content / Sidebar / Sidebar
  * Sidebar / Sidebar / Content
 - HTML5 / CSS3
-- HTML5 Microdata
 - SEO-ready
 - Responsive (mobile-ready)
 - Fully responsive menu with graceful non-javascript fallback
