@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-14 18:07+0000\n"
+"POT-Creation-Date: 2017-06-15 19:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -173,24 +173,32 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: includes/setup/activator.php:109
-msgid ""
-"Jentil theme requires <a href=\"https://gitlab.com/grottopress/magpack/\" "
-"itemprop=\"url\">MagPack</a> plugin. Install and activate that first."
+#: includes/setup/activator.php:123
+msgid "Jentil theme needs <strong>MagPack</strong> plugin activated."
 msgstr ""
 
-#: includes/setup/activator.php:124
+#: includes/setup/activator.php:125
+msgid "Activate MagPack"
+msgstr ""
+
+#: includes/setup/activator.php:127
+msgid ""
+"Jentil theme requires <strong>MagPack</strong> plugin. <a href=\"https:"
+"//gitlab.com/grottopress/magpack/\" itemprop=\"url\">Install MagPack</a>."
+msgstr ""
+
+#: includes/setup/activator.php:145
 #, php-format
 msgid ""
 "Jentil theme requires WordPress version %1$s or newer. Your current version "
 "is %2$s."
 msgstr ""
 
-#: includes/setup/activator.php:125
+#: includes/setup/activator.php:146
 msgid "Update WordPress"
 msgstr ""
 
-#: includes/setup/activator.php:127
+#: includes/setup/activator.php:148
 #, php-format
 msgid "Jentil theme requires WordPress version %1$s or newer."
 msgstr ""
