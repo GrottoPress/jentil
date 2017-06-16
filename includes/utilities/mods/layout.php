@@ -159,7 +159,12 @@ final class Layout extends Mod {
      *
      * @return      string          Mod
      */
-    private function is_post_type_hierarchical() {
+    public function is_post_type_hierarchical() {
+        if ( $this->more_specific ) {
+            return ( is_post_type_hierarchical( $this->specific )
+                && $this->more_specific != get_option( 'page_for_posts' ) );
+        }
+
         return is_post_type_hierarchical( $this->specific );
     }
 }
