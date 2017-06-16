@@ -72,15 +72,15 @@ final class Layout extends Setup\Customizer\Section {
         if ( ( $post_types = $this->customizer->get( 'archive_post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
                 $settings[] = new Settings\Post_Type( $this, $post_type );
-                $settings[] = new Settings\Singular( $this, $post_type );
             }
         }
 
-        if (
-            ( $post_types = $this->customizer->get( 'post_types' ) )
-            && isset( $post_types['attachment'] )
-        ) {
-            $settings[] = new Settings\Singular( $this, $post_types['attachment'] );
+        if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
+            foreach ( $post_types as $post_type ) {
+                if ( ! is_post_type_hierarchical( $post_type->name ) ) {
+                    $settings[] = new Settings\Singular( $this, $post_type );
+                }
+            }
         }
 
         return $settings;
