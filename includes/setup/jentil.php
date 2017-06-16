@@ -47,6 +47,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      public
 	 */
 	public function run() {
+		$this->updater();
 		$this->language();
 		$this->enqueue();
 		$this->thumbnails();
@@ -286,5 +287,17 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		
 		add_action( 'load-post.php', array( $boxes, 'setup' ) );
 		add_action( 'load-post-new.php', array( $boxes, 'setup' ) );
+	}
+
+	/**
+     * Update theme
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function updater() {
+		$updater = Updater::instance( $this );
+		
+		add_action( 'after_setup_theme', array( $updater, 'check' ) );
 	}
 }
