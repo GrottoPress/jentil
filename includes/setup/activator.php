@@ -120,11 +120,17 @@ final class Activator {
         $this->satisfied = false;
 
         if ( $this->plugin_exists( 'magpack/magpack.php' ) ) {
-            $this->messages[] = __( 'Jentil theme needs <strong>MagPack</strong> plugin activated.', 'jentil' )
+            $this->messages[] = esc_html__( 'Jentil theme needs MagPack plugin activated.', 'jentil' )
             . ( current_user_can( 'activate_plugins' )
-                ? ' <a href="' . $this->plugin_activation_url( 'magpack/magpack.php' ) . '">' . __( 'Activate MagPack', 'jentil' ) . '</a>.' : '' );
+                ? ' <a href="' . $this->plugin_activation_url( 'magpack/magpack.php' ) . '">'
+                    . __( 'Activate MagPack', 'jentil' )
+                . '</a>.' : '' );
         } else {
-            $this->messages[] = __( 'Jentil theme requires <strong>MagPack</strong> plugin. <a href="https://gitlab.com/grottopress/magpack/" itemprop="url">Install MagPack</a>.', 'jentil' );
+            $this->messages[] = esc_html__( 'Jentil theme requires MagPack plugin.', 'jentil' )
+                . ( current_user_can( 'install_plugins' )
+                    ? ' <a href="https://gitlab.com/grottopress/magpack/" itemprop="url">'
+                        . esc_html__( 'Install MagPack', 'jentil' )
+                    . '</a>.' : '' );
         }
     }
 
