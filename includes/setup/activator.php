@@ -128,7 +128,7 @@ final class Activator {
         } else {
             $this->messages[] = esc_html__( 'Jentil theme requires MagPack plugin.', 'jentil' )
                 . ( current_user_can( 'install_plugins' )
-                    ? ' <a href="https://gitlab.com/grottopress/magpack/" itemprop="url">'
+                    ? ' <a rel="external nofollow" href="https://api.grottopress.com/wp-update-server/v1/?action=download&slug=magpack" itemprop="url">'
                         . esc_html__( 'Install MagPack', 'jentil' )
                     . '</a>.' : '' );
         }

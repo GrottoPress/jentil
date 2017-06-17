@@ -43,7 +43,7 @@ final class Updater extends MagPack\Utilities\Singleton {
      * @action      after_setup_theme
      */
     public function check() {
-        \Puc_v4_Factory::buildUpdateChecker( 'http://update.grottopress.localhost/jentil/jentil.json',
+        \Puc_v4_Factory::buildUpdateChecker( 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
             get_template_directory() . '/functions.php', 'jentil' );
     }
 }
