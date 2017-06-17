@@ -19,10 +19,6 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\MagPack;
 use GrottoPress\Jentil\Utilities;
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
  * Metaboxes
  * 
