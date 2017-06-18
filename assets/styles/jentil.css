@@ -1465,6 +1465,7 @@ label > * {
 .singular-post > .post-wrap > header > .entry-meta .avatar {
 	display: inline;
 	float: left;
+    margin-right: 10px;
 }
 
 .singular-post > .post-wrap > header > .entry-title {
