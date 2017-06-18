@@ -330,6 +330,6 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function updater() {
-		add_action( 'after_setup_theme', array( $updater, 'check' ) );
+		add_action( 'after_setup_theme', array( $this->parts['updater'], 'check' ) );
 	}
 }

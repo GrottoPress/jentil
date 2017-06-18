@@ -111,7 +111,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    protected function __construct( Jentil $jentil ) {
+    protected function __construct( \GrottoPress\Jentil\Setup\Jentil $jentil ) {
         $this->jentil = $jentil;
 
         $this->archive_post_types = array();
