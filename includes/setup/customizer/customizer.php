@@ -73,7 +73,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * 
      * @var     array      $archive_post_types       All post types with archive
      */
-    protected $archive_post_types = array();
+    protected $archive_post_types;
 
     /**
      * Taxonomies
@@ -96,12 +96,26 @@ final class Customizer extends MagPack\Utilities\Singleton {
     protected $template;
 
     /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
+    /**
      * Constructor
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    protected function __construct() {}
+    protected function __construct( Jentil $jentil ) {
+        $this->jentil = $jentil;
+
+        $this->archive_post_types = array();
+    }
 
     /**
      * Allow get

@@ -132,7 +132,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function language() {
-		add_action( 'after_setup_theme', array( $this->parts['language'], 'enable_translation' ) );
+		add_action( 'after_setup_theme', array( $this->parts['language'], 'load_textdomain' ) );
 	}
 
     /**

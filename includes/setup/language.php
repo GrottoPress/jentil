@@ -30,12 +30,24 @@ use GrottoPress\MagPack;
  */
 final class Language extends MagPack\Utilities\Singleton {
     /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
+    /**
      * Constructor
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    protected function __construct() {}
+    protected function __construct( Jentil $jentil ) {
+        $this->jentil = $jentil;
+    }
 
     /**
      * Translations.
@@ -48,7 +60,7 @@ final class Language extends MagPack\Utilities\Singleton {
      * 
      * @action      after_setup_theme
      */
-    public function enable_translation() {
+    public function load_textdomain() {
         load_theme_textdomain( 'jentil', get_template_directory() . '/languages' );
     }
 }

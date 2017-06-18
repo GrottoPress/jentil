@@ -28,12 +28,24 @@ use GrottoPress\Jentil\Utilities;
  */
 final class Logo extends MagPack\Utilities\Singleton {
     /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
+    /**
 	 * Constructor
 	 *
 	 * @since       MagPack 0.1.0
 	 * @access      public
 	 */
-	protected function __construct() {}
+	protected function __construct( Jentil $jentil ) {
+        $this->jentil = $jentil;
+    }
 
     /**
      * Add theme support for custom logo.
