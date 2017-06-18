@@ -104,9 +104,9 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      public
 	 */
 	public function run() {
-		$this->updater();
 		$this->language();
-		$this->enqueue();
+		$this->javascript();
+		$this->styles();
 		$this->thumbnails();
 		$this->feeds();
 		$this->HTML5();
@@ -122,6 +122,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->colophon();
 		$this->customizer();
 		$this->metaboxes();
+		$this->updater();
 	}
 
 	/**
@@ -135,14 +136,23 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
     /**
-     * Enqueue
+     * JavaScript
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
-	private function enqueue() {
-		add_action( 'wp_enqueue_scripts', array( $this->parts['enqueue'], 'scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this->parts['enqueue'], 'styles' ) );
+	private function javascript() {
+		add_action( 'wp_enqueue_scripts', array( $this->parts['javascript'], 'enqueue' ) );
+	}
+
+	/**
+     * Stylesheets
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function styles() {
+		add_action( 'wp_enqueue_scripts', array( $this->parts['styles'], 'enqueue' ) );
 	}
 
 	/**
@@ -242,6 +252,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'header_menu' ) );
 		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'mobile_header_menu_toggle' ) );
 		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'mobile_header_menu' ) );
+		add_action( 'wp_enqueue_scripts', array( $this->parts['menus'], 'enqueue_js' ) );
 	}
 
 	/**

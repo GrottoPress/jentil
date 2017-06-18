@@ -121,4 +121,16 @@ final class Menus extends MagPack\Utilities\Singleton {
     private function skip_to( $location, $title = '' ) {
         return '<a class="screen-reader-text skip-link" href="#' . sanitize_title( $location ) . '">' . sanitize_text_field( $title ) . '</a>';
     }
+
+    /**
+     * Enqueue JS
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     * 
+     * @action      wp_enqueue_scripts
+     */
+    public function enqueue_js() {
+        wp_enqueue_script( 'jentil-menu', $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.js', array( 'jquery' ), '', true );
+    }
 }
