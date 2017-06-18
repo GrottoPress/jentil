@@ -185,6 +185,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	private function HTML5() {
 		add_action( 'after_setup_theme', array( $this->parts['html5'], 'enable' ) );
 		add_filter( 'language_attributes', array( $this->parts['html5'], 'html_tag_schema' ) );
+		add_filter( 'wp_kses_allowed_html', array( $this->parts['html5'], 'kses_allow' ), 10, 2 );
 	}
 
 	/**
