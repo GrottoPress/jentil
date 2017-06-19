@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Layout setup
+ * JavaScript
+ *
+ * Enqueue javascript, and the like.
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -19,7 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\MagPack;
 
 /**
- * Layout setup
+ * JavaScript
+ *
+ * Enqueue javascript, and the like.
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -27,7 +31,7 @@ use GrottoPress\MagPack;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class Layout extends MagPack\Utilities\Wizard {
+final class JavaScript extends MagPack\Utilities\Wizard {
 	/**
      * Jentil
      *
@@ -47,28 +51,20 @@ final class Layout extends MagPack\Utilities\Wizard {
     public function __construct( Jentil $jentil ) {
         $this->jentil = $jentil;
     }
-
+    
     /**
-     * Body class
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * Enqueue JS
      * 
-     * @filter      body_class
+     * @since 		Jentil 0.1.0
+     * @access 		public
+     * 
+     * @action      wp_enqueue_scripts
      */
-    public function body_class( $classes ) {
-        global $jentil_template;
+    public function enqueue() {
+    	global $jentil_template;
 
-        $layout = $jentil_template->get( 'layout' );
-
-        if ( ( $mod = $layout->mod() ) ) {
-            $classes[] = sanitize_title( 'layout-' . $mod );
+        if ( $jentil_template->is( 'singular' ) && comments_open() && get_option( 'thread_comments' ) ) {
+            wp_enqueue_script( 'comment-reply' );
         }
-
-        if ( ( $column = $layout->column() ) ) {
-            $classes[] = sanitize_title( 'layout-' . $column );
-        }
-
-        return $classes;
     }
 }

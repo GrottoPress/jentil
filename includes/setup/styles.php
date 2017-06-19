@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Layout setup
+ * Stylesheets
+ *
+ * Enqueue styles, and the like.
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -19,7 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\MagPack;
 
 /**
- * Layout setup
+ * Stylesheets
+ *
+ * Enqueue styles, and the like.
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -27,7 +31,7 @@ use GrottoPress\MagPack;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class Layout extends MagPack\Utilities\Wizard {
+final class Styles extends MagPack\Utilities\Wizard {
 	/**
      * Jentil
      *
@@ -47,28 +51,23 @@ final class Layout extends MagPack\Utilities\Wizard {
     public function __construct( Jentil $jentil ) {
         $this->jentil = $jentil;
     }
-
+    
     /**
-     * Body class
-     *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * Enqueue Styles
      * 
-     * @filter      body_class
+     * @since 		Jentil 0.1.0
+     * @access 		public
+     * 
+     * @action      wp_enqueue_scripts
      */
-    public function body_class( $classes ) {
-        global $jentil_template;
+    public function enqueue() {
+    	$theme_dir_url = $this->jentil->get( 'dir_url' );
 
-        $layout = $jentil_template->get( 'layout' );
-
-        if ( ( $mod = $layout->mod() ) ) {
-            $classes[] = sanitize_title( 'layout-' . $mod );
+        wp_enqueue_style( 'normalize', $theme_dir_url . '/node_modules/normalize.css/normalize.css' );
+        wp_enqueue_style( 'jentil', $theme_dir_url . '/assets/styles/jentil.css', array( 'normalize' ) );
+        
+        if ( is_rtl() ) {
+            wp_enqueue_style( 'jentil-rtl', $theme_dir_url . '/assets/styles/rtl.css', array( 'jentil' ) );
         }
-
-        if ( ( $column = $layout->column() ) ) {
-            $classes[] = sanitize_title( 'layout-' . $column );
-        }
-
-        return $classes;
     }
 }

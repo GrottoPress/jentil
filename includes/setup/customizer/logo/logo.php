@@ -57,7 +57,7 @@ final class Logo extends Setup\Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Logo( $this );
+        $settings['logo'] = new Settings\Logo( $this );
 
         return $settings;
     }

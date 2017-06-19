@@ -170,8 +170,8 @@ final class Posts extends Mod {
             'pagination' => '',
             'pagination_maximum' => -1,
             'pagination_position' => 'bottom',
-            'pagination_previous_label' => __( '&larr; Previous', 'jentil' ),
-            'pagination_next_label' => __( 'Next &rarr;', 'jentil' ),
+            'pagination_previous_label' => esc_html__( '&larr; Previous', 'jentil' ),
+            'pagination_next_label' => esc_html__( 'Next &rarr;', 'jentil' ),
             'sticky_posts' => 0,
         );
 

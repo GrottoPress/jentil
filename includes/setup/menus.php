@@ -25,14 +25,26 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Menus extends MagPack\Utilities\Singleton {
+final class Menus extends MagPack\Utilities\Wizard {
+    /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
     /**
 	 * Constructor
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	protected function __construct() {}
+	public function __construct( Jentil $jentil ) {
+        $this->jentil = $jentil;
+    }
 
     /**
      * Menus
@@ -120,5 +132,17 @@ final class Menus extends MagPack\Utilities\Singleton {
      */
     private function skip_to( $location, $title = '' ) {
         return '<a class="screen-reader-text skip-link" href="#' . sanitize_title( $location ) . '">' . sanitize_text_field( $title ) . '</a>';
+    }
+
+    /**
+     * Enqueue JS
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     * 
+     * @action      wp_enqueue_scripts
+     */
+    public function enqueue_js() {
+        wp_enqueue_script( 'jentil-menu', $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.js', array( 'jquery' ), '', true );
     }
 }

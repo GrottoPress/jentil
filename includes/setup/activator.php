@@ -58,6 +58,16 @@ final class Activator {
      */
     private $messages;
 
+    /**
+     * Are dependencies satisfied?
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @var         boolean         $satisfied      Whether or not all dependecies are met?
+     */
+    private $satisfied;
+
 	/**
 	 * Constructor
 	 *
@@ -75,6 +85,7 @@ final class Activator {
          */
 	    $this->required_WP = '4.3';
 
+        $this->satisfied = true;
         $this->messages = array();
 	}
 
@@ -92,7 +103,7 @@ final class Activator {
 
         $this->print_messages();
 
-        return ( ! $this->messages );
+        return $this->satisfied;
     }
 
     /**
@@ -106,7 +117,21 @@ final class Activator {
             return;
         }
 
-        $this->messages[] = __( 'Jentil theme requires <a href="https://gitlab.com/grottopress/magpack/" itemprop="url">MagPack</a> plugin. Install and activate that first.', 'jentil' );
+        $this->satisfied = false;
+
+        if ( $this->plugin_exists( 'magpack/magpack.php' ) ) {
+            $this->messages[] = esc_html__( 'Jentil theme needs MagPack plugin activated.', 'jentil' )
+            . ( current_user_can( 'activate_plugins' )
+                ? ' <a href="' . $this->plugin_activation_url( 'magpack/magpack.php' ) . '">'
+                    . __( 'Activate MagPack', 'jentil' )
+                . '</a>.' : '' );
+        } else {
+            $this->messages[] = esc_html__( 'Jentil theme requires MagPack plugin.', 'jentil' )
+                . ( current_user_can( 'install_plugins' )
+                    ? ' <a rel="external nofollow" href="https://api.grottopress.com/wp-update-server/v1/?action=download&slug=magpack" itemprop="url">'
+                        . esc_html__( 'Install MagPack', 'jentil' )
+                    . '</a>.' : '' );
+        }
     }
 
     /**
@@ -119,6 +144,8 @@ final class Activator {
         if ( version_compare( $this->WP_version, $this->required_WP, '>=' ) ) {
         	return;
         }
+
+        $this->satisfied = false;
 
         if ( current_user_can( 'update_core' ) ) {
             $string = esc_html__( 'Jentil theme requires WordPress version %1$s or newer. Your current version is %2$s.', 'jentil' );
@@ -152,5 +179,44 @@ final class Activator {
                 wp_die( $message );
             }
         }
+    }
+
+    /**
+     * Plugin activation link
+     *
+     * @var     string      $plugin         Plugin name (eg. "my-plugin/my-plugin.php")
+     *
+     * @see     https://www.theaveragedev.com/generating-a-wordpress-plugin-activation-link-url/
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      string      Plugin activation URL
+     */
+    private function plugin_activation_url( $plugin ) {
+        $plugin = sanitize_text_field( $plugin );
+
+        $url = add_query_arg( array(
+            'action' => 'activate',
+            'plugin' => urlencode_deep( $plugin ),
+        ), admin_url( 'plugins.php' ) );
+
+        $url = wp_nonce_url( $url, "activate-plugin_{$plugin}" );
+
+        return $url;
+    }
+
+    /**
+     * Does plugin exist?
+     *
+     * @var     string      $plugin         Plugin name (eg. "my-plugin/my-plugin.php")
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function plugin_exists( $plugin ) {
+        $plugin = sanitize_text_field( $plugin );
+
+        return file_exists( WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . $plugin );
     }
 }

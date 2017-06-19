@@ -26,14 +26,26 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Colophon extends MagPack\Utilities\Singleton {
+final class Colophon extends MagPack\Utilities\Wizard {
+    /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
     /**
 	 * Constructor
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	protected function __construct() {}
+	public function __construct( Jentil $jentil ) {
+        $this->jentil = $jentil;
+    }
 
     /**
      * Render

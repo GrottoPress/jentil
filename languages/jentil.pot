@@ -1,0 +1,554 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-15 19:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: functions.php:16 includes/utilities/logo.php:15
+#: includes/utilities/colophon.php:17 includes/setup/title_tag.php:15
+#: includes/setup/widgets.php:15 includes/setup/breadcrumbs.php:15
+#: includes/setup/layout.php:16 includes/setup/html5.php:15
+#: includes/setup/thumbnails.php:15 includes/setup/metaboxes.php:16
+#: includes/setup/logo.php:15 includes/setup/search.php:15
+#: includes/setup/jentil.php:18 includes/setup/posts.php:15
+#: includes/setup/colophon.php:15 includes/setup/activator.php:19
+#: includes/setup/enqueue.php:16 includes/setup/feeds.php:15
+#: includes/setup/archives.php:15 includes/setup/language.php:17
+#: includes/setup/menus.php:15 includes/utilities/mods/layout.php:15
+#: includes/utilities/mods/logo.php:15 includes/utilities/mods/posts.php:15
+#: includes/utilities/mods/mod.php:15 includes/utilities/mods/colophon.php:15
+#: includes/utilities/mods/title.php:15
+#: includes/utilities/template/layout.php:15
+#: includes/utilities/template/posts.php:17
+#: includes/utilities/template/template.php:17
+#: includes/utilities/template/title.php:15
+#: includes/setup/customizer/panel.php:17
+#: includes/setup/customizer/setting.php:17
+#: includes/setup/customizer/section.php:17
+#: includes/setup/customizer/customizer.php:18
+#: includes/setup/customizer/colophon/colophon.php:18
+#: includes/setup/customizer/layout/layout.php:18
+#: includes/setup/customizer/title/title.php:18
+#: includes/setup/customizer/posts/sticky.php:18
+#: includes/setup/customizer/posts/taxonomy.php:18
+#: includes/setup/customizer/posts/post_type.php:18
+#: includes/setup/customizer/posts/search.php:18
+#: includes/setup/customizer/posts/posts.php:18
+#: includes/setup/customizer/posts/section.php:18
+#: includes/setup/customizer/posts/date.php:18
+#: includes/setup/customizer/posts/author.php:18
+#: includes/setup/customizer/logo/logo.php:18
+#: includes/setup/customizer/colophon/settings/colophon.php:18
+#: includes/setup/customizer/layout/settings/taxonomy.php:18
+#: includes/setup/customizer/layout/settings/post_type.php:18
+#: includes/setup/customizer/layout/settings/search.php:18
+#: includes/setup/customizer/layout/settings/setting.php:17
+#: includes/setup/customizer/layout/settings/singular.php:18
+#: includes/setup/customizer/layout/settings/date.php:18
+#: includes/setup/customizer/layout/settings/error_404.php:18
+#: includes/setup/customizer/layout/settings/author.php:18
+#: includes/setup/customizer/title/settings/taxonomy.php:18
+#: includes/setup/customizer/title/settings/post_type.php:18
+#: includes/setup/customizer/title/settings/search.php:18
+#: includes/setup/customizer/title/settings/setting.php:15
+#: includes/setup/customizer/title/settings/date.php:18
+#: includes/setup/customizer/title/settings/error_404.php:18
+#: includes/setup/customizer/title/settings/author.php:18
+#: includes/setup/customizer/posts/settings/after_title.php:18
+#: includes/setup/customizer/posts/settings/wrap_class.php:18
+#: includes/setup/customizer/posts/settings/more_link.php:18
+#: includes/setup/customizer/posts/settings/title_words.php:18
+#: includes/setup/customizer/posts/settings/pagination.php:18
+#: includes/setup/customizer/posts/settings/layout.php:18
+#: includes/setup/customizer/posts/settings/after_content_separator.php:18
+#: includes/setup/customizer/posts/settings/image.php:18
+#: includes/setup/customizer/posts/settings/after_content.php:18
+#: includes/setup/customizer/posts/settings/image_margin.php:18
+#: includes/setup/customizer/posts/settings/before_title.php:18
+#: includes/setup/customizer/posts/settings/setting.php:15
+#: includes/setup/customizer/posts/settings/sticky_posts.php:18
+#: includes/setup/customizer/posts/settings/excerpt.php:18
+#: includes/setup/customizer/posts/settings/text_offset.php:18
+#: includes/setup/customizer/posts/settings/after_title_separator.php:18
+#: includes/setup/customizer/posts/settings/before_title_separator.php:18
+#: includes/setup/customizer/posts/settings/number.php:18
+#: includes/setup/customizer/posts/settings/image_alignment.php:18
+#: includes/setup/customizer/posts/settings/pagination_position.php:18
+#: includes/setup/customizer/posts/settings/wrap_tag.php:18
+#: includes/setup/customizer/posts/settings/pagination_maximum.php:18
+#: includes/setup/customizer/posts/settings/pagination_previous_label.php:18
+#: includes/setup/customizer/posts/settings/title_position.php:18
+#: includes/setup/customizer/posts/settings/pagination_next_label.php:18
+#: includes/setup/customizer/logo/settings/logo.php:18
+msgid "Do not load this file directly!"
+msgstr ""
+
+#: singular.php:92
+msgid "Pages: "
+msgstr ""
+
+#: comments.php:45
+#, php-format
+msgid "1 Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:67 parts/attachment-image.php:24
+#: includes/utilities/mods/posts.php:173
+msgid "&larr; Previous"
+msgstr ""
+
+#: comments.php:68 parts/attachment-image.php:25
+#: includes/utilities/mods/posts.php:174
+msgid "Next &rarr;"
+msgstr ""
+
+#: comments.php:117
+msgid "Comments closed"
+msgstr ""
+
+#: parts/none.php:30
+msgid "Nothing Found"
+msgstr ""
+
+#: parts/none.php:32
+msgid "Sorry, nothing here ):"
+msgstr ""
+
+#: includes/setup/widgets.php:47
+msgid "Primary"
+msgstr ""
+
+#: includes/setup/widgets.php:49
+msgid "Primary widget area"
+msgstr ""
+
+#: includes/setup/widgets.php:57
+msgid "Secondary"
+msgstr ""
+
+#: includes/setup/widgets.php:59
+msgid "Secondary widget area"
+msgstr ""
+
+#: includes/setup/widgets.php:67
+msgid "Footer"
+msgstr ""
+
+#: includes/setup/widgets.php:69
+msgid "Footer widget area"
+msgstr ""
+
+#: includes/setup/breadcrumbs.php:55
+msgid "Path: "
+msgstr ""
+
+#: includes/setup/metaboxes.php:147
+#: includes/setup/customizer/layout/layout.php:47
+#: includes/setup/customizer/posts/settings/layout.php:51
+msgid "Layout"
+msgstr ""
+
+#: includes/setup/metaboxes.php:155
+#: includes/setup/customizer/layout/settings/setting.php:71
+msgid "Select layout"
+msgstr ""
+
+#: includes/setup/search.php:53
+msgid "Search for:"
+msgstr ""
+
+#: includes/setup/search.php:55 includes/setup/search.php:64
+msgid "Search"
+msgstr ""
+
+#: includes/setup/activator.php:123
+msgid "Jentil theme needs <strong>MagPack</strong> plugin activated."
+msgstr ""
+
+#: includes/setup/activator.php:125
+msgid "Activate MagPack"
+msgstr ""
+
+#: includes/setup/activator.php:127
+msgid ""
+"Jentil theme requires <strong>MagPack</strong> plugin. <a href=\"https:"
+"//gitlab.com/grottopress/magpack/\" itemprop=\"url\">Install MagPack</a>."
+msgstr ""
+
+#: includes/setup/activator.php:145
+#, php-format
+msgid ""
+"Jentil theme requires WordPress version %1$s or newer. Your current version "
+"is %2$s."
+msgstr ""
+
+#: includes/setup/activator.php:146
+msgid "Update WordPress"
+msgstr ""
+
+#: includes/setup/activator.php:148
+#, php-format
+msgid "Jentil theme requires WordPress version %1$s or newer."
+msgstr ""
+
+#: includes/setup/menus.php:49
+msgid "Primary menu"
+msgstr ""
+
+#: includes/setup/menus.php:63 includes/setup/menus.php:102
+msgid "Skip to content"
+msgstr ""
+
+#: includes/setup/menus.php:82
+msgid "Skip to menu"
+msgstr ""
+
+#: includes/setup/menus.php:86
+msgid "Menu"
+msgstr ""
+
+#: includes/utilities/mods/posts.php:167
+msgid "read more"
+msgstr ""
+
+#: includes/utilities/mods/colophon.php:35
+#, php-format
+msgid "Copyright &copy; %1$s %2$s. All Rights Reserved."
+msgstr ""
+
+#: includes/utilities/mods/title.php:140
+msgid "Latest Posts"
+msgstr ""
+
+#: includes/utilities/mods/title.php:148
+msgid "Not Found"
+msgstr ""
+
+#: includes/utilities/template/layout.php:112
+msgid "content"
+msgstr ""
+
+#: includes/utilities/template/layout.php:115
+msgid "content / sidebar"
+msgstr ""
+
+#: includes/utilities/template/layout.php:116
+msgid "sidebar / content"
+msgstr ""
+
+#: includes/utilities/template/layout.php:119
+msgid "sidebar / content / sidebar"
+msgstr ""
+
+#: includes/utilities/template/layout.php:120
+msgid "content / sidebar / sidebar"
+msgstr ""
+
+#: includes/utilities/template/layout.php:121
+msgid "sidebar / sidebar / content"
+msgstr ""
+
+#: includes/setup/customizer/colophon/colophon.php:47
+#: includes/setup/customizer/colophon/settings/colophon.php:77
+msgid "Colophon"
+msgstr ""
+
+#: includes/setup/customizer/title/title.php:47
+msgid "Title"
+msgstr ""
+
+#: includes/setup/customizer/posts/sticky.php:61
+#, php-format
+msgid "Sticky %s"
+msgstr ""
+
+#: includes/setup/customizer/posts/taxonomy.php:78
+#: includes/setup/customizer/layout/settings/taxonomy.php:80
+#: includes/setup/customizer/title/settings/taxonomy.php:80
+#, php-format
+msgid "%1$s Archive: %2$s"
+msgstr ""
+
+#: includes/setup/customizer/posts/taxonomy.php:81
+#, php-format
+msgid "%s Archives"
+msgstr ""
+
+#: includes/setup/customizer/posts/post_type.php:65
+#: includes/setup/customizer/layout/settings/post_type.php:59
+#: includes/setup/customizer/title/settings/post_type.php:59
+#, php-format
+msgid "%s Archive"
+msgstr ""
+
+#: includes/setup/customizer/posts/search.php:48
+#: includes/setup/customizer/layout/settings/search.php:51
+#: includes/setup/customizer/title/settings/search.php:51
+msgid "Search Results"
+msgstr ""
+
+#: includes/setup/customizer/posts/posts.php:47
+#: includes/setup/customizer/posts/section.php:135
+msgid "Posts"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:107
+msgid "Side"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:108
+#: includes/setup/customizer/posts/section.php:119
+msgid "Top"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:112
+msgid "none"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:113
+msgid "Left"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:114
+msgid "Right"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:118
+msgid "None"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:120
+msgid "Bottom"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:121
+msgid "Top and bottom"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:125
+#: includes/setup/customizer/logo/settings/logo.php:108
+msgid "Default"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:126
+msgid "infinite_scroll"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:130
+msgid "Stack"
+msgstr ""
+
+#: includes/setup/customizer/posts/section.php:131
+msgid "Grid"
+msgstr ""
+
+#: includes/setup/customizer/posts/date.php:48
+#: includes/setup/customizer/layout/settings/date.php:51
+#: includes/setup/customizer/title/settings/date.php:51
+msgid "Date Archives"
+msgstr ""
+
+#: includes/setup/customizer/posts/author.php:46
+#: includes/setup/customizer/layout/settings/author.php:51
+#: includes/setup/customizer/title/settings/author.php:51
+msgid "Author Archives"
+msgstr ""
+
+#: includes/setup/customizer/logo/logo.php:47
+#: includes/setup/customizer/logo/settings/logo.php:96
+msgid "Logo"
+msgstr ""
+
+#: includes/setup/customizer/layout/settings/taxonomy.php:83
+#: includes/setup/customizer/title/settings/taxonomy.php:83
+#, php-format
+msgid "%1$s Archives"
+msgstr ""
+
+#: includes/setup/customizer/layout/settings/singular.php:64
+#, php-format
+msgid "Single %1$s: %2$s"
+msgstr ""
+
+#: includes/setup/customizer/layout/settings/singular.php:66
+#, php-format
+msgid "Single %1$s"
+msgstr ""
+
+#: includes/setup/customizer/layout/settings/error_404.php:51
+#: includes/setup/customizer/title/settings/error_404.php:51
+msgid "Error 404"
+msgstr ""
+
+#: includes/setup/customizer/title/settings/setting.php:68
+msgid "Enter title"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/after_title.php:51
+msgid "After title (comma-separated)"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/after_title.php:52
+#: includes/setup/customizer/posts/settings/after_content.php:54
+#: includes/setup/customizer/posts/settings/before_title.php:52
+msgid "Comma-separated"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/wrap_class.php:51
+msgid "Wrapper class"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/wrap_class.php:52
+msgid "Comma- or space-separated"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/more_link.php:51
+msgid "More link label"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/title_words.php:53
+msgid "Title length"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/title_words.php:54
+msgid "Number of words"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/pagination.php:51
+msgid "Pagination type"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/after_content_separator.php:53
+msgid "After content separator"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/image.php:51
+msgid "Image size"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/after_content.php:53
+msgid "After content"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/image_margin.php:51
+msgid "Image margin"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/before_title.php:51
+msgid "Before title"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/sticky_posts.php:51
+msgid "Show sticky posts?"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/excerpt.php:53
+msgid "Excerpt"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/text_offset.php:51
+msgid "Text offset"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/text_offset.php:52
+msgid "From image align side (px)"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/after_title_separator.php:53
+msgid "After title separator"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/before_title_separator.php:53
+msgid "Before title separator"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/number.php:53
+msgid "Number of posts"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/image_alignment.php:51
+msgid "Image alignment"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/pagination_position.php:51
+msgid "Pagination position"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/wrap_tag.php:51
+msgid "Wrapper tag"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/pagination_maximum.php:53
+msgid "Maximum pagination"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/pagination_previous_label.php:53
+msgid "Previous page link label"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/title_position.php:51
+msgid "Title position"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/title_position.php:52
+msgid "Relative to image"
+msgstr ""
+
+#: includes/setup/customizer/posts/settings/pagination_next_label.php:53
+msgid "Next page link label"
+msgstr ""
+
+#: includes/setup/customizer/logo/settings/logo.php:105
+#: includes/setup/customizer/logo/settings/logo.php:110
+msgid "Select logo"
+msgstr ""
+
+#: includes/setup/customizer/logo/settings/logo.php:106
+msgid "Change logo"
+msgstr ""
+
+#: includes/setup/customizer/logo/settings/logo.php:107
+msgid "Remove"
+msgstr ""
+
+#: includes/setup/customizer/logo/settings/logo.php:109
+msgid "No logo selected"
+msgstr ""
+
+#: includes/setup/customizer/logo/settings/logo.php:111
+msgid "Choose logo"
+msgstr ""
+
+#. Name of the theme
+msgid "Jentil"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Jentil is a responsive, SEO parent theme for WordPress. This theme requires "
+"MagPack plugin."
+msgstr ""
+
+#. URI of the theme
+msgid "https://jentil.grottopress.com"
+msgstr ""
+
+#. Author of the theme
+msgid "GrottoPress"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://www.grottopress.com"
+msgstr ""

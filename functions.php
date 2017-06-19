@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
  * 
  * @since		Jentil 0.1.0
  */
-require get_template_directory() . '/vendor/autoload.php';
+require_once get_template_directory() . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.

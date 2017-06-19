@@ -26,14 +26,26 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class HTML5 extends MagPack\Utilities\Singleton {
+final class HTML5 extends MagPack\Utilities\Wizard {
+    /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
     /**
 	 * Constructor
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	protected function __construct() {}
+	public function __construct( Jentil $jentil ) {
+        $this->jentil = $jentil;
+    }
 
     /**
      * HTML5
@@ -92,8 +104,37 @@ final class HTML5 extends MagPack\Utilities\Singleton {
             $output .= 'WebPage';
         }
 
-        $output .= '" ';
+        $output .= '"';
 
         return $output;
+    }
+
+    /**
+     * Allow itemscope, itemtype, itemprop and other
+     * html5 attributes to pass wp kses filters.
+     *
+     * @since       jentil 0.1.0
+     * @access      public
+     * 
+     * @filter      wp_kses_allowed_html
+     */
+    public function kses_allow( $allowed, $context ) {
+        if ( 'data' == $context ) {
+            $tags = array( 'span' );
+        } elseif ( 'post' == $context ) {
+            $tags = array( 'span', 'div', 'article', 'section', 'aside',
+            'footer', 'header', 'nav', 'figure' );
+        } else {
+            return $allowed;
+        }
+
+        foreach ( $tags as $tag ) {
+            $allowed[ $tag ]['itemprop'] = true;
+            $allowed[ $tag ]['itemscope'] = true;
+            $allowed[ $tag ]['itemtype'] = true;
+            $allowed[ $tag ]['itemref'] = true;
+        }
+
+        return $allowed;
     }
 }

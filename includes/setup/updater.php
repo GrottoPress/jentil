@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Archive Setup
+ * Updates Checker
  *
  * @link            https://jentil.grotttopress.com
  * @package		    jentil
@@ -18,14 +18,14 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\MagPack;
 
 /**
- * Archive Setup
+ * Updates Checker
  *
- * @link			https://jentil.grotttopress.com
- * @package			jentil
- * @subpackage 	    jentil/includes
- * @since			jentil 0.1.0
+ * @link            https://jentil.grotttopress.com
+ * @package         jentil
+ * @subpackage      jentil/includes
+ * @since           Jentil 0.1.0
  */
-final class Archives extends MagPack\Utilities\Wizard {
+final class Updater extends MagPack\Utilities\Wizard {
     /**
      * Jentil
      *
@@ -47,22 +47,15 @@ final class Archives extends MagPack\Utilities\Wizard {
     }
 
     /**
-     * Description
+     * Check for update
      *
      * @since       Jentil 0.1.0
      * @access      public
      *
-     * @action      jentil_before_content
+     * @action      after_setup_theme
      */
-    public function description() {
-        global $jentil_template;
-
-        if ( ! ( $description = $jentil_template->description() ) ) {
-            return;
-        }
-
-        echo '<div class="archive-description p entry-summary" itemprop="description">'
-            . $description
-        . '</div>';
+    public function check() {
+        \Puc_v4_Factory::buildUpdateChecker( 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
+            get_template_directory() . '/functions.php', 'jentil' );
     }
 }

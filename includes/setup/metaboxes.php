@@ -19,10 +19,6 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\MagPack;
 use GrottoPress\Jentil\Utilities;
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
  * Metaboxes
  * 
@@ -32,14 +28,26 @@ if ( ! defined( 'WPINC' ) ) {
  * @subpackage      jentil/includes
  * @author          N Atta Kusi Adusei
  */
-final class Metaboxes extends MagPack\Utilities\Singleton {
+final class Metaboxes extends MagPack\Utilities\Wizard {
+    /**
+     * Jentil
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Setup\Jentil         $jentil       Jentil
+     */
+    protected $jentil;
+
     /**
      * Constructor
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    protected function __construct() {}
+    public function __construct( Jentil $jentil ) {
+    	$this->jentil = $jentil;
+    }
 
     /**
 	 * Meta boxes setup.
@@ -70,11 +78,17 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 * 
 	 * @see 		$this->setup()
 	 *
+	 * @action 		add_meta_boxes
+	 *
 	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 */
 	public function add( $post_type, $post ) {
 		$boxes = $this->boxes( $post->ID );
+
+		if ( ! $boxes ) {
+			return;
+		}
 		
 		foreach ( $boxes as $id => $attr ) {
 			$args = array();
@@ -104,11 +118,18 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	 *
 	 * @var 		$post_id 		integer 		The post ID
 	 *
+	 * @action 		save_post
+	 * @action 		edit_attachment
+	 *
 	 * @since    	Jentil 0.1.0
 	 * @access  	public
 	 */
 	public function save( $post_id ) {
 		$boxes = $this->boxes( $post_id );
+
+		if ( ! $boxes ) {
+			return;
+		}
 		
 		foreach ( $boxes as $id => $attr ) {
 			$args = array();
@@ -133,15 +154,11 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 	    $template = new Utilities\Template\Template();
         $layouts = $template->get( 'layout' )->layouts_ids_names();
 
-        $mod = new Utilities\Mods\Layout( 'singular', $post_type );
-        $mod_name = $mod->get( 'name' );
+        $mod = new Utilities\Mods\Layout( 'singular', $post_type, $post_id );
 
         $boxes = array();
 	    
-	    if (
-	    	is_post_type_hierarchical( $post_type )
-	    	&& $post_id != get_option( 'page_for_posts' )
-	    ) {
+	    if ( $mod->is_post_type_hierarchical() ) {
 			if ( $layouts ) {
 		        $boxes['jentil-layout'] = array(
 					'title' => esc_html__( 'Layout', 'jentil' ),
@@ -149,7 +166,7 @@ final class Metaboxes extends MagPack\Utilities\Singleton {
 					'priority' => 'default',
 					'callback' => '',
 					'fields' => array(
-						$mod_name => array(
+						$mod->get( 'name' ) => array(
 							'type' => 'select',
 							'choices' => $layouts,
 							'label' => esc_html__( 'Select layout', 'jentil' ),

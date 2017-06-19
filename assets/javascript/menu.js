@@ -11,16 +11,6 @@
 
 (function( $ ) {
     'use strict';
-
-    /**
-     * Add has-js class to `<html>` tag
-     */
-
-    $( 'html' ).removeClass( 'has-js' ).addClass( 'has-js' );
-
-    /**
-     * Mobile Menu
-     */
     
     function subMenuToggle( selector ) {
         var html = $( selector ).html();
@@ -40,11 +30,11 @@
     // Make the mobile menu button work
     $( '.js-mobile-menu' ).hide();
 	$( '.js-mobile-menu-button' ).on( 'click', function( event ) {
-        event.preventDefault();
-        
         $( '.js-mobile-menu' ).slideToggle({
             'duration': 200
         });
+
+        event.preventDefault();
     });
     
     // Add icons to all parent menu items
@@ -54,14 +44,14 @@
     $( '.js-sub-menu-button' ).next( 'ul' ).hide();
     $( '.js-sub-menu-button' ).prev( 'a' ).on( 'click', function( event ) {
         if ( '#' == $( this ).attr( 'href' ) ) {
-            event.preventDefault();
-
             subMenuToggle( $( this ).next( 'button' ) );
+
+            event.preventDefault();
         }
     });
     $( '.js-sub-menu-button' ).on( 'click', function( event ) {
-        event.preventDefault();
-
         subMenuToggle( this );
+
+        event.preventDefault();
     });
 })( jQuery );

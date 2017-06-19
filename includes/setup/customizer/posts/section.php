@@ -174,23 +174,23 @@ abstract class Section extends Setup\Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Wrap_Class( $this );
-        // $settings[] = new Settings\Wrap_Tag( $this );
-        // $settings[] = new Settings\Layout( $this );
-        $settings[] = new Settings\Before_Title( $this );
-        $settings[] = new Settings\Before_Title_Separator( $this );
-        $settings[] = new Settings\Title_Words( $this );
-        $settings[] = new Settings\Title_Position( $this );
-        $settings[] = new Settings\After_Title( $this );
-        $settings[] = new Settings\After_Title_Separator( $this );
-        $settings[] = new Settings\Image( $this );
-        $settings[] = new Settings\Image_Alignment( $this );
-        $settings[] = new Settings\Image_Margin( $this );
-        $settings[] = new Settings\Text_Offset( $this );
-        $settings[] = new Settings\Excerpt( $this );
-        $settings[] = new Settings\More_Link( $this );
-        $settings[] = new Settings\After_Content( $this );
-        $settings[] = new Settings\After_Content_Separator( $this );
+        $settings['wrap_class'] = new Settings\Wrap_Class( $this );
+        // $settings['wrap_tag'] = new Settings\Wrap_Tag( $this );
+        // $settings['layout'] = new Settings\Layout( $this );
+        $settings['before_title'] = new Settings\Before_Title( $this );
+        $settings['before_title_separator'] = new Settings\Before_Title_Separator( $this );
+        $settings['title_words'] = new Settings\Title_Words( $this );
+        $settings['title_position'] = new Settings\Title_Position( $this );
+        $settings['after_title'] = new Settings\After_Title( $this );
+        $settings['after_title_separator'] = new Settings\After_Title_Separator( $this );
+        $settings['image'] = new Settings\Image( $this );
+        $settings['image_alignment'] = new Settings\Image_Alignment( $this );
+        $settings['image_margin'] = new Settings\Image_Margin( $this );
+        $settings['text_offset'] = new Settings\Text_Offset( $this );
+        $settings['excerpt'] = new Settings\Excerpt( $this );
+        $settings['more_link'] = new Settings\More_Link( $this );
+        $settings['after_content'] = new Settings\After_Content( $this );
+        $settings['after_content_separator'] = new Settings\After_Content_Separator( $this );
         
         return $settings;
     }

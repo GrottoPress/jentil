@@ -140,7 +140,7 @@ final class Logo extends Setup\Customizer\Setting {
             $wp_customize->selective_refresh->add_partial( $this->name, array(
                 'settings'            => array( $this->name ),
                 'selector'            => '.custom-logo-link',
-                'render_callback'     => array( $this->ulogo, 'markup' ),
+                'render_callback'     => array( $this->ulogo, 'HTML' ),
                 'container_inclusive' => true,
             ) );
         }
