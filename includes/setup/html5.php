@@ -110,29 +110,32 @@ final class HTML5 extends MagPack\Utilities\Wizard {
     }
 
     /**
+     * Whitelist attributes in WP kses
+     *
      * Allow itemscope, itemtype, itemprop and other
      * html5 attributes to pass wp kses filters.
      *
-     * @since       jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      public
      * 
      * @filter      wp_kses_allowed_html
      */
     public function kses_allow( $allowed, $context ) {
-        if ( 'data' == $context ) {
-            $tags = array( 'span' );
-        } elseif ( 'post' == $context ) {
-            $tags = array( 'span', 'div', 'article', 'section', 'aside',
-            'footer', 'header', 'nav', 'figure' );
-        } else {
+        if ( ! in_array( $context, array(
+            'post',
+            'data', // doesn't seem to work
+            'user_description',
+            'pre_user_description',
+        ) ) ) {
             return $allowed;
         }
 
-        foreach ( $tags as $tag ) {
+        foreach ( $allowed as $tag => $atts ) {
             $allowed[ $tag ]['itemprop'] = true;
             $allowed[ $tag ]['itemscope'] = true;
             $allowed[ $tag ]['itemtype'] = true;
             $allowed[ $tag ]['itemref'] = true;
+            $allowed[ $tag ]['itemid'] = true;
         }
 
         return $allowed;
