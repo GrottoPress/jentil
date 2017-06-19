@@ -61,25 +61,25 @@ final class Jentil extends MagPack\Utilities\Singleton {
     protected function __construct() {
     	$this->dir_url = get_template_directory_uri();
 
-    	$this->parts['language'] = Language::instance( $this );
-    	$this->parts['javascript'] = JavaScript::instance( $this );
-    	$this->parts['styles'] = Styles::instance( $this );
-    	$this->parts['thumbnails'] = Thumbnails::instance( $this );
-    	$this->parts['feeds'] = Feeds::instance( $this );
-    	$this->parts['html5'] = HTML5::instance( $this );
-    	$this->parts['title_tag'] = Title_Tag::instance( $this );
-    	$this->parts['layout'] = Layout::instance( $this );
-    	$this->parts['logo'] = Logo::instance( $this );
-    	$this->parts['archives'] = Archives::instance( $this );
-    	$this->parts['search'] = Search::instance( $this );
-    	$this->parts['menus'] = Menus::instance( $this );
-    	$this->parts['breadcrumbs'] = Breadcrumbs::instance( $this );
-    	$this->parts['posts'] = Posts::instance( $this );
-    	$this->parts['widgets'] = Widgets::instance( $this );
-    	$this->parts['colophon'] = Colophon::instance( $this );
-    	$this->parts['customizer'] = Customizer\Customizer::instance( $this );
-    	$this->parts['metaboxes'] = Metaboxes::instance( $this );
-    	$this->parts['updater'] = Updater::instance( $this );
+    	$this->parts['language'] = new Language( $this );
+    	$this->parts['javascript'] = new JavaScript( $this );
+    	$this->parts['styles'] = new Styles( $this );
+    	$this->parts['thumbnails'] = new Thumbnails( $this );
+    	$this->parts['feeds'] = new Feeds( $this );
+    	$this->parts['html5'] = new HTML5( $this );
+    	$this->parts['title_tag'] = new Title_Tag( $this );
+    	$this->parts['layout'] = new Layout( $this );
+    	$this->parts['logo'] = new Logo( $this );
+    	$this->parts['archives'] = new Archives( $this );
+    	$this->parts['search'] = new Search( $this );
+    	$this->parts['menus'] = new Menus( $this );
+    	$this->parts['breadcrumbs'] = new Breadcrumbs( $this );
+    	$this->parts['posts'] = new Posts( $this );
+    	$this->parts['widgets'] = new Widgets( $this );
+    	$this->parts['colophon'] = new Colophon( $this );
+    	$this->parts['customizer'] = new Customizer\Customizer( $this );
+    	$this->parts['metaboxes'] = new Metaboxes( $this );
+    	$this->parts['updater'] = new Updater( $this );
     }
 
     /**

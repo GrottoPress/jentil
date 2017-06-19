@@ -25,7 +25,7 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Feeds extends MagPack\Utilities\Singleton {
+final class Feeds extends MagPack\Utilities\Wizard {
     /**
      * Jentil
      *
@@ -39,10 +39,10 @@ final class Feeds extends MagPack\Utilities\Singleton {
     /**
 	 * Constructor
 	 *
-	 * @since       MagPack 0.1.0
+	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	protected function __construct( Jentil $jentil ) {
+	public function __construct( Jentil $jentil ) {
         $this->jentil = $jentil;
     }
 
