@@ -58,27 +58,27 @@ final class Layout extends Setup\Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Author( $this );
-        $settings[] = new Settings\Date( $this );
-        $settings[] = new Settings\Error_404( $this );
-        $settings[] = new Settings\Search( $this );
+        $settings['author'] = new Settings\Author( $this );
+        $settings['date'] = new Settings\Date( $this );
+        $settings['error_404'] = new Settings\Error_404( $this );
+        $settings['search'] = new Settings\Search( $this );
 
         if ( ( $taxonomies = $this->customizer->get( 'taxonomies' ) ) ) {
             foreach ( $taxonomies as $taxonomy ) {
-                $settings[] = new Settings\Taxonomy( $this, $taxonomy );
+                $settings[ 'taxonomy_' . $taxonomy->name ] = new Settings\Taxonomy( $this, $taxonomy );
             }
         }
 
         if ( ( $post_types = $this->customizer->get( 'archive_post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
-                $settings[] = new Settings\Post_Type( $this, $post_type );
+                $settings[ 'post_type_' . $post_type->name ] = new Settings\Post_Type( $this, $post_type );
             }
         }
 
         if ( ( $post_types = $this->customizer->get( 'post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
                 if ( ! is_post_type_hierarchical( $post_type->name ) ) {
-                    $settings[] = new Settings\Singular( $this, $post_type );
+                    $settings[ 'single_' . $post_type->name ] = new Settings\Singular( $this, $post_type );
                 }
             }
         }

@@ -84,18 +84,18 @@ final class Post_Type extends Section {
         $settings = array();
 
         if ( $this->has_sticky() ) {
-            $settings[] = new Settings\Sticky_Posts( $this );
+            $settings['sticky_posts'] = new Settings\Sticky_Posts( $this );
         }
 
-        $settings[] = new Settings\Number( $this );
+        $settings['number'] = new Settings\Number( $this );
 
         $settings = array_merge( $settings, parent::settings() );
 
-        $settings[] = new Settings\Pagination( $this );
-        $settings[] = new Settings\Pagination_Maximum( $this );
-        $settings[] = new Settings\Pagination_Position( $this );
-        $settings[] = new Settings\Pagination_Previous_Label( $this );
-        $settings[] = new Settings\Pagination_Next_Label( $this );
+        $settings['pagination'] = new Settings\Pagination( $this );
+        $settings['pagination_maximum'] = new Settings\Pagination_Maximum( $this );
+        $settings['pagination_position'] = new Settings\Pagination_Position( $this );
+        $settings['pagination_previous_label'] = new Settings\Pagination_Previous_Label( $this );
+        $settings['pagination_next_label'] = new Settings\Pagination_Next_Label( $this );
 
         return $settings;
     }

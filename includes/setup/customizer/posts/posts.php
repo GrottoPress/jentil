@@ -58,20 +58,20 @@ final class Posts extends Setup\Customizer\Panel {
     protected function sections() {
         $sections = array();
 
-        $sections[] = new Author( $this );
-        $sections[] = new Date( $this );
-        $sections[] = new Search( $this );
+        $sections['author'] = new Author( $this );
+        $sections['date'] = new Date( $this );
+        $sections['search'] = new Search( $this );
 
         if ( ( $taxonomies = $this->customizer->get( 'taxonomies' ) ) ) {
             foreach ( $taxonomies as $taxonomy ) {
-                $sections[] = new Taxonomy( $this, $taxonomy );
+                $sections[ 'taxonomy_' . $taxonomy->name ] = new Taxonomy( $this, $taxonomy );
             }
         }
 
         if ( ( $post_types = $this->customizer->get( 'archive_post_types' ) ) ) {
             foreach ( $post_types as $post_type ) {
-                $sections[] = new Sticky( $this, $post_type );
-                $sections[] = new Post_Type( $this, $post_type );
+                $sections[ 'sticky_' . $post_type->name ] = new Sticky( $this, $post_type );
+                $sections[ 'post_type_' . $post_type->name ] = new Post_Type( $this, $post_type );
             }
         }
 

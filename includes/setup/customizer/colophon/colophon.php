@@ -57,7 +57,7 @@ final class Colophon extends Setup\Customizer\Section {
     protected function settings() {
         $settings = array();
 
-        $settings[] = new Settings\Colophon( $this );
+        $settings['colophon'] = new Settings\Colophon( $this );
 
         return $settings;
     }

@@ -34,7 +34,7 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Customizer extends MagPack\Utilities\Singleton {
+final class Customizer extends MagPack\Utilities\Wizard {
     /**
      * Customizer panels
      *
@@ -111,7 +111,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    protected function __construct( \GrottoPress\Jentil\Setup\Jentil $jentil ) {
+    public function __construct( \GrottoPress\Jentil\Setup\Jentil $jentil ) {
         $this->jentil = $jentil;
 
         $this->archive_post_types = array();
@@ -194,7 +194,7 @@ final class Customizer extends MagPack\Utilities\Singleton {
     private function panels() {
         $panels = array();
 
-        $panels[] = new Posts\Posts( $this );
+        $panels['posts'] = new Posts\Posts( $this );
 
         return $panels;
     }
@@ -211,10 +211,10 @@ final class Customizer extends MagPack\Utilities\Singleton {
     private function sections() {
         $sections = array();
 
-        $sections[] = new Logo\Logo( $this );
-        $sections[] = new Title\Title( $this );
-        $sections[] = new Layout\Layout( $this );
-        $sections[] = new Colophon\Colophon( $this );
+        $sections['logo'] = new Logo\Logo( $this );
+        $sections['title'] = new Title\Title( $this );
+        $sections['layout'] = new Layout\Layout( $this );
+        $sections['colophon'] = new Colophon\Colophon( $this );
 
         return $sections;
     }
