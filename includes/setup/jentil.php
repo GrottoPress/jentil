@@ -50,7 +50,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
      * 
      * @var         array         $parts       Theme parts
      */
-    protected $parts = array();
+    protected $parts;
 
     /**
      * Constructor
@@ -61,25 +61,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
     protected function __construct() {
     	$this->dir_url = get_template_directory_uri();
 
-    	$this->parts['language'] = new Language( $this );
-    	$this->parts['javascript'] = new JavaScript( $this );
-    	$this->parts['styles'] = new Styles( $this );
-    	$this->parts['thumbnails'] = new Thumbnails( $this );
-    	$this->parts['feeds'] = new Feeds( $this );
-    	$this->parts['html5'] = new HTML5( $this );
-    	$this->parts['title_tag'] = new Title_Tag( $this );
-    	$this->parts['layout'] = new Layout( $this );
-    	$this->parts['logo'] = new Logo( $this );
-    	$this->parts['archives'] = new Archives( $this );
-    	$this->parts['search'] = new Search( $this );
-    	$this->parts['menus'] = new Menus( $this );
-    	$this->parts['breadcrumbs'] = new Breadcrumbs( $this );
-    	$this->parts['posts'] = new Posts( $this );
-    	$this->parts['widgets'] = new Widgets( $this );
-    	$this->parts['colophon'] = new Colophon( $this );
-    	$this->parts['customizer'] = new Customizer\Customizer( $this );
-    	$this->parts['metaboxes'] = new Metaboxes( $this );
-    	$this->parts['updater'] = new Updater( $this );
+    	$this->parts = $this->parts();
     }
 
     /**
@@ -95,6 +77,40 @@ final class Jentil extends MagPack\Utilities\Singleton {
      */
     protected function allow_get() {
         return array( 'dir_url', 'parts' );
+    }
+
+    /**
+     * Theme parts
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return 		array       Theme parts
+     */
+    private function parts() {
+    	$parts = array();
+
+    	$parts['language'] = new Language( $this );
+    	$parts['javascript'] = new JavaScript( $this );
+    	$parts['styles'] = new Styles( $this );
+    	$parts['thumbnails'] = new Thumbnails( $this );
+    	$parts['feeds'] = new Feeds( $this );
+    	$parts['html5'] = new HTML5( $this );
+    	$parts['title_tag'] = new Title_Tag( $this );
+    	$parts['layout'] = new Layout( $this );
+    	$parts['logo'] = new Logo( $this );
+    	$parts['archives'] = new Archives( $this );
+    	$parts['search'] = new Search( $this );
+    	$parts['menus'] = new Menus( $this );
+    	$parts['breadcrumbs'] = new Breadcrumbs( $this );
+    	$parts['posts'] = new Posts( $this );
+    	$parts['widgets'] = new Widgets( $this );
+    	$parts['colophon'] = new Colophon( $this );
+    	$parts['customizer'] = new Customizer\Customizer( $this );
+    	$parts['metaboxes'] = new Metaboxes( $this );
+    	$parts['updater'] = new Updater( $this );
+
+    	return $parts;
     }
 
     /**
