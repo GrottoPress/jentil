@@ -74,6 +74,6 @@ final class Logo extends MagPack\Utilities\Wizard {
 	 * @action      jentil_inside_header
      */
     public function render() {
-    	echo ( new Utilities\Logo() )->markup();
+    	echo ( new Utilities\Logo() )->HTML();
     }
 }

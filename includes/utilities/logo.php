@@ -34,9 +34,9 @@ final class Logo extends MagPack\Utilities\Wizard {
      * @since		Jentil 0.1.0
      * @access      public
      * 
-     * @return      string      The logo markup limked to home
+     * @return      string      The logo markup linked to home
      */
-    public function markup() {
+    public function HTML() {
         if ( function_exists( 'get_custom_logo' ) ) {
             return get_custom_logo();
         }
