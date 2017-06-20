@@ -537,7 +537,7 @@ final class Posts extends MagPack\Utilities\Wizard {
         'specific' => '',
         'more_specific' => '',
     ) ) {
-    	if ( $args['context'] ) {
+    	if ( ! empty( $args['context'] ) ) {
         	return ( new Utilities\Mods\Posts( $setting, $args ) )->mod();
         }
 
