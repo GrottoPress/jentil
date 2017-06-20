@@ -29,7 +29,7 @@
 
     // Make the mobile menu button work
     $( '.js-mobile-menu' ).hide();
-	$( '.js-mobile-menu-button' ).on( 'click', function( event ) {
+	$( '.js-mobile-menu-button' ).attr( 'href', '#' ).on( 'click', function( event ) {
         $( '.js-mobile-menu' ).slideToggle({
             'duration': 200
         });
