@@ -33,6 +33,16 @@ use GrottoPress\MagPack;
  */
 final class Jentil extends MagPack\Utilities\Singleton {
     /**
+     * Theme directory path
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         string         $dir_path       Theme directory path
+     */
+    protected $dir_path;
+
+    /**
      * Theme directory URI
      *
      * @since       Jentil 0.1.0
@@ -60,6 +70,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
      */
     protected function __construct() {
     	$this->dir_url = get_template_directory_uri();
+    	$this->dir_path = get_template_directory();
 
     	$this->parts = $this->parts();
     }
@@ -76,7 +87,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'dir_url', 'parts' );
+        return array( 'dir_url', 'dir_path', 'parts' );
     }
 
     /**

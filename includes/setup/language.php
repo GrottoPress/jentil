@@ -55,12 +55,12 @@ final class Language extends MagPack\Utilities\Wizard {
      * Make theme available for translation. Translations can
      * be filed in the '/languages' directory.
      *
-     * @since       jentil 0.1.0
+     * @since       Jentil 0.1.0
      * @access      public
      * 
      * @action      after_setup_theme
      */
     public function load_textdomain() {
-        load_theme_textdomain( 'jentil', get_template_directory() . '/languages' );
+        load_theme_textdomain( 'jentil', $this->jentil->get( 'dir_path' ) . '/languages' );
     }
 }
