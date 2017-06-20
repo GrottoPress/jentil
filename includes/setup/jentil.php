@@ -120,6 +120,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      public
 	 */
 	public function run() {
+		$this->globals();
 		$this->language();
 		$this->javascript();
 		$this->styles();
@@ -139,6 +140,18 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->customizer();
 		$this->metaboxes();
 		$this->updater();
+	}
+
+	/**
+     * Set globals
+	 *
+	 * @since       Jentil 0.1.0
+	 * @access      private
+	 */
+	private function globals() {
+		$globals = new Globals( $this );
+
+		add_action( 'init', array( $globals, 'template' ) );
 	}
 
 	/**

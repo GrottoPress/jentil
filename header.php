@@ -11,25 +11,6 @@
  * @since	    	Jentil 0.1.0
  */
 
-use GrottoPress\Jentil\Utilities;
-
-/**
- * Set global $jentil_template variable
- *
- * This is required, as some functions/parts
- * may call `global $jentil_template`
- *
- * @var 	\GrottoPress\Jentil\Utilities\Template\Template 	$jentil_template 	Template
- * 
- * @since		Jentil 0.1.0
- */
-if (
-	! isset( $GLOBALS['jentil_template'] )
-	|| ! ( $GLOBALS['jentil_template'] instanceof \GrottoPress\Jentil\Utilities\Template\Template )
-) {
-	$GLOBALS['jentil_template'] = new Utilities\Template\Template();
-}
-
 ?><!DOCTYPE html>
 <html data-site-name="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" data-site-decription="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" <?php language_attributes(); ?>>
 	<head>
