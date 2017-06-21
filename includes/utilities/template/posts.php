@@ -90,23 +90,10 @@ final class Posts extends MagPack\Utilities\Wizard {
 	public function __construct( Template $template ) {
 	    $this->template = $template;
 
-	    $this->sticky_enabled = $this->sticky_enabled();
 	    $this->sticky_posts = $this->sticky_posts();
         $this->post_types = $this->post_types();
         $this->archive_post_types = $this->archive_post_types();
 	}
-
-    /**
-     * Sticky posts enabled?
-     * 
-     * @since       Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      boolean         Do we have sticky posts enabled?
-     */
-    private function sticky_enabled() {
-        return $this->mod( 'sticky_posts' );
-    }
 
     /**
      * Get sticky posts
@@ -173,7 +160,7 @@ final class Posts extends MagPack\Utilities\Wizard {
         $pagination = new MagPack\Utilities\Pagination();
 
         if (
-        	$this->sticky_enabled
+        	( $this->sticky_enabled = $this->sticky_enabled() )
             && $this->sticky_posts
         	&& $pagination->current_page() == 1
             && ! $this->template->is( 'singular' )
@@ -184,6 +171,18 @@ final class Posts extends MagPack\Utilities\Wizard {
         $out .= ( new MagPack\Utilities\Query\Posts( $this->query_args() ) )->run();
 
         return $out;
+    }
+
+    /**
+     * Sticky posts enabled?
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      boolean         Do we have sticky posts enabled?
+     */
+    private function sticky_enabled() {
+        return $this->mod( 'sticky_posts' );
     }
 
 	/**
