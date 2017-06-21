@@ -1,17 +1,17 @@
 /**
  * Menus
- * 
+ *
  * Handles the behaviour of menu items
- * 
+ *
  * References:
- * 
+ *
  * - http://api.jquery.com/slidetoggle/
  * - http://stackoverflow.com/questions/6752677/use-jquery-to-automatically-add-arrows-to-all-parent-menus
  */
 
 (function( $ ) {
     'use strict';
-    
+
     function subMenuToggle( selector ) {
         var html = $( selector ).html();
 
@@ -20,7 +20,7 @@
         } else {
             $( selector ).html( '<span class="fa fa-caret-up" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span>' );
         }
-        
+
         $( selector ).toggleClass( 'closed' );
         $( selector ).next( 'ul' ).slideToggle({
             'duration': 200
@@ -37,10 +37,10 @@
 
         event.preventDefault();
     });
-    
+
     // Add icons to all parent menu items
     $( '.menu li > ul' ).before( '<button role="button" class="js-sub-menu-button sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
-    
+
     // Sub-menus toggle
     $( '.js-sub-menu-button' ).next( 'ul' ).hide();
     $( '.js-sub-menu-button' ).prev( 'a' ).on( 'click', function( event ) {

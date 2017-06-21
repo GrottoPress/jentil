@@ -123,9 +123,9 @@ final class Customizer extends MagPack\Utilities\Wizard {
 
     /**
      * Register theme customizer
-     * 
+     *
      * @action      customize_register
-     * 
+     *
      * @since       Jentil 0.1.0
      * @access      public
      */
@@ -133,7 +133,6 @@ final class Customizer extends MagPack\Utilities\Wizard {
         $this->post_types = $this->post_types();
         $this->taxonomies = $this->taxonomies();
         $this->archive_post_types = $this->archive_post_types();
-        
 
         $this->panels = $this->panels();
         $this->sections = $this->sections();
@@ -277,14 +276,12 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @since       Jentil 0.1.0
 	 * @access      public
      */
-    public function enqueue() {
-        wp_enqueue_script(
-            'jentil-customizer',
+    public function js() {
+        wp_enqueue_script( 'jentil-customizer',
             $this->jentil->get( 'dir_url' ) . '/assets/javascript/customize-preview.js',
             array( 'jquery', 'customize-preview' ),
             '',
-            true
-        );
+            true );
     }
 
     /**
