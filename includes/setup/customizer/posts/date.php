@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Date archive content customizer section
@@ -47,7 +48,7 @@ final class Date extends Section {
 
         $this->args['title'] = esc_html__( 'Date Archives', 'jentil' );
         $this->args['active_callback'] = function () {
-            return $this->posts->get( 'customizer' )->get( 'template' )->is( 'date' );
+            return Utilities\Template\Template::instance()->is( 'date' );
         };
     }
 

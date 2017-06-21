@@ -92,20 +92,72 @@ final class Posts extends MagPack\Utilities\Wizard {
 
 	    $this->sticky_enabled = $this->sticky_enabled();
 	    $this->sticky_posts = $this->sticky_posts();
+        $this->post_types = $this->post_types();
+        $this->archive_post_types = $this->archive_post_types();
+	}
 
-        $this->post_types = get_post_types( array(
+    /**
+     * Sticky posts enabled?
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      boolean         Do we have sticky posts enabled?
+     */
+    private function sticky_enabled() {
+        return $this->mod( 'sticky_posts' );
+    }
+
+    /**
+     * Get sticky posts
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      array       Sticky posts
+     */
+    private function sticky_posts() {
+        return array_map( 'absint', get_option( 'sticky_posts' ) );
+    }
+
+    /**
+     * Post types
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      array         Post types
+     */
+    private function post_types() {
+        return get_post_types( array(
             'public' => true,
-            'show_ui' => true,
+            // 'show_ui' => true,
         ), 'objects' );
+    }
 
-        if ( $this->post_types ) {
-            foreach ( $this->post_types as $post_type ) {
-                if ( $post_type->has_archive || 'post' == $post_type->name ) {
-                    $this->archive_post_types[] = $post_type->name;
-                }
+    /**
+     * Archive Post types
+     * 
+     * @since       Jentil 0.1.0
+     * @access      private
+     * 
+     * @return      array         All post types with archive
+     */
+    private function archive_post_types() {
+        $archive_post_types = array();
+
+        if ( ! $this->post_types ) {
+            return $archive_post_types;
+        }
+
+        foreach ( $this->post_types as $post_type ) {
+            if ( $post_type->has_archive || 'post' == $post_type->name ) {
+                $archive_post_types[] = $post_type->name;
             }
         }
-	}
+
+        return $archive_post_types;
+    }
 
 	/**
      * Get Posts
@@ -121,8 +173,10 @@ final class Posts extends MagPack\Utilities\Wizard {
         $pagination = new MagPack\Utilities\Pagination();
 
         if (
-        	$this->sticky_enabled && $this->sticky_posts
-        	&& $pagination->current_page() == 1 && ! $this->template->is( 'singular' )
+        	$this->sticky_enabled
+            && $this->sticky_posts
+        	&& $pagination->current_page() == 1
+            && ! $this->template->is( 'singular' )
         ) {
         	$out .= ( new MagPack\Utilities\Query\Posts( $this->sticky_query_args() ) )->run();
         }
@@ -188,18 +242,6 @@ final class Posts extends MagPack\Utilities\Wizard {
 				'ignore_sticky_posts' => 1,
 			),
 		);
-    }
-
-    /**
-     * Get sticky posts
-     * 
-     * @since		Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      array 		Sticky posts
-     */
-    private function sticky_posts() {
-    	return array_map( 'absint', get_option( 'sticky_posts' ) );
     }
 
     /**
@@ -356,18 +398,6 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		return $args;
-    }
-
-    /**
-     * Sticky posts enabled?
-     * 
-     * @since		Jentil 0.1.0
-     * @access      private
-     * 
-     * @return      boolean 		Do we have sticky posts enabled?
-     */
-    private function sticky_enabled() {
-        return $this->mod( 'sticky_posts' );
     }
 
     /**
@@ -566,9 +596,11 @@ final class Posts extends MagPack\Utilities\Wizard {
 
             $mod = new Utilities\Mods\Posts( $setting, $args );
 
-            if ( $mod->get( 'name' ) ) {
-            	return $mod->mod();
+            if ( ! $mod->get( 'name' ) ) {
+            	continue;
             }
+
+            return $mod->mod();
         }
 
         return ( new Utilities\Mods\Posts( $setting, $args ) )->get( 'default' );

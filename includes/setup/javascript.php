@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * JavaScript
@@ -61,9 +62,9 @@ final class JavaScript extends MagPack\Utilities\Wizard {
      * @action      wp_enqueue_scripts
      */
     public function enqueue() {
-    	global $jentil_template;
+    	$template = Utilities\Template\Template::instance();
 
-        if ( $jentil_template->is( 'singular' ) && comments_open() && get_option( 'thread_comments' ) ) {
+        if ( $template->is( 'singular' ) && comments_open() && get_option( 'thread_comments' ) ) {
             wp_enqueue_script( 'comment-reply' );
         }
     }

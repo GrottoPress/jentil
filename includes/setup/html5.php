@@ -84,25 +84,25 @@ final class HTML5 extends MagPack\Utilities\Wizard {
      * @filter      language_attributes
      */
     public function html_tag_schema( $output ) {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
         if (
-            $jentil_template->is( 'admin' )
-            || $jentil_template->is( 'login' )
-            || $jentil_template->is( 'register' )
+            $template->is( 'admin' )
+            || $template->is( 'login' )
+            || $template->is( 'register' )
         ) {
             return $output;
         }
 
         $output .= ' itemscope itemtype="http://schema.org/';
 
-        if ( $jentil_template->is( 'home' ) ) {
+        if ( $template->is( 'home' ) ) {
             $output .= 'Blog';
-        } elseif ( $jentil_template->is( 'author' ) ) {
+        } elseif ( $template->is( 'author' ) ) {
             $output .= 'ProfilePage';
-        } elseif ( $jentil_template->is( 'search' ) ) {
+        } elseif ( $template->is( 'search' ) ) {
             $output .= 'SearchResultsPage';
-        } elseif ( $jentil_template->is( 'singular', 'post' ) ) {
+        } elseif ( $template->is( 'singular', 'post' ) ) {
             $output .= 'BlogPosting';
         } else {
             $output .= 'WebPage';

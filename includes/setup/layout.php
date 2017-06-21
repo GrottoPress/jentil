@@ -17,6 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Layout setup
@@ -57,9 +58,9 @@ final class Layout extends MagPack\Utilities\Wizard {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        $layout = $jentil_template->get( 'layout' );
+        $layout = $template->get( 'layout' );
 
         if ( ( $mod = $layout->mod() ) ) {
             $classes[] = sanitize_title( 'layout-' . $mod );

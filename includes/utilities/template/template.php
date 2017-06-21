@@ -64,9 +64,9 @@ final class Template extends MagPack\Utilities\Template\Template {
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      public
+	 * @access      protected
 	 */
-	public function __construct() {
+	protected function __construct() {
 	    $this->title = new Title( $this );
 	    $this->layout = new Layout( $this );
 	    $this->posts = new Posts( $this );
@@ -98,18 +98,26 @@ final class Template extends MagPack\Utilities\Template\Template {
      * @return      string       Description.
      */
     public function description() {
-    	$description = '';
+        if ( $this->is( 'category' ) ) {
+            return category_description();
+        }
 
-		if ( $this->is( 'category' ) ) {
-			$description = category_description();
-		} elseif ( $this->is( 'tag' ) ) {
-			$description = tag_description();
-		} elseif ( $this->is( 'tax' ) ) {
-			$description = term_description();
-		} elseif ( $this->is( 'author' ) ) {
-			$description = get_the_author_meta( 'description' );
-		}
+        if ( $this->is( 'tag' ) ) {
+            return tag_description();
+        }
 
-		return $description;
+        if ( $this->is( 'tax' ) ) {
+            return term_description();
+        }
+
+        if ( $this->is( 'author' ) ) {
+            return get_the_author_meta( 'description' );
+        }
+
+        if ( $this->is( 'singular' ) ) {
+            return get_the_excerpt();
+        }
+
+        return '';
     }
 }

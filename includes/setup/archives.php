@@ -16,6 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Archive Setup
@@ -55,9 +56,13 @@ final class Archives extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function description() {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! ( $description = $jentil_template->description() ) ) {
+        if ( ! $template->is( 'archive' ) ) {
+            return;
+        }
+
+        if ( ! ( $description = $template->description() ) ) {
             return;
         }
 

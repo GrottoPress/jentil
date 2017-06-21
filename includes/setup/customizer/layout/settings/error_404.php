@@ -45,7 +45,7 @@ final class Error_404 extends Setting {
         parent::__construct( $layout );
         
         $this->control['active_callback'] = function () {
-            return $this->layout->get( 'customizer' )->get( 'template' )->is( '404' );
+            return Utilities\Template\Template::instance()->is( '404' );
         };
 
         $this->control['label'] = esc_html__( 'Error 404', 'jentil' );

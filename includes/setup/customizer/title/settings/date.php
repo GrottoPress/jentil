@@ -45,7 +45,7 @@ final class Date extends Setting {
         parent::__construct( $title );
 
         $this->control['active_callback'] = function () {
-            return $this->title->get( 'customizer' )->get( 'template' )->is( 'date' );
+            return Utilities\Template\Template::instance()->is( 'date' );
         };
 
         $this->control['label'] = esc_html__( 'Date Archives', 'jentil' );

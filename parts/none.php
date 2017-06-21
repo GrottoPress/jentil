@@ -8,7 +8,14 @@
  * @since			Jentil 0.1.0
  */
 
-global $jentil_template;
+use GrottoPress\Jentil\Utilities;
+
+/**
+ * Template instance
+ *
+ * @since		Jentil 0.1.0
+ */
+$jentil_template = Utilities\Template\Template::instance();
 
 ?>
 

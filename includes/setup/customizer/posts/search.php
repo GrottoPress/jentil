@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Search archive content customizer section
@@ -47,7 +48,7 @@ final class Search extends Section {
 
         $this->args['title'] = esc_html__( 'Search Results', 'jentil' );
         $this->args['active_callback'] = function () {
-            return $this->posts->get( 'customizer' )->get( 'template' )->is( 'search' );
+            return Utilities\Template\Template::instance()->is( 'search' );
         };
     }
 

@@ -16,6 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Search
@@ -90,9 +91,9 @@ final class Search extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function search_page_form() {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! $jentil_template->is( 'search' ) ) {
+        if ( ! $template->is( 'search' ) ) {
             return;
         }
 

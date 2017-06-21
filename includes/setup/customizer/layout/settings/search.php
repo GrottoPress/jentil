@@ -45,7 +45,7 @@ final class Search extends Setting {
         parent::__construct( $layout );
         
         $this->control['active_callback'] = function () {
-            return $this->layout->get( 'customizer' )->get( 'template' )->is( 'search' );
+            return Utilities\Template\Template::instance()->is( 'search' );
         };
 
         $this->control['label'] = esc_html__( 'Search Results', 'jentil' );

@@ -19,7 +19,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\MagPack;
-use GrottoPress\Jentil\Utilities;
 
 /**
  * Customizer
@@ -86,16 +85,6 @@ final class Customizer extends MagPack\Utilities\Wizard {
     protected $taxonomies;
 
     /**
-     * Template instance
-     *
-     * @since       Jentil 0.1.0
-     * @access      protected
-     * 
-     * @var         \GrottoPress\Jentil\Utilities\Template\Template        $template         Template
-     */
-    protected $template;
-
-    /**
      * Jentil
      *
      * @since       Jentil 0.1.0
@@ -129,7 +118,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'template', 'post_types', 'archive_post_types', 'taxonomies' );
+        return array( 'post_types', 'archive_post_types', 'taxonomies' );
     }
 
     /**
@@ -141,8 +130,6 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @access      public
      */
     public function add( $wp_customize ) {
-        $this->template = new Utilities\Template\Template();
-
         $this->post_types = get_post_types( array(
             'public' => true,
             // 'show_ui' => true,
@@ -230,7 +217,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
     public function enqueue() {
         wp_enqueue_script(
             'jentil-customizer',
-            get_template_directory_uri() . '/assets/javascript/customize-preview.js',
+            $this->jentil->get( 'dir_url' ) . '/assets/javascript/customize-preview.js',
             array( 'jquery', 'customize-preview' ),
             '',
             true

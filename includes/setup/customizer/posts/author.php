@@ -18,6 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
 }
 
+use GrottoPress\Jentil\Utilities;
+
 /**
  * Author archive content customizer section
  *
@@ -45,7 +47,7 @@ final class Author extends Section {
 
         $this->args['title'] = esc_html__( 'Author Archives', 'jentil' );
         $this->args['active_callback'] = function () {
-            return $this->posts->get( 'customizer' )->get( 'template' )->is( 'author' );
+            return Utilities\Template\Template::instance()->is( 'author' );
         };
     }
 

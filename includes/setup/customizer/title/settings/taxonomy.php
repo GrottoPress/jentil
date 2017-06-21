@@ -57,7 +57,7 @@ final class Taxonomy extends Setting {
         parent::__construct( $title );
         
         $this->control['active_callback'] = function () use ( $taxonomy, $term ) {
-            $template = $this->title->get( 'customizer' )->get( 'template' );
+            $template = Utilities\Template\Template::instance();
 
             if ( $term ) {
                 return ( $template->is( 'tag', $term->term_id )

@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Post type archive content customizer section
@@ -64,7 +65,7 @@ final class Post_Type extends Section {
 
         $this->args['title'] = sprintf( esc_html__( '%s Archive', 'jentil' ), $this->post_type->labels->name );
         $this->args['active_callback'] = function () {
-            $template = $this->posts->get( 'customizer' )->get( 'template' );
+            $template = Utilities\Template\Template::instance();
 
             if ( 'post' == $this->post_type->name ) {
                 return $template->is( 'home' );
