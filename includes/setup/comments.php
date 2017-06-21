@@ -1,9 +1,7 @@
 <?php
 
 /**
- * JavaScript
- *
- * Enqueue javascript, and the like.
+ * Comments
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -22,9 +20,7 @@ use GrottoPress\MagPack;
 use GrottoPress\Jentil\Utilities;
 
 /**
- * JavaScript
- *
- * Enqueue javascript, and the like.
+ * Comments
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -32,7 +28,7 @@ use GrottoPress\Jentil\Utilities;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class JavaScript extends MagPack\Utilities\Wizard {
+final class Comments extends MagPack\Utilities\Wizard {
 	/**
      * Jentil
      *
@@ -61,11 +57,17 @@ final class JavaScript extends MagPack\Utilities\Wizard {
      * 
      * @action      wp_enqueue_scripts
      */
-    public function enqueue() {
+    public function js() {
     	$template = Utilities\Template\Template::instance();
 
-        if ( $template->is( 'singular' ) && comments_open() && get_option( 'thread_comments' ) ) {
-            wp_enqueue_script( 'comment-reply' );
+        if (
+            ! $template->is( 'singular' )
+            || ! comments_open()
+            || ! get_option( 'thread_comments' )
+        ) {
+            return;
         }
+
+        wp_enqueue_script( 'comment-reply' );
     }
 }
