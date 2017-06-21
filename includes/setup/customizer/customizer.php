@@ -130,43 +130,74 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @access      public
      */
     public function add( $wp_customize ) {
-        $this->post_types = get_post_types( array(
-            'public' => true,
-            // 'show_ui' => true,
-        ), 'objects' );
-
-        $this->taxonomies = get_taxonomies( array(
-            'public' => true,
-            // 'show_ui' => true,
-        ), 'objects' );
-
-        if ( $this->post_types ) {
-            foreach ( $this->post_types as $post_type ) {
-                if (
-                    $post_type->has_archive
-                    || 'post' == $post_type->name
-                    // || 'attachment' == $post_type->name
-                ) {
-                    $this->archive_post_types[ $post_type->name ] = $post_type;
-                }
-            }
-        }
+        $this->post_types = $this->post_types();
+        $this->taxonomies = $this->taxonomies();
+        $this->archive_post_types = $this->archive_post_types();
+        
 
         $this->panels = $this->panels();
-
-        if ( $this->panels ) {
-            foreach ( $this->panels as $panel ) {
-                $panel->add( $wp_customize );
-            }
-        }
-
         $this->sections = $this->sections();
 
-        if ( $this->sections ) {
-            foreach ( $this->sections as $section ) {
-                $section->add( $wp_customize );
+        $this->add_panels( $wp_customize );
+        $this->add_sections( $wp_customize );
+    }
+
+    /**
+     * Post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      array       Public post types
+     */
+    private function post_types() {
+        return get_post_types( array(
+            'public' => true,
+            // 'show_ui' => true,
+        ), 'objects' );
+    }
+
+    /**
+     * Taxonomies
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      array       Public taxonomies
+     */
+    private function taxonomies() {
+        return get_taxonomies( array(
+            'public' => true,
+            // 'show_ui' => true,
+        ), 'objects' );
+    }
+
+    /**
+     * Archive post types
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return      array       All post types with archive
+     */
+    private function archive_post_types() {
+        $archive_post_types = array();
+
+        if ( ! $this->post_types ) {
+            return $archive_post_types;
+        }
+
+        foreach ( $this->post_types as $post_type ) {
+            if (
+                $post_type->has_archive
+                || 'post' == $post_type->name
+                // || 'attachment' == $post_type->name
+            ) {
+                $archive_post_types[ $post_type->name ] = $post_type;
             }
         }
+
+        return $archive_post_types;
     }
 
     /**
@@ -206,6 +237,38 @@ final class Customizer extends MagPack\Utilities\Wizard {
         return $sections;
     }
     
+    /**
+     * Add panels
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_panels( $wp_customize ) {
+        if ( ! $this->panels ) {
+            return;
+        }
+
+        foreach ( $this->panels as $panel ) {
+            $panel->add( $wp_customize );
+        }
+    }
+
+    /**
+     * Add sections
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     */
+    private function add_sections( $wp_customize ) {
+        if ( ! $this->sections ) {
+            return;
+        }
+
+        foreach ( $this->sections as $section ) {
+            $section->add( $wp_customize );
+        }
+    }
+
     /**
      * Enqueue scripts
      * 
