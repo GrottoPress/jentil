@@ -1,7 +1,5 @@
 <?php
-// echo get_theme_mod('post_post_type_posts_sticky_posts');
-// echo GrottoPress\Jentil\Utilities\Template\Template::instance()->get('posts')->mod('sticky_posts', ['context'=>'home']) . PHP_EOL;
-// print_r( GrottoPress\Jentil\Utilities\Template\Template::instance()->type() );
+
 /**
  * Header
  *
