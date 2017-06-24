@@ -144,7 +144,7 @@ final class Menus extends MagPack\Utilities\Wizard {
      */
     public function js() {
         wp_enqueue_script( 'jentil-menu',
-            $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.js',
+            $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.min.js',
             array( 'jquery' ),
             '',
             true );

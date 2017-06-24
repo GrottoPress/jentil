@@ -278,7 +278,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
      */
     public function js() {
         wp_enqueue_script( 'jentil-customizer',
-            $this->jentil->get( 'dir_url' ) . '/assets/javascript/customize-preview.js',
+            $this->jentil->get( 'dir_url' ) . '/assets/javascript/customize-preview.min.js',
             array( 'jquery', 'customize-preview' ),
             '',
             true );
