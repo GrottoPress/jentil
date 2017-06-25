@@ -12,7 +12,7 @@
 namespace GrottoPress\Jentil\Utilities\Template;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;

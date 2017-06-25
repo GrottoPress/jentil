@@ -15,7 +15,7 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Colophon;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\Jentil\Setup;

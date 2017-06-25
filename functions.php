@@ -13,7 +13,7 @@
 namespace GrottoPress\Jentil;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 /**

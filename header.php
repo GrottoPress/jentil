@@ -11,6 +11,10 @@
  * @since	    	Jentil 0.1.0
  */
 
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
+
 ?><!DOCTYPE html>
 <html data-site-name="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" data-site-decription="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" <?php language_attributes(); ?>>
 	<head>
