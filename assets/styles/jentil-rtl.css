@@ -1278,7 +1278,7 @@ button {
 	height: auto;
 	cursor: pointer;
 	border: 0;
-	border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
+	border-left: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
 	padding: 7px 10px 8px;
 	font-weight: bold;
 	font-size: 13px;
