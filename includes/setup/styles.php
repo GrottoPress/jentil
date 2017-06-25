@@ -67,7 +67,7 @@ final class Styles extends MagPack\Utilities\Wizard {
             $theme_dir_url . '/node_modules/normalize.css/normalize.css' );
         
         if ( is_rtl() ) {
-            wp_enqueue_style( 'jentil-rtl',
+            wp_enqueue_style( 'jentil',
                 $theme_dir_url . '/assets/styles/jentil-rtl.min.css',
                 array( 'normalize' ) );
         } else {
