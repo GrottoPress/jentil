@@ -63,11 +63,17 @@ final class Styles extends MagPack\Utilities\Wizard {
     public function enqueue() {
     	$theme_dir_url = $this->jentil->get( 'dir_url' );
 
-        wp_enqueue_style( 'normalize', $theme_dir_url . '/node_modules/normalize.css/normalize.css' );
-        wp_enqueue_style( 'jentil', $theme_dir_url . '/assets/styles/jentil.min.css', array( 'normalize' ) );
+        wp_enqueue_style( 'normalize',
+            $theme_dir_url . '/node_modules/normalize.css/normalize.css' );
         
         if ( is_rtl() ) {
-            wp_enqueue_style( 'jentil-rtl', $theme_dir_url . '/assets/styles/jentil-rtl.min.css', array( 'jentil' ) );
+            wp_enqueue_style( 'jentil-rtl',
+                $theme_dir_url . '/assets/styles/jentil-rtl.min.css',
+                array( 'normalize' ) );
+        } else {
+            wp_enqueue_style( 'jentil',
+                $theme_dir_url . '/assets/styles/jentil.min.css',
+                array( 'normalize' ) );
         }
     }
 }
