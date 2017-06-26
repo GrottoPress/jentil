@@ -18,10 +18,11 @@ var cleanCSS = require( 'gulp-clean-css' );
 
 // Paths
 var js_dir = './assets/javascript';
-var js_files = [ js_dir + '/*.js', '!' + js_dir + '/*.min.js' ];
+var js_files = [ js_dir + '/**/*.js', '!' + js_dir + '/**/*.min.js' ];
 var css_dir = './assets/styles';
-var css_files = [ css_dir + '/*.css', '!' + css_dir + '/*.min.css' ];
-var css_rtl_files = [ css_dir + '/*.css', '!' + css_dir + '/*.min.css', '!' + css_dir + '/*-rtl.css' ];
+var css_files = [ css_dir + '/**/*.css', '!' + css_dir + '/**/*.min.css' ];
+var css_rtl_files = [ css_dir + '/**/*.css', '!' + css_dir + '/**/*.min.css',
+    '!' + css_dir + '/**/*-rtl.css' ];
 
 // Lint Task
 gulp.task( 'lint', function() {
