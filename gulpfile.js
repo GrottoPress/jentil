@@ -58,7 +58,7 @@ gulp.task( 'minify_css', function() {
 // Watch Files For Changes
 gulp.task( 'watch', function() {
     gulp.watch( js_files, [ 'lint', 'minify_js' ]);
-    gulp.watch( css_files, [ 'minify_css' ]);
+    gulp.watch( css_files, [ 'rtl_css', 'minify_css' ]);
 });
 
 // Default Task
