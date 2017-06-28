@@ -15,7 +15,7 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
@@ -32,6 +32,16 @@ use GrottoPress\MagPack;
  * @since			Jentil 0.1.0
  */
 final class Jentil extends MagPack\Utilities\Singleton {
+    /**
+     * Theme directory path
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         string         $dir_path       Theme directory path
+     */
+    protected $dir_path;
+
     /**
      * Theme directory URI
      *
@@ -50,7 +60,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
      * 
      * @var         array         $parts       Theme parts
      */
-    protected $parts = array();
+    protected $parts;
 
     /**
      * Constructor
@@ -60,26 +70,9 @@ final class Jentil extends MagPack\Utilities\Singleton {
      */
     protected function __construct() {
     	$this->dir_url = get_template_directory_uri();
+    	$this->dir_path = get_template_directory();
 
-    	$this->parts['language'] = new Language( $this );
-    	$this->parts['javascript'] = new JavaScript( $this );
-    	$this->parts['styles'] = new Styles( $this );
-    	$this->parts['thumbnails'] = new Thumbnails( $this );
-    	$this->parts['feeds'] = new Feeds( $this );
-    	$this->parts['html5'] = new HTML5( $this );
-    	$this->parts['title_tag'] = new Title_Tag( $this );
-    	$this->parts['layout'] = new Layout( $this );
-    	$this->parts['logo'] = new Logo( $this );
-    	$this->parts['archives'] = new Archives( $this );
-    	$this->parts['search'] = new Search( $this );
-    	$this->parts['menus'] = new Menus( $this );
-    	$this->parts['breadcrumbs'] = new Breadcrumbs( $this );
-    	$this->parts['posts'] = new Posts( $this );
-    	$this->parts['widgets'] = new Widgets( $this );
-    	$this->parts['colophon'] = new Colophon( $this );
-    	$this->parts['customizer'] = new Customizer\Customizer( $this );
-    	$this->parts['metaboxes'] = new Metaboxes( $this );
-    	$this->parts['updater'] = new Updater( $this );
+    	$this->parts = $this->parts();
     }
 
     /**
@@ -94,7 +87,41 @@ final class Jentil extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'dir_url', 'parts' );
+        return array( 'dir_url', 'dir_path', 'parts' );
+    }
+
+    /**
+     * Theme parts
+     *
+     * @since       Jentil 0.1.0
+     * @access      private
+     *
+     * @return 		array       Theme parts
+     */
+    private function parts() {
+    	$parts = array();
+
+    	$parts['language'] = new Language( $this );
+    	$parts['styles'] = new Styles( $this );
+    	$parts['thumbnails'] = new Thumbnails( $this );
+    	$parts['feeds'] = new Feeds( $this );
+    	$parts['html5'] = new HTML5( $this );
+    	$parts['title_tag'] = new Title_Tag( $this );
+    	$parts['layout'] = new Layout( $this );
+    	$parts['logo'] = new Logo( $this );
+    	$parts['archives'] = new Archives( $this );
+    	$parts['search'] = new Search( $this );
+    	$parts['menus'] = new Menus( $this );
+    	$parts['breadcrumbs'] = new Breadcrumbs( $this );
+    	$parts['posts'] = new Posts( $this );
+    	$parts['comments'] = new Comments( $this );
+    	$parts['widgets'] = new Widgets( $this );
+    	$parts['colophon'] = new Colophon( $this );
+    	$parts['customizer'] = new Customizer\Customizer( $this );
+    	$parts['metaboxes'] = new Metaboxes( $this );
+    	$parts['updater'] = new Updater( $this );
+
+    	return $parts;
     }
 
     /**
@@ -105,7 +132,6 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 */
 	public function run() {
 		$this->language();
-		$this->javascript();
 		$this->styles();
 		$this->thumbnails();
 		$this->feeds();
@@ -113,11 +139,12 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		$this->title_tag();
 		$this->layout();
 		$this->logo();
-		$this->archives();
-		$this->search();
 		$this->menus();
 		$this->breadcrumbs();
+		$this->archives();
+		$this->search();
 		$this->posts();
+		$this->comments();
 		$this->widgets();
 		$this->colophon();
 		$this->customizer();
@@ -136,13 +163,13 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	}
 
     /**
-     * JavaScript
+     * Comments
 	 *
 	 * @since       Jentil 0.1.0
 	 * @access      private
 	 */
-	private function javascript() {
-		add_action( 'wp_enqueue_scripts', array( $this->parts['javascript'], 'enqueue' ) );
+	private function comments() {
+		add_action( 'wp_enqueue_scripts', array( $this->parts['comments'], 'js' ) );
 	}
 
 	/**
@@ -253,7 +280,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'header_menu' ) );
 		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'mobile_header_menu_toggle' ) );
 		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'mobile_header_menu' ) );
-		add_action( 'wp_enqueue_scripts', array( $this->parts['menus'], 'enqueue_js' ) );
+		add_action( 'wp_enqueue_scripts', array( $this->parts['menus'], 'js' ) );
 	}
 
 	/**
@@ -309,7 +336,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 */
 	private function customizer() {
 		add_action( 'customize_register', array( $this->parts['customizer'], 'add' ) );
-		add_action( 'customize_preview_init', array( $this->parts['customizer'], 'enqueue' ) );
+		add_action( 'customize_preview_init', array( $this->parts['customizer'], 'js' ) );
 		add_action( 'after_setup_theme', array( $this->parts['customizer'], 'selective_refresh' ) );
 	}
 	

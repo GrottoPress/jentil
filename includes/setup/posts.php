@@ -12,10 +12,11 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Posts
@@ -55,9 +56,9 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! $jentil_template->is( 'singular' ) ) {
+        if ( ! $template->is( 'singular' ) ) {
             return $classes;
         }
 
@@ -99,9 +100,9 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_before_before_title
      */
     public function parent_link() {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! $jentil_template->is( 'singular' ) ) {
+        if ( ! $template->is( 'singular' ) ) {
             return;
         }
 
@@ -127,9 +128,9 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function attachment() {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! $jentil_template->is( 'attachment' ) ) {
+        if ( ! $template->is( 'attachment' ) ) {
             return;
         }
 
@@ -159,9 +160,9 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @filter      jentil_singular_after_title
      */
     public function single_post_after_title_( $output, $id, $separator ) {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! $jentil_template->is( 'singular', 'post' ) ) {
+        if ( ! $template->is( 'singular', 'post' ) ) {
             return $output;
         }
 
@@ -196,9 +197,9 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_after_title
      */
     public function single_post_after_title() {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        if ( ! $jentil_template->is( 'singular', 'post' ) ) {
+        if ( ! $template->is( 'singular', 'post' ) ) {
             return;
         }
 

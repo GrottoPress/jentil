@@ -12,7 +12,7 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
@@ -142,7 +142,11 @@ final class Menus extends MagPack\Utilities\Wizard {
      * 
      * @action      wp_enqueue_scripts
      */
-    public function enqueue_js() {
-        wp_enqueue_script( 'jentil-menu', $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.js', array( 'jquery' ), '', true );
+    public function js() {
+        wp_enqueue_script( 'jentil-menu',
+            $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.min.js',
+            array( 'jquery' ),
+            '',
+            true );
     }
 }

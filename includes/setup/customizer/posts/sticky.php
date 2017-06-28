@@ -15,10 +15,11 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Sticky content customizer section
@@ -62,7 +63,7 @@ final class Sticky extends Section {
             $this->post_type->labels->name );
         // $this->args['panel'] = '';
         $this->args['active_callback'] = function () {
-            $template = $this->posts->get( 'customizer' )->get( 'template' );
+            $template = Utilities\Template\Template::instance();
             $has_sticky = $this->has_sticky( $this->post_type->name );
 
             if ( 'post' == $this->post_type->name ) {

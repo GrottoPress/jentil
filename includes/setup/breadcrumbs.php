@@ -12,10 +12,11 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Breadcrumbs
@@ -55,11 +56,11 @@ final class Breadcrumbs extends MagPack\Utilities\Wizard {
      * @action      jentil_before_before_title
      */
     public function render() {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
         $pagination = new MagPack\Utilities\Pagination();
 
-        if ( $jentil_template->is( 'front_page' ) && ! $pagination->is_paged() ) {
+        if ( $template->is( 'front_page' ) && ! $pagination->is_paged() ) {
             return;
         }
 
@@ -67,6 +68,6 @@ final class Breadcrumbs extends MagPack\Utilities\Wizard {
             'before' => esc_html__( 'Path: ', 'jentil' ),
         );
 
-        echo $jentil_template->breadcrumbs( $args )->trail();
+        echo $template->breadcrumbs( $args )->trail();
     }
 }

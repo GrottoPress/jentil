@@ -15,7 +15,7 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Title\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\Jentil\Setup;
@@ -45,7 +45,7 @@ final class Search extends Setting {
         parent::__construct( $title );
         
         $this->control['active_callback'] = function () {
-            return $this->title->get( 'customizer' )->get( 'template' )->is( 'search' );
+            return Utilities\Template\Template::instance()->is( 'search' );
         };
 
         $this->control['label'] = esc_html__( 'Search Results', 'jentil' );

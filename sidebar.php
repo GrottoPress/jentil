@@ -3,23 +3,33 @@
 /**
  * Sidebar
  *
- * The template for displaying sidebars.
+ * The template for displaying sidebars. Sidebars display
+ * with the `get_sidebar()` call.
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
  * @since			Jentil 0.1.0
  */
 
-global $jentil_template;
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
 
-$column = $jentil_template->get( 'layout' )->column();
+use GrottoPress\Jentil\Utilities;
+
+/**
+ * Layout columns
+ *
+ * @since 		Jentil 0.1.0
+ */
+$jentil_columns = Utilities\Template\Template::instance()->get( 'layout' )->column();
 
 /**
  * Do not show sidebars if page layout is one column
  * 
  * @since 		Jentil 0.1.0
  */
-if ( 'one-column' == $column ) {
+if ( 'one-column' == $jentil_columns ) {
 	return;
 }
 
@@ -41,7 +51,7 @@ if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
  * 
  * @since 		Jentil 0.1.0
  */
-if ( 'three-columns' == $column ) {
+if ( 'three-columns' == $jentil_columns ) {
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) { ?>
 		<div id="secondary-widget-area-wrap" class="sidebar-wrap p">
 			<aside id="secondary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">

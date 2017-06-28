@@ -13,7 +13,7 @@
 namespace GrottoPress\Jentil;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 /**
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 require_once get_template_directory() . '/vendor/autoload.php';
 
 /**
- * Begins execution of the theme.
+ * Run plugin
  * 
  * @action		after_setup_theme
  *
@@ -40,8 +40,8 @@ function run() {
 }
 
 /**
- * Run plugin
+ * Begin execution of the theme.
  * 
- * @since   	Jentil 0.1.0
+ * @since       Jentil 0.1.0
  */
 add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );

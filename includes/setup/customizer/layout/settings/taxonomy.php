@@ -15,7 +15,7 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\Jentil\Setup;
@@ -57,7 +57,7 @@ final class Taxonomy extends Setting {
         parent::__construct( $layout );
         
         $this->control['active_callback'] = function () use ( $taxonomy, $term ) {
-            $template = $this->layout->get( 'customizer' )->get( 'template' );
+            $template = Utilities\Template\Template::instance();
 
             if ( $term ) {
                 return ( $template->is( 'tag', $term->term_id )

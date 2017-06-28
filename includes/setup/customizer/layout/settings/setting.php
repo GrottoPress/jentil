@@ -14,10 +14,11 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Layout customizer setting
@@ -70,7 +71,7 @@ abstract class Setting extends Setup\Customizer\Setting {
             'section'   => $this->layout->get( 'name' ),
             'label'     => esc_html__( 'Select layout', 'jentil' ),
             'type'      => 'select',
-            'choices'   => $this->layout->get( 'customizer' )->get( 'template' )->get( 'layout' )->layouts_ids_names(),
+            'choices'   => Utilities\Template\Template::instance()->get( 'layout' )->layouts_ids_names(),
         );
     }
 }

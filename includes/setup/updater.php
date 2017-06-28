@@ -12,7 +12,7 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
@@ -56,6 +56,6 @@ final class Updater extends MagPack\Utilities\Wizard {
      */
     public function check() {
         \Puc_v4_Factory::buildUpdateChecker( 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-            get_template_directory() . '/functions.php', 'jentil' );
+            $this->jentil->get( 'dir_path' ) . '/functions.php', 'jentil' );
     }
 }

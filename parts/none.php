@@ -8,7 +8,18 @@
  * @since			Jentil 0.1.0
  */
 
-global $jentil_template;
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
+
+use GrottoPress\Jentil\Utilities;
+
+/**
+ * Template instance
+ *
+ * @since		Jentil 0.1.0
+ */
+$jentil_template = Utilities\Template\Template::instance();
 
 ?>
 

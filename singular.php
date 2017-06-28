@@ -10,6 +10,10 @@
  * @since			Jentil 0.1.0
  */
 
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
+
 /**
  * Begin template rendering
  * 

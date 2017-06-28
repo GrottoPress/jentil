@@ -13,10 +13,11 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Layout setup
@@ -57,9 +58,9 @@ final class Layout extends MagPack\Utilities\Wizard {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        global $jentil_template;
+        $template = Utilities\Template\Template::instance();
 
-        $layout = $jentil_template->get( 'layout' );
+        $layout = $template->get( 'layout' );
 
         if ( ( $mod = $layout->mod() ) ) {
             $classes[] = sanitize_title( 'layout-' . $mod );

@@ -2,11 +2,18 @@
   "name": "jentil",
   "version": "0.1.0",
   "description": "Jentil is a responsive, SEO parent theme for WordPress. This theme requires MagPack.",
-  "main": "index.php",
   "dependencies": {
     "normalize.css": "^5.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-rtlcss": "^1.0.0",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +25,8 @@
     "Jentil",
     "MagPack",
     "WordPress",
-    "Parent Theme",
+    "WordPress Theme",
+    "WordPress Theme Framework",
     "Responsive"
   ],
   "author": "GrottoPress.com",

@@ -15,10 +15,11 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Taxonomy archive content customizer section
@@ -82,7 +83,7 @@ final class Taxonomy extends Section {
         }
         
         $this->args['active_callback'] = function () use ( $term ) {
-            $template = $this->posts->get( 'customizer' )->get( 'template' );
+            $template = Utilities\Template\Template::instance();
 
             if ( $term ) {
                 return ( $template->is( 'tag', $term->term_id )

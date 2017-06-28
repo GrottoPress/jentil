@@ -13,7 +13,7 @@ html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 
-    direction: ltr;
+    direction: rtl;
     font-family: sans-serif;
     font-size: 10px;
     -webkit-text-size-adjust: none;
@@ -34,9 +34,9 @@ body {
     font-size: 1.4rem;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   	line-height: 160%;
-  	text-align: left;
-    padding-left: 20px;
+  	text-align: right;
     padding-right: 20px;
+    padding-left: 20px;
     overflow-x: hidden !important;
 
 	-ms-word-wrap: break-word;
@@ -121,17 +121,12 @@ h6 {
  */
 
 dl {
-	margin-left: 20px;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 dt {
 	font-weight: bold;
-}
-
-dd {
-    margin-left: 0;
-    margin-right: 0;
 }
 
 /**
@@ -473,7 +468,7 @@ blockquote p:last-child {
 .screen-reader-text:focus {
     clip: auto !important;
     display: block;
-    left: 5px;
+    right: 5px;
     top: 5px;
     width: auto;
     height: auto;
@@ -527,8 +522,8 @@ img {
 ul,
 ol {
 	list-style-image: none;
-	margin-left: 30px;
-	padding-left: 0;
+	margin-right: 30px;
+	padding-right: 0;
 }
 
 ul {
@@ -619,7 +614,7 @@ li {
 #header > * {
     font-size: 14px;
     font-size: 1.4rem;
-    text-align: left;
+    text-align: right;
 }
 
 #header .custom-logo {
@@ -656,15 +651,15 @@ li {
 
 #wrap {
     max-width: 480px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
 }
 
 .full-screen {
-    margin-left: -9999px;
     margin-right: -9999px;
-    padding-left: 9999px;
+    margin-left: -9999px;
     padding-right: 9999px;
+    padding-left: 9999px;
 }
 
 /**
@@ -749,13 +744,13 @@ tfoot {
 }
 
 .alignleft {
-	float: left;
-  	margin-right: 20px;
+	float: right;
+  	margin-left: 20px;
 }
 
 .alignright {
-	float: right;
-  	margin-left: 20px
+	float: left;
+  	margin-right: 20px
 }
 
 .aligncenter {
@@ -798,7 +793,7 @@ table.aligncenter {
 .gallery {
 	font-size: 0; /* Inline-block whitespace fix */
 	line-height: 160%;
-	padding: 15px 5px 5px 15px;
+	padding: 15px 15px 5px 5px;
 	background: #f4f4f4;
 }
 
@@ -806,7 +801,7 @@ table.aligncenter {
 	font-size: 13px;
 	font-size: 1.3rem;
 	margin-bottom: 10px;
-	margin-right: 10px;
+	margin-left: 10px;
 
 	display: -moz-inline-stack;
 	display: inline-block;
@@ -843,10 +838,10 @@ table.aligncenter {
  */
 
 blockquote {
-	margin-left: 10px;
-	margin-right: 0;
-	padding-left: 10px;
-	border-left: 5px solid #ddd;
+	margin-right: 10px;
+	margin-left: 0;
+	padding-right: 10px;
+	border-right: 5px solid #ddd;
 	font-size: 1.2em;
 	color: #999;
 	font-style: italic;
@@ -870,12 +865,12 @@ blockquote {
 }
 
 .menu {
-	margin-left: 0;
+	margin-right: 0;
 	font-size: 0;
 }
 
 .menu ul {
-    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .menu a {
@@ -917,7 +912,7 @@ blockquote {
     margin: 0;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 1;
 }
 
@@ -1098,7 +1093,7 @@ blockquote {
 }
 
 .commentlist {
-    margin-left: 0;
+    margin-right: 0;
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -1157,7 +1152,7 @@ blockquote {
 
 .commentlist .reply,
 #cancel-comment-reply-link {
-    text-align: right;
+    text-align: left;
 }
 
 #cancel-comment-reply-link {
@@ -1165,13 +1160,13 @@ blockquote {
 }
 
 #reply-title small {
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .comment-author .avatar {
-    float: left;
+    float: right;
     display: inline;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .comment-form .form-submit {
@@ -1271,8 +1266,8 @@ input:disabled {
 
 input[type="checkbox"],
 input[type="radio"] {
-	margin-left: 5px;
 	margin-right: 5px;
+	margin-left: 5px;
     width: auto;
     vertical-align: middle;
 }
@@ -1283,7 +1278,7 @@ button {
 	height: auto;
 	cursor: pointer;
 	border: 0;
-	border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
+	border-left: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
 	padding: 7px 10px 8px;
 	font-weight: bold;
 	font-size: 13px;
@@ -1350,11 +1345,11 @@ label > * {
     width: auto;
     font-size: 12px;
     font-size: 1.2rem;
-    text-align: right;
+    text-align: left;
     padding: 7px 10px;
     position: absolute;
     top: 1px;
-    right: 1px;
+    left: 1px;
     z-index: 1;
 }
 
@@ -1366,8 +1361,8 @@ label > * {
     font-size: 13px;
 	font-size: 1.3rem;
 	line-height: 160%;
-	margin-left: 20px;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .page-title,
@@ -1398,11 +1393,11 @@ label > * {
 }
 
 .attachment .image-navigation .prev {
-    float: left;
+    float: right;
 }
 
 .attachment .image-navigation .next {
-    float: right;
+    float: left;
 }
 
 .entry-attachment,
@@ -1470,8 +1465,8 @@ label > * {
 
 .singular-post > .post-wrap > header > .entry-meta .avatar {
 	display: inline;
-	float: left;
-    margin-right: 10px;
+	float: right;
+    margin-left: 10px;
 }
 
 .singular-post > .post-wrap > header > .entry-title {
@@ -1609,17 +1604,17 @@ label > * {
     /** Two Columns: Right Sidebar */
 
     .layout-content-sidebar #content-wrap {
-    	float: left;
-    	margin-right: -33.34%;
+    	float: right;
+    	margin-left: -33.34%;
     }
 
     .layout-content-sidebar #content {
-    	margin-right: 33.34%;
+    	margin-left: 33.34%;
     }
 
     .layout-content-sidebar #primary-widget-area-wrap {
-    	float: right;
-        padding-left: 20px;
+    	float: left;
+        padding-right: 20px;
     }
 
     /*#secondary-widget-area-wrap {
@@ -1630,17 +1625,17 @@ label > * {
     /** Two Columns: Left Sidebar */
 
     .layout-sidebar-content #content-wrap {
-    	float: right;
-    	margin-left: -33.34%;
+    	float: left;
+    	margin-right: -33.34%;
     }
 
     .layout-sidebar-content #content {
-    	margin-left: 33.34%;
+    	margin-right: 33.34%;
     }
 
     .layout-sidebar-content #primary-widget-area-wrap {
-    	float: left;
-        padding-right: 20px;
+    	float: right;
+        padding-left: 20px;
     }
 
     /** Three Columns */
@@ -1656,75 +1651,75 @@ label > * {
     /** Three Columns: Left & Right Sidebars */
 
     .layout-sidebar-content-sidebar #content-wrap {
-    	float: left;
+    	float: right;
     }
 
     .layout-sidebar-content-sidebar #content {
     	/** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-    	margin-right: 26.32%;
-    	margin-left: 21.06%;
+    	margin-left: 26.32%;
+    	margin-right: 21.06%;
     }
 
     .layout-sidebar-content-sidebar .sidebar-wrap {
-    	float: left;
+    	float: right;
     }
 
     .layout-sidebar-content-sidebar #secondary-widget-area-wrap {
-    	margin-left: -100%;
-        padding-right: 20px;
+    	margin-right: -100%;
+        padding-left: 20px;
     }
 
     .layout-sidebar-content-sidebar #primary-widget-area-wrap {
-    	margin-left: -26.32%; /** Set left margin to -(RightColumnWidth) */
-        padding-left: 20px;
+    	margin-right: -26.32%; /** Set left margin to -(RightColumnWidth) */
+        padding-right: 20px;
     }
 
     /** Three Columns: Two Left Sidebars */
 
     .layout-sidebar-sidebar-content #content-wrap {
-    	float: right;
+    	float: left;
     }
 
     .layout-sidebar-sidebar-content #content {
-    	margin-left: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    	margin-right: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-sidebar-sidebar-content .sidebar-wrap {
-        padding-right: 20px;
+        padding-left: 20px;
     }
 
     .layout-sidebar-sidebar-content #secondary-widget-area-wrap {
-    	float: right;
-    	margin-right: -47.38%; /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
+    	float: left;
+    	margin-left: -47.38%; /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-sidebar-sidebar-content #primary-widget-area-wrap {
-    	float: right;
-    	margin-right: -26.32%; /** Set margin to -(RightColumnWidth) */
+    	float: left;
+    	margin-left: -26.32%; /** Set margin to -(RightColumnWidth) */
     }
 
     /** Three Columns: Two Right Sidebars */
 
     .layout-content-sidebar-sidebar #content-wrap {
-    	float: left;
+    	float: right;
     }
 
     .layout-content-sidebar-sidebar #content {
-    	margin-right: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+    	margin-left: 47.38%; /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-content-sidebar-sidebar .sidebar-wrap {
-        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .layout-content-sidebar-sidebar #secondary-widget-area-wrap {
-    	float: left;
-    	margin-left: -47.38%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+    	float: right;
+    	margin-right: -47.38%; /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
     }
 
     .layout-content-sidebar-sidebar #primary-widget-area-wrap {
-    	float: left;
-    	margin-left: -26.32%; /** Set margin to -(RightColumnWidth) */
+    	float: right;
+    	margin-right: -26.32%; /** Set margin to -(RightColumnWidth) */
     }
 
     /**
@@ -1733,8 +1728,8 @@ label > * {
 
     #footer .widget-area {
         font-size: 0; /** Fixing whitespace on inline-block child elements */
-        margin-left: -10px;
         margin-right: -10px;
+        margin-left: -10px;
     }
 
     #footer .widget {
@@ -1777,7 +1772,7 @@ label > * {
      */
 
     #header {
-        text-align: left;
+        text-align: right;
     }
 
     /**
@@ -1798,7 +1793,7 @@ label > * {
 
     #header .search-wrap {
         width: 35%;
-        float: right;
+        float: left;
         display: inline;
         margin-top: 15px;
     }
@@ -1816,7 +1811,7 @@ label > * {
     }
 
     #header .menu > li {
-    	margin-left: 2%;
+    	margin-right: 2%;
 
     	display: -moz-inline-stack;
     	display: inline-block;
@@ -1826,18 +1821,18 @@ label > * {
     }
 
     .has-js #header .menu .menu-item-has-children > a {
-        padding-right: 22px;
+        padding-left: 22px;
     }
 
     #header .menu > li:first-child {
-    	margin-left: 0;
+    	margin-right: 0;
     }
 
     #header .menu ul {
     	width: 200px;
     	position: absolute;
     	top: 22px;
-    	left: 0;
+    	right: 0;
     	margin: 0;
     	padding: 0;
     	list-style-type: none;
@@ -1846,7 +1841,7 @@ label > * {
 
     #header .menu ul ul {
     	top: 0;
-    	left: 200px;
+    	right: 200px;
     }
 
     #header .menu ul,

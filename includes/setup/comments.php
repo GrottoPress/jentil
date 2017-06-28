@@ -1,9 +1,7 @@
 <?php
 
 /**
- * JavaScript
- *
- * Enqueue javascript, and the like.
+ * Comments
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -15,15 +13,14 @@
 namespace GrottoPress\Jentil\Setup;
 
 if ( ! defined( 'WPINC' ) ) {
-    wp_die( esc_html__( 'Do not load this file directly!', 'jentil' ) );
+    die;
 }
 
 use GrottoPress\MagPack;
+use GrottoPress\Jentil\Utilities;
 
 /**
- * JavaScript
- *
- * Enqueue javascript, and the like.
+ * Comments
  *
  * @link            http://example.com
  * @since           Jentil 0.1.0
@@ -31,7 +28,7 @@ use GrottoPress\MagPack;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class JavaScript extends MagPack\Utilities\Wizard {
+final class Comments extends MagPack\Utilities\Wizard {
 	/**
      * Jentil
      *
@@ -60,11 +57,17 @@ final class JavaScript extends MagPack\Utilities\Wizard {
      * 
      * @action      wp_enqueue_scripts
      */
-    public function enqueue() {
-    	global $jentil_template;
+    public function js() {
+    	$template = Utilities\Template\Template::instance();
 
-        if ( $jentil_template->is( 'singular' ) && comments_open() && get_option( 'thread_comments' ) ) {
-            wp_enqueue_script( 'comment-reply' );
+        if (
+            ! $template->is( 'singular' )
+            || ! comments_open()
+            || ! get_option( 'thread_comments' )
+        ) {
+            return;
         }
+
+        wp_enqueue_script( 'comment-reply' );
     }
 }
