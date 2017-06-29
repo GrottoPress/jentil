@@ -129,6 +129,11 @@ dt {
 	font-weight: bold;
 }
 
+dd {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 /**
  * Miscellaneous
  */
