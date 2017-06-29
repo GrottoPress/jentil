@@ -55,6 +55,19 @@ Jentil needs [composer](https://getcomposer.org/) and [npm](https://www.npmjs.co
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
 
+### End Users (Non-developers)
+
+We are working on a website where end users can simply press a download button to download a production-ready version of Jentil. Website link will be posted here soon.
+
+- After downloading Jentil (in *zip* format), go to **Themes** submenu of the **Appearance** menu in the WordPress admin area.
+- Click the **Add New** button on the *Themes* screen. You should be taken to the *Add Themes* screen.
+- On the *Add Themes* screen, click the **Upload Theme** button. Choose the file from your local computer and click **Install Now**.
+- Do not activate Jentil. Only activate the child theme that comes with it.
+
+Read our tutorial on [how to install WordPress themes](https://www.grottopress.com/tutorials/wordpress-themes-installation/) to learn more.
+
+### Developers
+
 - Change to your `wp-content/themes` directory.
 
 - Clone this repository  
@@ -63,9 +76,9 @@ Jentil needs [composer](https://getcomposer.org/) and [npm](https://www.npmjs.co
 - Change to `jentil` directory  
  `cd jentil`
 
-- Update packages (you should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed)  
- `composer update`  
- `npm update`
+- Install packages (you should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed)  
+ `composer install` (Use `--no-dev` flag for production)  
+ `npm install` (Use `--production` flag for production)
 
 - You're done.
 

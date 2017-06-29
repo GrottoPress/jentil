@@ -39,7 +39,7 @@
     });
 
     // Add icons to all parent menu items
-    $( '.menu li > ul' ).before( '<button role="button" class="js-sub-menu-button sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
+    $( '.menu li > ul' ).before( '<button class="js-sub-menu-button sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
 
     // Sub-menus toggle
     $( '.js-sub-menu-button' ).next( 'ul' ).hide();
