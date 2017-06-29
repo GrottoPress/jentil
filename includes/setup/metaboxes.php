@@ -151,7 +151,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 	private function boxes( $post_id ) {
 	    $post_type = get_post_type( $post_id );
 
-	    $template = new Utilities\Template\Template();
+	    $template = Utilities\Template\Template::instance();
         $layouts = $template->get( 'layout' )->layouts_ids_names();
 
         $mod = new Utilities\Mods\Layout( 'singular', $post_type, $post_id );
@@ -172,7 +172,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 							'label' => esc_html__( 'Select layout', 'jentil' ),
 						),
 					),
-					'notes' => __( 'Need help? Check out the <a href="#" target="_blank">documentation</a>.' ),
+					'notes' => __( 'Need help? Check out the <a href="#" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.' ),
 				);
 		    }
 	    }
