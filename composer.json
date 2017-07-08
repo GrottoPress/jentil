@@ -14,6 +14,7 @@
         "rogeriopradoj/respond": "^1.4"
     },
     "autoload": {
-        "classmap": ["includes/"]
+        "classmap": ["includes/"],
+        "files": ["includes/api/functions.php"]
     }
 }
