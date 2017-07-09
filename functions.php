@@ -31,7 +31,7 @@ require_once get_template_directory() . '/vendor/autoload.php';
  * @since 		Jentil 0.1.0
  */
 function run() {
-	if ( ! ( new Setup\Activator() )->checks() ) {
+	if ( ! Utilities\Activator::instance()->checks() ) {
 		return;
 	}
 
