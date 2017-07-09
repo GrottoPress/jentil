@@ -26,6 +26,17 @@ use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities;
 
 /**
+ * Activator utility
+ *
+ * @since       Jentil 0.1.0
+ *
+ * @return      \GrottoPress\Jentil\Utilities\Activator        The activator instance
+ */
+function jentil_activator() {
+    return Utilities\Activator::instance();
+}
+
+/**
  * Setup
  *
  * @since       Jentil 0.1.0

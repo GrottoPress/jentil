@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Functions
+ * Theme functions
  *
- * Sets up the theme.
+ * @see         https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
@@ -37,8 +37,7 @@ function run() {
 		return;
 	}
 
-	$jentil = Setup\Jentil::instance();
-	$jentil->run();
+	Setup\Jentil::instance()->run();
 }
 
 /**
