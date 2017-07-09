@@ -18,6 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Autoload
+ *
+ * Include composer autoloader
  * 
  * @since		Jentil 0.1.0
  */

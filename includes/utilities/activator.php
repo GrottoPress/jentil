@@ -74,9 +74,9 @@ final class Activator extends MagPack\Utilities\Singleton {
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      public
+	 * @access      protected
 	 */
-	public function __construct() {
+	protected function __construct() {
 	    $this->WP_version = get_bloginfo( 'version' );
 
         /**
