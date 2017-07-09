@@ -10,14 +10,16 @@
  * @since           Jentil 0.1.0
  *
  * @package         jentil
- * @subpackage      jentil/includes/setup
+ * @subpackage      jentil/includes/utilities
  */
 
-namespace GrottoPress\Jentil\Setup;
+namespace GrottoPress\Jentil\Utilities;
 
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
+
+use GrottoPress\MagPack;
 
 /**
  * Deactivator
@@ -27,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
  * 
  * @author          N Atta Kusi Adusei
  */
-final class Activator {
+final class Activator extends MagPack\Utilities\Singleton {
 	/**
      * Current WordPress version
 	 *
