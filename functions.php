@@ -14,9 +14,6 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-use GrottoPress\Jentil\Setup;
-use GrottoPress\Jentil\Utilities;
-
 /**
  * Autoload
  * 
@@ -32,9 +29,9 @@ require_once get_template_directory() . '/vendor/autoload.php';
  * @since       Jentil 0.1.0
  */
 add_action( 'after_setup_theme', function () {
-    if ( ! Utilities\Activator::instance()->checks() ) {
+    if ( ! jentil_activator()->checks() ) {
         return;
     }
 
-    Setup\Jentil::instance()->run();
+    jentil_setup()->run();
 }, 0 );
