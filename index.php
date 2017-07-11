@@ -6,7 +6,7 @@
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
- * 
+ *
  * @see 			http://codex.wordpress.org/Template_Hierarchy
  *
  * @link			https://jentil.grottopress.com
@@ -18,18 +18,9 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-use GrottoPress\Jentil\Utilities;
-
-/**
- * Template instance
- *
- * @since		Jentil 0.1.0
- */
-$jentil_template = Utilities\Template\Template::instance();
-
 /**
  * Begin template rendering
- * 
+ *
  * @since		Jentil 0.1.0
  */
 
@@ -50,8 +41,8 @@ get_header();
 		 */
 		do_action( 'jentil_before_before_title' );
 		
-		if ( ! $jentil_template->is( 'singular' ) ) {
-			if ( ( $title = $jentil_template->get( 'title' )->mod() ) ) { ?>
+		if ( ! ( $jentil_template = jentil_template() )->is( 'singular' ) ) {
+			if ( ( $title = jentil_title()->mod() ) ) { ?>
 				
 				<header class="p">
 
@@ -100,7 +91,7 @@ get_header();
 		
 		if (
 			$jentil_template->is( '404' )
-			|| ! ( $jentil_posts = $jentil_template->get( 'posts' )->query() )
+			|| ! ( $jentil_posts = jentil_posts()->query() )
 		) {
 			get_template_part( 'parts/none' );
 		} else {
