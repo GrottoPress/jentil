@@ -10,7 +10,7 @@
  * internals of Jentil change in the near future.
  *
  * Note that this is for use by child themes and plugins only.
- * Jentil core (except templates/views) will continue to refer
+ * Jentil (except templates/views) will continue to refer
  * to the namespaced classes.
  *
  * @link            https://jentil.grottopress.com
@@ -30,7 +30,7 @@ use GrottoPress\Jentil\Utilities;
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Setup\Jentil        The setup instance
+ * @return      \GrottoPress\Jentil\Setup\Jentil        The setup object
  */
 function jentil_setup() {
     return Setup\Jentil::instance();
@@ -60,7 +60,7 @@ function jentil_parts( $part = '' ) {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Activator        The activator instance
+ * @return      \GrottoPress\Jentil\Utilities\Activator        The activator object
  */
 function jentil_activator() {
     return Utilities\Activator::instance();
@@ -71,7 +71,7 @@ function jentil_activator() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Template\Template         The template instance
+ * @return      \GrottoPress\Jentil\Utilities\Template\Template         The template object
  */
 function jentil_template() {
     return Utilities\Template\Template::instance();
@@ -82,7 +82,7 @@ function jentil_template() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Template\Layout         The template layout instance
+ * @return      \GrottoPress\Jentil\Utilities\Template\Layout         The template layout object
  */
 function jentil_layout() {
     return jentil_template()->get( 'layout' );
@@ -93,7 +93,7 @@ function jentil_layout() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Template\Posts         The template posts instance
+ * @return      \GrottoPress\Jentil\Utilities\Template\Posts         The template posts object
  */
 function jentil_posts() {
     return jentil_template()->get( 'posts' );
@@ -104,7 +104,7 @@ function jentil_posts() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Template\Title         The template title instance
+ * @return      \GrottoPress\Jentil\Utilities\Template\Title         The template title object
  */
 function jentil_title() {
     return jentil_template()->get( 'title' );
@@ -115,7 +115,7 @@ function jentil_title() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Colophon         A colophon utility instance
+ * @return      \GrottoPress\Jentil\Utilities\Colophon         A colophon utility object
  */
 function jentil_colophon() {
     return new Utilities\Colophon();
@@ -126,7 +126,7 @@ function jentil_colophon() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Logo         A logo utility instance
+ * @return      \GrottoPress\Jentil\Utilities\Logo         A logo utility object
  */
 function jentil_logo() {
     return new Utilities\Logo();
@@ -137,7 +137,7 @@ function jentil_logo() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Mods\Colophon         A colophon mod instance
+ * @return      \GrottoPress\Jentil\Utilities\Mods\Colophon         A colophon mod object
  */
 function jentil_colophon_mod() {
     return new Utilities\Mods\Colophon();
@@ -152,7 +152,7 @@ function jentil_colophon_mod() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Mods\Colophon         A layout mod instance
+ * @return      \GrottoPress\Jentil\Utilities\Mods\Colophon         A layout mod object
  */
 function jentil_layout_mod( $context = '', $specific = '', $more_specific = '' ) {
     return new Utilities\Mods\Layout( $context, $specific, $more_specific );
@@ -163,7 +163,7 @@ function jentil_layout_mod( $context = '', $specific = '', $more_specific = '' )
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Mods\Logo         A logo mod instance
+ * @return      \GrottoPress\Jentil\Utilities\Mods\Logo         A logo mod object
  */
 function jentil_logo_mod() {
     return new Utilities\Mods\Logo();
@@ -177,7 +177,7 @@ function jentil_logo_mod() {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Mods\Posts         A posts mod instance
+ * @return      \GrottoPress\Jentil\Utilities\Mods\Posts         A posts mod object
  */
 function jentil_posts_mod( $setting, $args = array() ) {
     return new Utilities\Mods\Posts( $setting, $args );
@@ -192,7 +192,7 @@ function jentil_posts_mod( $setting, $args = array() ) {
  *
  * @since       Jentil 0.1.0
  *
- * @return      \GrottoPress\Jentil\Utilities\Mods\Title         A title mod instance
+ * @return      \GrottoPress\Jentil\Utilities\Mods\Title         A title mod object
  */
 function jentil_title_mod( $context = '', $specific = '', $more_specific = '' ) {
     return new Utilities\Mods\Title( $context, $specific, $more_specific );

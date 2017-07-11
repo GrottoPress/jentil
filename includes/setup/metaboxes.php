@@ -109,7 +109,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			$args['notes'] = isset( $boxes[ $id ]['notes'] ) ? $boxes[ $id ]['notes'] : null;
 			
-			( new MagPack\Utilities\Admin\Metabox( $args ) )->add();
+			mapack_metabox( $args )->add();
 		}
 	}
 	
@@ -138,7 +138,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 			$args['type'] = isset( $boxes[ $id ]['type'] ) ? sanitize_key( $boxes[ $id ]['type'] ) : '';
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			
-			( new MagPack\Utilities\Admin\Metabox( $args ) )->save( $post_id );
+			magpack_metabox( $args )->save( $post_id );
 		}
 	}
 	

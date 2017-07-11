@@ -166,7 +166,7 @@ final class Posts extends MagPack\Utilities\Wizard {
             return $output;
         }
 
-        $magpack_post = new MagPack\Utilities\Post\Post( $id );
+        $magpack_post = magpack_post( $id );
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 
@@ -205,7 +205,7 @@ final class Posts extends MagPack\Utilities\Wizard {
 
         global $post;
 
-        $magpack_post = new MagPack\Utilities\Post\Post( $post );
+        $magpack_post = magpack_post( $post );
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 

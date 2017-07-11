@@ -68,7 +68,8 @@ a:focus {
 	text-decoration: none;
 }
 
-a:focus {
+a:focus,
+button:focus {
 	outline: none;
 }
 
@@ -145,10 +146,6 @@ p:empty {
 
 strong {
 	font-weight: bold;
-}
-
-*:focus {
-    outline: none;
 }
 
 em,

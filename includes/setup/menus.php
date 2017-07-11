@@ -87,7 +87,7 @@ final class Menus extends MagPack\Utilities\Wizard {
      * @action      jentil_inside_header
      */
     public function mobile_header_menu_toggle() {
-        $pagination = new MagPack\Utilities\Pagination();
+        $pagination = magpack_pagination();
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
         echo '<div class="menu-toggle screen-max-wide p">'
