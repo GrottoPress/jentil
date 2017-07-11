@@ -1,7 +1,7 @@
 <?php
 
 /**
- * API Functions
+ * Functions API
  *
  * Functions for child themes and plugins to interface with Jentil.
  * Child theme and plugin authors are advised to use ONLY the functions here

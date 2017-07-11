@@ -109,7 +109,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			$args['notes'] = isset( $boxes[ $id ]['notes'] ) ? $boxes[ $id ]['notes'] : null;
 			
-			mapack_metabox( $args )->add();
+			magpack_metabox( $args )->add();
 		}
 	}
 	
