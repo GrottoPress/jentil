@@ -157,11 +157,9 @@ final class Posts extends MagPack\Utilities\Wizard {
     public function query() {
         $out = '';
 
-        $pagination = magpack_pagination();
-
         if (
             ! $this->template->is( 'singular' )
-        	&& $pagination->current_page() == 1
+        	&& magpack_pagination()->current_page() == 1
             && ( $this->sticky_enabled = $this->sticky_enabled() )
             && $this->sticky_posts
         ) {
