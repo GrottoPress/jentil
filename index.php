@@ -18,6 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
+use GrottoPress\Jentil\Utilities;
+
 /**
  * Begin template rendering
  *
@@ -41,8 +43,8 @@ get_header();
 		 */
 		do_action( 'jentil_before_before_title' );
 		
-		if ( ! ( $jentil_template = jentil_template() )->is( 'singular' ) ) {
-			if ( ( $title = jentil_title()->mod() ) ) { ?>
+		if ( ! ( $jentil_template = Utilities\Template\Template::instance() )->is( 'singular' ) ) {
+			if ( ( $jentil_title = $jentil_template->get( 'title' )->mod() ) ) { ?>
 				
 				<header class="p">
 
@@ -59,7 +61,7 @@ get_header();
 
 			<h1 class="page-title entry-title" itemprop="name"><?php
 
-				echo $title;
+				echo $jentil_title;
 				
 			?></h1>
 
@@ -73,7 +75,7 @@ get_header();
 			 */
 			do_action( 'jentil_after_title' );
 
-			if ( $title ) { ?>
+			if ( $jentil_title ) { ?>
 			
 				</header>
 
@@ -91,7 +93,7 @@ get_header();
 		
 		if (
 			$jentil_template->is( '404' )
-			|| ! ( $jentil_posts = jentil_posts()->query() )
+			|| ! ( $jentil_posts = $jentil_template->get( 'posts' )->query() )
 		) {
 			get_template_part( 'parts/none' );
 		} else {

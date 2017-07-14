@@ -58,9 +58,10 @@ final class Breadcrumbs extends MagPack\Utilities\Wizard {
     public function render() {
         $template = Utilities\Template\Template::instance();
 
-        $pagination = magpack_pagination();
-
-        if ( $template->is( 'front_page' ) && ! $pagination->is_paged() ) {
+        if (
+            $template->is( 'front_page' )
+            && ! ( new MagPack\Utilities\Pagination() )->is_paged()
+        ) {
             return;
         }
 

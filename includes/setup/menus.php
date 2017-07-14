@@ -87,7 +87,6 @@ final class Menus extends MagPack\Utilities\Wizard {
      * @action      jentil_inside_header
      */
     public function mobile_header_menu_toggle() {
-        $pagination = magpack_pagination();
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
         echo '<div class="menu-toggle screen-max-wide p">'
@@ -95,7 +94,7 @@ final class Menus extends MagPack\Utilities\Wizard {
 
             . '<a class="js-mobile-menu-button hamburger" href="' . esc_url( add_query_arg( array(
                     'menu' => ( $status == 'off' ? 'on' : 'off' ),
-                ), $pagination->page_url( true, true ) ) ) . '" rel="nofollow"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
+                ), ( new MagPack\Utilities\Pagination() )->page_url( true, true ) ) ) . '" rel="nofollow"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
         </div>';
     }
 

@@ -69,7 +69,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 		 */
 		add_action( 'edit_attachment', array( $this, 'save' ) );
 	}
-	
+
 	/**
 	 * Add meta boxes.
 	 *
@@ -109,10 +109,10 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			$args['notes'] = isset( $boxes[ $id ]['notes'] ) ? $boxes[ $id ]['notes'] : null;
 			
-			magpack_metabox( $args )->add();
+			( new MagPack\Utilities\Admin\Metabox( $args ) )->add();
 		}
 	}
-	
+
 	/**
 	 * Save meta boxes as custom fields.
 	 *
@@ -138,10 +138,10 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 			$args['type'] = isset( $boxes[ $id ]['type'] ) ? sanitize_key( $boxes[ $id ]['type'] ) : '';
 			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
 			
-			magpack_metabox( $args )->save( $post_id );
+			( new MagPack\Utilities\Admin\Metabox( $args ) )->save( $post_id );
 		}
 	}
-	
+
 	/**
 	 * Meta boxes.
 	 * 
@@ -151,9 +151,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 	private function boxes( $post_id ) {
 	    $post_type = get_post_type( $post_id );
 
-	    $template = Utilities\Template\Template::instance();
-        $layouts = $template->get( 'layout' )->layouts_ids_names();
-
+	    $layouts = Utilities\Template\Template::instance()->get( 'layout' )->layouts_ids_names();
         $mod = new Utilities\Mods\Layout( 'singular', $post_type, $post_id );
 
         $boxes = array();

@@ -58,9 +58,7 @@ final class Layout extends MagPack\Utilities\Wizard {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        $template = Utilities\Template\Template::instance();
-
-        $layout = $template->get( 'layout' );
+        $layout = Utilities\Template\Template::instance()->get( 'layout' );
 
         if ( ( $mod = $layout->mod() ) ) {
             $classes[] = sanitize_title( 'layout-' . $mod );

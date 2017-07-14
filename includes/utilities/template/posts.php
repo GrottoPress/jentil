@@ -159,14 +159,14 @@ final class Posts extends MagPack\Utilities\Wizard {
 
         if (
             ! $this->template->is( 'singular' )
-        	&& magpack_pagination()->current_page() == 1
+        	&& ( new MagPack\Utilities\Pagination() )->current_page() == 1
             && ( $this->sticky_enabled = $this->sticky_enabled() )
             && $this->sticky_posts
         ) {
-        	$out .= magpack_posts( $this->sticky_query_args() )->run();
+        	$out .= ( new MagPack\Utilities\Query\Posts( $this->sticky_query_args() ) )->run();
         }
 
-        $out .= magpack_posts( $this->query_args() )->run();
+        $out .= ( new MagPack\Utilities\Query\Posts( $this->query_args() ) )->run();
 
         return $out;
     }

@@ -56,11 +56,10 @@ final class Colophon extends MagPack\Utilities\Wizard {
      * @action      jentil_inside_footer
      */
     public function render() {
-        $template = Utilities\Template\Template::instance();
-
-        $colophon = new Utilities\Colophon();
-
-        if ( ! ( $mod = $colophon->mod() ) && ! $template->is( 'customize_preview' ) ) {
+        if (
+            ! ( $mod = ( new Utilities\Colophon() )->mod() )
+            && ! Utilities\Template\Template::instance()->is( 'customize_preview' )
+        ) {
             return '';
         }
 
