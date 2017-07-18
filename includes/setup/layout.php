@@ -28,8 +28,15 @@ use GrottoPress\Jentil\Utilities;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class Layout extends MagPack\Utilities\Wizard {
+final class Layout {
 	/**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
+    /**
      * Jentil
      *
      * @since       Jentil 0.1.0

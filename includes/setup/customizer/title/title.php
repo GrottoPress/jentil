@@ -43,10 +43,10 @@ final class Title extends Setup\Customizer\Section {
 
         $this->name = 'title';
         
-        $this->args = array(
+        $this->args = [
             'title' => esc_html__( 'Title', 'jentil' ),
             // 'description' => esc_html__( 'Description here', 'jentil' ),
-        );
+        ];
     }
 
     /**
@@ -56,7 +56,7 @@ final class Title extends Setup\Customizer\Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['author'] = new Settings\Author( $this );
         $settings['date'] = new Settings\Date( $this );

@@ -94,7 +94,7 @@ final class Title extends Mod {
      * @return      string          Mod names
      */
     private function names() {
-        $names = array(
+        $names = [
             'home' => 'post_post_type_title',
             // 'singular' => 'singular_' . $this->specific . '_' . $this->more_specific . '_title',
             'author' => 'author_title',
@@ -105,7 +105,7 @@ final class Title extends Mod {
             'tax' => $this->specific . '_' . $this->more_specific . '_taxonomy_title',
             '404' => 'error_404_title',
             'search' => 'search_title',
-        );
+        ];
 
         $names = array_map( function ( $value ) {
             $value = str_replace( '__', '_', $value );
@@ -136,7 +136,7 @@ final class Title extends Mod {
      * @return      string          Mod names
      */
     private function defaults() {
-        $defaults = array(
+        $defaults = [
             'home' => esc_html__( 'Latest Posts', 'jentil' ),
             // 'singular' => '',
             'author' => '{{author_name}}',
@@ -147,7 +147,7 @@ final class Title extends Mod {
             'tax' => '{{term_name}}',
             '404' => esc_html__( 'Not Found', 'jentil' ),
             'search' => '&ldquo;{{search_query}}&rdquo;',
-        );
+        ];
 
         /**
          * Filter the title mod defaults
@@ -189,7 +189,7 @@ final class Title extends Mod {
      * @return      string          Mod with placeholders replaced
      */
     private function parse_placeholders( $mod ) {
-        return str_ireplace( array(
+        return str_ireplace( [
             '{{author_name}}',
             '{{category_name}}',
             '{{tag_name}}',
@@ -198,7 +198,7 @@ final class Title extends Mod {
             '{{post_type_name}}',
             '{{date}}',
             '{{search_query}}',
-        ), array(
+        ], [
             esc_attr( get_the_author_meta( 'display_name' ) ),
             esc_attr( single_cat_title( '', false ) ),
             esc_attr( single_tag_title( '', false ) ),
@@ -211,7 +211,7 @@ final class Title extends Mod {
                     ? get_the_date( 'F Y' )
                     : get_the_date( 'Y' ) ) ),
             esc_attr( get_search_query() ),
-        ),
+        ],
         $mod );
     }
 }

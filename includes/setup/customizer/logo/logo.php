@@ -43,9 +43,9 @@ final class Logo extends Setup\Customizer\Section {
 
         $this->name = '';
         
-        $this->args = array(
+        $this->args = [
             'title'     => esc_html__( 'Logo', 'jentil' ),
-        );
+        ];
     }
 
     /**
@@ -55,7 +55,7 @@ final class Logo extends Setup\Customizer\Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['logo'] = new Settings\Logo( $this );
 

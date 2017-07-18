@@ -29,7 +29,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes/utilities
  * @since			Jentil 0.1.0
  */
-final class Template extends MagPack\Utilities\Template\Template {
+final class Template {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard, MagPack\Utilities\Singleton;
+
     /**
      * Title
 	 *
@@ -61,6 +68,16 @@ final class Template extends MagPack\Utilities\Template\Template {
     protected $posts;
 
     /**
+     * Breadcrumbs
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var     \GrottoPress\Jentil\Utilities\Template\Breadcrumbs     $breadcrumbs    Breadcrumbs
+     */
+    protected $breadcrumbs;
+
+    /**
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
@@ -70,8 +87,6 @@ final class Template extends MagPack\Utilities\Template\Template {
 	    $this->title = new Title( $this );
 	    $this->layout = new Layout( $this );
 	    $this->posts = new Posts( $this );
-
-	    parent::__construct();
 	}
 
 	/**
@@ -86,7 +101,23 @@ final class Template extends MagPack\Utilities\Template\Template {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array_merge( parent::allow_get(), array( 'title', 'layout', 'posts' ) );
+        return [ 'title', 'layout', 'posts' ];
+    }
+
+    /**
+     * Breadcrumbs
+     *
+     * @var         array       $args       Breadcrumb args supplied as associative array
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @return  \GrottoPress\Jentil\Utilities\Template\Breadcrumbs     Breadcrumbs
+     */
+    public function breadcrumbs( $args = [] ) {
+        $this->breadcrumbs = new Breadcrumbs( $this, $args );
+
+        return $this->breadcrumbs;
     }
 
     /**
@@ -119,5 +150,96 @@ final class Template extends MagPack\Utilities\Template\Template {
         }
 
         return '';
+    }
+
+    /**
+     * Get template type
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     * 
+     * @return      array           Template tags applicable to this template
+     */
+    public function type() {
+        $return = [];
+        
+        if ( ! ( $templates = $this->templates() ) ) {
+            return $return;
+        }
+        
+        foreach ( $templates as $template ) {
+            if ( $this->is( $template ) ) {
+                $return[] = $template;
+            }
+        }
+        
+        return $return;
+    }
+
+    /**
+     * Are we on a particular template?
+     * 
+     * @var         string      $template       Template name/slug
+     * @var         mixed       $args           Arguments to the is_{template} functions in WordPress
+     * @var         mixed       $args2          Arguments to the is_{template} functions in WordPress
+     * 
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function is( $template, $args = '', $args2 = '' ) {
+        if ( ! in_array( $template, $this->templates() ) ) {
+            return false;
+        }
+
+        global $pagenow;
+
+        if ( 'login' == $template ) {
+            return ( $pagenow === 'wp-login.php' );
+        }
+
+        if ( 'register' == $template ) {
+            return ( $pagenow === 'wp-signup.php' );
+        }
+
+        $is_template = 'is_' . $template;
+
+        if ( is_callable( $is_template ) ) {
+            return $is_template( $args, $args2 );
+        }
+        
+        return false;
+    }
+
+    /**
+     * Add breadcrumbs links
+     * 
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function templates() {
+        return [
+            'home',
+            'front_page',
+            'single',
+            'page',
+            'attachment',
+            'singular',
+            'author',
+            'category',
+            'day',
+            'month',
+            'year',
+            'date',
+            'post_type_archive',
+            'tag',
+            'tax',
+            'archive',
+            '404',
+            'search',
+            'customize_preview',
+            'admin',
+            'login',
+            'register',
+        ];
     }
 }

@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Breadcrumbs extends MagPack\Utilities\Wizard {
+final class Breadcrumbs {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -65,9 +72,9 @@ final class Breadcrumbs extends MagPack\Utilities\Wizard {
             return;
         }
 
-        $args = array(
+        $args = [
             'before' => esc_html__( 'Path: ', 'jentil' ),
-        );
+        ];
 
         echo $template->breadcrumbs( $args )->trail();
     }

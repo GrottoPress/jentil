@@ -29,8 +29,15 @@ use GrottoPress\MagPack;
  * 
  * @author          N Atta Kusi Adusei
  */
-final class Activator extends MagPack\Utilities\Singleton {
+final class Activator {
 	/**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Singleton;
+
+    /**
      * Current WordPress version
 	 *
 	 * @since       Jentil 0.1.0
@@ -88,7 +95,7 @@ final class Activator extends MagPack\Utilities\Singleton {
 	    $this->required_WP = '4.3';
 
         $this->satisfied = true;
-        $this->messages = array();
+        $this->messages = [];
 	}
 
 	/**
@@ -198,10 +205,10 @@ final class Activator extends MagPack\Utilities\Singleton {
     private function plugin_activation_url( $plugin ) {
         $plugin = sanitize_text_field( $plugin );
 
-        $url = add_query_arg( array(
+        $url = add_query_arg( [
             'action' => 'activate',
             'plugin' => urlencode_deep( $plugin ),
-        ), admin_url( 'plugins.php' ) );
+        ], admin_url( 'plugins.php' ) );
 
         $url = wp_nonce_url( $url, "activate-plugin_{$plugin}" );
 

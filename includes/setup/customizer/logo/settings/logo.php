@@ -78,7 +78,7 @@ final class Logo extends Setup\Customizer\Setting {
 
         $this->name = $this->mod->get( 'name' );
         
-        $this->args = array(
+        $this->args = [
             // 'transport' => 'postMessage',
             'default' => $this->mod->get( 'default' ),
             'sanitize_callback' => function ( $logo ) {
@@ -88,11 +88,11 @@ final class Logo extends Setup\Customizer\Setting {
 
                 return absint( $logo );
             },
-        );
+        ];
 
         $atts = $this->ulogo->attributes();
 
-        $this->control = array(
+        $this->control = [
             'label'         => esc_html__( 'Logo', 'jentil' ),
             'section'       => 'title_tagline',
             'settings'      => $this->name,
@@ -101,7 +101,7 @@ final class Logo extends Setup\Customizer\Setting {
             'width'         => absint( $atts['width'] ),
             'flex_height'   => ( bool ) $atts['flex-height'],
             'flex_width'    => ( bool ) $atts['flex-width'],
-            'button_labels' => array(
+            'button_labels' => [
                 'select'       => esc_html__( 'Select logo', 'jentil' ),
                 'change'       => esc_html__( 'Change logo', 'jentil' ),
                 'remove'       => esc_html__( 'Remove', 'jentil' ),
@@ -109,8 +109,8 @@ final class Logo extends Setup\Customizer\Setting {
                 'placeholder'  => esc_html__( 'No logo selected', 'jentil' ),
                 'frame_title'  => esc_html__( 'Select logo', 'jentil' ),
                 'frame_button' => esc_html__( 'Choose logo', 'jentil' ),
-            ),
-        );
+            ],
+        ];
 	}
 
     /**
@@ -137,12 +137,12 @@ final class Logo extends Setup\Customizer\Setting {
         }
 
         if ( isset( $wp_customize->selective_refresh ) ) {
-            $wp_customize->selective_refresh->add_partial( $this->name, array(
-                'settings'            => array( $this->name ),
+            $wp_customize->selective_refresh->add_partial( $this->name, [
+                'settings'            => [ $this->name ],
                 'selector'            => '.custom-logo-link',
-                'render_callback'     => array( $this->ulogo, 'HTML' ),
+                'render_callback'     => [ $this->ulogo, 'HTML' ],
                 'container_inclusive' => true,
-            ) );
+            ] );
         }
     }
 }

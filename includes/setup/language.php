@@ -28,7 +28,14 @@ use GrottoPress\MagPack;
  * @subpackage		jentil/includes/setup
  * @author			N Atta Kusi Adusei
  */
-final class Language extends MagPack\Utilities\Wizard {
+final class Language {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *

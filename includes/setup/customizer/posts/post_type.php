@@ -82,7 +82,7 @@ final class Post_Type extends Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         if ( $this->has_sticky() ) {
             $settings['sticky_posts'] = new Settings\Sticky_Posts( $this );

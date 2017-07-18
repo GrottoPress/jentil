@@ -56,7 +56,7 @@ final class Posts extends Setup\Customizer\Panel {
      * @access      protected
      */
     protected function sections() {
-        $sections = array();
+        $sections = [];
 
         $sections['author'] = new Author( $this );
         $sections['date'] = new Date( $this );

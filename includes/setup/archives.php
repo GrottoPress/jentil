@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Archives extends MagPack\Utilities\Wizard {
+final class Archives {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *

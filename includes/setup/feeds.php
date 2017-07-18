@@ -25,7 +25,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Feeds extends MagPack\Utilities\Wizard {
+final class Feeds {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *

@@ -31,7 +31,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes/setup
  * @since			Jentil 0.1.0
  */
-final class Jentil extends MagPack\Utilities\Singleton {
+final class Jentil {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard, MagPack\Utilities\Singleton;
+
     /**
      * Theme directory path
      *
@@ -87,7 +94,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'dir_url', 'dir_path', 'parts' );
+        return [ 'dir_url', 'dir_path', 'parts' ];
     }
 
     /**
@@ -99,7 +106,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
      * @return 		array       Theme parts
      */
     private function parts() {
-    	$parts = array();
+    	$parts = [];
 
     	$parts['language'] = new Language( $this );
     	$parts['styles'] = new Styles( $this );
@@ -159,7 +166,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function language() {
-		add_action( 'after_setup_theme', array( $this->parts['language'], 'load_textdomain' ) );
+		add_action( 'after_setup_theme', [ $this->parts['language'], 'load_textdomain' ] );
 	}
 
     /**
@@ -169,7 +176,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function comments() {
-		add_action( 'wp_enqueue_scripts', array( $this->parts['comments'], 'js' ) );
+		add_action( 'wp_enqueue_scripts', [ $this->parts['comments'], 'js' ] );
 	}
 
 	/**
@@ -179,7 +186,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function styles() {
-		add_action( 'wp_enqueue_scripts', array( $this->parts['styles'], 'enqueue' ) );
+		add_action( 'wp_enqueue_scripts', [ $this->parts['styles'], 'enqueue' ] );
 	}
 
 	/**
@@ -189,8 +196,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function thumbnails() {
-		add_action( 'after_setup_theme', array( $this->parts['thumbnails'], 'enable' ) );
-		add_action( 'after_setup_theme', array( $this->parts['thumbnails'], 'sizes' ) );
+		add_action( 'after_setup_theme', [ $this->parts['thumbnails'], 'enable' ] );
+		add_action( 'after_setup_theme', [ $this->parts['thumbnails'], 'sizes' ] );
 	}
 
 	/**
@@ -200,7 +207,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function feeds() {
-		add_action( 'after_setup_theme', array( $this->parts['feeds'], 'enable' ) );
+		add_action( 'after_setup_theme', [ $this->parts['feeds'], 'enable' ] );
 	}
 
 	/**
@@ -210,9 +217,9 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function HTML5() {
-		add_action( 'after_setup_theme', array( $this->parts['html5'], 'enable' ) );
-		add_filter( 'language_attributes', array( $this->parts['html5'], 'html_tag_schema' ) );
-		add_filter( 'wp_kses_allowed_html', array( $this->parts['html5'], 'kses_allow' ), 10, 2 );
+		add_action( 'after_setup_theme', [ $this->parts['html5'], 'enable' ] );
+		add_filter( 'language_attributes', [ $this->parts['html5'], 'html_tag_schema' ] );
+		add_filter( 'wp_kses_allowed_html', [ $this->parts['html5'], 'kses_allow' ], 10, 2 );
 	}
 
 	/**
@@ -222,8 +229,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function title_tag() {
-		add_action( 'after_setup_theme', array( $this->parts['title_tag'], 'enable' ) );
-		add_action( 'wp_head', array( $this->parts['title_tag'], 'render' ) );
+		add_action( 'after_setup_theme', [ $this->parts['title_tag'], 'enable' ] );
+		add_action( 'wp_head', [ $this->parts['title_tag'], 'render' ] );
 	}
 
 	/**
@@ -233,7 +240,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function layout() {
-		add_filter( 'body_class', array( $this->parts['layout'], 'body_class' ) );
+		add_filter( 'body_class', [ $this->parts['layout'], 'body_class' ] );
 	}
 
 	/**
@@ -243,8 +250,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function logo() {
-		add_action( 'after_setup_theme', array( $this->parts['logo'], 'enable' ) );
-		add_action( 'jentil_inside_header', array( $this->parts['logo'], 'render' ) );
+		add_action( 'after_setup_theme', [ $this->parts['logo'], 'enable' ] );
+		add_action( 'jentil_inside_header', [ $this->parts['logo'], 'render' ] );
 	}
 
 	/**
@@ -254,7 +261,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function archives() {
-		add_action( 'jentil_before_content', array( $this->parts['archives'], 'description' ) );
+		add_action( 'jentil_before_content', [ $this->parts['archives'], 'description' ] );
 	}
 
 	/**
@@ -264,9 +271,9 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function search() {
-		add_action( 'get_search_form', array( $this->parts['search'], 'form' ) );
-		add_action( 'jentil_inside_header', array( $this->parts['search'], 'render' ) );
-		add_action( 'jentil_before_content', array( $this->parts['search'], 'search_page_form' ) );
+		add_action( 'get_search_form', [ $this->parts['search'], 'form' ] );
+		add_action( 'jentil_inside_header', [ $this->parts['search'], 'render' ] );
+		add_action( 'jentil_before_content', [ $this->parts['search'], 'search_page_form' ] );
 	}
 
 	/**
@@ -276,11 +283,11 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function menus() {
-		add_action( 'after_setup_theme', array( $this->parts['menus'], 'register' ) );
-		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'header_menu' ) );
-		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'mobile_header_menu_toggle' ) );
-		add_action( 'jentil_inside_header', array( $this->parts['menus'], 'mobile_header_menu' ) );
-		add_action( 'wp_enqueue_scripts', array( $this->parts['menus'], 'js' ) );
+		add_action( 'after_setup_theme', [ $this->parts['menus'], 'register' ] );
+		add_action( 'jentil_inside_header', [ $this->parts['menus'], 'header_menu' ] );
+		add_action( 'jentil_inside_header', [ $this->parts['menus'], 'mobile_header_menu_toggle' ] );
+		add_action( 'jentil_inside_header', [ $this->parts['menus'], 'mobile_header_menu' ] );
+		add_action( 'wp_enqueue_scripts', [ $this->parts['menus'], 'js' ] );
 	}
 
 	/**
@@ -290,7 +297,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function breadcrumbs() {
-		add_action( 'jentil_before_before_title', array( $this->parts['breadcrumbs'], 'render' ) );
+		add_action( 'jentil_before_before_title', [ $this->parts['breadcrumbs'], 'render' ] );
 	}
 
 	/**
@@ -300,11 +307,11 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function posts() {
-		add_filter( 'body_class', array( $this->parts['posts'], 'body_class' ) );
-		// add_action( 'jentil_before_before_title', array( $this->parts['posts'], 'post_parent_link' ) );
-		add_action( 'jentil_before_content', array( $this->parts['posts'], 'attachment' ) );
-		// add_filter( 'jentil_singular_after_title', array( $this->parts['posts'], 'single_post_after_title_' ), 10, 3 );
-		add_action( 'jentil_after_title', array( $this->parts['posts'], 'single_post_after_title' ) );
+		add_filter( 'body_class', [ $this->parts['posts'], 'body_class' ] );
+		// add_action( 'jentil_before_before_title', [ $this->parts['posts'], 'post_parent_link' ] );
+		add_action( 'jentil_before_content', [ $this->parts['posts'], 'attachment' ] );
+		// add_filter( 'jentil_singular_after_title', [ $this->parts['posts'], 'single_post_after_title_' ], 10, 3 );
+		add_action( 'jentil_after_title', [ $this->parts['posts'], 'single_post_after_title' ] );
 	}
 
 	/**
@@ -314,8 +321,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function widgets() {
-		add_action( 'widgets_init', array( $this->parts['widgets'], 'register' ) );
-		add_action( 'jentil_inside_footer', array( $this->parts['widgets'], 'footer_widgets' ) );
+		add_action( 'widgets_init', [ $this->parts['widgets'], 'register' ] );
+		add_action( 'jentil_inside_footer', [ $this->parts['widgets'], 'footer_widgets' ] );
 	}
 
 	/**
@@ -325,7 +332,7 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function colophon() {
-		add_action( 'jentil_inside_footer', array( $this->parts['colophon'], 'render' ) );
+		add_action( 'jentil_inside_footer', [ $this->parts['colophon'], 'render' ] );
 	}
 
 	/**
@@ -335,9 +342,9 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function customizer() {
-		add_action( 'customize_register', array( $this->parts['customizer'], 'add' ) );
-		add_action( 'customize_preview_init', array( $this->parts['customizer'], 'js' ) );
-		add_action( 'after_setup_theme', array( $this->parts['customizer'], 'selective_refresh' ) );
+		add_action( 'customize_register', [ $this->parts['customizer'], 'add' ] );
+		add_action( 'customize_preview_init', [ $this->parts['customizer'], 'js' ] );
+		add_action( 'after_setup_theme', [ $this->parts['customizer'], 'selective_refresh' ] );
 	}
 	
 	/**
@@ -347,8 +354,8 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function metaboxes() {
-		add_action( 'load-post.php', array( $this->parts['metaboxes'], 'setup' ) );
-		add_action( 'load-post-new.php', array( $this->parts['metaboxes'], 'setup' ) );
+		add_action( 'load-post.php', [ $this->parts['metaboxes'], 'setup' ] );
+		add_action( 'load-post-new.php', [ $this->parts['metaboxes'], 'setup' ] );
 	}
 
 	/**
@@ -358,6 +365,6 @@ final class Jentil extends MagPack\Utilities\Singleton {
 	 * @access      private
 	 */
 	private function updater() {
-		add_action( 'after_setup_theme', array( $this->parts['updater'], 'check' ) );
+		add_action( 'after_setup_theme', [ $this->parts['updater'], 'check' ] );
 	}
 }

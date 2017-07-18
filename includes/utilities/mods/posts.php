@@ -75,12 +75,12 @@ final class Posts extends Mod {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( $setting, $args = array() ) {
-        $args = wp_parse_args( $args, array(
+    public function __construct( $setting, $args = [] ) {
+        $args = wp_parse_args( $args, [
             'context' => '',
             'specific' => '',
             'more_specific' => '',
-        ) );
+        ] );
 
         $this->setting = sanitize_key( $setting );
         $this->context = sanitize_key( $args['context'] );
@@ -105,7 +105,7 @@ final class Posts extends Mod {
      * @return      string          Mod names
      */
     private function names() {
-        $names = array(
+        $names = [
             'home' => 'post_post_type_posts',
             // 'singular' => 'singular_' . $this->specific . '_' . $this->more_specific . '_posts',
             'author' => 'author_posts',
@@ -116,7 +116,7 @@ final class Posts extends Mod {
             'tax' => $this->specific . '_' . $this->more_specific . '_taxonomy_posts',
             'search' => 'search_posts',
             'sticky' => $this->specific . '_sticky_posts',
-        );
+        ];
 
         $names = array_map( function ( $value ) {
             $value .= '_' . $this->setting;
@@ -148,7 +148,7 @@ final class Posts extends Mod {
      * @return      string          Mod names
      */
     private function defaults() {
-        $defaults = array(
+        $defaults = [
             'wrap_class' => 'archive-posts big',
             'wrap_tag' => 'div',
             'layout' => 'stack',
@@ -173,7 +173,7 @@ final class Posts extends Mod {
             'pagination_previous_label' => esc_html__( '&larr; Previous', 'jentil' ),
             'pagination_next_label' => esc_html__( 'Next &rarr;', 'jentil' ),
             'sticky_posts' => 0,
-        );
+        ];
 
         if ( 'search' == $this->context ) {
             $defaults['wrap_class'] = 'archive-posts';
@@ -194,16 +194,16 @@ final class Posts extends Mod {
             unset( $defaults['pagination_next_label'] );
         }
 
-        if ( ! in_array( $this->context, array(
+        if ( ! in_array( $this->context, [
             'post_type_archive',
             'home',
-        ) ) ) {
+        ] ) ) {
             unset( $defaults['sticky_posts'] );
         }
 
-        if ( in_array( $this->context, array(
+        if ( in_array( $this->context, [
             'home',
-        ) ) ) {
+        ] ) ) {
             $defaults['sticky_posts'] = 1;
         }
 

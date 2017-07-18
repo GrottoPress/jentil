@@ -30,8 +30,15 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes/utilities/template
  * @since			Jentil 0.1.0
  */
-final class Posts extends MagPack\Utilities\Wizard {
+final class Posts {
 	/**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
+    /**
      * Template
 	 *
 	 * @since       Jentil 0.1.0
@@ -79,7 +86,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * 
      * @var     array      $archive_post_types       All post types with archive
      */
-    protected $archive_post_types = array();
+    protected $archive_post_types = [];
     
     /**
 	 * Constructor
@@ -116,10 +123,10 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      array         Post types
      */
     private function post_types() {
-        return get_post_types( array(
+        return get_post_types( [
             'public' => true,
             // 'show_ui' => true,
-        ), 'objects' );
+        ], 'objects' );
     }
 
     /**
@@ -131,7 +138,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      array         All post types with archive
      */
     private function archive_post_types() {
-        $archive_post_types = array();
+        $archive_post_types = [];
 
         if ( ! $this->post_types ) {
             return $archive_post_types;
@@ -210,35 +217,35 @@ final class Posts extends MagPack\Utilities\Wizard {
     private function singular_query_args() {
         global $post;
 
-		return array(
+		return [
 			'layout' => 'stack',
 			'id' => 'main-query',
 			'class' => 'singular-post',
 
-			'excerpt' => array(
+			'excerpt' => [
 				'length' => -2,
 				'paginate' => 1,
 				'more_text'	=> '',
-			),
+			],
 
-			'title' => array(
+			'title' => [
 				'length' => -1,
 				'position' => 'top',
 				'tag' => 'h1',
 				'link' => 0,
-			),
+			],
 
-			'after_title' => array(
+			'after_title' => [
 				'type' => 'jentil_singular_after_title',
-			),
+			],
 
-			'wp_query' => array(
+			'wp_query' => [
 				'posts_per_page' => 1,
 				'post_type' => $post->post_type,
 				'p' => $post->ID,
 				'ignore_sticky_posts' => 1,
-			),
-		);
+			],
+		];
     }
 
     /**
@@ -252,63 +259,63 @@ final class Posts extends MagPack\Utilities\Wizard {
     private function archives_query_args() {
         global $wp_rewrite;
 
-        $args = array(
+        $args = [
         	// 'tag' => $this->mod( 'wrap_tag' ),
 			'class' => $this->mod( 'wrap_class' ),
 			'id' => 'main-query',
 			'layout' => $this->mod( 'layout' ),
 			'text_offset' 			=> $this->mod( 'text_offset' ),
 
-			'image' => array(
+			'image' => [
 				'size' => $this->mod( 'image' ),
 				'align' => $this->mod( 'image_alignment' ),
-			),
+			],
 
-			'after_title' => array(
+			'after_title' => [
 				'info' => $this->mod( 'after_title' ),
 				'sep' => $this->mod( 'after_title_separator' ),
-			),
+			],
 
-			'after_content' => array(
+			'after_content' => [
 				'info' => $this->mod( 'after_content' ),
 				'sep' => $this->mod( 'after_content_separator' ),
-			),
+			],
 
-			'before_title' => array(
+			'before_title' => [
 				'info' => $this->mod( 'before_title' ),
 				'sep' => $this->mod( 'before_title_separator' ),
-			),
+			],
 
-			'excerpt' => array(
+			'excerpt' => [
 				'length' => $this->mod( 'excerpt' ),
 				'paginate' => 0,
 				'more_text' => $this->mod( 'more_link' ),
-			),
+			],
 
-			'pagination' => array(
+			'pagination' => [
 				'type' => $this->mod( 'pagination' ),
 				'max' => $this->mod( 'pagination_maximum' ),
                 'key' => $wp_rewrite->pagination_base,
 				'position' => $this->mod( 'pagination_position' ),
 				'prev_text' => $this->mod( 'pagination_previous_label' ),
 				'next_text' => $this->mod( 'pagination_next_label' ),
-			),
+			],
 
-			'title' => array(
+			'title' => [
 				'length' => $this->mod( 'title_words' ),
 				'position' => $this->mod( 'title_position' ),
 				'tag' => 'h2',
 				'link' => 1,
-			),
+			],
 
-			'wp_query' => array(
+			'wp_query' => [
 				'posts_per_page' => $this->mod( 'number' ),
 				's' => get_search_query(),
 				'post__not_in' => ( $this->sticky_enabled ? $this->sticky_posts : null ),
 				'post_status' => 'publish',
 				'ignore_sticky_posts' => 1,
-			),
-		);
+			],
+		];
 
         if (
             ( $post_type = get_query_var( 'post_type' ) )
@@ -331,23 +338,23 @@ final class Posts extends MagPack\Utilities\Wizard {
 		}
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
-			$args['wp_query']['tax_query'] = array( 
-				array(
+			$args['wp_query']['tax_query'] = [ 
+				[
 					'taxonomy' 		=> $taxonomy,
 					'terms' 		=> get_query_var( 'term' ),
 					'field' 		=> 'slug',
-				),
-			);
+				],
+			];
 		}
 
 		if ( get_query_var( 'year' ) || get_query_var( 'monthnum' ) || get_query_var( 'day' ) ) {
-			$args['wp_query']['date_query'] = array(
-				array(
+			$args['wp_query']['date_query'] = [
+				[
 					'year' 			=> get_query_var( 'year' ),
 					'month' 		=> get_query_var( 'monthnum' ),
 					'day' 			=> get_query_var( 'day' ),
-				),
-			);
+				],
+			];
 		}
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
@@ -406,76 +413,76 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      array 		Args to pass to \GrottoPress\MagPack\Utilities\Query\Posts
      */
     private function sticky_query_args() {
-        $args = array(
+        $args = [
         	// 'tag' => $this->sticky_mod( 'wrap_tag' ),
 			'class' => $this->sticky_mod( 'wrap_class' ),
 			'id' => 'main-query-sticky-posts',
 			'layout' => $this->sticky_mod( 'layout' ),
 			'text_offset' => $this->sticky_mod( 'text_offset' ),
 
-			'image' => array(
+			'image' => [
 				'size' => $this->sticky_mod( 'image' ),
 				'align' => $this->sticky_mod( 'image_alignment' ),
-			),
+			],
 
-			'after_title' => array(
+			'after_title' => [
 				'info' => $this->sticky_mod( 'after_title' ),
 				'sep' => $this->sticky_mod( 'after_title_separator' ),
-			),
+			],
 
-			'after_content' => array(
+			'after_content' => [
 				'info' => $this->sticky_mod( 'after_content' ),
 				'sep' => $this->sticky_mod( 'after_content_separator' ),
-			),
+			],
 
-			'before_title' => array(
+			'before_title' => [
 				'info' => $this->sticky_mod( 'before_title' ),
 				'sep' => $this->sticky_mod( 'before_title_separator' ),
-			),
+			],
 
-			'excerpt' => array(
+			'excerpt' => [
 				'length' => $this->sticky_mod( 'excerpt' ),
 				'paginate' => 0,
 				'more_text' => $this->sticky_mod( 'more_link' ),
-			),
+			],
 
-			'title' => array(
+			'title' => [
 				'length' => $this->sticky_mod( 'title_words' ),
 				'position' => $this->sticky_mod( 'title_position' ),
 				'tag' => 'h2',
 				'link' => 1,
-			),
+			],
 
-			'wp_query' => array(
+			'wp_query' => [
 				'posts_per_page' 		=> -1,
 				'post__in'				=> $this->sticky_posts,
 				'post_status' 			=> 'publish',
 				'ignore_sticky_posts' 	=> 1,
-			),
-		);
+			],
+		];
 
         // if ( ( $post_type = get_query_var( 'post_type' ) ) ) {
             $args['wp_query']['post_type'] = get_query_var( 'post_type' );
         // }
 
 		if ( ( $taxonomy = get_query_var( 'taxonomy' ) ) ) {
-			$args['wp_query']['tax_query'] = array( 
-				array(
+			$args['wp_query']['tax_query'] = [ 
+				[
 					'taxonomy' 		=> $taxonomy,
 					'terms' 		=> get_query_var( 'term_id' ),
 					'field' 		=> 'term_id',
-				),
-			);
+				],
+			];
 		}
 
 		if ( get_query_var( 'year' ) || get_query_var( 'monthnum' ) || get_query_var( 'day' ) ) {
-			$args['wp_query']['date_query'] = array(
-				array(
+			$args['wp_query']['date_query'] = [
+				[
 					'year' 			=> get_query_var( 'year' ),
 					'month' 		=> get_query_var( 'monthnum' ),
 					'day' 			=> get_query_var( 'day' ),
-				),
-			);
+				],
+			];
 		}
 
 		if ( ( $cat = get_query_var( 'cat' ) ) ) {
@@ -534,9 +541,9 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @return      mixed 		Sticky posts mod
      */
     public function sticky_mod( $setting ) {
-    	$args = array(
+    	$args = [
     		'context' => 'sticky',
-    	);
+    	];
 
     	if ( $this->template->is( 'home' ) ) {
     		$args['specific'] = 'post';
@@ -559,11 +566,11 @@ final class Posts extends MagPack\Utilities\Wizard {
      * 
      * @return      mixed 		Posts mod
      */
-    public function mod( $setting, $args = array(
+    public function mod( $setting, $args = [
         'context' => '',
         'specific' => '',
         'more_specific' => '',
-    ) ) {
+    ] ) {
     	if ( ! empty( $args['context'] ) ) {
         	return ( new Utilities\Mods\Posts( $setting, $args ) )->mod();
         }

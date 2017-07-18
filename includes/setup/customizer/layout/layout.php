@@ -43,10 +43,10 @@ final class Layout extends Setup\Customizer\Section {
 
         $this->name = 'layout';
         
-        $this->args = array(
+        $this->args = [
             'title' => esc_html__( 'Layout', 'jentil' ),
             // 'description' => esc_html__( 'Description here', 'jentil' ),
-        );
+        ];
     }
 
     /**
@@ -56,7 +56,7 @@ final class Layout extends Setup\Customizer\Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['author'] = new Settings\Author( $this );
         $settings['date'] = new Settings\Date( $this );

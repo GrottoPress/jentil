@@ -27,7 +27,22 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Logo extends MagPack\Utilities\Wizard {
+final class Logo {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard, MagPack\Utilities\Singleton;
+
+    /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function __construct() {}
+
     /**
      * Get logo
      * 
@@ -44,10 +59,10 @@ final class Logo extends MagPack\Utilities\Wizard {
         if ( ( $mod = $this->mod() ) ) {
             return sprintf( '<a href=\'%1$s\' class=\'custom-logo-link\' rel=\'home\' itemprop=\'url\'>%2$s</a>',
                 home_url( '/' ),
-                wp_get_attachment_image( $mod, 'full', false, array(
+                wp_get_attachment_image( $mod, 'full', false, [
                     'class'    => 'custom-logo',
                     'itemprop' => 'logo',
-                ) )
+                ] )
             );
         }
         
@@ -104,11 +119,11 @@ final class Logo extends MagPack\Utilities\Wizard {
      * @return      array              The logo attributes
      */
     public function attributes() {
-        return ( array ) apply_filters( 'jentil_logo', array(
+        return ( array ) apply_filters( 'jentil_logo', [
             'height' => 60,
             'width' => 180,
             'flex-width' => false,
             'flex-height' => false,
-        ) );
+        ] );
     }
 }
