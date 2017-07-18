@@ -115,7 +115,7 @@ final class Activator extends MagPack\Utilities\Singleton {
      * @access      private
      */
     private function check_MagPack() {
-        if ( function_exists( 'magpack_setup' ) ) {
+        if ( class_exists( '\GrottoPress\MagPack\Setup\MagPack' ) ) {
             return;
         }
 

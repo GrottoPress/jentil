@@ -58,10 +58,8 @@ final class Comments extends MagPack\Utilities\Wizard {
      * @action      wp_enqueue_scripts
      */
     public function js() {
-    	$template = Utilities\Template\Template::instance();
-
-        if (
-            ! $template->is( 'singular' )
+    	if (
+            ! Utilities\Template\Template::instance()->is( 'singular' )
             || ! comments_open()
             || ! get_option( 'thread_comments' )
         ) {

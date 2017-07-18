@@ -15,12 +15,14 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
+use GrottoPress\Jentil\Utilities;
+
 /**
  * Do not show sidebars if page layout is one column
  * 
  * @since 		Jentil 0.1.0
  */
-if ( 'one-column' == ( $column = jentil_layout()->column() ) ) {
+if ( 'one-column' == ( $column = Utilities\Template\Template::instance()->get( 'layout' )->column() ) ) {
 	return;
 }
 

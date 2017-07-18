@@ -56,9 +56,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular' ) ) {
             return $classes;
         }
 
@@ -100,9 +98,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_before_before_title
      */
     public function parent_link() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular' ) ) {
             return;
         }
 
@@ -128,9 +124,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function attachment() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'attachment' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'attachment' ) ) {
             return;
         }
 
@@ -160,13 +154,12 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @filter      jentil_singular_after_title
      */
     public function single_post_after_title_( $output, $id, $separator ) {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular', 'post' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular', 'post' ) ) {
             return $output;
         }
 
-        $magpack_post = magpack_post( $id );
+        $magpack_post = new MagPack\Utilities\Post\Post( $id );
+        
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 
@@ -197,15 +190,14 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_after_title
      */
     public function single_post_after_title() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular', 'post' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular', 'post' ) ) {
             return;
         }
 
         global $post;
 
-        $magpack_post = magpack_post( $post );
+        $magpack_post = new MagPack\Utilities\Post\Post( $post );
+
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 

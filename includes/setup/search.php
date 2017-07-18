@@ -91,9 +91,7 @@ final class Search extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function search_page_form() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'search' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'search' ) ) {
             return;
         }
 
