@@ -72,7 +72,7 @@ final class Logo extends Setup\Customizer\Setting {
 	public function __construct( Setup\Customizer\Logo\Logo $logo ) {
         $this->logo = $logo;
 
-        $this->ulogo = new Utilities\Logo();
+        $this->ulogo = Utilities\Logo::instance();
 
         $this->mod = new Utilities\Mods\Logo();
 
