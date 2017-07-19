@@ -58,11 +58,11 @@ abstract class Setting extends Setup\Customizer\Setting {
 	public function __construct( $content ) {
         $this->content = $content;
         
-        $this->args = array();
+        $this->args = [];
 
-        $this->control = array(
+        $this->control = [
             'section' => $this->content->get( 'name' ),
-        );
+        ];
 	}
 
     /**

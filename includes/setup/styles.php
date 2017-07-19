@@ -31,8 +31,15 @@ use GrottoPress\MagPack;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class Styles extends MagPack\Utilities\Wizard {
+final class Styles {
 	/**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
+    /**
      * Jentil
      *
      * @since       Jentil 0.1.0
@@ -69,11 +76,11 @@ final class Styles extends MagPack\Utilities\Wizard {
         if ( is_rtl() ) {
             wp_enqueue_style( 'jentil',
                 $theme_dir_url . '/assets/styles/jentil-rtl.min.css',
-                array( 'normalize' ) );
+                [ 'normalize' ] );
         } else {
             wp_enqueue_style( 'jentil',
                 $theme_dir_url . '/assets/styles/jentil.min.css',
-                array( 'normalize' ) );
+                [ 'normalize' ] );
         }
     }
 }

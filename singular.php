@@ -40,7 +40,7 @@ get_header();
 		the_post(); ?>
 
 		<div class="posts-wrap show-content big singular-post">
-			<article data-post-id="<?php the_ID(); ?>" id="post-<?php the_ID(); ?>" <?php post_class( array( 'post-wrap' ) ); ?> itemscope itemtype="http://schema.org/Article">
+			<article data-post-id="<?php the_ID(); ?>" id="post-<?php the_ID(); ?>" <?php post_class( [ 'post-wrap' ] ); ?> itemscope itemtype="http://schema.org/Article">
 
 				<?php if ( $post->post_title ) { ?>
 
@@ -91,11 +91,11 @@ get_header();
 
 					<?php the_content();
 
-					wp_link_pages( array(
+					wp_link_pages( [
 						'before' => '<nav class="page-links pagination p">'
 							. esc_html__( 'Pages: ', 'jentil' ),
 						'after' => '</nav>',
-					) ); ?>
+					] ); ?>
 					
 				</div><!-- .entry-content -->
 

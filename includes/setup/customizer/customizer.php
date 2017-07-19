@@ -33,7 +33,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Customizer extends MagPack\Utilities\Wizard {
+final class Customizer {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Customizer panels
      *
@@ -103,7 +110,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
     public function __construct( \GrottoPress\Jentil\Setup\Jentil $jentil ) {
         $this->jentil = $jentil;
 
-        $this->archive_post_types = array();
+        $this->archive_post_types = [];
     }
 
     /**
@@ -118,7 +125,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'post_types', 'archive_post_types', 'taxonomies' );
+        return [ 'post_types', 'archive_post_types', 'taxonomies' ];
     }
 
     /**
@@ -150,10 +157,10 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @return      array       Public post types
      */
     private function post_types() {
-        return get_post_types( array(
+        return get_post_types( [
             'public' => true,
             // 'show_ui' => true,
-        ), 'objects' );
+        ], 'objects' );
     }
 
     /**
@@ -165,10 +172,10 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @return      array       Public taxonomies
      */
     private function taxonomies() {
-        return get_taxonomies( array(
+        return get_taxonomies( [
             'public' => true,
             // 'show_ui' => true,
-        ), 'objects' );
+        ], 'objects' );
     }
 
     /**
@@ -180,7 +187,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @return      array       All post types with archive
      */
     private function archive_post_types() {
-        $archive_post_types = array();
+        $archive_post_types = [];
 
         if ( ! $this->post_types ) {
             return $archive_post_types;
@@ -209,7 +216,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @access      private
      */
     private function panels() {
-        $panels = array();
+        $panels = [];
 
         $panels['posts'] = new Posts\Posts( $this );
 
@@ -226,7 +233,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
      * @access      private
      */
     private function sections() {
-        $sections = array();
+        $sections = [];
 
         $sections['logo'] = new Logo\Logo( $this );
         $sections['title'] = new Title\Title( $this );
@@ -279,7 +286,7 @@ final class Customizer extends MagPack\Utilities\Wizard {
     public function js() {
         wp_enqueue_script( 'jentil-customizer',
             $this->jentil->get( 'dir_url' ) . '/assets/javascript/customize-preview.min.js',
-            array( 'jquery', 'customize-preview' ),
+            [ 'jquery', 'customize-preview' ],
             '',
             true );
     }

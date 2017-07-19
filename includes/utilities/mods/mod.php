@@ -25,7 +25,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-abstract class Mod extends MagPack\Utilities\Wizard {
+abstract class Mod {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Name
      *
@@ -58,7 +65,7 @@ abstract class Mod extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'name', 'default' );
+        return [ 'name', 'default' ];
     }
 
     /**

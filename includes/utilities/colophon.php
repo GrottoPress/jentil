@@ -29,7 +29,22 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Colophon extends MagPack\Utilities\Wizard {
+final class Colophon {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard, MagPack\Utilities\Singleton;
+
+    /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     */
+    protected function __construct() {}
+
     /**
      * Get mod
      *

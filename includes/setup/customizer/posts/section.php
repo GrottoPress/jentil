@@ -103,28 +103,28 @@ abstract class Section extends Setup\Customizer\Section {
 
        parent::__construct( $this->posts->get( 'customizer' ) );
 
-       $this->title_positions = array(
+       $this->title_positions = [
             'side' => esc_html__( 'Side', 'jentil' ),
             'top' => esc_html__( 'Top', 'jentil' ),
-        );
+        ];
 
-        $this->image_alignments = array(
+        $this->image_alignments = [
             'none' => esc_html__( 'none', 'jentil' ),
             'left' => esc_html__( 'Left', 'jentil' ),
             'right' => esc_html__( 'Right', 'jentil' ),
-        );
+        ];
 
-        $this->pagination_positions = array(
+        $this->pagination_positions = [
             'none' => esc_html__( 'None', 'jentil' ),
             'top' => esc_html__( 'Top', 'jentil' ),
             'bottom' => esc_html__( 'Bottom', 'jentil' ),
             'top_bottom' => esc_html__( 'Top and bottom', 'jentil' ),
-        );
+        ];
 
-        $this->pagination_types = array(
+        $this->pagination_types = [
             'normal' => esc_html__( 'Default', 'jentil' ),
             'infinite_scroll' => esc_html__( 'infinite_scroll', 'jentil' ),
-        );
+        ];
 
         $this->layouts = array(
             'stack' => esc_html__( 'Stack', 'jentil' ),
@@ -172,7 +172,7 @@ abstract class Section extends Setup\Customizer\Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['wrap_class'] = new Settings\Wrap_Class( $this );
         // $settings['wrap_tag'] = new Settings\Wrap_Tag( $this );

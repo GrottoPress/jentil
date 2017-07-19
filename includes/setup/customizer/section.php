@@ -31,7 +31,14 @@ use GrottoPress\Jentil\Setup;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-abstract class Section extends MagPack\Utilities\Wizard {
+abstract class Section {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Customizer
      *
@@ -94,7 +101,7 @@ abstract class Section extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'customizer', 'name', 'args', 'settings' );
+        return [ 'customizer', 'name', 'args', 'settings' ];
     }
 
     /**

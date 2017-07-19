@@ -47,7 +47,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 This theme requires **WordPress** version **4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
 
-Minimum required **PHP** version is **5.3**. We recommend **PHP** version **7.0** or newer.
+Minimum required **PHP** version is **5.4**. We recommend **PHP** version **7.0** or newer.
 
 Jentil needs [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed.
 

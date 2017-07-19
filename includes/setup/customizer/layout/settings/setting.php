@@ -62,16 +62,16 @@ abstract class Setting extends Setup\Customizer\Setting {
 
         $this->name = $this->mod->get( 'name' );
 
-        $this->args = array(
+        $this->args = [
             'default'           => $this->mod->get( 'default' ),
             'sanitize_callback' => 'sanitize_title',
-        );
+        ];
 
-        $this->control = array(
+        $this->control = [
             'section'   => $this->layout->get( 'name' ),
             'label'     => esc_html__( 'Select layout', 'jentil' ),
             'type'      => 'select',
             'choices'   => Utilities\Template\Template::instance()->get( 'layout' )->layouts_ids_names(),
-        );
+        ];
     }
 }
