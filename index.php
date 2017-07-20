@@ -21,111 +21,72 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Utilities;
 
 /**
- * Begin template rendering
+ * Include templates head
  *
  * @since		Jentil 0.1.0
  */
-
 get_header();
 
-?>
-
-<div id="content-wrap" class="p">
-	<main id="content" class="site-content">
+if ( ! ( $jentil_template = Utilities\Template\Template::instance() )->is( 'singular' ) ) {
+	if ( ( $jentil_title = $jentil_template->get( 'title' )->mod() ) ) { ?>
 		
-		<?php
-		/**
-		 * Do action before title
-		 * 
-		 * @action		jentil_before_before_title
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_before_before_title' );
+		<header class="p">
+
+	<?php }
+
+	/**
+	 * Do action before title
+	 * 
+	 * @action		jentil_before_title
+	 *
+	 * @since       Jentil 0.1.0
+	 */
+	do_action( 'jentil_before_title' ); ?>
+
+	<h1 class="page-title entry-title" itemprop="name"><?php
+
+		echo $jentil_title;
 		
-		if ( ! ( $jentil_template = Utilities\Template\Template::instance() )->is( 'singular' ) ) {
-			if ( ( $jentil_title = $jentil_template->get( 'title' )->mod() ) ) { ?>
-				
-				<header class="p">
+	?></h1>
 
-			<?php }
+	<?php
+	/**
+	 * Do action after title
+	 * 
+	 * @action		jentil_after_title
+	 *
+	 * @since       Jentil 0.1.0
+	 */
+	do_action( 'jentil_after_title' );
 
-			/**
-			 * Do action before title
-			 * 
-			 * @action		jentil_before_title
-			 *
-			 * @since       Jentil 0.1.0
-			 */
-			do_action( 'jentil_before_title' ); ?>
+	if ( $jentil_title ) { ?>
+	
+		</header>
 
-			<h1 class="page-title entry-title" itemprop="name"><?php
+	<?php }
+}
 
-				echo $jentil_title;
-				
-			?></h1>
+/**
+ * Do action before content
+ * 
+ * @action		jentil_before_content
+ *
+ * @since       Jentil 0.1.0
+ */
+do_action( 'jentil_before_content' );
 
-			<?php
-			/**
-			 * Do action after title
-			 * 
-			 * @action		jentil_after_title
-			 *
-			 * @since       Jentil 0.1.0
-			 */
-			do_action( 'jentil_after_title' );
+if (
+	$jentil_template->is( '404' )
+	|| ! ( $jentil_posts = $jentil_template->get( 'posts' )->query() )
+) {
+	get_template_part( 'templates/none' );
+} else {
+	echo $jentil_posts;
+}
 
-			if ( $jentil_title ) { ?>
-			
-				</header>
-
-			<?php }
-		}
-		
-		/**
-		 * Do action before content
-		 * 
-		 * @action		jentil_before_content
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_before_content' );
-		
-		if (
-			$jentil_template->is( '404' )
-			|| ! ( $jentil_posts = $jentil_template->get( 'posts' )->query() )
-		) {
-			get_template_part( 'templates/none' );
-		} else {
-			echo $jentil_posts;
-		}
-		
-		/**
-		 * Do action after content
-		 * 
-		 * @action		jentil_after_after_content
-		 *
-		 * @since       Jentil 0.1.0
-		 */
-		do_action( 'jentil_after_after_content' );
-		
-		if ( $jentil_template->is( 'singular' ) ) {
-			the_post();
-			
-			if ( 'open' == get_option( 'default_ping_status' ) ) {
-				echo '<!--'; trackback_rdf(); echo '-->';
-			}
-			
-			comments_template( '', true );
-			
-			rewind_posts();
-		} ?>
-		
-	</main><!-- #content -->
-</div><!-- #content-wrap -->
-
-<?php
-
-get_sidebar();
-
+/**
+ * Include templates foot
+ *
+ * @since		Jentil 0.1.0
+ */
 get_footer();

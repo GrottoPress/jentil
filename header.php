@@ -89,3 +89,15 @@ if ( ! defined( 'WPINC' ) ) {
 			do_action( 'jentil_after_header' ); ?>
 			
 			<div id="main" class="self-clear p">
+				<div id="content-wrap" class="p">
+					<main id="content" class="site-content">
+					
+						<?php
+						/**
+						 * Do action before title
+						 * 
+						 * @action		jentil_before_before_title
+						 *
+						 * @since       Jentil 0.1.0
+						 */
+						do_action( 'jentil_before_before_title' );

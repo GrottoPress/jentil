@@ -15,8 +15,40 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-?>
-				
+use GrottoPress\Jentil\Utilities;
+
+						/**
+						 * Do action after content
+						 * 
+						 * @action		jentil_after_after_content
+						 *
+						 * @since       Jentil 0.1.0
+						 */
+						do_action( 'jentil_after_after_content' );
+						
+						if ( Utilities\Template\Template::instance()->is( 'singular' ) ) {
+							the_post();
+							
+							if ( 'open' == get_option( 'default_ping_status' ) ) {
+								echo '<!--'; trackback_rdf(); echo '-->';
+							}
+							
+							comments_template( '', true );
+							
+							rewind_posts();
+						} ?>
+						
+					</main><!-- #content -->
+				</div><!-- #content-wrap -->
+
+				<?php
+				/**
+				 * Include templates sidebar
+				 *
+				 * @since		Jentil 0.1.0
+				 */
+				get_sidebar(); ?>
+
 			</div><!-- #main -->
 			
 			<?php
