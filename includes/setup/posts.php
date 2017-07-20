@@ -140,13 +140,13 @@ final class Posts {
         global $post;
 
         if ( wp_attachment_is_image( $post->ID ) ) {
-            get_template_part( 'parts/attachment', 'image' );
+            get_template_part( 'templates/attachment', 'image' );
         } elseif ( wp_attachment_is( 'audio', $post->ID ) ) {
-            get_template_part( 'parts/attachment', 'audio' );
+            get_template_part( 'templates/attachment', 'audio' );
         } elseif ( wp_attachment_is( 'video', $post->ID ) ) {
-            get_template_part( 'parts/attachment', 'video' );
+            get_template_part( 'templates/attachment', 'video' );
         } else {
-            get_template_part( 'parts/attachment' );
+            get_template_part( 'templates/attachment' );
         }
     }
 

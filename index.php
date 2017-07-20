@@ -95,7 +95,7 @@ get_header();
 			$jentil_template->is( '404' )
 			|| ! ( $jentil_posts = $jentil_template->get( 'posts' )->query() )
 		) {
-			get_template_part( 'parts/none' );
+			get_template_part( 'templates/none' );
 		} else {
 			echo $jentil_posts;
 		}

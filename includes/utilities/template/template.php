@@ -161,19 +161,19 @@ final class Template {
      * @return      array           Template tags applicable to this template
      */
     public function type() {
-        $return = [];
+        $type = [];
         
         if ( ! ( $templates = $this->templates() ) ) {
-            return $return;
+            return $type;
         }
         
         foreach ( $templates as $template ) {
             if ( $this->is( $template ) ) {
-                $return[] = $template;
+                $type[] = $template;
             }
         }
         
-        return $return;
+        return $type;
     }
 
     /**
