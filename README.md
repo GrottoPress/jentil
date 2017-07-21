@@ -43,7 +43,7 @@ It integrates seamlessly with most WordPress page builders including:
 ...and many more!
 
 
-## Dependencies
+## Requirements
 
 This theme requires **WordPress** version **4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
 
