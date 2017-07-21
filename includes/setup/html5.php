@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class HTML5 extends MagPack\Utilities\Wizard {
+final class HTML5 {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -60,14 +67,14 @@ final class HTML5 extends MagPack\Utilities\Wizard {
      * @action      after_setup_theme
      */
     public function enable() {
-        add_theme_support( 'html5', array(
+        add_theme_support( 'html5', [
             'search-form',
             'comment-form',
             'comment-list',
             'gallery',
             'caption',
             'widgets',
-        ) );
+        ] );
     }
 
     /**
@@ -125,12 +132,12 @@ final class HTML5 extends MagPack\Utilities\Wizard {
      * @filter      wp_kses_allowed_html
      */
     public function kses_allow( $allowed, $context ) {
-        if ( ! in_array( $context, array(
+        if ( ! in_array( $context, [
             'post',
             'data', // doesn't seem to work
             'user_description',
             'pre_user_description',
-        ) ) ) {
+        ] ) ) {
             return $allowed;
         }
 

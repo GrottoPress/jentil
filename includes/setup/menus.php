@@ -25,7 +25,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			Jentil 0.1.0
  */
-final class Menus extends MagPack\Utilities\Wizard {
+final class Menus {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -57,9 +64,9 @@ final class Menus extends MagPack\Utilities\Wizard {
      * @action      after_setup_theme
      */
     public function register() {
-        register_nav_menus( array(
+        register_nav_menus( [
             'primary-menu' => esc_html__( 'Primary menu', 'jentil' ),
-        ) );
+        ] );
     }
 
     /**
@@ -74,7 +81,7 @@ final class Menus extends MagPack\Utilities\Wizard {
         echo '<nav class="site-navigation screen-min-wide p">'
             . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
-            wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
+            wp_nav_menu( [ 'theme_location' => 'primary-menu' ] );
         echo '</nav>';
     }
 
@@ -87,15 +94,14 @@ final class Menus extends MagPack\Utilities\Wizard {
      * @action      jentil_inside_header
      */
     public function mobile_header_menu_toggle() {
-        $pagination = new MagPack\Utilities\Pagination();
         $status = isset( $_GET['menu'] ) ? sanitize_key( $_GET['menu'] ) : 'off';
         
         echo '<div class="menu-toggle screen-max-wide p">'
             . $this->skip_to( 'menu-screen-max-wide', esc_html__( 'Skip to menu', 'jentil' ) )
 
-            . '<a class="js-mobile-menu-button hamburger" href="' . esc_url( add_query_arg( array(
+            . '<a class="js-mobile-menu-button hamburger" href="' . esc_url( add_query_arg( [
                     'menu' => ( $status == 'off' ? 'on' : 'off' ),
-                ), $pagination->page_url( true, true ) ) ) . '" rel="nofollow"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
+                ], ( new MagPack\Utilities\Pagination() )->page_url( true, true ) ) ) . '" rel="nofollow"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . esc_html__( 'Menu', 'jentil' ) . '</span></a>
         </div>';
     }
 
@@ -113,7 +119,7 @@ final class Menus extends MagPack\Utilities\Wizard {
         echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide p"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
             . $this->skip_to( 'content', esc_html__( 'Skip to content', 'jentil' ) );
 
-            get_search_form(); wp_nav_menu( array( 'theme_location' => 'primary-menu' ) );
+            get_search_form(); wp_nav_menu( [ 'theme_location' => 'primary-menu' ] );
         echo '</nav>';
     }
 
@@ -145,7 +151,7 @@ final class Menus extends MagPack\Utilities\Wizard {
     public function js() {
         wp_enqueue_script( 'jentil-menu',
             $this->jentil->get( 'dir_url' ) . '/assets/javascript/menu.min.js',
-            array( 'jquery' ),
+            [ 'jquery' ],
             '',
             true );
     }

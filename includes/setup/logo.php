@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Logo extends MagPack\Utilities\Wizard {
+final class Logo {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -59,10 +66,10 @@ final class Logo extends MagPack\Utilities\Wizard {
      * @action      after_setup_theme
      */
     public function enable() {
-        add_theme_support( 'custom-logo', array(
+        add_theme_support( 'custom-logo', [
            'height'      => 60,
            'width'       => 180,
-        ) );
+        ] );
     }
 
     /**
@@ -74,6 +81,6 @@ final class Logo extends MagPack\Utilities\Wizard {
 	 * @action      jentil_inside_header
      */
     public function render() {
-    	echo ( new Utilities\Logo() )->HTML();
+    	echo Utilities\Logo::instance()->HTML();
     }
 }

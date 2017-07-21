@@ -58,7 +58,7 @@ final class Author extends Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['sticky_posts'] = new Settings\Sticky_Posts( $this );
         $settings['number'] = new Settings\Number( $this );

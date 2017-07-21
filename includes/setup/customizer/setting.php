@@ -29,8 +29,15 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-abstract class Setting extends MagPack\Utilities\Wizard {
-   /**
+abstract class Setting {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
+    /**
      * Setting name
      *
      * @since       Jentil 0.1.0
@@ -48,7 +55,7 @@ abstract class Setting extends MagPack\Utilities\Wizard {
      * 
      * @var     array      $args       Setting arguments
      */
-    protected $args = array();
+    protected $args = [];
 
     /**
      * Setting control
@@ -58,7 +65,7 @@ abstract class Setting extends MagPack\Utilities\Wizard {
      * 
      * @var     array      $control       Setting control
      */
-    protected $control = array();
+    protected $control = [];
 
     /**
      * Allow get
@@ -72,7 +79,7 @@ abstract class Setting extends MagPack\Utilities\Wizard {
      * @return      array       Attributes.
      */
     protected function allow_get() {
-        return array( 'args', 'control', 'name' );
+        return [ 'args', 'control', 'name' ];
     }
 
     /**

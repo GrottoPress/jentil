@@ -10,14 +10,16 @@
  * @since           Jentil 0.1.0
  *
  * @package         jentil
- * @subpackage      jentil/includes/setup
+ * @subpackage      jentil/includes/utilities
  */
 
-namespace GrottoPress\Jentil\Setup;
+namespace GrottoPress\Jentil\Utilities;
 
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
+
+use GrottoPress\MagPack;
 
 /**
  * Deactivator
@@ -29,6 +31,13 @@ if ( ! defined( 'WPINC' ) ) {
  */
 final class Activator {
 	/**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Singleton;
+
+    /**
      * Current WordPress version
 	 *
 	 * @since       Jentil 0.1.0
@@ -72,9 +81,9 @@ final class Activator {
 	 * Constructor
 	 *
 	 * @since       Jentil 0.1.0
-	 * @access      public
+	 * @access      protected
 	 */
-	public function __construct() {
+	protected function __construct() {
 	    $this->WP_version = get_bloginfo( 'version' );
 
         /**
@@ -86,7 +95,7 @@ final class Activator {
 	    $this->required_WP = '4.3';
 
         $this->satisfied = true;
-        $this->messages = array();
+        $this->messages = [];
 	}
 
 	/**
@@ -113,7 +122,7 @@ final class Activator {
      * @access      private
      */
     private function check_MagPack() {
-        if ( function_exists( '\GrottoPress\MagPack\run' ) ) {
+        if ( class_exists( '\GrottoPress\MagPack\Setup\MagPack' ) ) {
             return;
         }
 
@@ -196,10 +205,10 @@ final class Activator {
     private function plugin_activation_url( $plugin ) {
         $plugin = sanitize_text_field( $plugin );
 
-        $url = add_query_arg( array(
+        $url = add_query_arg( [
             'action' => 'activate',
             'plugin' => urlencode_deep( $plugin ),
-        ), admin_url( 'plugins.php' ) );
+        ], admin_url( 'plugins.php' ) );
 
         $url = wp_nonce_url( $url, "activate-plugin_{$plugin}" );
 

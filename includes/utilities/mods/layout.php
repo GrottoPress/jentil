@@ -91,7 +91,7 @@ final class Layout extends Mod {
      * @return      string          Mod names
      */
     private function names() {
-        $names = array(
+        $names = [
             'home' => 'post_post_type_layout',
             'singular' => ( $this->is_post_type_hierarchical() ? 'layout'
                 : 'singular_' . $this->specific . '_' . $this->more_specific . '_layout' ),
@@ -103,7 +103,7 @@ final class Layout extends Mod {
             'tax' => $this->specific . '_' . $this->more_specific . '_taxonomy_layout',
             '404' => 'error_404_layout',
             'search' => 'search_layout',
-        );
+        ];
 
         $names = array_map( function ( $value ) {
             $value = str_replace( '__', '_', $value );

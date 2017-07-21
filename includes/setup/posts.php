@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Posts extends MagPack\Utilities\Wizard {
+final class Posts {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -56,9 +63,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @filter      body_class
      */
     public function body_class( $classes ) {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular' ) ) {
             return $classes;
         }
 
@@ -100,9 +105,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_before_before_title
      */
     public function parent_link() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular' ) ) {
             return;
         }
 
@@ -128,9 +131,7 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function attachment() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'attachment' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'attachment' ) ) {
             return;
         }
 
@@ -139,13 +140,13 @@ final class Posts extends MagPack\Utilities\Wizard {
         global $post;
 
         if ( wp_attachment_is_image( $post->ID ) ) {
-            get_template_part( 'parts/attachment', 'image' );
+            get_template_part( 'templates/attachment', 'image' );
         } elseif ( wp_attachment_is( 'audio', $post->ID ) ) {
-            get_template_part( 'parts/attachment', 'audio' );
+            get_template_part( 'templates/attachment', 'audio' );
         } elseif ( wp_attachment_is( 'video', $post->ID ) ) {
-            get_template_part( 'parts/attachment', 'video' );
+            get_template_part( 'templates/attachment', 'video' );
         } else {
-            get_template_part( 'parts/attachment' );
+            get_template_part( 'templates/attachment' );
         }
     }
 
@@ -160,13 +161,12 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @filter      jentil_singular_after_title
      */
     public function single_post_after_title_( $output, $id, $separator ) {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular', 'post' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular', 'post' ) ) {
             return $output;
         }
 
         $magpack_post = new MagPack\Utilities\Post\Post( $id );
+        
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 
@@ -197,15 +197,14 @@ final class Posts extends MagPack\Utilities\Wizard {
      * @action      jentil_after_title
      */
     public function single_post_after_title() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'singular', 'post' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'singular', 'post' ) ) {
             return;
         }
 
         global $post;
 
         $magpack_post = new MagPack\Utilities\Post\Post( $post );
+
         $avatar = $magpack_post->info( 'avatar__40', '' )->list();
         $author = $magpack_post->info( 'author_link', '' )->list();
 

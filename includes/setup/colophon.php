@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Colophon extends MagPack\Utilities\Wizard {
+final class Colophon {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -56,11 +63,10 @@ final class Colophon extends MagPack\Utilities\Wizard {
      * @action      jentil_inside_footer
      */
     public function render() {
-        $template = Utilities\Template\Template::instance();
-
-        $colophon = new Utilities\Colophon();
-
-        if ( ! ( $mod = $colophon->mod() ) && ! $template->is( 'customize_preview' ) ) {
+        if (
+            ! ( $mod = Utilities\Colophon::instance()->mod() )
+            && ! Utilities\Template\Template::instance()->is( 'customize_preview' )
+        ) {
             return '';
         }
 

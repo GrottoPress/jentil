@@ -18,18 +18,11 @@ if ( ! defined( 'WPINC' ) ) {
 use GrottoPress\Jentil\Utilities;
 
 /**
- * Layout columns
- *
- * @since 		Jentil 0.1.0
- */
-$jentil_columns = Utilities\Template\Template::instance()->get( 'layout' )->column();
-
-/**
  * Do not show sidebars if page layout is one column
  * 
  * @since 		Jentil 0.1.0
  */
-if ( 'one-column' == $jentil_columns ) {
+if ( 'one-column' == ( $column = Utilities\Template\Template::instance()->get( 'layout' )->column() ) ) {
 	return;
 }
 
@@ -51,7 +44,7 @@ if ( is_active_sidebar( 'primary-widget-area' ) ) { ?>
  * 
  * @since 		Jentil 0.1.0
  */
-if ( 'three-columns' == $jentil_columns ) {
+if ( 'three-columns' == $column ) {
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) { ?>
 		<div id="secondary-widget-area-wrap" class="sidebar-wrap p">
 			<aside id="secondary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">

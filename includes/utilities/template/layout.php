@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 1.0.0
  */
-final class Layout extends MagPack\Utilities\Wizard {
+final class Layout {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Template
 	 *
@@ -107,20 +114,20 @@ final class Layout extends MagPack\Utilities\Wizard {
 	 * @return      string      Layout column type
 	 */
 	public function layouts() {
-	    $layouts = array(
-    		'one-column' => array(
+	    $layouts = [
+    		'one-column' => [
     			'content' => esc_html__( 'content', 'jentil' ),
-    		),
-    		'two-columns' => array(
+    		],
+    		'two-columns' => [
     			'content-sidebar' => esc_html__( 'content / sidebar', 'jentil' ),
     			'sidebar-content' => esc_html__( 'sidebar / content', 'jentil' ),
-    		),
-    		'three-columns' => array(
+    		],
+    		'three-columns' => [
     			'sidebar-content-sidebar' => esc_html__( 'sidebar / content / sidebar', 'jentil' ),
     			'content-sidebar-sidebar' => esc_html__( 'content / sidebar / sidebar', 'jentil' ),
     			'sidebar-sidebar-content' => esc_html__( 'sidebar / sidebar / content', 'jentil' ),
-    		),
-    	);
+    		],
+    	];
 
 	    return ( array ) apply_filters( 'jentil_template_layouts', $layouts );
 	}
@@ -160,7 +167,7 @@ final class Layout extends MagPack\Utilities\Wizard {
      * @return      array          Layout IDs/slugs
      */
     public function layouts_ids_names() {
-        $return = array();
+        $return = [];
         
         foreach ( $this->layouts() as $column_type => $layouts ) {
             foreach ( $layouts as $layout_id => $layout_name ) {
@@ -180,7 +187,7 @@ final class Layout extends MagPack\Utilities\Wizard {
 	 * @return      string      Layout column type
 	 */
 	public function column() {
-	    $layout_ids = array();
+	    $layout_ids = [];
 	    
     	foreach ( $this->layouts() as $column_slug => $layouts ) {
     		foreach ( $layouts as $layout_id => $layout_name ) {

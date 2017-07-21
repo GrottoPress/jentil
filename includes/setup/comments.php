@@ -28,8 +28,15 @@ use GrottoPress\Jentil\Utilities;
  * @package         jentil
  * @subpackage      jentil/includes/setup
  */
-final class Comments extends MagPack\Utilities\Wizard {
+final class Comments {
 	/**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
+    /**
      * Jentil
      *
      * @since       Jentil 0.1.0
@@ -58,10 +65,8 @@ final class Comments extends MagPack\Utilities\Wizard {
      * @action      wp_enqueue_scripts
      */
     public function js() {
-    	$template = Utilities\Template\Template::instance();
-
-        if (
-            ! $template->is( 'singular' )
+    	if (
+            ! Utilities\Template\Template::instance()->is( 'singular' )
             || ! comments_open()
             || ! get_option( 'thread_comments' )
         ) {

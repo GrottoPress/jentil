@@ -59,7 +59,7 @@ final class Search extends Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['number'] = new Settings\Number( $this );
 

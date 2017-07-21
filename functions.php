@@ -1,20 +1,21 @@
 <?php
 
 /**
- * Functions
+ * Theme functions
  *
- * Sets up the theme.
+ * @see         https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @link			https://jentil.grottopress.com
  * @package			jentil
  * @since			Jentil 0.1.0
  */
 
-namespace GrottoPress\Jentil;
-
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
+
+use GrottoPress\Jentil\Setup;
+use GrottoPress\Jentil\Utilities;
 
 /**
  * Autoload
@@ -24,24 +25,16 @@ if ( ! defined( 'WPINC' ) ) {
 require_once get_template_directory() . '/vendor/autoload.php';
 
 /**
- * Run plugin
- * 
- * @action		after_setup_theme
- *
- * @since 		Jentil 0.1.0
- */
-function run() {
-	if ( ! ( new Setup\Activator() )->checks() ) {
-		return;
-	}
-
-	$jentil = Setup\Jentil::instance();
-	$jentil->run();
-}
-
-/**
  * Begin execution of the theme.
+ *
+ * @action      after_setup_theme
  * 
  * @since       Jentil 0.1.0
  */
-add_action( 'after_setup_theme', '\GrottoPress\Jentil\run', 0 );
+add_action( 'after_setup_theme', function () {
+    if ( ! Utilities\Activator::instance()->checks() ) {
+        return;
+    }
+
+    Setup\Jentil::instance()->run();
+}, 0 );

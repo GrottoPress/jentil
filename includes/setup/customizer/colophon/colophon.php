@@ -43,9 +43,9 @@ final class Colophon extends Setup\Customizer\Section {
 
         $this->name = 'colophon';
         
-        $this->args = array(
+        $this->args = [
             'title'     => esc_html__( 'Colophon', 'jentil' ),
-        );
+        ];
 	}
 
     /**
@@ -55,7 +55,7 @@ final class Colophon extends Setup\Customizer\Section {
      * @access      protected
      */
     protected function settings() {
-        $settings = array();
+        $settings = [];
 
         $settings['colophon'] = new Settings\Colophon( $this );
 

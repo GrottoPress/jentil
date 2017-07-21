@@ -28,7 +28,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage      jentil/includes
  * @author          N Atta Kusi Adusei
  */
-final class Metaboxes extends MagPack\Utilities\Wizard {
+final class Metaboxes {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -59,17 +66,17 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 	 * @action      load-post-new.php
 	 */
 	public function setup() {
-        add_action( 'add_meta_boxes', array( $this, 'add' ), 10, 2 );
-		add_action( 'save_post', array( $this, 'save' ) );
+        add_action( 'add_meta_boxes', [ $this, 'add' ], 10, 2 );
+		add_action( 'save_post', [ $this, 'save' ] );
 		
 		/**
 		 * For attachemnet post type
 		 * 
 		 * @link 		http://omfgitsnater.com/2013/05/adding-meta-boxes-to-attachments-in-wordpress/
 		 */
-		add_action( 'edit_attachment', array( $this, 'save' ) );
+		add_action( 'edit_attachment', [ $this, 'save' ] );
 	}
-	
+
 	/**
 	 * Add meta boxes.
 	 *
@@ -91,7 +98,7 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 		}
 		
 		foreach ( $boxes as $id => $attr ) {
-			$args = array();
+			$args = [];
 			
 			$args['type'] = isset( $boxes[ $id ]['type'] ) ? sanitize_key( $boxes[ $id ]['type'] ) : null;
 			
@@ -106,13 +113,13 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 			$args['priority'] = isset( $boxes[ $id ]['priority'] ) ? sanitize_key( $boxes[ $id ]['priority'] ) : null;
 			$args['callback_args'] = isset( $boxes[ $id ]['callback_args'] ) ? (array) $boxes[ $id ]['callback_args'] : null;
 			$args['screen'] = $post_type;
-			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
+			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : [];
 			$args['notes'] = isset( $boxes[ $id ]['notes'] ) ? $boxes[ $id ]['notes'] : null;
 			
 			( new MagPack\Utilities\Admin\Metabox( $args ) )->add();
 		}
 	}
-	
+
 	/**
 	 * Save meta boxes as custom fields.
 	 *
@@ -132,16 +139,16 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 		}
 		
 		foreach ( $boxes as $id => $attr ) {
-			$args = array();
+			$args = [];
 			
 			$args['id'] = $id;
 			$args['type'] = isset( $boxes[ $id ]['type'] ) ? sanitize_key( $boxes[ $id ]['type'] ) : '';
-			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : array();
+			$args['fields'] = isset( $boxes[ $id ]['fields'] ) ? (array) $boxes[ $id ]['fields'] : [];
 			
 			( new MagPack\Utilities\Admin\Metabox( $args ) )->save( $post_id );
 		}
 	}
-	
+
 	/**
 	 * Meta boxes.
 	 * 
@@ -151,29 +158,27 @@ final class Metaboxes extends MagPack\Utilities\Wizard {
 	private function boxes( $post_id ) {
 	    $post_type = get_post_type( $post_id );
 
-	    $template = Utilities\Template\Template::instance();
-        $layouts = $template->get( 'layout' )->layouts_ids_names();
-
+	    $layouts = Utilities\Template\Template::instance()->get( 'layout' )->layouts_ids_names();
         $mod = new Utilities\Mods\Layout( 'singular', $post_type, $post_id );
 
-        $boxes = array();
+        $boxes = [];
 	    
 	    if ( $mod->is_post_type_hierarchical() ) {
 			if ( $layouts ) {
-		        $boxes['jentil-layout'] = array(
+		        $boxes['jentil-layout'] = [
 					'title' => esc_html__( 'Layout', 'jentil' ),
 					'context' => 'side',
 					'priority' => 'default',
 					'callback' => '',
-					'fields' => array(
-						$mod->get( 'name' ) => array(
+					'fields' => [
+						$mod->get( 'name' ) => [
 							'type' => 'select',
 							'choices' => $layouts,
 							'label' => esc_html__( 'Select layout', 'jentil' ),
-						),
-					),
+						],
+					],
 					'notes' => __( 'Need help? Check out the <a href="#" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.' ),
-				);
+				];
 		    }
 	    }
 	    

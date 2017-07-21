@@ -71,10 +71,10 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     				$prev_label = sanitize_text_field( apply_filters( 'jentil_pagination_prev_label', __( '&larr; Previous', 'jentil' ), 'comments' ) );
     				$next_label = sanitize_text_field( apply_filters( 'jentil_pagination_next_label', __( 'Next &rarr;', 'jentil' ), 'comments' ) );
     				
-    				paginate_comments_links( array(
+    				paginate_comments_links( [
     					'prev_text' => $prev_label,
     					'next_text' => $next_label,
-    				) );
+    				] );
     			
     			?></nav>
     		
@@ -90,10 +90,10 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
 			$comment_avatar_size = absint( apply_filters( 'jentil_comments_avatar_size', 40 ) );
     		
     		/** List our comments */
-    		$comment_list_args = array(
+    		$comment_list_args = [
     			'style' => 'ol',
     			'avatar_size' => $comment_avatar_size,
-    		); ?>
+    		]; ?>
     		
     		<ol class="commentlist"><?php wp_list_comments( $comment_list_args ); ?></ol>
     
@@ -102,10 +102,10 @@ if ( ! post_type_supports( get_post_type(), 'comments' ) ) {
     		
     			<nav class="navigation bottom-nav self-clear comments-pagination">
     			
-    				<?php paginate_comments_links( array(
+    				<?php paginate_comments_links( [
     					'prev_text' => $prev_label,
     					'next_text' => $next_label,
-    				) ); ?>
+    				] ); ?>
     		
     			</nav>
     			

@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Breadcrumbs extends MagPack\Utilities\Wizard {
+final class Breadcrumbs {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -58,15 +65,16 @@ final class Breadcrumbs extends MagPack\Utilities\Wizard {
     public function render() {
         $template = Utilities\Template\Template::instance();
 
-        $pagination = new MagPack\Utilities\Pagination();
-
-        if ( $template->is( 'front_page' ) && ! $pagination->is_paged() ) {
+        if (
+            $template->is( 'front_page' )
+            && ! ( new MagPack\Utilities\Pagination() )->is_paged()
+        ) {
             return;
         }
 
-        $args = array(
+        $args = [
             'before' => esc_html__( 'Path: ', 'jentil' ),
-        );
+        ];
 
         echo $template->breadcrumbs( $args )->trail();
     }

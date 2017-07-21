@@ -25,7 +25,14 @@ use GrottoPress\MagPack;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Widgets extends MagPack\Utilities\Wizard {
+final class Widgets {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -55,7 +62,7 @@ final class Widgets extends MagPack\Utilities\Wizard {
      * @action      widgets_init
      */
     public function register() {
-        register_sidebar( array(
+        register_sidebar( [
             'name'          => esc_html__( 'Primary', 'jentil' ),
             'id'            => 'primary-widget-area',
             'description'   => esc_html__( 'Primary widget area', 'jentil' ),
@@ -63,9 +70,9 @@ final class Widgets extends MagPack\Utilities\Wizard {
             'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',
             'after_title'   => '</h3>',
-        ) );
+        ] );
         
-        register_sidebar( array(
+        register_sidebar( [
             'name'          => esc_html__( 'Secondary', 'jentil' ),
             'id'            => 'secondary-widget-area',
             'description'   => esc_html__( 'Secondary widget area', 'jentil' ),
@@ -73,9 +80,9 @@ final class Widgets extends MagPack\Utilities\Wizard {
             'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',
             'after_title'   => '</h3>',
-        ) );
+        ] );
         
-        register_sidebar( array(
+        register_sidebar( [
             'name'          => esc_html__( 'Footer', 'jentil' ),
             'id'            => 'footer-widget-area',
             'description'   => esc_html__( 'Footer widget area', 'jentil' ),
@@ -83,7 +90,7 @@ final class Widgets extends MagPack\Utilities\Wizard {
             'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',
             'after_title'   => '</h3>',
-        ) );
+        ] );
     }
 
     /**

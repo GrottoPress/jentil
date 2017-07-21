@@ -57,16 +57,16 @@ abstract class Setting extends Setup\Customizer\Setting {
 
         $this->name = $this->mod->get( 'name' );
 
-        $this->args = array(
+        $this->args = [
             'default' => $this->mod->get( 'default' ),
             // 'transport' => 'postMessage',
             'sanitize_callback' => 'wp_kses_data',
-        );
+        ];
 
-        $this->control = array(
+        $this->control = [
             'section'   => $this->title->get( 'name' ),
             'label'     => esc_html__( 'Enter title', 'jentil' ),
             'type'      => 'text',
-        );
+        ];
     }
 }

@@ -26,7 +26,14 @@ use GrottoPress\Jentil\Utilities;
  * @subpackage 	    jentil/includes
  * @since			jentil 0.1.0
  */
-final class Search extends MagPack\Utilities\Wizard {
+final class Search {
+    /**
+     * Import traits
+     *
+     * @since       Jentil 0.1.0
+     */
+    use MagPack\Utilities\Wizard;
+
     /**
      * Jentil
      *
@@ -91,9 +98,7 @@ final class Search extends MagPack\Utilities\Wizard {
      * @action      jentil_before_content
      */
     public function search_page_form() {
-        $template = Utilities\Template\Template::instance();
-
-        if ( ! $template->is( 'search' ) ) {
+        if ( ! Utilities\Template\Template::instance()->is( 'search' ) ) {
             return;
         }
 
