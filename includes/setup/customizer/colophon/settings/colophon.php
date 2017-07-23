@@ -75,7 +75,7 @@ final class Colophon extends Setup\Customizer\Setting {
         $this->control = [
             'section'   => $this->colophon->get( 'name' ),
             'label'     => esc_html__( 'Colophon', 'jentil' ),
-            'type'      => 'text',
+            'type'      => 'textarea',
         ];
 	}
 }
