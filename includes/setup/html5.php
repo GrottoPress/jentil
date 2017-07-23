@@ -132,13 +132,13 @@ final class HTML5 {
      * @filter      wp_kses_allowed_html
      */
     public function kses_allow( $allowed, $context ) {
-        if ( ! in_array( $context, [
-            'post',
-            'data', // doesn't seem to work
-            'user_description',
-            'pre_user_description',
-        ] ) ) {
-            return $allowed;
+        if ( ! isset( $allowed['span'] ) ) {
+            $allowed['span'] = array(
+                'dir' => true,
+                'align' => true,
+                'lang' => true,
+                'xml:lang' => true,
+            );
         }
 
         foreach ( $allowed as $tag => $atts ) {

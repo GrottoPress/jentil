@@ -48,7 +48,7 @@ final class After_Title extends Setting {
         $this->args['default'] = $this->mod->get( 'default' );
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
-        $this->control['label'] = esc_html__( 'After title (comma-separated)', 'jentil' );
+        $this->control['label'] = esc_html__( 'After title', 'jentil' );
         $this->control['description'] = esc_html__( 'Comma-separated', 'jentil' );
         $this->control['type'] = 'text';
 	}
