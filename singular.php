@@ -41,7 +41,7 @@ the_post(); ?>
 			 */
 			do_action( 'jentil_before_title' );
 
-			the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
+			the_title( '<h1 class="entry-title" itemprop="name headline mainEntityOfPage">', '</h1>' );
 			
 			rewind_posts();
 			

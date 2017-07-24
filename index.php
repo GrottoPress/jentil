@@ -43,7 +43,7 @@ if ( ! ( $jentil_template = Utilities\Template\Template::instance() )->is( 'sing
 	 */
 	do_action( 'jentil_before_title' ); ?>
 
-	<h1 class="page-title entry-title" itemprop="name"><?php
+	<h1 class="page-title entry-title" itemprop="name mainEntityOfPage"><?php
 
 		echo $jentil_title;
 		
