@@ -44,34 +44,6 @@ final class Logo {
     protected function __construct() {}
 
     /**
-     * Get logo HTML
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      string      The logo markup linked to home
-     */
-    public function HTML() {
-        if ( function_exists( 'get_custom_logo' ) ) {
-            return get_custom_logo();
-        }
-
-        if ( ( $mod = $this->mod() ) ) {
-            return sprintf( '<a href=\'%1$s\' class=\'custom-logo-link\' rel=\'home\' itemprop=\'url\'>%2$s</a>',
-                home_url( '/' ),
-                wp_get_attachment_image( $mod, 'full', false, [
-                    'class'    => 'custom-logo',
-                    'itemprop' => 'logo',
-                ] )
-            );
-        }
-        
-        if ( is_customize_preview() ) {
-            return '<a href="' . home_url( '/' ) . '" class="custom-logo-link js-logo-link" style="display:none;"><img class="custom-logo" itemprop="logo" /></a>';
-        }
-    }
-
-    /**
      * Get logo mod
      *
      * @since       Jentil 0.1.0

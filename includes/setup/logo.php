@@ -78,6 +78,18 @@ final class Logo {
 	 * @action      jentil_inside_header
      */
     public function render() {
-    	echo Utilities\Logo::instance()->HTML();
+    	if ( function_exists( 'get_custom_logo' ) ) {
+            echo get_custom_logo();
+        } elseif ( ( $mod = Utilities\Logo::instance()->mod() ) ) {
+            echo sprintf( '<a href=\'%1$s\' class=\'custom-logo-link\' rel=\'home\' itemprop=\'url\'>%2$s</a>',
+                home_url( '/' ),
+                wp_get_attachment_image( $mod, 'full', false, [
+                    'class'    => 'custom-logo',
+                    'itemprop' => 'logo',
+                ] )
+            );
+        } elseif ( is_customize_preview() ) {
+            echo '<a href="' . home_url( '/' ) . '" class="custom-logo-link js-logo-link" style="display:none;"><img class="custom-logo" itemprop="logo" /></a>';
+        }
     }
 }
