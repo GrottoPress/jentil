@@ -67,7 +67,7 @@ final class Logo {
      * @return      array              The logo attributes
      */
     public function size() {
-        return ( array ) apply_filters( 'jentil_logo', [
+        return ( array ) apply_filters( 'jentil_logo_size', [
             'height' => 60,
             'width' => 180,
             'flex-width' => false,
