@@ -66,10 +66,7 @@ final class Logo {
      * @action      after_setup_theme
      */
     public function enable() {
-        add_theme_support( 'custom-logo', [
-           'height'      => 60,
-           'width'       => 180,
-        ] );
+        add_theme_support( 'custom-logo', Utilities\Logo::instance()->size() );
     }
 
     /**

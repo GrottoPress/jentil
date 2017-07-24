@@ -44,7 +44,7 @@ final class Logo {
     protected function __construct() {}
 
     /**
-     * Get logo
+     * Get logo HTML
      * 
      * @since		Jentil 0.1.0
      * @access      public
@@ -72,43 +72,19 @@ final class Logo {
     }
 
     /**
-     * Get colophon
+     * Get logo mod
      *
      * @since       Jentil 0.1.0
      * @access      public
      *
-     * @return      string          The colophon text
+     * @return      string          The logo mod
      */
     public function mod() {
         return ( new Mods\Logo() )->mod();
     }
-    
+
     /**
-     * Get logo src
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array              The logo src
-     */
-    public function src() {
-        return wp_get_attachment_image_src( $this->mod(), 'full' );
-    }
-    
-    /**
-     * Get logo meta
-     * 
-     * @since		Jentil 0.1.0
-     * @access      public
-     * 
-     * @return      array              The logo attributes
-     */
-    public function meta( $unfiltered = false ) {
-        return wp_get_attachment_metadata( $this->mod(), $unfiltered );
-    }
-    
-    /**
-     * Logo attributes
+     * Logo size
      *
      * We need this for when theme support for
      * custom_logo not available
@@ -118,7 +94,7 @@ final class Logo {
      * 
      * @return      array              The logo attributes
      */
-    public function attributes() {
+    public function size() {
         return ( array ) apply_filters( 'jentil_logo', [
             'height' => 60,
             'width' => 180,

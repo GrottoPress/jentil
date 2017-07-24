@@ -82,25 +82,25 @@ final class Logo extends Setup\Customizer\Setting {
             // 'transport' => 'postMessage',
             'default' => $this->mod->get( 'default' ),
             'sanitize_callback' => function ( $logo ) {
-                if ( ( $id = attachment_url_to_postid( $logo ) ) ) {
+                if ( ( $id = absint( $logo ) ) ) {
                     return $id;
                 }
 
-                return absint( $logo );
+                return attachment_url_to_postid( $logo );
             },
         ];
 
-        $atts = $this->ulogo->attributes();
+        $size = $this->ulogo->size();
 
         $this->control = [
             'label'         => esc_html__( 'Logo', 'jentil' ),
             'section'       => 'title_tagline',
             'settings'      => $this->name,
             'priority'      => 8,
-            'height'        => absint( $atts['height'] ),
-            'width'         => absint( $atts['width'] ),
-            'flex_height'   => ( bool ) $atts['flex-height'],
-            'flex_width'    => ( bool ) $atts['flex-width'],
+            'height'        => absint( $size['height'] ),
+            'width'         => absint( $size['width'] ),
+            'flex_height'   => ( bool ) $size['flex-height'],
+            'flex_width'    => ( bool ) $size['flex-width'],
             'button_labels' => [
                 'select'       => esc_html__( 'Select logo', 'jentil' ),
                 'change'       => esc_html__( 'Change logo', 'jentil' ),
