@@ -61,7 +61,7 @@ final class Layout {
      *
      * @since       Jentil 0.1.0
      * @access      public
-     * 
+     *
      * @filter      body_class
      */
     public function body_class( $classes ) {
@@ -76,5 +76,19 @@ final class Layout {
         }
 
         return $classes;
+    }
+
+    /**
+     * Content width
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     *
+     * @global      int         $content_width      Required by WordPress
+     *
+     * @action      after_setup_theme
+     */
+    public function content_width() {
+        $GLOBALS['content_width'] = 1024;
     }
 }

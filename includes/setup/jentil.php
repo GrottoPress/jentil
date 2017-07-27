@@ -241,6 +241,7 @@ final class Jentil {
 	 */
 	private function layout() {
 		add_filter( 'body_class', [ $this->parts['layout'], 'body_class' ] );
+        add_action( 'after_setup_theme', [ $this->parts['layout'], 'content_width' ] );
 	}
 
 	/**
