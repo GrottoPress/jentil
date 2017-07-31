@@ -40,7 +40,7 @@ final class Author extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Title\Title $title ) {
-        $this->mod = new Utilities\Mods\Title( 'author' );
+        $this->mod = Utilities\Mods\Mods::instance()->title( 'author' );
 
         parent::__construct( $title );
 

@@ -34,6 +34,16 @@ abstract class Mod {
     use MagPack\Utilities\Wizard;
 
     /**
+     * Mods
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Utilities\Mods\Mods     $mods     Mods object
+     */
+    protected $mods;
+
+    /**
      * Name
      *
      * @since       Jentil 0.1.0
@@ -52,6 +62,16 @@ abstract class Mod {
      * @var         mixed     $default     Default value
      */
     protected $default;
+
+    /**
+     * Constructor
+     *
+     * @since       Jentil 0.1.0
+     * @access      public
+     */
+    public function __construct( Mods $mods ) {
+        $this->mods = $mods;
+    }
 
     /**
      * Allow get

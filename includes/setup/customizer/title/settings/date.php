@@ -40,7 +40,7 @@ final class Date extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Title\Title $title ) {
-        $this->mod = new Utilities\Mods\Title( 'date' );
+        $this->mod = Utilities\Mods\Mods::instance()->title( 'date' );
 
         parent::__construct( $title );
 

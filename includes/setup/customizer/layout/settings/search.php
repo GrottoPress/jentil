@@ -40,7 +40,7 @@ final class Search extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
-        $this->mod = new Utilities\Mods\Layout( 'search' );
+        $this->mod = Utilities\Mods\Mods::instance()->layout( 'search' );
 
         parent::__construct( $layout );
         

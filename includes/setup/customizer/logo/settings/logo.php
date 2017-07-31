@@ -74,7 +74,7 @@ final class Logo extends Setup\Customizer\Setting {
 
         $this->ulogo = Utilities\Logo::instance();
 
-        $this->mod = new Utilities\Mods\Logo();
+        $this->mod = Utilities\Mods\Mods::instance()->logo();
 
         $this->name = $this->mod->get( 'name' );
         

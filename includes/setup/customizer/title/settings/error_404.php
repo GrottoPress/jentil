@@ -40,7 +40,7 @@ final class Error_404 extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Title\Title $title ) {
-        $this->mod = new Utilities\Mods\Title( '404' );
+        $this->mod = Utilities\Mods\Mods::instance()->title( '404' );
 
         parent::__construct( $title );
         

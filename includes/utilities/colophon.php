@@ -54,6 +54,6 @@ final class Colophon {
      * @return      string          The colophon mod
      */
     public function mod() {
-        return ( new Mods\Colophon() )->mod();
+        return Mods\Mods::instance()->colophon()->mod();
     }
 }

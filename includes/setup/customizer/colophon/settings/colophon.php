@@ -62,7 +62,7 @@ final class Colophon extends Setup\Customizer\Setting {
 	public function __construct( Setup\Customizer\Colophon\Colophon $colophon ) {
         $this->colophon = $colophon;
 
-        $this->mod = new Utilities\Mods\Colophon();
+        $this->mod = Utilities\Mods\Mods::instance()->colophon();
 
         $this->name = $this->mod->get( 'name' );
 

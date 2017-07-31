@@ -40,7 +40,7 @@ final class Error_404 extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
-        $this->mod = new Utilities\Mods\Layout( '404' );
+        $this->mod = Utilities\Mods\Mods::instance()->layout( '404' );
 
         parent::__construct( $layout );
         

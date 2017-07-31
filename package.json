@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/GrottoPress/jentil.git"
+    "url": "git+https://github.com/GrottoPress/jentil.git"
   },
   "keywords": [
     "Jentil",
@@ -32,7 +32,7 @@
   "author": "GrottoPress.com",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://gitlab.com/GrottoPress/jentil/issues"
+    "url": "https://github.com/GrottoPress/jentil/issues"
   },
-  "homepage": "https://gitlab.com/GrottoPress/jentil#README"
+  "homepage": "https://github.com/GrottoPress/jentil#README"
 }

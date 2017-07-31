@@ -70,6 +70,18 @@ final class Jentil {
     protected $parts;
 
     /**
+     * Utilities
+     *
+     * @todo        Add as function?
+     *
+     * @since       Jentil 0.1.0
+     * @access      protected
+     * 
+     * @var         \GrottoPress\Jentil\Utilities\Jentil         $utilities       Utilities object
+     */
+    protected $utilities;
+
+    /**
      * Constructor
      *
      * @since       Jentil 0.1.0

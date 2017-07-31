@@ -52,7 +52,7 @@ final class Logo {
      * @return      string          The logo mod
      */
     public function mod() {
-        return ( new Mods\Logo() )->mod();
+        return Mods\Mods::instance()->logo()->mod();
     }
 
     /**

@@ -40,7 +40,7 @@ final class Search extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Title\Title $title ) {
-        $this->mod = new Utilities\Mods\Title( 'search' );
+        $this->mod = Utilities\Mods\Mods::instance()->title( 'search' );
 
         parent::__construct( $title );
         

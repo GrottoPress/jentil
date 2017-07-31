@@ -75,7 +75,7 @@ final class Posts extends Mod {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( $setting, $args = [] ) {
+    public function __construct( Mods $mods, $setting, $args = [] ) {
         $args = wp_parse_args( $args, [
             'context' => '',
             'specific' => '',
@@ -94,6 +94,8 @@ final class Posts extends Mod {
         $defaults = $this->defaults();
         $this->default = isset( $defaults[ $this->setting ] )
             ? $defaults[ $this->setting ] : '';
+
+        parent::__construct( $mods );
     }
 
     /**

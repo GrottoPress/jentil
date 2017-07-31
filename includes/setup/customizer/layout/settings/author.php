@@ -40,7 +40,7 @@ final class Author extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
-        $this->mod = new Utilities\Mods\Layout( 'author' );
+        $this->mod = Utilities\Mods\Mods::instance()->layout( 'author' );
 
         parent::__construct( $layout );
 

@@ -30,9 +30,11 @@ final class Logo extends Mod {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct() {
+    public function __construct( Mods $mods ) {
         $this->name = 'custom_logo';
         $this->default = '';
+
+        parent::__construct( $mods );
     }
 
     /**

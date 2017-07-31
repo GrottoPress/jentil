@@ -82,13 +82,13 @@ final class Title {
                 $specific = $specific[0];
             }
 
-            $mod = new Utilities\Mods\Title( $type, $specific );
+            $mod = Utilities\Mods\Mods::instance()->title( $type, $specific );
 
             if ( $mod->get( 'name' ) ) {
             	return $mod->mod();
             }
         }
 
-        return ( new Utilities\Mods\Title() )->get( 'default' );
+        return Utilities\Mods\Mods::instance()->title()->get( 'default' );
     }
 }

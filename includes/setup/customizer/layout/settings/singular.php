@@ -41,9 +41,9 @@ final class Singular extends Setting {
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type, $post = '' ) {
         if ( $post ) {
-            $this->mod = new Utilities\Mods\Layout( 'singular', $post_type->name, $post->ID );
+            $this->mod = Utilities\Mods\Mods::instance()->layout( 'singular', $post_type->name, $post->ID );
         } else {
-            $this->mod = new Utilities\Mods\Layout( 'singular', $post_type->name );
+            $this->mod = Utilities\Mods\Mods::instance()->layout( 'singular', $post_type->name );
         }
 
         parent::__construct( $layout );

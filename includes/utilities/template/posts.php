@@ -572,7 +572,7 @@ final class Posts {
         'more_specific' => '',
     ] ) {
     	if ( ! empty( $args['context'] ) ) {
-        	return ( new Utilities\Mods\Posts( $setting, $args ) )->mod();
+        	return Utilities\Mods\Mods::instance()->posts( $setting, $args )->mod();
         }
 
     	$template = $this->template->type();
@@ -598,7 +598,7 @@ final class Posts {
                 $args['more_specific'] = $args['more_specific'][0];
             }
 
-            $mod = new Utilities\Mods\Posts( $setting, $args );
+            $mod = Utilities\Mods\Mods::instance()->posts( $setting, $args );
 
             if ( ! $mod->get( 'name' ) ) {
             	continue;
@@ -607,6 +607,6 @@ final class Posts {
             return $mod->mod();
         }
 
-        return ( new Utilities\Mods\Posts( $setting, $args ) )->get( 'default' );
+        return Utilities\Mods\Mods::instance()->posts( $setting, $args )->get( 'default' );
     }
 }

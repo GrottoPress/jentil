@@ -49,9 +49,9 @@ final class Taxonomy extends Setting {
         }
 
         if ( $term ) {
-            $this->mod = new Utilities\Mods\Layout( $mod_context, $taxonomy->name, $term->term_id );
+            $this->mod = Utilities\Mods\Mods::instance()->layout( $mod_context, $taxonomy->name, $term->term_id );
         } else {
-            $this->mod = new Utilities\Mods\Layout( $mod_context, $taxonomy->name );
+            $this->mod = Utilities\Mods\Mods::instance()->layout( $mod_context, $taxonomy->name );
         }
 
         parent::__construct( $layout );

@@ -42,7 +42,7 @@ final class Post_Type extends Setting {
 	public function __construct( Setup\Customizer\Layout\Layout $layout, $post_type ) {
         $mod_context = ( 'post' == $post_type->name ? 'home' : 'post_type_archive' );
 
-        $this->mod = new Utilities\Mods\Layout( $mod_context, $post_type->name );
+        $this->mod = Utilities\Mods\Mods::instance()->layout( $mod_context, $post_type->name );
 
         parent::__construct( $layout );
         

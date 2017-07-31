@@ -30,9 +30,11 @@ final class Colophon extends Mod {
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct() {
+    public function __construct( Mods $mods ) {
         $this->name = 'colophon';
         $this->default = sprintf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'jentil' ), '<span itemprop="copyrightYear">{{this_year}}</span>', '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>' );
+
+        parent::__construct( $mods );
     }
 
     /**

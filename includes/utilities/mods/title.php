@@ -59,14 +59,14 @@ final class Title extends Mod {
     /**
      * Constructor
      * 
-     * @var         string      $context       Template name
+     * @var         string      $context        Template name
      * @var         string      $specific       Post type name or taxonomy name
      * @var         string      $more_specific  Post ID or term ID
      *
      * @since       Jentil 0.1.0
      * @access      public
      */
-    public function __construct( $context = '', $specific = '', $more_specific = '' ) {
+    public function __construct( Mods $mods, $context = '', $specific = '', $more_specific = '' ) {
         $this->context = sanitize_key( $context );
 
         $specific = sanitize_key( $specific );
@@ -83,6 +83,8 @@ final class Title extends Mod {
         $defaults = $this->defaults();
         $this->default = isset( $defaults[ $this->context ] )
             ? $defaults[ $this->context ] : '';
+
+        parent::__construct( $mods );
     }
 
     /**

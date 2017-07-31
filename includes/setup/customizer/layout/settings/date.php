@@ -40,7 +40,7 @@ final class Date extends Setting {
 	 * @access      public
 	 */
 	public function __construct( Setup\Customizer\Layout\Layout $layout ) {
-        $this->mod = new Utilities\Mods\Layout( 'date' );
+        $this->mod = Utilities\Mods\Mods::instance()->layout( 'date' );
 
         parent::__construct( $layout );
 
