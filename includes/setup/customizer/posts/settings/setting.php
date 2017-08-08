@@ -55,7 +55,7 @@ abstract class Setting extends Setup\Customizer\Setting {
 	 * @since       Jentil 0.1.0
 	 * @access      public
 	 */
-	public function __construct( $content ) {
+	public function __construct( Setup\Customizer\Posts\Section $content ) {
         $this->content = $content;
         
         $this->args = [];
