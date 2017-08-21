@@ -4,52 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a218e0334b015efb5c272d56a7e3ea8",
-    "content-hash": "0adebc38c988a03d554bd8134b42b70e",
+    "hash": "c54d36880bfe24b12c4d823fb7a013ad",
+    "content-hash": "1282bad6394d8777c9611fd847e26772",
     "packages": [
         {
-            "name": "afarkas/html5shiv",
-            "version": "3.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aFarkas/html5shiv.git",
-                "reference": "ed28c56c071bddfe7d635ad88995674957a016be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aFarkas/html5shiv/zipball/ed28c56c071bddfe7d635ad88995674957a016be",
-                "reference": "ed28c56c071bddfe7d635ad88995674957a016be",
-                "shasum": ""
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "dist/html5shiv.js"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT",
-                "GPL-2.0"
-            ],
-            "description": "Defacto way to enable use of HTML5 sectioning elements in legacy Internet Explorer.",
-            "homepage": "http://paulirish.com/2011/the-history-of-the-html5-shiv/",
-            "time": "2015-07-20 20:04:00"
-        },
-        {
             "name": "composer/installers",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045"
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/79ad876c7498c0bbfe7eed065b8651c93bfd6045",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045",
+                "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
                 "shasum": ""
             },
             "require": {
@@ -95,6 +64,7 @@
                 "Hurad",
                 "ImageCMS",
                 "Kanboard",
+                "Lan Management System",
                 "MODX Evo",
                 "Mautic",
                 "Maya",
@@ -118,6 +88,7 @@
                 "croogo",
                 "dokuwiki",
                 "drupal",
+                "eZ Platform",
                 "elgg",
                 "expressionengine",
                 "fuelphp",
@@ -134,6 +105,7 @@
                 "mediawiki",
                 "modulework",
                 "moodle",
+                "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
@@ -150,207 +122,173 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-04-24 06:37:16"
+            "time": "2017-08-09 07:53:48"
         },
         {
-            "name": "kriswallsmith/assetic",
-            "version": "v1.4.0",
+            "name": "florianwolters/component-core-stringutils",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1"
+                "url": "https://github.com/FlorianWolters/PHP-Component-Core-StringUtils.git",
+                "reference": "51978fa9a4d30104192036f0b1f11fc1c3bc4667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1",
-                "reference": "e911c437dbdf006a8f62c2f59b15b2d69a5e0aa1",
+                "url": "https://api.github.com/repos/FlorianWolters/PHP-Component-Core-StringUtils/zipball/51978fa9a4d30104192036f0b1f11fc1c3bc4667",
+                "reference": "51978fa9a4d30104192036f0b1f11fc1c3bc4667",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.1",
-                "symfony/process": "~2.1|~3.0"
-            },
-            "conflict": {
-                "twig/twig": "<1.27"
-            },
-            "require-dev": {
-                "leafo/lessphp": "^0.3.7",
-                "leafo/scssphp": "~0.1",
-                "meenie/javascript-packer": "^1.1",
-                "mrclay/minify": "<2.3",
-                "natxet/cssmin": "3.0.4",
-                "patchwork/jsqueeze": "~1.0|~2.0",
-                "phpunit/phpunit": "~4.8 || ^5.6",
-                "psr/log": "~1.0",
-                "ptachoire/cssembed": "~1.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
-                "twig/twig": "~1.23|~2.0",
-                "yfix/packager": "dev-master"
-            },
-            "suggest": {
-                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
-                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
-                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
-                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
-                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
-                "twig/twig": "Assetic provides the integration with the Twig templating engine"
+                "php": ">=5.3"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
-                    "Assetic": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                    "FlorianWolters": "src/php"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "LGPL-3.0+"
             ],
             "authors": [
                 {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
+                    "name": "Florian Wolters",
+                    "email": "wolters.fl@gmail.com",
+                    "homepage": "http://blog.florianwolters.de",
+                    "role": "Developer"
                 }
             ],
-            "description": "Asset Management for PHP",
-            "homepage": "https://github.com/kriswallsmith/assetic",
+            "description": "Offers operations on the data type string as a PHP component.",
+            "homepage": "http://github.com/FlorianWolters/PHP-Component-Core-StringUtils",
             "keywords": [
-                "assets",
-                "compression",
-                "minification"
+                "helper",
+                "language",
+                "string",
+                "wrapper"
             ],
-            "time": "2016-11-11 18:43:20"
+            "time": "2013-07-01 10:24:07"
         },
         {
-            "name": "robloach/component-installer",
-            "version": "0.2.3",
+            "name": "florianwolters/component-util-reflection",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobLoach/component-installer.git",
-                "reference": "908a859aa7c4949ba9ad67091e67bac10b66d3d7"
+                "url": "https://github.com/FlorianWolters/PHP-Component-Util-Reflection.git",
+                "reference": "ffc94b62e2834d7d0306374d952eda7a5abd1844"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/908a859aa7c4949ba9ad67091e67bac10b66d3d7",
-                "reference": "908a859aa7c4949ba9ad67091e67bac10b66d3d7",
+                "url": "https://api.github.com/repos/FlorianWolters/PHP-Component-Util-Reflection/zipball/ffc94b62e2834d7d0306374d952eda7a5abd1844",
+                "reference": "ffc94b62e2834d7d0306374d952eda7a5abd1844",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
-                "kriswallsmith/assetic": "1.*",
-                "php": ">=5.3.2"
+                "florianwolters/component-core-stringutils": ">=0.2-beta",
+                "php": ">=5.4"
             },
-            "require-dev": {
-                "composer/composer": "1.*@alpha",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                },
-                "class": "ComponentInstaller\\ComponentInstallerPlugin"
-            },
+            "type": "library",
             "autoload": {
                 "psr-0": {
-                    "ComponentInstaller": "src/"
+                    "FlorianWolters": "src/php"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "LGPL-3.0+"
             ],
             "authors": [
                 {
-                    "name": "Rob Loach",
-                    "homepage": "http://robloach.net"
+                    "name": "Florian Wolters",
+                    "email": "wolters.fl@gmail.com",
+                    "homepage": "http://blog.florianwolters.de",
+                    "role": "Developer"
                 }
             ],
-            "description": "Allows installation of Components via Composer.",
-            "time": "2015-08-10 12:35:38"
+            "description": "Provides operations for the PHP Reflection API as a PHP component.",
+            "homepage": "http://github.com/FlorianWolters/PHP-Component-Util-Reflection",
+            "keywords": [
+                "reflection",
+                "utility"
+            ],
+            "time": "2013-03-19 16:42:41"
         },
         {
-            "name": "rogeriopradoj/respond",
-            "version": "1.4.2",
+            "name": "florianwolters/component-util-singleton",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/rogeriopradoj/Respond.git",
-                "reference": "885cd21e14e0199c4d126e4fe563581de2cd6aea"
+                "url": "https://github.com/FlorianWolters/PHP-Component-Util-Singleton.git",
+                "reference": "ab39ba531a38c3b76b4babb0035ce840cde7f443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rogeriopradoj/Respond/zipball/885cd21e14e0199c4d126e4fe563581de2cd6aea",
-                "reference": "885cd21e14e0199c4d126e4fe563581de2cd6aea",
+                "url": "https://api.github.com/repos/FlorianWolters/PHP-Component-Util-Singleton/zipball/ab39ba531a38c3b76b4babb0035ce840cde7f443",
+                "reference": "ab39ba531a38c3b76b4babb0035ce840cde7f443",
                 "shasum": ""
             },
             "require": {
-                "robloach/component-installer": "*"
+                "florianwolters/component-core-stringutils": "0.3.*",
+                "florianwolters/component-util-reflection": "0.2.*",
+                "php": ">=5.4"
             },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "name": "respond",
-                    "scripts": [
-                        "dest/respond.src.js"
-                    ],
-                    "files": [
-                        "dest/respond.min.js"
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "FlorianWolters": [
+                        "src/php",
+                        "src/tests/unit-tests/php",
+                        "src/tests/mocks/php"
                     ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "LGPL-3.0+"
             ],
             "authors": [
                 {
-                    "name": "Rogerio Prado de Jesus",
-                    "email": "rogeriopradoj@gmail.com"
+                    "name": "Florian Wolters",
+                    "email": "wolters.fl@gmail.com",
+                    "homepage": "http://blog.florianwolters.de",
+                    "role": "Developer"
                 }
             ],
-            "description": "A way to install Respond.js via composer",
+            "description": "The Singleton (and Registry of Singletons a.k.a. Multiton) design pattern as a PHP component.",
+            "homepage": "http://github.com/FlorianWolters/PHP-Component-Util-Singleton",
             "keywords": [
-                "JS"
+                "creation",
+                "pattern",
+                "singleton",
+                "utility"
             ],
-            "time": "2014-02-14 20:48:52"
+            "time": "2013-06-29 12:35:22"
         },
         {
-            "name": "symfony/process",
-            "version": "v3.3.5",
+            "name": "grottopress/wordpress-page",
+            "version": "dev-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "07432804942b9f6dd7b7377faf9920af5f95d70a"
+                "url": "https://github.com/GrottoPress/wordpress-page.git",
+                "reference": "1e9fb9ba91e475c7242d10775ac2087c1ba106d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/07432804942b9f6dd7b7377faf9920af5f95d70a",
-                "reference": "07432804942b9f6dd7b7377faf9920af5f95d70a",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/1e9fb9ba91e475c7242d10775ac2087c1ba106d6",
+                "reference": "1e9fb9ba91e475c7242d10775ac2087c1ba106d6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.3",
+                "wp-cli/wp-cli": "^1.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
+                "classmap": [
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -359,25 +297,33 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "GrottoPress.com",
+                    "email": "info@grottopress.com",
+                    "homepage": "https://www.grottopress.com"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
+                    "name": "N Atta Kusi Adusei",
+                    "homepage": "https://twitter.com/akadusei",
+                    "role": "Developer"
                 }
             ],
-            "description": "Symfony Process Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-07-13 13:05:09"
+            "description": "A library to get WordPress page elements",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2017-08-20 22:16:41"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "grottopress/wordpress-page": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.0"
+    },
     "platform-dev": []
 }

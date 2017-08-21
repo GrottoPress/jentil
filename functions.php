@@ -1,40 +1,43 @@
 <?php
 
 /**
- * Theme functions
+ * Functions
  *
- * @see         https://developer.wordpress.org/themes/basics/theme-functions/
+ * @package GrottoPress\Jentil
+ * @since 0.1.0
  *
- * @link			https://jentil.grottopress.com
- * @package			jentil
- * @since			Jentil 0.1.0
+ * @see https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @author GrottoPress (https://www.grottopress.com)
+ * @author N Atta Kus Adusei (https://twitter.com/akadusei)
  */
 
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-use GrottoPress\Jentil\Setup;
-use GrottoPress\Jentil\Utilities;
+define( 'JENTIL_REQUIRED_WP', '4.3' );
+define( 'JENTIL_REQUIRED_PHP', '7.0' );
+
+if ( version_compare( JENTIL_REQUIRED_PHP, phpversion(), '<=' )
+    && version_compare( JENTIL_REQUIRED_WP, get_bloginfo( 'version' ), '<=' ) ) :
 
 /**
- * Autoload
+ * Autoloader
  * 
- * @since		Jentil 0.1.0
+ * @since 0.1.0
  */
-require_once get_template_directory() . '/vendor/autoload.php';
+require_once \get_template_directory() . '/vendor/autoload.php';
 
 /**
- * Begin execution of the theme.
+ * Run this theme.
  *
- * @action      after_setup_theme
+ * @action after_setup_theme
  * 
- * @since       Jentil 0.1.0
+ * @since 0.1.0
  */
-add_action( 'after_setup_theme', function () {
-    if ( ! Utilities\Activator::instance()->checks() ) {
-        return;
-    }
-
-    Setup\Jentil::instance()->run();
+\add_action( 'after_setup_theme', function () {
+    \Jentil()->run();
 }, 0 );
+
+endif;
