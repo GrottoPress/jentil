@@ -1,9 +1,9 @@
 /**
  * Gulpfile
  *
- * @see         https://travismaynard.com/writing/getting-started-with-gulp
+ * @see https://travismaynard.com/writing/getting-started-with-gulp
  *
- * @since       Jentil 0.1.0
+ * @since 0.1.0
  */
 
 // Include gulp
@@ -16,16 +16,16 @@ var rename = require( 'gulp-rename' );
 var rtlcss = require('gulp-rtlcss');
 var cleanCSS = require( 'gulp-clean-css' );
 
-// Paths
-var js_dir = './assets/javascript';
-var js_files = [ js_dir + '/**/*.js', '!' + js_dir + '/**/*.min.js' ];
-var css_dir = './assets/styles';
-var css_files = [ css_dir + '/**/*.css', '!' + css_dir + '/**/*.min.css' ];
-var css_rtl_files = [ css_dir + '/**/*.css', '!' + css_dir + '/**/*.min.css',
-    '!' + css_dir + '/**/*-rtl.css' ];
+// Files/Paths
+var js_src = './src/assets/javascript';
+var js_dest = './dist/assets/javascript';
+var js_files = [ js_src + '/**/*.js' ];
+var css_src = './src/assets/styles';
+var css_dest = './dist/assets/styles';
+var css_files = [ css_src + '/**/*.css' ];
 
 // Lint Task
-gulp.task( 'lint', function() {
+gulp.task( 'lint_js', function() {
     return gulp.src( js_files )
         .pipe( jshint() )
         .pipe( jshint.reporter( 'default' ) );
@@ -36,15 +36,7 @@ gulp.task( 'minify_js', function() {
     return gulp.src( js_files )
         .pipe( uglify() )
         .pipe( rename({ 'suffix' : '.min' }) )
-        .pipe( gulp.dest( js_dir ) );
-});
-
-// RTL CSS
-gulp.task( 'rtl_css', function() {
-    return gulp.src( css_rtl_files )
-        .pipe( rtlcss() )
-        .pipe( rename({ 'suffix' : '-rtl' }) )
-        .pipe( gulp.dest( css_dir ) );
+        .pipe( gulp.dest( js_dest ) );
 });
 
 // Minify CSS
@@ -52,14 +44,23 @@ gulp.task( 'minify_css', function() {
     return gulp.src( css_files )
         .pipe( cleanCSS() )
         .pipe( rename({ 'suffix' : '.min' }) )
-        .pipe( gulp.dest( css_dir ) );
+        .pipe( gulp.dest( css_dest ) );
+});
+
+// RTL CSS
+gulp.task( 'rtl_css', function() {
+    return gulp.src( css_files )
+        .pipe( rtlcss() )
+        .pipe( cleanCSS() )
+        .pipe( rename({ 'suffix' : '-rtl.min' }) )
+        .pipe( gulp.dest( css_dest ) );
 });
 
 // Watch Files For Changes
 gulp.task( 'watch', function() {
-    gulp.watch( js_files, [ 'lint', 'minify_js' ]);
-    gulp.watch( css_files, [ 'rtl_css', 'minify_css' ]);
+    gulp.watch( js_files, [ 'lint_js', 'minify_js' ]);
+    gulp.watch( css_files, [ 'minify_css', 'rtl_css' ]);
 });
 
 // Default Task
-gulp.task( 'default', [ 'lint', 'minify_js', 'rtl_css', 'minify_css', 'watch' ]);
+gulp.task( 'default', [ 'lint_js', 'minify_js', 'minify_css', 'rtl_css', 'watch' ]);
