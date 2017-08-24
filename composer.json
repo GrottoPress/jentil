@@ -27,6 +27,9 @@
         "florianwolters/component-util-singleton": "^0.3",
         "grottopress/wordpress-page": "dev-dev"
     },
+    "require-dev": {
+        "lucatume/wp-browser": "^1.21"
+    },
     "autoload": {
         "classmap": ["src/includes/setup/", "src/includes/utilities/", "src/includes/jentil.php"],
         "files": ["src/includes/api/functions.php"]
