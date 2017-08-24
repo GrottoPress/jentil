@@ -24,7 +24,6 @@ use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Colophon;
 use GrottoPress\Jentil\Utilities\Logo;
 use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
-use GrottoPress\WordPress\Metabox\Metabox;
 // use GrottoPress\WordPress\Posts\Posts;
 // use GrottoPress\WordPress\Post\Post;
 use GrottoPress\MagPack\Utilities\Query\Posts;
@@ -175,20 +174,6 @@ final class Utilities {
      */
     public function breadcrumbs( array $args = [] ): Breadcrumbs {
         return new Breadcrumbs( $this->page, $args );
-    }
-
-    /**
-     * Metabox
-     *
-     * @var array $args Metabox args.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return GrottoPress\WordPress\Metabox\Metabox Metabox.
-     */
-    public function metabox( array $args = [] ): Metabox {
-        return new Metabox( $args );
     }
 
     /**

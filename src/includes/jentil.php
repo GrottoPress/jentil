@@ -125,7 +125,7 @@ final class Jentil {
         $this->setup['widgets'] = new Setup\Widgets( $this );
         $this->setup['colophon'] = new Setup\Colophon( $this );
         $this->setup['customizer'] = new Setup\Customizer\Customizer( $this );
-        // $this->setup['metaboxes'] = new Setup\Metaboxes( $this );
+        $this->setup['metaboxes'] = new Setup\Metaboxes( $this );
         // $this->setup['updater'] = new Setup\Updater( $this );
     }
 
