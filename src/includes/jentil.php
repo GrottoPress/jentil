@@ -130,6 +130,22 @@ final class Jentil {
     }
 
     /**
+     * Run theme
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function run() {
+        if ( ! $this->setup ) {
+            return;
+        }
+
+        foreach ( $this->setup as $setup ) {
+            $setup->run();
+        }
+    }
+
+    /**
      * Utilities
      *
      * @since 0.1.0
@@ -156,42 +172,104 @@ final class Jentil {
     }
 
     /**
-     * Path
+     * Get theme directory
+     *
+     * @var string $type 'path' or 'url'.
+     * @var string $append Filepath to append to URL.
      *
      * @since 0.1.0
      * @access public
      *
-     * @return string Path.
+     * @return string Path or URL.
      */
-    public function dir_path(): string {
-        return $this->dir_path;
+    public function dir( string $type, string $append = '' ): string {
+        return $this->_dir( $type, '', $append );
     }
 
     /**
-     * URL
+     * Get JavaScript directory
+     *
+     * @var string $type 'path' or 'url'.
+     * @var string $append Filepath to append to URL.
+     * @var string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access public
      *
-     * @return string URL.
+     * @return string Path or URL.
      */
-    public function dir_url(): string {
-        return $this->dir_url;
+    public function js_dir( string $type, string $append = '', string $form = '' ): string {
+        return $this->_dir( $type, '/dist/assets/javascript', $append, $form );
     }
 
     /**
-     * Run theme
+     * Get CSS directory
+     *
+     * @var string $type 'path' or 'url'.
+     * @var string $append Filepath to append to URL.
+     * @var string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access public
+     *
+     * @return string Path or URL.
      */
-    public function run() {
-        if ( ! $this->setup ) {
-            return;
+    public function styles_dir( string $type, string $append = '', string $form = '' ): string {
+        return $this->_dir( $type, '/dist/assets/styles', $append, $form );
+    }
+
+    /**
+     * Get partials directory
+     *
+     * @var string $type 'path' or 'url'.
+     * @var string $append Filepath to append to URL.
+     * @var string $form 'relative' or 'absolute'.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string Path or URL.
+     */
+    public function partials_dir( string $type, string $append = '', string $form = '' ): string {
+        return $this->_dir( $type, '/src/includes/partials', $append, $form );
+    }
+
+    /**
+     * Get templates directory
+     *
+     * @var string $type 'path' or 'url'.
+     * @var string $append Filepath to append to URL.
+     * @var string $form 'relative' or 'absolute'.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string Path or URL.
+     */
+    public function templates_dir( string $type, string $append = '', string $form = '' ): string {
+        return $this->_dir( $type, '/src/includes/templates', $append, $form );
+    }
+
+    /**
+     * Get directory URL/path
+     *
+     * @var string $type 'path' or 'url'.
+     * @var string $append Filepath to prepend to URL/path.
+     * @var string $append Filepath to append to URL/path.
+     * @var string $form 'relative' or 'absolute'.
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return string Path or URL.
+     */
+    private function _dir( string $type, string $prepend = '', string $append = '', string $form = '' ) {
+        $relative = $prepend . $append;
+
+        if ( 'relative' == $form ) {
+            return $relative;
         }
 
-        foreach ( $this->setup as $setup ) {
-            $setup->run();
-        }
+        return $this->{'dir_' . $type} . $relative;
     }
 }

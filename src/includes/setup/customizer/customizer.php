@@ -153,7 +153,7 @@ final class Customizer extends Setup {
      */
     public function enqueue_js() {
         \wp_enqueue_script( 'jentil-customizer',
-            $this->jentil->url() . '/dist/assets/javascript/customize-preview.min.js',
+            $this->jentil->js_dir( 'url', '/customize-preview.min.js' ),
             [ 'jquery', 'customize-preview' ], '', true );
     }
 
