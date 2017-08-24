@@ -104,7 +104,7 @@ final class Layout extends Mod {
     private function names(): array {
         $names = [
             'home' => 'post_post_type_layout',
-            'singular' => ( \is_post_type_hierarchical( $this->specific ) ? 'layout'
+            'singular' => ( $this->is_pagelike() ? 'layout'
                 : 'singular_' . $this->specific . '_' . $this->more_specific . '_layout' ),
             'author' => 'author_layout',
             'category' => 'category_' . $this->more_specific . '_taxonomy_layout',
@@ -147,7 +147,7 @@ final class Layout extends Mod {
             return false;
         }
 
-        if ( \is_post_type_hierarchical( $this->specific ) ) {
+        if ( $this->is_pagelike() ) {
             if ( ( $mod = \get_post_meta( $this->more_specific, $this->name, true ) ) ) {
                 return \sanitize_title( $mod );
             } 
@@ -156,5 +156,27 @@ final class Layout extends Mod {
         }
 
         return \sanitize_title( parent::get() );
+    }
+
+    /**
+     * Is post type pagelike?
+     *
+     * Determines if post type behavees like
+     * the page post type.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string Mod.
+     */
+    public function is_pagelike() {
+        $check = ( \is_post_type_hierarchical( $this->specific )
+            && ! \get_post_type_archive_link( $this->specific ) );
+
+        if ( $check && $this->more_specific ) {
+            return ( $this->more_specific != \get_option( 'page_for_posts' ) );
+        }
+        
+        return $check;
     }
 }

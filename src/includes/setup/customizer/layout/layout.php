@@ -76,7 +76,10 @@ final class Layout extends Section {
 
         if ( ( $post_types = $this->customizer->post_types() ) ) {
             foreach ( $post_types as $post_type ) {
-                if ( ! \is_post_type_hierarchical( $post_type->name ) ) {
+                if ( ! $this->customizer->jentil()->utilities()->mods() ->layout( [
+                    'context' => 'singular',
+                    'specific' => $post_type->name,
+                ] )->is_pagelike() ) {
                     $settings[ 'single_' . $post_type->name ] = new Settings\Singular( $this, $post_type );
                 }
             }

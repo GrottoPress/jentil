@@ -38,7 +38,7 @@ final class Customizer extends Setup {
      * 
      * @var array $post_types Post types.
      */
-    private $post_types;
+    private $post_types = null;
 
     /**
      * Archive Post types
@@ -48,7 +48,7 @@ final class Customizer extends Setup {
      * 
      * @var array $archive_post_types All post types with archive.
      */
-    private $archive_post_types;
+    private $archive_post_types = null;
 
     /**
      * Taxonomies
@@ -58,7 +58,7 @@ final class Customizer extends Setup {
      * 
      * @var array $taxonomies Taxonomies.
      */
-    private $taxonomies;
+    private $taxonomies = null;
 
     /**
      * Get post types
@@ -104,11 +104,7 @@ final class Customizer extends Setup {
         if ( null === $this->archive_post_types ) {
             if ( ( $post_types = $this->post_types() ) ) {
                 foreach ( $post_types as $post_type ) {
-                    if (
-                        $post_type->has_archive
-                        || 'post' == $post_type->name
-                        // || 'attachment' == $post_type->name
-                    ) {
+                    if ( \get_post_type_archive_link( $post_type->name ) ) {
                         $this->archive_post_types[ $post_type->name ] = $post_type;
                     }
                 }
