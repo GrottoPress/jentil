@@ -27,7 +27,7 @@ if ( version_compare( JENTIL_REQUIRED_PHP, phpversion(), '<=' )
  * 
  * @since 0.1.0
  */
-require_once \get_template_directory() . '/vendor/autoload.php';
+require ( \get_template_directory() . '/vendor/autoload.php' );
 
 /**
  * Run this theme.
