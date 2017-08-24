@@ -41,9 +41,9 @@ final class Jentil {
      * @since 0.1.0
      * @access private
      * 
-     * @var string $path Theme directory path.
+     * @var string $dir_path Theme directory path.
      */
-    private $path;
+    private $dir_path;
 
     /**
      * Theme directory URI
@@ -51,9 +51,9 @@ final class Jentil {
      * @since 0.1.0
      * @access private
      * 
-     * @var string $url Theme directory URI.
+     * @var string $dir_url Theme directory URI.
      */
-    private $url;
+    private $dir_url;
 
     /**
      * Theme setups
@@ -103,8 +103,8 @@ final class Jentil {
      * @access protected
      */
     protected function __construct() {
-        $this->url = \get_template_directory_uri();
-        $this->path = \get_template_directory();
+        $this->dir_url = \get_template_directory_uri();
+        $this->dir_path = \get_template_directory();
 
         $this->utilities = new Utilities( $this );
 
@@ -144,6 +144,8 @@ final class Jentil {
     /**
      * Setup
      *
+     * @var string $setup Setup type
+     *
      * @since 0.1.0
      * @access public
      *
@@ -161,8 +163,8 @@ final class Jentil {
      *
      * @return string Path.
      */
-    public function path(): string {
-        return $this->path;
+    public function dir_path(): string {
+        return $this->dir_path;
     }
 
     /**
@@ -173,8 +175,8 @@ final class Jentil {
      *
      * @return string URL.
      */
-    public function url(): string {
-        return $this->url;
+    public function dir_url(): string {
+        return $this->dir_url;
     }
 
     /**

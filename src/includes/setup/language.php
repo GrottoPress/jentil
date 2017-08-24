@@ -46,6 +46,6 @@ final class Language extends Setup {
      * @action after_setup_theme
      */
     public function load_textdomain() {
-        \load_theme_textdomain( 'jentil', $this->jentil->path() . '/src/languages' );
+        \load_theme_textdomain( 'jentil', $this->jentil->dir_path() . '/src/languages' );
     }
 }

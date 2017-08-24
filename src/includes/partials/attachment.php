@@ -4,7 +4,7 @@
  * Template Part: Attachment
  *
  * This contains code that would be included in
- * other templates via the `\get_template_part()` call.
+ * other templates via the `\jentil_get_template()` call.
  *
  * @package GrottoPress\Jentil
  * @since 0.1.0
