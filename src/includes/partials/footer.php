@@ -33,7 +33,7 @@ if ( ! \defined( 'WPINC' ) ) {
 								echo '<!--'; \trackback_rdf(); echo '-->';
 							}
 							
-							\comments_template( 'src/includes/partials/comments.php', true );
+							\comments_template( '/src/includes/partials/comments.php', true );
 							
 							\rewind_posts();
 						} ?>
