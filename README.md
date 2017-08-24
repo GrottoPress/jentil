@@ -1,10 +1,5 @@
 # Jentil WordPress Theme
 
-* Author: [@GrottoPress](https://gitlab.com/GrottoPress)
-* Author Website: [https://www.grottopress.com](https://www.grottopress.com)
-* Contributor(s): [@akadusei](https://gitlab.com/akadusei)
-* License: [GNU General Public License v2.0 or later](http://www.gnu.org/licenses/gpl-2.0.html)
-
 ## Description
 
 Jentil is a modern WordPress theme, suitable for use as a parent theme from which child themes can be derived.
@@ -45,17 +40,15 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Requirements
 
-This theme requires **WordPress** version **4.3** or newer, and the [MagPack](https://gitlab.com/GrottoPress/magpack) plugin.
+This theme requires **WordPress** version **4.3** or newer. Minimum required **PHP** version is **7.0**.
 
-Minimum required **PHP** version is **5.4**. We recommend **PHP** version **7.0** or newer.
-
-Jentil needs [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed.
+For now, you also need to install [MagPack plugin](https://github.com/grottopress/magpack) to get this working. We'll remove this dependency in the course of development.
 
 ## Installation
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
 
-### End Users (Non-developers)
+### End Users
 
 We are working on a website where end users can simply press a download button to download a production-ready version of Jentil. Website link will be posted here soon.
 
@@ -68,18 +61,13 @@ Read our tutorial on [how to install WordPress themes](https://www.grottopress.c
 
 ### Developers
 
-- Change to your `wp-content/themes` directory.
+You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed.
 
-- Clone this repository  
- `git clone https://gitlab.com/GrottoPress/jentil.git`
-
+- From the root of your WordPress project, via the command line, enter `composer require grottopress/jentil`. (Use `--no-dev` flag for production).
 - Change to `jentil` directory  
  `cd jentil`
-
-- Install packages (you should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed)  
- `composer install` (Use `--no-dev` flag for production)  
- `npm install` (Use `--production` flag for production)
-
+- Enter `npm install` (Use `--production` flag for production)
+- Download, install and activate [MagPack plugin](https://github.com/grottopress/magpack).
 - You're done.
 
 ## Example Child Theme
