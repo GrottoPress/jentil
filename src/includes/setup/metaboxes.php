@@ -18,7 +18,8 @@ if ( ! \defined( 'WPINC' ) ) {
     die;
 }
 
-use GrottoPress\WordPress\Metaboxes\G_Metaboxes;
+use GrottoPress\Jentil\Jentil;
+use GrottoPress\WordPress\Metaboxes\Metaboxes as G_Metaboxes;
 use \WP_Post;
 
 /**
@@ -26,7 +27,14 @@ use \WP_Post;
  *
  * @since 0.1.0
  */
-final class Metaboxes extends G_Metaboxes {
+final class Metaboxes extends Setup {
+    /**
+     * Import traits
+     *
+     * @since 0.1.0 Added G_Metaboxes.
+     */
+    use G_Metaboxes;
+
     /**
      * Run setup
      *
@@ -88,9 +96,16 @@ final class Metaboxes extends G_Metaboxes {
         }
 
         if (
-            ! ( $mod = $this->jentil->utilities()->mods()
-                ->layout( 'singular', $post->post_type, $post->ID )->name() )
+            ! ( $mod = $this->jentil->utilities()->mods()->layout( [
+                    'context' => 'singular',
+                    'specific' => $post->post_type,
+                    'more_specific' => $post->ID,
+                ] ) )
         ) {
+            return [];
+        }
+
+        if ( ! $mod->is_pagelike() ) {
             return [];
         }
 
@@ -102,13 +117,14 @@ final class Metaboxes extends G_Metaboxes {
             'callback' => '',
             'fields' => [
                 [
-                    'id' => $mod,
+                    'id' => $mod->name(),
                     'type' => 'select',
                     'choices' => $layouts,
                     'label' => \esc_html__( 'Select layout', 'jentil' ),
+                    'label_pos' => 'before_field',
                 ],
             ],
-            'notes' => '<p>' . \sprintf( \__( 'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.', Jentil::DOCUMENTATION ) ) . '</p>',
+            'notes' => '<p>' . \sprintf( \__( 'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.', 'jentil' ), Jentil::DOCUMENTATION ) . '</p>',
         ];
     }
 }
