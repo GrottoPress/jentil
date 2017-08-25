@@ -117,7 +117,7 @@ final class Menus extends Setup {
      * @action wp_enqueue_scripts
      */
     public function enqueue_js() {
-        \wp_enqueue_script( 'jentil-menu', $this->jentil->js_dir( 'url', '/menu.min.js' ),
+        \wp_enqueue_script( 'jentil-menu', $this->jentil->utilities()->filesystem()->scripts_dir( 'url', '/menu.min.js' ),
             [ 'jquery' ], '', true );
     }
 

@@ -45,15 +45,15 @@ final class Styles extends Setup {
      */
     public function enqueue() {
         \wp_enqueue_style( 'normalize',
-            $this->jentil->dir( 'url', '/node_modules/normalize.css/normalize.css' ) );
+            $this->jentil->utilities()->filesystem()->dir( 'url', '/node_modules/normalize.css/normalize.css' ) );
         
         if ( \is_rtl() ) {
             \wp_enqueue_style( 'jentil',
-                $this->jentil->styles_dir( 'url', '/jentil-rtl.min.css' ),
+                $this->jentil->utilities()->filesystem()->styles_dir( 'url', '/jentil-rtl.min.css' ),
                 [ 'normalize' ] );
         } else {
             \wp_enqueue_style( 'jentil',
-                $this->jentil->styles_dir( 'url', '/jentil.min.css' ),
+                $this->jentil->utilities()->filesystem()->styles_dir( 'url', '/jentil.min.css' ),
                 [ 'normalize' ] );
         }
     }
@@ -68,7 +68,7 @@ final class Styles extends Setup {
      */
     public function enqueue_fa() {
         \wp_enqueue_style( 'font-awesome',
-            $this->jentil->dir( 'url', '/node_modules/font-awesome/css/font-awesome.min.css' ),
+            $this->jentil->utilities()->filesystem()->dir( 'url', '/node_modules/font-awesome/css/font-awesome.min.css' ),
             [ 'normalize' ] );
     }
 }

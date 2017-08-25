@@ -36,6 +36,8 @@ final class Logo {
 
     /**
      * Constructor
+     * 
+     * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public

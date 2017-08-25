@@ -20,7 +20,7 @@ if ( ! \defined( 'WPINC' ) ) {
 
 use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
-use FlorianWolters\Component\Util\Singleton\SingletonTrait;
+use FlorianWolters\Component\Util\Singleton\SingletonTrait as Singleton;
 
 /**
  * Jentil
@@ -31,29 +31,9 @@ final class Jentil {
     /**
      * Import traits
      *
-     * @since 0.1.0 Added SingletonTrait.
+     * @since 0.1.0 Added Singleton.
      */
-    use SingletonTrait;
-
-    /**
-     * Theme directory path
-     *
-     * @since 0.1.0
-     * @access private
-     * 
-     * @var string $dir_path Theme directory path.
-     */
-    private $dir_path;
-
-    /**
-     * Theme directory URI
-     *
-     * @since 0.1.0
-     * @access private
-     * 
-     * @var string $dir_url Theme directory URI.
-     */
-    private $dir_url;
+    use Singleton;
 
     /**
      * Theme setups
@@ -103,9 +83,6 @@ final class Jentil {
      * @access protected
      */
     protected function __construct() {
-        $this->dir_url = \get_template_directory_uri();
-        $this->dir_path = \get_template_directory();
-
         $this->utilities = new Utilities( $this );
 
         $this->setup['language'] = new Setup\Language( $this );
@@ -127,22 +104,6 @@ final class Jentil {
         $this->setup['customizer'] = new Setup\Customizer\Customizer( $this );
         $this->setup['metaboxes'] = new Setup\Metaboxes( $this );
         // $this->setup['updater'] = new Setup\Updater( $this );
-    }
-
-    /**
-     * Run theme
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function run() {
-        if ( ! $this->setup ) {
-            return;
-        }
-
-        foreach ( $this->setup as $setup ) {
-            $setup->run();
-        }
     }
 
     /**
@@ -172,104 +133,18 @@ final class Jentil {
     }
 
     /**
-     * Get theme directory
-     *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
+     * Run theme
      *
      * @since 0.1.0
      * @access public
-     *
-     * @return string Path or URL.
      */
-    public function dir( string $type, string $append = '' ): string {
-        return $this->_dir( $type, '', $append );
-    }
-
-    /**
-     * Get JavaScript directory
-     *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
-     */
-    public function js_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/dist/assets/javascript', $append, $form );
-    }
-
-    /**
-     * Get CSS directory
-     *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
-     */
-    public function styles_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/dist/assets/styles', $append, $form );
-    }
-
-    /**
-     * Get partials directory
-     *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
-     */
-    public function partials_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/src/includes/partials', $append, $form );
-    }
-
-    /**
-     * Get templates directory
-     *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
-     */
-    public function templates_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/src/includes/templates', $append, $form );
-    }
-
-    /**
-     * Get directory URL/path
-     *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to prepend to URL/path.
-     * @var string $append Filepath to append to URL/path.
-     * @var string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Path or URL.
-     */
-    private function _dir( string $type, string $prepend = '', string $append = '', string $form = '' ) {
-        $relative = $prepend . $append;
-
-        if ( 'relative' == $form ) {
-            return $relative;
+    public function run() {
+        if ( ! $this->setup ) {
+            return;
         }
 
-        return $this->{'dir_' . $type} . $relative;
+        foreach ( $this->setup as $setup ) {
+            $setup->run();
+        }
     }
 }

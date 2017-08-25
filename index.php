@@ -27,9 +27,9 @@ if ( version_compare( JENTIL_REQUIRED_PHP, phpversion(), '<=' )
  * @since 0.1.0
  */
 if ( \Jentil()->utilities()->page()->is( 'singular' ) ) {
-	require_once ( \Jentil()->templates_dir( 'path', '/singular.php' ) );
+	require_once ( \Jentil()->utilities()->filesystem()->templates_dir( 'path', '/singular.php' ) );
 } else {
-	require_once ( \Jentil()->templates_dir( 'path', '/index.php' ) );
+	require_once ( \Jentil()->utilities()->filesystem()->templates_dir( 'path', '/index.php' ) );
 }
 
 endif;

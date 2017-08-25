@@ -62,9 +62,9 @@ abstract class Section {
      * @var GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
      *
      * @since 0.1.0
-     * @access protected
+     * @access public
      */
-    protected function __construct( Customizer $customizer ) {
+    public function __construct( Customizer $customizer ) {
         $this->customizer = $customizer;
     }
 
@@ -76,7 +76,7 @@ abstract class Section {
      *
      * @return GrottoPress\Jentil\Setup\Customizer\Customizer Customizer.
      */
-    public function customizer(): Customizer {
+    final public function customizer(): Customizer {
         return $this->customizer;
     }
 
@@ -88,7 +88,7 @@ abstract class Section {
      *
      * @return string Name.
      */
-    public function name(): string {
+    final public function name(): string {
         return $this->name;
     }
 

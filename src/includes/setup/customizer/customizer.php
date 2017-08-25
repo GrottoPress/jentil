@@ -61,6 +61,18 @@ final class Customizer extends Setup {
     private $taxonomies = null;
 
     /**
+     * Jentil
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return GrottoPress\Jentil\Jentil Jentil.
+     */
+    public function jentil(): Jentil {
+        return $this->jentil;
+    }
+
+    /**
      * Get post types
      *
      * @since 0.1.0
@@ -149,7 +161,7 @@ final class Customizer extends Setup {
      */
     public function enqueue_js() {
         \wp_enqueue_script( 'jentil-customizer',
-            $this->jentil->js_dir( 'url', '/customize-preview.min.js' ),
+            $this->jentil->utilities()->filesystem()->scripts_dir( 'url', '/customize-preview.min.js' ),
             [ 'jquery', 'customize-preview' ], '', true );
     }
 

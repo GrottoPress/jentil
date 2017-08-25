@@ -42,9 +42,9 @@ abstract class Section extends C_Section {
      * @var GrottoPress\Jentil\Setup\Posts\Posts $posts Posts.
      *
      * @since 0.1.0
-     * @access protected
+     * @access public
      */
-    protected function __construct( Posts $posts ) {
+    public function __construct( Posts $posts ) {
         $this->posts = $posts;
 
         parent::__construct( $this->posts->customizer() );
@@ -59,71 +59,7 @@ abstract class Section extends C_Section {
             'specific' => '',
             'more_specific' => '',
         ];
-        
     }
-
-    /**
-     * Title positions
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Title positions.
-     */
-    // public function title_positions(): array {
-    //     return [
-    //         'side' => \esc_html__( 'Side', 'jentil' ),
-    //         'top' => \esc_html__( 'Top', 'jentil' ),
-    //     ];
-    // }
-
-    /**
-     * Image alignments
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Image alignments.
-     */
-    // public function image_alignments(): array {
-    //     return [
-    //         'none' => \esc_html__( 'none', 'jentil' ),
-    //         'left' => \esc_html__( 'Left', 'jentil' ),
-    //         'right' => \esc_html__( 'Right', 'jentil' ),
-    //     ];
-    // }
-
-    /**
-     * Pagination positions
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Pagination positions.
-     */
-    // public function pagination_positions(): array {
-    //     return [
-    //         'none' => \esc_html__( 'None', 'jentil' ),
-    //         'top' => \esc_html__( 'Top', 'jentil' ),
-    //         'bottom' => \esc_html__( 'Bottom', 'jentil' ),
-    //         'top_bottom' => \esc_html__( 'Top and bottom', 'jentil' ),
-    //     ];
-    // }
-
-    /**
-     * Layouts
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Layouts.
-     */
-    // public function layouts(): array {
-    //     return [
-    //         'stack' => \esc_html__( 'Stack', 'jentil' ),
-    //         'grid' => \esc_html__( 'Grid', 'jentil' ),
-    //     ];
-    // }
 
     /**
      * Posts
@@ -133,7 +69,7 @@ abstract class Section extends C_Section {
      *
      * @return GrottoPress\Jentil\Setup\Customizer\Posts\Posts Posts.
      */
-    public function posts(): Posts {
+    final public function posts(): Posts {
         return $this->posts;
     }
 
@@ -145,7 +81,7 @@ abstract class Section extends C_Section {
      *
      * @return array Mod args.
      */
-    public function mod_args(): array {
+    final public function mod_args(): array {
         return $this->mod_args;
     }
 
