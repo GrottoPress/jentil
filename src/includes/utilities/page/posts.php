@@ -171,8 +171,8 @@ final class Posts {
      * 
      * @return bool Do we have sticky posts enabled?
      */
-    private function sticky_enabled(): int {
-        return $this->mod( 'sticky_posts' );
+    private function sticky_enabled(): bool {
+        return ( bool ) $this->mod( 'sticky_posts' );
     }
 
     /**
