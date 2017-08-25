@@ -124,13 +124,13 @@ final class Posts extends Setup {
         global $post;
 
         if ( \wp_attachment_is_image( $post->ID ) ) {
-            \get_template_part( 'src/includes/partials/attachment', 'image' );
+            \get_template_part( 'app/partials/attachment', 'image' );
         } elseif ( \wp_attachment_is( 'audio', $post->ID ) ) {
-            \get_template_part( 'src/includes/partials/attachment', 'audio' );
+            \get_template_part( 'app/partials/attachment', 'audio' );
         } elseif ( \wp_attachment_is( 'video', $post->ID ) ) {
-            \get_template_part( 'src/includes/partials/attachment', 'video' );
+            \get_template_part( 'app/partials/attachment', 'video' );
         } else {
-            \get_template_part( 'src/includes/partials/attachment' );
+            \get_template_part( 'app/partials/attachment' );
         }
     }
 

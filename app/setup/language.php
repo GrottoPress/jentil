@@ -38,7 +38,7 @@ final class Language extends Setup {
      * Load textdomain.
      *
      * Make theme available for translation. Translations can
-     * be filed in the '/src/languages' directory.
+     * be filed in the '/languages' directory.
      *
      * @since 0.1.0
      * @access public
@@ -46,6 +46,7 @@ final class Language extends Setup {
      * @action after_setup_theme
      */
     public function load_textdomain() {
-        \load_theme_textdomain( 'jentil', $this->jentil->utilities()->filesystem()->dir( 'path', '/src/languages' ) );
+        \load_theme_textdomain( 'jentil', $this->jentil->utilities()->filesystem()
+            ->dir( 'path', '/languages' ) );
     }
 }
