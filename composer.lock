@@ -489,12 +489,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-metaboxes.git",
-                "reference": "3d7b19af24ab8e1ba97b1e4d628753c1d7f71ad9"
+                "reference": "89cce98665dd4f17178adf44d8a8325203543ef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/3d7b19af24ab8e1ba97b1e4d628753c1d7f71ad9",
-                "reference": "3d7b19af24ab8e1ba97b1e4d628753c1d7f71ad9",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/89cce98665dd4f17178adf44d8a8325203543ef1",
+                "reference": "89cce98665dd4f17178adf44d8a8325203543ef1",
                 "shasum": ""
             },
             "require": {
@@ -530,7 +530,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-24 21:56:07"
+            "time": "2017-08-24 23:43:28"
         },
         {
             "name": "grottopress/wordpress-page",
