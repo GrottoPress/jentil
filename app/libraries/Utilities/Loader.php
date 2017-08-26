@@ -69,17 +69,12 @@ final class Loader {
      * Load template
      *
      * @var string $slug Partial filename to load.
-     * @var string $name Name to append to filename before loading.
      *
      * @since 0.1.0
      * @access public
      */
-    public function load_template( string $slug, string $name = '' ) {
-        if ( $this->locate_template( $slug, $name ) ) {
-            \get_template_part( $slug, $name );
-        } else {
-            \get_template_part( ltrim( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
-        }
+    public function load_template( string $slug ) {
+        \load_template( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}.php" ) );
     }
 
     /**
