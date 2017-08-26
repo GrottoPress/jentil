@@ -41,11 +41,11 @@ final class Page extends WPage {
      * Title
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      * 
      * @var GrottoPress\Jentil\Utilities\Page\Title $title Title.
      */
-    private $title;
+    protected $title;
     
     /**
      * Layout

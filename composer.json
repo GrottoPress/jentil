@@ -32,10 +32,10 @@
         "lucatume/wp-browser": "^1.21"
     },
     "autoload": {
-        "classmap": ["app/setup/", "app/utilities/", "app/jentil.php"],
-        "files": ["app/api/functions.php"]
+        "psr-4": { "GrottoPress\\Jentil\\": "app/libraries/" },
+        "files": ["app/functions.php"]
     },
     "autoload-dev": {
-        "classmap": ["tests/"]
+        "psr-4": { "GrottoPress\\Jentil\\Tests\\": "tests/" }
     }
 }

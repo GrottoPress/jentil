@@ -21,7 +21,7 @@ if ( ! \defined( 'WPINC' ) ) {
  *
  * @since 0.1.0
  */
-\get_template_part( 'src/app/partials/header' );
+\get_template_part( 'app/partials/header' );
 
 \the_post(); ?>
 
@@ -97,4 +97,4 @@ if ( ! \defined( 'WPINC' ) ) {
  *
  * @since 0.1.0
  */
-\get_template_part( 'src/app/partials/footer' );
+\get_template_part( 'app/partials/footer' );

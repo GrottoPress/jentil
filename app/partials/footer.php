@@ -33,7 +33,7 @@ if ( ! \defined( 'WPINC' ) ) {
 								echo '<!--'; \trackback_rdf(); echo '-->';
 							}
 							
-							\comments_template( '/src/app/partials/comments.php', true );
+							\comments_template( '/app/partials/comments.php', true );
 							
 							\rewind_posts();
 						} ?>
@@ -47,7 +47,7 @@ if ( ! \defined( 'WPINC' ) ) {
 				 *
 				 * @since 0.1.0
 				 */
-				\get_template_part( 'src/app/partials/sidebar' ); ?>
+				\get_template_part( 'app/partials/sidebar' ); ?>
 
 			</div><!-- #main -->
 			

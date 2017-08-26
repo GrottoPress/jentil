@@ -129,7 +129,7 @@ final class Filesystem {
      * @return string Path or URL.
      */
     public function partials_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/src/app/partials', $append, $form );
+        return $this->_dir( $type, '/app/partials', $append, $form );
     }
 
     /**
@@ -145,7 +145,7 @@ final class Filesystem {
      * @return string Path or URL.
      */
     public function templates_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/src/app/templates', $append, $form );
+        return $this->_dir( $type, '/app/templates', $append, $form );
     }
 
     /**

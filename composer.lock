@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0938abd7f96ff730238b52f74bd4c75b",
+    "hash": "ed7d616c7c118a9a50151b310c1ca5bf",
     "content-hash": "4e2e93d638e0120a1e4e9698dc06400e",
     "packages": [
         {
@@ -538,20 +538,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "1e9fb9ba91e475c7242d10775ac2087c1ba106d6"
+                "reference": "4c3648ccce904d8151e78fd0c2406ecb41424270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/1e9fb9ba91e475c7242d10775ac2087c1ba106d6",
-                "reference": "1e9fb9ba91e475c7242d10775ac2087c1ba106d6",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/4c3648ccce904d8151e78fd0c2406ecb41424270",
+                "reference": "4c3648ccce904d8151e78fd0c2406ecb41424270",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.3",
-                "wp-cli/wp-cli": "^1.2"
+                "phpunit/phpunit": "^6.3"
             },
             "type": "library",
             "autoload": {
@@ -579,7 +578,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-20 22:16:41"
+            "time": "2017-08-26 00:43:21"
         },
         {
             "name": "symfony/polyfill-mbstring",

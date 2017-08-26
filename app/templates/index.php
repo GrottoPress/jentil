@@ -21,7 +21,7 @@ if ( ! \defined( 'WPINC' ) ) {
  *
  * @since 0.1.0
  */
-\get_template_part( 'src/app/partials/header' );
+\get_template_part( 'app/partials/header' );
 
 if ( ! ( $jentil_page = \Jentil()->utilities()->page() )->is( 'singular' ) ) {
 	if ( ( $jentil_title = $jentil_page->title() ) ) { ?>
@@ -69,7 +69,7 @@ if (
 	$jentil_page->is( '404' )
 	|| ! ( $jentil_posts = $jentil_page->posts()->get() )
 ) {
-	\get_template_part( 'src/app/partials/none' );
+	\get_template_part( 'app/partials/none' );
 } else {
 	echo $jentil_posts;
 }
@@ -79,4 +79,4 @@ if (
  *
  * @since 0.1.0
  */
-\get_template_part( 'src/app/partials/footer' );
+\get_template_part( 'app/partials/footer' );
