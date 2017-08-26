@@ -26,6 +26,11 @@ if ( ! \defined( 'WPINC' ) ) {
 						 */
 						\do_action( 'jentil_after_after_content' );
 						
+						/**
+						 * Load comments
+						 *
+						 * @since 0.1.0
+						 */
 						if ( \Jentil()->utilities()->page()->is( 'singular' ) ) {
 							\the_post();
 							
@@ -33,7 +38,7 @@ if ( ! \defined( 'WPINC' ) ) {
 								echo '<!--'; \trackback_rdf(); echo '-->';
 							}
 							
-							\comments_template( '/app/partials/comments.php', true );
+							\Jentil()->utilities()->loader()->load_comments();
 							
 							\rewind_posts();
 						} ?>
@@ -43,11 +48,11 @@ if ( ! \defined( 'WPINC' ) ) {
 
 				<?php
 				/**
-				 * Include sidebars
+				 * Load sidebars
 				 *
 				 * @since 0.1.0
 				 */
-				\get_template_part( 'app/partials/sidebar' ); ?>
+				\Jentil()->utilities()->loader()->load_partial( 'sidebar' ); ?>
 
 			</div><!-- #main -->
 			

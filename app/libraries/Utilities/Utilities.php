@@ -96,6 +96,16 @@ final class Utilities {
     private $filesystem;
 
     /**
+     * Loader
+     *
+     * @since 0.1.0
+     * @access private
+     * 
+     * @var GrottoPress\Jentil\Utilities\Loader $loader Loader.
+     */
+    private $loader;
+
+    /**
      * Constructor
      * 
      * @var GrottoPress\Jentil\Jentil $jentil Jentil.
@@ -111,6 +121,7 @@ final class Utilities {
         $this->colophon = new Colophon( $this );
         $this->logo = new Logo( $this );
         $this->filesystem = new Filesystem( $this );
+        $this->loader = new Loader( $this );
     }
 
     /**
@@ -183,6 +194,18 @@ final class Utilities {
      */
     public function filesystem(): Filesystem {
         return $this->filesystem;
+    }
+
+    /**
+     * Loader
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return GrottoPress\Jentil\Utilities\Loader Loader.
+     */
+    public function loader(): Loader {
+        return $this->loader;
     }
 
     /**

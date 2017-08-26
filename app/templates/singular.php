@@ -17,11 +17,11 @@ if ( ! \defined( 'WPINC' ) ) {
 }
 
 /**
- * Include header template
+ * Load header template
  *
  * @since 0.1.0
  */
-\get_template_part( 'app/partials/header' );
+\Jentil()->utilities()->loader()->load_partial( 'header' );
 
 \the_post(); ?>
 
@@ -93,8 +93,8 @@ if ( ! \defined( 'WPINC' ) ) {
 <?php \rewind_posts();
 
 /**
- * Include footer template
+ * Load footer template
  *
  * @since 0.1.0
  */
-\get_template_part( 'app/partials/footer' );
+\Jentil()->utilities()->loader()->load_partial( 'footer' );

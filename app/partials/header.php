@@ -41,8 +41,8 @@ if ( ! \defined( 'WPINC' ) ) {
     	<?php } ?>
     	
     	<!--[if lt IE 9]>
-      		<script src="<?php echo ( $dir_url = \Jentil()->utilities()->filesystem()->dir( 'url' ) ); ?>/node_modules/html5shiv/dist/html5shiv.min.js"></script>
-      		<script src="<?php echo $dir_url; ?>/node_modules/respond.js/dest/respond.min.js"></script>
+      		<script src="<?php echo \Jentil()->utilities()->filesystem()->dir( 'url', '/node_modules/html5shiv/dist/html5shiv.min.js' ); ?>"></script>
+      		<script src="<?php echo \Jentil()->utilities()->filesystem()->dir( 'url', '/node_modules/respond.js/dest/respond.min.js' ); ?>"></script>
     	<![endif]-->
 		
 		<?php

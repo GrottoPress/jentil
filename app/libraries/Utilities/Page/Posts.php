@@ -500,11 +500,11 @@ final class Posts {
      * Sticky posts mod
      * 
      * @since 0.1.0
-     * @access public
+     * @access private
      * 
      * @return mixed Sticky posts mod.
      */
-    public function sticky_mod( string $setting ) {
+    private function sticky_mod( string $setting ) {
         $args = [
             'context' => 'sticky',
         ];
@@ -526,11 +526,11 @@ final class Posts {
      * Posts mods
      * 
      * @since 0.1.0
-     * @access public
+     * @access private
      * 
      * @return mixed Posts mod.
      */
-    public function mod( string $setting, array $args = [] ) {
+    private function mod( string $setting, array $args = [] ) {
         if ( ! empty( $args['context'] ) ) {
             return $this->page->utilities()->mods()->posts( $setting, $args )->get();
         }

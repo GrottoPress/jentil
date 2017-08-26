@@ -17,14 +17,14 @@ if ( ! \defined( 'WPINC' ) ) {
 }
 
 /**
- * Include header template
+ * Load header template
  *
  * @since 0.1.0
  */
-\get_template_part( 'app/partials/header' );
+\Jentil()->utilities()->loader()->load_partial( 'header' );
 
-if ( ! ( $jentil_page = \Jentil()->utilities()->page() )->is( 'singular' ) ) {
-	if ( ( $jentil_title = $jentil_page->title() ) ) { ?>
+if ( ! \Jentil()->utilities()->page()->is( 'singular' ) ) {
+	if ( ( $jentil_title = \Jentil()->utilities()->page()->title() ) ) { ?>
 		
 		<header class="p">
 
@@ -66,8 +66,8 @@ if ( ! ( $jentil_page = \Jentil()->utilities()->page() )->is( 'singular' ) ) {
 \do_action( 'jentil_before_content' );
 
 if (
-	$jentil_page->is( '404' )
-	|| ! ( $jentil_posts = $jentil_page->posts()->get() )
+	\Jentil()->utilities()->page()->is( '404' )
+	|| ! ( $jentil_posts = \Jentil()->utilities()->page()->posts()->get() )
 ) {
 	\get_template_part( 'app/partials/none' );
 } else {
@@ -75,8 +75,8 @@ if (
 }
 
 /**
- * Include footer template
+ * Load footer template
  *
  * @since 0.1.0
  */
-\get_template_part( 'app/partials/footer' );
+\Jentil()->utilities()->loader()->load_partial( 'footer' );

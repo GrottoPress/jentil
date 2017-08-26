@@ -124,13 +124,13 @@ final class Posts extends Setup {
         global $post;
 
         if ( \wp_attachment_is_image( $post->ID ) ) {
-            \get_template_part( 'app/partials/attachment', 'image' );
+            $this->jentil->utilities()->loader()->load_partial( 'attachment', 'image' );
         } elseif ( \wp_attachment_is( 'audio', $post->ID ) ) {
-            \get_template_part( 'app/partials/attachment', 'audio' );
+            $this->jentil->utilities()->loader()->load_partial( 'attachment', 'audio' );
         } elseif ( \wp_attachment_is( 'video', $post->ID ) ) {
-            \get_template_part( 'app/partials/attachment', 'video' );
+            $this->jentil->utilities()->loader()->load_partial( 'attachment', 'video' );
         } else {
-            \get_template_part( 'app/partials/attachment' );
+            $this->jentil->utilities()->loader()->load_partial( 'attachment' );
         }
     }
 
