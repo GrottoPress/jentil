@@ -101,7 +101,7 @@ final class Page extends WPage {
      */
     public function title(): string {
         if ( null === $this->title ) {
-            $this->title = new title( $this );
+            $this->title = new Title( $this );
         }
 
         return $this->title->mod();
