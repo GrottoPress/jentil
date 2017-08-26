@@ -53,7 +53,7 @@ final class Jentil {
      * 
      * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      */
-    private $utilities;
+    private $utilities = null;
 
     /**
      * Theme Name
@@ -83,8 +83,6 @@ final class Jentil {
      * @access protected
      */
     protected function __construct() {
-        $this->utilities = new Utilities( $this );
-
         $this->setup['language'] = new Setup\Language( $this );
         $this->setup['styles'] = new Setup\Styles( $this );
         $this->setup['thumbnails'] = new Setup\Thumbnails( $this );
@@ -115,6 +113,10 @@ final class Jentil {
      * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
      */
     public function utilities(): Utilities {
+        if ( null === $this->utilities ) {
+            $this->utilities = new Utilities( $this );
+        }
+
         return $this->utilities;
     }
 

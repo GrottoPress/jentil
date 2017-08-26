@@ -69,7 +69,7 @@ if (
 	\Jentil()->utilities()->page()->is( '404' )
 	|| ! ( $jentil_posts = \Jentil()->utilities()->page()->posts()->get() )
 ) {
-	\get_template_part( 'app/partials/none' );
+	\Jentil()->utilities()->loader()->load_partial( 'none' );
 } else {
 	echo $jentil_posts;
 }

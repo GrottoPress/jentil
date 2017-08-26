@@ -53,7 +53,7 @@ final class Utilities {
      * 
      * @var GrottoPress\Jentil\Utilities\Mods\Mods $mods Mods.
      */
-    private $mods;
+    private $mods = null;
 
     /**
      * Page
@@ -63,7 +63,7 @@ final class Utilities {
      * 
      * @var GrottoPress\Jentil\Utilities\Page\Page $page Page.
      */
-    private $page;
+    private $page = null;
 
     /**
      * Colophon
@@ -73,7 +73,7 @@ final class Utilities {
      * 
      * @var GrottoPress\Jentil\Utilities\Colophon $colophon Colophon.
      */
-    private $colophon;
+    private $colophon = null;
 
     /**
      * Logo
@@ -83,7 +83,7 @@ final class Utilities {
      * 
      * @var GrottoPress\Jentil\Utilities\Logo $logo Logo.
      */
-    private $logo;
+    private $logo = null;
 
     /**
      * Filesystem
@@ -93,7 +93,7 @@ final class Utilities {
      * 
      * @var GrottoPress\Jentil\Utilities\Filesystem $filesystem Filesystem.
      */
-    private $filesystem;
+    private $filesystem = null;
 
     /**
      * Loader
@@ -103,7 +103,7 @@ final class Utilities {
      * 
      * @var GrottoPress\Jentil\Utilities\Loader $loader Loader.
      */
-    private $loader;
+    private $loader = null;
 
     /**
      * Constructor
@@ -115,13 +115,6 @@ final class Utilities {
      */
     public function __construct( Jentil $jentil ) {
         $this->jentil = $jentil;
-        
-        $this->mods = new Mods( $this );
-        $this->page = new Page( $this );
-        $this->colophon = new Colophon( $this );
-        $this->logo = new Logo( $this );
-        $this->filesystem = new Filesystem( $this );
-        $this->loader = new Loader( $this );
     }
 
     /**
@@ -145,6 +138,10 @@ final class Utilities {
      * @return GrottoPress\Jentil\Utilities\Mods\Mods Mods.
      */
     public function mods(): Mods {
+        if ( null === $this->mods ) {
+            $this->mods = new Mods( $this );
+        }
+
         return $this->mods;
     }
 
@@ -157,6 +154,10 @@ final class Utilities {
      * @return GrottoPress\Jentil\Utilities\Page\Page Page.
      */
     public function page(): Page {
+        if ( null === $this->page ) {
+            $this->page = new Page( $this );
+        }
+
         return $this->page;
     }
 
@@ -169,6 +170,10 @@ final class Utilities {
      * @return GrottoPress\Jentil\Utilities\Colophon Colophon.
      */
     public function colophon(): Colophon {
+        if ( null === $this->colophon ) {
+            $this->colophon = new Colophon( $this );
+        }
+
         return $this->colophon;
     }
 
@@ -181,6 +186,10 @@ final class Utilities {
      * @return GrottoPress\Jentil\Utilities\Logo Logo.
      */
     public function logo(): Logo {
+        if ( null === $this->logo ) {
+            $this->logo = new Logo( $this );
+        }
+
         return $this->logo;
     }
 
@@ -193,6 +202,10 @@ final class Utilities {
      * @return GrottoPress\Jentil\Utilities\Filesystem Filesystem.
      */
     public function filesystem(): Filesystem {
+        if ( null === $this->filesystem ) {
+            $this->filesystem = new Filesystem( $this );
+        }
+
         return $this->filesystem;
     }
 
@@ -205,6 +218,10 @@ final class Utilities {
      * @return GrottoPress\Jentil\Utilities\Loader Loader.
      */
     public function loader(): Loader {
+        if ( null === $this->loader ) {
+            $this->loader = new Loader( $this );
+        }
+
         return $this->loader;
     }
 

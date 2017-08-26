@@ -66,9 +66,6 @@ final class Mods {
      */
     public function __construct( Utilities $utilities ) {
         $this->utilities = $utilities;
-
-        $this->colophon = new Colophon( $this );
-        $this->logo = new Logo( $this );
     }
 
     /**
@@ -92,6 +89,10 @@ final class Mods {
      * @return GrottoPress\Jentil\Utilities\Mods\Logo Logo.
      */
     public function logo(): Logo {
+        if ( null === $this->logo ) {
+            $this->logo = new Logo( $this );
+        }
+
         return $this->logo;
     }
 
@@ -104,6 +105,10 @@ final class Mods {
      * @return GrottoPress\Jentil\Utilities\Mods\Colophon Colophon.
      */
     public function colophon(): Colophon {
+        if ( null === $this->colophon ) {
+            $this->colophon = new Colophon( $this );
+        }
+
         return $this->colophon;
     }
 

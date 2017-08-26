@@ -45,7 +45,7 @@ final class Page extends WPage {
      * 
      * @var GrottoPress\Jentil\Utilities\Page\Title $title Title.
      */
-    protected $title;
+    protected $title = null;
     
     /**
      * Layout
@@ -55,7 +55,7 @@ final class Page extends WPage {
      * 
      * @var GrottoPress\Jentil\Utilities\Page\Layout $layout Layout.
      */
-    private $layout;
+    private $layout = null;
 
     /**
      * Posts
@@ -65,7 +65,7 @@ final class Page extends WPage {
      * 
      * @var GrottoPress\Jentil\Utilities\Page\Posts $posts Page posts.
      */
-    private $posts;
+    private $posts = null;
 
     /**
      * Constructor
@@ -77,10 +77,6 @@ final class Page extends WPage {
      */
     public function __construct( Utilities $utilities ) {
         $this->utilities = $utilities;
-
-        $this->title = new Title( $this );
-        $this->layout = new Layout( $this );
-        $this->posts = new Posts( $this );
     }
 
     /**
@@ -104,6 +100,10 @@ final class Page extends WPage {
      * @return GrottoPress\Jentil\Utilities\Page\Title Title.
      */
     public function title(): string {
+        if ( null === $this->title ) {
+            $this->title = new title( $this );
+        }
+
         return $this->title->mod();
     }
 
@@ -116,6 +116,10 @@ final class Page extends WPage {
      * @return GrottoPress\Jentil\Utilities\Page\Layout Layout.
      */
     public function layout(): Layout {
+        if ( null === $this->layout ) {
+            $this->layout = new Layout( $this );
+        }
+
         return $this->layout;
     }
 
@@ -128,6 +132,10 @@ final class Page extends WPage {
      * @return GrottoPress\Jentil\Utilities\Page\Posts Posts.
      */
     public function posts(): Posts {
+        if ( null === $this->posts ) {
+            $this->posts = new Posts( $this );
+        }
+
         return $this->posts;
     }
 }
