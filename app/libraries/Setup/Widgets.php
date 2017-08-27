@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Widgest
+ * Widgets
  *
  * @package GrottoPress\Jentil\Setup
  * @since 0.1.0

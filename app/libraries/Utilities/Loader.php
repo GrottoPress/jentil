@@ -51,7 +51,7 @@ final class Loader {
     /**
      * Load partial
      *
-     * @var string $slug Partial filename to load.
+     * @var string $slug Partial slug to load.
      * @var string $name Name to append to filename before loading.
      *
      * @since 0.1.0
@@ -61,14 +61,15 @@ final class Loader {
         if ( $this->locate_template( $slug, $name ) ) {
             \get_template_part( $slug, $name );
         } else {
-            \get_template_part( ltrim( $this->utilities->filesystem()->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
+            \get_template_part( ltrim( $this->utilities->filesystem()
+                ->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
         }
     }
 
     /**
      * Load template
      *
-     * @var string $slug Partial filename to load.
+     * @var string $slug Template slug.
      *
      * @since 0.1.0
      * @access public
@@ -100,7 +101,7 @@ final class Loader {
      *
      * Check if template exists in child or parent theme.
      *
-     * @var string $slug Partial filename to load.
+     * @var string $slug Template slug.
      * @var string $name Name to append to filename before loading.
      *
      * @since 0.1.0
