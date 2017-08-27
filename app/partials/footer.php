@@ -32,15 +32,11 @@ if ( ! \defined( 'WPINC' ) ) {
 						 * @since 0.1.0
 						 */
 						if ( \Jentil()->utilities()->page()->is( 'singular' ) ) {
-							\the_post();
-							
 							if ( 'open' == \get_option( 'default_ping_status' ) ) {
 								echo '<!--'; \trackback_rdf(); echo '-->';
 							}
 							
 							\Jentil()->utilities()->loader()->load_comments();
-							
-							\rewind_posts();
 						} ?>
 						
 					</main><!-- #content -->
