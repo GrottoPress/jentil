@@ -17,10 +17,10 @@ var rtlcss = require('gulp-rtlcss');
 var cleanCSS = require( 'gulp-clean-css' );
 
 // Files/Paths
-var js_src = './src/assets/javascript';
+var js_src = './assets/javascript';
 var js_dest = './dist/assets/javascript';
 var js_files = [ js_src + '/**/*.js' ];
-var css_src = './src/assets/styles';
+var css_src = './assets/styles';
 var css_dest = './dist/assets/styles';
 var css_files = [ css_src + '/**/*.css' ];
 
