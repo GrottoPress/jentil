@@ -43,7 +43,6 @@ final class Updater extends Setup {
      * @action after_setup_theme
      */
     public function check_for_update() {
-        \Puc_v4_Factory::buildUpdateChecker( 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-            $this->jentil->utilities()->filesystem()->dir( 'path', '/functions.php' ), 'jentil' );
+        $this->jentil->utilities()->updater();
     }
 }

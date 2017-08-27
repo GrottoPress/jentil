@@ -28,6 +28,8 @@ use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
 // use GrottoPress\WordPress\Post\Post;
 use GrottoPress\MagPack\Utilities\Query\Posts;
 use GrottoPress\MagPack\Utilities\Post\Post;
+use \Theme_UpdateChecker;
+use \Puc_v4_Factory;
 
 /**
  * Utilities
@@ -104,6 +106,16 @@ final class Utilities {
      * @var GrottoPress\Jentil\Utilities\Loader $loader Loader.
      */
     private $loader = null;
+
+    /**
+     * Updater
+     *
+     * @since 0.1.0
+     * @access private
+     * 
+     * @var \Theme_UpdateChecker $updater Updater.
+     */
+    private $updater = null;
 
     /**
      * Constructor
@@ -226,6 +238,24 @@ final class Utilities {
     }
 
     /**
+     * Updater
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return \Theme_UpdateChecker Updater.
+     */
+    public function updater(): Theme_UpdateChecker {
+        if ( null === $this->updater ) {
+            $this->updater = Puc_v4_Factory::buildUpdateChecker(
+                'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
+                $this->filesystem()->dir( 'path', '/functions.php' ), 'jentil' );
+        }
+
+        return $this->updater;
+    }
+
+    /**
      * Breadcrumbs
      *
      * @var array $args Breadcrumb args.
@@ -236,7 +266,7 @@ final class Utilities {
      * @return GrottoPress\WordPress\Breadcrumbs\Breadcrumbs Breadcrumbs.
      */
     public function breadcrumbs( array $args = [] ): Breadcrumbs {
-        return new Breadcrumbs( $this->page, $args );
+        return new Breadcrumbs( $this->page(), $args );
     }
 
     /**
