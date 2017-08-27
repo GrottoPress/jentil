@@ -28,7 +28,7 @@ use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
 // use GrottoPress\WordPress\Post\Post;
 use GrottoPress\MagPack\Utilities\Query\Posts;
 use GrottoPress\MagPack\Utilities\Post\Post;
-use \Theme_UpdateChecker;
+use \Puc_v4p2_Theme_UpdateChecker;
 use \Puc_v4_Factory;
 
 /**
@@ -245,7 +245,7 @@ final class Utilities {
      *
      * @return \Theme_UpdateChecker Updater.
      */
-    public function updater(): Theme_UpdateChecker {
+    public function updater(): Puc_v4p2_Theme_UpdateChecker {
         if ( null === $this->updater ) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(
                 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
