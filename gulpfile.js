@@ -6,6 +6,8 @@
  * @since 0.1.0
  */
 
+'use strict';
+
 // Include gulp
 var gulp = require( 'gulp' );
 
