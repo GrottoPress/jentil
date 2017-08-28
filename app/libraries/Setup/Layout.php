@@ -66,6 +66,6 @@ final class Layout extends Setup {
      * @action after_setup_theme
      */
     public function set_content_width() {
-        $GLOBALS['content_width'] = 1024;
+        $GLOBALS['content_width'] = 960;
     }
 }
