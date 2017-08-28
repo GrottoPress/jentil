@@ -83,6 +83,7 @@ final class Jentil {
      * @access protected
      */
     protected function __construct() {
+        $this->setup['loader'] = new Setup\Loader( $this );
         $this->setup['language'] = new Setup\Language( $this );
         $this->setup['styles'] = new Setup\Styles( $this );
         $this->setup['thumbnails'] = new Setup\Thumbnails( $this );
@@ -131,7 +132,11 @@ final class Jentil {
      * @return GrottoPress\Jentil\Setup\Setup Setup.
      */
     public function setup( string $setup ): Setup\Setup {
-        return $this->setup[ $setup ];
+        $setups = $this->setup;
+
+        unset( $setups['loader'] );
+
+        return $setups[ $setup ];
     }
 
     /**
