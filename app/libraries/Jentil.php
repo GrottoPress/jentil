@@ -84,6 +84,7 @@ final class Jentil {
      */
     protected function __construct() {
         $this->setup['loader'] = new Setup\Loader( $this );
+        $this->setup['updater'] = new Setup\Updater( $this );
         $this->setup['language'] = new Setup\Language( $this );
         $this->setup['styles'] = new Setup\Styles( $this );
         $this->setup['thumbnails'] = new Setup\Thumbnails( $this );
@@ -102,7 +103,6 @@ final class Jentil {
         $this->setup['colophon'] = new Setup\Colophon( $this );
         $this->setup['customizer'] = new Setup\Customizer\Customizer( $this );
         $this->setup['metaboxes'] = new Setup\Metaboxes( $this );
-        $this->setup['updater'] = new Setup\Updater( $this );
     }
 
     /**
@@ -135,6 +135,7 @@ final class Jentil {
         $setups = $this->setup;
 
         unset( $setups['loader'] );
+        unset( $setups['updater'] );
 
         return $setups[ $setup ];
     }
