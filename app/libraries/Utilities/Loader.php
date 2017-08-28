@@ -85,35 +85,4 @@ final class Loader {
     public function load_comments( bool $separated = false ) {
         \comments_template( $this->utilities->filesystem()->partials_dir( 'path', '/comments.php', 'relative' ), $separated );
     }
-
-    /**
-     * Locate template
-     *
-     * Check if template exists in child or parent theme.
-     *
-     * @var string $slug Template slug.
-     * @var string $name Name to append to filename before loading.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Located template filename.
-     */
-    private function locate_template( string $slug, string $name = '' ): string {
-        $files = [];
-
-        if ( $name ) {
-            $files[] = "{$slug}-{$name}.php";
-        }
-
-        $files[] = "{$slug}.php";
-
-        $located = \locate_template( $files );
-
-        if ( false !== stripos( $located, '/theme-compat/' ) ) {
-            return '';
-        }
-
-        return $located;
-    }
 }
