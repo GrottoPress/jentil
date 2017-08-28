@@ -4,7 +4,7 @@
  * Template Loader
  *
  * We're using this to load templates from the 'app/templates'
- * directory.
+ * directory, instead of from the theme directory.
  *
  * @see https://developer.wordpress.org/reference/functions/get_query_template/
  *
@@ -76,6 +76,6 @@ final class Loader extends Setup {
             $j_templates[] = \ltrim( $this->jentil->utilities()->filesystem()->templates_dir( 'path', '/' . $template, 'relative' ), '/' );
         }
 
-        return \array_merge( $j_templates, $templates );
+        return $j_templates;
     }
 }

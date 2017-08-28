@@ -58,24 +58,20 @@ final class Loader {
      * @access public
      */
     public function load_partial( string $slug, string $name = '' ) {
-        if ( $this->locate_template( $slug, $name ) ) {
-            \get_template_part( $slug, $name );
-        } else {
-            \get_template_part( ltrim( $this->utilities->filesystem()
-                ->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
-        }
+        \get_template_part( \ltrim( $this->utilities->filesystem()->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
     }
 
     /**
      * Load template
      *
      * @var string $slug Template slug.
+     * @var string $name Name to append to filename before loading.
      *
      * @since 0.1.0
      * @access public
      */
-    public function load_template( string $slug ) {
-        \load_template( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}.php" ) );
+    public function load_template( string $slug, string $name = '' ) {
+        \get_template_part( \ltrim( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
     }
 
     /**
@@ -87,13 +83,7 @@ final class Loader {
      * @access public
      */
     public function load_comments( bool $separated = false ) {
-        $file = '/comments.php';
-
-        if ( $this->locate_template( 'comments' ) ) {
-            \comments_template( $file, $separated );
-        } else {
-            \comments_template( $this->utilities->filesystem()->partials_dir( 'path', $file, 'relative' ), $separated );
-        }
+        \comments_template( $this->utilities->filesystem()->partials_dir( 'path', '/comments.php', 'relative' ), $separated );
     }
 
     /**
