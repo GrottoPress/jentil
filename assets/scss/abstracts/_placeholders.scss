@@ -1,0 +1,33 @@
+////
+/// Placeholders
+///
+/// @group abstracts
+///
+/// @access public
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/// Paragraphs
+%p {
+    & {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    &::first-child {
+        margin-top: 0;
+    }
+
+    &::last-child {
+        margin-bottom: 0;
+    }
+}
+
+/// Areas that require smaller sizing
+%hobbit {
+    @include font-size(14);
+}
+
