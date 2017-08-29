@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Utilities\Page
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -70,7 +70,7 @@ final class Page extends WPage {
     /**
      * Constructor
      * 
-     * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public

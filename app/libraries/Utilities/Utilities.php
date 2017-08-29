@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Utilities
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -258,7 +258,7 @@ final class Utilities {
     /**
      * Breadcrumbs
      *
-     * @var array $args Breadcrumb args.
+     * @param array $args Breadcrumb args.
      *
      * @since 0.1.0
      * @access public
@@ -272,7 +272,7 @@ final class Utilities {
     /**
      * Posts
      *
-     * @var array $args Posts args.
+     * @param array $args Posts args.
      *
      * @since 0.1.0
      * @access public
@@ -286,7 +286,7 @@ final class Utilities {
     /**
      * Post
      *
-     * @var integer|object $post Posts ID/object.
+     * @param integer|object $post Posts ID/object.
      *
      * @since 0.1.0
      * @access public

@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Utilities
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -57,7 +57,7 @@ final class Filesystem {
     /**
      * Constructor
      * 
-     * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
@@ -72,8 +72,8 @@ final class Filesystem {
     /**
      * Get theme directory
      *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
      *
      * @since 0.1.0
      * @access public
@@ -87,9 +87,9 @@ final class Filesystem {
     /**
      * Get JavaScript directory
      *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
+     * @param string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access public
@@ -103,9 +103,9 @@ final class Filesystem {
     /**
      * Get CSS directory
      *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
+     * @param string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access public
@@ -119,9 +119,9 @@ final class Filesystem {
     /**
      * Get partials directory
      *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
+     * @param string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access public
@@ -135,9 +135,9 @@ final class Filesystem {
     /**
      * Get templates directory
      *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to append to URL.
-     * @var string $form 'relative' or 'absolute'.
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
+     * @param string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access public
@@ -151,10 +151,10 @@ final class Filesystem {
     /**
      * Get directory URL/path
      *
-     * @var string $type 'path' or 'url'.
-     * @var string $append Filepath to prepend to URL/path.
-     * @var string $append Filepath to append to URL/path.
-     * @var string $form 'relative' or 'absolute'.
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to prepend to URL/path.
+     * @param string $append Filepath to append to URL/path.
+     * @param string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
      * @access private

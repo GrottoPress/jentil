@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Layout\Settings
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
@@ -29,9 +29,9 @@ final class Singular extends Setting {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Layout\Layout $layout Layout.
-     * @var \WP_Post_Type $post_type Post type.
-     * @var \WP_Post $post Post.
+     * @param GrottoPress\Jentil\Setup\Customizer\Layout\Layout $layout Layout.
+     * @param \WP_Post_Type $post_type Post type.
+     * @param \WP_Post $post Post.
      *
      * @since 0.1.0
      * @access public

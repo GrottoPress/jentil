@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Title\Settings
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -31,9 +31,9 @@ final class Taxonomy extends Setting {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Customizer\Title\Title $title Title.
-     * @var WP_Taxonomy $taxonomy Taxonomy.
-     * @var WP_Term $term Term.
+     * @param GrottoPress\Jentil\Setup\Customizer\Customizer\Title\Title $title Title.
+     * @param WP_Taxonomy $taxonomy Taxonomy.
+     * @param WP_Term $term Term.
      *
      * @since 0.1.0
      * @access public
@@ -53,8 +53,8 @@ final class Taxonomy extends Setting {
     /**
      * Set mod
      *
-     * @var WP_Taxonomy $taxonomy Taxonomy.
-     * @var WP_Term $term Term.
+     * @param WP_Taxonomy $taxonomy Taxonomy.
+     * @param WP_Term $term Term.
      *
      * @since 0.1.0
      * @access private
@@ -87,8 +87,8 @@ final class Taxonomy extends Setting {
     /**
      * Set control
      *
-     * @var WP_Taxonomy $taxonomy Taxonomy.
-     * @var WP_Term $term Term.
+     * @param WP_Taxonomy $taxonomy Taxonomy.
+     * @param WP_Term $term Term.
      *
      * @since 0.1.0
      * @access private
