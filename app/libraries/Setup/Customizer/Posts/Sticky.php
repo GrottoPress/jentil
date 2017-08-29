@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Posts
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -29,8 +29,8 @@ final class Sticky extends Section {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
-     * @var \WP_Post_Type $post_type Post type.
+     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
+     * @param \WP_Post_Type $post_type Post type.
      *
      * @since 0.1.0
      * @access public

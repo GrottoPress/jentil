@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Utilities\Page
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -77,7 +77,7 @@ final class Posts {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Utilities\Page\Page $page Page.
+     * @param GrottoPress\Jentil\Utilities\Page\Page $page Page.
      *
      * @since 0.1.0
      * @access public
@@ -498,6 +498,8 @@ final class Posts {
 
     /**
      * Sticky posts mod
+     *
+     * @param string $setting
      * 
      * @since 0.1.0
      * @access private
@@ -524,6 +526,9 @@ final class Posts {
 
     /**
      * Posts mods
+     *
+     * @param string $setting
+     * @param array $args
      * 
      * @since 0.1.0
      * @access private

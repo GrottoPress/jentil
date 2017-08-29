@@ -8,8 +8,8 @@
  *
  * @see https://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -141,6 +141,8 @@ final class Customizer extends Setup {
     /**
      * Register theme customizer
      *
+     * @param WP_Customizer $wp_customize
+     *
      * @action customize_register
      *
      * @since 0.1.0
@@ -226,6 +228,8 @@ final class Customizer extends Setup {
     /**
      * Add panels
      *
+     * @param WP_Customizer $wp_customize
+     *
      * @since 0.1.0
      * @access private
      */
@@ -241,6 +245,8 @@ final class Customizer extends Setup {
 
     /**
      * Add sections
+     *
+     * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
      * @access private

@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -51,7 +51,7 @@ final class Breadcrumbs extends Setup {
         }
 
         $args = [
-            'before' => esc_html__( 'Path: ', 'jentil' ),
+            'before' => \esc_html__( 'Path: ', 'jentil' ),
         ];
 
         echo $this->jentil->utilities()->breadcrumbs( $args );

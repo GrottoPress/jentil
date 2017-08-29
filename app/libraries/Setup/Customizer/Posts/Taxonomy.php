@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Posts
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -30,9 +30,9 @@ final class Taxonomy extends Section {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
-     * @var \WP_Taxonomy $taxonomy Taxonomy.
-     * @var \WP_Term $term Term.
+     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
+     * @param \WP_Taxonomy $taxonomy Taxonomy.
+     * @param \WP_Term $term Term.
      *
      * @since 0.1.0
      * @access public

@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -126,8 +126,8 @@ final class Menus extends Setup {
      *
      * For screen readers
      *
-     * @var string $location ID of element to skip to.
-     * @var string $title Anchor link text
+     * @param string $location ID of element to skip to.
+     * @param string $title Anchor link text
      *
      * @since 0.1.0
      * @access private

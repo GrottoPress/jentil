@@ -1,11 +1,5 @@
 /**
- * Main stylesheet
- *
- * This file contains the theme's styles.
- *
- * @link              https://jentil.grottopress.com
- * @package           jentil
- * @since             Jentil 0.1.0
+ * Root
  */
 
 html {
@@ -228,6 +222,12 @@ hr {
     zoom: 1;
     *display: inline;
     vertical-align: top;
+}
+
+.self-clear {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /**
@@ -773,14 +773,10 @@ table.aligncenter {
 }
 
 .wp-caption-text {
-    margin: 0 5px 10px;
-    font-size: 13px;
-    font-size: 1.3rem;
+    padding: 0 5px;
+    font-size: 14px;
+    font-size: 1.4rem;
     color: #999;
-}
-
-.wp-caption-text.gallery-caption {
-    color: #777;
 }
 
 .wp-smiley {
@@ -794,16 +790,26 @@ table.aligncenter {
 
 .gallery {
     font-size: 0; /* Inline-block whitespace fix */
-    line-height: 160%;
-    padding: 15px 5px 5px 15px;
+    /*margin-left: -10px;
+    margin-right: -10px;*/
+    padding: 10px 5px 0;
     background: #f4f4f4;
+    text-align: center;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .gallery-item {
     font-size: 13px;
     font-size: 1.3rem;
+    line-height: 160%;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-bottom: 10px;
-    margin-right: 10px;
 
     display: -moz-inline-stack;
     display: inline-block;
@@ -813,7 +819,8 @@ table.aligncenter {
 }
 
 .gallery img {
-    border: 3px solid #ddd !important;
+    border: 1px solid #ddd;
+
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     -ms-border-radius: 3px;
@@ -822,12 +829,13 @@ table.aligncenter {
 }
 
 .gallery img:hover {
-    border-color: #ccc !important;
+    border-color: #ccc;
 }
 
 .gallery-caption {
-    padding: 5px 15px;
     color: #777;
+    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 .gallery-icon a {
@@ -1276,6 +1284,7 @@ input[type="radio"] {
 
 input[type="submit"],
 input[type="button"],
+input[type="reset"],
 button {
     height: auto;
     cursor: pointer;
@@ -1291,7 +1300,8 @@ button {
 }
 
 input[type="submit"]:focus,
-input[type="button"]:focus {
+input[type="button"]:focus,
+input[type="reset"]:focus {
     border-width: 0;
 }
 

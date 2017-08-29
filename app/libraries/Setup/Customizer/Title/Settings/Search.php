@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Title\Settings
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -29,10 +29,10 @@ final class Search extends Setting {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Customizer\Title\Title $title Title.
+     * @param GrottoPress\Jentil\Setup\Customizer\Customizer\Title\Title $title Title.
      *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * @since 0.1.0
+     * @access public
      */
     public function __construct( Title $title ) {
         parent::__construct( $title );

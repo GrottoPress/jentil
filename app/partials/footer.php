@@ -9,8 +9,8 @@
  * @package GrottoPress\Jentil
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -32,15 +32,11 @@ if ( ! \defined( 'WPINC' ) ) {
 						 * @since 0.1.0
 						 */
 						if ( \Jentil()->utilities()->page()->is( 'singular' ) ) {
-							\the_post();
-							
 							if ( 'open' == \get_option( 'default_ping_status' ) ) {
 								echo '<!--'; \trackback_rdf(); echo '-->';
 							}
 							
 							\Jentil()->utilities()->loader()->load_comments();
-							
-							\rewind_posts();
 						} ?>
 						
 					</main><!-- #content -->

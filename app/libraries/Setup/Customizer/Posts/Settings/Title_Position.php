@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Posts\Settings
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -29,7 +29,7 @@ final class Title_Position extends Setting {
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
+     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
      *
      * @since 0.1.0
      * @access public

@@ -8,8 +8,8 @@
  * @package GrottoPress\Jentil\Utilities
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -39,7 +39,7 @@ final class Loader {
     /**
      * Constructor
      * 
-     * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
@@ -51,78 +51,38 @@ final class Loader {
     /**
      * Load partial
      *
-     * @var string $slug Partial filename to load.
-     * @var string $name Name to append to filename before loading.
+     * @param string $slug Partial slug to load.
+     * @param string $name Name to append to filename before loading.
      *
      * @since 0.1.0
      * @access public
      */
     public function load_partial( string $slug, string $name = '' ) {
-        if ( $this->locate_template( $slug, $name ) ) {
-            \get_template_part( $slug, $name );
-        } else {
-            \get_template_part( ltrim( $this->utilities->filesystem()->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
-        }
+        \get_template_part( \ltrim( $this->utilities->filesystem()->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
     }
 
     /**
      * Load template
      *
-     * @var string $slug Partial filename to load.
+     * @param string $slug Template slug.
+     * @param string $name Name to append to filename before loading.
      *
      * @since 0.1.0
      * @access public
      */
-    public function load_template( string $slug ) {
-        \load_template( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}.php" ) );
+    public function load_template( string $slug, string $name = '' ) {
+        \get_template_part( \ltrim( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
     }
 
     /**
      * Load comments template
      *
-     * @var bool $separated Whether or not to separate comments by type.
+     * @param bool $separated Whether or not to separate comments by type.
      *
      * @since 0.1.0
      * @access public
      */
     public function load_comments( bool $separated = false ) {
-        $file = '/comments.php';
-
-        if ( $this->locate_template( 'comments' ) ) {
-            \comments_template( $file, $separated );
-        } else {
-            \comments_template( $this->utilities->filesystem()->partials_dir( 'path', $file, 'relative' ), $separated );
-        }
-    }
-
-    /**
-     * Locate template
-     *
-     * Check if template exists in child or parent theme.
-     *
-     * @var string $slug Partial filename to load.
-     * @var string $name Name to append to filename before loading.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Located template filename.
-     */
-    private function locate_template( string $slug, string $name = '' ): string {
-        $files = [];
-
-        if ( $name ) {
-            $files[] = "{$slug}-{$name}.php";
-        }
-
-        $files[] = "{$slug}.php";
-
-        $located = \locate_template( $files );
-
-        if ( false !== stripos( $located, '/theme-compat/' ) ) {
-            return '';
-        }
-
-        return $located;
+        \comments_template( $this->utilities->filesystem()->partials_dir( 'path', '/comments.php', 'relative' ), $separated );
     }
 }

@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -83,6 +83,8 @@ final class Jentil {
      * @access protected
      */
     protected function __construct() {
+        $this->setup['loader'] = new Setup\Loader( $this );
+        $this->setup['updater'] = new Setup\Updater( $this );
         $this->setup['language'] = new Setup\Language( $this );
         $this->setup['styles'] = new Setup\Styles( $this );
         $this->setup['thumbnails'] = new Setup\Thumbnails( $this );
@@ -101,7 +103,6 @@ final class Jentil {
         $this->setup['colophon'] = new Setup\Colophon( $this );
         $this->setup['customizer'] = new Setup\Customizer\Customizer( $this );
         $this->setup['metaboxes'] = new Setup\Metaboxes( $this );
-        // $this->setup['updater'] = new Setup\Updater( $this );
     }
 
     /**
@@ -123,7 +124,7 @@ final class Jentil {
     /**
      * Setup
      *
-     * @var string $setup Setup type
+     * @param string $setup Setup type
      *
      * @since 0.1.0
      * @access public
@@ -131,7 +132,12 @@ final class Jentil {
      * @return GrottoPress\Jentil\Setup\Setup Setup.
      */
     public function setup( string $setup ): Setup\Setup {
-        return $this->setup[ $setup ];
+        $setups = $this->setup;
+
+        unset( $setups['loader'] );
+        unset( $setups['updater'] );
+
+        return $setups[ $setup ];
     }
 
     /**
