@@ -1,11 +1,5 @@
 /**
- * Main stylesheet
- *
- * This file contains the theme's styles.
- *
- * @link              https://jentil.grottopress.com
- * @package           jentil
- * @since             Jentil 0.1.0
+ * Root
  */
 
 html {
@@ -228,6 +222,12 @@ hr {
     zoom: 1;
     *display: inline;
     vertical-align: top;
+}
+
+.self-clear {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /**
@@ -1284,6 +1284,7 @@ input[type="radio"] {
 
 input[type="submit"],
 input[type="button"],
+input[type="reset"],
 button {
     height: auto;
     cursor: pointer;
@@ -1299,7 +1300,8 @@ button {
 }
 
 input[type="submit"]:focus,
-input[type="button"]:focus {
+input[type="button"]:focus,
+input[type="reset"]:focus {
     border-width: 0;
 }
 
