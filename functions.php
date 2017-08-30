@@ -8,8 +8,8 @@
  *
  * @see https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 if ( ! defined( 'WPINC' ) ) {

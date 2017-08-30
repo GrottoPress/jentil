@@ -6,8 +6,8 @@
  * @package GrottoPress\Jentil\Setup\Customizer\Colophon\Settings
  * @since 0.1.0
  *
- * @author GrottoPress (https://www.grottopress.com)
- * @author N Atta Kus Adusei (https://twitter.com/akadusei)
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 declare ( strict_types = 1 );
@@ -36,21 +36,11 @@ final class Colophon extends Setting {
      * @var GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon $colophon Colophon.
      */
     private $colophon;
-
-    /**
-     * Mod
-     *
-     * @since 0.1.0
-     * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Mods\Colophon $mod Colophon mod.
-     */
-    // private $mod;
     
     /**
      * Constructor
      *
-     * @var GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon\Colophon $colophon Colophon section.
+     * @param GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon\Colophon $colophon Colophon section.
      *
      * @since 0.1.0
      * @access public

@@ -1,11 +1,5 @@
 /**
- * Main stylesheet
- *
- * This file contains the theme's styles.
- *
- * @link              https://jentil.grottopress.com
- * @package           jentil
- * @since             Jentil 0.1.0
+ * Root
  */
 
 html {
@@ -22,8 +16,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
     box-sizing: inherit;
@@ -163,8 +157,8 @@ del {
     text-decoration: line-through;
 }
 
-/*q:before,
-q:after {
+/*q::before,
+q::after {
     content: "\"";
 }*/
 
@@ -228,6 +222,12 @@ hr {
     zoom: 1;
     *display: inline;
     vertical-align: top;
+}
+
+.self-clear::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /**
@@ -857,7 +857,7 @@ blockquote {
     font-style: italic;
 }
 
-/*blockquote:before {
+/*blockquote::before {
     content: '\201C';
     margin-left: -20px;
     font-size: 26px;
@@ -908,7 +908,7 @@ blockquote {
     display: block;
 }
 
-/*.menu-toggle .menu a:before {
+/*.menu-toggle .menu a::before {
     content: "\2261";
     line-height: 14px;
     margin-right: 5px;
@@ -926,13 +926,13 @@ blockquote {
     z-index: 1;
 }
 
-/*.sub-menu-toggle:before {
+/*.sub-menu-toggle::before {
     content: "\25B4";
     font-weight: bold;
     color: #999;
 }
 
-.sub-menu-toggle.closed:before {
+.sub-menu-toggle.closed::before {
     content: "\25BE";
 }*/
 
@@ -1156,7 +1156,7 @@ blockquote {
     color: #999;
 }*/
 
-.comment-meta .edit-link:before {
+.comment-meta .edit-link::before {
     content: "| ";
 }
 
@@ -1194,25 +1194,12 @@ blockquote {
     color: red;
 }
 
-.comment-meta:after,
-.comment-content:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
+.comment-meta::after,
+.comment-content::after {
+    content: "";
+    display: table;
     clear: both;
-    height: 0;
 }
-
-* html .comment-meta,
-* html .comment-content {
-    zoom: 1;
-} /* IE6 */
-
-*:first-child+html .comment-meta,
-*:first-child+html .comment-content {
-    zoom: 1;
-} /* IE7 */
 
 /**
  * Form elements
@@ -1284,6 +1271,7 @@ input[type="radio"] {
 
 input[type="submit"],
 input[type="button"],
+input[type="reset"],
 button {
     height: auto;
     cursor: pointer;
@@ -1299,7 +1287,8 @@ button {
 }
 
 input[type="submit"]:focus,
-input[type="button"]:focus {
+input[type="button"]:focus,
+input[type="reset"]:focus {
     border-width: 0;
 }
 
@@ -1883,11 +1872,11 @@ label > * {
         right: 0;
     }*/
 
-    /*#header .sub-menu .sub-menu-toggle:before {
+    /*#header .sub-menu .sub-menu-toggle::before {
         content: "\25C2";
     }
 
-    #header .sub-menu .sub-menu-toggle.closed:before {
+    #header .sub-menu .sub-menu-toggle.closed::before {
         content: "\25B8";
     }*/
 }
