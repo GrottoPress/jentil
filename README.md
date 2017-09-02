@@ -34,15 +34,15 @@ It integrates seamlessly with most WordPress page builders including:
 - Progressively enhanced
 
 ### For the Developer:
-- Numerous action and filter hooks to allow easy extension via child themes
+- Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Cleanly-commented, object-oriented codebase.
-- Modern web development tools (npm, composer, gulp, scss).
+- Modern web development tools (npm, composer, gulp, sass).
 - Enforced a more organised directory structure in parent and child themes. Templates (eg: single.php, page.php etc) are loaded only from the `app/templates` directory, and partials (eg: sidebar.php, header.php etc) from the `app/partials` directory.
 - Coded with the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards) in mind.
 
 ## Requirements
 
-This theme requires **WordPress** version **4.3** or newer. Minimum required **PHP** version is **7.0**.
+This theme requires **WordPress** version **4.5** or newer. Minimum required **PHP** version is **7.0**.
 
 For now, you also need to install [MagPack plugin](https://github.com/grottopress/magpack) to get this working. We'll remove this dependency in the course of development.
 
