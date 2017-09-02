@@ -1,0 +1,190 @@
+////
+/// Layout
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Layout
+ */
+
+#wrap {
+    @include center(480px);
+}
+
+#main {
+    @include paragraph;
+    @include clearfix;
+
+    &:first-child {
+        padding-top: map-get($gutter, 'normal');
+    }
+
+    &:last-child {
+        padding-bottom: map-get($gutter, 'normal');
+    }
+}
+
+#content-wrap,
+.sidebar-wrap {
+    @include paragraph;
+}
+
+@media (min-width: map-get($breakpoints, 'medium')) {
+    #wrap {
+        max-width: 960px;
+    }
+
+    #content-wrap,
+    .sidebar-wrap {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #content-wrap {
+        width: 100%;
+    }
+
+    /** Two Columns */
+
+    .layout-two-columns {
+        #primary-sidebar-wrap {
+            width: $sidebar-content;
+        }
+    }
+
+    /** Two Columns: Right Sidebar */
+
+    .layout-content-sidebar {
+        #content-wrap {
+            float: left;
+            margin-right: -#{$sidebar-content};
+        }
+
+        #content {
+            margin-right: $sidebar-content;
+        }
+
+        #primary-sidebar-wrap {
+            float: right;
+            padding-left: map-get($gutter, 'normal');
+        }
+    }
+
+    /** Two Columns: Left Sidebar */
+
+    .layout-sidebar-content {
+        #content-wrap {
+            float: right;
+            margin-left: -#{$sidebar-content};
+        }
+
+        #content {
+            margin-left: $sidebar-content;
+        }
+
+        #primary-sidebar-wrap {
+            float: left;
+            padding-right: map-get($gutter, 'normal');
+        }
+    }
+
+    /** Three Columns */
+
+    .layout-three-columns {
+        #primary-sidebar-wrap {
+            width: map-get($sidebar-content-sidebar, 'primary');
+        }
+
+        #secondary-sidebar-wrap {
+            width: map-get($sidebar-content-sidebar, 'secondary');
+        }
+    }
+
+    /** Three Columns: Left & Right Sidebars */
+
+    .layout-sidebar-content-sidebar {
+        #content-wrap,
+        .sidebar-wrap {
+            float: left;
+        }
+
+        #content {
+            /** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
+            margin-right: map-get($sidebar-content-sidebar, 'primary');
+            margin-left: map-get($sidebar-content-sidebar, 'secondary');
+        }
+
+        #secondary-sidebar-wrap {
+            margin-left: -100%;
+            padding-right: map-get($gutter, 'normal');
+        }
+
+        #primary-sidebar-wrap {
+            /** Set left margin to -(RightColumnWidth) */
+            margin-left: - map-get($sidebar-content-sidebar, 'primary');
+            padding-left: map-get($gutter, 'normal');
+        }
+    }
+
+    /** Three Columns: Two Left Sidebars */
+
+    .layout-sidebar-sidebar-content {
+        #content-wrap,
+        #secondary-sidebar-wrap,
+        #primary-sidebar-wrap {
+            float: right;
+        }
+
+        #content {
+            /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+            margin-left: map-get($sidebar-sidebar-content, 'both');
+        }
+
+        .sidebar-wrap {
+            padding-right: map-get($gutter, 'normal');
+        }
+
+        #secondary-sidebar-wrap {
+            /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
+            margin-right: - map-get($sidebar-sidebar-content, 'both');
+        }
+
+        #primary-sidebar-wrap {
+            /** Set right margin to -(RightColumnWidth) */
+            margin-right: - map-get($sidebar-sidebar-content, 'primary');
+        }
+    }
+
+    /** Three Columns: Two Right Sidebars */
+
+    .layout-content-sidebar-sidebar {
+        #content-wrap,
+        #secondary-sidebar-wrap,
+        #primary-sidebar-wrap {
+            float: left;
+        }
+
+        #content {
+            /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
+            margin-right: map-get($sidebar-sidebar-content, 'both');
+        }
+
+        .sidebar-wrap {
+            padding-left: map-get($gutter, 'normal');
+        }
+
+        #secondary-sidebar-wrap {
+            /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
+            margin-left: - map-get($sidebar-sidebar-content, 'both');
+        }
+
+        #primary-sidebar-wrap {
+            /** Set left margin to -(RightColumnWidth) */
+            margin-left: - map-get($sidebar-sidebar-content, 'primary');
+        }
+    }
+}

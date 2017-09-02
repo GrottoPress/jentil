@@ -1,0 +1,51 @@
+////
+/// Footer
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Footer
+ */
+
+#footer {
+    @include paragraph;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    @include hobbit;
+
+    .widget {
+        margin-bottom: map-get($gutter, 'normal');
+    }
+}
+
+#colophon {
+    &,
+    small {
+        font-size: $font-size-tiny;
+    }
+
+    text-align: center;
+    line-height: $line-height-normal;
+}
+
+@media (min-width: map-get($breakpoints, 'medium')) {
+    #footer {
+        .widget-area {
+            font-size: 0;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        .widget {
+            font-size: $font-size-small;
+            @include inline-block;
+            margin-top: 0;
+            padding: 0 10px;
+            width: 25%;
+        }
+    }
+}

@@ -30,7 +30,7 @@ if ( ! \defined( 'WPINC' ) ) {
 
 		<?php if ( $post->post_title ) { ?>
 
-			<header class="p">
+			<header class="page-header">
 
 		<?php }
 
@@ -63,12 +63,12 @@ if ( ! \defined( 'WPINC' ) ) {
 		 */
 	 	\do_action( 'jentil_before_content' ); ?>
 		
-		<div class="entry-content self-clear" itemprop="articleBody">
+		<div class="entry-content" itemprop="articleBody">
 
 			<?php \the_content();
 
 			\wp_link_pages( [
-				'before' => '<nav class="page-links pagination p">'
+				'before' => '<nav class="page-links pagination">'
 					. \esc_html__( 'Pages: ', 'jentil' ),
 				'after' => '</nav>',
 			] ); ?>

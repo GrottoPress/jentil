@@ -1,0 +1,137 @@
+////
+/// Forms
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Forms
+ */
+
+form {
+    font-size: 0;
+    @include paragraph;
+
+    > * {
+        font-size: $font-size-small;
+    }
+}
+
+input,
+textarea,
+select,
+button,
+label {
+    @include inline-block;
+}
+
+input,
+textarea,
+select,
+button {
+    border: $separator;
+    padding: 5px 7px;
+    margin-bottom: 4px;
+    width: 100%;
+    @include border-radius(3px);
+}
+
+input,
+textarea,
+select {
+    background-color: #fff;
+
+    &:focus {
+        border-color: #ccc;
+    }
+}
+
+input,
+button {
+    overflow: visible; /* IE6 fix */
+}
+
+input {
+    &:disabled {
+        background-color: $background-color-grey !important;
+        color: initial !important;
+        border-color: initial !important;
+        border-width: 1px !important;
+    }
+
+    &[type=checkbox],
+    &[type=radio] {
+        margin: auto 5px;
+        width: auto;
+        vertical-align: middle;
+    }
+}
+
+input[type=submit],
+input[type=button],
+input[type=reset],
+button {
+    height: auto;
+    cursor: pointer;
+    border: 0;
+    border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
+    padding: 7px 10px 8px;
+    font-weight: bold;
+    font-size: $font-size-tiny;
+    line-height: 100%;
+    text-align: center;
+    background-color: #ddd;
+
+    &:focus {
+        border-width: 0;
+        outline: none;
+    }
+}
+
+label {
+    font-size: $font-size-tiny;
+    width: 100%;
+
+    > * {
+       font-size: $font-size-small;
+    }
+}
+
+/** Search form */
+
+.form.search {
+    margin: 0;
+    padding: 1px;
+    border: $separator;
+    background-color: #fff;
+    @include position(relative);
+    @include border-radius(3px);
+
+    &:focus {
+        border-color: #ccc;
+    }
+
+    input[type=search],
+    button {
+        margin-bottom: 0;
+        border: 0;
+    }
+
+    input {
+        &[type=search] {
+            width: 100%;
+        }
+    }
+
+    button {
+        width: auto;
+        font-size: 12px;
+        text-align: right;
+        padding: 7px 10px;
+        @include position(absolute, 1px 1px null null);
+        z-index: 1;
+    }
+}

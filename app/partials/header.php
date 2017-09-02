@@ -66,7 +66,7 @@ if ( ! \defined( 'WPINC' ) ) {
 			 */
 			\do_action( 'jentil_before_header' ); ?>
 		
-			<header id="header" class="site-header hobbit p" itemscope itemtype="http://schema.org/WPHeader">
+			<header id="header" class="site-header" itemscope itemtype="http://schema.org/WPHeader">
 				
 				<?php
 				/**
@@ -86,8 +86,8 @@ if ( ! \defined( 'WPINC' ) ) {
 			 */
 			\do_action( 'jentil_after_header' ); ?>
 			
-			<div id="main" class="self-clear p">
-				<div id="content-wrap" class="p">
+			<div id="main">
+				<div id="content-wrap">
 					<main id="content" class="site-content">
 					
 						<?php
