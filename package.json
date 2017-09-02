@@ -27,14 +27,10 @@
   },
   "keywords": [
     "Jentil",
-    "MagPack",
-    "WordPress",
-    "WordPress Theme",
-    "WordPress Theme Framework",
-    "Responsive"
+    "WordPress"
   ],
   "author": "GrottoPress.com",
-  "license": "GPL-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/GrottoPress/jentil/issues"
   },
