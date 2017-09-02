@@ -113,11 +113,11 @@ sftp-config.json
 .~lock.*#
 
 # composer
-vendor
+vendor/
 components/
 
 # npm
-node_modules
+node_modules/
 
 # dist
 dist/
