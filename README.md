@@ -19,6 +19,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Features
 
+### For the End User:
 - Powerful posts/content display options via the customizer.
 - Six (6) layout options
  * Content
@@ -30,13 +31,14 @@ It integrates seamlessly with most WordPress page builders including:
 - HTML5 / CSS3
 - SEO-ready
 - Responsive (mobile-ready)
-- Fully responsive menu with graceful non-javascript fallback
+- Progressively enhanced
+
+### For the Developer:
 - Numerous action and filter hooks to allow easy extension via child themes
-- Coded according to the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards)
 - Cleanly-commented, object-oriented codebase.
-
-...and many more!
-
+- Modern web development tools (npm, composer, gulp, scss).
+- Enforced a more organised directory structure in parent and child themes. Templates (eg: single.php, page.php etc) are loaded only from the `app/templates` directory, and partials (eg: sidebar.php, header.php etc) from the `app/partials` directory.
+- Coded with the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards) in mind.
 
 ## Requirements
 
@@ -66,7 +68,9 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 - From the root of your WordPress project, via the command line, enter `composer require grottopress/jentil`. (Use `--no-dev` flag for production).
 - Change to `jentil` directory  
  `cd jentil`
-- Enter `npm install` (Use `--production` flag for production)
+- Run `npm install`
+- Run `gulp` to build assets in a new `dist` directory.
+- You may run `npm install --production` at this stage for a production-ready build.
 - Download, install and activate [MagPack plugin](https://github.com/grottopress/magpack).
 - You're done.
 
