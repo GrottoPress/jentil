@@ -1,0 +1,156 @@
+////
+/// Menus
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Menus
+ */
+
+.menu,
+.sub-menu {
+    list-style-type: none;
+    list-style-image: none;
+}
+
+.menu {
+    margin-left: 0;
+    font-size: 0;
+
+    ul {
+        margin-left: 15px;
+    }
+
+    a {
+        display: block;
+    }
+
+    li {
+        font-size: $font-size-small;
+        @include position(relative);
+    }
+}
+
+.sub-menu {
+    li {
+        font-size: $font-size-tiny;
+    }
+}
+
+.site-navigation {
+    .search-wrap {
+        @include paragraph;
+    }
+}
+
+/** Toggle buttons */
+
+#header {
+    .menu-toggle {
+        text-align: center;
+
+        a {
+            display: block;
+        }
+    }
+}
+
+.sub-menu-toggle {
+    background-color: transparent;
+    font-size: inherit;
+    width: auto;
+    padding: 4px 7px;
+    margin: 0;
+    @include position(absolute, 0 0 null null);
+    z-index: 1;
+}
+
+/** Header Menu */
+
+@media (min-width: map-get($breakpoints, 'wide')) {
+    #header {
+        .site-navigation,
+        .menu-toggle {
+            clear: both;
+        }
+
+        .site-navigation {
+            @include paragraph;
+
+            &.screen-min-wide {
+                margin-bottom: 0;
+            }
+        }
+
+        .menu {
+            li {
+                margin: 0;
+            }
+
+            > li {
+                margin-left: 2%;
+                @include inline-block;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+
+            ul,
+            li:hover ul ul,
+            li li:hover ul ul,
+            li li li:hover ul ul ,
+            li li li li:hover ul ul,
+            li li li li li:hover ul ul {
+                display: none; /* Required to hide menu when inactive */
+            }
+
+            li:hover ul,
+            li li:hover ul,
+            li li li:hover ul ,
+            li li li li:hover ul,
+            li li li li li:hover ul {
+                display: block;
+            }
+
+            ul {
+                width: 200px;
+                @include position(absolute, 22 null null 0);
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                z-index: 1;
+
+                ul {
+                    top: 0;
+                    left: 200px;
+                }
+            }
+        }
+    }
+
+    .has-js {
+        #header {
+            .menu {
+                .menu-item-has-children {
+                    > a {
+                        padding-right: 22px;
+                    }
+                }
+
+                ul,
+                li:hover ul ul,
+                li li:hover ul ul,
+                li li li:hover ul ul ,
+                li li li li:hover ul ul,
+                li li li li li:hover ul ul {
+                    display: block;
+                }
+            }
+        }
+    }
+}

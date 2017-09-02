@@ -1,0 +1,77 @@
+////
+/// Table
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Table
+ */
+
+table {
+    line-height: $line-height-normal;
+    @include paragraph;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    &.aligncenter {
+        display: table;
+    }
+}
+
+tr,
+td,
+th,
+tfoot,
+thead,
+tbody {
+    margin: 0;
+    border: 0;
+}
+
+tr {
+    &:nth-child(even) {
+        background-color: $background-color-grey;
+        border-top: $separator;
+        border-bottom: $separator;
+
+        td,
+        th {
+            padding: 5px 10px;
+        }
+    }
+}
+
+thead,
+tfoot {
+    tr {
+        &,
+        &:nth-child(even) {
+            background: transparent;
+            border: 0;
+        }
+    }
+}
+
+thead {
+    font-weight: bold;
+    border-top: $separator;
+}
+
+tfoot {
+    font-style: italic;
+    border-bottom: $separator;
+}
+
+td,
+th {
+    padding: 7px 10px;
+}
+
+th {
+    font-weight: bold;
+}

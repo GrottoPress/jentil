@@ -63,7 +63,7 @@ final class Menus extends Setup {
      * @action jentil_inside_header
      */
     public function render_header_menu() {
-        echo '<nav class="site-navigation screen-min-wide p">'
+        echo '<nav class="site-navigation screen-min-wide">'
             . $this->skip_to( 'content', \esc_html__( 'Skip to content', 'jentil' ) );
 
             \wp_nav_menu( [ 'theme_location' => 'primary-menu' ] );
@@ -101,7 +101,7 @@ final class Menus extends Setup {
     public function render_mobile_header_menu() {
         $status = isset( $_GET['menu'] ) ? \sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide p"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
+        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
             . $this->skip_to( 'content', \esc_html__( 'Skip to content', 'jentil' ) );
 
             \get_search_form(); \wp_nav_menu( [ 'theme_location' => 'primary-menu' ] );

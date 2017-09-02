@@ -9,8 +9,6 @@
     "respond.js": "^1.4.2"
   },
   "devDependencies": {
-    "bourbon": "^4.3.4",
-    "breakpoint-sass": "^2.7.1",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.7.0",
     "gulp-jshint": "^2.0.4",

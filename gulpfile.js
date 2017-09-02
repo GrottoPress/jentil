@@ -17,14 +17,16 @@ var uglify = require( 'gulp-uglify' );
 var rename = require( 'gulp-rename' );
 var rtlcss = require('gulp-rtlcss');
 var cleanCSS = require( 'gulp-clean-css' );
+var sass = require('gulp-sass');
 
 // Files/Paths
 var js_src = './assets/javascript';
 var js_dest = './dist/assets/javascript';
 var js_files = [ js_src + '/**/*.js' ];
-var css_src = './assets/styles';
-var css_dest = './dist/assets/styles';
-var css_files = [ css_src + '/**/*.css' ];
+var sass_src = './assets/styles';
+var sass_file = [ sass_src + '/jentil.scss' ];
+var sass_files = [ sass_src + '/**/*.scss' ];
+var sass_dest = './dist/assets/styles';
 
 // Lint Task
 gulp.task( 'lint_js', function() {
@@ -41,28 +43,26 @@ gulp.task( 'minify_js', function() {
         .pipe( gulp.dest( js_dest ) );
 });
 
-// Minify CSS
-gulp.task( 'minify_css', function() {
-    return gulp.src( css_files )
+gulp.task('compile_sass', function () {
+    return gulp.src( sass_file )
+        .pipe( sass().on( 'error', sass.logError ) )
+        // .pipe( cleanCSS({ format: 'beautify' }) )
+        .pipe( gulp.dest( sass_dest ) )
         .pipe( cleanCSS() )
         .pipe( rename({ 'suffix' : '.min' }) )
-        .pipe( gulp.dest( css_dest ) );
-});
-
-// RTL CSS
-gulp.task( 'rtl_css', function() {
-    return gulp.src( css_files )
+        .pipe( gulp.dest( sass_dest ) )
         .pipe( rtlcss() )
-        .pipe( cleanCSS() )
-        .pipe( rename({ 'suffix' : '-rtl.min' }) )
-        .pipe( gulp.dest( css_dest ) );
+        .pipe( rename( function( path ) {
+            path.basename = path.basename.replace( ".min", "-rtl.min" );
+        } ) )
+        .pipe( gulp.dest( sass_dest ) );
 });
 
 // Watch Files For Changes
 gulp.task( 'watch', function() {
     gulp.watch( js_files, [ 'lint_js', 'minify_js' ]);
-    gulp.watch( css_files, [ 'minify_css', 'rtl_css' ]);
+    gulp.watch( sass_files, [ 'compile_sass' ]);
 });
 
 // Default Task
-gulp.task( 'default', [ 'lint_js', 'minify_js', 'minify_css', 'rtl_css', 'watch' ]);
+gulp.task( 'default', [ 'lint_js', 'minify_js', 'compile_sass', 'watch' ]);

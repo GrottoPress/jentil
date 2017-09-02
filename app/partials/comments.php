@@ -33,7 +33,7 @@ if ( ! \post_type_supports( \get_post_type(), 'comments' ) ) {
 
 ?>
 
-<div id="comments" class="site-comments self-clear">
+<div id="comments" class="site-comments">
         
     <?php
     /**
@@ -64,7 +64,7 @@ if ( ! \post_type_supports( \get_post_type(), 'comments' ) ) {
              */
             if ( $total_pages > 1 && \get_option( 'page_comments' ) ) { ?>
                 
-                <nav class="navigation top-nav self-clear comments-pagination"><?php
+                <nav class="pagination top comments-pagination"><?php
                     
                     /**
                      * @filter jentil_pagination_prev_label
@@ -120,7 +120,7 @@ if ( ! \post_type_supports( \get_post_type(), 'comments' ) ) {
              */
             if ( $total_pages > 1 && \get_option( 'page_comments' ) ) { ?>
             
-                <nav class="navigation bottom-nav self-clear comments-pagination">
+                <nav class="pagination bottom comments-pagination">
                 
                     <?php \paginate_comments_links( [
                         'prev_text' => $prev_label,
@@ -140,7 +140,7 @@ if ( ! \post_type_supports( \get_post_type(), 'comments' ) ) {
          */
         if ( ! \comments_open() ) { ?>
 
-            <div class="comments-closed p">
+            <div class="comments-closed-text">
 
                 <?php echo \sanitize_text_field( \apply_filters( 'jentil_comments_closed_text', \esc_html__( 'Comments closed', 'jentil' ), \get_comments_number() ) ); ?>
                 

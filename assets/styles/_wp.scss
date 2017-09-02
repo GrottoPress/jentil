@@ -1,0 +1,88 @@
+////
+/// WordPress styles
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * WordPress
+ */
+
+/** Alignment */
+
+.alignleft {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    @include float(left);
+}
+
+.alignright {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    @include float(right);
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/** Caption */
+
+.wp-caption {
+    line-height: $line-height-normal;
+}
+
+.wp-caption-text {
+    padding: 0 5px;
+    font-size: $font-size-small;
+    color: $font-color-grey;
+}
+
+.wp-smiley {
+    max-height: 1em;
+    margin: 0 !important;
+}
+
+/** Gallery */
+
+.gallery {
+    font-size: 0;
+    background-color: $background-color-grey;
+    padding: 10px 5px 0;
+    text-align: center;
+    @include border-radius(3px);
+
+    img {
+        border: $separator;
+        @include border-radius(3px);
+
+        &:hover {
+            border-color: #ccc;
+        }
+    }
+}
+
+.gallery-item {
+    font-size: $font-size-tiny;
+    line-height: $line-height-normal;
+    @include inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.gallery-caption {
+    color: $font-color-dark-grey;
+    font-size: $font-size-tiny;
+}
+
+.gallery-icon {
+    a {
+        display: block;
+        line-height: 1px;
+    }
+}

@@ -1,0 +1,130 @@
+////
+/// Comments
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Comments
+ */
+
+.commentlist {
+    margin: auto auto 10px 0;
+    padding: 10px auto;
+    // border-top: $separator;
+    // border-bottom: $separator;
+    @include hobbit;
+
+    > li,
+    .children > li {
+        @include paragraph(10px);
+        padding-bottom: 10px;
+        border-bottom: $separator;
+
+        &:first-child {
+            margin-top: 10px;
+        }
+    }
+
+    &,
+    .children {
+        list-style-type: none;
+    }
+
+    .children {
+        margin-top: map-get($gutter, 'small');
+        padding-top: map-get($gutter, 'small');
+        border-top: $separator;
+
+        &:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top-width: 0;
+        }
+
+        > li {
+            &:last-child {
+                border-bottom-width: 0;
+            }
+        }
+    }
+
+    .reply {
+        color: $font-color-grey;
+        font-size: $font-size-tiny;
+        line-height: $line-height-normal;
+        text-align: right;
+    }
+}
+
+.comment-meta,
+.comment-content {
+    @include paragraph(10px);
+}
+
+#comments {
+    margin-top: map-get($gutter, 'normal');
+    @include clearfix;
+}
+
+#comments-list {
+    margin-bottom: map-get($gutter, 'normal');
+}
+
+.comment-meta,
+#cancel-comment-reply-link {
+    line-height: $line-height-normal;
+    font-size: $font-size-tiny;
+}
+
+.comment-meta {
+    color: $font-color-grey;
+    @include clearfix;
+
+    .edit-link::before {
+        content: "| ";
+    }
+}
+
+#cancel-comment-reply-link {
+    text-align: right;
+    font-weight: normal;
+}
+
+#reply-title small {
+    margin-left: 20px;
+}
+
+.comment-author {
+    .avatar {
+        @include float(left);
+        margin-right: 10px;
+    }
+}
+
+.comment-form {
+    .form-submit {
+        margin-bottom: 0;
+    }
+}
+
+.comment-notes,
+.logged-in-as {
+    color: $font-color-grey;
+    font-size: $font-size-tiny;
+}
+
+.required {
+    color: #f00;
+}
+
+.comment-content {
+    @include clearfix;
+}
+
+.comments-closed-text {
+    @include paragraph;
+}
