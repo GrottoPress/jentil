@@ -34,7 +34,7 @@ final class Posts extends Setup {
         \add_filter( 'body_class', [ $this, 'add_body_classes' ] );
         // \add_action( 'jentil_before_before_title', [ $this, 'post_parent_link' ] );
         \add_action( 'jentil_before_content', [ $this, 'attachment' ] );
-        // \add_filter( 'jentil_singular_after_title', [ $this, 'single_post_after_title_' ], 10, 3 );
+        \add_filter( 'jentil_singular_after_title', [ $this, 'single_post_after_title_' ], 10, 3 );
         \add_action( 'jentil_after_title', [ $this, 'single_post_after_title' ] );
     }
 
@@ -149,19 +149,9 @@ final class Posts extends Setup {
             return $output;
         }
         
-        $jentil_post = $this->jentil->utilities()->post( $id );
-
-        if ( ( $avatar = $jentil_post->info( 'avatar__40', '' )->list() ) ) {
-            $output .= $avatar;
-        }
-
-        if ( ( $author = $jentil_post->info( 'author_link', '' )->list() ) ) {
-            $output .= '<p>' . $author . '</p>';
-        }
-
-        $output .= '<p>' . $jentil_post->info( 'published_date, published_time, comments_link' )->list() . '</p>
-
-        <div class="self-clear"></div>';
+        $output = $this->_single_post_after_title( $id );
+        
+        $output .= '<div class="self-clear"></div>';
 
         return $output;
     }
@@ -184,9 +174,27 @@ final class Posts extends Setup {
 
         global $post;
 
-        $jentil_post = $this->jentil->utilities()->post( $post->ID );
-
         $output = '<aside class="entry-meta after-title self-clear">';
+
+        $output .= $this->_single_post_after_title( $post->ID );
+
+        $output .= '</aside>';
+
+        echo $output;
+    }
+
+    /**
+     * Single post after title
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string
+     */
+    private function _single_post_after_title( int $id ): string {
+        $jentil_post = $this->jentil->utilities()->post( $id );
+
+        $output = '';
 
         if ( ( $avatar = $jentil_post->info( 'avatar__40', '' )->list() ) ) {
             $output .= $avatar;
@@ -196,12 +204,8 @@ final class Posts extends Setup {
             $output .= '<p>' . $author . '</p>';
         }
 
-        $output .= '<p>'
-            . $jentil_post->info( 'published_date, published_time, comments_link' )->list()
-        . '</p>
+        $output .= '<p>' . $jentil_post->info( 'published_date, published_time, comments_link' )->list() . '</p>';
 
-        </aside>';
-
-        echo $output;
+        return $output;
     }
 }

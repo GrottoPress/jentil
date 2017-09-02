@@ -218,7 +218,7 @@ final class Posts {
                 'link' => 0,
             ],
             'after_title' => [
-                'type' => 'jentil_singular_after_title',
+                'info' => 'jentil_singular_after_title',
             ],
             'wp_query' => [
                 'posts_per_page' => 1,
