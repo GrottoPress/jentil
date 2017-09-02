@@ -87,6 +87,7 @@ final class Jentil {
         $this->setup['updater'] = new Setup\Updater( $this );
         $this->setup['language'] = new Setup\Language( $this );
         $this->setup['styles'] = new Setup\Styles( $this );
+        $this->setup['scripts'] = new Setup\Scripts( $this );
         $this->setup['thumbnails'] = new Setup\Thumbnails( $this );
         $this->setup['feeds'] = new Setup\Feeds( $this );
         $this->setup['html5'] = new Setup\HTML5( $this );
