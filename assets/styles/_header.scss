@@ -1,0 +1,50 @@
+////
+/// Header
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Header
+ */
+
+#header {
+    padding-top: map-get($gutter, 'normal');
+    @include paragraph;
+    text-align: center;
+    @include hobbit;
+    font-size: 0;
+
+    > * {
+        font-size: $font-size-small;
+        text-align: left;
+    }
+
+    &:empty,
+    .search-wrap {
+        display: none;
+    }
+
+    .site-navigation {
+        &.screen-max-wide {
+            .search-wrap {
+                display: block;
+            }
+        }
+    }
+}
+
+@media (min-width: map-get($breakpoints, 'wide')) {
+    #header {
+        text-align: left;
+
+        .search-wrap {
+            width: 35%;
+            @include float(right);
+            margin-top: 15px;
+        }
+    }
+}

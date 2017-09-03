@@ -19,8 +19,9 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Features
 
+### For the End User:
 - Powerful posts/content display options via the customizer.
-- Six (6) layout options
+- Six (6) layout options 
  * Content
  * Content / Sidebar
  * Sidbar / Content
@@ -30,17 +31,17 @@ It integrates seamlessly with most WordPress page builders including:
 - HTML5 / CSS3
 - SEO-ready
 - Responsive (mobile-ready)
-- Fully responsive menu with graceful non-javascript fallback
-- Numerous action and filter hooks to allow easy extension via child themes
-- Coded according to the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards)
+
+### For the Developer:
+- Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Cleanly-commented, object-oriented codebase.
-
-...and many more!
-
+- Modern web development tools (npm, composer, gulp, sass).
+- Enforced a more organised directory structure in parent and child themes. Templates (eg: single.php, page.php etc) are loaded only from the `app/templates` directory, and partials (eg: sidebar.php, header.php etc) from the `app/partials` directory.
+- Coded with the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards) in mind.
 
 ## Requirements
 
-This theme requires **WordPress** version **4.3** or newer. Minimum required **PHP** version is **7.0**.
+This theme requires **WordPress** version **4.5** or newer. Minimum required **PHP** version is **7.0**.
 
 For now, you also need to install [MagPack plugin](https://github.com/grottopress/magpack) to get this working. We'll remove this dependency in the course of development.
 
@@ -66,7 +67,9 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 - From the root of your WordPress project, via the command line, enter `composer require grottopress/jentil`. (Use `--no-dev` flag for production).
 - Change to `jentil` directory  
  `cd jentil`
-- Enter `npm install` (Use `--production` flag for production)
+- Run `npm install`
+- Run `gulp` to build assets in a new `dist` directory.
+- You may run `npm install --production` at this stage for a production-ready build.
 - Download, install and activate [MagPack plugin](https://github.com/grottopress/magpack).
 - You're done.
 

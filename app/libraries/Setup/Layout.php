@@ -45,11 +45,15 @@ final class Layout extends Setup {
      */
     public function add_body_classes( array $classes ): array {
         if ( ( $mod = $this->jentil->utilities()->page()->layout()->mod() ) ) {
-            $classes[] = \sanitize_title( 'layout-' . $mod );
+            if ( ! \in_array( ( $class = \sanitize_title( 'layout-' . $mod ) ), $classes ) ) {
+                $classes[] = $class;
+            }
         }
 
         if ( ( $column = $this->jentil->utilities()->page()->layout()->column() ) ) {
-            $classes[] = \sanitize_title( 'layout-' . $column );
+            if ( ! \in_array( ( $class = \sanitize_title( 'layout-' . $column ) ), $classes ) ) {
+                $classes[] = $class;
+            }
         }
 
         return $classes;

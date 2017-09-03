@@ -1,0 +1,215 @@
+////
+/// Mixins
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/// Box Sizing
+@mixin box-sizing($sizing) {
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+    box-sizing: $sizing;
+}
+
+/// Border Radius
+///
+/// @param {string} $radius
+@mixin border-radius($radius) {
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+/// Word Wrap
+///
+///
+@mixin word-wrap($wrap) {
+    -ms-word-wrap: $wrap;
+    word-wrap: $wrap;
+}
+
+/// Text Size Adjust
+///
+///
+@mixin text-size-adjust($adjust) {
+    -webkit-text-size-adjust: $adjust;
+}
+
+/// Center
+///
+/// @param {length} $width
+@mixin center($width) {
+    width: 100%;
+    max-width: $width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/// Size
+///
+/// @param {length} $width
+/// @param {length} $height [$width]
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+/// Float
+///
+/// @param {string} $direction Direction
+@mixin float($direction) {
+    float: $direction;
+    display: inline;
+}
+
+/// Block
+///
+/// Add top and bottom margin
+@mixin paragraph($vertical-margin: 20px) {
+    margin-top: $vertical-margin;
+    margin-bottom: $vertical-margin;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/// Inline block
+///
+///
+@mixin inline-block {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+}
+
+/// Screen reader text
+///
+/// Hide text from all except screen readers
+@mixin screen-reader {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+    @include position(absolute !important);
+    white-space: nowrap;
+    @include size(1px);
+    overflow: hidden;
+}
+
+/// Clear fix
+///
+/// 
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/// Position
+///
+/// @param {string} $position [relative]
+/// @param {list} $offsets [()] Given in the for (top,right,bottom,left)
+@mixin position($position: relative, $offsets: ()) {
+    position: $position;
+
+    @if length($offsets) > 0 {
+        @if nth($offsets, 1) {
+            top: nth($offsets, 1);
+        }
+
+        @if nth($offsets, 2) {
+            right: nth($offsets, 2);
+        }
+
+        @if nth($offsets, 3) {
+            bottom: nth($offsets, 3);
+        }
+
+        @if nth($offsets, 4) {
+            left: nth($offsets, 4);
+        }
+    }
+}
+
+/// Full screen
+///
+///
+@mixin full-screen {
+    margin-right: -9999px;
+    margin-left: -9999px;
+    padding-right: 9999px;
+    padding-left: 9999px;
+}
+
+/// Hobbit
+///
+///
+@mixin hobbit {
+    font-size: $font-size-small;
+
+    p,
+    hr,
+    ul,
+    ol,
+    table,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    dd,
+    blockquote {
+        @include paragraph(10px);
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h6 {
+        font-size: 14px;
+    }
+
+    // li {
+    //     @include paragraph(5px);
+    // }
+
+    ul,
+    ol {
+        ul,
+        ol {
+            @include paragraph(5px);
+        }
+    }
+}

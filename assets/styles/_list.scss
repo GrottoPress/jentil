@@ -1,0 +1,75 @@
+////
+/// Lists
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Lists
+ */
+
+ul,
+ol {
+    list-style-image: none;
+    margin-left: 30px;
+    padding-left: 0;
+    @include paragraph;
+
+    ul,
+    ol {
+        @include paragraph(5px);
+    }
+}
+
+ul {
+    list-style-type: square;
+
+    ul {
+        list-style-type: circle;
+    }
+}
+
+ol {
+    list-style-type: decimal;
+
+    ol {
+        list-style: upper-alpha;
+
+        ol {
+            list-style: upper-roman;
+
+            ol {
+                list-style: lower-alpha;
+
+                ol {
+                    list-style: lower-roman;
+                }
+            }
+        }
+    }
+}
+
+li {
+    display: list-item;
+    @include paragraph(5px);
+}
+
+/** Definition Lists */
+
+dl {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-right: 0;
+    margin-left: 0;
+    @include paragraph;
+}

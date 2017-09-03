@@ -34,8 +34,8 @@ if ( 'one-column' == ( $column = \Jentil()->utilities()->page()->layout()->colum
  * @since 0.1.0
  */
 if ( \is_active_sidebar( 'primary-widget-area' ) ) { ?>
-	<div id="primary-widget-area-wrap" class="sidebar-wrap p">
-		<aside id="primary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
+	<div id="primary-sidebar-wrap" class="sidebar-wrap">
+		<aside id="primary-sidebar" class="site-sidebar widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 			<?php \dynamic_sidebar( 'primary-widget-area' ); ?>
 		</aside><!-- #primary -->
 	</div>
@@ -48,8 +48,8 @@ if ( \is_active_sidebar( 'primary-widget-area' ) ) { ?>
  */
 if ( 'three-columns' == $column ) {
 	if ( \is_active_sidebar( 'secondary-widget-area' ) ) { ?>
-		<div id="secondary-widget-area-wrap" class="sidebar-wrap p">
-			<aside id="secondary-widget-area" class="site-sidebar hobbit widget-area" itemscope itemtype="http://schema.org/WPSideBar">
+		<div id="secondary-sidebar-wrap" class="sidebar-wrap">
+			<aside id="secondary-sidebar" class="site-sidebar widget-area" itemscope itemtype="http://schema.org/WPSideBar">
 				<?php \dynamic_sidebar( 'secondary-widget-area' ); ?>
 			</aside><!-- #secondary -->
 		</div>

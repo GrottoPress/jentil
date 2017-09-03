@@ -1,0 +1,29 @@
+////
+/// Hyperlinks
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Hyperlinks
+ */
+
+a {
+    &,
+    &:active,
+    &:focus,
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

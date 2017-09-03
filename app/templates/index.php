@@ -26,7 +26,7 @@ if ( ! \defined( 'WPINC' ) ) {
 if ( ! \Jentil()->utilities()->page()->is( 'singular' ) ) {
 	if ( ( $jentil_title = \Jentil()->utilities()->page()->title() ) ) { ?>
 		
-		<header class="p">
+		<header class="page-header">
 
 	<?php }
 

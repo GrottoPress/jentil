@@ -1,0 +1,133 @@
+////
+/// Posts
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Posts
+ */
+
+.archive-description {
+    font-size: $font-size-tiny;
+    line-height: $line-height-normal;
+    margin-left: 20px;
+    margin-right: 20px;
+    @include paragraph;
+}
+
+.page-header {
+    @include paragraph;
+}
+
+.page-title,
+.page.has-magpack-posts .singular-post > .post-wrap > header > .entry-title {
+    color: $font-color-grey;
+    font-size: 22px;
+}
+
+.entry-content,
+.pagination {
+    @include paragraph;
+    @include clearfix;
+}
+
+/** Attachment */
+
+.parent.entry-title {
+    font-size: $font-size-small;
+}
+
+.attachment {
+    .image-navigation {
+        .prev {
+            @include float(left);
+        }
+
+        .next {
+            @include float(right);
+        }
+    }
+
+    .entry-caption {
+        text-align: center;
+        font-size: $font-size-small;
+        line-height: $line-height-normal;
+        margin-top: 10px;
+    }
+}
+
+.entry-attachment {
+    text-align: center;
+
+    &.image {
+        .image-wrap {
+            background-color: #000;
+            line-height: 1px;
+        }
+    }
+}
+
+/** Sticky posts */
+
+.sticky-posts {
+    @include paragraph;
+    background-color: $background-color-grey;
+    @include border-radius(3px);
+    padding: 20px;
+
+    &.layout-grid {
+        padding-top: 0;
+        margin-top: 20px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+/** Single posts */
+
+.singular-post {
+    > .post-wrap {
+        > header {
+            > .entry-meta {
+                line-height: $line-height-normal;
+
+                p {
+                    margin: 0;
+                }
+
+                .avatar {
+                    @include float(left);
+                    margin-right: 10px;
+                }
+            }
+
+            > .entry-title {
+                font-size: 29px;
+            }
+        }
+    }
+}
+
+@media (min-width: map-get($breakpoints, 'medium')) {
+    .singular-post {
+        > .post-wrap {
+            > header {
+                > .entry-title {
+                    font-size: 34px;
+                }
+            }
+        }
+    }
+}
+
+/** Avatar */
+
+.avatar {
+    @include border-radius(50%);
+}

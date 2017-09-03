@@ -51,7 +51,7 @@ final class Archives extends Setup {
             return;
         }
 
-        echo '<div class="archive-description p entry-summary" itemprop="description">'
+        echo '<div class="archive-description entry-summary" itemprop="description">'
             . $description
         . '</div>';
     }
