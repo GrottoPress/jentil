@@ -21,7 +21,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ### For the End User:
 - Powerful posts/content display options via the customizer.
-- Six (6) layout options
+- Six (6) layout options 
  * Content
  * Content / Sidebar
  * Sidbar / Content
@@ -31,7 +31,6 @@ It integrates seamlessly with most WordPress page builders including:
 - HTML5 / CSS3
 - SEO-ready
 - Responsive (mobile-ready)
-- Progressively enhanced
 
 ### For the Developer:
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
