@@ -31,7 +31,6 @@ It integrates seamlessly with most WordPress page builders including:
 - HTML5 / CSS3
 - SEO-ready
 - Responsive (mobile-ready)
-- Progressively enhanced
 
 ### For the Developer:
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
