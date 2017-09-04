@@ -1,13 +1,10 @@
 /**
- * Theme's customizer
+ * Customizer
  * 
  * Handles postMessage transport, allowing changes to take
  * effect immediately without page reload
- * 
- * References:
- * 
- * - http://stackoverflow.com/questions/921789/how-to-loop-through-plain-javascript-object-with-objects-as-members#921808
- * - http://stackoverflow.com/questions/3480771/how-do-i-check-if-string-contains-substring#3480785
+ *
+ * @since 0.1.0
  */
 
 (function( $ ) {

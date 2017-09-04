@@ -4,11 +4,6 @@
  * Handles the behaviour of menu items
  *
  * @since 0.1.0
- *
- * References:
- *
- * - http://api.jquery.com/slidetoggle/
- * - http://stackoverflow.com/questions/6752677/use-jquery-to-automatically-add-arrows-to-all-parent-menus
  */
 
 (function( $ ) {
@@ -41,6 +36,7 @@
     });
 
     // Add icons to all parent menu items
+    // Source: http://stackoverflow.com/questions/6752677/use-jquery-to-automatically-add-arrows-to-all-parent-menus
     $( '.menu li > ul' ).before( '<button class="js-sub-menu-button sub-menu-toggle closed"><span class="fa fa-caret-down" aria-hidden="true"></span><span class="screen-reader-text">Sub-menu</span></button>' );
 
     // Sub-menus toggle
