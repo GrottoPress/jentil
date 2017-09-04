@@ -44,11 +44,7 @@ final class Scripts extends Setup {
      * @action wp_footer
      */
     public function enqueue() {
-        echo '<script type="text/javascript">
-            jQuery(function($) {
-                $( "body" ).removeClass( "has-js no-js" ).addClass( "has-js" );
-            });
-        </script>';
+        \wp_enqueue_script( 'jentil', $this->jentil->utilities()->filesystem()->scripts_dir( 'url', '/jentil.min.js' ), [ 'jquery' ], '', true );
     }
 
     /**
