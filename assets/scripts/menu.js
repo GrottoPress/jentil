@@ -3,6 +3,8 @@
  *
  * Handles the behaviour of menu items
  *
+ * @since 0.1.0
+ *
  * References:
  *
  * - http://api.jquery.com/slidetoggle/
