@@ -20,8 +20,8 @@ var cleanCSS = require( 'gulp-clean-css' );
 var sass = require('gulp-sass');
 
 // Files/Paths
-var js_src = './assets/javascript';
-var js_dest = './dist/assets/javascript';
+var js_src = './assets/scripts';
+var js_dest = './dist/assets/scripts';
 var js_files = [ js_src + '/**/*.js' ];
 var sass_src = './assets/styles';
 var sass_file = [ sass_src + '/jentil.scss' ];
