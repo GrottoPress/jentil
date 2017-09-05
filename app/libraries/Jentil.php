@@ -97,7 +97,7 @@ final class Jentil {
         $this->setup['archives'] = new Setup\Archives( $this );
         $this->setup['search'] = new Setup\Search( $this );
         $this->setup['menus'] = new Setup\Menus( $this );
-        // $this->setup['breadcrumbs'] = new Setup\Breadcrumbs( $this );
+        $this->setup['breadcrumbs'] = new Setup\Breadcrumbs( $this );
         $this->setup['posts'] = new Setup\Posts( $this );
         $this->setup['comments'] = new Setup\Comments( $this );
         $this->setup['widgets'] = new Setup\Widgets( $this );

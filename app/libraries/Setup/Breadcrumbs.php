@@ -54,6 +54,6 @@ final class Breadcrumbs extends Setup {
             'before' => \esc_html__( 'Path: ', 'jentil' ),
         ];
 
-        echo $this->jentil->utilities()->breadcrumbs( $args );
+        echo $this->jentil->utilities()->breadcrumbs( $args )->render();
     }
 }
