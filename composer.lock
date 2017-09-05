@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f133d7d8d57a1d3f6f5ce963835c77a",
-    "content-hash": "5743ff4fbe6c32036435ff34fef88bdb",
+    "hash": "0b23fe62372c3e5a1bb82c768ed16fd5",
+    "content-hash": "bad5303c08683e3dab9d428dc000e330",
     "packages": [
         {
             "name": "aura/html",
@@ -434,6 +434,56 @@
             "time": "2017-08-24 22:37:15"
         },
         {
+            "name": "grottopress/wordpress-breadcrumbs",
+            "version": "dev-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrottoPress/wordpress-breadcrumbs.git",
+                "reference": "96e385cc126c43e1e6e6096f0a05f958e35c4959"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/96e385cc126c43e1e6e6096f0a05f958e35c4959",
+                "reference": "96e385cc126c43e1e6e6096f0a05f958e35c4959",
+                "shasum": ""
+            },
+            "require": {
+                "grottopress/wordpress-page": "^0.2",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "lucatume/wp-browser": "^1.21"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GrottoPress\\WordPress\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GrottoPress.com",
+                    "email": "info@grottopress.com",
+                    "homepage": "https://www.grottopress.com"
+                },
+                {
+                    "name": "N Atta Kusi Adusei",
+                    "homepage": "https://twitter.com/akadusei",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A library to render breadcrumbs for a WordPress page.",
+            "keywords": [
+                "breadcrumbs",
+                "wordpress"
+            ],
+            "time": "2017-09-05 01:04:09"
+        },
+        {
             "name": "grottopress/wordpress-field",
             "version": "0.1.0",
             "source": {
@@ -534,16 +584,16 @@
         },
         {
             "name": "grottopress/wordpress-page",
-            "version": "dev-dev",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "4373412887e9f0074381847c40ef011a620cdf89"
+                "reference": "c048dec2e184aabb6f58cb4abf8ad206f5233a16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/4373412887e9f0074381847c40ef011a620cdf89",
-                "reference": "4373412887e9f0074381847c40ef011a620cdf89",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/c048dec2e184aabb6f58cb4abf8ad206f5233a16",
+                "reference": "c048dec2e184aabb6f58cb4abf8ad206f5233a16",
                 "shasum": ""
             },
             "require": {
@@ -578,7 +628,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-27 01:12:19"
+            "time": "2017-09-04 22:52:36"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1630,7 +1680,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.0",
+            "version": "v5.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1674,16 +1724,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.0",
+            "version": "v5.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "8fd54c43171117146f7de7d5d24d59747f41bd77"
+                "reference": "6a1c08c4e89429a0333ad86c489088ceeadbcced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/8fd54c43171117146f7de7d5d24d59747f41bd77",
-                "reference": "8fd54c43171117146f7de7d5d24d59747f41bd77",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/6a1c08c4e89429a0333ad86c489088ceeadbcced",
+                "reference": "6a1c08c4e89429a0333ad86c489088ceeadbcced",
                 "shasum": ""
             },
             "require": {
@@ -1727,7 +1777,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-08-29 07:40:48"
+            "time": "2017-09-04 14:00:07"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -2339,16 +2389,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.2.3",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "86e24012a3139b42a7b71155cfaa325389f00f1f"
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/86e24012a3139b42a7b71155cfaa325389f00f1f",
-                "reference": "86e24012a3139b42a7b71155cfaa325389f00f1f",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2d3d238c433cf69caeb4842e97a3223a116f94b2",
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2",
                 "shasum": ""
             },
             "require": {
@@ -2380,7 +2430,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-08-29 19:37:41"
+            "time": "2017-08-30 18:51:59"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -2431,22 +2481,22 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.7.0",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
-                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
                 "sebastian/comparator": "^1.1|^2.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
@@ -2457,7 +2507,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -2490,7 +2540,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2017-03-02 20:05:34"
+            "time": "2017-09-04 11:05:03"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -6303,7 +6353,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "grottopress/wordpress-page": 20,
+        "grottopress/wordpress-breadcrumbs": 20,
         "grottopress/wordpress-metaboxes": 20
     },
     "prefer-stable": false,
