@@ -81,7 +81,7 @@ final class Menus extends Setup {
     public function render_header_menu_toggle() {
         $status = isset( $_GET['menu'] ) ? \sanitize_key( $_GET['menu'] ) : 'off';
         
-        echo '<div class="menu-toggle screen-max-wide p">'
+        echo '<div class="menu-toggle screen-max-wide">'
             . $this->skip_to( 'menu-screen-max-wide', \esc_html__( 'Skip to menu', 'jentil' ) )
 
             . '<a class="js-mobile-menu-button hamburger" href="' . \esc_url( \add_query_arg( [
