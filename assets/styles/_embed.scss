@@ -1,0 +1,28 @@
+////
+/// Embeds
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Responsive embeds
+ */
+
+img,
+iframe,
+object,
+embed,
+video,
+audio,
+iframe[style],
+object[style],
+embed[style] {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}

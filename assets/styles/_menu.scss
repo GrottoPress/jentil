@@ -52,6 +52,7 @@
 #header {
     .menu-toggle {
         text-align: center;
+        @include paragraph;
 
         a {
             display: block;
@@ -83,6 +84,11 @@
 
             &.screen-min-wide {
                 margin-bottom: 0;
+            }
+
+            // Override style[display=block] set by jquery on clicking menu button
+            &.screen-max-wide {
+                display: none !important;
             }
         }
 

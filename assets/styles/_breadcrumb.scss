@@ -1,0 +1,18 @@
+////
+/// Breadcrumbs
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Breadcrumbs
+ */
+
+.breadcrumbs {
+    color: $font-color-grey;
+    font-size: $font-size-tiny;
+    @include paragraph;
+}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b23fe62372c3e5a1bb82c768ed16fd5",
+    "hash": "19dd357c7231a49dd7d96794e2b9f1e6",
     "content-hash": "bad5303c08683e3dab9d428dc000e330",
     "packages": [
         {
@@ -5993,16 +5993,16 @@
         },
         {
             "name": "wp-cli/server-command",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/server-command.git",
-                "reference": "fb8f7e048b9d7a29d99e019c0a33a71542a856c9"
+                "reference": "ce93df07c33e716adbbd2d329c311a3c1dd3a0b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/server-command/zipball/fb8f7e048b9d7a29d99e019c0a33a71542a856c9",
-                "reference": "fb8f7e048b9d7a29d99e019c0a33a71542a856c9",
+                "url": "https://api.github.com/repos/wp-cli/server-command/zipball/ce93df07c33e716adbbd2d329c311a3c1dd3a0b0",
+                "reference": "ce93df07c33e716adbbd2d329c311a3c1dd3a0b0",
                 "shasum": ""
             },
             "require": {
@@ -6042,7 +6042,7 @@
             ],
             "description": "Launch PHP's built-in web server for this specific WordPress installation.",
             "homepage": "https://github.com/wp-cli/server-command",
-            "time": "2017-05-30 19:41:53"
+            "time": "2017-08-04 15:19:26"
         },
         {
             "name": "wp-cli/shell-command",
