@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-define( 'JENTIL_REQUIRED_WP', '4.5' );
+define( 'JENTIL_REQUIRED_WP', '4.6' ); // Used WP_Post_Type
 define( 'JENTIL_REQUIRED_PHP', '7.0' );
 
 if ( version_compare( JENTIL_REQUIRED_PHP, phpversion(), '<=' )

@@ -41,7 +41,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ## Requirements
 
-This theme requires **WordPress** version **4.5** or newer. Minimum required **PHP** version is **7.0**.
+This theme requires **WordPress** version **4.6** or newer. Minimum required **PHP** version is **7.0**.
 
 For now, you also need to install [MagPack plugin](https://github.com/grottopress/magpack) to get this working. We'll remove this dependency in the course of development.
 
