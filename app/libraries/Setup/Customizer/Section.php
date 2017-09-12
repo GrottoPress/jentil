@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use \WP_Customize_Manager as WP_Customizer;
 
@@ -25,14 +21,15 @@ use \WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-abstract class Section {
+abstract class Section
+{
     /**
      * Customizer
      *
      * @since 0.1.0
      * @access protected
-     * 
-     * @var \GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     *
+     * @var Customizer $customizer Customizer.
      */
     protected $customizer;
 
@@ -41,7 +38,7 @@ abstract class Section {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var string $name Section name.
      */
     protected $name;
@@ -51,7 +48,7 @@ abstract class Section {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var array $args Section arguments.
      */
     protected $args;
@@ -59,12 +56,13 @@ abstract class Section {
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     * @param Customizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Customizer $customizer ) {
+    public function __construct(Customizer $customizer)
+    {
         $this->customizer = $customizer;
     }
 
@@ -74,9 +72,10 @@ abstract class Section {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Setup\Customizer\Customizer Customizer.
+     * @return Customizer Customizer.
      */
-    final public function customizer(): Customizer {
+    final public function customizer(): Customizer
+    {
         return $this->customizer;
     }
 
@@ -88,7 +87,8 @@ abstract class Section {
      *
      * @return string Name.
      */
-    final public function name(): string {
+    final public function name(): string
+    {
         return $this->name;
     }
 
@@ -105,22 +105,23 @@ abstract class Section {
     /**
      * Add section
      *
-     * @since       Jentil 0.1.0
-     * @access      public
+     * @since 0.1.0
+     * @access public
      */
-    final public function add( WP_Customizer $wp_customize ) {
-        if ( ! $this->name ) {
+    final public function add(WP_Customizer $wp_customize)
+    {
+        if (!$this->name) {
             return;
         }
 
-        $wp_customize->add_section( $this->name, $this->args );
+        $wp_customize->add_section($this->name, $this->args);
 
-        if ( ! ( $settings = $this->settings() ) ) {
+        if (!($settings = $this->settings())) {
             return;
         }
 
-        foreach ( $settings as $setting ) {
-            $setting->add( $wp_customize );
+        foreach ($settings as $setting) {
+            $setting->add($wp_customize);
         }
     }
 }

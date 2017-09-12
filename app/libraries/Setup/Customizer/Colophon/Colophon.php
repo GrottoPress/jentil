@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Colophon;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
 use GrottoPress\Jentil\Setup\Customizer\Section;
@@ -26,23 +22,23 @@ use GrottoPress\Jentil\Setup\Customizer\Section;
  *
  * @since 0.1.0
  */
-final class Colophon extends Section {
+final class Colophon extends Section
+{
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     * @param Customizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct(Customizer $customizer)
+    {
+        parent::__construct($customizer);
 
         $this->name = 'colophon';
         
-        $this->args = [
-            'title'     => \esc_html__( 'Colophon', 'jentil' ),
-        ];
+        $this->args = ['title' => \esc_html__('Colophon', 'jentil')];
     }
 
     /**
@@ -53,10 +49,11 @@ final class Colophon extends Section {
      *
      * @return array Settings.
      */
-    protected function settings(): array {
+    protected function settings(): array
+    {
         $settings = [];
 
-        $settings['colophon'] = new Settings\Colophon( $this );
+        $settings['colophon'] = new Settings\Colophon($this);
 
         return $settings;
     }

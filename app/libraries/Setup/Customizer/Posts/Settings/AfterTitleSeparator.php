@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Before Title Info Separator
+ * After Title Info Separator
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts\Settings
  * @since 0.1.0
@@ -10,41 +10,42 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
 
 /**
- * Before Title Info Separator
+ * After Title Info Separator
  *
  * @since 0.1.0
  */
-final class Before_Title_Separator extends Setting {
+final class AfterTitleSeparator extends Setting
+{
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
+     * @param Section $section Section.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Section $section ) {
-        parent::__construct( $section );
+    public function __construct(Section $section)
+    {
+        parent::__construct($section);
 
-        $mod = $this->mod( 'before_title_separator' );
+        $mod = $this->mod('after_title_separator');
 
         $this->name = $mod->name();
         
         $this->args['default'] = $mod->default();
         $this->args['sanitize_callback'] = 'esc_attr';
 
-        $this->control['label'] = \esc_html__( 'Before title separator', 'jentil' );
+        $this->control['label'] = \esc_html__(
+            'After title separator',
+            'jentil'
+        );
         $this->control['type'] = 'text';
     }
 }

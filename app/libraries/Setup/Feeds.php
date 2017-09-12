@@ -10,39 +10,38 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Feeds (Atom, RSS etc.)
  *
  * @since 0.1.0
  */
-final class Feeds extends Setup {
+final class Feeds extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'after_setup_theme', [ $this, 'add_support' ] );
+    public function run()
+    {
+        \add_action('after_setup_theme', [$this, 'addSupport']);
     }
 
     /**
      * Add support for RSS and atom feeds
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action after_setup_theme
      */
-    public function add_support() {
-        \add_theme_support( 'automatic-feed-links' );
+    public function addSupport()
+    {
+        \add_theme_support('automatic-feed-links');
     }
 }

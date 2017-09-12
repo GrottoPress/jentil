@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Number of Posts
+ * Title Length (number of words)
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts\Settings
  * @since 0.1.0
@@ -17,16 +17,16 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
 use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
 
 /**
- * Number of Posts
+ * Title Length (number of words)
  *
  * @since 0.1.0
  */
-final class Number extends Setting
+final class TitleWords extends Setting
 {
     /**
      * Constructor
      *
-     * @param Section $section Section.
+     * @var Section $section Section.
      *
      * @since 0.1.0
      * @access public
@@ -35,16 +35,20 @@ final class Number extends Setting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('number');
+        $mod = $this->mod('title_words');
         
-        $this->name = $mod->name();
+        $this->name = $mod->get('name');
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->get('default');
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };
 
-        $this->control['label'] = \esc_html__('Number of posts', 'jentil');
+        $this->control['label'] = \esc_html__('Title length', 'jentil');
+        $this->control['description'] = \esc_html__(
+            'Number of words',
+            'jentil'
+        );
         $this->control['type'] = 'number';
     }
 }

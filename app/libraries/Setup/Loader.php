@@ -15,27 +15,25 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Template Loader
  *
  * @since 0.1.0
  */
-final class Loader extends Setup {
+final class Loader extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
+    public function run()
+    {
         $types = [
             'index',
             '404',
@@ -56,8 +54,8 @@ final class Loader extends Setup {
             'attachment',
         ];
 
-        foreach ( $types as $type ) {
-            \add_filter( "{$type}_template_hierarchy", [ $this, 'load' ] );
+        foreach ($types as $type) {
+            \add_filter("{$type}_template_hierarchy", [$this, 'load']);
         }
     }
 
@@ -69,11 +67,19 @@ final class Loader extends Setup {
      *
      * @filter {$type}_template_hierarchy
      */
-    public function load( array $templates ): array {
+    public function load(array $templates): array
+    {
         $j_templates = [];
 
-        foreach ( $templates as $template ) {
-            $j_templates[] = \ltrim( $this->jentil->utilities()->filesystem()->templates_dir( 'path', '/' . $template, 'relative' ), '/' );
+        foreach ($templates as $template) {
+            $j_templates[] = \ltrim(
+                $this->jentil->utilities()->fileSystem()->templatesDir(
+                    'path',
+                    '/'.$template,
+                    'relative'
+                ),
+                '/'
+            );
         }
 
         return $j_templates;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author Layout Setting
+ * Error 404 Layout Setting
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Layout\Settings
  * @since 0.1.0
@@ -17,11 +17,11 @@ namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
 
 /**
- * Author Layout Setting
+ * Error 404 Layout Setting
  *
  * @since 0.1.0
  */
-final class Author extends Setting
+final class Error404 extends Setting
 {
     /**
      * Constructor
@@ -34,19 +34,18 @@ final class Author extends Setting
     public function __construct(Layout $layout)
     {
         parent::__construct($layout);
-
+        
         $this->mod = $this->layout->customizer()->jentil()->utilities()
-            ->mods()->layout(['context' => 'author']);
+        ->mods()->layout(['context' => '404']);
 
         $this->name = $this->mod->name();
 
         $this->args['default'] = $this->mod->default();
 
+        $this->control['label'] = \esc_html__('Error 404', 'jentil');
         $this->control['active_callback'] = function (): bool {
             return $this->layout->customizer()->jentil()->utilities()
-                ->page()->is('author');
+                ->page()->is('404');
         };
-
-        $this->control['label'] = \esc_html__('Author Archives', 'jentil');
     }
 }

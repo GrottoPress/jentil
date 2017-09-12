@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Logo;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Section;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
@@ -26,23 +22,23 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Logo extends Section {
+final class Logo extends Section
+{
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     * @param Customizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct(Customizer $customizer)
+    {
+        parent::__construct($customizer);
 
         $this->name = '';
         
-        $this->args = [
-            'title' => \esc_html__( 'Logo', 'jentil' ),
-        ];
+        $this->args = ['title' => \esc_html__('Logo', 'jentil')];
     }
 
     /**
@@ -53,10 +49,11 @@ final class Logo extends Section {
      *
      * @return array Settings.
      */
-    protected function settings(): array {
+    protected function settings(): array
+    {
         $settings = [];
 
-        $settings['logo'] = new Settings\Logo( $this );
+        $settings['logo'] = new Settings\Logo($this);
 
         return $settings;
     }

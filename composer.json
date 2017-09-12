@@ -34,6 +34,6 @@
     },
     "autoload": {
         "psr-4": { "GrottoPress\\Jentil\\": "app/libraries/" },
-        "files": ["app/functions.php"]
+        "files": ["app/functions.php", "app/config.php"]
     }
 }

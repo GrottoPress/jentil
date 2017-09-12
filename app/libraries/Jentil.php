@@ -10,37 +10,34 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil;
 
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
-
 use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
-use FlorianWolters\Component\Util\Singleton\SingletonTrait as Singleton;
+use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 
 /**
  * Jentil
  *
  * @since 0.1.0
  */
-final class Jentil {
+final class Jentil
+{
     /**
      * Import traits
      *
      * @since 0.1.0 Added Singleton.
      */
-    use Singleton;
+    use SingletonTrait;
 
     /**
      * Theme setups
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var array $setup Setups.
      */
     private $setup = [];
@@ -50,7 +47,7 @@ final class Jentil {
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      */
     private $utilities = null;
@@ -82,28 +79,29 @@ final class Jentil {
      * @since 0.1.0
      * @access protected
      */
-    protected function __construct() {
-        $this->setup['loader'] = new Setup\Loader( $this );
-        $this->setup['updater'] = new Setup\Updater( $this );
-        $this->setup['language'] = new Setup\Language( $this );
-        $this->setup['styles'] = new Setup\Styles( $this );
-        $this->setup['scripts'] = new Setup\Scripts( $this );
-        $this->setup['thumbnails'] = new Setup\Thumbnails( $this );
-        $this->setup['feeds'] = new Setup\Feeds( $this );
-        $this->setup['html5'] = new Setup\HTML5( $this );
-        $this->setup['title'] = new Setup\Title( $this );
-        $this->setup['layout'] = new Setup\Layout( $this );
-        $this->setup['logo'] = new Setup\Logo( $this );
-        $this->setup['archives'] = new Setup\Archives( $this );
-        $this->setup['search'] = new Setup\Search( $this );
-        $this->setup['menus'] = new Setup\Menus( $this );
-        $this->setup['breadcrumbs'] = new Setup\Breadcrumbs( $this );
-        $this->setup['posts'] = new Setup\Posts( $this );
-        $this->setup['comments'] = new Setup\Comments( $this );
-        $this->setup['widgets'] = new Setup\Widgets( $this );
-        $this->setup['colophon'] = new Setup\Colophon( $this );
-        $this->setup['customizer'] = new Setup\Customizer\Customizer( $this );
-        $this->setup['metaboxes'] = new Setup\Metaboxes( $this );
+    protected function __construct()
+    {
+        $this->setup['loader'] = new Setup\Loader($this);
+        $this->setup['updater'] = new Setup\Updater($this);
+        $this->setup['language'] = new Setup\Language($this);
+        $this->setup['styles'] = new Setup\Styles($this);
+        $this->setup['scripts'] = new Setup\Scripts($this);
+        $this->setup['thumbnails'] = new Setup\Thumbnails($this);
+        $this->setup['feeds'] = new Setup\Feeds($this);
+        $this->setup['html5'] = new Setup\HTML5($this);
+        $this->setup['title'] = new Setup\Title($this);
+        $this->setup['layout'] = new Setup\Layout($this);
+        $this->setup['logo'] = new Setup\Logo($this);
+        $this->setup['archives'] = new Setup\Archives($this);
+        $this->setup['search'] = new Setup\Search($this);
+        $this->setup['menus'] = new Setup\Menus($this);
+        $this->setup['breadcrumbs'] = new Setup\Breadcrumbs($this);
+        $this->setup['singular'] = new Setup\Singular($this);
+        $this->setup['comments'] = new Setup\Comments($this);
+        $this->setup['widgets'] = new Setup\Widgets($this);
+        $this->setup['colophon'] = new Setup\Colophon($this);
+        $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
+        $this->setup['metaboxes'] = new Setup\Metaboxes($this);
     }
 
     /**
@@ -114,9 +112,10 @@ final class Jentil {
      *
      * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
      */
-    public function utilities(): Utilities {
-        if ( null === $this->utilities ) {
-            $this->utilities = new Utilities( $this );
+    public function utilities(): Utilities
+    {
+        if (null === $this->utilities) {
+            $this->utilities = new Utilities($this);
         }
 
         return $this->utilities;
@@ -132,13 +131,14 @@ final class Jentil {
      *
      * @return GrottoPress\Jentil\Setup\Setup Setup.
      */
-    public function setup( string $setup ): Setup\Setup {
+    public function setup(string $setup): Setup\Setup
+    {
         $setups = $this->setup;
 
-        unset( $setups['loader'] );
-        unset( $setups['updater'] );
+        unset($setups['loader']);
+        unset($setups['updater']);
 
-        return $setups[ $setup ];
+        return $setups[$setup];
     }
 
     /**
@@ -147,12 +147,13 @@ final class Jentil {
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        if ( ! $this->setup ) {
+    public function run()
+    {
+        if (!$this->setup) {
             return;
         }
 
-        foreach ( $this->setup as $setup ) {
+        foreach ($this->setup as $setup) {
             $setup->run();
         }
     }

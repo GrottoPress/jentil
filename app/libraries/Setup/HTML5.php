@@ -10,30 +10,28 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * HTML5
  *
  * @since 0.1.0
  */
-final class HTML5 extends Setup {
+final class HTML5 extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'after_setup_theme', [ $this, 'add_support' ] );
-        \add_filter( 'language_attributes', [ $this, 'add_microdata' ] );
-        \add_action( 'wp_kses_allowed_html', [ $this, 'kses_whitelist' ], 10 ,2 );
+    public function run()
+    {
+        \add_action('after_setup_theme', [$this, 'addSupport']);
+        \add_filter('language_attributes', [$this, 'addMicrodata']);
+        \add_action('wp_kses_allowed_html', [$this, 'ksesWhitelist'], 10, 2);
     }
 
     /**
@@ -43,18 +41,19 @@ final class HTML5 extends Setup {
      *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action after_setup_theme
      */
-    public function add_support() {
-        \add_theme_support( 'html5', [
+    public function addSupport()
+    {
+        \add_theme_support('html5', [
             'search-form',
             'comment-form',
             'comment-list',
             'gallery',
             'caption',
             'widgets',
-        ] );
+        ]);
     }
 
     /**
@@ -70,26 +69,23 @@ final class HTML5 extends Setup {
      *
      * @filter language_attributes
      */
-    public function add_microdata( string $output ): string {
+    public function addMicrodata(string $output): string
+    {
         $page = $this->jentil->utilities()->page();
 
-        if (
-            $page->is( 'admin' )
-            || $page->is( 'login' )
-            || $page->is( 'register' )
-        ) {
+        if ($page->is('admin') || $page->is('login') || $page->is('register')) {
             return $output;
         }
 
         $output .= ' itemscope itemtype="http://schema.org/';
 
-        if ( $page->is( 'home' ) ) {
+        if ($page->is('home')) {
             $output .= 'Blog';
-        } elseif ( $page->is( 'author' ) ) {
+        } elseif ($page->is('author')) {
             $output .= 'ProfilePage';
-        } elseif ( $page->is( 'search' ) ) {
+        } elseif ($page->is('search')) {
             $output .= 'SearchResultsPage';
-        } elseif ( $page->is( 'singular', 'post' ) ) {
+        } elseif ($page->is('singular', 'post')) {
             $output .= 'BlogPosting';
         } else {
             $output .= 'WebPage';
@@ -108,11 +104,12 @@ final class HTML5 extends Setup {
      *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @filter wp_kses_allowed_html
      */
-    public function kses_whitelist( array $allowed, string $context ): array {
-        if ( ! isset( $allowed['span'] ) ) {
+    public function ksesWhitelist(array $allowed, string $context): array
+    {
+        if (!isset($allowed['span'])) {
             $allowed['span'] = [
                 'dir' => true,
                 'align' => true,
@@ -121,12 +118,12 @@ final class HTML5 extends Setup {
             ];
         }
 
-        foreach ( $allowed as $tag => $atts ) {
-            $allowed[ $tag ]['itemprop'] = true;
-            $allowed[ $tag ]['itemscope'] = true;
-            $allowed[ $tag ]['itemtype'] = true;
-            $allowed[ $tag ]['itemref'] = true;
-            $allowed[ $tag ]['itemid'] = true;
+        foreach ($allowed as $tag => $atts) {
+            $allowed[$tag]['itemprop'] = true;
+            $allowed[$tag]['itemscope'] = true;
+            $allowed[$tag]['itemtype'] = true;
+            $allowed[$tag]['itemref'] = true;
+            $allowed[$tag]['itemid'] = true;
         }
 
         return $allowed;

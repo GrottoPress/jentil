@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Filesystem
+ * File System
  *
  * @package GrottoPress\Jentil\Utilities
  * @since 0.1.0
@@ -10,26 +10,23 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
-
 /**
- * Filesystem
- * 
+ * File System
+ *
  * @since 0.1.0
  */
-final class Filesystem {
+final class FileSystem
+{
     /**
      * Utilities
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
      */
     private $utilities;
@@ -39,7 +36,7 @@ final class Filesystem {
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var string $dir_path Theme directory path.
      */
     private $dir_path;
@@ -49,20 +46,21 @@ final class Filesystem {
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var string $dir_url Theme directory URI.
      */
     private $dir_url;
 
     /**
      * Constructor
-     * 
-     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     *
+     * @param Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Utilities $utilities ) {
+    public function __construct(Utilities $utilities)
+    {
         $this->utilities = $utilities;
 
         $this->dir_url = \get_template_directory_uri();
@@ -80,8 +78,9 @@ final class Filesystem {
      *
      * @return string Path or URL.
      */
-    public function dir( string $type, string $append = '' ): string {
-        return $this->_dir( $type, '', $append );
+    public function themeDir(string $type, string $append = ''): string
+    {
+        return $this->getDir($type, '', $append);
     }
 
     /**
@@ -96,8 +95,12 @@ final class Filesystem {
      *
      * @return string Path or URL.
      */
-    public function scripts_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/dist/assets/scripts', $append, $form );
+    public function scriptsDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        return $this->getDir($type, '/dist/assets/scripts', $append, $form);
     }
 
     /**
@@ -112,8 +115,12 @@ final class Filesystem {
      *
      * @return string Path or URL.
      */
-    public function styles_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/dist/assets/styles', $append, $form );
+    public function stylesDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        return $this->getDir($type, '/dist/assets/styles', $append, $form);
     }
 
     /**
@@ -128,8 +135,12 @@ final class Filesystem {
      *
      * @return string Path or URL.
      */
-    public function partials_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/app/partials', $append, $form );
+    public function partialsDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        return $this->getDir($type, '/app/partials', $append, $form);
     }
 
     /**
@@ -144,8 +155,12 @@ final class Filesystem {
      *
      * @return string Path or URL.
      */
-    public function templates_dir( string $type, string $append = '', string $form = '' ): string {
-        return $this->_dir( $type, '/app/templates', $append, $form );
+    public function templatesDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        return $this->getDir($type, '/app/templates', $append, $form);
     }
 
     /**
@@ -161,13 +176,18 @@ final class Filesystem {
      *
      * @return string Path or URL.
      */
-    private function _dir( string $type, string $prepend = '', string $append = '', string $form = '' ): string {
-        $relative = $prepend . $append;
+    private function getDir(
+        string $type,
+        string $prepend = '',
+        string $append = '',
+        string $form = ''
+    ): string {
+        $relative = $prepend.$append;
 
-        if ( 'relative' == $form ) {
+        if ('relative' == $form) {
             return $relative;
         }
 
-        return $this->{'dir_' . $type} . $relative;
+        return $this->{'dir_'.$type}.$relative;
     }
 }

@@ -10,48 +10,47 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Menus
  *
  * @since 0.1.0
  */
-final class Menus extends Setup {
+final class Menus extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'after_setup_theme', [ $this, 'register' ] );
-        \add_action( 'jentil_inside_header', [ $this, 'render_header_menu' ] );
-        \add_action( 'jentil_inside_header', [ $this, 'render_header_menu_toggle' ] );
-        \add_action( 'jentil_inside_header', [ $this, 'render_mobile_header_menu' ] );
-        \add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_js' ] );
+    public function run()
+    {
+        \add_action('after_setup_theme', [$this, 'register']);
+        \add_action('jentil_inside_header', [$this, 'renderHeaderMenu']);
+        \add_action('jentil_inside_header', [$this, 'renderHeaderMenuToggle']);
+        \add_action('jentil_inside_header', [$this, 'renderMobileHeaderMenu']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueueJS']);
     }
 
     /**
      * Menus
-     * 
+     *
      * Register navigation menus
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action after_setup_theme
      */
-    public function register() {
-        \register_nav_menus( [
-            'primary-menu' => \esc_html__( 'Primary menu', 'jentil' ),
-        ] );
+    public function register()
+    {
+        \register_nav_menus([
+            'primary-menu' => \esc_html__('Primary menu', 'jentil'),
+        ]);
     }
 
     /**
@@ -62,11 +61,12 @@ final class Menus extends Setup {
      *
      * @action jentil_inside_header
      */
-    public function render_header_menu() {
-        echo '<nav class="site-navigation screen-min-wide">'
-            . $this->skip_to( 'content', \esc_html__( 'Skip to content', 'jentil' ) );
+    public function renderHeaderMenu()
+    {
+        echo '<nav class="site-navigation screen-min-wide">'.
+            $this->skipTo('content', \esc_html__('Skip to content', 'jentil'));
 
-            \wp_nav_menu( [ 'theme_location' => 'primary-menu' ] );
+            \wp_nav_menu(['theme_location' => 'primary-menu']);
         echo '</nav>';
     }
 
@@ -78,15 +78,24 @@ final class Menus extends Setup {
      *
      * @action jentil_inside_header
      */
-    public function render_header_menu_toggle() {
-        $status = isset( $_GET['menu'] ) ? \sanitize_key( $_GET['menu'] ) : 'off';
+    public function renderHeaderMenuToggle()
+    {
+        $status = isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'off';
         
         echo '<div class="menu-toggle screen-max-wide">'
-            . $this->skip_to( 'menu-screen-max-wide', \esc_html__( 'Skip to menu', 'jentil' ) )
+           .$this->skipTo('menu-screen-max-wide', \esc_html__('Skip to menu', 'jentil'))
 
-            . '<a class="js-mobile-menu-button hamburger" href="' . \esc_url( \add_query_arg( [
-                    'menu' => ( $status == 'off' ? 'on' : 'off' ),
-                ], $this->jentil->utilities()->page()->url( true ) ) ) . '" rel="nofollow"><span class="fa fa fa-bars" aria-hidden="true"></span> <span class="menu-button-text icon-text">' . \esc_html__( 'Menu', 'jentil' ) . '</span></a>
+           .'<a class="js-mobile-menu-button hamburger" href="'.\esc_url(
+               \add_query_arg(
+                   ['menu' => ($status == 'off' ? 'on' : 'off')],
+                   $this->jentil->utilities()->page()->url(true)
+               )
+           ).'" rel="nofollow">
+                <span class="fa fa fa-bars" aria-hidden="true"></span>
+                <span class="menu-button-text icon-text">'.
+                    \esc_html__('Menu', 'jentil').
+                '</span>
+            </a>
         </div>';
     }
 
@@ -98,27 +107,39 @@ final class Menus extends Setup {
      *
      * @action jentil_inside_header
      */
-    public function render_mobile_header_menu() {
-        $status = isset( $_GET['menu'] ) ? \sanitize_key( $_GET['menu'] ) : 'off';
+    public function renderMobileHeaderMenu()
+    {
+        $status = isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'off';
         
-        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide"' . ( $status == 'off' ? ' style="display:none;"' : '' ) . '>'
-            . $this->skip_to( 'content', \esc_html__( 'Skip to content', 'jentil' ) );
-
-            \get_search_form(); \wp_nav_menu( [ 'theme_location' => 'primary-menu' ] );
+        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide"'.
+            ($status == 'off' ? ' style="display:none;"' : '').
+        '>'.
+            $this->skipTo('content', \esc_html__('Skip to content', 'jentil'));
+            \get_search_form();
+            \wp_nav_menu(['theme_location' => 'primary-menu']);
         echo '</nav>';
     }
 
     /**
      * Enqueue JS
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action wp_enqueue_scripts
      */
-    public function enqueue_js() {
-        \wp_enqueue_script( 'jentil-menu', $this->jentil->utilities()->filesystem()->scripts_dir( 'url', '/menu.min.js' ),
-            [ 'jquery' ], '', true );
+    public function enqueueJS()
+    {
+        \wp_enqueue_script(
+            'jentil-menu',
+            $this->jentil->utilities()->fileSystem()->scriptsDir(
+                'url',
+                '/menu.min.js'
+            ),
+            ['jquery'],
+            '',
+            true
+        );
     }
 
     /**
@@ -134,8 +155,12 @@ final class Menus extends Setup {
      *
      * @action jentil_inside_header
      */
-    private function skip_to( string $location, string $title = '' ): string {
-        return '<a class="screen-reader-text skip-link" href="#'
-            . \sanitize_title( $location ) . '">' . \sanitize_text_field( $title ) . '</a>';
+    private function skipTo(string $location, string $title = ''): string
+    {
+        return '<a class="screen-reader-text skip-link" href="#'.
+            \sanitize_title($location).
+        '">'.
+           \sanitize_text_field($title).
+        '</a>';
     }
 }

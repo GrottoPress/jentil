@@ -10,33 +10,31 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Mods;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Logo
  *
  * @since 0.1.0
  */
-final class Logo extends Mod {
+final class Logo extends Mod
+{
     /**
      * Constructor
-     * 
+     *
      * @param Mods $mods
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Mods $mods ) {
+    public function __construct(Mods $mods)
+    {
         $this->name = 'logo';
         $this->default = '';
 
-        parent::__construct( $mods );
+        parent::__construct($mods);
     }
 
     /**
@@ -47,7 +45,8 @@ final class Logo extends Mod {
      *
      * @return int Logo mod.
      */
-    public function get(): int {
-        return \absint( parent::get() );
+    public function get(): int
+    {
+        return \absint(parent::get());
     }
 }
