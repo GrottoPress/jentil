@@ -3,6 +3,8 @@
 /**
  * Config
  *
+ * Code in this file must be compatible with PHP 5.2.
+ *
  * @package GrottoPress\Jentil
  * @since 0.1.0
  *

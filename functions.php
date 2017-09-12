@@ -3,6 +3,9 @@
 /**
  * Functions
  *
+ * Code in this file must be compatible with PHP 5.2,
+ * until the check for PHP version is made.
+ *
  * @package GrottoPress\Jentil
  * @since 0.1.0
  *
