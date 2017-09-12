@@ -10,27 +10,24 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Mods;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Theme Mod
  *
  * @since 0.1.0
  */
-abstract class Mod {
+abstract class Mod
+{
     /**
      * Mods
      *
      * @since 0.1.0
      * @access protected
-     * 
-     * @var \GrottoPress\Jentil\Utilities\Mods\Mods $mods Mods.
+     *
+     * @var Mods $mods Mods.
      */
     protected $mods;
 
@@ -39,7 +36,7 @@ abstract class Mod {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var string $name Mod name
      */
     protected $name;
@@ -49,20 +46,21 @@ abstract class Mod {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var mixed $default Default value.
      */
     protected $default;
 
     /**
      * Constructor
-     * 
+     *
      * @param Mods $mods
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Mods $mods ) {
+    public function __construct(Mods $mods)
+    {
         $this->mods = $mods;
     }
 
@@ -74,7 +72,8 @@ abstract class Mod {
      *
      * @return string Name.
      */
-    public function name(): string {
+    public function name(): string
+    {
         return $this->name;
     }
 
@@ -86,7 +85,8 @@ abstract class Mod {
      *
      * @return mixed Default.
      */
-    public function default() {
+    public function default()
+    {
         return $this->default;
     }
 
@@ -98,11 +98,12 @@ abstract class Mod {
      *
      * @return mixed Mod.
      */
-    public function get() {
-        if ( ! $this->name ) {
+    public function get()
+    {
+        if (!$this->name) {
             return false;
         }
 
-        return \get_theme_mod( $this->name, $this->default );
+        return \get_theme_mod($this->name, $this->default);
     }
 }

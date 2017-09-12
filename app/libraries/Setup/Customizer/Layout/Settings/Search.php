@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
 
@@ -25,29 +21,31 @@ use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
  *
  * @since 0.1.0
  */
-final class Search extends Setting {
+final class Search extends Setting
+{
     /**
      * Constructor
-     * 
-     * @param GrottoPress\Jentil\Setup\Customizer\Layout\Layout $layout Layout section.
+     *
+     * @param Layout $layout Layout section.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Layout $layout ) {
-        parent::__construct( $layout );
+    public function __construct(Layout $layout)
+    {
+        parent::__construct($layout);
         
-        $this->mod = $this->layout->customizer()->jentil()->utilities()->mods()->layout( [
-                'context' => 'search',
-            ] );
+        $this->mod = $this->layout->customizer()->jentil()->utilities()
+            ->mods()->layout(['context' => 'search']);
 
         $this->name = $this->mod->name();
 
-        $this->args[ 'default' ] = $this->mod->default();
+        $this->args['default'] = $this->mod->default();
 
-        $this->control['label'] = \esc_html__( 'Search Results', 'jentil' );
+        $this->control['label'] = \esc_html__('Search Results', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->layout->customizer()->jentil()->utilities()->page()->is( 'search' );
+            return $this->layout->customizer()->jentil()->utilities()
+                ->page()->is('search');
         };
     }
 }

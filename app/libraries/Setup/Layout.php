@@ -10,29 +10,27 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Layout
  *
  * @since 0.1.0
  */
-final class Layout extends Setup {
+final class Layout extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_filter( 'body_class', [ $this, 'add_body_classes' ] );
-        \add_action( 'after_setup_theme', [ $this, 'set_content_width' ] );
+    public function run()
+    {
+        \add_filter('body_class', [$this, 'addBodyClasses']);
+        \add_action('after_setup_theme', [$this, 'setContentWidth']);
     }
 
     /**
@@ -43,15 +41,19 @@ final class Layout extends Setup {
      *
      * @filter body_class
      */
-    public function add_body_classes( array $classes ): array {
-        if ( ( $mod = $this->jentil->utilities()->page()->layout()->mod() ) ) {
-            if ( ! \in_array( ( $class = \sanitize_title( 'layout-' . $mod ) ), $classes ) ) {
+    public function addBodyClasses(array $classes): array
+    {
+        if (($mod = $this->jentil->utilities()->page()->layout()->mod())) {
+            if (!\in_array(($class = \sanitize_title('layout-'.$mod)), $classes)) {
                 $classes[] = $class;
             }
         }
 
-        if ( ( $column = $this->jentil->utilities()->page()->layout()->column() ) ) {
-            if ( ! \in_array( ( $class = \sanitize_title( 'layout-' . $column ) ), $classes ) ) {
+        if (($column = $this->jentil->utilities()->page()->layout()->column())) {
+            if (!\in_array(
+                ($class = \sanitize_title('layout-'.$column)),
+                $classes
+            )) {
                 $classes[] = $class;
             }
         }
@@ -69,7 +71,8 @@ final class Layout extends Setup {
      *
      * @action after_setup_theme
      */
-    public function set_content_width() {
+    public function setContentWidth()
+    {
         $GLOBALS['content_width'] = 960;
     }
 }

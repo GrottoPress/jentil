@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Setting as C_Setting;
 use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
@@ -27,36 +23,28 @@ use GrottoPress\Jentil\Utilities\Mods\Posts as Mod;
  *
  * @since 0.1.0
  */
-abstract class Setting extends C_Setting {
+abstract class Setting extends C_Setting
+{
     /**
      * Section
      *
      * @since 0.1.0
      * @access protected
-     * 
-     * @var \GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
+     *
+     * @var Section $section Section.
      */
     protected $section;
-
-    /**
-     * Mod
-     *
-     * @since 0.1.0
-     * @access protected
-     * 
-     * @var \GrottoPress\Jentil\Utilities\Mods\Posts $mod Mod.
-     */
-    // protected $mod;
     
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
+     * @param Section $section Section.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Section $section ) {
+    public function __construct(Section $section)
+    {
         $this->section = $section;
 
         $this->control['section'] = $this->section->name();
@@ -70,9 +58,11 @@ abstract class Setting extends C_Setting {
      * @since 0.1.0
      * @access protected
      *
-     * @return GrottoPress\Jentil\Utilities\Mods\Posts Posts mod.
+     * @return Mods Posts mod.
      */
-    final protected function mod( string $setting ): Mod {
-        return $this->section->posts()->customizer()->jentil()->utilities()->mods()->posts( $setting, $this->section->mod_args() );
+    final protected function mod(string $setting): Mod
+    {
+        return $this->section->posts()->customizer()->jentil()->utilities()
+            ->mods()->posts($setting, $this->section->modArgs());
     }
 }

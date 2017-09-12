@@ -12,32 +12,23 @@
  * @author N Atta Kus Adusei
  */
 
-if ( ! defined( 'WPINC' ) ) {
-    die;
+/**
+* Autoloader
+*
+* @since 0.1.0
+*/
+require get_template_directory().'/vendor/autoload.php';
+
+if (version_compare(JENTIL_REQUIRED_PHP, phpversion(), '<=')
+    && version_compare(JENTIL_REQUIRED_WP, get_bloginfo('version'), '<=')) {
+    /**
+    * Run this theme.
+    *
+    * @action after_setup_theme
+    *
+    * @since 0.1.0
+    */
+    \add_action('after_setup_theme', function () {
+        \Jentil()->run();
+    }, 0);
 }
-
-define( 'JENTIL_REQUIRED_WP', '4.6' ); // Used WP_Post_Type
-define( 'JENTIL_REQUIRED_PHP', '7.0' );
-
-if ( version_compare( JENTIL_REQUIRED_PHP, phpversion(), '<=' )
-    && version_compare( JENTIL_REQUIRED_WP, get_bloginfo( 'version' ), '<=' ) ) :
-
-/**
- * Autoloader
- * 
- * @since 0.1.0
- */
-require ( \get_template_directory() . '/vendor/autoload.php' );
-
-/**
- * Run this theme.
- *
- * @action after_setup_theme
- * 
- * @since 0.1.0
- */
-\add_action( 'after_setup_theme', function () {
-    \Jentil()->run();
-}, 0 );
-
-endif;

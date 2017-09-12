@@ -10,28 +10,26 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Language
  *
  * @since 0.1.0
  */
-final class Language extends Setup {
+final class Language extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'after_setup_theme', [ $this, 'load_textdomain' ] );
+    public function run()
+    {
+        \add_action('after_setup_theme', [$this, 'loadTextDomain' ]);
     }
 
     /**
@@ -42,11 +40,17 @@ final class Language extends Setup {
      *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action after_setup_theme
      */
-    public function load_textdomain() {
-        \load_theme_textdomain( 'jentil', $this->jentil->utilities()->filesystem()
-            ->dir( 'path', '/languages' ) );
+    public function loadTextDomain()
+    {
+        \load_theme_textdomain(
+            'jentil',
+            $this->jentil->utilities()->fileSystem()->themeDir(
+                'path',
+                '/languages'
+            )
+        );
     }
 }

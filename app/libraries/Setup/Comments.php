@@ -10,47 +10,45 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Comments
  *
  * @since 0.1.0
  */
-final class Comments extends Setup {
+final class Comments extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_js' ] );
+    public function run()
+    {
+        \add_action('wp_enqueue_scripts', [$this, 'enqueueJS']);
     }
     
     /**
      * Enqueue JS
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action wp_enqueue_scripts
      */
-    public function enqueue_js() {
-        if (
-            ! $this->jentil->utilities()->page()->is( 'singular' )
+    public function enqueueJS()
+    {
+        if (!$this->jentil->utilities()->page()->is('singular')
             || ! \comments_open()
-            || ! \get_option( 'thread_comments' )
+            || ! \get_option('thread_comments')
         ) {
             return;
         }
 
-        \wp_enqueue_script( 'comment-reply' );
+        \wp_enqueue_script('comment-reply');
     }
 }

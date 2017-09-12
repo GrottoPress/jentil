@@ -12,39 +12,37 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
-
 /**
  * Loader
- * 
+ *
  * @since 0.1.0
  */
-final class Loader {
+final class Loader
+{
     /**
      * Utilities
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
      */
     private $utilities;
 
     /**
      * Constructor
-     * 
+     *
      * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Utilities $utilities ) {
+    public function __construct(Utilities $utilities)
+    {
         $this->utilities = $utilities;
     }
 
@@ -57,8 +55,13 @@ final class Loader {
      * @since 0.1.0
      * @access public
      */
-    public function load_partial( string $slug, string $name = '' ) {
-        \get_template_part( \ltrim( $this->utilities->filesystem()->partials_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
+    public function loadPartial(string $slug, string $name = '')
+    {
+        \get_template_part(\ltrim($this->utilities->filesystem()->partialsDir(
+            'path',
+            "/{$slug}",
+            'relative'
+        ), '/'), $name);
     }
 
     /**
@@ -70,8 +73,13 @@ final class Loader {
      * @since 0.1.0
      * @access public
      */
-    public function load_template( string $slug, string $name = '' ) {
-        \get_template_part( \ltrim( $this->utilities->filesystem()->templates_dir( 'path', "/{$slug}", 'relative' ), '/' ), $name );
+    public function loadTemplate(string $slug, string $name = '')
+    {
+        \get_template_part(\ltrim($this->utilities->filesystem()->templatesDir(
+            'path',
+            "/{$slug}",
+            'relative'
+        ), '/'), $name);
     }
 
     /**
@@ -82,7 +90,12 @@ final class Loader {
      * @since 0.1.0
      * @access public
      */
-    public function load_comments( bool $separated = false ) {
-        \comments_template( $this->utilities->filesystem()->partials_dir( 'path', '/comments.php', 'relative' ), $separated );
+    public function loadComments(bool $separated = false)
+    {
+        \comments_template($this->utilities->filesystem()->partialsDir(
+            'path',
+            '/comments.php',
+            'relative'
+        ), $separated);
     }
 }

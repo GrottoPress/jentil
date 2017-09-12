@@ -13,20 +13,22 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
+declare (strict_types = 1);
 
 /**
  * @filter jentil_pagination_prev_label
  *
  * @var string $prev_label Previous label.
- * 
+ *
  * @since 0.1.0
  */
-$prev_label = \sanitize_text_field( \apply_filters( 'jentil_pagination_prev_label', \__( '&larr; Previous', 'jentil' ), 'image' ) );
+$prev_label = \sanitize_text_field(
+    \apply_filters(
+        'jentil_pagination_prev_label',
+        \__('&larr; Previous', 'jentil'),
+        'image'
+    )
+);
 
 /**
  * @filter jentil_pagination_next_label
@@ -35,39 +37,40 @@ $prev_label = \sanitize_text_field( \apply_filters( 'jentil_pagination_prev_labe
  *
  * @since 0.1.0
  */
-$next_label = \sanitize_text_field( \apply_filters( 'jentil_pagination_next_label', \__( 'Next &rarr;', 'jentil' ), 'image' ) ); ?>
+$next_label = \sanitize_text_field(
+    \apply_filters(
+        'jentil_pagination_next_label',
+        \__('Next &rarr;', 'jentil'),
+        'image'
+    )
+); ?>
 
-<nav id="image-navigation" class="navigation image-navigation pagination self-clear">
-	<div class="prev"><?php \previous_image_link( 0, $prev_label ); ?></div>
-	<div class="next"><?php \next_image_link( 0, $next_label ); ?></div>
+<nav id="image-navigation" class="image-pagination pagination">
+    <div class="prev"><?php \previous_image_link(0, $prev_label); ?></div>
+    <div class="next"><?php \next_image_link(0, $next_label); ?></div>
 </nav><!-- .image-navigation -->
 
 <figure class="entry-attachment image aligncenter">
-	
-	<?php
+    <?php
     /**
-	 * @filter jentil_attachment_size
-	 * 
-	 * @var string $image_size Image size. Default 'large'.
-	 *
-	 * @since 0.1.0
-	 */
-	$image_size = \apply_filters( 'jentil_attachment_size', 'large' ); ?>
-			
-	<div class="image-wrap"><a href="<?php echo \wp_get_attachment_url( $post->id ); ?>" rel="attachment" itemprop="url"><?php
+     * @filter jentil_attachment_size
+     *
+     * @var string $image_size Image size. Default 'large'.
+     *
+     * @since 0.1.0
+     */
+    $image_size = \apply_filters('jentil_attachment_size', 'large'); ?>
 
-		echo \wp_get_attachment_image( $post->ID, $image_size );
+    <div class="image-wrap"><a href="<?php
+        echo \wp_get_attachment_url($post->id);
+    ?>" rel="attachment" itemprop="url"><?php
+        echo \wp_get_attachment_image($post->ID, $image_size);
+    ?></a></div>
 
-	?></a></div>
-	
-	<?php if ( $post->post_excerpt ) { ?>
+    <?php if ($post->post_excerpt) { ?>
+        <figcaption class="entry-caption wp-caption-text" itemprop="description">
+            <?php echo \wp_kses_data($post->post_excerpt); ?>
+        </figcaption>
 
-		<figcaption class="entry-caption wp-caption-text" itemprop="description"><?php
-
-			echo \wp_kses_data( $post->post_excerpt );
-
-		?></figcaption>
-
-	<?php } ?>
-	
+    <?php } ?>
 </figure>

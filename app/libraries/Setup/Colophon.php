@@ -10,28 +10,26 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Colophon
  *
  * @since 0.1.0
  */
-final class Colophon extends Setup {
+final class Colophon extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'jentil_inside_footer', [ $this, 'render' ] );
+    public function run()
+    {
+        \add_action('jentil_inside_footer', [$this, 'render']);
     }
 
     /**
@@ -42,14 +40,14 @@ final class Colophon extends Setup {
      *
      * @action jentil_inside_footer
      */
-    public function render() {
-        if (
-            ! ( $mod = $this->jentil->utilities()->colophon()->mod() )
-            && ! $this->jentil->utilities()->page()->is( 'customize_preview' )
+    public function render()
+    {
+        if (!($mod = $this->jentil->utilities()->colophon()->mod())
+            && !$this->jentil->utilities()->page()->is('customize_preview')
         ) {
             return;
         }
 
-        echo '<div id="colophon"><small>' . $mod . '</small></div><!-- #colophon -->';
+        echo '<div id="colophon"><small>'.$mod.'</small></div><!-- #colophon -->';
     }
 }

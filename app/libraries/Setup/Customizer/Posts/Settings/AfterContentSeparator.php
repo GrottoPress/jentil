@@ -1,7 +1,7 @@
 <?php
 
 /**
- * More Link Label
+ * After Content Info Separator
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts\Settings
  * @since 0.1.0
@@ -10,41 +10,42 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
 
 /**
- * More Link Label
+ * After Content Info Separator
  *
  * @since 0.1.0
  */
-final class More_Link extends Setting {
+final class AfterContentSeparator extends Setting
+{
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
+     * @param Section $section Section.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Section $section ) {
-        parent::__construct( $section );
+    public function __construct(Section $section)
+    {
+        parent::__construct($section);
 
-        $mod = $this->mod( 'more_link' );
-        
+        $mod = $this->mod('after_content_separator');
+
         $this->name = $mod->name();
         
         $this->args['default'] = $mod->default();
-        $this->args['sanitize_callback'] = 'sanitize_text_field';
+        $this->args['sanitize_callback'] = 'esc_attr';
 
-        $this->control['label'] = \esc_html__( 'More link label', 'jentil' );
+        $this->control['label'] = \esc_html__(
+            'After content separator',
+            'jentil'
+        );
         $this->control['type'] = 'text';
     }
 }

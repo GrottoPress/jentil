@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use \WP_Taxonomy;
 use \WP_Term;
@@ -26,7 +22,8 @@ use \WP_Term;
  *
  * @since 0.1.0
  */
-final class Taxonomy extends Section {
+final class Taxonomy extends Section
+{
     /**
      * Constructor
      *
@@ -37,12 +34,16 @@ final class Taxonomy extends Section {
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Posts $posts, WP_Taxonomy $taxonomy, WP_Term $term = null ) {
-        parent::__construct( $posts );
+    public function __construct(
+        Posts $posts,
+        WP_Taxonomy $taxonomy,
+        WP_Term $term = null
+    ) {
+        parent::__construct($posts);
 
-        $this->set_name( $taxonomy, $term );
-        $this->set_mod_args( $taxonomy, $term );
-        $this->set_args( $taxonomy, $term );
+        $this->setName($taxonomy, $term);
+        $this->setModArgs($taxonomy, $term);
+        $this->setArgs($taxonomy, $term);
     }
 
     /**
@@ -51,11 +52,12 @@ final class Taxonomy extends Section {
      * @since 0.1.0
      * @access private
      */
-    private function set_name( WP_Taxonomy $taxonomy, WP_Term $term = null ) {
-        if ( $term ) {
-            $this->name = \sanitize_key( $taxonomy->name . '_' . $term->term_id . '_taxonomy_posts' );
+    private function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    {
+        if ($term) {
+            $this->name = \sanitize_key($taxonomy->name.'_'.$term->term_id.'_taxonomy_posts');
         } else {
-            $this->name = \sanitize_key( $taxonomy->name . '_taxonomy_posts' );
+            $this->name = \sanitize_key($taxonomy->name.'_taxonomy_posts');
         }
     }
 
@@ -65,17 +67,18 @@ final class Taxonomy extends Section {
      * @since 0.1.0
      * @access private
      */
-    private function set_mod_args( WP_Taxonomy $taxonomy, WP_Term $term = null ) {
+    private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    {
         $this->mod_args['context'] = 'tax';
         
-        if ( 'post_tag' == $taxonomy->name ) {
+        if ('post_tag' == $taxonomy->name) {
             $this->mod_args['context'] = 'tag';
-        } elseif ( 'category' == $taxonomy->name ) {
+        } elseif ('category' == $taxonomy->name) {
             $this->mod_args['context'] = 'category';
         }
 
         $this->mod_args['specific'] = $taxonomy->name;
-        $this->mod_args['more_specific'] = ( $term ? $term->term_id : '' );
+        $this->mod_args['more_specific'] = ($term ? $term->term_id : '');
     }
 
     /**
@@ -84,32 +87,41 @@ final class Taxonomy extends Section {
      * @since 0.1.0
      * @access private
      */
-    private function set_args( WP_Taxonomy $taxonomy, WP_Term $term = null ) {
-        $this->args['active_callback'] = function () use ( $taxonomy, $term ): bool {
+    private function setArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    {
+        $this->args['active_callback'] = function () use (
+            $taxonomy,
+            $term
+        ): bool {
             $page = $this->posts->customizer()->jentil()->utilities()->page();
 
-            if ( $term ) {
-                return ( $page->is( 'tag', $term->term_id )
-                    || $page->is( 'category', $term->term_id )
-                    || $page->is( 'tax', $taxonomy->name, $term->term_id ) );
+            if ($term) {
+                return ($page->is('tag', $term->term_id)
+                    || $page->is('category', $term->term_id)
+                    || $page->is('tax', $taxonomy->name, $term->term_id));
             }
 
-            if ( 'post_tag' == $taxonomy->name ) {
-                return $page->is( 'tag' );
+            if ('post_tag' == $taxonomy->name) {
+                return $page->is('tag');
             }
 
-            if ( 'category' == $taxonomy->name ) {
-                return $page->is( 'category' );
+            if ('category' == $taxonomy->name) {
+                return $page->is('category');
             }
 
-            return $page->is( 'tax', $taxonomy->name );
+            return $page->is('tax', $taxonomy->name);
         };
 
-        if ( $term ) {
-            $this->args['title'] = \sprintf( \esc_html__( '%1$s Archive: %2$s', 'jentil' ),
-                $taxonomy->labels->singular_name, $term->name );
+        if ($term) {
+            $this->args['title'] = \sprintf(\esc_html__(
+                '%1$s Archive: %2$s',
+                'jentil'
+            ), $taxonomy->labels->singular_name, $term->name);
         } else {
-            $this->args['title'] = \sprintf( \esc_html__( '%s Archives', 'jentil' ), $taxonomy->labels->singular_name );
+            $this->args['title'] = \sprintf(\esc_html__(
+                '%s Archives',
+                'jentil'
+            ), $taxonomy->labels->singular_name);
         }
     }
 
@@ -121,18 +133,22 @@ final class Taxonomy extends Section {
      *
      * @return array Settings.
      */
-    protected function settings(): array {
+    protected function settings(): array
+    {
         $settings = [];
 
-        $settings['number'] = new Settings\Number( $this );
+        $settings['number'] = new Settings\Number($this);
 
-        $settings = \array_merge( $settings, parent::settings() );
+        $settings = \array_merge($settings, parent::settings());
 
-        $settings['pagination'] = new Settings\Pagination( $this );
-        $settings['pagination_maximum'] = new Settings\Pagination_Maximum( $this );
-        $settings['pagination_maximum'] = new Settings\Pagination_Position( $this );
-        $settings['pagination_previous_label'] = new Settings\Pagination_Previous_Label( $this );
-        $settings['pagination_next_label'] = new Settings\Pagination_Next_Label( $this );
+        $settings['pagination'] = new Settings\Pagination($this);
+        $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
+        $settings['pagination_maximum'] =
+            new Settings\PaginationPosition($this);
+        $settings['pagination_previous_label'] =
+            new Settings\PaginationPreviousLabel($this);
+        $settings['pagination_next_label'] =
+            new Settings\PaginationNextLabel($this);
 
         return $settings;
     }

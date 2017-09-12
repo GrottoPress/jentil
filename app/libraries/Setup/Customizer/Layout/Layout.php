@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Layout;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Section;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
@@ -26,23 +22,25 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Layout extends Section {
+final class Layout extends Section
+{
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     * @param Customizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Customizer $customizer ) {
-        parent::__construct( $customizer );
+    public function __construct(Customizer $customizer)
+    {
+        parent::__construct($customizer);
 
         $this->name = 'layout';
         
         $this->args = [
-            'title' => \esc_html__( 'Layout', 'jentil' ),
-            // 'description' => \esc_html__( 'Description here', 'jentil' ),
+            'title' => \esc_html__('Layout', 'jentil'),
+            // 'description' => \esc_html__('Description here', 'jentil'),
         ];
     }
 
@@ -54,33 +52,37 @@ final class Layout extends Section {
      *
      * @return array Settings.
      */
-    protected function settings(): array {
+    protected function settings(): array
+    {
         $settings = [];
 
-        $settings['author'] = new Settings\Author( $this );
-        $settings['date'] = new Settings\Date( $this );
-        $settings['error_404'] = new Settings\Error_404( $this );
-        $settings['search'] = new Settings\Search( $this );
+        $settings['author'] = new Settings\Author($this);
+        $settings['date'] = new Settings\Date($this);
+        $settings['error_404'] = new Settings\Error404($this);
+        $settings['search'] = new Settings\Search($this);
 
-        if ( ( $taxonomies = $this->customizer->taxonomies() ) ) {
-            foreach ( $taxonomies as $taxonomy ) {
-                $settings[ 'taxonomy_' . $taxonomy->name ] = new Settings\Taxonomy( $this, $taxonomy );
+        if (($taxonomies = $this->customizer->taxonomies())) {
+            foreach ($taxonomies as $taxonomy) {
+                $settings['taxonomy_'.$taxonomy->name] =
+                    new Settings\Taxonomy($this, $taxonomy);
             }
         }
 
-        if ( ( $post_types = $this->customizer->archive_post_types() ) ) {
-            foreach ( $post_types as $post_type ) {
-                $settings[ 'post_type_' . $post_type->name ] = new Settings\Post_Type( $this, $post_type );
+        if (($post_types = $this->customizer->archivePostTypes())) {
+            foreach ($post_types as $post_type) {
+                $settings['post_type_'.$post_type->name] =
+                    new Settings\PostType($this, $post_type);
             }
         }
 
-        if ( ( $post_types = $this->customizer->post_types() ) ) {
-            foreach ( $post_types as $post_type ) {
-                if ( ! $this->customizer->jentil()->utilities()->mods() ->layout( [
+        if (($post_types = $this->customizer->postTypes())) {
+            foreach ($post_types as $post_type) {
+                if (!$this->customizer->jentil()->utilities()->mods() ->layout([
                     'context' => 'singular',
                     'specific' => $post_type->name,
-                ] )->is_pagelike() ) {
-                    $settings[ 'single_' . $post_type->name ] = new Settings\Singular( $this, $post_type );
+                ])->isPagelike()) {
+                    $settings['single_'.$post_type->name] =
+                        new Settings\Singular($this, $post_type);
                 }
             }
         }
