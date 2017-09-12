@@ -10,80 +10,75 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
+declare (strict_types = 1);
 
 /**
  * Load header template
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->load_partial( 'header' );
+\Jentil()->utilities()->loader()->loadPartial('header');
 
 \the_post(); ?>
 
 <div class="posts-wrap show-content big singular-post">
-	<article data-post-id="<?php \the_ID(); ?>" id="post-<?php \the_ID(); ?>" <?php \post_class( [ 'post-wrap' ] ); ?> itemscope itemtype="http://schema.org/Article">
+    <article data-post-id="<?php
+        \the_ID();
+    ?>" id="post-<?php \the_ID(); ?>" <?php
+        \post_class(['post-wrap']);
+    ?> itemscope itemtype="http://schema.org/Article">
+        <?php if ($post->post_title) { ?>
+            <header class="page-header">
+        <?php }
 
-		<?php if ( $post->post_title ) { ?>
+        /**
+         * @action jentil_before_title
+         *
+         * @since 0.1.0
+         */
+        \do_action('jentil_before_title');
 
-			<header class="page-header">
+        \the_title(
+            '<h1 class="entry-title" itemprop="name headline mainEntityOfPage">',
+            '</h1>'
+        );
 
-		<?php }
+        /**
+         * @action jentil_after_title
+         *
+         * @since 0.1.0
+         */
+        \do_action('jentil_after_title');
 
-			/**
-			 * @action jentil_before_title
-			 *
-			 * @since 0.1.0
-			 */
-			\do_action( 'jentil_before_title' );
+        if ($post->post_title) { ?>
+            </header>
+        <?php }
 
-			\the_title( '<h1 class="entry-title" itemprop="name headline mainEntityOfPage">', '</h1>' );
-			
-			/**
-			 * @action jentil_after_title
-			 *
-			 * @since 0.1.0
-			 */
- 			\do_action( 'jentil_after_title' );
+        /**
+         * @action jentil_before_content
+         *
+         * @since 0.1.0
+         */
+        \do_action('jentil_before_content'); ?>
 
- 		if ( $post->post_title ) { ?>
-	 		
-			</header>
+        <div class="entry-content" itemprop="articleBody">
+            <?php \the_content();
 
-		<?php }
-		
-		/**
-		 * @action jentil_before_content
-		 *
-		 * @since 0.1.0
-		 */
-	 	\do_action( 'jentil_before_content' ); ?>
-		
-		<div class="entry-content" itemprop="articleBody">
+            \wp_link_pages([
+                'before' => '<nav class="page-links pagination">'
+                . \esc_html__('Pages: ', 'jentil'),
+                'after' => '</nav>',
+            ]); ?>
+        </div><!-- .entry-content -->
 
-			<?php \the_content();
-
-			\wp_link_pages( [
-				'before' => '<nav class="page-links pagination">'
-					. \esc_html__( 'Pages: ', 'jentil' ),
-				'after' => '</nav>',
-			] ); ?>
-			
-		</div><!-- .entry-content -->
-
-		<?php
-		/**
-		 * @action jentil_after_content
-		 *
-		 * @since 0.1.0
-		 */
-		\do_action( 'jentil_after_content' ); ?>
-
-	</article>
+        <?php
+        /**
+         * @action jentil_after_content
+         *
+         * @since 0.1.0
+         */
+        \do_action('jentil_after_content'); ?>
+    </article>
 </div>
 
 <?php
@@ -92,4 +87,4 @@ if ( ! \defined( 'WPINC' ) ) {
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->load_partial( 'footer' );
+\Jentil()->utilities()->loader()->loadPartial('footer');

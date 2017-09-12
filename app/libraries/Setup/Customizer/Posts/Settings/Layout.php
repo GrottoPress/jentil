@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
 
@@ -25,7 +21,8 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
  *
  * @since 0.1.0
  */
-final class Layout extends Setting {
+final class Layout extends Setting
+{
     /**
      * Constructor
      *
@@ -34,21 +31,22 @@ final class Layout extends Setting {
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Section $section ) {
-        parent::__construct( $section );
+    public function __construct(Section $section)
+    {
+        parent::__construct($section);
 
-        $mod = $this->mod( 'layout' );
+        $mod = $this->mod('layout');
         
         $this->name = $mod->name();
         
         $this->args['default'] = $mod->default();
         $this->args['sanitize_callback'] = 'sanitize_key';
 
-        $this->control['label'] = \esc_html__( 'Layout', 'jentil' );
+        $this->control['label'] = \esc_html__('Layout', 'jentil');
         $this->control['type'] = 'select';
         $this->control['choices'] = [
-            'stack' => \esc_html__( 'Stack', 'jentil' ),
-            'grid' => \esc_html__( 'Grid', 'jentil' ),
+            'stack' => \esc_html__('Stack', 'jentil'),
+            'grid' => \esc_html__('Grid', 'jentil'),
         ];
     }
 }

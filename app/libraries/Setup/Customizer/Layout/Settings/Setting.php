@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Customizer\Setting as C_Setting;
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
@@ -26,14 +22,15 @@ use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
  *
  * @since 0.1.0
  */
-abstract class Setting extends C_Setting {
+abstract class Setting extends C_Setting
+{
     /**
      * Layout section
      *
      * @since 0.1.0
      * @access protected
-     * 
-     * @var GrottoPress\Jentil\Setup\Customizer\Layout\Layout $layout Layout section.
+     *
+     * @var Layout $layout Layout section.
      */
     protected $layout;
 
@@ -42,7 +39,7 @@ abstract class Setting extends C_Setting {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var GrottoPress\Jentil\Utilities\Mod\Layout $mod Layout mod.
      */
     protected $mod;
@@ -50,23 +47,23 @@ abstract class Setting extends C_Setting {
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Layout\Layout $layout Layout section.
+     * @param Layout $layout Layout section.
      *
      * @since 0.1.0
      * @access protected
      */
-    protected function __construct( Layout $layout ) {
+    protected function __construct(Layout $layout)
+    {
         $this->layout = $layout;
 
-        $this->args = [
-            'sanitize_callback' => 'sanitize_title',
-        ];
+        $this->args = ['sanitize_callback' => 'sanitize_title'];
 
         $this->control = [
             'section' => $this->layout->name(),
-            'label' => \esc_html__( 'Select layout', 'jentil' ),
+            'label' => \esc_html__('Select layout', 'jentil'),
             'type' => 'select',
-            'choices' => $this->layout->customizer()->jentil()->utilities()->page()->layout()->layouts_ids_names(),
+            'choices' => $this->layout->customizer()->jentil()->utilities()
+                ->page()->layouts()->IDNames(),
         ];
     }
 }

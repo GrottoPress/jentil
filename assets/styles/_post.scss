@@ -12,8 +12,8 @@
  */
 
 .archive-description {
-    font-size: $font-size-tiny;
-    line-height: $line-height-normal;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     margin-left: 20px;
     margin-right: 20px;
     @include paragraph;
@@ -42,7 +42,7 @@
 }
 
 .attachment {
-    .image-navigation {
+    .image-pagination {
         .prev {
             @include float(left);
         }

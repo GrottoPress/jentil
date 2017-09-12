@@ -14,14 +14,7 @@
 #header {
     padding-top: map-get($gutter, 'normal');
     @include paragraph;
-    text-align: center;
     @include hobbit;
-    font-size: 0;
-
-    > * {
-        font-size: $font-size-small;
-        text-align: left;
-    }
 
     &:empty,
     .search-wrap {
@@ -39,12 +32,14 @@
 
 @media (min-width: map-get($breakpoints, 'wide')) {
     #header {
-        text-align: left;
-
         .search-wrap {
-            width: 35%;
-            @include float(right);
-            margin-top: 15px;
+            display: block;
+            @include paragraph;
+            @include center(600px);
+        }
+
+        .form.search {
+            margin-top: 0;
         }
     }
 }

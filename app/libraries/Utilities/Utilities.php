@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Jentil;
 use GrottoPress\Jentil\Utilities\Mods\Mods;
@@ -36,14 +32,15 @@ use \Puc_v4_Factory;
  *
  * @since 0.1.0
  */
-final class Utilities {
+final class Utilities
+{
     /**
      * Jentil
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Jentil $jentil Jentil.
+     *
+     * @var Jentil $jentil Jentil.
      */
     private $jentil;
 
@@ -52,8 +49,8 @@ final class Utilities {
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Mods\Mods $mods Mods.
+     *
+     * @var Mods\Mods $mods Mods.
      */
     private $mods = null;
 
@@ -62,8 +59,8 @@ final class Utilities {
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Page\Page $page Page.
+     *
+     * @var Page\Page $page Page.
      */
     private $page = null;
 
@@ -72,38 +69,28 @@ final class Utilities {
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Colophon $colophon Colophon.
+     *
+     * @var Colophon $colophon Colophon.
      */
     private $colophon = null;
 
     /**
-     * Logo
+     * File System
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Logo $logo Logo.
-     */
-    private $logo = null;
-
-    /**
-     * Filesystem
      *
-     * @since 0.1.0
-     * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Filesystem $filesystem Filesystem.
+     * @var FileSystem $file_system FileSystem.
      */
-    private $filesystem = null;
+    private $file_system = null;
 
     /**
      * Loader
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Loader $loader Loader.
+     *
+     * @var Loader $loader Loader.
      */
     private $loader = null;
 
@@ -112,20 +99,21 @@ final class Utilities {
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var \Theme_UpdateChecker $updater Updater.
+     *
+     * @var Theme_UpdateChecker $updater Updater.
      */
     private $updater = null;
 
     /**
      * Constructor
-     * 
-     * @var GrottoPress\Jentil\Jentil $jentil Jentil.
+     *
+     * @var Jentil $jentil Jentil.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Jentil $jentil ) {
+    public function __construct(Jentil $jentil)
+    {
         $this->jentil = $jentil;
     }
 
@@ -135,9 +123,10 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Jentil Jentil.
+     * @return Jentil Jentil.
      */
-    public function jentil(): Jentil {
+    public function jentil(): Jentil
+    {
         return $this->jentil;
     }
 
@@ -147,11 +136,12 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Mods\Mods Mods.
+     * @return Mods Mods.
      */
-    public function mods(): Mods {
-        if ( null === $this->mods ) {
-            $this->mods = new Mods( $this );
+    public function mods(): Mods
+    {
+        if (null === $this->mods) {
+            $this->mods = new Mods($this);
         }
 
         return $this->mods;
@@ -163,11 +153,12 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Page\Page Page.
+     * @return Page Page.
      */
-    public function page(): Page {
-        if ( null === $this->page ) {
-            $this->page = new Page( $this );
+    public function page(): Page
+    {
+        if (null === $this->page) {
+            $this->page = new Page($this);
         }
 
         return $this->page;
@@ -179,46 +170,32 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Colophon Colophon.
+     * @return Colophon Colophon.
      */
-    public function colophon(): Colophon {
-        if ( null === $this->colophon ) {
-            $this->colophon = new Colophon( $this );
+    public function colophon(): Colophon
+    {
+        if (null === $this->colophon) {
+            $this->colophon = new Colophon($this);
         }
 
         return $this->colophon;
     }
 
     /**
-     * Logo
+     * File System
      *
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Logo Logo.
+     * @return FileSystem FileSystem.
      */
-    public function logo(): Logo {
-        if ( null === $this->logo ) {
-            $this->logo = new Logo( $this );
+    public function fileSystem(): FileSystem
+    {
+        if (null === $this->file_system) {
+            $this->file_system = new FileSystem($this);
         }
 
-        return $this->logo;
-    }
-
-    /**
-     * Filesystem
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return GrottoPress\Jentil\Utilities\Filesystem Filesystem.
-     */
-    public function filesystem(): Filesystem {
-        if ( null === $this->filesystem ) {
-            $this->filesystem = new Filesystem( $this );
-        }
-
-        return $this->filesystem;
+        return $this->file_system;
     }
 
     /**
@@ -227,11 +204,12 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Loader Loader.
+     * @return Loader Loader.
      */
-    public function loader(): Loader {
-        if ( null === $this->loader ) {
-            $this->loader = new Loader( $this );
+    public function loader(): Loader
+    {
+        if (null === $this->loader) {
+            $this->loader = new Loader($this);
         }
 
         return $this->loader;
@@ -243,13 +221,16 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return \Theme_UpdateChecker Updater.
+     * @return Theme_UpdateChecker Updater.
      */
-    public function updater(): Puc_v4p2_Theme_UpdateChecker {
-        if ( null === $this->updater ) {
+    public function updater(): Puc_v4p2_Theme_UpdateChecker
+    {
+        if (null === $this->updater) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(
                 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-                $this->filesystem()->dir( 'path', '/functions.php' ), 'jentil' );
+                $this->fileSystem()->themeDir('path', '/functions.php'),
+                'jentil'
+            );
         }
 
         return $this->updater;
@@ -263,10 +244,11 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\WordPress\Breadcrumbs\Breadcrumbs Breadcrumbs.
+     * @return Breadcrumbs Breadcrumbs.
      */
-    public function breadcrumbs( array $args = [] ): Breadcrumbs {
-        return new Breadcrumbs( $this->page(), $args );
+    public function breadcrumbs(array $args = []): Breadcrumbs
+    {
+        return new Breadcrumbs($this->page(), $args);
     }
 
     /**
@@ -277,23 +259,25 @@ final class Utilities {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\WordPress\Posts\Posts Posts.
+     * @return Posts Posts.
      */
-    public function posts( array $args = [] ): Posts {
-        return new Posts( $args );
+    public function posts(array $args = []): Posts
+    {
+        return new Posts($args);
     }
 
     /**
      * Post
      *
-     * @param integer|object $post Posts ID/object.
+     * @param integer $id Posts ID.
      *
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\WordPress\Post\Post Post.
+     * @return Post Post.
      */
-    public function post( int $post = 0 ): Post {
-        return new Post( $post );
+    public function post(int $id = 0): Post
+    {
+        return new Post($id);
     }
 }

@@ -10,26 +10,23 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Title
  *
  * @since 0.1.0
  */
-final class Title {
+final class Title
+{
     /**
      * Page
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var GrottoPress\Jentil\Utilities\Page\Page $page Page.
      */
     private $page;
@@ -42,50 +39,52 @@ final class Title {
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Page $page ) {
+    public function __construct(Page $page)
+    {
         $this->page = $page;
     }
 
     /**
      * Title mod
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @return string Title mod.
      */
-    public function mod(): string {
+    public function mod(): string
+    {
         $page = $this->page->type();
 
         $specific = '';
         $more_specific = '';
 
-        foreach ( $page as $type ) {
-            if ( 'post_type_archive' == $type ) {
-                $specific = \get_query_var( 'post_type' );
-            } elseif ( 'tax' == $type ) {
-                $specific = \get_query_var( 'taxonomy' );
-            } elseif ( 'category' == $type ) {
+        foreach ($page as $type) {
+            if ('post_type_archive' == $type) {
+                $specific = \get_query_var('post_type');
+            } elseif ('tax' == $type) {
+                $specific = \get_query_var('taxonomy');
+            } elseif ('category' == $type) {
                 $specific = 'category';
-            } elseif ( 'tag' == $type ) {
+            } elseif ('tag' == $type) {
                 $specific = 'post_tag';
             }
 
-            if ( \is_array( $specific ) ) {
+            if (\is_array($specific)) {
                 $specific = $specific[0];
             }
 
-            if ( \is_array( $more_specific ) ) {
+            if (\is_array($more_specific)) {
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities()->mods()->title( [
+            $mod = $this->page->utilities()->mods()->title([
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific,
-            ] );
+            ]);
 
-            if ( $mod->name() ) {
+            if ($mod->name()) {
                 return $mod->get();
             }
         }

@@ -10,39 +10,37 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
-
 /**
  * Colophon
- * 
+ *
  * @since 0.1.0
  */
-final class Colophon {
+final class Colophon
+{
     /**
      * Utilities
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
      */
     private $utilities;
 
     /**
      * Constructor
-     * 
+     *
      * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Utilities $utilities ) {
+    public function __construct(Utilities $utilities)
+    {
         $this->utilities = $utilities;
     }
 
@@ -54,7 +52,8 @@ final class Colophon {
      *
      * @return string Colophon mod.
      */
-    public function mod(): string {
+    public function mod(): string
+    {
         return $this->utilities->mods()->colophon()->get();
     }
 }

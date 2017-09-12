@@ -10,16 +10,12 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
 
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
-
 use GrottoPress\Jentil\Jentil;
-use GrottoPress\WordPress\Metaboxes\Metaboxes as G_Metaboxes;
+use GrottoPress\WordPress\Metaboxes\Metaboxes as MetaboxesPackage;
 use \WP_Post;
 
 /**
@@ -27,13 +23,14 @@ use \WP_Post;
  *
  * @since 0.1.0
  */
-final class Metaboxes extends Setup {
+final class Metaboxes extends Setup
+{
     /**
      * Import traits
      *
      * @since 0.1.0 Added G_Metaboxes.
      */
-    use G_Metaboxes;
+    use MetaboxesPackage;
 
     /**
      * Run setup
@@ -41,27 +38,29 @@ final class Metaboxes extends Setup {
      * @since 0.1.0
      * @access public
      */
-    public function run() {
+    public function run()
+    {
         $this->setup();
     }
 
-	/**
-	 * Meta boxes.
+    /**
+     * Meta boxes.
      *
      * @param \WP_Post $post Post.
-	 * 
-	 * @since 0.1.0
-	 * @access protected
-	 *
-	 * @return array Metaboxes.
-	 */
-	protected function metaboxes( WP_Post $post ): array {
-	    $boxes = [];
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return array Metaboxes.
+     */
+    protected function metaboxes(WP_Post $post): array
+    {
+        $boxes = [];
 
-        if ( ( $layout = $this->layout_metabox( $post ) ) ) {
+        if (($layout = $this->layoutMetabox($post))) {
             $boxes[] = $layout;
         }
-	    
+
         /**
          * @filter jentil_metaboxes
          *
@@ -70,48 +69,46 @@ final class Metaboxes extends Setup {
          *
          * @since 0.1.0
          */
-	    return \apply_filters( 'jentil_metaboxes', $boxes, $post );
-	}
+        return \apply_filters('jentil_metaboxes', $boxes, $post);
+    }
 
     /**
      * Layout metabox
      *
      * @param \WP_Post $post Post.
-     * 
+     *
      * @since 0.1.0
      * @access private
      *
      * @return array Layout metabox.
      */
-    private function layout_metabox( WP_Post $post ): array {
-        if ( ! \is_post_type_hierarchical( $post->post_type ) ) {
+    private function layoutMetabox(WP_Post $post): array
+    {
+        if (!\is_post_type_hierarchical($post->post_type)) {
             return [];
         }
         
-        if (
-            ! ( $layouts = $this->jentil->utilities()->page()
-                ->layout()->layouts_ids_names() )
+        if (!($layouts = $this->jentil->utilities()->page()
+                ->layouts()->IDNames())
         ) {
             return [];
         }
 
-        if (
-            ! ( $mod = $this->jentil->utilities()->mods()->layout( [
-                    'context' => 'singular',
-                    'specific' => $post->post_type,
-                    'more_specific' => $post->ID,
-                ] ) )
-        ) {
+        if (!($mod = $this->jentil->utilities()->mods()->layout([
+            'context' => 'singular',
+            'specific' => $post->post_type,
+            'more_specific' => $post->ID,
+        ]))) {
             return [];
         }
 
-        if ( ! $mod->is_pagelike() ) {
+        if (!$mod->is_pagelike()) {
             return [];
         }
 
         return [
             'id' => 'jentil-layout',
-            'title' => \esc_html__( 'Layout', 'jentil' ),
+            'title' => \esc_html__('Layout', 'jentil'),
             'context' => 'side',
             'priority' => 'default',
             'callback' => '',
@@ -120,11 +117,17 @@ final class Metaboxes extends Setup {
                     'id' => $mod->name(),
                     'type' => 'select',
                     'choices' => $layouts,
-                    'label' => \esc_html__( 'Select layout', 'jentil' ),
+                    'label' => \esc_html__('Select layout', 'jentil'),
                     'label_pos' => 'before_field',
                 ],
             ],
-            'notes' => '<p>' . \sprintf( \__( 'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.', 'jentil' ), Jentil::DOCUMENTATION ) . '</p>',
+            'notes' => '<p>'.\sprintf(
+                \__(
+                    'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.',
+                    'jentil'
+                ),
+                Jentil::DOCUMENTATION
+            ).'</p>',
         ];
     }
 }

@@ -10,52 +10,42 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
+declare (strict_types = 1);
 
 /**
  * Load header template
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->load_partial( 'header' );
+\Jentil()->utilities()->loader()->loadPartial('header');
 
-if ( ! \Jentil()->utilities()->page()->is( 'singular' ) ) {
-	if ( ( $jentil_title = \Jentil()->utilities()->page()->title() ) ) { ?>
-		
-		<header class="page-header">
+if (!\Jentil()->utilities()->page()->is('singular')) {
+    if (($jentil_title = \Jentil()->utilities()->page()->title())) { ?>
+        <header class="page-header">
+    <?php }
 
-	<?php }
+    /**
+     * @action jentil_before_title
+     *
+     * @since 0.1.0
+     */
+    \do_action('jentil_before_title'); ?>
 
-	/**
-	 * @action jentil_before_title
-	 *
-	 * @since 0.1.0
-	 */
-	\do_action( 'jentil_before_title' ); ?>
+    <h1 class="page-title entry-title" itemprop="name mainEntityOfPage"><?php
+        echo $jentil_title;
+    ?></h1>
 
-	<h1 class="page-title entry-title" itemprop="name mainEntityOfPage"><?php
+    <?php
+    /**
+     * @action jentil_after_title
+     *
+     * @since 0.1.0
+     */
+    \do_action('jentil_after_title');
 
-		echo $jentil_title;
-		
-	?></h1>
-
-	<?php
-	/**
-	 * @action jentil_after_title
-	 *
-	 * @since 0.1.0
-	 */
-	\do_action( 'jentil_after_title' );
-
-	if ( $jentil_title ) { ?>
-	
-		</header>
-
-	<?php }
+    if ($jentil_title) { ?>
+        </header>
+    <?php }
 }
 
 /**
@@ -63,15 +53,14 @@ if ( ! \Jentil()->utilities()->page()->is( 'singular' ) ) {
  *
  * @since 0.1.0
  */
-\do_action( 'jentil_before_content' );
+\do_action('jentil_before_content');
 
-if (
-	\Jentil()->utilities()->page()->is( '404' )
-	|| ! ( $jentil_posts = \Jentil()->utilities()->page()->posts()->get() )
+if (\Jentil()->utilities()->page()->is('404')
+    || !($jentil_posts = \Jentil()->utilities()->page()->posts()->get())
 ) {
-	\Jentil()->utilities()->loader()->load_partial( 'none' );
+    \Jentil()->utilities()->loader()->loadPartial('none');
 } else {
-	echo $jentil_posts;
+    echo $jentil_posts;
 }
 
 /**
@@ -79,4 +68,4 @@ if (
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->load_partial( 'footer' );
+\Jentil()->utilities()->loader()->loadPartial('footer');

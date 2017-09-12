@@ -10,29 +10,26 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
 
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
-
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\WordPress\Page\Page as WPage;
+use GrottoPress\WordPress\Page\Page as PagePackage;
 
 /**
  * Page
  *
  * @since 0.1.0
  */
-final class Page extends WPage {
+final class Page extends PagePackage
+{
     /**
      * Utilities
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
      */
     private $utilities;
@@ -42,8 +39,8 @@ final class Page extends WPage {
      *
      * @since 0.1.0
      * @access protected
-     * 
-     * @var GrottoPress\Jentil\Utilities\Page\Title $title Title.
+     *
+     * @var Title $title Title.
      */
     protected $title = null;
     
@@ -52,56 +49,69 @@ final class Page extends WPage {
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Page\Layout $layout Layout.
+     *
+     * @var Layout $layout Layout.
      */
     private $layout = null;
+
+    /**
+     * Layouts
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @var Layouts $layouts Layouts.
+     */
+    private $layouts = null;
 
     /**
      * Posts
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var GrottoPress\Jentil\Utilities\Page\Posts $posts Page posts.
+     *
+     * @var Posts $posts Page posts.
      */
     private $posts = null;
 
     /**
      * Constructor
-     * 
+     *
      * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Utilities $utilities ) {
+    public function __construct(Utilities $utilities)
+    {
         $this->utilities = $utilities;
     }
 
     /**
      * Utilities
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
      */
-    public function utilities(): Utilities {
+    public function utilities(): Utilities
+    {
         return $this->utilities;
     }
 
     /**
      * Title
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
-     * @return GrottoPress\Jentil\Utilities\Page\Title Title.
+     *
+     * @return Title Title.
      */
-    public function title(): string {
-        if ( null === $this->title ) {
-            $this->title = new Title( $this );
+    public function title(): string
+    {
+        if (null === $this->title) {
+            $this->title = new Title($this);
         }
 
         return $this->title->mod();
@@ -109,31 +119,50 @@ final class Page extends WPage {
 
     /**
      * Layout
-     * 
+     *
      * @since 0.1.0
      * @access public
-     * 
-     * @return GrottoPress\Jentil\Utilities\Page\Layout Layout.
+     *
+     * @return Layout Layout.
      */
-    public function layout(): Layout {
-        if ( null === $this->layout ) {
-            $this->layout = new Layout( $this );
+    public function layout(): Layout
+    {
+        if (null === $this->layout) {
+            $this->layout = new Layout($this);
         }
 
         return $this->layout;
     }
 
     /**
-     * Posts
-     * 
+     * Layouts
+     *
      * @since 0.1.0
      * @access public
-     * 
-     * @return GrottoPress\Jentil\Utilities\Page\Posts Posts.
+     *
+     * @return Layouts Layouts.
      */
-    public function posts(): Posts {
-        if ( null === $this->posts ) {
-            $this->posts = new Posts( $this );
+    public function layouts(): Layouts
+    {
+        if (null === $this->layouts) {
+             $this->layouts = new Layouts($this);
+        }
+ 
+        return $this->layouts;
+    }
+
+    /**
+     * Posts
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return Posts Posts.
+     */
+    public function posts(): Posts
+    {
+        if (null === $this->posts) {
+            $this->posts = new Posts($this);
         }
 
         return $this->posts;

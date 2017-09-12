@@ -1,0 +1,53 @@
+////
+/// Basic styles
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Basic styles
+ */
+
+html {
+    @include box-sizing(border-box);
+    -webkit-text-size-adjust: none;
+    font-family: sans-serif;
+    font-size: 10px;
+    direction: ltr;
+    text-align: center;
+    overflow-x: hidden !important;
+}
+
+*,
+*::before,
+*::after {
+    @include box-sizing(inherit);
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: $font-size-small;
+    line-height: $line-height-normal;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-x: hidden !important;
+    @include word-wrap(break-word);
+    background-color: #fff;
+    color: #333;
+}
+
+/** Rebuild normalized styles */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+figure {
+    margin: 0;
+}

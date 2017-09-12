@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use \WP_Customize_Manager as WP_Customizer;
 
@@ -25,13 +21,14 @@ use \WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-abstract class Setting {
+abstract class Setting
+{
     /**
      * Setting name
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var string $name Setting name.
      */
     protected $name;
@@ -41,7 +38,7 @@ abstract class Setting {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var array $args Setting arguments.
      */
     protected $args = [];
@@ -51,23 +48,24 @@ abstract class Setting {
      *
      * @since 0.1.0
      * @access protected
-     * 
+     *
      * @var array $control Setting control.
      */
     protected $control = [];
 
     /**
      * Add setting
-     * 
+     *
      * @since 0.1.0
      * @access public
      */
-    public function add( WP_Customizer $wp_customize ) {
-        if ( ! $this->name ) {
+    public function add(WP_Customizer $wp_customize)
+    {
+        if (!$this->name) {
             return;
         }
 
-        $wp_customize->add_setting( $this->name, $this->args );
-        $wp_customize->add_control( $this->name, $this->control );
+        $wp_customize->add_setting($this->name, $this->args);
+        $wp_customize->add_control($this->name, $this->control);
     }
 }

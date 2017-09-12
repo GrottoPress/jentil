@@ -10,28 +10,26 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 /**
  * Breadcrumbs
  *
  * @since 0.1.0
  */
-final class Breadcrumbs extends Setup {
+final class Breadcrumbs extends Setup
+{
     /**
      * Run setup
      *
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'jentil_before_before_title', [ $this, 'render' ] );
+    public function run()
+    {
+        \add_action('jentil_before_before_title', [$this, 'render']);
     }
 
     /**
@@ -42,18 +40,18 @@ final class Breadcrumbs extends Setup {
      *
      * @action jentil_before_before_title
      */
-    public function render() {
-        if (
-            $this->jentil->utilities()->page()->is( 'front_page' )
-            && ! $this->jentil->utilities()->page()->is( 'paged' )
+    public function render()
+    {
+        $page = $this->jentil->utilities()->page();
+        
+        if ($page->is('front_page')
+            && !$page->is('paged')
         ) {
             return;
         }
 
-        $args = [
-            'before' => \esc_html__( 'Path: ', 'jentil' ),
-        ];
-
-        echo $this->jentil->utilities()->breadcrumbs( $args );
+        echo $this->jentil->utilities()->breadcrumbs([
+            'before' => \esc_html__('Path: ', 'jentil')
+        ])->render();
     }
 }

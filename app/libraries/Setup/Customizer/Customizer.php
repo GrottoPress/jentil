@@ -12,13 +12,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Setup\Setup;
 use GrottoPress\Jentil\Jentil;
@@ -29,13 +25,14 @@ use \WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-final class Customizer extends Setup {
+final class Customizer extends Setup
+{
     /**
      * Post types
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var array $post_types Post types.
      */
     private $post_types = null;
@@ -45,7 +42,7 @@ final class Customizer extends Setup {
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var array $archive_post_types All post types with archive.
      */
     private $archive_post_types = null;
@@ -55,7 +52,7 @@ final class Customizer extends Setup {
      *
      * @since 0.1.0
      * @access private
-     * 
+     *
      * @var array $taxonomies Taxonomies.
      */
     private $taxonomies = null;
@@ -66,9 +63,10 @@ final class Customizer extends Setup {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Jentil Jentil.
+     * @return Jentil Jentil.
      */
-    public function jentil(): Jentil {
+    public function jentil(): Jentil
+    {
         return $this->jentil;
     }
 
@@ -80,9 +78,10 @@ final class Customizer extends Setup {
      *
      * @return array Public post types.
      */
-    public function post_types(): array {
-        if ( null === $this->post_types ) {
-            $this->post_types = \get_post_types( [ 'public' => true ], 'objects' );
+    public function postTypes(): array
+    {
+        if (null === $this->post_types) {
+            $this->post_types = \get_post_types(['public' => true], 'objects');
         }
 
         return $this->post_types;
@@ -96,9 +95,10 @@ final class Customizer extends Setup {
      *
      * @return array Public taxonomies.
      */
-    public function taxonomies(): array {
-        if ( null === $this->taxonomies ) {
-            $this->taxonomies = \get_taxonomies( [ 'public' => true ], 'objects' );
+    public function taxonomies(): array
+    {
+        if (null === $this->taxonomies) {
+            $this->taxonomies = \get_taxonomies(['public' => true], 'objects');
         }
 
         return $this->taxonomies;
@@ -112,12 +112,13 @@ final class Customizer extends Setup {
      *
      * @return array All post types with archive.
      */
-    public function archive_post_types(): array {
-        if ( null === $this->archive_post_types ) {
-            if ( ( $post_types = $this->post_types() ) ) {
-                foreach ( $post_types as $post_type ) {
-                    if ( \get_post_type_archive_link( $post_type->name ) ) {
-                        $this->archive_post_types[ $post_type->name ] = $post_type;
+    public function archivePostTypes(): array
+    {
+        if (null === $this->archive_post_types) {
+            if (($post_types = $this->postTypes())) {
+                foreach ($post_types as $post_type) {
+                    if (\get_post_type_archive_link($post_type->name)) {
+                        $this->archive_post_types[$post_type->name] = $post_type;
                     }
                 }
             }
@@ -132,10 +133,11 @@ final class Customizer extends Setup {
      * @since 0.1.0
      * @access public
      */
-    public function run() {
-        \add_action( 'customize_register', [ $this, 'register' ] );
-        \add_action( 'customize_preview_init', [ $this, 'enqueue_js' ] );
-        \add_action( 'after_setup_theme', [ $this, 'enable_selective_refresh' ] );
+    public function run()
+    {
+        \add_action('customize_register', [$this, 'register']);
+        \add_action('customize_preview_init', [$this, 'enqueueJS']);
+        \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
 
     /**
@@ -148,40 +150,50 @@ final class Customizer extends Setup {
      * @since 0.1.0
      * @access public
      */
-    public function register( WP_Customizer $wp_customize ) {
-        $this->add_panels( $wp_customize );
-        $this->add_sections( $wp_customize );
+    public function register(WP_Customizer $wp_customize)
+    {
+        $this->addPanels($wp_customize);
+        $this->addSections($wp_customize);
     }
 
     /**
      * Enqueue JS
-     * 
+     *
      * @action customize_preview_init
-     * 
+     *
      * @since 0.1.0
      * @access public
      */
-    public function enqueue_js() {
-        \wp_enqueue_script( 'jentil-customizer',
-            $this->jentil->utilities()->filesystem()->scripts_dir( 'url', '/customize-preview.min.js' ),
-            [ 'jquery', 'customize-preview' ], '', true );
+    public function enqueueJS()
+    {
+        \wp_enqueue_script(
+            'jentil-customizer',
+            $this->jentil->utilities()->filesystem()->scriptsDir(
+                'url',
+                '/customize-preview.min.js'
+            ),
+            ['jquery', 'customize-preview'],
+            '',
+            true
+        );
     }
 
     /**
      * Selective refresh
-     * 
+     *
      * Add selective refresh support to elements
      * in the customizer.
-     * 
+     *
      * @see https://make.wordpress.org/core/2016/03/22/implementing-selective-refresh-support-for-widgets/
      *
      * @since 0.1.0
      * @access public
-     * 
+     *
      * @action after_setup_theme
      */
-    public function enable_selective_refresh() {
-        \add_theme_support( 'customize-selective-refresh-widgets' );
+    public function enableSelectiveRefresh()
+    {
+        \add_theme_support('customize-selective-refresh-widgets');
     }
 
     /**
@@ -195,10 +207,11 @@ final class Customizer extends Setup {
      *
      * @return array Panels.
      */
-    private function panels(): array {
+    private function panels(): array
+    {
         $panels = [];
 
-        $panels['posts'] = new Posts\Posts( $this );
+        $panels['posts'] = new Posts\Posts($this);
 
         return $panels;
     }
@@ -214,13 +227,13 @@ final class Customizer extends Setup {
      *
      * @return array Sections.
      */
-    private function sections(): array {
+    private function sections(): array
+    {
         $sections = [];
 
-        $sections['logo'] = new Logo\Logo( $this );
-        $sections['title'] = new Title\Title( $this );
-        $sections['layout'] = new Layout\Layout( $this );
-        $sections['colophon'] = new Colophon\Colophon( $this );
+        $sections['title'] = new Title\Title($this);
+        $sections['layout'] = new Layout\Layout($this);
+        $sections['colophon'] = new Colophon\Colophon($this);
 
         return $sections;
     }
@@ -233,13 +246,14 @@ final class Customizer extends Setup {
      * @since 0.1.0
      * @access private
      */
-    private function add_panels( WP_Customizer $wp_customize ) {
-        if ( ! ( $panels = $this->panels() ) ) {
+    private function addPanels(WP_Customizer $wp_customize)
+    {
+        if (!($panels = $this->panels())) {
             return;
         }
 
-        foreach ( $panels as $panel ) {
-            $panel->add( $wp_customize );
+        foreach ($panels as $panel) {
+            $panel->add($wp_customize);
         }
     }
 
@@ -251,13 +265,14 @@ final class Customizer extends Setup {
      * @since 0.1.0
      * @access private
      */
-    private function add_sections( WP_Customizer $wp_customize ) {
-        if ( ! ( $sections = $this->sections() ) ) {
+    private function addSections(WP_Customizer $wp_customize)
+    {
+        if (!($sections = $this->sections())) {
             return;
         }
 
-        foreach ( $sections as $section ) {
-            $section->add( $wp_customize );
+        foreach ($sections as $section) {
+            $section->add($wp_customize);
         }
     }
 }

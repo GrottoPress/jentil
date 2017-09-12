@@ -11,7 +11,9 @@
 
 @import 'variables';
 @import 'mixins';
-@import 'misc';
+@import 'base';
+@import 'embed';
+@import 'class';
 @import 'link';
 @import 'list';
 @import 'type';
@@ -22,8 +24,8 @@
 @import 'sidebar';
 @import 'footer';
 @import 'menu';
+@import 'breadcrumb';
 @import 'post';
 @import 'wp';
-@import 'logo';
 @import 'widget';
 @import 'comment';

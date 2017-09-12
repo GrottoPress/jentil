@@ -1,0 +1,63 @@
+////
+/// Presentational Classes
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Presentational Classes
+ */
+
+.screen-reader-text {
+    @include screen-reader;
+}
+
+.self-clear {
+    @include clearfix;
+}
+
+.p {
+    @include paragraph;
+}
+
+.full-screen {
+    @include full-screen;
+}
+
+/** Toggle elements */
+
+.screen-min-small,
+.screen-min-wide {
+    display: none;
+}
+
+@media (min-width: map-get($breakpoints, 'medium')) {
+    /**
+     * Toggle elements
+     */
+
+    .screen-max-small {
+        display: none;
+    }
+
+    .screen-min-small {
+        display: block;
+    }
+}
+
+@media (min-width: map-get($breakpoints, 'wide')) {
+    /**
+     * Toggle elements
+     */
+
+    .screen-max-wide {
+        display: none;
+    }
+
+    .screen-min-wide {
+        display: block;
+    }
+}

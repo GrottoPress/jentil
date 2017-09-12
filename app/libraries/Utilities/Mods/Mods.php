@@ -10,13 +10,9 @@
  * @author N Atta Kus Adusei
  */
 
-declare ( strict_types = 1 );
+declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Mods;
-
-if ( ! \defined( 'WPINC' ) ) {
-    die;
-}
 
 use GrottoPress\Jentil\Utilities\Utilities;
 
@@ -25,14 +21,15 @@ use GrottoPress\Jentil\Utilities\Utilities;
  *
  * @since 0.1.0
  */
-final class Mods {
+final class Mods
+{
     /**
      * Utilities
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var \GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
+     *
+     * @var Utilities $utilities Utilities.
      */
     private $utilities;
 
@@ -41,30 +38,21 @@ final class Mods {
      *
      * @since 0.1.0
      * @access private
-     * 
-     * @var \GrottoPress\Jentil\Utilites\Mods\Colophon $colophon Colophon.
+     *
+     * @var Colophon $colophon Colophon.
      */
     private $colophon;
 
     /**
-     * Logo
-     *
-     * @since 0.1.0
-     * @access private
-     * 
-     * @var \GrottoPress\Jentil\Utilites\Mods\Logo $logo Logo.
-     */
-    private $logo;
-
-    /**
      * Constructor
-     * 
-     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     *
+     * @param Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct( Utilities $utilities ) {
+    public function __construct(Utilities $utilities)
+    {
         $this->utilities = $utilities;
     }
 
@@ -74,26 +62,11 @@ final class Mods {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
+     * @return Utilities Utilities.
      */
-    public function utilities(): Utilities {
+    public function utilities(): Utilities
+    {
         return $this->utilities;
-    }
-
-    /**
-     * Logo
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return GrottoPress\Jentil\Utilities\Mods\Logo Logo.
-     */
-    public function logo(): Logo {
-        if ( null === $this->logo ) {
-            $this->logo = new Logo( $this );
-        }
-
-        return $this->logo;
     }
 
     /**
@@ -102,11 +75,12 @@ final class Mods {
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Mods\Colophon Colophon.
+     * @return Colophon Colophon.
      */
-    public function colophon(): Colophon {
-        if ( null === $this->colophon ) {
-            $this->colophon = new Colophon( $this );
+    public function colophon(): Colophon
+    {
+        if (null === $this->colophon) {
+            $this->colophon = new Colophon($this);
         }
 
         return $this->colophon;
@@ -114,44 +88,47 @@ final class Mods {
 
     /**
      * Layout Mod
-     * 
+     *
      * @param array $args Mod args.
-     * 
+     *
      * @since 0.1.0
      * @access public
      *
-     * @return \GrottoPress\Jentil\Utilities\Mods\Layout Layout mod.
+     * @return Layout Layout mod.
      */
-    public function layout( array $args = [] ): Layout {
-        return new Layout( $this, $args );
+    public function layout(array $args = []): Layout
+    {
+        return new Layout($this, $args);
     }
 
     /**
      * Posts Mod
-     * 
+     *
      * @param string $setting Setting to retrieve.
      * @param array $args Mod args.
-     * 
+     *
      * @since 0.1.0
      * @access public
      *
-     * @return \GrottoPress\Jentil\Utilities\Mods\Posts Posts mod.
+     * @return Posts Posts mod.
      */
-    public function posts( string $setting, array $args = [] ): Posts {
-        return new Posts( $this, $setting, $args );
+    public function posts(string $setting, array $args = []): Posts
+    {
+        return new Posts($this, $setting, $args);
     }
 
     /**
      * Title Mod
-     * 
+     *
      * @param array $args Mod args.
-     * 
+     *
      * @since 0.1.0
      * @access public
      *
-     * @return \GrottoPress\Jentil\Utilities\Mods\Title Title mod.
+     * @return Title Title mod.
      */
-    public function title( array $args = [] ): Title {
-        return new Title( $this, $args );
+    public function title(array $args = []): Title
+    {
+        return new Title($this, $args);
     }
 }
