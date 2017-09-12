@@ -91,7 +91,6 @@ final class Jentil
         $this->setup['html5'] = new Setup\HTML5($this);
         $this->setup['title'] = new Setup\Title($this);
         $this->setup['layout'] = new Setup\Layout($this);
-        $this->setup['logo'] = new Setup\Logo($this);
         $this->setup['archives'] = new Setup\Archives($this);
         $this->setup['search'] = new Setup\Search($this);
         $this->setup['menus'] = new Setup\Menus($this);

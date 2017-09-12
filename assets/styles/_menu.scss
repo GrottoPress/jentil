@@ -53,6 +53,7 @@
     .menu-toggle {
         text-align: center;
         @include paragraph;
+        margin-top: 0;
 
         a {
             display: block;
