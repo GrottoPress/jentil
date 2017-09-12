@@ -12,10 +12,6 @@
 
 declare (strict_types = 1);
 
-if (!\defined('WPINC')) {
-    die;
-}
-
 use GrottoPress\Jentil\Jentil;
 
 /**
