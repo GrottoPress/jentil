@@ -35,9 +35,9 @@ It integrates seamlessly with most WordPress page builders including:
 ### For the Developer:
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Cleanly-commented, object-oriented codebase.
-- Modern web development tools (npm, composer, gulp, sass).
+- Modern web development tools (npm, composer, gulp, sass, git etc).
 - Enforced a more organised directory structure in parent and child themes. Templates (eg: single.php, page.php etc) are loaded only from the `app/templates` directory, and partials (eg: sidebar.php, header.php etc) from the `app/partials` directory.
-- Coded with the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards) in mind.
+- Compliance with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ## Requirements
 
@@ -75,7 +75,7 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 
 ## Example Child Theme
 
-Link(s) to be posted soon...
+Link to be posted soon...
 
 ## Showcase
 
