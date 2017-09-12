@@ -13,21 +13,21 @@
  */
 
 /**
-* Autoloader
-*
-* @since 0.1.0
-*/
+ * Autoloader
+ *
+ * @since 0.1.0
+ */
 require get_template_directory().'/vendor/autoload.php';
 
 if (version_compare(JENTIL_REQUIRED_PHP, phpversion(), '<=')
     && version_compare(JENTIL_REQUIRED_WP, get_bloginfo('version'), '<=')) {
     /**
-    * Run this theme.
-    *
-    * @action after_setup_theme
-    *
-    * @since 0.1.0
-    */
+     * Run this theme.
+     *
+     * @action after_setup_theme
+     *
+     * @since 0.1.0
+     */
     \add_action('after_setup_theme', function () {
         \Jentil()->run();
     }, 0);
