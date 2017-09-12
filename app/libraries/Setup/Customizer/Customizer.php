@@ -231,7 +231,6 @@ final class Customizer extends Setup
     {
         $sections = [];
 
-        $sections['logo'] = new Logo\Logo($this);
         $sections['title'] = new Title\Title($this);
         $sections['layout'] = new Layout\Layout($this);
         $sections['colophon'] = new Colophon\Colophon($this);

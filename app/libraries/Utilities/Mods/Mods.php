@@ -44,16 +44,6 @@ final class Mods
     private $colophon;
 
     /**
-     * Logo
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Logo $logo Logo.
-     */
-    private $logo;
-
-    /**
      * Constructor
      *
      * @param Utilities $utilities Utilities.
@@ -77,23 +67,6 @@ final class Mods
     public function utilities(): Utilities
     {
         return $this->utilities;
-    }
-
-    /**
-     * Logo
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Logo Logo.
-     */
-    public function logo(): Logo
-    {
-        if (null === $this->logo) {
-            $this->logo = new Logo($this);
-        }
-
-        return $this->logo;
     }
 
     /**

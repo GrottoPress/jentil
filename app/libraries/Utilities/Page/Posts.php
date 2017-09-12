@@ -307,13 +307,8 @@ final class Posts
         }
 
         if ($this->page->is('search')) {
-            if (\function_exists('is_customize_preview')) { // If WP >= 4.0
-                $args['wp_query']['orderby']['all_time_views'] = 'DESC';
-                $args['wp_query']['orderby']['comment_count'] = 'DESC';
-            } else {
-                $args['wp_query']['orderby'] = 'all_time_views';
-                $args['wp_query']['order'] = 'DESC';
-            }
+            // $args['wp_query']['orderby']['all_time_views'] = 'DESC';
+            $args['wp_query']['orderby']['comment_count'] = 'DESC';
         }
 
         if (($taxonomy = \get_query_var('taxonomy'))) {

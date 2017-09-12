@@ -75,16 +75,6 @@ final class Utilities
     private $colophon = null;
 
     /**
-     * Logo
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Logo $logo Logo.
-     */
-    private $logo = null;
-
-    /**
      * File System
      *
      * @since 0.1.0
@@ -189,23 +179,6 @@ final class Utilities
         }
 
         return $this->colophon;
-    }
-
-    /**
-     * Logo
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Logo Logo.
-     */
-    public function logo(): Logo
-    {
-        if (null === $this->logo) {
-            $this->logo = new Logo($this);
-        }
-
-        return $this->logo;
     }
 
     /**

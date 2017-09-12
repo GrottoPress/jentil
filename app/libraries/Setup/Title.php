@@ -30,7 +30,6 @@ final class Title extends Setup
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'addSupport']);
-        \add_action('wp_head', [$this, 'render']);
     }
 
     /**
@@ -47,34 +46,6 @@ final class Title extends Setup
      */
     public function addSupport()
     {
-        if (!\function_exists('wp_get_document_title')) {
-            return;
-        }
-    
         \add_theme_support('title-tag');
-    }
-
-    /**
-     * Title tag
-     *
-     * Add backwards compatibility for \wp_title().
-     *
-     * @deprecated WordPress 4.4
-     * @see https://make.wordpress.org/core/2015/10/20/document-title-in-4-4/
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @action wp_head
-     */
-    public function render()
-    {
-        if (\function_exists('wp_get_document_title')) {
-            return;
-        }
-    
-        echo '<title itemprop="name">';
-        \wp_title();
-        echo '</title>';
     }
 }
