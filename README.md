@@ -21,7 +21,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ### For the End User:
 - Powerful posts/content display options via the customizer.
-- Six (6) layout options 
+- Six (6) layout options  
  * Content
  * Content / Sidebar
  * Sidbar / Content
