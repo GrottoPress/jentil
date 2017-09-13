@@ -102,7 +102,7 @@ final class Metaboxes extends Setup
             return [];
         }
 
-        if (!$mod->is_pagelike()) {
+        if (!$mod->isPagelike()) {
             return [];
         }
 
