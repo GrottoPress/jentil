@@ -439,15 +439,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-breadcrumbs.git",
-                "reference": "96e385cc126c43e1e6e6096f0a05f958e35c4959"
+                "reference": "07dabb6060b8a69b1f22fc280f5f785d656de9a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/96e385cc126c43e1e6e6096f0a05f958e35c4959",
-                "reference": "96e385cc126c43e1e6e6096f0a05f958e35c4959",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/07dabb6060b8a69b1f22fc280f5f785d656de9a8",
+                "reference": "07dabb6060b8a69b1f22fc280f5f785d656de9a8",
                 "shasum": ""
             },
             "require": {
+                "danielstjules/stringy": "^3.1",
                 "grottopress/wordpress-page": "^0.2",
                 "php": ">=7.0"
             },
@@ -481,7 +482,7 @@
                 "breadcrumbs",
                 "wordpress"
             ],
-            "time": "2017-09-05 01:04:09"
+            "time": "2017-09-13 16:38:27"
         },
         {
             "name": "grottopress/wordpress-field",
