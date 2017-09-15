@@ -68,9 +68,7 @@ final class Scripts extends Setup
      */
     public function addBodyClasses(array $classes): array
     {
-        if (!\in_array('no-js', $classes)) {
-            $classes[] = 'no-js';
-        }
+        $classes[] = 'no-js';
 
         return $classes;
     }
