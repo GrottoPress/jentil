@@ -101,6 +101,7 @@ final class Jentil
         $this->setup['colophon'] = new Setup\Colophon($this);
         $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
         $this->setup['metaboxes'] = new Setup\Metaboxes($this);
+        $this->setup['mobile'] = new Setup\Mobile($this);
     }
 
     /**
