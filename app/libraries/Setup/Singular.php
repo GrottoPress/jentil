@@ -67,7 +67,9 @@ final class Singular extends Setup
 
                 while ($parent_id) {
                     $page = \get_post($parent_id);
-                    $classes[] = \sanitize_title($post->post_type.'-parent-'.$page->ID);
+                    $classes[] = \sanitize_title(
+                        $post->post_type.'-parent-'.$page->ID
+                    );
                     $parent_id = $page->post_parent;
                 }
             }
@@ -80,9 +82,12 @@ final class Singular extends Setup
         }
 
         if (\post_type_supports($post->post_type, 'comments')) {
-            $classes[] = \get_option('show_avatars') ? 'show-avatars' : 'hide-avatars';
-            $classes[] = \get_option('thread_comments') ? 'threaded-comments' : 'unthreaded-comments';
-            $classes[] = \comments_open($post->ID) ? 'comments-open' : 'comments-closed';
+            $classes[] = \get_option('show_avatars')
+                ? 'show-avatars' : 'hide-avatars';
+            $classes[] = \get_option('thread_comments')
+                ? 'threaded-comments' : 'unthreaded-comments';
+            $classes[] = \comments_open($post->ID)
+                ? 'comments-open' : 'comments-closed';
         }
 
         return $classes;

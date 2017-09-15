@@ -44,9 +44,7 @@ final class Breadcrumbs extends Setup
     {
         $page = $this->jentil->utilities()->page();
         
-        if ($page->is('front_page')
-            && !$page->is('paged')
-        ) {
+        if ($page->is('front_page') && !$page->is('paged')) {
             return;
         }
 
