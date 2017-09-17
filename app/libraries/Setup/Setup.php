@@ -47,6 +47,19 @@ abstract class Setup
     }
 
     /**
+     * Jentil
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return Jentil Jentil.
+     */
+    public function jentil(): Jentil
+    {
+        return $this->jentil;
+    }
+
+    /**
      * Run setup
      *
      * @since 0.1.0
