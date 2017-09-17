@@ -111,7 +111,7 @@ abstract class Section extends C_Section
         $settings['image_margin'] = new Settings\ImageMargin($this);
         $settings['text_offset'] = new Settings\TextOffset($this);
         $settings['excerpt'] = new Settings\Excerpt($this);
-        $settings['more_link'] = new Settings\MoreLink($this);
+        $settings['more_link'] = new Settings\MoreText($this);
         $settings['after_content'] = new Settings\AfterContent($this);
         $settings['after_content_separator'] =
             new Settings\AfterContentSeparator($this);

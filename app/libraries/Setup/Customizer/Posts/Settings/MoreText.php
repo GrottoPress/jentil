@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
  *
  * @since 0.1.0
  */
-final class MoreLink extends Setting
+final class MoreText extends Setting
 {
     /**
      * Constructor
@@ -35,7 +35,7 @@ final class MoreLink extends Setting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('more_link');
+        $mod = $this->mod('more_text');
         
         $this->name = $mod->name();
         
