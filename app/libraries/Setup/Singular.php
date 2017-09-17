@@ -38,11 +38,11 @@ final class Singular extends Setup
         \add_action('jentil_before_content', [$this, 'renderAttachment']);
         \add_filter(
             'jentil_singular_after_title',
-            [$this, 'byline'],
+            [$this, 'renderByline'],
             10,
             3
         );
-        \add_action('jentil_after_title', [$this, 'renderByline']);
+        \add_action('jentil_after_title', [$this, 'byline']);
     }
 
     /**
@@ -169,17 +169,16 @@ final class Singular extends Setup
      *
      * @filter jentil_singular_after_title
      */
-    public function byline(string $output, int $id, string $separator): string
-    {
+    public function renderByline(
+        string $output,
+        int $id,
+        string $separator
+    ): string {
         if (!$this->jentil->utilities()->page()->is('singular', 'post')) {
             return $output;
         }
         
-        $output = $this->getByline($id);
-        
-        $output .= '<div class="self-clear"></div>';
-
-        return $output;
+        return $this->getByline($id).'<div class="self-clear"></div>';
     }
 
     /**
@@ -193,21 +192,17 @@ final class Singular extends Setup
      *
      * @action jentil_after_title
      */
-    public function renderByline()
+    public function byline()
     {
         if (!$this->jentil->utilities()->page()->is('singular', 'post')) {
-            return '';
+            return;
         }
 
         global $post;
 
-        $output = '<aside class="entry-meta after-title self-clear">';
-
-        $output .= $this->getByline($post->ID);
-
-        $output .= '</aside>';
-
-        echo $output;
+        echo '<aside class="entry-meta after-title self-clear">';
+        echo $this->getByline($post->ID);
+        echo '</aside>';
     }
 
     /**
@@ -224,15 +219,21 @@ final class Singular extends Setup
 
         $output = '';
 
-        if (($avatar = $jentil_post->info('avatar__40', '')->list())) {
+        if (($avatar = $jentil_post->info([
+            'types' => ['avatar__40']
+        ])->list())) {
             $output .= $avatar;
         }
 
-        if (($author = $jentil_post->info('author_link', '')->list())) {
+        if (($author = $jentil_post->info([
+            'types' => ['author_name']
+        ])->list())) {
             $output .= '<p>'.$author.'</p>';
         }
 
-        $output .= '<p>'.$jentil_post->info('published_date, published_time, comments_link')->list().'</p>';
+        $output .= '<p>'.$jentil_post->info([
+            'types' => ['published_date', 'published_time', 'comments_link']
+        ])->list().'</p>';
 
         return $output;
     }

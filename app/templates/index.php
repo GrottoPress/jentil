@@ -56,7 +56,7 @@ if (!\Jentil()->utilities()->page()->is('singular')) {
 \do_action('jentil_before_content');
 
 if (\Jentil()->utilities()->page()->is('404')
-    || !($jentil_posts = \Jentil()->utilities()->page()->posts()->get())
+    || !($jentil_posts = \Jentil()->utilities()->page()->posts()->render())
 ) {
     \Jentil()->utilities()->loader()->loadPartial('none');
 } else {
