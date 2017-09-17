@@ -57,19 +57,6 @@ final class Mods
     }
 
     /**
-     * Utilities
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Utilities Utilities.
-     */
-    public function utilities(): Utilities
-    {
-        return $this->utilities;
-    }
-
-    /**
      * Colophon
      *
      * @since 0.1.0
