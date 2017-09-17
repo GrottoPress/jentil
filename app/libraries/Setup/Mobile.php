@@ -48,6 +48,10 @@ final class Mobile extends Setup
 
         if ($detector->isMobile()) {
             $classes[] = 'mobile';
+        } else {
+            $classes[] = 'desktop';
+
+            return $classes;
         }
 
         if ($detector->isTablet()) {
