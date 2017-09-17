@@ -58,7 +58,9 @@ final class Posts extends Panel
         $sections['date'] = new Date($this);
         $sections['search'] = new Search($this);
 
-        if (($taxonomies = $this->customizer->taxonomies())) {
+        if (($taxonomies = $this->customizer->jentil()->utilities()
+            ->page()->posts()->taxonomies())
+        ) {
             foreach ($taxonomies as $taxonomy) {
                 $sections['taxonomy_'.$taxonomy->name] = new Taxonomy(
                     $this,
@@ -67,7 +69,9 @@ final class Posts extends Panel
             }
         }
 
-        if (($post_types = $this->customizer->archivePostTypes())) {
+        if (($post_types = $this->customizer->jentil()->utilities()
+            ->page()->posts()->archivePostTypes())
+        ) {
             foreach ($post_types as $post_type) {
                 $sections['sticky_'.$post_type->name] = new Sticky(
                     $this,

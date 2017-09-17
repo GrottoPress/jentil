@@ -61,21 +61,27 @@ final class Layout extends Section
         $settings['error_404'] = new Settings\Error404($this);
         $settings['search'] = new Settings\Search($this);
 
-        if (($taxonomies = $this->customizer->taxonomies())) {
+        if (($taxonomies = $this->customizer->jentil()->utilities()
+            ->page()->posts()->taxonomies())
+        ) {
             foreach ($taxonomies as $taxonomy) {
                 $settings['taxonomy_'.$taxonomy->name] =
                     new Settings\Taxonomy($this, $taxonomy);
             }
         }
 
-        if (($post_types = $this->customizer->archivePostTypes())) {
+        if (($post_types = $this->customizer->jentil()->utilities()
+            ->page()->posts()->archivePostTypes())
+        ) {
             foreach ($post_types as $post_type) {
                 $settings['post_type_'.$post_type->name] =
                     new Settings\PostType($this, $post_type);
             }
         }
 
-        if (($post_types = $this->customizer->postTypes())) {
+        if (($post_types = $this->customizer->jentil()->utilities()
+            ->page()->posts()->postTypes())
+        ) {
             foreach ($post_types as $post_type) {
                 if (!$this->customizer->jentil()->utilities()->mods() ->layout([
                     'context' => 'singular',

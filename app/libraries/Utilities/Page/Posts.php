@@ -30,46 +30,6 @@ final class Posts
      * @var GrottoPress\Jentil\Utilities\Page\Page $page Page.
      */
     private $page;
-
-    /**
-     * Sticky posts enabled?
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var boolean $sticky_enabled Is sticky posts enabled?
-     */
-    private $sticky_enabled;
-
-    /**
-     * Sticky posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var array $sticky_posts Sticky posts IDs.
-     */
-    private $sticky_posts;
-
-    /**
-     * Post types
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var array $post_types Post type objects.
-     */
-    private $post_types;
-
-    /**
-     * Archive Post types
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var array $archive_post_types All post types with archive.
-     */
-    private $archive_post_types;
     
     /**
      * Constructor
@@ -82,10 +42,6 @@ final class Posts
     public function __construct(Page $page)
     {
         $this->page = $page;
-
-        $this->sticky_posts = $this->stickyPosts();
-        $this->post_types = $this->postTypes();
-        $this->archive_post_types = $this->archivePostTypes();
     }
 
     /**
@@ -96,87 +52,23 @@ final class Posts
      *
      * @return string Posts.
      */
-    public function get(): string
+    public function render(): string
     {
         $out = '';
 
         if (!$this->page->is('singular')
             && !$this->page->is('paged')
-            && ($this->sticky_enabled = $this->stickyEnabled())
-            && $this->sticky_posts
+            && ($this->stickyEnabled())
+            && $this->stickyPosts()
         ) {
             $out .= $this->page->utilities()->posts(
                 $this->stickyArgs()
-            )->run();
+            )->render();
         }
 
-        $out .= $this->page->utilities()->posts($this->args())->run();
+        $out .= $this->page->utilities()->posts($this->args())->render();
 
         return $out;
-    }
-
-    /**
-     * Get sticky posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Sticky posts
-     */
-    private function stickyPosts(): array
-    {
-        return \array_map('absint', \get_option('sticky_posts'));
-    }
-
-    /**
-     * Post types
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Post types
-     */
-    private function postTypes(): array
-    {
-        return \get_post_types(['public' => true], 'objects');
-    }
-
-    /**
-     * Archive Post types
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array All post types with archive.
-     */
-    private function archivePostTypes(): array
-    {
-        $archive_post_types = [];
-
-        if (!$this->post_types) {
-            return $archive_post_types;
-        }
-
-        foreach ($this->post_types as $post_type) {
-            if ($post_type->has_archive || 'post' == $post_type->name) {
-                $archive_post_types[] = $post_type->name;
-            }
-        }
-
-        return $archive_post_types;
-    }
-
-    /**
-     * Sticky posts enabled?
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return bool Do we have sticky posts enabled?
-     */
-    private function stickyEnabled(): bool
-    {
-        return (bool) $this->mod('sticky_posts');
     }
 
     /**
@@ -222,9 +114,9 @@ final class Posts
                 'position' => 'top',
                 'tag' => 'h1',
                 'link' => 0,
-            ],
-            'after_title' => [
-                'info' => 'jentil_singular_after_title',
+                'after' => [
+                    'types' => ['jentil_singular_after_title'],
+                ],
             ],
             'wp_query' => [
                 'posts_per_page' => 1,
@@ -257,26 +149,18 @@ final class Posts
                 'size' => $this->mod('image'),
                 'align' => $this->mod('image_alignment'),
             ],
-            'after_title' => [
-                'info' => $this->mod('after_title'),
-                'sep' => $this->mod('after_title_separator'),
-            ],
-            'after_content' => [
-                'info' => $this->mod('after_content'),
-                'sep' => $this->mod('after_content_separator'),
-            ],
-            'before_title' => [
-                'info' => $this->mod('before_title'),
-                'sep' => $this->mod('before_title_separator'),
-            ],
             'excerpt' => [
                 'length' => $this->mod('excerpt'),
-                'paginate' => 0,
-                'more_text' => $this->mod('more_link'),
+                'paginate' => false,
+                'more_text' => $this->mod('more_text'),
+                'after' => [
+                    'types' => \explode(',', $this->mod('after_content')),
+                    'separator' => $this->mod('after_content_separator'),
+                ],
             ],
             'pagination' => [
-                'type' => $this->mod('pagination'),
-                'max' => $this->mod('pagination_maximum'),
+                // 'type' => $this->mod('pagination'),
+                // 'max' => $this->mod('pagination_maximum'),
                 'key' => $wp_rewrite->pagination_base,
                 'position' => $this->mod('pagination_position'),
                 'prev_text' => $this->mod('pagination_previous_label'),
@@ -286,12 +170,22 @@ final class Posts
                 'length' => $this->mod('title_words'),
                 'position' => $this->mod('title_position'),
                 'tag' => 'h2',
-                'link' => 1,
+                'link' => true,
+                'before' => [
+                    'types' => \explode(',', $this->mod('before_title')),
+                    'separator' => $this->mod('before_title_separator'),
+                ],
+                'after' => [
+                    'types' => \explode(',', $this->mod('after_title')),
+                    'separator' => $this->mod('after_title_separator'),
+                ],
             ],
             'wp_query' => [
                 'posts_per_page' => $this->mod('number'),
                 's' => \get_search_query(),
-                'post__not_in' => ($this->sticky_enabled ? $this->sticky_posts : null),
+                'post__not_in' => (
+                    $this->stickyEnabled() ? $this->stickyPosts() : null
+                ),
                 'post_status' => 'publish',
                 'ignore_sticky_posts' => 1,
             ],
@@ -303,7 +197,9 @@ final class Posts
         ) {
             $args['wp_query']['post_type'] = $post_type;
         } else {
-            $args['wp_query']['post_type'] = $this->archive_post_types;
+            $args['wp_query']['post_type'] = \array_keys(
+                $this->archivePostTypes()
+            );
         }
 
         if ($this->page->is('search')) {
@@ -398,34 +294,34 @@ final class Posts
                 'size' => $this->stickyMod('image'),
                 'align' => $this->stickyMod('image_alignment'),
             ],
-            'after_title' => [
-                'info' => $this->stickyMod('after_title'),
-                'sep' => $this->stickyMod('after_title_separator'),
-            ],
-            'after_content' => [
-                'info' => $this->stickyMod('after_content'),
-                'sep' => $this->stickyMod('after_content_separator'),
-            ],
-            'before_title' => [
-                'info' => $this->stickyMod('before_title'),
-                'sep' => $this->stickyMod('before_title_separator'),
-            ],
             'excerpt' => [
                 'length' => $this->stickyMod('excerpt'),
-                'paginate' => 0,
-                'more_text' => $this->stickyMod('more_link'),
+                'paginate' => false,
+                'more_text' => $this->stickyMod('more_text'),
+                'after' => [
+                    'types' => \explode(',', $this->stickyMod('after_content')),
+                    'separator' => $this->stickyMod('after_content_separator'),
+                ],
             ],
             'title' => [
                 'length' => $this->stickyMod('title_words'),
                 'position' => $this->stickyMod('title_position'),
                 'tag' => 'h2',
-                'link' => 1,
+                'link' => true,
+                'before' => [
+                    'types' => \explode(',', $this->stickyMod('before_title')),
+                    'separator' => $this->stickyMod('before_title_separator'),
+                ],
+                'after' => [
+                    'types' => \explode(',', $this->stickyMod('after_title')),
+                    'separator' => $this->stickyMod('after_title_separator'),
+                ],
             ],
             'wp_query' => [
-                'posts_per_page'        => -1,
-                'post__in'              => $this->sticky_posts,
-                'post_status'           => 'publish',
-                'ignore_sticky_posts'   => 1,
+                'posts_per_page' => -1,
+                'post__in' => $this->stickyPosts(),
+                'post_status' => 'publish',
+                'ignore_sticky_posts' => 1,
             ],
         ];
 
@@ -434,9 +330,9 @@ final class Posts
         if (($taxonomy = \get_query_var('taxonomy'))) {
             $args['wp_query']['tax_query'] = [
                 [
-                    'taxonomy'      => $taxonomy,
-                    'terms'         => \get_query_var('term_id'),
-                    'field'         => 'term_id',
+                    'taxonomy' => $taxonomy,
+                    'terms' => \get_query_var('term_id'),
+                    'field' => 'term_id',
                 ],
             ];
         }
@@ -452,19 +348,19 @@ final class Posts
         }
 
         if (($cat = \get_query_var('cat'))) {
-            $args['wp_query']['cat']    = $cat;
+            $args['wp_query']['cat'] = $cat;
         }
 
         if (($cat_in = \get_query_var('category__in'))) {
-            $args['wp_query']['category__in']   = $cat_in;
+            $args['wp_query']['category__in'] = $cat_in;
         }
 
         if (($cat_not_in = \get_query_var('category__not_in'))) {
-            $args['wp_query']['category__not_in']   = $cat_not_in;
+            $args['wp_query']['category__not_in'] = $cat_not_in;
         }
 
         if (($cat_and = \get_query_var('category__and'))) {
-            $args['wp_query']['category__and']  = $cat_and;
+            $args['wp_query']['category__and'] = $cat_and;
         }
 
         if (($tag_id = \get_query_var('tag_id'))) {
@@ -472,15 +368,15 @@ final class Posts
         }
 
         if (($tag_in = \get_query_var('tag__in'))) {
-            $args['wp_query']['tag__in']    = $tag_in;
+            $args['wp_query']['tag__in'] = $tag_in;
         }
 
         if (($tag_not_in = \get_query_var('tag__not_in'))) {
-            $args['wp_query']['tag__not_in']    = $tag_not_in;
+            $args['wp_query']['tag__not_in'] = $tag_not_in;
         }
 
         if (($tag_and = \get_query_var('tag__and'))) {
-            $args['wp_query']['tag__and']   = $tag_and;
+            $args['wp_query']['tag__and'] = $tag_and;
         }
 
         if (($author_id = \get_query_var('author'))) {
@@ -496,6 +392,85 @@ final class Posts
         }
 
         return $args;
+    }
+
+    /**
+     * Get sticky posts
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return array Sticky posts
+     */
+    public function stickyPosts(): array
+    {
+        return \get_option('sticky_posts');
+    }
+
+    /**
+     * Post types
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return array Public post types.
+     */
+    public function postTypes(): array
+    {
+        return \get_post_types(['public' => true], 'objects');
+    }
+
+    /**
+     * Archive Post types
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return array Public post types with archive.
+     */
+    public function archivePostTypes(): array
+    {
+        $archive_post_types = [];
+
+        if (!($post_types = $this->postTypes())) {
+            return $archive_post_types;
+        }
+
+        foreach ($post_types as $post_type) {
+            if (!\get_post_type_archive_link($post_type->name)) {
+                continue;
+            }
+
+            $archive_post_types[$post_type->name] = $post_type;
+        }
+
+        return $archive_post_types;
+    }
+
+    /**
+     * Taxonomies
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return array Public taxonomies.
+     */
+    public function taxonomies(): array
+    {
+        return \get_taxonomies(['public' => true], 'objects');
+    }
+
+    /**
+     * Sticky posts enabled?
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return bool Do we have sticky posts enabled?
+     */
+    private function stickyEnabled(): bool
+    {
+        return (bool)$this->mod('sticky_posts');
     }
 
     /**
@@ -541,7 +516,10 @@ final class Posts
     private function mod(string $setting, array $args = [])
     {
         if (!empty($args['context'])) {
-            return $this->page->utilities()->mods()->posts($setting, $args)->get();
+            return $this->page->utilities()->mods()->posts(
+                $setting,
+                $args
+            )->get();
         }
 
         $page = $this->page->type();
