@@ -162,13 +162,13 @@ final class Posts
                 // 'type' => $this->mod('pagination'),
                 // 'max' => $this->mod('pagination_maximum'),
                 'key' => $wp_rewrite->pagination_base,
-                'position' => $this->mod('pagination_position'),
+                'position' => \explode(',', $this->mod('pagination_position')),
                 'prev_text' => $this->mod('pagination_previous_label'),
                 'next_text' => $this->mod('pagination_next_label'),
             ],
             'title' => [
                 'length' => $this->mod('title_words'),
-                'position' => $this->mod('title_position'),
+                // 'position' => $this->mod('title_position'),// multi
                 'tag' => 'h2',
                 'link' => true,
                 'before' => [
@@ -395,16 +395,36 @@ final class Posts
     }
 
     /**
-     * Get sticky posts
+     * Get sticky posts for post type
+     *
+     * @param string Post type name.
      *
      * @since 0.1.0
      * @access public
      *
-     * @return array Sticky posts
+     * @return array Sticky posts for post type.
      */
-    public function stickyPosts(): array
+    public function stickyPosts(string $post_type = ''): array
     {
-        return \get_option('sticky_posts');
+        $sticky_posts = \get_option('sticky_posts');
+
+        if (!$sticky_posts) {
+            return $sticky_posts;
+        }
+        
+        if (!$post_type) {
+            return $sticky_posts;
+        }
+
+        $type_sticky_posts = [];
+
+        foreach ($sticky_posts as $post) {
+            if (\get_post_type($post) == $post_type) {
+                $type_sticky_posts[] = $post;
+            }
+        }
+
+        return $type_sticky_posts;
     }
 
     /**
