@@ -37,9 +37,9 @@ final class PaginationPosition extends Setting
 
         $mod = $this->mod('pagination_position');
 
-        $this->name = $mod->get('name');
+        $this->name = $mod->name();
         
-        $this->args['default'] = $mod->get('default');
+        $this->args['default'] = $mod->default();
         $this->args['sanitize_callback'] = 'sanitize_key';
 
         $this->control['label'] = \esc_html__('Pagination position', 'jentil');
@@ -48,7 +48,10 @@ final class PaginationPosition extends Setting
             'none' => \esc_html__('None', 'jentil'),
             'top' => \esc_html__('Top', 'jentil'),
             'bottom' => \esc_html__('Bottom', 'jentil'),
-            'top_bottom' => \esc_html__('Top and bottom', 'jentil'),
+            'top,bottom' => \esc_html__('Top and bottom', 'jentil'),
+        ];
+        $this->control['input_attrs'] = [ // not applicable. Find another way?
+            'multiple' => 'multiple',
         ];
     }
 }

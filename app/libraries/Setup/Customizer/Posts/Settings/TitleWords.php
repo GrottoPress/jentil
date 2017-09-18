@@ -37,9 +37,9 @@ final class TitleWords extends Setting
 
         $mod = $this->mod('title_words');
         
-        $this->name = $mod->get('name');
+        $this->name = $mod->name();
         
-        $this->args['default'] = $mod->get('default');
+        $this->args['default'] = $mod->default();
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };

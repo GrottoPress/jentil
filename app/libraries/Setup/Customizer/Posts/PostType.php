@@ -52,13 +52,15 @@ final class PostType extends Section
 
         $this->name = \sanitize_key($this->post_type->name.'_post_type_posts');
 
+        $this->mod_args['specific'] = $this->post_type->name;
         $this->mod_args['context'] = (
             'post' == $this->post_type->name ? 'home' : 'post_type_archive'
         );
-        
-        $this->mod_args['specific'] = $this->post_type->name;
 
-        $this->args['title'] = \sprintf(\esc_html__('%s Archive', 'jentil'), $this->post_type->labels->name);
+        $this->args['title'] = \sprintf(
+            \esc_html__('%s Archive', 'jentil'),
+            $this->post_type->labels->name
+        );
         $this->args['active_callback'] = function (): bool {
             $page = $this->posts->customizer()->jentil()->utilities()->page();
 
@@ -80,48 +82,14 @@ final class PostType extends Section
      */
     protected function settings(): array
     {
-        $settings = [];
+        $settings = parent::settings();
 
-        if ($this->hasSticky()) {
-            $settings['sticky_posts'] = new Settings\StickyPosts($this);
+        if (!$this->posts->customizer()->jentil()->utilities()
+            ->page()->posts()->stickyPosts($this->post_type->name)
+        ) {
+            unset($settings['sticky_posts']);
         }
-
-        $settings['number'] = new Settings\Number($this);
-
-        $settings = \array_merge($settings, parent::settings());
-
-        $settings['pagination'] = new Settings\Pagination($this);
-        $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
-        $settings['pagination_position'] =
-            new Settings\PaginationPosition($this);
-        $settings['pagination_previous_label'] =
-            new Settings\PaginationPreviousLabel($this);
-        $settings['pagination_next_label'] =
-            new Settings\PaginationNextLabel($this);
 
         return $settings;
-    }
-
-    /**
-     * Does post type have sticky posts?
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return bool
-     */
-    private function hasSticky(): bool
-    {
-        $sticky_posts = \get_option('sticky_posts');
-
-        if ($sticky_posts) {
-            foreach ($sticky_posts as $post) {
-                if (\get_post_type($post) == $this->post_type->name) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 }

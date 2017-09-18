@@ -95,7 +95,9 @@ abstract class Section extends C_Section
     {
         $settings = [];
 
+        $settings['sticky_posts'] = new Settings\StickyPosts($this);
         $settings['wrap_class'] = new Settings\WrapClass($this);
+        $settings['number'] = new Settings\Number($this);
         // $settings['wrap_tag'] = new Settings\WrapTag($this);
         // $settings['layout'] = new Settings\Layout($this);
         $settings['before_title'] = new Settings\BeforeTitle($this);
@@ -115,6 +117,14 @@ abstract class Section extends C_Section
         $settings['after_content'] = new Settings\AfterContent($this);
         $settings['after_content_separator'] =
             new Settings\AfterContentSeparator($this);
+        // $settings['pagination'] = new Settings\Pagination($this);
+        // $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
+        $settings['pagination_position'] =
+            new Settings\PaginationPosition($this);
+        $settings['pagination_previous_label'] =
+            new Settings\PaginationPreviousLabel($this);
+        $settings['pagination_next_label'] =
+            new Settings\PaginationNextLabel($this);
         
         return $settings;
     }

@@ -73,7 +73,7 @@ final class Posts extends Panel
             ->page()->posts()->archivePostTypes())
         ) {
             foreach ($post_types as $post_type) {
-                $sections['sticky_'.$post_type->name] = new Sticky(
+                $sections['sticky_'.$post_type->name] = new StickyPosts(
                     $this,
                     $post_type
                 );
