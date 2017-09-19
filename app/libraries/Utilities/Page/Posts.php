@@ -168,7 +168,7 @@ final class Posts
             ],
             'title' => [
                 'length' => $this->mod('title_words'),
-                // 'position' => $this->mod('title_position'),// multi
+                'position' => $this->mod('title_position'),
                 'tag' => 'h2',
                 'link' => true,
                 'before' => [
