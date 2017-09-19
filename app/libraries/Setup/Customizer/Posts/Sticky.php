@@ -21,7 +21,7 @@ use \WP_Post_Type;
  *
  * @since 0.1.0
  */
-final class StickyPosts extends Section
+final class Sticky extends Section
 {
     /**
      * Constructor
