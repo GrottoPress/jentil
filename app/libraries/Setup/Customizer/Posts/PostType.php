@@ -85,7 +85,7 @@ final class PostType extends Section
         $settings = parent::settings();
 
         if (!$this->posts->customizer()->jentil()->utilities()
-            ->page()->posts()->stickyPosts($this->post_type->name)
+            ->page()->posts()->sticky()->get($this->post_type->name)
         ) {
             unset($settings['sticky_posts']);
         }

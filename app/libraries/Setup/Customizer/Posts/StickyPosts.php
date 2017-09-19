@@ -49,7 +49,7 @@ final class StickyPosts extends Section
         $this->args['active_callback'] = function () use ($post_type): bool {
             $page = $this->posts->customizer()->jentil()->utilities()->page();
             $has_sticky = $this->posts->customizer()->jentil()->utilities()
-                ->page()->posts()->stickyPosts($post_type->name);
+                ->page()->posts()->sticky()->get($post_type->name);
 
             if ('post' == $post_type->name) {
                 return ($page->is('home') && $has_sticky);

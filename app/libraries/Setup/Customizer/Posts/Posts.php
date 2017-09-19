@@ -70,7 +70,7 @@ final class Posts extends Panel
         }
 
         if (($post_types = $this->customizer->jentil()->utilities()
-            ->page()->posts()->archivePostTypes())
+            ->page()->posts()->archive()->postTypes())
         ) {
             foreach ($post_types as $post_type) {
                 $sections['sticky_'.$post_type->name] = new StickyPosts(

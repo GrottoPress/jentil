@@ -30,7 +30,7 @@ final class Page extends PagePackage
      * @since 0.1.0
      * @access private
      *
-     * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
+     * @var Utilities $utilities Utilities.
      */
     private $utilities;
 
@@ -77,7 +77,7 @@ final class Page extends PagePackage
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @param Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
@@ -159,10 +159,10 @@ final class Page extends PagePackage
      *
      * @return Posts Posts.
      */
-    public function posts(): Posts
+    public function posts(): Posts\Posts
     {
         if (null === $this->posts) {
-            $this->posts = new Posts($this);
+            $this->posts = new Posts\Posts($this);
         }
 
         return $this->posts;

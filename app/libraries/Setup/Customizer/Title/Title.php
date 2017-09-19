@@ -69,7 +69,7 @@ final class Title extends Section
         }
 
         if (($post_types = $this->customizer->jentil()->utilities()
-            ->page()->posts()->archivePostTypes())
+            ->page()->posts()->archive()->postTypes())
         ) {
             foreach ($post_types as $post_type) {
                 $settings['post_type_'.$post_type->name] =
