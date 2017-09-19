@@ -50,8 +50,5 @@ final class PaginationPosition extends Setting
             'bottom' => \esc_html__('Bottom', 'jentil'),
             'top,bottom' => \esc_html__('Top and bottom', 'jentil'),
         ];
-        $this->control['input_attrs'] = [ // not applicable. Find another way?
-            'multiple' => 'multiple',
-        ];
     }
 }
