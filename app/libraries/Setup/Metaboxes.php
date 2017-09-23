@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup;
 
 use GrottoPress\Jentil\Jentil;
-use GrottoPress\WordPress\Metaboxes\Metaboxes as MetaboxesPackage;
+use GrottoPress\WordPress\Metaboxes\MetaboxesTrait;
 use \WP_Post;
 
 /**
@@ -28,9 +28,9 @@ final class Metaboxes extends AbstractSetup
     /**
      * Import traits
      *
-     * @since 0.1.0 Added G_Metaboxes.
+     * @since 0.1.0 Added MetaboxesTrait.
      */
-    use MetaboxesPackage;
+    use MetaboxesTrait;
 
     /**
      * Run setup
