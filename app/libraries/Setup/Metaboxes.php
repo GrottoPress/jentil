@@ -84,6 +84,10 @@ final class Metaboxes extends AbstractSetup
      */
     private function layoutMetabox(WP_Post $post): array
     {
+        if (!\current_user_can('edit_theme_options')) {
+            return [];
+        }
+        
         if (!\is_post_type_hierarchical($post->post_type)) {
             return [];
         }
