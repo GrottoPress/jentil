@@ -43,8 +43,6 @@ It integrates seamlessly with most WordPress page builders including:
 
 This theme requires **WordPress** version **4.6** or newer. Minimum required **PHP** version is **7.0**.
 
-For now, you also need to install [MagPack plugin](https://github.com/grottopress/magpack) to get this working. We'll remove this dependency in the course of development.
-
 ## Installation
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
@@ -70,7 +68,6 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 - Run `npm install`
 - Run `gulp` to build assets in a new `dist` directory.
 - You may run `npm install --production` at this stage for a production-ready build.
-- Download, install and activate [MagPack plugin](https://github.com/grottopress/magpack).
 - You're done.
 
 ## Example Child Theme
