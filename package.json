@@ -1,38 +1,38 @@
 {
-  "name": "jentil",
-  "version": "0.1.0",
-  "description": "Jentil is a responsive, SEO parent theme for WordPress",
-  "dependencies": {
-    "font-awesome": "^4.7.0",
-    "html5shiv": "^3.7.3",
-    "normalize.css": "^5.0.0",
-    "respond.js": "^1.4.2"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.8.0",
-    "gulp-jshint": "^2.0.4",
-    "gulp-rename": "^1.2.2",
-    "gulp-rtlcss": "^1.0.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^3.0.0",
-    "jshint": "^2.9.5"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GrottoPress/jentil.git"
-  },
-  "keywords": [
-    "Jentil",
-    "WordPress"
-  ],
-  "author": "GrottoPress.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GrottoPress/jentil/issues"
-  },
-  "homepage": "https://github.com/GrottoPress/jentil#README"
+    "name": "jentil",
+    "version": "0.1.0",
+    "description": "Jentil is a responsive, SEO parent theme for WordPress",
+    "dependencies": {
+        "font-awesome": "^4.7.0",
+        "html5shiv": "^3.7.3",
+        "normalize.css": "^5.0.0",
+        "respond.js": "^1.4.2"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-clean-css": "^3.9.0",
+        "gulp-jshint": "^2.0.4",
+        "gulp-rename": "^1.2.2",
+        "gulp-rtlcss": "^1.0.0",
+        "gulp-sass": "^3.1.0",
+        "gulp-uglify": "^3.0.0",
+        "jshint": "^2.9.5"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GrottoPress/jentil.git"
+    },
+    "keywords": [
+        "Jentil",
+        "WordPress"
+    ],
+    "author": "GrottoPress.com",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/GrottoPress/jentil/issues"
+    },
+    "homepage": "https://github.com/GrottoPress/jentil#README"
 }

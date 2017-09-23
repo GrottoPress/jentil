@@ -439,17 +439,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-breadcrumbs.git",
-                "reference": "07dabb6060b8a69b1f22fc280f5f785d656de9a8"
+                "reference": "8b27b34831e719a7e345d15825829e33b3c42ef0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/07dabb6060b8a69b1f22fc280f5f785d656de9a8",
-                "reference": "07dabb6060b8a69b1f22fc280f5f785d656de9a8",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/8b27b34831e719a7e345d15825829e33b3c42ef0",
+                "reference": "8b27b34831e719a7e345d15825829e33b3c42ef0",
                 "shasum": ""
             },
             "require": {
                 "danielstjules/stringy": "^3.1",
-                "grottopress/wordpress-page": "^0.2",
+                "grottopress/wordpress-page": "^0.3",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -482,7 +482,7 @@
                 "breadcrumbs",
                 "wordpress"
             ],
-            "time": "2017-09-13 16:38:27"
+            "time": "2017-09-13 22:27:56"
         },
         {
             "name": "grottopress/wordpress-field",
@@ -539,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-metaboxes.git",
-                "reference": "e594a5f59ac06486e2f4da41a8a8c0dd9dd6c3ee"
+                "reference": "2c881e79e189a57e2fb0b7111d5f8b520126ad3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/e594a5f59ac06486e2f4da41a8a8c0dd9dd6c3ee",
-                "reference": "e594a5f59ac06486e2f4da41a8a8c0dd9dd6c3ee",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/2c881e79e189a57e2fb0b7111d5f8b520126ad3c",
+                "reference": "2c881e79e189a57e2fb0b7111d5f8b520126ad3c",
                 "shasum": ""
             },
             "require": {
@@ -580,20 +580,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-09-13 18:58:39"
+            "time": "2017-09-23 00:37:35"
         },
         {
             "name": "grottopress/wordpress-page",
-            "version": "0.2.1",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "c048dec2e184aabb6f58cb4abf8ad206f5233a16"
+                "reference": "7029a018ca49f3c136db762b21fdf33d6bfe34b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/c048dec2e184aabb6f58cb4abf8ad206f5233a16",
-                "reference": "c048dec2e184aabb6f58cb4abf8ad206f5233a16",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/7029a018ca49f3c136db762b21fdf33d6bfe34b8",
+                "reference": "7029a018ca49f3c136db762b21fdf33d6bfe34b8",
                 "shasum": ""
             },
             "require": {
@@ -604,9 +604,9 @@
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "GrottoPress\\WordPress\\Page\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -628,7 +628,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-09-04 22:52:36"
+            "time": "2017-09-13 22:03:04"
         },
         {
             "name": "symfony/polyfill-mbstring",
