@@ -1,1 +1,1 @@
-<?php // Required by WordPress. Do not delete.
+<?php // Required by WordPress. DO NOT DELETE!!!
