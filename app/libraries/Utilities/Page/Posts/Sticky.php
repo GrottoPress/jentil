@@ -19,31 +19,8 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
  *
  * @since 0.1.0
  */
-final class Sticky
+final class Sticky extends AbstractPosts
 {
-    /**
-     * Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Posts $posts Posts.
-     */
-    private $posts;
-    
-    /**
-     * Constructor
-     *
-     * @param Posts $posts Posts.
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function __construct(Posts $posts)
-    {
-        $this->posts = $posts;
-    }
-
     /**
      * Sticky Posts Args
      *
