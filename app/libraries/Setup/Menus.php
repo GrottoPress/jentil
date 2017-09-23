@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Menus extends Setup
+final class Menus extends AbstractSetup
 {
     /**
      * Run setup

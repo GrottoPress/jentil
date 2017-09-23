@@ -14,8 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
 
-use GrottoPress\Jentil\Setup\Customizer\Setting as C_Setting;
-use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
+use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
 use GrottoPress\Jentil\Utilities\Mods\Posts as Mod;
 
 /**
@@ -23,7 +23,7 @@ use GrottoPress\Jentil\Utilities\Mods\Posts as Mod;
  *
  * @since 0.1.0
  */
-abstract class Setting extends C_Setting
+abstract class AbstractSetting extends Setting
 {
     /**
      * Section
@@ -43,7 +43,7 @@ abstract class Setting extends C_Setting
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Section $section)
+    public function __construct(AbstractSection $section)
     {
         $this->section = $section;
 

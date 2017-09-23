@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
  *
  * @since 0.1.0
  */
-final class Date extends Section
+final class Date extends AbstractSection
 {
     /**
      * Constructor

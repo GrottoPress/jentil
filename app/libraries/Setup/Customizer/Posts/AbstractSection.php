@@ -14,14 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use GrottoPress\Jentil\Setup\Customizer\Section as C_Section;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSection as Section;
 
 /**
  * Section
  *
  * @since 0.1.0
  */
-abstract class Section extends C_Section
+abstract class AbstractSection extends Section
 {
     /**
      * Constructor

@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Colophon\Settings;
 
-use GrottoPress\Jentil\Setup\Customizer\Setting;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSetting;
 use GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon as Section;
 
 /**
@@ -22,7 +22,7 @@ use GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon as Section;
  *
  * @since 0.1.0
  */
-final class Colophon extends Setting
+final class Colophon extends AbstractSetting
 {
     /**
      * Colophon section

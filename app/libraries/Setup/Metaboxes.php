@@ -23,7 +23,7 @@ use \WP_Post;
  *
  * @since 0.1.0
  */
-final class Metaboxes extends Setup
+final class Metaboxes extends AbstractSetup
 {
     /**
      * Import traits

@@ -23,7 +23,7 @@ use \WP_Post_Type;
  *
  * @since 0.1.0
  */
-final class PostType extends Section
+final class PostType extends AbstractSection
 {
     /**
      * Post type

@@ -14,14 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
 
-use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
+use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
 
 /**
  * Posts Layout
  *
  * @since 0.1.0
  */
-final class Layout extends Setting
+final class Layout extends AbstractSetting
 {
     /**
      * Constructor
@@ -31,7 +31,7 @@ final class Layout extends Setting
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Section $section)
+    public function __construct(AbstractSection $section)
     {
         parent::__construct($section);
 

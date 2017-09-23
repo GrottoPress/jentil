@@ -22,7 +22,7 @@ use \WP_Term;
  *
  * @since 0.1.0
  */
-final class Taxonomy extends Section
+final class Taxonomy extends AbstractSection
 {
     /**
      * Constructor

@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  *
  * @since 0.1.0
  */
-final class Layout extends Mod
+final class Layout extends AbstractMod
 {
     /**
      * Context

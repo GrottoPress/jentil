@@ -16,7 +16,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
 
-use GrottoPress\Jentil\Setup\Setup;
+use GrottoPress\Jentil\Setup\AbstractSetup;
 use GrottoPress\Jentil\Jentil;
 use \WP_Customize_Manager as WP_Customizer;
 
@@ -25,7 +25,7 @@ use \WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-final class Customizer extends Setup
+final class Customizer extends AbstractSetup
 {
     /**
      * Run setup

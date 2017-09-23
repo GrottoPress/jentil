@@ -28,7 +28,7 @@ final class Jentil
     /**
      * Import traits
      *
-     * @since 0.1.0 Added Singleton.
+     * @since 0.1.0 Added SingletonTrait.
      */
     use SingletonTrait;
 
@@ -48,7 +48,7 @@ final class Jentil
      * @since 0.1.0
      * @access private
      *
-     * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @var Utilities $utilities Utilities.
      */
     private $utilities = null;
 
@@ -129,9 +129,9 @@ final class Jentil
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Setup\Setup Setup.
+     * @return AbstractSetup
      */
-    public function setup(string $setup): Setup\Setup
+    public function setup(string $setup): Setup\AbstractSetup
     {
         $setups = $this->setup;
 

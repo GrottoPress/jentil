@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Title;
 
-use GrottoPress\Jentil\Setup\Customizer\Section;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
 
 /**
@@ -22,7 +22,7 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Title extends Section
+final class Title extends AbstractSection
 {
     /**
      * Constructor

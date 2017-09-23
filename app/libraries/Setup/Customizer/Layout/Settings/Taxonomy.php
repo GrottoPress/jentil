@@ -23,7 +23,7 @@ use \WP_Term;
  *
  * @since 0.1.0
  */
-final class Taxonomy extends Setting
+final class Taxonomy extends AbstractSetting
 {
     /**
      * Constructor

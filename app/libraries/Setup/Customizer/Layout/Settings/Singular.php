@@ -21,7 +21,7 @@ use \WP_Post;
  *
  * @since 0.1.0
  */
-final class Singular extends Setting
+final class Singular extends AbstractSetting
 {
     /**
      * Constructor

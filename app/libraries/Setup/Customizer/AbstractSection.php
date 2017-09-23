@@ -21,7 +21,7 @@ use \WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-abstract class Section
+abstract class AbstractSection
 {
     /**
      * Customizer

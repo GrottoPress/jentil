@@ -15,14 +15,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Title\Title;
-use GrottoPress\Jentil\Setup\Customizer\Setting as C_Setting;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
 
 /**
  * Setting
  *
  * @since 0.1.0
  */
-abstract class Setting extends C_Setting
+abstract class AbstractSetting extends Setting
 {
     /**
      * Title section

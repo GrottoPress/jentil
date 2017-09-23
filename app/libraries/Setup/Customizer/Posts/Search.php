@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
  *
  * @since 0.1.0
  */
-final class Search extends Section
+final class Search extends AbstractSection
 {
     /**
      * Constructor

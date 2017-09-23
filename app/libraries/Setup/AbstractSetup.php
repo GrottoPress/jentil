@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Jentil;
  *
  * @since 0.1.0
  */
-abstract class Setup
+abstract class AbstractSetup
 {
     /**
      * Jentil

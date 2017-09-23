@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  *
  * @since 0.1.0
  */
-final class Posts extends Mod
+final class Posts extends AbstractMod
 {
     /**
      * Setting

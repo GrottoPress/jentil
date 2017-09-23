@@ -12,7 +12,7 @@
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use GrottoPress\Jentil\Setup\Customizer\Panel;
+use GrottoPress\Jentil\Setup\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
 
 /**
@@ -20,7 +20,7 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Posts extends Panel
+final class Posts extends AbstractPanel
 {
     /**
      * Constructor
