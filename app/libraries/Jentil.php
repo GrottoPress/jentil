@@ -110,7 +110,7 @@ final class Jentil
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
+     * @return Utilities Utilities.
      */
     public function utilities(): Utilities
     {
