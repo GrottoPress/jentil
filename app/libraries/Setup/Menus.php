@@ -88,7 +88,7 @@ final class Menus extends AbstractSetup
            .'<a class="js-mobile-menu-button hamburger" href="'.\esc_url(
                \add_query_arg(
                    ['menu' => ($status == 'off' ? 'on' : 'off')],
-                   $this->jentil->utilities()->page()->url(true)
+                   $this->jentil->utilities()->page()->URL('full')
                )
            ).'" rel="nofollow">
                 <span class="fa fa fa-bars" aria-hidden="true"></span>
