@@ -17,7 +17,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer;
 
 use GrottoPress\Jentil\Setup\AbstractSetup;
-use GrottoPress\Jentil\Jentil;
 use \WP_Customize_Manager as WP_Customizer;
 
 /**
