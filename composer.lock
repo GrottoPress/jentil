@@ -383,16 +383,16 @@
         },
         {
             "name": "grottopress/form-field",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/form-field.git",
-                "reference": "91ff2814c9c8e1cbca587d2f8efb5392333d5fe5"
+                "reference": "cf2aec6f0eb0d0435dfd30497275d27e771e5058"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/91ff2814c9c8e1cbca587d2f8efb5392333d5fe5",
-                "reference": "91ff2814c9c8e1cbca587d2f8efb5392333d5fe5",
+                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/cf2aec6f0eb0d0435dfd30497275d27e771e5058",
+                "reference": "cf2aec6f0eb0d0435dfd30497275d27e771e5058",
                 "shasum": ""
             },
             "require": {
@@ -431,7 +431,7 @@
                 "form",
                 "html"
             ],
-            "time": "2017-09-13 17:45:57"
+            "time": "2017-09-28 20:20:14"
         },
         {
             "name": "grottopress/wordpress-breadcrumbs",
@@ -439,17 +439,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-breadcrumbs.git",
-                "reference": "8b27b34831e719a7e345d15825829e33b3c42ef0"
+                "reference": "225515d2bc906eca4a34bc8b836d522b2efc1461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/8b27b34831e719a7e345d15825829e33b3c42ef0",
-                "reference": "8b27b34831e719a7e345d15825829e33b3c42ef0",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/225515d2bc906eca4a34bc8b836d522b2efc1461",
+                "reference": "225515d2bc906eca4a34bc8b836d522b2efc1461",
                 "shasum": ""
             },
             "require": {
-                "danielstjules/stringy": "^3.1",
-                "grottopress/wordpress-page": "^0.3",
+                "grottopress/wordpress-page": "^0.4",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -482,24 +481,24 @@
                 "breadcrumbs",
                 "wordpress"
             ],
-            "time": "2017-09-13 22:27:56"
+            "time": "2017-09-28 19:57:16"
         },
         {
             "name": "grottopress/wordpress-field",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-field.git",
-                "reference": "8a156f010e630fee273b35213ca78cde31cb23f0"
+                "reference": "ed00f57fe97042a2bf355d170800df92f91b9982"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-field/zipball/8a156f010e630fee273b35213ca78cde31cb23f0",
-                "reference": "8a156f010e630fee273b35213ca78cde31cb23f0",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-field/zipball/ed00f57fe97042a2bf355d170800df92f91b9982",
+                "reference": "ed00f57fe97042a2bf355d170800df92f91b9982",
                 "shasum": ""
             },
             "require": {
-                "grottopress/form-field": "^0.2",
+                "grottopress/form-field": "^0.3",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -531,7 +530,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-09-13 18:14:45"
+            "time": "2017-09-28 20:32:35"
         },
         {
             "name": "grottopress/wordpress-metaboxes",
@@ -539,16 +538,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-metaboxes.git",
-                "reference": "2c881e79e189a57e2fb0b7111d5f8b520126ad3c"
+                "reference": "78cd6e14125e38afa914d4e1d52d7fe3907a54ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/2c881e79e189a57e2fb0b7111d5f8b520126ad3c",
-                "reference": "2c881e79e189a57e2fb0b7111d5f8b520126ad3c",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/78cd6e14125e38afa914d4e1d52d7fe3907a54ec",
+                "reference": "78cd6e14125e38afa914d4e1d52d7fe3907a54ec",
                 "shasum": ""
             },
             "require": {
-                "grottopress/wordpress-field": "^0.2",
+                "grottopress/wordpress-field": "^0.3",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -580,20 +579,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-09-23 00:37:35"
+            "time": "2017-09-28 20:53:25"
         },
         {
             "name": "grottopress/wordpress-page",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "7029a018ca49f3c136db762b21fdf33d6bfe34b8"
+                "reference": "8f47b6cd61c2ec2bfa2017e825b39597a903a60a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/7029a018ca49f3c136db762b21fdf33d6bfe34b8",
-                "reference": "7029a018ca49f3c136db762b21fdf33d6bfe34b8",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/8f47b6cd61c2ec2bfa2017e825b39597a903a60a",
+                "reference": "8f47b6cd61c2ec2bfa2017e825b39597a903a60a",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +627,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-09-13 22:03:04"
+            "time": "2017-09-28 19:42:08"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -738,16 +737,16 @@
     "packages-dev": [
         {
             "name": "antecedent/patchwork",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antecedent/patchwork.git",
-                "reference": "8b5fb587be912ee0cdc4c3ce145ef237ac9807f8"
+                "reference": "ee5e6d669b9e379cff7b42c005c55e7b8c33b9d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antecedent/patchwork/zipball/8b5fb587be912ee0cdc4c3ce145ef237ac9807f8",
-                "reference": "8b5fb587be912ee0cdc4c3ce145ef237ac9807f8",
+                "url": "https://api.github.com/repos/antecedent/patchwork/zipball/ee5e6d669b9e379cff7b42c005c55e7b8c33b9d8",
+                "reference": "ee5e6d669b9e379cff7b42c005c55e7b8c33b9d8",
                 "shasum": ""
             },
             "require": {
@@ -775,7 +774,7 @@
                 "runkit",
                 "testing"
             ],
-            "time": "2017-09-02 05:34:56"
+            "time": "2017-09-11 13:43:30"
         },
         {
             "name": "bacon/bacon-string-utils",
@@ -1890,16 +1889,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "1.21.16",
+            "version": "1.21.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "43392d2cc85b280f16473b0bbb786ff990b85314"
+                "reference": "ac22f2362db4436cc7ef5139fbbe62ebb243f152"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/43392d2cc85b280f16473b0bbb786ff990b85314",
-                "reference": "43392d2cc85b280f16473b0bbb786ff990b85314",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/ac22f2362db4436cc7ef5139fbbe62ebb243f152",
+                "reference": "ac22f2362db4436cc7ef5139fbbe62ebb243f152",
                 "shasum": ""
             },
             "require": {
@@ -1948,7 +1947,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2017-08-12 12:20:02"
+            "time": "2017-09-26 14:14:13"
         },
         {
             "name": "lucatume/wp-browser-commons",
