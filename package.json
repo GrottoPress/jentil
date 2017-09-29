@@ -16,7 +16,6 @@
         "gulp-rtlcss": "^1.0.0",
         "gulp-sass": "^3.1.0",
         "gulp-uglify": "^3.0.0",
-        "gulp-wp-pot": "^2.0.6",
         "jshint": "^2.9.5"
     },
     "scripts": {
