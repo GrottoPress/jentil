@@ -27,14 +27,14 @@ final class Layout
      * @since 0.1.0
      * @access private
      *
-     * @var GrottoPress\Jentil\Utilities\Page\Page $page Page.
+     * @var Page $page Page.
      */
     private $page;
     
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Utilities\Page\Page $page Page.
+     * @param Page $page Page.
      *
      * @since 0.1.0
      * @access public

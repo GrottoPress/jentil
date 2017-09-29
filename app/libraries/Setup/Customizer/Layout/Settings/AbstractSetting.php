@@ -40,7 +40,7 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @var GrottoPress\Jentil\Utilities\Mod\Layout $mod Layout mod.
+     * @var Layout $mod Layout mod.
      */
     protected $mod;
 

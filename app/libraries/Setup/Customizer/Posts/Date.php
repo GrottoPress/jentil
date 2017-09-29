@@ -24,7 +24,7 @@ final class Date extends AbstractSection
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Posts\Posts $posts Posts.
+     * @param Posts $posts Posts.
      *
      * @since 0.1.0
      * @access public

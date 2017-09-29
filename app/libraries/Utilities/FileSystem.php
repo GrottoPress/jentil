@@ -27,7 +27,7 @@ final class FileSystem
      * @since 0.1.0
      * @access private
      *
-     * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
+     * @var Utilities $utilities Utilities.
      */
     private $utilities;
 

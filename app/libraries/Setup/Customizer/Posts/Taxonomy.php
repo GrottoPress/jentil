@@ -27,7 +27,7 @@ final class Taxonomy extends AbstractSection
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
+     * @param Posts $posts Posts.
      * @param WP_Taxonomy $taxonomy Taxonomy.
      * @param WP_Term $term Term.
      *

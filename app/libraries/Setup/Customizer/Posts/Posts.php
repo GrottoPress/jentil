@@ -25,7 +25,7 @@ final class Posts extends AbstractPanel
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     * @param Customizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public

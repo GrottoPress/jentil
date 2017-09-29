@@ -26,7 +26,7 @@ final class StickyPosts extends AbstractSetting
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Section $section Section.
+     * @param AbstractSection $section Section.
      *
      * @since 0.1.0
      * @access public

@@ -29,14 +29,14 @@ abstract class AbstractSetup
      * @since 0.1.0
      * @access protected
      *
-     * @var GrottoPress\Jentil\Jentil $jentil Jentil.
+     * @var Jentil $jentil Jentil.
      */
     protected $jentil;
 
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Jentil $jentil Jentil.
+     * @param Jentil $jentil Jentil.
      *
      * @since 0.1.0
      * @access public
