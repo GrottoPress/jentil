@@ -1,6 +1,6 @@
 {
     "name": "grottopress/jentil",
-    "description": "Jentil is a responsive, SEO parent theme for WordPress.",
+    "description": "The WordPress theme engine",
     "type": "wordpress-theme",
     "license": "MIT",
     "homepage": "https://jentil.grottopress.com",
