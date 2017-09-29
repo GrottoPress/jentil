@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
-use \WP_Post_Type;
+use WP_Post_Type;
 
 /**
  * Post Type Layout Setting

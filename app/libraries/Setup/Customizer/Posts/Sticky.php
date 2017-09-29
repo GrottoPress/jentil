@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use \WP_Post_Type;
+use WP_Post_Type;
 
 /**
  * Sticky Posts Section

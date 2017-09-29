@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setup;
 
 use GrottoPress\Jentil\Jentil;
 use GrottoPress\WordPress\Metaboxes\MetaboxesTrait;
-use \WP_Post;
+use WP_Post;
 
 /**
  * Metaboxes
@@ -46,7 +46,7 @@ final class Metaboxes extends AbstractSetup
     /**
      * Meta boxes.
      *
-     * @param \WP_Post $post Post.
+     * @param WP_Post $post Post.
      *
      * @since 0.1.0
      * @access protected
@@ -65,7 +65,7 @@ final class Metaboxes extends AbstractSetup
          * @filter jentil_metaboxes
          *
          * @var array $boxes Metaboxes.
-         * @var \WP_Post $post Post.
+         * @var WP_Post $post Post.
          *
          * @since 0.1.0
          */
@@ -75,7 +75,7 @@ final class Metaboxes extends AbstractSetup
     /**
      * Layout metabox
      *
-     * @param \WP_Post $post Post.
+     * @param WP_Post $post Post.
      *
      * @since 0.1.0
      * @access private

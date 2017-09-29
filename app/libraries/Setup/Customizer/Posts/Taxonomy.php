@@ -14,8 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use \WP_Taxonomy;
-use \WP_Term;
+use WP_Taxonomy;
+use WP_Term;
 
 /**
  * Taxonomy Section
@@ -28,8 +28,8 @@ final class Taxonomy extends AbstractSection
      * Constructor
      *
      * @param GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
-     * @param \WP_Taxonomy $taxonomy Taxonomy.
-     * @param \WP_Term $term Term.
+     * @param WP_Taxonomy $taxonomy Taxonomy.
+     * @param WP_Term $term Term.
      *
      * @since 0.1.0
      * @access public

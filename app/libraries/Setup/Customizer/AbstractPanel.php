@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
 
-use \WP_Customize_Manager as WP_Customizer;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Panel

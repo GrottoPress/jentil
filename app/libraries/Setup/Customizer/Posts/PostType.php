@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities;
-use \WP_Post_Type;
+use WP_Post_Type;
 
 /**
  * Post Type Section

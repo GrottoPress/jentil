@@ -15,8 +15,8 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
-use \WP_Taxonomy;
-use \WP_Term;
+use WP_Taxonomy;
+use WP_Term;
 
 /**
  * Taxonomy Layout Setting
