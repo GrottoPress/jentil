@@ -64,7 +64,7 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 
 - From the root of your WordPress project, via the command line, enter `composer require grottopress/jentil`. (Use `--no-dev` flag for production).
 - Change to `jentil` directory  
- `cd jentil`
+ `cd /path/to/jentil`
 - Run `npm install`
 - Run `gulp` to build assets in a new `dist` directory.
 - You may run `npm install --production` at this stage for a production-ready build.
