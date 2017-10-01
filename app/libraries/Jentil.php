@@ -82,7 +82,7 @@ final class Jentil
     protected function __construct()
     {
         $this->setup['loader'] = new Setup\Loader($this);
-        $this->setup['updater'] = new Setup\Updater($this);
+        // $this->setup['updater'] = new Setup\Updater($this);
         $this->setup['language'] = new Setup\Language($this);
         $this->setup['styles'] = new Setup\Styles($this);
         $this->setup['scripts'] = new Setup\Scripts($this);
