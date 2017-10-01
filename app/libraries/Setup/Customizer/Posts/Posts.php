@@ -12,7 +12,7 @@
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use GrottoPress\Jentil\Setup\Customizer\Panel;
+use GrottoPress\Jentil\Setup\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
 
 /**
@@ -20,12 +20,12 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Posts extends Panel
+final class Posts extends AbstractPanel
 {
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer $customizer Customizer.
+     * @param Customizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
@@ -58,7 +58,9 @@ final class Posts extends Panel
         $sections['date'] = new Date($this);
         $sections['search'] = new Search($this);
 
-        if (($taxonomies = $this->customizer->taxonomies())) {
+        if (($taxonomies = $this->customizer->jentil()->utilities()
+            ->page()->posts()->taxonomies())
+        ) {
             foreach ($taxonomies as $taxonomy) {
                 $sections['taxonomy_'.$taxonomy->name] = new Taxonomy(
                     $this,
@@ -67,7 +69,9 @@ final class Posts extends Panel
             }
         }
 
-        if (($post_types = $this->customizer->archivePostTypes())) {
+        if (($post_types = $this->customizer->jentil()->utilities()
+            ->page()->posts()->archive()->postTypes())
+        ) {
             foreach ($post_types as $post_type) {
                 $sections['sticky_'.$post_type->name] = new Sticky(
                     $this,

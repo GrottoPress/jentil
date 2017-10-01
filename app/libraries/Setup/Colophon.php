@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Colophon extends Setup
+final class Colophon extends AbstractSetup
 {
     /**
      * Run setup

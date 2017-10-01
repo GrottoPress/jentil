@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Feeds extends Setup
+final class Feeds extends AbstractSetup
 {
     /**
      * Run setup

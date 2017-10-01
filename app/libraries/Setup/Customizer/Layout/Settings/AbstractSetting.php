@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
-use GrottoPress\Jentil\Setup\Customizer\Setting as C_Setting;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
 
 /**
@@ -22,7 +22,7 @@ use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
  *
  * @since 0.1.0
  */
-abstract class Setting extends C_Setting
+abstract class AbstractSetting extends Setting
 {
     /**
      * Layout section
@@ -40,7 +40,7 @@ abstract class Setting extends C_Setting
      * @since 0.1.0
      * @access protected
      *
-     * @var GrottoPress\Jentil\Utilities\Mod\Layout $mod Layout mod.
+     * @var Layout $mod Layout mod.
      */
     protected $mod;
 

@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Search extends Setup
+final class Search extends AbstractSetup
 {
     /**
      * Run setup

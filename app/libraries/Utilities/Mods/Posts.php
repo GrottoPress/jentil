@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  *
  * @since 0.1.0
  */
-final class Posts extends Mod
+final class Posts extends AbstractMod
 {
     /**
      * Setting
@@ -168,7 +168,7 @@ final class Posts extends Mod
             'wrap_class' => 'archive-posts big',
             'wrap_tag' => 'div',
             'layout' => 'stack',
-            'number' => (int) \get_option('posts_per_page'),
+            'number' => (int)\get_option('posts_per_page'),
             'before_title' => '',
             'before_title_separator' => ' | ',
             'title_words' => -1,
@@ -180,13 +180,16 @@ final class Posts extends Mod
             'image_margin' => '',
             'text_offset' => 0,
             'excerpt' => -1,
-            'more_link' => \esc_html__('read more', 'jentil'),
+            'more_text' => \esc_html__('read more', 'jentil'),
             'after_content' => 'category, post_tag',
             'after_content_separator' => ' | ',
             'pagination' => '',
             'pagination_maximum' => -1,
             'pagination_position' => 'bottom',
-            'pagination_previous_label' => \esc_html__('&larr; Previous', 'jentil'),
+            'pagination_previous_label' => \esc_html__(
+                '&larr; Previous',
+                'jentil'
+            ),
             'pagination_next_label' => \esc_html__('Next &rarr;', 'jentil'),
             'sticky_posts' => 0,
         ];

@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Jentil;
  *
  * @since 0.1.0
  */
-abstract class Setup
+abstract class AbstractSetup
 {
     /**
      * Jentil
@@ -29,14 +29,14 @@ abstract class Setup
      * @since 0.1.0
      * @access protected
      *
-     * @var GrottoPress\Jentil\Jentil $jentil Jentil.
+     * @var Jentil $jentil Jentil.
      */
     protected $jentil;
 
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Jentil $jentil Jentil.
+     * @param Jentil $jentil Jentil.
      *
      * @since 0.1.0
      * @access public
@@ -44,6 +44,19 @@ abstract class Setup
     public function __construct(Jentil $jentil)
     {
         $this->jentil = $jentil;
+    }
+
+    /**
+     * Jentil
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return Jentil Jentil.
+     */
+    public function jentil(): Jentil
+    {
+        return $this->jentil;
     }
 
     /**

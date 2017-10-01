@@ -14,14 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
 
-use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
+use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
 
 /**
  * Title Length (number of words)
  *
  * @since 0.1.0
  */
-final class TitleWords extends Setting
+final class TitleWords extends AbstractSetting
 {
     /**
      * Constructor
@@ -31,15 +31,15 @@ final class TitleWords extends Setting
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Section $section)
+    public function __construct(AbstractSection $section)
     {
         parent::__construct($section);
 
         $mod = $this->mod('title_words');
         
-        $this->name = $mod->get('name');
+        $this->name = $mod->name();
         
-        $this->args['default'] = $mod->get('default');
+        $this->args['default'] = $mod->default();
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };

@@ -15,14 +15,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Colophon;
 
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
-use GrottoPress\Jentil\Setup\Customizer\Section;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 
 /**
  * Colophon Section
  *
  * @since 0.1.0
  */
-final class Colophon extends Section
+final class Colophon extends AbstractSection
 {
     /**
      * Constructor

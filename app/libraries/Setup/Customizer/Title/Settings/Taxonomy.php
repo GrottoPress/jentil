@@ -15,15 +15,15 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Title\Title;
-use \WP_Taxonomy;
-use \WP_Term;
+use WP_Taxonomy;
+use WP_Term;
 
 /**
  * Taxonomy
  *
  * @since 0.1.0
  */
-final class Taxonomy extends Setting
+final class Taxonomy extends AbstractSetting
 {
     /**
      * Constructor

@@ -14,14 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
 
-use GrottoPress\Jentil\Setup\Customizer\Posts\Section;
+use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
 
 /**
  * Pagination Position
  *
  * @since 0.1.0
  */
-final class PaginationPosition extends Setting
+final class PaginationPosition extends AbstractSetting
 {
     /**
      * Constructor
@@ -31,15 +31,15 @@ final class PaginationPosition extends Setting
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Section $section)
+    public function __construct(AbstractSection $section)
     {
         parent::__construct($section);
 
         $mod = $this->mod('pagination_position');
 
-        $this->name = $mod->get('name');
+        $this->name = $mod->name();
         
-        $this->args['default'] = $mod->get('default');
+        $this->args['default'] = $mod->default();
         $this->args['sanitize_callback'] = 'sanitize_key';
 
         $this->control['label'] = \esc_html__('Pagination position', 'jentil');
@@ -48,7 +48,7 @@ final class PaginationPosition extends Setting
             'none' => \esc_html__('None', 'jentil'),
             'top' => \esc_html__('Top', 'jentil'),
             'bottom' => \esc_html__('Bottom', 'jentil'),
-            'top_bottom' => \esc_html__('Top and bottom', 'jentil'),
+            'top,bottom' => \esc_html__('Top and bottom', 'jentil'),
         ];
     }
 }

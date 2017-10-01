@@ -19,12 +19,12 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
  *
  * @since 0.1.0
  */
-final class Date extends Section
+final class Date extends AbstractSection
 {
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Posts\Posts $posts Posts.
+     * @param Posts $posts Posts.
      *
      * @since 0.1.0
      * @access public
@@ -54,21 +54,9 @@ final class Date extends Section
      */
     protected function settings(): array
     {
-        $settings = [];
+        $settings = parent::settings();
 
-        $settings['sticky_posts'] = new Settings\StickyPosts($this);
-        $settings['number'] = new Settings\Number($this);
-
-        $settings = \array_merge($settings, parent::settings());
-
-        $settings['pagination'] = new Settings\Pagination($this);
-        $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
-        $settings['pagination_position'] =
-            new Settings\PaginationPosition($this);
-        $settings['pagination_previous_label'] =
-            new Settings\PaginationPreviousLabel($this);
-        $settings['pagination_next_label'] =
-            new Settings\PaginationNextLabel($this);
+        unset($settings['sticky_posts']);
 
         return $settings;
     }

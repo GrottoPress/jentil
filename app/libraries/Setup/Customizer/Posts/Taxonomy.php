@@ -14,22 +14,22 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use \WP_Taxonomy;
-use \WP_Term;
+use WP_Taxonomy;
+use WP_Term;
 
 /**
  * Taxonomy Section
  *
  * @since 0.1.0
  */
-final class Taxonomy extends Section
+final class Taxonomy extends AbstractSection
 {
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Posts\Posts $posts Posts.
-     * @param \WP_Taxonomy $taxonomy Taxonomy.
-     * @param \WP_Term $term Term.
+     * @param Posts $posts Posts.
+     * @param WP_Taxonomy $taxonomy Taxonomy.
+     * @param WP_Term $term Term.
      *
      * @since 0.1.0
      * @access public
@@ -135,20 +135,9 @@ final class Taxonomy extends Section
      */
     protected function settings(): array
     {
-        $settings = [];
+        $settings = parent::settings();
 
-        $settings['number'] = new Settings\Number($this);
-
-        $settings = \array_merge($settings, parent::settings());
-
-        $settings['pagination'] = new Settings\Pagination($this);
-        $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
-        $settings['pagination_maximum'] =
-            new Settings\PaginationPosition($this);
-        $settings['pagination_previous_label'] =
-            new Settings\PaginationPreviousLabel($this);
-        $settings['pagination_next_label'] =
-            new Settings\PaginationNextLabel($this);
+        unset($settings['sticky_posts']);
 
         return $settings;
     }

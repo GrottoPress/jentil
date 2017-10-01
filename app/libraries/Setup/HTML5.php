@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class HTML5 extends Setup
+final class HTML5 extends AbstractSetup
 {
     /**
      * Run setup

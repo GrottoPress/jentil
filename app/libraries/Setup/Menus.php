@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Menus extends Setup
+final class Menus extends AbstractSetup
 {
     /**
      * Run setup
@@ -88,7 +88,7 @@ final class Menus extends Setup
            .'<a class="js-mobile-menu-button hamburger" href="'.\esc_url(
                \add_query_arg(
                    ['menu' => ($status == 'off' ? 'on' : 'off')],
-                   $this->jentil->utilities()->page()->url(true)
+                   $this->jentil->utilities()->page()->URL('full')
                )
            ).'" rel="nofollow">
                 <span class="fa fa fa-bars" aria-hidden="true"></span>

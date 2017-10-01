@@ -1,6 +1,6 @@
 {
     "name": "grottopress/jentil",
-    "description": "Jentil is a responsive, SEO parent theme for WordPress.",
+    "description": "The WordPress theme engine",
     "type": "wordpress-theme",
     "license": "MIT",
     "homepage": "https://jentil.grottopress.com",
@@ -27,7 +27,8 @@
         "florianwolters/component-util-singleton": "^0.3",
         "yahnis-elsts/plugin-update-checker": "^4.1",
         "grottopress/wordpress-breadcrumbs": "dev-dev",
-        "grottopress/wordpress-metaboxes": "dev-dev"
+        "grottopress/wordpress-metaboxes": "dev-dev",
+        "grottopress/wordpress-posts": "dev-dev"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"

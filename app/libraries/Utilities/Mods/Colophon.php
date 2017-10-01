@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Jentil;
  *
  * @since 0.1.0
  */
-final class Colophon extends Mod
+final class Colophon extends AbstractMod
 {
     /**
      * Constructor

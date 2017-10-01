@@ -30,19 +30,9 @@ final class Page extends PagePackage
      * @since 0.1.0
      * @access private
      *
-     * @var GrottoPress\Jentil\Utilites\Utilities $utilities Utilities.
+     * @var Utilities $utilities Utilities.
      */
     private $utilities;
-
-    /**
-     * Title
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Title $title Title.
-     */
-    protected $title = null;
     
     /**
      * Layout
@@ -65,6 +55,16 @@ final class Page extends PagePackage
     private $layouts = null;
 
     /**
+     * Title
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @var string $title Page title.
+     */
+    private $title = null;
+
+    /**
      * Posts
      *
      * @since 0.1.0
@@ -75,9 +75,19 @@ final class Page extends PagePackage
     private $posts = null;
 
     /**
+     * Type
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @var array $type Page type.
+     */
+    private $type = null;
+
+    /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @param Utilities $utilities Utilities.
      *
      * @since 0.1.0
      * @access public
@@ -88,12 +98,12 @@ final class Page extends PagePackage
     }
 
     /**
-     * Utilities
+     * Get utilities
      *
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
+     * @return Utilities Utilities.
      */
     public function utilities(): Utilities
     {
@@ -101,7 +111,7 @@ final class Page extends PagePackage
     }
 
     /**
-     * Title
+     * Get title
      *
      * @since 0.1.0
      * @access public
@@ -118,7 +128,7 @@ final class Page extends PagePackage
     }
 
     /**
-     * Layout
+     * Get layout
      *
      * @since 0.1.0
      * @access public
@@ -135,7 +145,7 @@ final class Page extends PagePackage
     }
 
     /**
-     * Layouts
+     * Get layouts
      *
      * @since 0.1.0
      * @access public
@@ -152,19 +162,40 @@ final class Page extends PagePackage
     }
 
     /**
-     * Posts
+     * Get posts
      *
      * @since 0.1.0
      * @access public
      *
      * @return Posts Posts.
      */
-    public function posts(): Posts
+    public function posts(): Posts\Posts
     {
         if (null === $this->posts) {
-            $this->posts = new Posts($this);
+            $this->posts = new Posts\Posts($this);
         }
 
         return $this->posts;
+    }
+
+    /**
+     * Get type
+     *
+     * Page type is used too many times on archives
+     * for getting posts mods, so let's make sure method
+     * is called only once per page cycle.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return array
+     */
+    public function type(): array
+    {
+        if (null === $this->type) {
+            $this->type = parent::type();
+        }
+
+        return $this->type;
     }
 }

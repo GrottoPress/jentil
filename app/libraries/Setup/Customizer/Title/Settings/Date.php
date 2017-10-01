@@ -21,12 +21,12 @@ use GrottoPress\Jentil\Setup\Customizer\Title\Title;
  *
  * @since 0.1.0
  */
-final class Date extends Setting
+final class Date extends AbstractSetting
 {
     /**
      * Constructor
      *
-     * @param GrottoPress\Jentil\Setup\Customizer\Customizer\Title\Title $title Title.
+     * @param Title $title Title.
      *
      * @since 0.1.0
      * @access public

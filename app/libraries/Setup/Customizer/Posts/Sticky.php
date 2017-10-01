@@ -14,14 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use \WP_Post_Type;
+use WP_Post_Type;
 
 /**
  * Sticky Posts Section
  *
  * @since 0.1.0
  */
-final class Sticky extends Section
+final class Sticky extends AbstractSection
 {
     /**
      * Constructor
@@ -48,7 +48,8 @@ final class Sticky extends Section
         ), $post_type->labels->name);
         $this->args['active_callback'] = function () use ($post_type): bool {
             $page = $this->posts->customizer()->jentil()->utilities()->page();
-            $has_sticky = $this->hasSticky($post_type->name);
+            $has_sticky = $this->posts->customizer()->jentil()->utilities()
+                ->page()->posts()->sticky()->get($post_type->name);
 
             if ('post' == $post_type->name) {
                 return ($page->is('home') && $has_sticky);
@@ -61,25 +62,25 @@ final class Sticky extends Section
     }
 
     /**
-     * Does post type have sticky posts?
+     * Get settings
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
-     * @return bool
+     * @return array Settings.
      */
-    private function hasSticky(string $post_type): bool
+    protected function settings(): array
     {
-        $sticky_posts = \get_option('sticky_posts');
+        $settings = parent::settings();
 
-        if ($sticky_posts) {
-            foreach ($sticky_posts as $post) {
-                if (\get_post_type($post) == $post_type) {
-                    return true;
-                }
-            }
-        }
+        unset($settings['sticky_posts']);
+        unset($settings['number']);
+        unset($settings['pagination']);
+        unset($settings['pagination_maximum']);
+        unset($settings['pagination_position']);
+        unset($settings['pagination_previous_label']);
+        unset($settings['pagination_next_label']);
 
-        return false;
+        return $settings;
     }
 }

@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Title;
 
-use GrottoPress\Jentil\Setup\Customizer\Section;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
 
 /**
@@ -22,7 +22,7 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Title extends Section
+final class Title extends AbstractSection
 {
     /**
      * Constructor
@@ -60,13 +60,17 @@ final class Title extends Section
         $settings['error_404'] = new Settings\Error404($this);
         $settings['search'] = new Settings\Search($this);
 
-        if (($taxonomies = $this->customizer->taxonomies())) {
+        if (($taxonomies = $this->customizer->jentil()->utilities()
+            ->page()->posts()->taxonomies())
+        ) {
             foreach ($taxonomies as $taxonomy) {
                 $settings['taxonomy_'.$taxonomy->name] = new Settings\Taxonomy($this, $taxonomy);
             }
         }
 
-        if (($post_types = $this->customizer->archivePostTypes())) {
+        if (($post_types = $this->customizer->jentil()->utilities()
+            ->page()->posts()->archive()->postTypes())
+        ) {
             foreach ($post_types as $post_type) {
                 $settings['post_type_'.$post_type->name] =
                     new Settings\PostType($this, $post_type);

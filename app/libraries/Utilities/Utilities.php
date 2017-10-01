@@ -18,14 +18,12 @@ use GrottoPress\Jentil\Jentil;
 use GrottoPress\Jentil\Utilities\Mods\Mods;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Colophon;
-use GrottoPress\Jentil\Utilities\Logo;
 use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
-// use GrottoPress\WordPress\Posts\Posts;
-// use GrottoPress\WordPress\Post\Post;
-use GrottoPress\MagPack\Utilities\Query\Posts;
-use GrottoPress\MagPack\Utilities\Post\Post;
-use \Puc_v4p2_Theme_UpdateChecker;
-use \Puc_v4_Factory;
+use GrottoPress\WordPress\Posts\Posts;
+use GrottoPress\WordPress\Post\Post;
+use GrottoPress\Mobile\Detector;
+use Puc_v4p2_Theme_UpdateChecker;
+use Puc_v4_Factory;
 
 /**
  * Utilities
@@ -93,6 +91,16 @@ final class Utilities
      * @var Loader $loader Loader.
      */
     private $loader = null;
+
+    /**
+     * Mobile Detector
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @var Detector $detector Mobile detector.
+     */
+    private $detector = null;
 
     /**
      * Updater
@@ -213,6 +221,23 @@ final class Utilities
         }
 
         return $this->loader;
+    }
+
+    /**
+     * Mobile Detector
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return Detector Mobile detector.
+     */
+    public function mobileDetector(): Detector
+    {
+        if (null === $this->detector) {
+            $this->detector = new Detector();
+        }
+
+        return $this->detector;
     }
 
     /**

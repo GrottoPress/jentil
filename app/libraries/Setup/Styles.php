@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Styles extends Setup
+final class Styles extends AbstractSetup
 {
     /**
      * Run setup
@@ -29,8 +29,10 @@ final class Styles extends Setup
      */
     public function run()
     {
+        \add_action('wp_enqueue_scripts', [$this, 'enqueueNormalize']);
         \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
         \add_action('wp_enqueue_scripts', [$this, 'enqueueFontAwesome']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueuePosts']);
     }
     
     /**
@@ -43,14 +45,6 @@ final class Styles extends Setup
      */
     public function enqueue()
     {
-        \wp_enqueue_style(
-            'normalize',
-            $this->jentil->utilities()->fileSystem()->themeDir(
-                'url',
-                '/node_modules/normalize.css/normalize.css'
-            )
-        );
-        
         if (\is_rtl()) {
             \wp_enqueue_style(
                 'jentil',
@@ -73,6 +67,25 @@ final class Styles extends Setup
     }
 
     /**
+     * Enqueue normalize css
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @action wp_enqueue_scripts
+     */
+    public function enqueueNormalize()
+    {
+        \wp_enqueue_style(
+            'normalize',
+            $this->jentil->utilities()->fileSystem()->themeDir(
+                'url',
+                '/node_modules/normalize.css/normalize.css'
+            )
+        );
+    }
+
+    /**
      * Enqueue font awesome
      *
      * @since 0.1.0
@@ -87,6 +100,26 @@ final class Styles extends Setup
             $this->jentil->utilities()->fileSystem()->themeDir(
                 'url',
                 '/node_modules/font-awesome/css/font-awesome.min.css'
+            ),
+            ['normalize']
+        );
+    }
+
+    /**
+     * Enqueue posts package styles
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @action wp_enqueue_scripts
+     */
+    public function enqueuePosts()
+    {
+        \wp_enqueue_style(
+            'wordpress-posts',
+            $this->jentil->utilities()->fileSystem()->themeDir(
+                'url',
+                '/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
             ),
             ['normalize']
         );

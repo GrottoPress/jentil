@@ -15,22 +15,22 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup;
 
 use GrottoPress\Jentil\Jentil;
-use GrottoPress\WordPress\Metaboxes\Metaboxes as MetaboxesPackage;
-use \WP_Post;
+use GrottoPress\WordPress\Metaboxes\MetaboxesTrait;
+use WP_Post;
 
 /**
  * Metaboxes
  *
  * @since 0.1.0
  */
-final class Metaboxes extends Setup
+final class Metaboxes extends AbstractSetup
 {
     /**
      * Import traits
      *
-     * @since 0.1.0 Added G_Metaboxes.
+     * @since 0.1.0 Added MetaboxesTrait.
      */
-    use MetaboxesPackage;
+    use MetaboxesTrait;
 
     /**
      * Run setup
@@ -46,7 +46,7 @@ final class Metaboxes extends Setup
     /**
      * Meta boxes.
      *
-     * @param \WP_Post $post Post.
+     * @param WP_Post $post Post.
      *
      * @since 0.1.0
      * @access protected
@@ -65,7 +65,7 @@ final class Metaboxes extends Setup
          * @filter jentil_metaboxes
          *
          * @var array $boxes Metaboxes.
-         * @var \WP_Post $post Post.
+         * @var WP_Post $post Post.
          *
          * @since 0.1.0
          */
@@ -75,7 +75,7 @@ final class Metaboxes extends Setup
     /**
      * Layout metabox
      *
-     * @param \WP_Post $post Post.
+     * @param WP_Post $post Post.
      *
      * @since 0.1.0
      * @access private
@@ -84,6 +84,10 @@ final class Metaboxes extends Setup
      */
     private function layoutMetabox(WP_Post $post): array
     {
+        if (!\current_user_can('edit_theme_options')) {
+            return [];
+        }
+        
         if (!\is_post_type_hierarchical($post->post_type)) {
             return [];
         }
@@ -102,7 +106,7 @@ final class Metaboxes extends Setup
             return [];
         }
 
-        if (!$mod->is_pagelike()) {
+        if (!$mod->isPagelike()) {
             return [];
         }
 

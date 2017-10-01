@@ -15,15 +15,15 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
-use \WP_Taxonomy;
-use \WP_Term;
+use WP_Taxonomy;
+use WP_Term;
 
 /**
  * Taxonomy Layout Setting
  *
  * @since 0.1.0
  */
-final class Taxonomy extends Setting
+final class Taxonomy extends AbstractSetting
 {
     /**
      * Constructor

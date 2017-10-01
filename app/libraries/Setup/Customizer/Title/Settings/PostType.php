@@ -15,14 +15,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Title\Title;
-use \WP_Post_Type;
+use WP_Post_Type;
 
 /**
  * Post Type
  *
  * @since 0.1.0
  */
-final class PostType extends Setting
+final class PostType extends AbstractSetting
 {
     /**
      * Constructor

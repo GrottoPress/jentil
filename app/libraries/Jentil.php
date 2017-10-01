@@ -28,7 +28,7 @@ final class Jentil
     /**
      * Import traits
      *
-     * @since 0.1.0 Added Singleton.
+     * @since 0.1.0 Added SingletonTrait.
      */
     use SingletonTrait;
 
@@ -48,7 +48,7 @@ final class Jentil
      * @since 0.1.0
      * @access private
      *
-     * @var GrottoPress\Jentil\Utilities\Utilities $utilities Utilities.
+     * @var Utilities $utilities Utilities.
      */
     private $utilities = null;
 
@@ -82,7 +82,7 @@ final class Jentil
     protected function __construct()
     {
         $this->setup['loader'] = new Setup\Loader($this);
-        $this->setup['updater'] = new Setup\Updater($this);
+        // $this->setup['updater'] = new Setup\Updater($this);
         $this->setup['language'] = new Setup\Language($this);
         $this->setup['styles'] = new Setup\Styles($this);
         $this->setup['scripts'] = new Setup\Scripts($this);
@@ -101,6 +101,7 @@ final class Jentil
         $this->setup['colophon'] = new Setup\Colophon($this);
         $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
         $this->setup['metaboxes'] = new Setup\Metaboxes($this);
+        $this->setup['mobile'] = new Setup\Mobile($this);
     }
 
     /**
@@ -109,7 +110,7 @@ final class Jentil
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Utilities\Utilities Utilities.
+     * @return Utilities Utilities.
      */
     public function utilities(): Utilities
     {
@@ -128,9 +129,9 @@ final class Jentil
      * @since 0.1.0
      * @access public
      *
-     * @return GrottoPress\Jentil\Setup\Setup Setup.
+     * @return AbstractSetup
      */
-    public function setup(string $setup): Setup\Setup
+    public function setup(string $setup): Setup\AbstractSetup
     {
         $setups = $this->setup;
 

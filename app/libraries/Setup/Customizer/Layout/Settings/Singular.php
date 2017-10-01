@@ -13,22 +13,22 @@
 namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
-use \WP_Post_Type;
-use \WP_Post;
+use WP_Post_Type;
+use WP_Post;
 
 /**
  * Singular Layout Setting
  *
  * @since 0.1.0
  */
-final class Singular extends Setting
+final class Singular extends AbstractSetting
 {
     /**
      * Constructor
      *
      * @param Layout $layout Layout.
-     * @param \WP_Post_Type $post_type Post type.
-     * @param \WP_Post $post Post.
+     * @param WP_Post_Type $post_type Post type.
+     * @param WP_Post $post Post.
      *
      * @since 0.1.0
      * @access public

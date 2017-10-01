@@ -21,7 +21,7 @@ It integrates seamlessly with most WordPress page builders including:
 
 ### For the End User:
 - Powerful posts/content display options via the customizer.
-- Six (6) layout options 
+- Six (6) layout options  
  * Content
  * Content / Sidebar
  * Sidbar / Content
@@ -42,8 +42,6 @@ It integrates seamlessly with most WordPress page builders including:
 ## Requirements
 
 This theme requires **WordPress** version **4.6** or newer. Minimum required **PHP** version is **7.0**.
-
-For now, you also need to install [MagPack plugin](https://github.com/grottopress/magpack) to get this working. We'll remove this dependency in the course of development.
 
 ## Installation
 
@@ -66,11 +64,10 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 
 - From the root of your WordPress project, via the command line, enter `composer require grottopress/jentil`. (Use `--no-dev` flag for production).
 - Change to `jentil` directory  
- `cd jentil`
+ `cd /path/to/jentil`
 - Run `npm install`
 - Run `gulp` to build assets in a new `dist` directory.
 - You may run `npm install --production` at this stage for a production-ready build.
-- Download, install and activate [MagPack plugin](https://github.com/grottopress/magpack).
 - You're done.
 
 ## Example Child Theme

@@ -14,14 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use GrottoPress\Jentil\Setup\Customizer\Section as C_Section;
+use GrottoPress\Jentil\Setup\Customizer\AbstractSection as Section;
 
 /**
  * Section
  *
  * @since 0.1.0
  */
-abstract class Section extends C_Section
+abstract class AbstractSection extends Section
 {
     /**
      * Constructor
@@ -95,7 +95,9 @@ abstract class Section extends C_Section
     {
         $settings = [];
 
+        $settings['sticky_posts'] = new Settings\StickyPosts($this);
         $settings['wrap_class'] = new Settings\WrapClass($this);
+        $settings['number'] = new Settings\Number($this);
         // $settings['wrap_tag'] = new Settings\WrapTag($this);
         // $settings['layout'] = new Settings\Layout($this);
         $settings['before_title'] = new Settings\BeforeTitle($this);
@@ -111,10 +113,18 @@ abstract class Section extends C_Section
         $settings['image_margin'] = new Settings\ImageMargin($this);
         $settings['text_offset'] = new Settings\TextOffset($this);
         $settings['excerpt'] = new Settings\Excerpt($this);
-        $settings['more_link'] = new Settings\MoreLink($this);
+        $settings['more_link'] = new Settings\MoreText($this);
         $settings['after_content'] = new Settings\AfterContent($this);
         $settings['after_content_separator'] =
             new Settings\AfterContentSeparator($this);
+        // $settings['pagination'] = new Settings\Pagination($this);
+        // $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
+        $settings['pagination_position'] =
+            new Settings\PaginationPosition($this);
+        $settings['pagination_previous_label'] =
+            new Settings\PaginationPreviousLabel($this);
+        $settings['pagination_next_label'] =
+            new Settings\PaginationNextLabel($this);
         
         return $settings;
     }

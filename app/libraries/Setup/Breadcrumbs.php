@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Breadcrumbs extends Setup
+final class Breadcrumbs extends AbstractSetup
 {
     /**
      * Run setup
@@ -44,9 +44,7 @@ final class Breadcrumbs extends Setup
     {
         $page = $this->jentil->utilities()->page();
         
-        if ($page->is('front_page')
-            && !$page->is('paged')
-        ) {
+        if ($page->is('front_page') && !$page->is('paged')) {
             return;
         }
 
