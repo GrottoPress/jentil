@@ -119,7 +119,7 @@ final class Styles extends AbstractSetup
             'wordpress-posts',
             $this->jentil->utilities()->fileSystem()->themeDir(
                 'url',
-                '/vendor/grottopress/posts/dist/assets/styles/posts.min.css'
+                '/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
             ),
             ['normalize']
         );
