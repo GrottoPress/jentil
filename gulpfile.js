@@ -24,7 +24,6 @@ const js_src = './assets/scripts';
 const js_dest = './dist/assets/scripts';
 const js_files = [js_src+'/**/*.js'];
 const sass_src = './assets/styles';
-const sass_file = [sass_src+'/jentil.scss'];
 const sass_files = [sass_src+'/**/*.scss'];
 const sass_dest = './dist/assets/styles';
 
@@ -45,7 +44,7 @@ gulp.task('minify_js', function () {
 
 // Compile scss, rtl and minify scss
 gulp.task('compile_sass', function () {
-    return gulp.src(sass_file)
+    return gulp.src(sass_files)
         .pipe(sass().on('error', sass.logError))
         // .pipe(cleanCSS({format: 'beautify'}))
         .pipe(gulp.dest(sass_dest))
