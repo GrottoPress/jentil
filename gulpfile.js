@@ -20,11 +20,9 @@ const cleanCSS = require('gulp-clean-css');
 const sass = require('gulp-sass');
 
 // Files/Paths
-const js_src = './assets/scripts';
+const js_files = ['./assets/scripts/**/*.js'];
 const js_dest = './dist/assets/scripts';
-const js_files = [js_src+'/**/*.js'];
-const sass_src = './assets/styles';
-const sass_files = [sass_src+'/**/*.scss'];
+const sass_files = ['./assets/styles/**/*.scss'];
 const sass_dest = './dist/assets/styles';
 
 // Lint Task
