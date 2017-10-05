@@ -26,9 +26,9 @@
         "composer/installers": "^1.3",
         "florianwolters/component-util-singleton": "^0.3",
         "yahnis-elsts/plugin-update-checker": "^4.1",
-        "grottopress/wordpress-breadcrumbs": "dev-dev",
-        "grottopress/wordpress-metaboxes": "dev-dev",
-        "grottopress/wordpress-posts": "dev-dev"
+        "grottopress/wordpress-breadcrumbs": "^0.2",
+        "grottopress/wordpress-metaboxes": "^0.2",
+        "grottopress/wordpress-posts": "^0.1"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"
