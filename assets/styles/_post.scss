@@ -91,7 +91,7 @@
 
 /** Single posts */
 
-.singular-post {
+.singular-post.big {
     > .post-wrap {
         > header {
             > .entry-meta {
@@ -115,7 +115,7 @@
 }
 
 @media (min-width: map-get($breakpoints, 'medium')) {
-    .singular-post {
+    .singular-post.big {
         > .post-wrap {
             > header {
                 > .entry-title {
