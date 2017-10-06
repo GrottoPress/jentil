@@ -93,7 +93,7 @@ final class Archive extends AbstractPosts
             $args['wp_query']['post_type'] = $post_type;
         } else {
             $args['wp_query']['post_type'] = \array_keys(
-                $this->archivePostTypes()
+                $this->postTypes()
             );
         }
 
