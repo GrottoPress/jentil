@@ -22,15 +22,19 @@
  */
 require get_template_directory().'/vendor/autoload.php';
 
+/**
+ * Run this theme.
+ *
+ * Ensure version requirements are met before
+ * running theme.
+ *
+ * @action after_setup_theme
+ *
+ * @since 0.1.0
+ */
 if (version_compare(JENTIL_REQUIRED_PHP, phpversion(), '<=')
-    && version_compare(JENTIL_REQUIRED_WP, get_bloginfo('version'), '<=')) {
-    /**
-     * Run this theme.
-     *
-     * @action after_setup_theme
-     *
-     * @since 0.1.0
-     */
+    && version_compare(JENTIL_REQUIRED_WP, get_bloginfo('version'), '<=')
+) {
     \add_action('after_setup_theme', function () {
         \Jentil()->run();
     }, 0);

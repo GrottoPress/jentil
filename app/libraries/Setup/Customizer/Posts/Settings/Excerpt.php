@@ -45,6 +45,6 @@ final class Excerpt extends AbstractSetting
         };
 
         $this->control['label'] = \esc_html__('Excerpt', 'jentil');
-        $this->control['type'] = 'text';
+        $this->control['type'] = 'number';
     }
 }
