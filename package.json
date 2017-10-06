@@ -1,6 +1,6 @@
 {
     "name": "jentil",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "The WordPress theme engine",
     "dependencies": {
         "font-awesome": "^4.7.0",
