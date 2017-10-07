@@ -1,7 +1,7 @@
 {
     "name": "jentil",
     "version": "0.1.2",
-    "description": "The WordPress theme engine",
+    "description": "Jentil is a modern WordPress theme framework",
     "dependencies": {
         "font-awesome": "^4.7.0",
         "html5shiv": "^3.7.3",
