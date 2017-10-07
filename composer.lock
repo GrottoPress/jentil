@@ -680,16 +680,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "252f8f33622fbafa597d295e75e22ee0e8dc33a7"
+                "reference": "5a0b417eadaae48690ee7981d027f4034be1b790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/252f8f33622fbafa597d295e75e22ee0e8dc33a7",
-                "reference": "252f8f33622fbafa597d295e75e22ee0e8dc33a7",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/5a0b417eadaae48690ee7981d027f4034be1b790",
+                "reference": "5a0b417eadaae48690ee7981d027f4034be1b790",
                 "shasum": ""
             },
             "require": {
@@ -725,7 +725,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-10-06 22:06:35"
+            "time": "2017-10-07 19:25:41"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -2941,16 +2941,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.4.0",
+            "version": "6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61"
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1bcaca096998de32c29535fdd2dea0c475e8f61",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b770d8ba7e60295ee91d69d5a5e01ae833cac220",
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220",
                 "shasum": ""
             },
             "require": {
@@ -3021,7 +3021,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-06 03:14:57"
+            "time": "2017-10-07 17:53:53"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
