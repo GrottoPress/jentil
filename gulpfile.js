@@ -1,8 +1,6 @@
 /**
  * Gulpfile
  *
- * @see https://travismaynard.com/writing/getting-started-with-gulp
- *
  * @since 0.1.0
  */
 
