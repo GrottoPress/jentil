@@ -12,10 +12,7 @@
  */
 
 .archive-description {
-    font-size: $font-size-small;
-    line-height: $line-height-small;
-    margin-left: 20px;
-    margin-right: 20px;
+    color: $font-color-dark-grey;
     @include paragraph;
 }
 
