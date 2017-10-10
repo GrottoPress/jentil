@@ -53,7 +53,7 @@
     }
 
     .reply {
-        color: $font-color-grey;
+        color: $font-color-lighter;
         font-size: $font-size-tiny;
         line-height: $line-height-normal;
         text-align: right;
@@ -81,7 +81,7 @@
 }
 
 .comment-meta {
-    color: $font-color-grey;
+    color: $font-color-lighter;
     @include clearfix;
 
     .edit-link::before {
@@ -113,7 +113,7 @@
 
 .comment-notes,
 .logged-in-as {
-    color: $font-color-grey;
+    color: $font-color-lighter;
     font-size: $font-size-tiny;
 }
 

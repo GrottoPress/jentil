@@ -40,7 +40,7 @@
 .wp-caption-text {
     padding: 0 5px;
     font-size: $font-size-small;
-    color: $font-color-grey;
+    color: $font-color-lighter;
 }
 
 .wp-smiley {
@@ -52,7 +52,7 @@
 
 .gallery {
     font-size: 0;
-    background-color: $background-color-grey;
+    background-color: $text-background;
     padding: 10px 5px 0;
     text-align: center;
     @include border-radius(3px);
@@ -77,7 +77,7 @@
 }
 
 .gallery-caption {
-    color: $font-color-dark-grey;
+    color: $font-color-light;
     font-size: $font-size-tiny;
 }
 

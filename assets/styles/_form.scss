@@ -56,7 +56,7 @@ button {
 
 input {
     &:disabled {
-        background-color: $background-color-grey !important;
+        background-color: $text-background !important;
         color: initial !important;
         border-color: initial !important;
         border-width: 1px !important;
