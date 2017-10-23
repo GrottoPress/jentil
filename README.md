@@ -4,7 +4,7 @@
 
 Jentil is a modern WordPress theme, suitable for use as a parent theme from which child themes can be derived.
 
-It features powerful content options which allows to configure posts display on archives right from the customizer.
+It features powerful content options which allows to configure how posts display on archives right from the customizer.
 
 Jentil features six layout options, configured via the customizer and post meta boxes.
 
@@ -49,9 +49,8 @@ This theme requires **WordPress** version **4.6** or newer. Minimum required **P
 
 ### End Users
 
-We are working on a website where end users can simply press a download button to download a production-ready version of Jentil. Website link will be posted here soon.
-
-- After downloading Jentil (in *zip* format), go to **Themes** submenu of the **Appearance** menu in the WordPress admin area.
+- Download theme from [here](https://api.grottopress.com/wp-update-server/v1/?action=download&slug=jentil) (in *zip* format)
+- Go to **Themes** submenu of the **Appearance** menu in the WordPress admin area.
 - Click the **Add New** button on the *Themes* screen. You should be taken to the *Add Themes* screen.
 - On the *Add Themes* screen, click the **Upload Theme** button. Choose the file from your local computer and click **Install Now**.
 - Do not activate Jentil. Only activate the child theme that comes with it.
