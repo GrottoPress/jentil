@@ -44,7 +44,7 @@ tt {
     font-family: Monaco, monospace;
     font-size: 0.90em;
     padding: 2px 4px;
-    background-color: $background-color-grey;
+    background-color: $text-background;
 }
 
 pre {
@@ -91,7 +91,7 @@ hr {
 
 blockquote {
     font-size: $font-size-magnified;
-    color: $font-color-grey;
+    color: $font-color-lighter;
     @include paragraph;
     font-style: italic;
     margin-right: 0;

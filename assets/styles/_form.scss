@@ -56,7 +56,7 @@ button {
 
 input {
     &:disabled {
-        background-color: $background-color-grey !important;
+        background-color: $text-background !important;
         color: initial !important;
         border-color: initial !important;
         border-width: 1px !important;
@@ -74,6 +74,7 @@ input[type=submit],
 input[type=button],
 input[type=reset],
 button {
+    width: auto;
     height: auto;
     cursor: pointer;
     border: 0;
@@ -127,7 +128,6 @@ label {
     }
 
     button {
-        width: auto;
         font-size: 12px;
         text-align: right;
         padding: 7px 10px;

@@ -273,7 +273,7 @@ final class Utilities
      */
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
-        return new Breadcrumbs($this->page(), $args);
+        return (new Breadcrumbs($this->page(), $args))->collectLinks();
     }
 
     /**

@@ -37,7 +37,7 @@ final class Colophon extends AbstractMod
 
         $this->default = \sprintf(
             \esc_html__(
-                'Copyright &copy; %1$s %2$s. All rights reserved. Built with %3$s',
+                '&copy; %1$s %2$s. Built with %3$s',
                 'jentil'
             ),
             '<span itemprop="copyrightYear">{{this_year}}</span>',

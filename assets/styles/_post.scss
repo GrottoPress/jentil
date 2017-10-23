@@ -12,10 +12,7 @@
  */
 
 .archive-description {
-    font-size: $font-size-small;
-    line-height: $line-height-small;
-    margin-left: 20px;
-    margin-right: 20px;
+    color: $font-color-light;
     @include paragraph;
 }
 
@@ -25,7 +22,7 @@
 
 .page-title,
 .page.has-magpack-posts .singular-post > .post-wrap > header > .entry-title {
-    color: $font-color-grey;
+    color: $font-color-lighter;
     font-size: 22px;
 }
 
@@ -75,7 +72,7 @@
 
 .sticky-posts {
     @include paragraph;
-    background-color: $background-color-grey;
+    background-color: $text-background;
     @include border-radius(3px);
     padding: 20px;
 

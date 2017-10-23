@@ -20,11 +20,11 @@
  *
  * @since 0.1.0
  */
-define('JENTIL_REQUIRED_WP', '4.6');
+const JENTIL_REQUIRED_WP = '4.6';
 
 /**
  * Required PHP version
  *
  * @since 0.1.0
  */
-define('JENTIL_REQUIRED_PHP', '7.0');
+const JENTIL_REQUIRED_PHP = '7.0';
