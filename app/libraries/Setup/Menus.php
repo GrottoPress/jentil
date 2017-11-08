@@ -30,9 +30,18 @@ final class Menus extends AbstractSetup
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'register']);
-        \add_action('jentil_inside_header', [$this, 'renderHeaderMenu']);
-        \add_action('jentil_inside_header', [$this, 'renderHeaderMenuToggle']);
-        \add_action('jentil_inside_header', [$this, 'renderMobileHeaderMenu']);
+        \add_action(
+            'jentil_inside_header',
+            [$this, 'renderHorizontalHeaderMenu']
+        );
+        \add_action(
+            'jentil_inside_header',
+            [$this, 'renderVerticalHeaderMenuToggle']
+        );
+        \add_action(
+            'jentil_inside_header',
+            [$this, 'renderVerticalHeaderMenu']
+        );
         \add_action('wp_enqueue_scripts', [$this, 'enqueueJS']);
     }
 
@@ -61,9 +70,9 @@ final class Menus extends AbstractSetup
      *
      * @action jentil_inside_header
      */
-    public function renderHeaderMenu()
+    public function renderHorizontalHeaderMenu()
     {
-        echo '<nav class="site-navigation screen-min-wide">'.
+        echo '<nav class="site-navigation horizontal">'.
             $this->skipTo('content', \esc_html__('Skip to content', 'jentil'));
 
             \wp_nav_menu(['theme_location' => 'primary-menu']);
@@ -78,12 +87,12 @@ final class Menus extends AbstractSetup
      *
      * @action jentil_inside_header
      */
-    public function renderHeaderMenuToggle()
+    public function renderVerticalHeaderMenuToggle()
     {
         $status = isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'off';
         
-        echo '<div class="menu-toggle screen-max-wide">'
-           .$this->skipTo('menu-screen-max-wide', \esc_html__('Skip to menu', 'jentil'))
+        echo '<div class="menu-toggle vertical">'
+           .$this->skipTo('menu-vertical', \esc_html__('Skip to menu', 'jentil'))
 
            .'<a class="js-mobile-menu-button hamburger" href="'.\esc_url(
                \add_query_arg(
@@ -107,11 +116,11 @@ final class Menus extends AbstractSetup
      *
      * @action jentil_inside_header
      */
-    public function renderMobileHeaderMenu()
+    public function renderVerticalHeaderMenu()
     {
         $status = isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'off';
         
-        echo '<nav id="menu-screen-max-wide" class="js-mobile-menu site-navigation screen-max-wide"'.
+        echo '<nav id="menu-vertical" class="js-mobile-menu site-navigation vertical"'.
             ($status == 'off' ? ' style="display:none;"' : '').
         '>'.
             $this->skipTo('content', \esc_html__('Skip to content', 'jentil'));
