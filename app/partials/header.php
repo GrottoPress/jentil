@@ -31,7 +31,7 @@ declare (strict_types = 1);
 
         <link rel="profile" href="http://gmpg.org/xfn/11" />
 
-        <?php if (\Jentil()->utilities()->page()->is('singular')
+        <?php if (\Jentil()->utilities->page->is('singular')
             && \pings_open(\get_queried_object())
         ) { ?>
             <link rel="pingback" href="<?php \bloginfo('pingback_url'); ?>" />
@@ -39,13 +39,13 @@ declare (strict_types = 1);
 
         <!--[if lt IE 9]>
             <script src="<?php
-                echo \Jentil()->utilities()->fileSystem()->themeDir(
+                echo \Jentil()->utilities->fileSystem->themeDir(
                     'url',
                     '/node_modules/html5shiv/dist/html5shiv.min.js'
                 );
             ?>"></script>
             <script src="<?php
-                echo \Jentil()->utilities()->fileSystem()->themeDir(
+                echo \Jentil()->utilities->fileSystem->themeDir(
                     'url',
                     '/node_modules/respond.js/dest/respond.min.js'
                 );

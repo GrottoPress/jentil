@@ -35,12 +35,12 @@ final class Date extends AbstractSection
 
         $this->name = 'date_posts';
 
-        $this->mod_args['context'] = 'date';
+        $this->modArgs['context'] = 'date';
 
         $this->args['title'] = \esc_html__('Date Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->posts->customizer()->jentil()->utilities()
-                ->page()->is('date');
+            return $this->posts->customizer->jentil->utilities
+                ->page->is('date');
         };
     }
 

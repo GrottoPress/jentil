@@ -54,7 +54,7 @@ final class Layout
      */
     public function mod(): string
     {
-        $page = $this->page->type();
+        $page = $this->page->type;
 
         $specific = '';
         $more_specific = '';
@@ -86,18 +86,18 @@ final class Layout
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities()->mods()->layout([
+            $mod = $this->page->utilities->mods->layout([
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific
             ]);
 
-            if ($mod->name()) {
+            if ($mod->name) {
                 return $mod->get();
             }
         }
 
-        return $mod->default();
+        return $mod->default;
     }
     
     /**
@@ -110,7 +110,7 @@ final class Layout
      */
     public function column(): string
     {
-        foreach ($this->page->layouts()->get() as $column_slug => $layouts) {
+        foreach ($this->page->layouts->get() as $column_slug => $layouts) {
             foreach ($layouts as $layout_id => $layout_name) {
                 if ($this->mod() == $layout_id) {
                     return \sanitize_title($column_slug);

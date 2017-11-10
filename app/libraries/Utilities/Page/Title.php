@@ -54,7 +54,7 @@ final class Title
      */
     public function mod(): string
     {
-        $page = $this->page->type();
+        $page = $this->page->type;
 
         $specific = '';
         $more_specific = '';
@@ -78,17 +78,17 @@ final class Title
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities()->mods()->title([
+            $mod = $this->page->utilities->mods->title([
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific,
             ]);
 
-            if ($mod->name()) {
+            if ($mod->name) {
                 return $mod->get();
             }
         }
 
-        return $mod->default();
+        return $mod->default;
     }
 }

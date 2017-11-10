@@ -52,8 +52,8 @@ final class PostType extends AbstractSection
 
         $this->name = \sanitize_key($this->post_type->name.'_post_type_posts');
 
-        $this->mod_args['specific'] = $this->post_type->name;
-        $this->mod_args['context'] = (
+        $this->modArgs['specific'] = $this->post_type->name;
+        $this->modArgs['context'] = (
             'post' == $this->post_type->name ? 'home' : 'post_type_archive'
         );
 
@@ -62,7 +62,7 @@ final class PostType extends AbstractSection
             $this->post_type->labels->name
         );
         $this->args['active_callback'] = function (): bool {
-            $page = $this->posts->customizer()->jentil()->utilities()->page();
+            $page = $this->posts->customizer->jentil->utilities->page;
 
             if ('post' == $this->post_type->name) {
                 return $page->is('home');
@@ -84,8 +84,8 @@ final class PostType extends AbstractSection
     {
         $settings = parent::settings();
 
-        if (!$this->posts->customizer()->jentil()->utilities()
-            ->page()->posts()->sticky()->get($this->post_type->name)
+        if (!$this->posts->customizer->jentil->utilities
+            ->page->posts->sticky->get($this->post_type->name)
         ) {
             unset($settings['sticky_posts']);
         }

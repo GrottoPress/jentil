@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Utilities\Page;
 
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\WordPress\Page\Page as PagePackage;
+use GrottoPress\Getter\Getter;
 
 /**
  * Page
@@ -24,6 +25,8 @@ use GrottoPress\WordPress\Page\Page as PagePackage;
  */
 final class Page extends PagePackage
 {
+    use Getter;
+    
     /**
      * Utilities
      *
@@ -101,11 +104,11 @@ final class Page extends PagePackage
      * Get utilities
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Utilities Utilities.
      */
-    public function utilities(): Utilities
+    private function getUtilities(): Utilities
     {
         return $this->utilities;
     }
@@ -114,11 +117,11 @@ final class Page extends PagePackage
      * Get title
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Title Title.
      */
-    public function title(): string
+    private function getTitle(): string
     {
         if (null === $this->title) {
             $this->title = new Title($this);
@@ -131,11 +134,11 @@ final class Page extends PagePackage
      * Get layout
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Layout Layout.
      */
-    public function layout(): Layout
+    private function getLayout(): Layout
     {
         if (null === $this->layout) {
             $this->layout = new Layout($this);
@@ -148,14 +151,14 @@ final class Page extends PagePackage
      * Get layouts
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Layouts Layouts.
      */
-    public function layouts(): Layouts
+    private function getLayouts(): Layouts
     {
         if (null === $this->layouts) {
-             $this->layouts = new Layouts($this);
+            $this->layouts = new Layouts($this);
         }
  
         return $this->layouts;
@@ -165,11 +168,11 @@ final class Page extends PagePackage
      * Get posts
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Posts Posts.
      */
-    public function posts(): Posts\Posts
+    private function getPosts(): Posts\Posts
     {
         if (null === $this->posts) {
             $this->posts = new Posts\Posts($this);
@@ -186,11 +189,11 @@ final class Page extends PagePackage
      * is called only once per page cycle.
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return array
      */
-    public function type(): array
+    private function getType(): array
     {
         if (null === $this->type) {
             $this->type = parent::type();

@@ -40,19 +40,19 @@ final class PostType extends AbstractSetting
             'post' == $post_type->name ? 'home' : 'post_type_archive'
         );
 
-        $this->mod = $this->title->customizer()->jentil()->utilities()
-            ->mods()->title([
+        $this->mod = $this->title->customizer->jentil->utilities
+            ->mods->title([
                 'context' => $mod_context,
                 'specific' => $post_type->name,
             ]);
 
-        $this->name = $this->mod->name();
+        $this->name = $this->mod->name;
         
-        $this->args['default'] = $this->mod->default();
+        $this->args['default'] = $this->mod->default;
 
         $this->control['active_callback'] = function () use ($post_type): bool {
-            $page = $this->title->customizer()->jentil()->utilities()
-                ->page();
+            $page = $this->title->customizer->jentil->utilities
+                ->page;
 
             if ('post' == $post_type->name) {
                 return $page->is('home');

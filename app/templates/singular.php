@@ -17,7 +17,7 @@ declare (strict_types = 1);
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->loadPartial('header');
+\Jentil()->utilities->loader->loadPartial('header');
 
 \the_post(); ?>
 
@@ -87,4 +87,4 @@ declare (strict_types = 1);
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->loadPartial('footer');
+\Jentil()->utilities->loader->loadPartial('footer');

@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer;
 
 use WP_Customize_Manager as WP_Customizer;
+use GrottoPress\Getter\Getter;
 
 /**
  * Panel
@@ -23,6 +24,8 @@ use WP_Customize_Manager as WP_Customizer;
  */
 abstract class AbstractPanel
 {
+    use Getter;
+    
     /**
      * Customizer
      *
@@ -70,11 +73,11 @@ abstract class AbstractPanel
      * Customizer
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return Customizer Customizer.
      */
-    public function customizer(): Customizer
+    final protected function getCustomizer(): Customizer
     {
         return $this->customizer;
     }
@@ -83,11 +86,11 @@ abstract class AbstractPanel
      * Name
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return string Name.
      */
-    public function name(): string
+    final protected function getName(): string
     {
         return $this->name;
     }

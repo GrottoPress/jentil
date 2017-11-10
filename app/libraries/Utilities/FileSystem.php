@@ -37,9 +37,9 @@ final class FileSystem
      * @since 0.1.0
      * @access private
      *
-     * @var string $dir_path Theme directory path.
+     * @var string $dirPath Theme directory path.
      */
-    private $dir_path;
+    private $dirPath;
 
     /**
      * Theme directory URI
@@ -47,9 +47,9 @@ final class FileSystem
      * @since 0.1.0
      * @access private
      *
-     * @var string $dir_url Theme directory URI.
+     * @var string $dirUrl Theme directory URI.
      */
-    private $dir_url;
+    private $dirUrl;
 
     /**
      * Constructor
@@ -63,8 +63,8 @@ final class FileSystem
     {
         $this->utilities = $utilities;
 
-        $this->dir_url = \get_template_directory_uri();
-        $this->dir_path = \get_template_directory();
+        $this->dirUrl = \get_template_directory_uri();
+        $this->dirPath = \get_template_directory();
     }
 
     /**
@@ -188,6 +188,6 @@ final class FileSystem
             return $relative;
         }
 
-        return $this->{'dir_'.$type}.$relative;
+        return $this->{'dir'.\ucfirst($type)}.$relative;
     }
 }

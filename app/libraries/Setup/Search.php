@@ -84,7 +84,7 @@ final class Search extends AbstractSetup
      */
     public function renderOnSearchPage()
     {
-        if (!$this->jentil->utilities()->page()->is('search')) {
+        if (!$this->jentil->utilities->page->is('search')) {
             return;
         }
 

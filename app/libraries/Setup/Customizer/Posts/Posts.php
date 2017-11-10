@@ -58,8 +58,8 @@ final class Posts extends AbstractPanel
         $sections['date'] = new Date($this);
         $sections['search'] = new Search($this);
 
-        if (($taxonomies = $this->customizer->jentil()->utilities()
-            ->page()->posts()->taxonomies())
+        if (($taxonomies = $this->customizer->jentil->utilities
+            ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
                 $sections['taxonomy_'.$taxonomy->name] = new Taxonomy(
@@ -69,8 +69,8 @@ final class Posts extends AbstractPanel
             }
         }
 
-        if (($post_types = $this->customizer->jentil()->utilities()
-            ->page()->posts()->archive()->postTypes())
+        if (($post_types = $this->customizer->jentil->utilities
+            ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
                 $sections['sticky_'.$post_type->name] = new Sticky(

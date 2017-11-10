@@ -37,9 +37,9 @@ final class ImageAlignment extends AbstractSetting
 
         $mod = $this->mod('image_alignment');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_title';
 
         $this->control['label'] = \esc_html__('Image alignment', 'jentil');

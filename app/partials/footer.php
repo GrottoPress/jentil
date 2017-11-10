@@ -27,12 +27,12 @@ declare (strict_types = 1);
                          *
                          * @since 0.1.0
                          */
-                        if (\Jentil()->utilities()->page()->is('singular')) {
+                        if (\Jentil()->utilities->page->is('singular')) {
                             if ('open' == \get_option('default_ping_status')) {
                                 echo '<!--'; \trackback_rdf(); echo '-->';
                             }
 
-                            \Jentil()->utilities()->loader()->loadComments();
+                            \Jentil()->utilities->loader->loadComments();
                         } ?>
                     </main><!-- #content -->
                 </div><!-- #content-wrap -->
@@ -43,7 +43,7 @@ declare (strict_types = 1);
                  *
                  * @since 0.1.0
                  */
-                \Jentil()->utilities()->loader()->loadPartial('sidebar'); ?>
+                \Jentil()->utilities->loader->loadPartial('sidebar'); ?>
             </div><!-- #main -->
 
             <?php

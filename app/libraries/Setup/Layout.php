@@ -43,7 +43,7 @@ final class Layout extends AbstractSetup
      */
     public function addBodyClasses(array $classes): array
     {
-        $layout = $this->jentil->utilities()->page()->layout();
+        $layout = $this->jentil->utilities->page->layout;
 
         if (($mod = $layout->mod())) {
             $classes[] = \sanitize_title('layout-'.$mod);

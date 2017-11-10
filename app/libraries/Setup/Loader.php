@@ -73,7 +73,7 @@ final class Loader extends AbstractSetup
 
         foreach ($templates as $template) {
             $j_templates[] = \ltrim(
-                $this->jentil->utilities()->fileSystem()->templatesDir(
+                $this->jentil->utilities->fileSystem->templatesDir(
                     'path',
                     '/'.$template,
                     'relative'

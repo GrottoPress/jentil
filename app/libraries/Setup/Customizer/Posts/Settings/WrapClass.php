@@ -37,9 +37,9 @@ final class WrapClass extends AbstractSetting
 
         $mod = $this->mod('wrap_class');
         
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Wrapper class', 'jentil');

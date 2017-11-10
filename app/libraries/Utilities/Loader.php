@@ -57,7 +57,7 @@ final class Loader
      */
     public function loadPartial(string $slug, string $name = '')
     {
-        \get_template_part(\ltrim($this->utilities->filesystem()->partialsDir(
+        \get_template_part(\ltrim($this->utilities->fileSystem->partialsDir(
             'path',
             "/{$slug}",
             'relative'
@@ -75,7 +75,7 @@ final class Loader
      */
     public function loadTemplate(string $slug, string $name = '')
     {
-        \get_template_part(\ltrim($this->utilities->filesystem()->templatesDir(
+        \get_template_part(\ltrim($this->utilities->fileSystem->templatesDir(
             'path',
             "/{$slug}",
             'relative'
@@ -92,7 +92,7 @@ final class Loader
      */
     public function loadComments(bool $separated = false)
     {
-        \comments_template($this->utilities->filesystem()->partialsDir(
+        \comments_template($this->utilities->fileSystem->partialsDir(
             'path',
             '/comments.php',
             'relative'
