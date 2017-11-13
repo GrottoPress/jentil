@@ -145,10 +145,6 @@ final class Jentil
      */
     public function run()
     {
-        if (!$this->setup) {
-            return;
-        }
-
         foreach ($this->setup as $setup) {
             $setup->run();
         }
