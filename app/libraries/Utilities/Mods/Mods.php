@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Mods;
 
 use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\Getter\Getter;
 
 /**
  * Theme Mods
@@ -23,6 +24,8 @@ use GrottoPress\Jentil\Utilities\Utilities;
  */
 final class Mods
 {
+    use Getter;
+    
     /**
      * Utilities
      *
@@ -60,11 +63,11 @@ final class Mods
      * Colophon
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Colophon Colophon.
      */
-    public function colophon(): Colophon
+    private function getColophon(): Colophon
     {
         if (null === $this->colophon) {
             $this->colophon = new Colophon($this);

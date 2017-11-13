@@ -38,8 +38,8 @@ final class Sticky extends AbstractSection
 
         $this->name = \sanitize_key($post_type->name.'_sticky_posts');
 
-        $this->mod_args['context'] = 'sticky';
-        $this->mod_args['specific'] = $post_type->name;
+        $this->modArgs['context'] = 'sticky';
+        $this->modArgs['specific'] = $post_type->name;
 
         // $this->args['panel'] = '';
         $this->args['title'] = \sprintf(\esc_html__(
@@ -47,13 +47,15 @@ final class Sticky extends AbstractSection
             'jentil'
         ), $post_type->labels->name);
         $this->args['active_callback'] = function () use ($post_type): bool {
-            $page = $this->posts->customizer()->jentil()->utilities()->page();
-            $has_sticky = $this->posts->customizer()->jentil()->utilities()
-                ->page()->posts()->sticky()->get($post_type->name);
+            $page = $this->posts->customizer->jentil->utilities->page;
+            $has_sticky = $this->posts->customizer->jentil->utilities
+                ->page->posts->sticky->get($post_type->name);
 
             if ('post' == $post_type->name) {
                 return ($page->is('home') && $has_sticky);
-            } elseif (\post_type_exists($post_type->name)) {
+            }
+            
+            if (\post_type_exists($post_type->name)) {
                 return ($page->is('post_type_archive') && $has_sticky);
             }
 

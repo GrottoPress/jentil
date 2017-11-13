@@ -35,12 +35,12 @@ final class Search extends AbstractSection
 
         $this->name = 'search_posts';
 
-        $this->mod_args['context'] = 'search';
+        $this->modArgs['context'] = 'search';
 
         $this->args['title'] = \esc_html__('Search Results', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->posts->customizer()->jentil()->utilities()
-                ->page()->is('search');
+            return $this->posts->customizer->jentil->utilities
+                ->page->is('search');
         };
     }
 

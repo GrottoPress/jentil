@@ -67,7 +67,7 @@ final class Customizer extends AbstractSetup
     {
         \wp_enqueue_script(
             'jentil-customizer',
-            $this->jentil->utilities()->filesystem()->scriptsDir(
+            $this->jentil->utilities->fileSystem->scriptsDir(
                 'url',
                 '/customize-preview.min.js'
             ),

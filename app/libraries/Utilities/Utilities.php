@@ -22,6 +22,7 @@ use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
 use GrottoPress\WordPress\Posts\Posts;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Mobile\Detector;
+use GrottoPress\Getter\Getter;
 use Puc_v4p2_Theme_UpdateChecker;
 use Puc_v4_Factory;
 
@@ -32,6 +33,8 @@ use Puc_v4_Factory;
  */
 final class Utilities
 {
+    use Getter;
+    
     /**
      * Jentil
      *
@@ -78,9 +81,9 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var FileSystem $file_system FileSystem.
+     * @var FileSystem $fileSystem FileSystem.
      */
-    private $file_system = null;
+    private $fileSystem = null;
 
     /**
      * Loader
@@ -98,9 +101,9 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Detector $detector Mobile detector.
+     * @var Detector $mobileDetector Mobile detector.
      */
-    private $detector = null;
+    private $mobileDetector = null;
 
     /**
      * Updater
@@ -133,7 +136,7 @@ final class Utilities
      *
      * @return Jentil Jentil.
      */
-    public function jentil(): Jentil
+    private function getJentil(): Jentil
     {
         return $this->jentil;
     }
@@ -142,11 +145,11 @@ final class Utilities
      * Mods
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Mods Mods.
      */
-    public function mods(): Mods
+    private function getMods(): Mods
     {
         if (null === $this->mods) {
             $this->mods = new Mods($this);
@@ -159,11 +162,11 @@ final class Utilities
      * Page
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Page Page.
      */
-    public function page(): Page
+    private function getPage(): Page
     {
         if (null === $this->page) {
             $this->page = new Page($this);
@@ -176,11 +179,11 @@ final class Utilities
      * Colophon
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Colophon Colophon.
      */
-    public function colophon(): Colophon
+    private function getColophon(): Colophon
     {
         if (null === $this->colophon) {
             $this->colophon = new Colophon($this);
@@ -193,28 +196,28 @@ final class Utilities
      * File System
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return FileSystem FileSystem.
      */
-    public function fileSystem(): FileSystem
+    private function getFileSystem(): FileSystem
     {
-        if (null === $this->file_system) {
-            $this->file_system = new FileSystem($this);
+        if (null === $this->fileSystem) {
+            $this->fileSystem = new FileSystem($this);
         }
 
-        return $this->file_system;
+        return $this->fileSystem;
     }
 
     /**
      * Loader
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Loader Loader.
      */
-    public function loader(): Loader
+    private function getLoader(): Loader
     {
         if (null === $this->loader) {
             $this->loader = new Loader($this);
@@ -227,33 +230,33 @@ final class Utilities
      * Mobile Detector
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Detector Mobile detector.
      */
-    public function mobileDetector(): Detector
+    private function getMobileDetector(): Detector
     {
-        if (null === $this->detector) {
-            $this->detector = new Detector();
+        if (null === $this->mobileDetector) {
+            $this->mobileDetector = new Detector();
         }
 
-        return $this->detector;
+        return $this->mobileDetector;
     }
 
     /**
      * Updater
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Theme_UpdateChecker Updater.
      */
-    public function updater(): Puc_v4p2_Theme_UpdateChecker
+    private function getUpdater(): Puc_v4p2_Theme_UpdateChecker
     {
         if (null === $this->updater) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(
                 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-                $this->fileSystem()->themeDir('path', '/functions.php'),
+                $this->fileSystem->themeDir('path', '/functions.php'),
                 'jentil'
             );
         }
@@ -273,7 +276,7 @@ final class Utilities
      */
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
-        return (new Breadcrumbs($this->page(), $args))->collectLinks();
+        return (new Breadcrumbs($this->getPage(), $args))->collectLinks();
     }
 
     /**

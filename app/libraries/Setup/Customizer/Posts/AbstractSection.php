@@ -29,9 +29,9 @@ abstract class AbstractSection extends Section
      * @since 0.1.0
      * @access protected
      *
-     * @var array $mod_args Mod args.
+     * @var array $modArgs Mod args.
      */
-    protected $mod_args;
+    protected $modArgs;
 
      /**
      * Constructor
@@ -45,14 +45,14 @@ abstract class AbstractSection extends Section
     {
         $this->posts = $posts;
 
-        parent::__construct($this->posts->customizer());
+        parent::__construct($this->posts->customizer);
 
         $this->args = [
             'title' => \esc_html__('Posts', 'jentil'),
-            'panel' => $this->posts->name(),
+            'panel' => $this->posts->name,
         ];
 
-        $this->mod_args = [
+        $this->modArgs = [
             'context' => '',
             'specific' => '',
             'more_specific' => '',
@@ -63,11 +63,11 @@ abstract class AbstractSection extends Section
      * Posts
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return Posts Posts.
      */
-    final public function posts(): Posts
+    final protected function getPosts(): Posts
     {
         return $this->posts;
     }
@@ -76,13 +76,13 @@ abstract class AbstractSection extends Section
      * Mod args
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return array Mod args.
      */
-    final public function modArgs(): array
+    final protected function getModArgs(): array
     {
-        return $this->mod_args;
+        return $this->modArgs;
     }
 
     /**

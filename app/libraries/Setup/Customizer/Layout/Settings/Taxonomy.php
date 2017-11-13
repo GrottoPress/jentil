@@ -44,9 +44,9 @@ final class Taxonomy extends AbstractSetting
         
         $this->setMod($taxonomy, $term);
 
-        $this->name = $this->mod->name();
+        $this->name = $this->mod->name;
 
-        $this->args['default'] = $this->mod->default();
+        $this->args['default'] = $this->mod->default;
 
         $this->setControl($taxonomy, $term);
     }
@@ -68,15 +68,15 @@ final class Taxonomy extends AbstractSetting
         }
 
         if ($term) {
-            $this->mod = $this->layout->customizer()->jentil()->utilities()
-                ->mods()->layout([
+            $this->mod = $this->layout->customizer->jentil->utilities
+                ->mods->layout([
                     'context' => $mod_context,
                     'specific' => $taxonomy->name,
                     'more_specific' => $term->term_id,
                 ]);
         } else {
-            $this->mod = $this->layout->customizer()->jentil()->utilities()
-                ->mods()->layout([
+            $this->mod = $this->layout->customizer->jentil->utilities
+                ->mods->layout([
                     'context' => $mod_context,
                     'specific' => $taxonomy->name,
                 ]);
@@ -95,7 +95,7 @@ final class Taxonomy extends AbstractSetting
             $taxonomy,
             $term
         ): bool {
-            $page = $this->layout->customizer()->jentil()->utilities()->page();
+            $page = $this->layout->customizer->jentil->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)

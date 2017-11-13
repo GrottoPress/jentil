@@ -71,7 +71,7 @@ final class HTML5 extends AbstractSetup
      */
     public function addMicrodata(string $output): string
     {
-        $page = $this->jentil->utilities()->page();
+        $page = $this->jentil->utilities->page;
 
         if ($page->is('admin') || $page->is('login') || $page->is('register')) {
             return $output;

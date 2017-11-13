@@ -69,16 +69,16 @@ final class Taxonomy extends AbstractSection
      */
     private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
-        $this->mod_args['context'] = 'tax';
+        $this->modArgs['context'] = 'tax';
         
         if ('post_tag' == $taxonomy->name) {
-            $this->mod_args['context'] = 'tag';
+            $this->modArgs['context'] = 'tag';
         } elseif ('category' == $taxonomy->name) {
-            $this->mod_args['context'] = 'category';
+            $this->modArgs['context'] = 'category';
         }
 
-        $this->mod_args['specific'] = $taxonomy->name;
-        $this->mod_args['more_specific'] = ($term ? $term->term_id : '');
+        $this->modArgs['specific'] = $taxonomy->name;
+        $this->modArgs['more_specific'] = ($term ? $term->term_id : '');
     }
 
     /**
@@ -93,7 +93,7 @@ final class Taxonomy extends AbstractSection
             $taxonomy,
             $term
         ): bool {
-            $page = $this->posts->customizer()->jentil()->utilities()->page();
+            $page = $this->posts->customizer->jentil->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)

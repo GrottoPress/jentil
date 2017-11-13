@@ -37,9 +37,9 @@ final class BeforeTitle extends AbstractSetting
 
         $mod = $this->mod('before_title');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Before title', 'jentil');

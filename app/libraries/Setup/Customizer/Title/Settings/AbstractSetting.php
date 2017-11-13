@@ -59,7 +59,7 @@ abstract class AbstractSetting extends Setting
         // $this->args['transport'] = 'postMessage';
         $this->arg['sanitize_callback'] = 'wp_kses_data';
 
-        $this->control['section'] = $this->title->name();
+        $this->control['section'] = $this->title->name;
         $this->control['label'] = \esc_html__('Enter title', 'jentil');
         $this->control['type'] = 'text';
     }

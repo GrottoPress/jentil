@@ -42,12 +42,12 @@ final class Archives extends AbstractSetup
      */
     public function description()
     {
-        if (!$this->jentil->utilities()->page()->is('archive')) {
+        if (!$this->jentil->utilities->page->is('archive')) {
             return;
         }
 
         if (!($description =
-            $this->jentil->utilities()->page()->description())
+            $this->jentil->utilities->page->description())
         ) {
             return;
         }

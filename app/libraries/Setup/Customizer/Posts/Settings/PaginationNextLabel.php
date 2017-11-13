@@ -37,9 +37,9 @@ final class PaginationNextLabel extends AbstractSetting
 
         $mod = $this->mod('pagination_next_label');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Next page link label', 'jentil');

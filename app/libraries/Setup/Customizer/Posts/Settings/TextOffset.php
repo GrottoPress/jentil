@@ -37,9 +37,9 @@ final class TextOffset extends AbstractSetting
 
         $mod = $this->mod('text_offset');
         
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'absint';
 
         $this->control['label'] = \esc_html__('Text offset', 'jentil');

@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\Page\Page;
+use GrottoPress\Getter\Getter;
 
 /**
  * Posts
@@ -23,6 +24,8 @@ use GrottoPress\Jentil\Utilities\Page\Page;
  */
 final class Posts
 {
+    use Getter;
+    
     /**
      * Page
      *
@@ -84,11 +87,11 @@ final class Posts
      * Get Page
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Page
      */
-    public function page()
+    private function getPage()
     {
         return $this->page;
     }
@@ -97,11 +100,11 @@ final class Posts
      * Get Sticky Posts
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Sticky
      */
-    public function sticky()
+    private function getSticky()
     {
         return $this->sticky;
     }
@@ -110,11 +113,11 @@ final class Posts
      * Get Archive Posts
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Sticky
      */
-    public function archive()
+    private function getArchive()
     {
         return $this->archive;
     }
@@ -136,17 +139,17 @@ final class Posts
             && $this->sticky->isSet()
             && $this->sticky->get()
         ) {
-            $out .= $this->page->utilities()->posts(
+            $out .= $this->page->utilities->posts(
                 $this->sticky->args()
             )->render();
         }
 
         if ($this->page->is('singular')) {
-            $out .= $this->page->utilities()->posts(
+            $out .= $this->page->utilities->posts(
                 $this->singular->args()
             )->render();
         } else {
-            $out .= $this->page->utilities()->posts(
+            $out .= $this->page->utilities->posts(
                 $this->archive->args()
             )->render();
         }
@@ -194,13 +197,13 @@ final class Posts
     public function mod(string $setting, array $args = [])
     {
         if (!empty($args['context'])) {
-            return $this->page->utilities()->mods()->posts(
+            return $this->page->utilities->mods->posts(
                 $setting,
                 $args
             )->get();
         }
 
-        $page = $this->page->type();
+        $page = $this->page->type;
 
         $specific = '';
         $more_specific = '';
@@ -224,17 +227,17 @@ final class Posts
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities()->mods()->posts($setting, [
+            $mod = $this->page->utilities->mods->posts($setting, [
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific,
             ]);
 
-            if ($mod->name()) {
+            if ($mod->name) {
                 return $mod->get();
             }
         }
 
-        return $mod->default();
+        return $mod->default;
     }
 }

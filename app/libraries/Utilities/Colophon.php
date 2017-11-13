@@ -54,6 +54,6 @@ final class Colophon
      */
     public function mod(): string
     {
-        return $this->utilities->mods()->colophon()->get();
+        return $this->utilities->mods->colophon->get();
     }
 }

@@ -35,19 +35,19 @@ final class Error404 extends AbstractSetting
     {
         parent::__construct($title);
 
-        $this->mod = $this->title->customizer()->jentil()->utilities()
-            ->mods()->title([
+        $this->mod = $this->title->customizer->jentil->utilities
+            ->mods->title([
                 'context' => '404',
             ]);
 
-        $this->name = $this->mod->name();
+        $this->name = $this->mod->name;
         
-        $this->args['default'] = $this->mod->default();
+        $this->args['default'] = $this->mod->default;
 
         $this->control['label'] = \esc_html__('Error 404', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->title->customizer()->jentil()->utilities()
-                ->page()->is('404');
+            return $this->title->customizer->jentil->utilities
+                ->page->is('404');
         };
     }
 }

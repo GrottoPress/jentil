@@ -37,9 +37,9 @@ final class Image extends AbstractSetting
 
         $mod = $this->mod('image');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Image size', 'jentil');

@@ -37,9 +37,9 @@ final class MoreText extends AbstractSetting
 
         $mod = $this->mod('more_text');
         
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('More link label', 'jentil');

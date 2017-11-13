@@ -78,8 +78,8 @@ final class Archive extends AbstractPosts
                 'posts_per_page' => $this->posts->mod('number'),
                 's' => \get_search_query(),
                 'post__not_in' => (
-                    $this->posts->sticky()->isSet()
-                        ? $this->posts->sticky()->get() : null
+                    $this->posts->sticky->isSet()
+                        ? $this->posts->sticky->get() : null
                 ),
                 'post_status' => 'publish',
                 'ignore_sticky_posts' => 1,
@@ -87,8 +87,8 @@ final class Archive extends AbstractPosts
         ];
 
         if (($post_type = \get_query_var('post_type'))
-            || $this->posts->page()->is('home')
-            || $this->posts->page()->is('post_type_archive')
+            || $this->posts->page->is('home')
+            || $this->posts->page->is('post_type_archive')
         ) {
             $args['wp_query']['post_type'] = $post_type;
         } else {
@@ -97,7 +97,7 @@ final class Archive extends AbstractPosts
             );
         }
 
-        if ($this->posts->page()->is('search')) {
+        if ($this->posts->page->is('search')) {
             // $args['wp_query']['orderby']['all_time_views'] = 'DESC';
             $args['wp_query']['orderby']['comment_count'] = 'DESC';
         }

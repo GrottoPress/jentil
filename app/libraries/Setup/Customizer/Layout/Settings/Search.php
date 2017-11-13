@@ -35,17 +35,17 @@ final class Search extends AbstractSetting
     {
         parent::__construct($layout);
         
-        $this->mod = $this->layout->customizer()->jentil()->utilities()
-            ->mods()->layout(['context' => 'search']);
+        $this->mod = $this->layout->customizer->jentil->utilities
+            ->mods->layout(['context' => 'search']);
 
-        $this->name = $this->mod->name();
+        $this->name = $this->mod->name;
 
-        $this->args['default'] = $this->mod->default();
+        $this->args['default'] = $this->mod->default;
 
         $this->control['label'] = \esc_html__('Search Results', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->layout->customizer()->jentil()->utilities()
-                ->page()->is('search');
+            return $this->layout->customizer->jentil->utilities
+                ->page->is('search');
         };
     }
 }

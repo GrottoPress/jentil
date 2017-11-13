@@ -37,9 +37,9 @@ final class Excerpt extends AbstractSetting
 
         $mod = $this->mod('excerpt');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };
