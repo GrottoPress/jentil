@@ -123,18 +123,18 @@ final class Jentil
      * @param string $setup Setup type
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
-     * @return AbstractSetup
+     * @return array
      */
-    public function setup(string $setup): Setup\AbstractSetup
+    private function getSetup(): array
     {
         $setups = $this->setup;
 
         unset($setups['loader']);
         unset($setups['updater']);
 
-        return $setups[$setup];
+        return $setups;
     }
 
     /**
