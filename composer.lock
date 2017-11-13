@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "04e6bc043a2c4eb82be3a09de7c26cb0",
-    "content-hash": "3f8854a3fd4c5e8f687a10f62bc54952",
+    "hash": "91305475d9c07503c09909cde65d5e08",
+    "content-hash": "6d9000d18990e5a58a1b511a86daeb9c",
     "packages": [
         {
             "name": "aura/html",
@@ -434,6 +434,55 @@
             "time": "2017-09-28 20:20:14"
         },
         {
+            "name": "grottopress/getter",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrottoPress/getter.git",
+                "reference": "8ba28fe17b846ea3518fee470d0420c22706b73e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/8ba28fe17b846ea3518fee470d0420c22706b73e",
+                "reference": "8ba28fe17b846ea3518fee470d0420c22706b73e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GrottoPress\\Getter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GrottoPress.com",
+                    "email": "info@grottopress.com",
+                    "homepage": "https://www.grottopress.com"
+                },
+                {
+                    "name": "N Atta Kusi Adusei",
+                    "homepage": "https://twitter.com/akadusei",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Get private object attributes directly, without calling getter methods.",
+            "keywords": [
+                "OOP",
+                "getter"
+            ],
+            "time": "2017-11-09 22:21:51"
+        },
+        {
             "name": "grottopress/mobile-detector",
             "version": "0.1.0",
             "source": {
@@ -680,20 +729,21 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.1.2",
+            "version": "dev-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "5a0b417eadaae48690ee7981d027f4034be1b790"
+                "reference": "6bd0fd35988055050722da0d4237efe932b30249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/5a0b417eadaae48690ee7981d027f4034be1b790",
-                "reference": "5a0b417eadaae48690ee7981d027f4034be1b790",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/6bd0fd35988055050722da0d4237efe932b30249",
+                "reference": "6bd0fd35988055050722da0d4237efe932b30249",
                 "shasum": ""
             },
             "require": {
-                "grottopress/mobile-detector": "0.1.0",
+                "grottopress/getter": "^0.2",
+                "grottopress/mobile-detector": "^0.1",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -725,7 +775,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-10-07 19:25:41"
+            "time": "2017-11-09 23:09:02"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6507,7 +6557,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "grottopress/wordpress-posts": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
