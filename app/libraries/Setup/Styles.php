@@ -46,24 +46,16 @@ final class Styles extends AbstractSetup
     public function enqueue()
     {
         if (\is_rtl()) {
-            \wp_enqueue_style(
-                'jentil',
-                $this->jentil->utilities->fileSystem->stylesDir(
-                    'url',
-                    '/jentil-rtl.min.css'
-                ),
-                ['normalize']
-            );
+            $style = '/jentil-rtl.min.css';
         } else {
-            \wp_enqueue_style(
-                'jentil',
-                $this->jentil->utilities->fileSystem->stylesDir(
-                    'url',
-                    '/jentil.min.css'
-                ),
-                ['normalize']
-            );
+            $style = '/jentil.min.css';
         }
+        
+        \wp_enqueue_style(
+            'jentil',
+            $this->jentil->utilities->fileSystem->stylesDir('url', $style),
+            ['normalize']
+        );
     }
 
     /**
