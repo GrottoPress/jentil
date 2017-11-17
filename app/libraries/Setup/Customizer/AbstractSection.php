@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer;
 
 use WP_Customize_Manager as WP_Customizer;
+use GrottoPress\Getter\Getter;
 
 /**
  * Section
@@ -23,6 +24,8 @@ use WP_Customize_Manager as WP_Customizer;
  */
 abstract class AbstractSection
 {
+    use Getter;
+    
     /**
      * Customizer
      *
@@ -70,11 +73,11 @@ abstract class AbstractSection
      * Customizer
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return Customizer Customizer.
      */
-    final public function customizer(): Customizer
+    final protected function getCustomizer(): Customizer
     {
         return $this->customizer;
     }
@@ -83,11 +86,11 @@ abstract class AbstractSection
      * Name
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return string Name.
      */
-    final public function name(): string
+    final protected function getName(): string
     {
         return $this->name;
     }

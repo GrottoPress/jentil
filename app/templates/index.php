@@ -17,10 +17,10 @@ declare (strict_types = 1);
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->loadPartial('header');
+\Jentil()->utilities->loader->loadPartial('header');
 
-if (!\Jentil()->utilities()->page()->is('singular')) {
-    if (($jentil_title = \Jentil()->utilities()->page()->title())) { ?>
+if (!\Jentil()->utilities->page->is('singular')) {
+    if (($jentil_title = \Jentil()->utilities->page->title)) { ?>
         <header class="page-header">
     <?php }
 
@@ -55,10 +55,10 @@ if (!\Jentil()->utilities()->page()->is('singular')) {
  */
 \do_action('jentil_before_content');
 
-if (\Jentil()->utilities()->page()->is('404')
-    || !($jentil_posts = \Jentil()->utilities()->page()->posts()->render())
+if (\Jentil()->utilities->page->is('404')
+    || !($jentil_posts = \Jentil()->utilities->page->posts->render())
 ) {
-    \Jentil()->utilities()->loader()->loadPartial('none');
+    \Jentil()->utilities->loader->loadPartial('none');
 } else {
     echo $jentil_posts;
 }
@@ -68,4 +68,4 @@ if (\Jentil()->utilities()->page()->is('404')
  *
  * @since 0.1.0
  */
-\Jentil()->utilities()->loader()->loadPartial('footer');
+\Jentil()->utilities->loader->loadPartial('footer');

@@ -21,7 +21,7 @@ declare (strict_types = 1);
  * @since 0.1.0
  */
 if ('one-column' == (
-    $column = \Jentil()->utilities()->page()->layout()->column()
+    $column = \Jentil()->utilities->page->layout->column()
 )) {
     return;
 }

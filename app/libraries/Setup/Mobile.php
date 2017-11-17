@@ -29,7 +29,7 @@ final class Mobile extends AbstractSetup
      */
     public function run()
     {
-         \add_filter('body_class', [$this, 'addBodyClasses']);
+        \add_filter('body_class', [$this, 'addBodyClasses']);
     }
 
     /**
@@ -44,7 +44,7 @@ final class Mobile extends AbstractSetup
      */
     public function addBodyClasses(array $classes): array
     {
-        $detector = $this->jentil->utilities()->mobileDetector();
+        $detector = $this->jentil->utilities->mobileDetector;
 
         if ($detector->isMobile()) {
             $classes[] = 'mobile';

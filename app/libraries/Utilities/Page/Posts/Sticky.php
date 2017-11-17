@@ -203,9 +203,9 @@ final class Sticky extends AbstractPosts
             'context' => 'sticky',
         ];
 
-        if ($this->posts->page()->is('home')) {
+        if ($this->posts->page->is('home')) {
             $args['specific'] = 'post';
-        } elseif ($this->posts->page()->is('post_type_archive')) {
+        } elseif ($this->posts->page->is('post_type_archive')) {
             $args['specific'] = \get_query_var('post_type');
         }
 

@@ -59,11 +59,11 @@ abstract class AbstractSetting extends Setting
         $this->args = ['sanitize_callback' => 'sanitize_title'];
 
         $this->control = [
-            'section' => $this->layout->name(),
+            'section' => $this->layout->name,
             'label' => \esc_html__('Select layout', 'jentil'),
             'type' => 'select',
-            'choices' => $this->layout->customizer()->jentil()->utilities()
-                ->page()->layouts()->IDNames(),
+            'choices' => $this->layout->customizer->jentil->utilities
+                ->page->layouts->IDNames(),
         ];
     }
 }

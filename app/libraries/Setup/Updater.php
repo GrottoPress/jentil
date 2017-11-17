@@ -42,6 +42,6 @@ final class Updater extends AbstractSetup
      */
     public function checkForUpdate()
     {
-        $this->jentil->utilities()->updater();
+        $this->jentil->utilities->updater;
     }
 }

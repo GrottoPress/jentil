@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Mods;
 
+use GrottoPress\Getter\Getter;
+
 /**
  * Theme Mod
  *
@@ -21,6 +23,8 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  */
 abstract class AbstractMod
 {
+    use Getter;
+
     /**
      * Mods
      *
@@ -68,11 +72,11 @@ abstract class AbstractMod
      * Name
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return string Name.
      */
-    public function name(): string
+    final protected function getName(): string
     {
         return $this->name;
     }
@@ -81,11 +85,11 @@ abstract class AbstractMod
      * Default
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return mixed Default.
      */
-    public function default()
+    final protected function getDefault()
     {
         return $this->default;
     }

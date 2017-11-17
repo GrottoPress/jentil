@@ -47,7 +47,7 @@ abstract class AbstractSetting extends Setting
     {
         $this->section = $section;
 
-        $this->control['section'] = $this->section->name();
+        $this->control['section'] = $this->section->name;
     }
 
     /**
@@ -62,7 +62,7 @@ abstract class AbstractSetting extends Setting
      */
     final protected function mod(string $setting): Mod
     {
-        return $this->section->posts()->customizer()->jentil()->utilities()
-            ->mods()->posts($setting, $this->section->modArgs());
+        return $this->section->posts->customizer->jentil->utilities
+            ->mods->posts($setting, $this->section->modArgs);
     }
 }

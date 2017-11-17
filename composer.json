@@ -26,15 +26,20 @@
         "composer/installers": "^1.3",
         "florianwolters/component-util-singleton": "^0.3",
         "yahnis-elsts/plugin-update-checker": "^4.1",
-        "grottopress/wordpress-breadcrumbs": "0.3.0",
+        "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "^0.1"
+        "grottopress/wordpress-posts": "^0.2"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"
     },
     "autoload": {
-        "psr-4": { "GrottoPress\\Jentil\\": "app/libraries/" },
-        "files": ["app/config.php", "app/functions.php"]
+        "psr-4": {
+            "GrottoPress\\Jentil\\": "app/libraries/"
+        },
+        "files": [
+            "app/config.php",
+            "app/functions.php"
+        ]
     }
 }

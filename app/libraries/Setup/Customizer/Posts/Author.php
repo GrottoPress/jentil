@@ -35,12 +35,12 @@ final class Author extends AbstractSection
 
         $this->name = 'author_posts';
         
-        $this->mod_args['context'] = 'author';
+        $this->modArgs['context'] = 'author';
 
         $this->args['title'] = \esc_html__('Author Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->posts->customizer()->jentil()->utilities()
-                ->page()->is('author');
+            return $this->posts->customizer->jentil->utilities
+                ->page->is('author');
         };
     }
 

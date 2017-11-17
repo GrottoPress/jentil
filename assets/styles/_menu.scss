@@ -41,14 +41,6 @@
     }
 }
 
-.site-navigation {
-    .search-wrap {
-        @include paragraph;
-    }
-}
-
-/** Toggle buttons */
-
 #header {
     .menu-toggle {
         text-align: center;
@@ -57,6 +49,17 @@
 
         a {
             display: block;
+        }
+    }
+
+    .site-navigation {
+        .search-wrap {
+            display: block;
+            @include paragraph;
+        }
+
+        &.horizontal {
+            display: none;
         }
     }
 }
@@ -75,22 +78,28 @@
 
 @media (min-width: map-get($breakpoints, 'wide')) {
     #header {
-        .site-navigation,
-        .menu-toggle {
-            clear: both;
-        }
+        // .site-navigation,
+        // .menu-toggle {
+        //     clear: both;
+        // }
 
         .site-navigation {
             @include paragraph;
 
-            &.screen-min-wide {
+            &.horizontal {
+                display: block;
                 margin-bottom: 0;
             }
 
-            // Override style[display=block] set by jquery on clicking menu button
-            &.screen-max-wide {
+            // Override style[display=block] set by jquery
+            // on clicking menu button
+            &.vertical {
                 display: none !important;
             }
+        }
+
+        .menu-toggle {
+            display: none;
         }
 
         .menu {

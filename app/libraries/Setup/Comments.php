@@ -42,9 +42,9 @@ final class Comments extends AbstractSetup
      */
     public function enqueueJS()
     {
-        if (!$this->jentil->utilities()->page()->is('singular')
-            || ! \comments_open()
-            || ! \get_option('thread_comments')
+        if (!$this->jentil->utilities->page->is('singular')
+            || !\comments_open()
+            || !\get_option('thread_comments')
         ) {
             return;
         }

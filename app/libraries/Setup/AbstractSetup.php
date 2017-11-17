@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup;
 
 use GrottoPress\Jentil\Jentil;
+use GrottoPress\Getter\Getter;
 
 /**
  * Setup
@@ -23,6 +24,8 @@ use GrottoPress\Jentil\Jentil;
  */
 abstract class AbstractSetup
 {
+    use Getter;
+    
     /**
      * Jentil
      *
@@ -50,11 +53,11 @@ abstract class AbstractSetup
      * Jentil
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return Jentil Jentil.
      */
-    public function jentil(): Jentil
+    final protected function getJentil(): Jentil
     {
         return $this->jentil;
     }

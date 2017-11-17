@@ -92,13 +92,13 @@ final class Metaboxes extends AbstractSetup
             return [];
         }
         
-        if (!($layouts = $this->jentil->utilities()->page()
-                ->layouts()->IDNames())
+        if (!($layouts = $this->jentil->utilities->page
+                ->layouts->IDNames())
         ) {
             return [];
         }
 
-        if (!($mod = $this->jentil->utilities()->mods()->layout([
+        if (!($mod = $this->jentil->utilities->mods->layout([
             'context' => 'singular',
             'specific' => $post->post_type,
             'more_specific' => $post->ID,
@@ -118,7 +118,7 @@ final class Metaboxes extends AbstractSetup
             'callback' => '',
             'fields' => [
                 [
-                    'id' => $mod->name(),
+                    'id' => $mod->name,
                     'type' => 'select',
                     'choices' => $layouts,
                     'label' => \esc_html__('Select layout', 'jentil'),

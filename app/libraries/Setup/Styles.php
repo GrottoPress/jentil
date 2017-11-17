@@ -46,24 +46,16 @@ final class Styles extends AbstractSetup
     public function enqueue()
     {
         if (\is_rtl()) {
-            \wp_enqueue_style(
-                'jentil',
-                $this->jentil->utilities()->fileSystem()->stylesDir(
-                    'url',
-                    '/jentil-rtl.min.css'
-                ),
-                ['normalize']
-            );
+            $style = '/jentil-rtl.min.css';
         } else {
-            \wp_enqueue_style(
-                'jentil',
-                $this->jentil->utilities()->fileSystem()->stylesDir(
-                    'url',
-                    '/jentil.min.css'
-                ),
-                ['normalize']
-            );
+            $style = '/jentil.min.css';
         }
+        
+        \wp_enqueue_style(
+            'jentil',
+            $this->jentil->utilities->fileSystem->stylesDir('url', $style),
+            ['normalize']
+        );
     }
 
     /**
@@ -78,7 +70,7 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'normalize',
-            $this->jentil->utilities()->fileSystem()->themeDir(
+            $this->jentil->utilities->fileSystem->themeDir(
                 'url',
                 '/node_modules/normalize.css/normalize.css'
             )
@@ -97,7 +89,7 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'font-awesome',
-            $this->jentil->utilities()->fileSystem()->themeDir(
+            $this->jentil->utilities->fileSystem->themeDir(
                 'url',
                 '/node_modules/font-awesome/css/font-awesome.min.css'
             ),
@@ -117,7 +109,7 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'wordpress-posts',
-            $this->jentil->utilities()->fileSystem()->themeDir(
+            $this->jentil->utilities->fileSystem->themeDir(
                 'url',
                 '/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
             ),

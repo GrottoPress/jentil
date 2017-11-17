@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\Getter\Getter;
 use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 
 /**
@@ -25,12 +26,7 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
  */
 final class Jentil
 {
-    /**
-     * Import traits
-     *
-     * @since 0.1.0 Added SingletonTrait.
-     */
-    use SingletonTrait;
+    use SingletonTrait, Getter;
 
     /**
      * Theme setups
@@ -108,11 +104,11 @@ final class Jentil
      * Utilities
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Utilities Utilities.
      */
-    public function utilities(): Utilities
+    private function getUtilities(): Utilities
     {
         if (null === $this->utilities) {
             $this->utilities = new Utilities($this);
@@ -127,18 +123,18 @@ final class Jentil
      * @param string $setup Setup type
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
-     * @return AbstractSetup
+     * @return array
      */
-    public function setup(string $setup): Setup\AbstractSetup
+    private function getSetup(): array
     {
         $setups = $this->setup;
 
         unset($setups['loader']);
         unset($setups['updater']);
 
-        return $setups[$setup];
+        return $setups;
     }
 
     /**
@@ -149,10 +145,6 @@ final class Jentil
      */
     public function run()
     {
-        if (!$this->setup) {
-            return;
-        }
-
         foreach ($this->setup as $setup) {
             $setup->run();
         }

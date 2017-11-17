@@ -37,9 +37,9 @@ final class AfterContentSeparator extends AbstractSetting
 
         $mod = $this->mod('after_content_separator');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
 
         $this->control['label'] = \esc_html__(

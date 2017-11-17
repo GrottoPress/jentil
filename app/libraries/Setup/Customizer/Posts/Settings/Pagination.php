@@ -37,9 +37,9 @@ final class Pagination extends AbstractSetting
 
         $mod = $this->mod('pagination');
 
-        $this->name = $mod->name();
+        $this->name = $mod->name;
         
-        $this->args['default'] = $mod->default();
+        $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
 
         $this->control['label'] = \esc_html__('Pagination type', 'jentil');
