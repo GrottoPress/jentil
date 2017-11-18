@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Styles extends AbstractSetup
+class Styles extends AbstractSetup
 {
     /**
      * Run setup

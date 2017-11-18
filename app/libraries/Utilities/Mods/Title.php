@@ -19,37 +19,37 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  *
  * @since 0.1.0
  */
-final class Title extends AbstractMod
+class Title extends AbstractMod
 {
     /**
      * Context
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $context Page type
      */
-    private $context;
+    protected $context;
 
     /**
      * Specific template
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $specific Post type name or taxonomy name
      */
-    private $specific;
+    protected $specific;
 
     /**
      * More specific template
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var mixed $more_specific Post ID or term ID/name
      */
-    private $more_specific;
+    protected $more_specific;
 
     /**
      * Constructor
@@ -71,9 +71,9 @@ final class Title extends AbstractMod
      * Set attributes
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setAttributes(array $args)
+    protected function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
             'context' => '',
@@ -100,11 +100,11 @@ final class Title extends AbstractMod
      * Get mod names
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array Mod names.
      */
-    private function names(): array
+    protected function names(): array
     {
         $names = [
             'home' => 'post_post_type_title',
@@ -146,11 +146,11 @@ final class Title extends AbstractMod
      * Get settings defaults
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array Mod defaults.
      */
-    private function defaults(): array
+    protected function defaults(): array
     {
         $defaults = [
             'home' => \esc_html__('Latest Posts', 'jentil'),
@@ -202,11 +202,11 @@ final class Title extends AbstractMod
      * Replace placeholders with actual info.
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return string Mod with placeholders replaced.
      */
-    private function replacePlaceholders(string $mod): string
+    protected function replacePlaceholders(string $mod): string
     {
         return \str_ireplace(
             [

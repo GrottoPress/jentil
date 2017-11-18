@@ -23,7 +23,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class Page extends PagePackage
+class Page extends PagePackage
 {
     use Getter;
     
@@ -31,61 +31,61 @@ final class Page extends PagePackage
      * Utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Utilities $utilities Utilities.
      */
-    private $utilities;
+    protected $utilities;
     
     /**
      * Layout
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Layout $layout Layout.
      */
-    private $layout = null;
+    protected $layout = null;
 
     /**
      * Layouts
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Layouts $layouts Layouts.
      */
-    private $layouts = null;
+    protected $layouts = null;
 
     /**
      * Title
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $title Page title.
      */
-    private $title = null;
+    protected $title = null;
 
     /**
      * Posts
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Posts $posts Page posts.
      */
-    private $posts = null;
+    protected $posts = null;
 
     /**
      * Type
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var array $type Page type.
      */
-    private $type = null;
+    protected $type = null;
 
     /**
      * Constructor
@@ -104,11 +104,11 @@ final class Page extends PagePackage
      * Get utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Utilities Utilities.
      */
-    private function getUtilities(): Utilities
+    protected function getUtilities(): Utilities
     {
         return $this->utilities;
     }
@@ -117,11 +117,11 @@ final class Page extends PagePackage
      * Get title
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Title Title.
      */
-    private function getTitle(): string
+    protected function getTitle(): string
     {
         if (null === $this->title) {
             $this->title = new Title($this);
@@ -134,11 +134,11 @@ final class Page extends PagePackage
      * Get layout
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Layout Layout.
      */
-    private function getLayout(): Layout
+    protected function getLayout(): Layout
     {
         if (null === $this->layout) {
             $this->layout = new Layout($this);
@@ -151,11 +151,11 @@ final class Page extends PagePackage
      * Get layouts
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Layouts Layouts.
      */
-    private function getLayouts(): Layouts
+    protected function getLayouts(): Layouts
     {
         if (null === $this->layouts) {
             $this->layouts = new Layouts($this);
@@ -168,11 +168,11 @@ final class Page extends PagePackage
      * Get posts
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Posts Posts.
      */
-    private function getPosts(): Posts\Posts
+    protected function getPosts(): Posts\Posts
     {
         if (null === $this->posts) {
             $this->posts = new Posts\Posts($this);
@@ -189,11 +189,11 @@ final class Page extends PagePackage
      * is called only once per page cycle.
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array
      */
-    private function getType(): array
+    protected function getType(): array
     {
         if (null === $this->type) {
             $this->type = parent::type();

@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
  *
  * @since 0.1.0
  */
-final class AfterTitleSeparator extends AbstractSetting
+class AfterTitleSeparator extends AbstractSetting
 {
     /**
      * Constructor

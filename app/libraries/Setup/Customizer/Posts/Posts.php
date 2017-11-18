@@ -20,7 +20,7 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-final class Posts extends AbstractPanel
+class Posts extends AbstractPanel
 {
     /**
      * Constructor

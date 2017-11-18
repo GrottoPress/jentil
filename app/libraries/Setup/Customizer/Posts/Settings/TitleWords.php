@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
  *
  * @since 0.1.0
  */
-final class TitleWords extends AbstractSetting
+class TitleWords extends AbstractSetting
 {
     /**
      * Constructor

@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Menus extends AbstractSetup
+class Menus extends AbstractSetup
 {
     /**
      * Run setup
@@ -160,11 +160,11 @@ final class Menus extends AbstractSetup
      * @param string $title Anchor link text
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @action jentil_inside_header
      */
-    private function skipTo(string $location, string $title = ''): string
+    protected function skipTo(string $location, string $title = ''): string
     {
         return '<a class="screen-reader-text skip-link" href="#'.
             \sanitize_title($location).

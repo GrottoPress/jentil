@@ -19,17 +19,17 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.1.0
  */
-final class Colophon
+class Colophon
 {
     /**
      * Utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Utilities $utilities Utilities.
      */
-    private $utilities;
+    protected $utilities;
 
     /**
      * Constructor

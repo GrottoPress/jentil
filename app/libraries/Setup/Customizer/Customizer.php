@@ -24,7 +24,7 @@ use WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-final class Customizer extends AbstractSetup
+class Customizer extends AbstractSetup
 {
     /**
      * Run setup
@@ -102,11 +102,11 @@ final class Customizer extends AbstractSetup
      * comprise settings.
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array Panels.
      */
-    private function panels(): array
+    protected function panels(): array
     {
         $panels = [];
 
@@ -122,11 +122,11 @@ final class Customizer extends AbstractSetup
      * comprises its settings.
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array Sections.
      */
-    private function sections(): array
+    protected function sections(): array
     {
         $sections = [];
 
@@ -143,9 +143,9 @@ final class Customizer extends AbstractSetup
      * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function addPanels(WP_Customizer $wp_customize)
+    protected function addPanels(WP_Customizer $wp_customize)
     {
         if (!($panels = $this->panels())) {
             return;
@@ -162,9 +162,9 @@ final class Customizer extends AbstractSetup
      * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function addSections(WP_Customizer $wp_customize)
+    protected function addSections(WP_Customizer $wp_customize)
     {
         if (!($sections = $this->sections())) {
             return;

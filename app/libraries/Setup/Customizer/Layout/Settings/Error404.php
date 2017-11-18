@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
  *
  * @since 0.1.0
  */
-final class Error404 extends AbstractSetting
+class Error404 extends AbstractSetting
 {
     /**
      * Constructor

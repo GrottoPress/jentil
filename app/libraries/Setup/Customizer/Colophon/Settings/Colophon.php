@@ -22,17 +22,17 @@ use GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon as Section;
  *
  * @since 0.1.0
  */
-final class Colophon extends AbstractSetting
+class Colophon extends AbstractSetting
 {
     /**
      * Colophon section
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Colophon $colophon Colophon.
      */
-    private $colophon;
+    protected $colophon;
     
     /**
      * Constructor

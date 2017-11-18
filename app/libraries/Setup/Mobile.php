@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Mobile extends AbstractSetup
+class Mobile extends AbstractSetup
 {
     /**
      * Run setup

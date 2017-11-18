@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
  *
  * @since 0.1.0
  */
-final class Number extends AbstractSetting
+class Number extends AbstractSetting
 {
     /**
      * Constructor

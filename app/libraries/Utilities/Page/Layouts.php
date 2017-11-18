@@ -19,17 +19,17 @@ namespace GrottoPress\Jentil\Utilities\Page;
  *
  * @since 1.0.0
  */
-final class Layouts
+class Layouts
 {
     /**
      * Page
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Page $page Page.
      */
-    private $page;
+    protected $page;
     
     /**
      * Constructor

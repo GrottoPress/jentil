@@ -22,7 +22,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class Mods
+class Mods
 {
     use Getter;
     
@@ -30,21 +30,21 @@ final class Mods
      * Utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Utilities $utilities Utilities.
      */
-    private $utilities;
+    protected $utilities;
 
     /**
      * Colophon
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Colophon $colophon Colophon.
      */
-    private $colophon;
+    protected $colophon;
 
     /**
      * Constructor
@@ -63,11 +63,11 @@ final class Mods
      * Colophon
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Colophon Colophon.
      */
-    private function getColophon(): Colophon
+    protected function getColophon(): Colophon
     {
         if (null === $this->colophon) {
             $this->colophon = new Colophon($this);

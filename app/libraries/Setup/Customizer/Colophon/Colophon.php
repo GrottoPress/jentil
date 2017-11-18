@@ -22,7 +22,7 @@ use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
  *
  * @since 0.1.0
  */
-final class Colophon extends AbstractSection
+class Colophon extends AbstractSection
 {
     /**
      * Constructor

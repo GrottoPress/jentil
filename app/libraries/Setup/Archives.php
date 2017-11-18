@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-final class Archives extends AbstractSetup
+class Archives extends AbstractSetup
 {
     /**
      * Run setup

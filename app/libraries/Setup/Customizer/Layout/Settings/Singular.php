@@ -21,7 +21,7 @@ use WP_Post;
  *
  * @since 0.1.0
  */
-final class Singular extends AbstractSetting
+class Singular extends AbstractSetting
 {
     /**
      * Constructor
@@ -49,9 +49,9 @@ final class Singular extends AbstractSetting
      * Set Mod
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setMod(WP_Post_Type $post_type, WP_Post $post = null)
+    protected function setMod(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
             $this->mod = $this->layout()->customizer->jentil->utilities
@@ -77,9 +77,9 @@ final class Singular extends AbstractSetting
      * Set Mod
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setControl(WP_Post_Type $post_type, WP_Post $post = null)
+    protected function setControl(WP_Post_Type $post_type, WP_Post $post = null)
     {
         $this->control['active_callback'] = function () use (
             $post_type,

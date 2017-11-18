@@ -22,7 +22,7 @@ use WP_Term;
  *
  * @since 0.1.0
  */
-final class Taxonomy extends AbstractSection
+class Taxonomy extends AbstractSection
 {
     /**
      * Constructor
@@ -50,9 +50,9 @@ final class Taxonomy extends AbstractSection
      * Set name
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    protected function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         if ($term) {
             $this->name = \sanitize_key($taxonomy->name.'_'.$term->term_id.'_taxonomy_posts');
@@ -65,9 +65,9 @@ final class Taxonomy extends AbstractSection
      * Set mod args
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    protected function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->modArgs['context'] = 'tax';
         
@@ -85,9 +85,9 @@ final class Taxonomy extends AbstractSection
      * Set active callback
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    protected function setArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->args['active_callback'] = function () use (
             $taxonomy,

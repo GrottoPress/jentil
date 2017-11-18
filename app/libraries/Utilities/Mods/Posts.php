@@ -19,47 +19,47 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  *
  * @since 0.1.0
  */
-final class Posts extends AbstractMod
+class Posts extends AbstractMod
 {
     /**
      * Setting
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $setting Post setting to retrieve
      */
-    private $setting;
+    protected $setting;
 
     /**
      * Context
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $context Context
      */
-    private $context;
+    protected $context;
 
     /**
      * Specific page type
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $specific Post type or taxonomy name.
      */
-    private $specific;
+    protected $specific;
 
     /**
      * More specific page type
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var mixed $more_specific Post ID or term ID/name.
      */
-    private $more_specific;
+    protected $more_specific;
 
     /**
      * Constructor
@@ -82,9 +82,9 @@ final class Posts extends AbstractMod
      * Set attributes
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      */
-    private function setAttributes(string $setting, array $args = [])
+    protected function setAttributes(string $setting, array $args = [])
     {
         $args = \wp_parse_args($args, [
             'context' => '',
@@ -110,11 +110,11 @@ final class Posts extends AbstractMod
      * Get mod names
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return string Mod names.
      */
-    private function names(): array
+    protected function names(): array
     {
         $names = [
             'home' => 'post_post_type_posts',
@@ -158,11 +158,11 @@ final class Posts extends AbstractMod
      * Settings defaults
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array Mod defaults.
      */
-    private function defaults(): array
+    protected function defaults(): array
     {
         $defaults = [
             'wrap_class' => 'archive-posts big',

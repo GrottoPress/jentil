@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Title\Title;
  *
  * @since 0.1.0
  */
-final class Author extends AbstractSetting
+class Author extends AbstractSetting
 {
     /**
      * Constructor

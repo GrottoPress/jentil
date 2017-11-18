@@ -24,7 +24,7 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
  *
  * @since 0.1.0
  */
-final class Jentil
+class Jentil
 {
     use SingletonTrait, Getter;
 
@@ -32,21 +32,21 @@ final class Jentil
      * Theme setups
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var array $setup Setups.
      */
-    private $setup = [];
+    protected $setup = [];
 
     /**
      * Theme utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var Utilities $utilities Utilities.
      */
-    private $utilities = null;
+    protected $utilities = null;
 
     /**
      * Theme Name
@@ -104,11 +104,11 @@ final class Jentil
      * Utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Utilities Utilities.
      */
-    private function getUtilities(): Utilities
+    protected function getUtilities(): Utilities
     {
         if (null === $this->utilities) {
             $this->utilities = new Utilities($this);
@@ -123,11 +123,11 @@ final class Jentil
      * @param string $setup Setup type
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array
      */
-    private function getSetup(): array
+    protected function getSetup(): array
     {
         $setups = $this->setup;
 
