@@ -25,11 +25,6 @@ use WP_Post;
  */
 class Metaboxes extends AbstractSetup
 {
-    /**
-     * Import traits
-     *
-     * @since 0.1.0 Added MetaboxesTrait.
-     */
     use MetaboxesTrait;
 
     /**
