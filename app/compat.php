@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Config
+ * Compat
  *
  * Code in this file must be compatible with PHP 5.2.
  *
@@ -20,11 +20,11 @@
  *
  * @since 0.1.0
  */
-const JENTIL_REQUIRED_WP = '4.6';
+define('JENTIL_REQUIRED_WP', '4.6');
 
 /**
  * Required PHP version
  *
  * @since 0.1.0
  */
-const JENTIL_REQUIRED_PHP = '7.0';
+define('JENTIL_REQUIRED_PHP', '7.0');
