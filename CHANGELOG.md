@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Made all classes extensible
+- Various enhancements to menu styles and scripts
 
 ### Removed
 - Removed version compatibility checks. Will develop a plugin for that.
