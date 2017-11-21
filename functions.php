@@ -15,12 +15,14 @@
  * @author N Atta Kus Adusei
  */
 
+declare (strict_types = 1);
+
 /**
  * Autoloader
  *
  * @since 0.1.0
  */
-require get_template_directory().'/vendor/autoload.php';
+require \get_template_directory().'/vendor/autoload.php';
 
 /**
  * Run this theme.
@@ -32,10 +34,6 @@ require get_template_directory().'/vendor/autoload.php';
  *
  * @since 0.1.0
  */
-if (version_compare(JENTIL_REQUIRED_PHP, phpversion(), '<=')
-    && version_compare(JENTIL_REQUIRED_WP, get_bloginfo('version'), '<=')
-) {
-    \add_action('after_setup_theme', function () {
-        \Jentil()->run();
-    }, 0);
-}
+\add_action('after_setup_theme', function () {
+    \Jentil()->run();
+}, 0);

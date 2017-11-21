@@ -38,7 +38,6 @@
             "GrottoPress\\Jentil\\": "app/libraries/"
         },
         "files": [
-            "app/compat.php",
             "app/functions.php"
         ]
     }
