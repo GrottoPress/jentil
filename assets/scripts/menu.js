@@ -20,7 +20,7 @@
     });
 
     // Add icons to all parent menu items
-    $('.menu li > ul').before('<button class="js-sub-menu-button sub-menu-toggle closed">'+renderCaret('down')+'</button>');
+    $('.menu li > ul').before('<button class="js-sub-menu-button sub-menu-toggle">'+renderCaret('down')+'</button>');
 
     // Sub-menu button
     $('.js-sub-menu-button').next('ul').hide();
@@ -38,13 +38,13 @@
     // Toggle Submenu
     function toggleSubMenu(button)
     {
-        $(button).toggleClass('closed');
+        $(button).parent().toggleClass('active');
         $(button).parent().siblings('li').children('ul').slideUp(fxDuration);
         $(button).parent().siblings('li').children('button').html(
             renderCaret('down')
         );
         toggleCaret(button);
-        $(button).next('ul').slideToggle(fxDuration);
+        $(button).next('ul').toggleClass('active').slideToggle(fxDuration);
     }
 
     // Toggle Caret
