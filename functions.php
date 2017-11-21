@@ -3,9 +3,6 @@
 /**
  * Functions
  *
- * Code in this file must be compatible with PHP 5.2,
- * until the check for PHP version is made.
- *
  * @package GrottoPress\Jentil
  * @since 0.1.0
  *
@@ -26,9 +23,6 @@ require \get_template_directory().'/vendor/autoload.php';
 
 /**
  * Run this theme.
- *
- * Ensure version requirements are met before
- * running theme.
  *
  * @action after_setup_theme
  *
