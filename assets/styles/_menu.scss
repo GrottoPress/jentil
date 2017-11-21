@@ -42,7 +42,7 @@
 }
 
 #header {
-    .menu-toggle {
+    .menu-toggle.vertical {
         text-align: center;
         @include paragraph;
         margin-top: 0;
@@ -53,8 +53,11 @@
     }
 
     .site-navigation {
-        .search-wrap {
+        @include paragraph;
+        
+        &.vertical .search-wrap {
             display: block;
+            max-width: none;
             @include paragraph;
         }
 
@@ -78,14 +81,7 @@
 
 @media (min-width: map-get($breakpoints, 'wide')) {
     #header {
-        // .site-navigation,
-        // .menu-toggle {
-        //     clear: both;
-        // }
-
         .site-navigation {
-            @include paragraph;
-
             &.horizontal {
                 display: block;
                 margin-bottom: 0;
@@ -98,59 +94,61 @@
             }
         }
 
-        .menu-toggle {
+        .menu-toggle.vertical {
             display: none;
         }
 
-        .menu {
-            li {
-                margin: 0;
-            }
-
-            > li {
-                margin-left: 2%;
-                @include inline-block;
-
-                &:first-child {
-                    margin-left: 0;
+        .site-navigation.horizontal {
+            .menu {
+                li {
+                    margin: 0;
                 }
-            }
 
-            ul,
-            li:hover ul ul,
-            li li:hover ul ul,
-            li li li:hover ul ul ,
-            li li li li:hover ul ul,
-            li li li li li:hover ul ul {
-                display: none; /* Required to hide menu when inactive */
-            }
+                > li {
+                    margin-left: 2%;
+                    @include inline-block;
 
-            li:hover ul,
-            li li:hover ul,
-            li li li:hover ul ,
-            li li li li:hover ul,
-            li li li li li:hover ul {
-                display: block;
-            }
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
 
-            ul {
-                width: 200px;
-                @include position(absolute, 22 null null 0);
-                margin: 0;
-                padding: 0;
-                list-style-type: none;
-                z-index: 99;
+                ul,
+                li:hover ul ul,
+                li li:hover ul ul,
+                li li li:hover ul ul ,
+                li li li li:hover ul ul,
+                li li li li li:hover ul ul {
+                    display: none; /* Required to hide menu when inactive */
+                }
+
+                li:hover ul,
+                li li:hover ul,
+                li li li:hover ul ,
+                li li li li:hover ul,
+                li li li li li:hover ul {
+                    display: block;
+                }
 
                 ul {
-                    top: 0;
-                    left: 200px;
+                    width: 200px;
+                    @include position(absolute, 22 null null 0);
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    z-index: 99;
+
+                    ul {
+                        top: 0;
+                        left: 200px;
+                    }
                 }
             }
         }
     }
 
     .has-js {
-        #header {
+        #header .site-navigation.horizontal {
             .menu {
                 .menu-item-has-children {
                     > a {
