@@ -36,25 +36,25 @@
     });
 
     // Toggle Submenu
-    function toggleSubMenu(selector)
+    function toggleSubMenu(button)
     {
-        $(selector).toggleClass('closed');
-        $(selector).parent().siblings('li').children('ul').slideUp(fxDuration);
-        $(selector).parent().siblings('li').children('button').html(
+        $(button).toggleClass('closed');
+        $(button).parent().siblings('li').children('ul').slideUp(fxDuration);
+        $(button).parent().siblings('li').children('button').html(
             renderCaret('down')
         );
-        toggleCaret(selector);
-        $(selector).next('ul').slideToggle(fxDuration);
+        toggleCaret(button);
+        $(button).next('ul').slideToggle(fxDuration);
     }
 
     // Toggle Caret
     // To be called BEFORE opening submenu.
-    function toggleCaret(selector)
+    function toggleCaret(button)
     {
-        if ('none' === $(selector).next('ul').css('display')) {
-            $(selector).html(renderCaret('up'));
+        if ('none' === $(button).next('ul').css('display')) {
+            $(button).html(renderCaret('up'));
         } else {
-            $(selector).html(renderCaret('down'));
+            $(button).html(renderCaret('down'));
         }
     }
 
