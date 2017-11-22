@@ -24,7 +24,7 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
  *
  * @since 0.1.0
  */
-class Jentil extends Theme
+class Jentil extends AbstractTheme
 {
     /**
      * Theme utilities

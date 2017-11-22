@@ -23,7 +23,7 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
  *
  * @since 0.1.0
  */
-abstract class Theme
+abstract class AbstractTheme
 {
     use SingletonTrait, Getter;
 

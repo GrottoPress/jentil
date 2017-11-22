@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
 
-use GrottoPress\Jentil\Theme;
+use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Getter\Getter;
 
 /**
@@ -39,12 +39,12 @@ abstract class AbstractSetup
     /**
      * Constructor
      *
-     * @param Theme $theme Theme.
+     * @param AbstractTheme $theme Theme.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Theme $theme)
+    public function __construct(AbstractTheme $theme)
     {
         $this->theme = $theme;
     }
@@ -55,9 +55,9 @@ abstract class AbstractSetup
      * @since 0.1.0
      * @access protected
      *
-     * @return Theme Theme.
+     * @return AbstractTheme Theme.
      */
-    final protected function getTheme(): Theme
+    final protected function getTheme(): AbstractTheme
     {
         return $this->theme;
     }
