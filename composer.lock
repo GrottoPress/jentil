@@ -632,16 +632,16 @@
         },
         {
             "name": "grottopress/wordpress-metaboxes",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-metaboxes.git",
-                "reference": "be8235a779671412c38d07995aa92c36b3d90cff"
+                "reference": "5d66b17e6c03bbf53f418fb88eb2500a246fa5df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/be8235a779671412c38d07995aa92c36b3d90cff",
-                "reference": "be8235a779671412c38d07995aa92c36b3d90cff",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-metaboxes/zipball/5d66b17e6c03bbf53f418fb88eb2500a246fa5df",
+                "reference": "5d66b17e6c03bbf53f418fb88eb2500a246fa5df",
                 "shasum": ""
             },
             "require": {
@@ -677,7 +677,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-09-28 20:53:58"
+            "time": "2017-11-22 17:59:07"
         },
         {
             "name": "grottopress/wordpress-page",
@@ -6318,16 +6318,16 @@
         },
         {
             "name": "wp-cli/super-admin-command",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/super-admin-command.git",
-                "reference": "8ad8446a1b2f931e32af3681ad0ac0816411be4b"
+                "reference": "314a3f7b02a04fb5e842ef15d15b58dd1295a320"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/super-admin-command/zipball/8ad8446a1b2f931e32af3681ad0ac0816411be4b",
-                "reference": "8ad8446a1b2f931e32af3681ad0ac0816411be4b",
+                "url": "https://api.github.com/repos/wp-cli/super-admin-command/zipball/314a3f7b02a04fb5e842ef15d15b58dd1295a320",
+                "reference": "314a3f7b02a04fb5e842ef15d15b58dd1295a320",
                 "shasum": ""
             },
             "require-dev": {
@@ -6367,7 +6367,7 @@
             ],
             "description": "Lists, adds, or removes super admin users on a multisite install.",
             "homepage": "https://github.com/wp-cli/super-admin-command",
-            "time": "2017-11-21 00:37:22"
+            "time": "2017-11-21 22:11:13"
         },
         {
             "name": "wp-cli/widget-command",
