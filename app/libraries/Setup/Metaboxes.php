@@ -44,11 +44,11 @@ final class Metaboxes extends AbstractSetup
      * @param WP_Post $post Post.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return array Metaboxes.
      */
-    protected function metaboxes(WP_Post $post): array
+    private function metaboxes(WP_Post $post): array
     {
         $boxes = [];
 

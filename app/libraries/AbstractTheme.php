@@ -50,8 +50,6 @@ abstract class AbstractTheme
     /**
      * Setup
      *
-     * @param string $setup Setup type
-     *
      * @since 0.1.0
      * @access protected
      *
