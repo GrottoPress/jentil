@@ -62,7 +62,7 @@ abstract class AbstractSetting extends Setting
      */
     final protected function mod(string $setting): Mod
     {
-        return $this->section->posts->customizer->jentil->utilities
+        return $this->section->posts->customizer->theme->utilities
             ->mods->posts($setting, $this->section->modArgs);
     }
 }

@@ -61,7 +61,7 @@ class Layout extends AbstractSection
         $settings['error_404'] = new Settings\Error404($this);
         $settings['search'] = new Settings\Search($this);
 
-        if (($taxonomies = $this->customizer->jentil->utilities
+        if (($taxonomies = $this->customizer->theme->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
@@ -70,7 +70,7 @@ class Layout extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
@@ -79,11 +79,11 @@ class Layout extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                if (!$this->customizer->jentil->utilities->mods ->layout([
+                if (!$this->customizer->theme->utilities->mods ->layout([
                     'context' => 'singular',
                     'specific' => $post_type->name,
                 ])->isPagelike()) {

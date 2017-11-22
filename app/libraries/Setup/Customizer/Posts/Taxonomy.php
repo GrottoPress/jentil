@@ -93,7 +93,7 @@ class Taxonomy extends AbstractSection
             $taxonomy,
             $term
         ): bool {
-            $page = $this->posts->customizer->jentil->utilities->page;
+            $page = $this->posts->customizer->theme->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)

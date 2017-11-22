@@ -55,7 +55,7 @@ class Singular extends AbstractSetup
      */
     public function addBodyClasses(array $classes): array
     {
-        if (!$this->jentil->utilities->page->is('singular')) {
+        if (!$this->theme->utilities->page->is('singular')) {
             return $classes;
         }
 
@@ -103,7 +103,7 @@ class Singular extends AbstractSetup
      */
     public function renderParentLink()
     {
-        if (!$this->jentil->utilities->page->is('singular')) {
+        if (!$this->theme->utilities->page->is('singular')) {
             return;
         }
 
@@ -131,7 +131,7 @@ class Singular extends AbstractSetup
      */
     public function renderAttachment()
     {
-        if (!$this->jentil->utilities->page->is('attachment')) {
+        if (!$this->theme->utilities->page->is('attachment')) {
             return;
         }
 
@@ -140,22 +140,22 @@ class Singular extends AbstractSetup
         global $post;
 
         if (\wp_attachment_is_image($post->ID)) {
-            $this->jentil->utilities->loader->loadPartial(
+            $this->theme->utilities->loader->loadPartial(
                 'attachment',
                 'image'
             );
         } elseif (\wp_attachment_is('audio', $post->ID)) {
-            $this->jentil->utilities->loader->loadPartial(
+            $this->theme->utilities->loader->loadPartial(
                 'attachment',
                 'audio'
             );
         } elseif (\wp_attachment_is('video', $post->ID)) {
-            $this->jentil->utilities->loader->loadPartial(
+            $this->theme->utilities->loader->loadPartial(
                 'attachment',
                 'video'
             );
         } else {
-            $this->jentil->utilities->loader->loadPartial('attachment');
+            $this->theme->utilities->loader->loadPartial('attachment');
         }
     }
 
@@ -174,7 +174,7 @@ class Singular extends AbstractSetup
         int $id,
         string $separator
     ): string {
-        if (!$this->jentil->utilities->page->is('singular', 'post')) {
+        if (!$this->theme->utilities->page->is('singular', 'post')) {
             return $output;
         }
         
@@ -194,7 +194,7 @@ class Singular extends AbstractSetup
      */
     public function byline()
     {
-        if (!$this->jentil->utilities->page->is('singular', 'post')) {
+        if (!$this->theme->utilities->page->is('singular', 'post')) {
             return;
         }
 
@@ -215,7 +215,7 @@ class Singular extends AbstractSetup
      */
     protected function getByline(int $id): string
     {
-        $jentil_post = $this->jentil->utilities->post($id);
+        $jentil_post = $this->theme->utilities->post($id);
 
         $output = '';
 

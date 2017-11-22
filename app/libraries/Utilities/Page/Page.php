@@ -121,13 +121,13 @@ class Page extends PagePackage
      *
      * @return Title Title.
      */
-    protected function getTitle(): string
+    protected function getTitle(): Title
     {
         if (null === $this->title) {
             $this->title = new Title($this);
         }
 
-        return $this->title->mod();
+        return $this->title;
     }
 
     /**

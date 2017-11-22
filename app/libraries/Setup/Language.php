@@ -47,7 +47,7 @@ class Language extends AbstractSetup
     {
         \load_theme_textdomain(
             'jentil',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->themeDir(
                 'path',
                 '/languages'
             )

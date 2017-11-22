@@ -53,7 +53,7 @@ class Styles extends AbstractSetup
         
         \wp_enqueue_style(
             'jentil',
-            $this->jentil->utilities->fileSystem->stylesDir('url', $style),
+            $this->theme->utilities->fileSystem->stylesDir('url', $style),
             ['normalize']
         );
     }
@@ -70,7 +70,7 @@ class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'normalize',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->themeDir(
                 'url',
                 '/node_modules/normalize.css/normalize.css'
             )
@@ -89,7 +89,7 @@ class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'font-awesome',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->themeDir(
                 'url',
                 '/node_modules/font-awesome/css/font-awesome.min.css'
             ),
@@ -109,7 +109,7 @@ class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'wordpress-posts',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->themeDir(
                 'url',
                 '/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
             ),

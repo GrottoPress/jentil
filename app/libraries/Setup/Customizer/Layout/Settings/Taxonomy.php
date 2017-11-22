@@ -68,14 +68,14 @@ class Taxonomy extends AbstractSetting
         }
 
         if ($term) {
-            $this->mod = $this->layout->customizer->jentil->utilities
+            $this->mod = $this->layout->customizer->theme->utilities
                 ->mods->layout([
                     'context' => $mod_context,
                     'specific' => $taxonomy->name,
                     'more_specific' => $term->term_id,
                 ]);
         } else {
-            $this->mod = $this->layout->customizer->jentil->utilities
+            $this->mod = $this->layout->customizer->theme->utilities
                 ->mods->layout([
                     'context' => $mod_context,
                     'specific' => $taxonomy->name,
@@ -95,7 +95,7 @@ class Taxonomy extends AbstractSetting
             $taxonomy,
             $term
         ): bool {
-            $page = $this->layout->customizer->jentil->utilities->page;
+            $page = $this->layout->customizer->theme->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)

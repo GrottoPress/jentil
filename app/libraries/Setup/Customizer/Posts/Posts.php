@@ -58,7 +58,7 @@ class Posts extends AbstractPanel
         $sections['date'] = new Date($this);
         $sections['search'] = new Search($this);
 
-        if (($taxonomies = $this->customizer->jentil->utilities
+        if (($taxonomies = $this->customizer->theme->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
@@ -69,7 +69,7 @@ class Posts extends AbstractPanel
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {

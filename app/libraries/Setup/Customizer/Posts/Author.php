@@ -39,7 +39,7 @@ class Author extends AbstractSection
 
         $this->args['title'] = \esc_html__('Author Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->posts->customizer->jentil->utilities
+            return $this->posts->customizer->theme->utilities
                 ->page->is('author');
         };
     }

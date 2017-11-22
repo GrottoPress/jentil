@@ -87,13 +87,13 @@ class Metaboxes extends AbstractSetup
             return [];
         }
         
-        if (!($layouts = $this->jentil->utilities->page
+        if (!($layouts = $this->theme->utilities->page
                 ->layouts->IDNames())
         ) {
             return [];
         }
 
-        if (!($mod = $this->jentil->utilities->mods->layout([
+        if (!($mod = $this->theme->utilities->mods->layout([
             'context' => 'singular',
             'specific' => $post->post_type,
             'more_specific' => $post->ID,

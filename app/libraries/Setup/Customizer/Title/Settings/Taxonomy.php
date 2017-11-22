@@ -70,7 +70,7 @@ class Taxonomy extends AbstractSetting
             $mod_context = 'category';
         }
 
-        $mods = $this->title->customizer->jentil->utilities->mods;
+        $mods = $this->title->customizer->theme->utilities->mods;
 
         if ($term) {
             $this->mod = $mods->title([
@@ -101,7 +101,7 @@ class Taxonomy extends AbstractSetting
             $taxonomy,
             $term
         ): bool {
-            $page = $this->title->customizer->jentil->utilities->page;
+            $page = $this->title->customizer->theme->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)

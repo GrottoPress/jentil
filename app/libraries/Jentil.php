@@ -24,20 +24,8 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
  *
  * @since 0.1.0
  */
-class Jentil
+class Jentil extends Theme
 {
-    use SingletonTrait, Getter;
-
-    /**
-     * Theme setups
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var array $setup Setups.
-     */
-    protected $setup = [];
-
     /**
      * Theme utilities
      *
@@ -47,7 +35,7 @@ class Jentil
      * @var Utilities $utilities Utilities.
      */
     protected $utilities = null;
-
+    
     /**
      * Theme Name
      *
@@ -135,18 +123,5 @@ class Jentil
         unset($setups['updater']);
 
         return $setups;
-    }
-
-    /**
-     * Run theme
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function run()
-    {
-        foreach ($this->setup as $setup) {
-            $setup->run();
-        }
     }
 }

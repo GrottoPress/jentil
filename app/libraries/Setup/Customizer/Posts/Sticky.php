@@ -47,8 +47,8 @@ class Sticky extends AbstractSection
             'jentil'
         ), $post_type->labels->name);
         $this->args['active_callback'] = function () use ($post_type): bool {
-            $page = $this->posts->customizer->jentil->utilities->page;
-            $has_sticky = $this->posts->customizer->jentil->utilities
+            $page = $this->posts->customizer->theme->utilities->page;
+            $has_sticky = $this->posts->customizer->theme->utilities
                 ->page->posts->sticky->get($post_type->name);
 
             if ('post' == $post_type->name) {

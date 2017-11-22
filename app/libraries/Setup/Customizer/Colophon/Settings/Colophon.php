@@ -46,7 +46,7 @@ class Colophon extends AbstractSetting
     {
         $this->colophon = $colophon;
 
-        $mod = $this->colophon->customizer->jentil->utilities
+        $mod = $this->colophon->customizer->theme->utilities
             ->mods->colophon;
 
         $this->name = $mod->name;

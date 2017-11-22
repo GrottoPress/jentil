@@ -33,6 +33,16 @@ abstract class AbstractSection extends Section
      */
     protected $modArgs;
 
+    /**
+     * Posts
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Posts $posts Posts panel.
+     */
+    protected $posts;
+
      /**
      * Constructor
      *

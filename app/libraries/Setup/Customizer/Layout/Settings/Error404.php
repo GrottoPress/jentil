@@ -35,7 +35,7 @@ class Error404 extends AbstractSetting
     {
         parent::__construct($layout);
         
-        $this->mod = $this->layout->customizer->jentil->utilities
+        $this->mod = $this->layout->customizer->theme->utilities
         ->mods->layout(['context' => '404']);
 
         $this->name = $this->mod->name;
@@ -44,7 +44,7 @@ class Error404 extends AbstractSetting
 
         $this->control['label'] = \esc_html__('Error 404', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->layout->customizer->jentil->utilities
+            return $this->layout->customizer->theme->utilities
                 ->page->is('404');
         };
     }

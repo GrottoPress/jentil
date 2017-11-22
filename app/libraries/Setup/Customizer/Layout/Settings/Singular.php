@@ -54,14 +54,14 @@ class Singular extends AbstractSetting
     protected function setMod(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
-            $this->mod = $this->layout()->customizer->jentil->utilities
+            $this->mod = $this->layout()->customizer->theme->utilities
                 ->mods->layout([
                     'context' => 'singular',
                     'specific' => $post_type->name,
                     'more_specific' => $post->ID,
                 ]);
         } else {
-            $this->mod = $this->layout->customizer->jentil->utilities
+            $this->mod = $this->layout->customizer->theme->utilities
                 ->mods->layout([
                     'context' => 'singular',
                     'specific' => $post_type->name,
@@ -85,7 +85,7 @@ class Singular extends AbstractSetting
             $post_type,
             $post
         ): bool {
-            $page = $this->layout->customizer->jentil->utilities->page;
+            $page = $this->layout->customizer->theme->utilities->page;
 
             if ($post) {
                 return ($page->is('page', $post->ID)

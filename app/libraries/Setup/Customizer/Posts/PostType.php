@@ -60,7 +60,7 @@ class PostType extends AbstractSection
             $this->post_type->labels->name
         );
         $this->args['active_callback'] = function (): bool {
-            $page = $this->posts->customizer->jentil->utilities->page;
+            $page = $this->posts->customizer->theme->utilities->page;
 
             if ('post' == $this->post_type->name) {
                 return $page->is('home');
@@ -82,7 +82,7 @@ class PostType extends AbstractSection
     {
         $settings = parent::settings();
 
-        if (!$this->posts->customizer->jentil->utilities
+        if (!$this->posts->customizer->theme->utilities
             ->page->posts->sticky->get($this->post_type->name)
         ) {
             unset($settings['sticky_posts']);
