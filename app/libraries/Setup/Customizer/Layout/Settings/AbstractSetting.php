@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Layout Setting
+ * Abstract Layout Setting
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Layout\Settings
  * @since 0.1.0
@@ -18,7 +18,7 @@ use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
 
 /**
- * Layout Setting
+ * Abstract Layout Setting
  *
  * @since 0.1.0
  */

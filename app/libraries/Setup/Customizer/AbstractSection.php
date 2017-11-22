@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Section
+ * Abstract Section
  *
  * @package GrottoPress\Jentil\Setup\Customizer
  * @since 0.1.0
@@ -18,7 +18,7 @@ use WP_Customize_Manager as WP_Customizer;
 use GrottoPress\Getter\Getter;
 
 /**
- * Section
+ * Abstract Section
  *
  * @since 0.1.0
  */

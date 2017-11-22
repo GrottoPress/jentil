@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setting
+ * Abstract Title Setting
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Title\Settings
  * @since 0.1.0
@@ -18,7 +18,7 @@ use GrottoPress\Jentil\Setup\Customizer\Title\Title;
 use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
 
 /**
- * Setting
+ * Abstract Title Setting
  *
  * @since 0.1.0
  */

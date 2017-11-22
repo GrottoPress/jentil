@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Section
+ * Abstract Posts Section
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts
  * @since 0.1.0
@@ -17,7 +17,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection as Section;
 
 /**
- * Section
+ * Abstract Posts Section
  *
  * @since 0.1.0
  */

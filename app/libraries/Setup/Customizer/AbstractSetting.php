@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setting
+ * Abstract Setting
  *
  * @package GrottoPress\Jentil\Setup\Customizer
  * @since 0.1.0
@@ -17,7 +17,7 @@ namespace GrottoPress\Jentil\Setup\Customizer;
 use WP_Customize_Manager as WP_Customizer;
 
 /**
- * Setting
+ * Abstract Setting
  *
  * @since 0.1.0
  */

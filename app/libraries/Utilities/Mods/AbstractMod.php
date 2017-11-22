@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Theme Mod
+ * Abstract Theme Mod
  *
  * @package GrottoPress\Jentil\Utilities\Mods
  * @since 0.1.0
@@ -17,7 +17,7 @@ namespace GrottoPress\Jentil\Utilities\Mods;
 use GrottoPress\Getter\Getter;
 
 /**
- * Theme Mod
+ * Abstract Theme Mod
  *
  * @since 0.1.0
  */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Settings
+ * Abstract Post Setting
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts\Settings
  * @since 0.1.0
@@ -19,7 +19,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
 use GrottoPress\Jentil\Utilities\Mods\Posts as Mod;
 
 /**
- * Settings
+ * Abstract Post Setting
  *
  * @since 0.1.0
  */

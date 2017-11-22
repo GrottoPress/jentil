@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setup
+ * Abstract Setup
  *
  * @package GrottoPress\Jentil\Setup
  * @since 0.1.0
@@ -18,7 +18,7 @@ use GrottoPress\Jentil\Theme;
 use GrottoPress\Getter\Getter;
 
 /**
- * Setup
+ * Abstract Setup
  *
  * @since 0.1.0
  */

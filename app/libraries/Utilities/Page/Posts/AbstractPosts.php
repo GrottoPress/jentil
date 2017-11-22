@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Archive Posts
+ * Abstract Archive Posts
  *
  * @package GrottoPress\Jentil\Utilities\Page\Posts
  * @since 0.1.0
@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 /**
- * Archive Posts
+ * Abstract Archive Posts
  *
  * @since 0.1.0
  */
