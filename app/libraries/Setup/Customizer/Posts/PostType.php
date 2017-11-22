@@ -14,8 +14,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
-use GrottoPress\Jentil\Setup;
-use GrottoPress\Jentil\Utilities;
 use WP_Post_Type;
 
 /**
