@@ -76,7 +76,7 @@ abstract class AbstractMod
      *
      * @return string Name.
      */
-    final protected function getName(): string
+    protected function getName(): string
     {
         return $this->name;
     }
@@ -89,7 +89,7 @@ abstract class AbstractMod
      *
      * @return mixed Default.
      */
-    final protected function getDefault()
+    protected function getDefault()
     {
         return $this->default;
     }

@@ -90,7 +90,7 @@ abstract class AbstractSection
      *
      * @return string Name.
      */
-    final protected function getName(): string
+    protected function getName(): string
     {
         return $this->name;
     }
@@ -111,7 +111,7 @@ abstract class AbstractSection
      * @since 0.1.0
      * @access public
      */
-    final public function add(WP_Customizer $wp_customize)
+    public function add(WP_Customizer $wp_customize)
     {
         if (!$this->name) {
             return;

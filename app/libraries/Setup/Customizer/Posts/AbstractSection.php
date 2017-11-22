@@ -90,7 +90,7 @@ abstract class AbstractSection extends Section
      *
      * @return array Mod args.
      */
-    final protected function getModArgs(): array
+    protected function getModArgs(): array
     {
         return $this->modArgs;
     }

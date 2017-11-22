@@ -60,7 +60,7 @@ abstract class AbstractSetting extends Setting
      *
      * @return Mods Posts mod.
      */
-    final protected function mod(string $setting): Mod
+    protected function mod(string $setting): Mod
     {
         return $this->section->posts->customizer->theme->utilities
             ->mods->posts($setting, $this->section->modArgs);
