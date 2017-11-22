@@ -32,7 +32,7 @@ abstract class AbstractPanel
      * @since 0.1.0
      * @access protected
      *
-     * @var Customizer $customizer Customizer.
+     * @var AbstractCustomizer $customizer Customizer.
      */
     protected $customizer;
 
@@ -59,12 +59,12 @@ abstract class AbstractPanel
     /**
      * Constructor
      *
-     * @param Customizer $customizer Customizer.
+     * @param AbstractCustomizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access protected
      */
-    protected function __construct(Customizer $customizer)
+    protected function __construct(AbstractCustomizer $customizer)
     {
         $this->customizer = $customizer;
     }
@@ -75,9 +75,9 @@ abstract class AbstractPanel
      * @since 0.1.0
      * @access protected
      *
-     * @return Customizer Customizer.
+     * @return AbstractCustomizer Customizer.
      */
-    final protected function getCustomizer(): Customizer
+    final protected function getCustomizer(): AbstractCustomizer
     {
         return $this->customizer;
     }

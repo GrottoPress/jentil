@@ -32,7 +32,7 @@ abstract class AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @var Customizer $customizer Customizer.
+     * @var AbstractCustomizer $customizer Customizer.
      */
     protected $customizer;
 
@@ -59,12 +59,12 @@ abstract class AbstractSection
     /**
      * Constructor
      *
-     * @param Customizer $customizer Customizer.
+     * @param AbstractCustomizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Customizer $customizer)
+    public function __construct(AbstractCustomizer $customizer)
     {
         $this->customizer = $customizer;
     }
@@ -75,9 +75,9 @@ abstract class AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @return Customizer Customizer.
+     * @return AbstractCustomizer Customizer.
      */
-    final protected function getCustomizer(): Customizer
+    final protected function getCustomizer(): AbstractCustomizer
     {
         return $this->customizer;
     }

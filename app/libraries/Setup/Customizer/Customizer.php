@@ -24,7 +24,7 @@ use WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-class Customizer extends AbstractSetup
+class Customizer extends AbstractCustomizer
 {
     /**
      * Run setup
@@ -34,25 +34,10 @@ class Customizer extends AbstractSetup
      */
     public function run()
     {
-        \add_action('customize_register', [$this, 'register']);
+        parent::run();
+        
         \add_action('customize_preview_init', [$this, 'enqueueJS']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
-    }
-
-    /**
-     * Register theme customizer
-     *
-     * @param WP_Customizer $wp_customize
-     *
-     * @action customize_register
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function register(WP_Customizer $wp_customize)
-    {
-        $this->addPanels($wp_customize);
-        $this->addSections($wp_customize);
     }
 
     /**
@@ -135,43 +120,5 @@ class Customizer extends AbstractSetup
         $sections['colophon'] = new Colophon\Colophon($this);
 
         return $sections;
-    }
-    
-    /**
-     * Add panels
-     *
-     * @param WP_Customizer $wp_customize
-     *
-     * @since 0.1.0
-     * @access protected
-     */
-    protected function addPanels(WP_Customizer $wp_customize)
-    {
-        if (!($panels = $this->panels())) {
-            return;
-        }
-
-        foreach ($panels as $panel) {
-            $panel->add($wp_customize);
-        }
-    }
-
-    /**
-     * Add sections
-     *
-     * @param WP_Customizer $wp_customize
-     *
-     * @since 0.1.0
-     * @access protected
-     */
-    protected function addSections(WP_Customizer $wp_customize)
-    {
-        if (!($sections = $this->sections())) {
-            return;
-        }
-
-        foreach ($sections as $section) {
-            $section->add($wp_customize);
-        }
     }
 }
