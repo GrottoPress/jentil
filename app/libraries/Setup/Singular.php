@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-class Singular extends AbstractSetup
+final class Singular extends AbstractSetup
 {
    /**
      * Run setup
@@ -213,7 +213,7 @@ class Singular extends AbstractSetup
      *
      * @return string
      */
-    protected function getByline(int $id): string
+    private function getByline(int $id): string
     {
         $jentil_post = $this->theme->utilities->post($id);
 

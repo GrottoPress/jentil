@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
  *
  * @since 0.1.0
  */
-class Singular extends AbstractPosts
+final class Singular extends AbstractPosts
 {
     /**
      * Singular posts args.

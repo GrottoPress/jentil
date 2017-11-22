@@ -24,18 +24,18 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
  *
  * @since 0.1.0
  */
-class Jentil extends AbstractTheme
+final class Jentil extends AbstractTheme
 {
     /**
      * Theme utilities
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Utilities $utilities Utilities.
      */
-    protected $utilities = null;
-    
+    private $utilities = null;
+
     /**
      * Theme Name
      *

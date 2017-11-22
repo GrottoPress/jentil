@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Jentil;
  *
  * @since 0.1.0
  */
-class Colophon extends AbstractMod
+final class Colophon extends AbstractMod
 {
     /**
      * Constructor
@@ -65,11 +65,11 @@ class Colophon extends AbstractMod
      * Replace placeholders
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Mod with placeholders replaced.
      */
-    protected function replacePlaceholders(string $mod): string
+    private function replacePlaceholders(string $mod): string
     {
         return \str_ireplace(
             [

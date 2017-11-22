@@ -19,37 +19,37 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.1.0
  */
-class FileSystem
+final class FileSystem
 {
     /**
      * Utilities
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Utilities $utilities Utilities.
      */
-    protected $utilities;
+    private $utilities;
 
     /**
      * Theme directory path
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var string $dirPath Theme directory path.
      */
-    protected $dirPath;
+    private $dirPath;
 
     /**
      * Theme directory URI
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var string $dirUrl Theme directory URI.
      */
-    protected $dirUrl;
+    private $dirUrl;
 
     /**
      * Constructor
@@ -172,11 +172,11 @@ class FileSystem
      * @param string $form 'relative' or 'absolute'.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Path or URL.
      */
-    protected function dir(
+    private function dir(
         string $type,
         string $prepend = '',
         string $append = '',

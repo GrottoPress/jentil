@@ -31,7 +31,7 @@ use Puc_v4_Factory;
  *
  * @since 0.1.0
  */
-class Utilities
+final class Utilities
 {
     use Getter;
     
@@ -39,81 +39,81 @@ class Utilities
      * Jentil
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Jentil $jentil Jentil.
      */
-    protected $jentil;
+    private $jentil;
 
     /**
      * Mods
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Mods\Mods $mods Mods.
      */
-    protected $mods = null;
+    private $mods = null;
 
     /**
      * Page
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Page\Page $page Page.
      */
-    protected $page = null;
+    private $page = null;
 
     /**
      * Colophon
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Colophon $colophon Colophon.
      */
-    protected $colophon = null;
+    private $colophon = null;
 
     /**
      * File System
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var FileSystem $fileSystem FileSystem.
      */
-    protected $fileSystem = null;
+    private $fileSystem = null;
 
     /**
      * Loader
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Loader $loader Loader.
      */
-    protected $loader = null;
+    private $loader = null;
 
     /**
      * Mobile Detector
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Detector $mobileDetector Mobile detector.
      */
-    protected $mobileDetector = null;
+    private $mobileDetector = null;
 
     /**
      * Updater
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Theme_UpdateChecker $updater Updater.
      */
-    protected $updater = null;
+    private $updater = null;
 
     /**
      * Constructor
@@ -136,7 +136,7 @@ class Utilities
      *
      * @return Jentil Jentil.
      */
-    protected function getJentil(): Jentil
+    private function getJentil(): Jentil
     {
         return $this->jentil;
     }
@@ -145,11 +145,11 @@ class Utilities
      * Mods
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Mods Mods.
      */
-    protected function getMods(): Mods
+    private function getMods(): Mods
     {
         if (null === $this->mods) {
             $this->mods = new Mods($this);
@@ -162,11 +162,11 @@ class Utilities
      * Page
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Page Page.
      */
-    protected function getPage(): Page
+    private function getPage(): Page
     {
         if (null === $this->page) {
             $this->page = new Page($this);
@@ -179,11 +179,11 @@ class Utilities
      * Colophon
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Colophon Colophon.
      */
-    protected function getColophon(): Colophon
+    private function getColophon(): Colophon
     {
         if (null === $this->colophon) {
             $this->colophon = new Colophon($this);
@@ -196,11 +196,11 @@ class Utilities
      * File System
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return FileSystem FileSystem.
      */
-    protected function getFileSystem(): FileSystem
+    private function getFileSystem(): FileSystem
     {
         if (null === $this->fileSystem) {
             $this->fileSystem = new FileSystem($this);
@@ -213,11 +213,11 @@ class Utilities
      * Loader
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Loader Loader.
      */
-    protected function getLoader(): Loader
+    private function getLoader(): Loader
     {
         if (null === $this->loader) {
             $this->loader = new Loader($this);
@@ -230,11 +230,11 @@ class Utilities
      * Mobile Detector
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Detector Mobile detector.
      */
-    protected function getMobileDetector(): Detector
+    private function getMobileDetector(): Detector
     {
         if (null === $this->mobileDetector) {
             $this->mobileDetector = new Detector();
@@ -247,11 +247,11 @@ class Utilities
      * Updater
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Theme_UpdateChecker Updater.
      */
-    protected function getUpdater(): Puc_v4p2_Theme_UpdateChecker
+    private function getUpdater(): Puc_v4p2_Theme_UpdateChecker
     {
         if (null === $this->updater) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(

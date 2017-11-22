@@ -19,17 +19,17 @@ namespace GrottoPress\Jentil\Utilities\Page;
  *
  * @since 0.1.0
  */
-class Title
+final class Title
 {
     /**
      * Page
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Page $page Page.
      */
-    protected $page;
+    private $page;
     
     /**
      * Constructor

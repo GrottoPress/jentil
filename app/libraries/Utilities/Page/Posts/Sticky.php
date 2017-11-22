@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
  *
  * @since 0.1.0
  */
-class Sticky extends AbstractPosts
+final class Sticky extends AbstractPosts
 {
     /**
      * Sticky Posts Args
@@ -193,11 +193,11 @@ class Sticky extends AbstractPosts
      * @param string $setting
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return mixed Sticky posts mod.
      */
-    protected function mod(string $setting)
+    private function mod(string $setting)
     {
         $args = [
             'context' => 'sticky',

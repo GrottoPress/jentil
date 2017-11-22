@@ -22,7 +22,7 @@ use WP_Post_Type;
  *
  * @since 0.1.0
  */
-class PostType extends AbstractSetting
+final class PostType extends AbstractSetting
 {
     /**
      * Constructor

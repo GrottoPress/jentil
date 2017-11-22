@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
  *
  * @since 0.1.0
  */
-class PaginationPreviousLabel extends AbstractSetting
+final class PaginationPreviousLabel extends AbstractSetting
 {
     /**
      * Constructor

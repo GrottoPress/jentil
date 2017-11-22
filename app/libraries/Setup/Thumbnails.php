@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-class Thumbnails extends AbstractSetup
+final class Thumbnails extends AbstractSetup
 {
     /**
      * Run setup

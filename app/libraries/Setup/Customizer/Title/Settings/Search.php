@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Title\Title;
  *
  * @since 0.1.0
  */
-class Search extends AbstractSetting
+final class Search extends AbstractSetting
 {
     /**
      * Constructor

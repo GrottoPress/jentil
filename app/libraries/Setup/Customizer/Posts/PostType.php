@@ -21,7 +21,7 @@ use WP_Post_Type;
  *
  * @since 0.1.0
  */
-class PostType extends AbstractSection
+final class PostType extends AbstractSection
 {
     /**
      * Post type

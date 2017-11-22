@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
  *
  * @since 0.1.0
  */
-class Archive extends AbstractPosts
+final class Archive extends AbstractPosts
 {
     /**
      * Archives Posts Args

@@ -24,7 +24,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-class Loader extends AbstractSetup
+final class Loader extends AbstractSetup
 {
     /**
      * Run setup

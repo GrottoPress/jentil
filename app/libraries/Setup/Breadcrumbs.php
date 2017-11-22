@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setup;
  *
  * @since 0.1.0
  */
-class Breadcrumbs extends AbstractSetup
+final class Breadcrumbs extends AbstractSetup
 {
     /**
      * Run setup

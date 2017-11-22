@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
  *
  * @since 0.1.0
  */
-class StickyPosts extends AbstractSetting
+final class StickyPosts extends AbstractSetting
 {
     /**
      * Constructor

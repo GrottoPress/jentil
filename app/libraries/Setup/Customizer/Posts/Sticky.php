@@ -21,7 +21,7 @@ use WP_Post_Type;
  *
  * @since 0.1.0
  */
-class Sticky extends AbstractSection
+final class Sticky extends AbstractSection
 {
     /**
      * Constructor

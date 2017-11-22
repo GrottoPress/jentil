@@ -23,7 +23,7 @@ use WP_Post;
  *
  * @since 0.1.0
  */
-class Metaboxes extends AbstractSetup
+final class Metaboxes extends AbstractSetup
 {
     use MetaboxesTrait;
 
@@ -73,11 +73,11 @@ class Metaboxes extends AbstractSetup
      * @param WP_Post $post Post.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return array Layout metabox.
      */
-    protected function layoutMetabox(WP_Post $post): array
+    private function layoutMetabox(WP_Post $post): array
     {
         if (!\current_user_can('edit_theme_options')) {
             return [];

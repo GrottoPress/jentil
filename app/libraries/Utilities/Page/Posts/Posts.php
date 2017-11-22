@@ -22,7 +22,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-class Posts
+final class Posts
 {
     use Getter;
     
@@ -30,41 +30,41 @@ class Posts
      * Page
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Page $page Page.
      */
-    protected $page;
+    private $page;
 
     /**
      * Sticky Posts
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Sticky $sticky Sticky posts.
      */
-    protected $sticky;
+    private $sticky;
 
     /**
      * Singular Posts
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Singular $singular Singular posts.
      */
-    protected $singular;
+    private $singular;
 
     /**
      * Archive Posts
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Archive $archive Archive posts.
      */
-    protected $archive;
+    private $archive;
     
     /**
      * Constructor
@@ -87,11 +87,11 @@ class Posts
      * Get Page
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Page
      */
-    protected function getPage()
+    private function getPage()
     {
         return $this->page;
     }
@@ -100,11 +100,11 @@ class Posts
      * Get Sticky Posts
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Sticky
      */
-    protected function getSticky()
+    private function getSticky()
     {
         return $this->sticky;
     }
@@ -113,11 +113,11 @@ class Posts
      * Get Archive Posts
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return Sticky
      */
-    protected function getArchive()
+    private function getArchive()
     {
         return $this->archive;
     }

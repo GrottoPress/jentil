@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Mods;
  *
  * @since 0.1.0
  */
-class Layout extends AbstractMod
+final class Layout extends AbstractMod
 {
     /**
      * Context
@@ -71,9 +71,9 @@ class Layout extends AbstractMod
      * Set attributes
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      */
-    protected function setAttributes(array $args)
+    private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
             'context' => '',
@@ -97,11 +97,11 @@ class Layout extends AbstractMod
      * Get mod names
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return array Mod names.
      */
-    protected function names(): array
+    private function names(): array
     {
         $names = [
             'home' => 'post_post_type_layout',

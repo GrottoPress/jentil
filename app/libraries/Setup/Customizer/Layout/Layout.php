@@ -22,7 +22,7 @@ use GrottoPress\Jentil\Setup\Customizer\Customizer;
  *
  * @since 0.1.0
  */
-class Layout extends AbstractSection
+final class Layout extends AbstractSection
 {
     /**
      * Constructor

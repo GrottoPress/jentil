@@ -21,17 +21,17 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.1.0
  */
-class Loader
+final class Loader
 {
     /**
      * Utilities
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var Utilities $utilities Utilities.
      */
-    protected $utilities;
+    private $utilities;
 
     /**
      * Constructor

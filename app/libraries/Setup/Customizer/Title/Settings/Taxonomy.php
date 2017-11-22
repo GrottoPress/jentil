@@ -23,7 +23,7 @@ use WP_Term;
  *
  * @since 0.1.0
  */
-class Taxonomy extends AbstractSetting
+final class Taxonomy extends AbstractSetting
 {
     /**
      * Constructor
@@ -58,9 +58,9 @@ class Taxonomy extends AbstractSetting
      * @param WP_Term $term Term.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      */
-    protected function setMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    private function setMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $mod_context = 'tax';
         
@@ -93,9 +93,9 @@ class Taxonomy extends AbstractSetting
      * @param WP_Term $term Term.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      */
-    protected function setControl(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    private function setControl(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->control['active_callback'] = function () use (
             $taxonomy,
