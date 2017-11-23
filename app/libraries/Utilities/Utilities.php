@@ -41,9 +41,9 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Jentil $jentil Jentil.
+     * @var Jentil $theme Jentil.
      */
-    private $jentil;
+    private $theme;
 
     /**
      * Mods
@@ -125,20 +125,20 @@ final class Utilities
      */
     public function __construct(Jentil $jentil)
     {
-        $this->jentil = $jentil;
+        $this->theme = $jentil;
     }
 
     /**
-     * Jentil
+     * Get theme
      *
      * @since 0.1.0
      * @access public
      *
      * @return Jentil Jentil.
      */
-    private function getJentil(): Jentil
+    private function getTheme(): Jentil
     {
-        return $this->jentil;
+        return $this->theme;
     }
 
     /**
