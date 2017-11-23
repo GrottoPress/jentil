@@ -58,7 +58,7 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @return PostsMods Posts mod.
+     * @return PostsMod Posts mod.
      */
     protected function mod(string $setting): PostsMod
     {

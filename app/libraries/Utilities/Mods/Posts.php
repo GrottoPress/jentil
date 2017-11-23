@@ -150,7 +150,7 @@ final class Posts extends AbstractMod
         /**
          * @filter jentil_posts_mod_names
          *
-         * @var string $names Layout mod names.
+         * @var string $names
          *
          * @since 0.1.0
          */
