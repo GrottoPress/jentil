@@ -73,9 +73,9 @@ final class Posts extends AbstractMod
      */
     public function __construct(Mods $mods, string $setting, array $args = [])
     {
-        $this->setAttributes($setting, $args);
-
         parent::__construct($mods);
+        
+        $this->setAttributes($setting, $args);
     }
 
     /**

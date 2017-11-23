@@ -33,6 +33,8 @@ final class Colophon extends AbstractMod
      */
     public function __construct(Mods $mods)
     {
+        parent::__construct($mods);
+        
         $this->name = 'colophon';
 
         $this->default = \sprintf(
@@ -44,8 +46,6 @@ final class Colophon extends AbstractMod
             '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>',
             '<em><a itemprop="url" rel="nofollow" href="'.Jentil::WEBSITE.'">'.Jentil::NAME.'</a></em>.'
         );
-
-        parent::__construct($mods);
     }
 
     /**

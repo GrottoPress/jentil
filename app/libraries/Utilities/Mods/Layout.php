@@ -62,9 +62,9 @@ final class Layout extends AbstractMod
      */
     public function __construct(Mods $mods, array $args = [])
     {
-        $this->setAttributes($args);
-
         parent::__construct($mods);
+
+        $this->setAttributes($args);        
     }
 
     /**
