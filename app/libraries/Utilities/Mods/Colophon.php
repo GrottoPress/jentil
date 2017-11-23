@@ -24,6 +24,16 @@ use GrottoPress\Jentil\Jentil;
 final class Colophon extends AbstractMod
 {
     /**
+     * Mods
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Mods $mods Mods.
+     */
+    protected $mods;
+    
+    /**
      * Constructor
      *
      * @param Mods $mods
@@ -33,7 +43,7 @@ final class Colophon extends AbstractMod
      */
     public function __construct(Mods $mods)
     {
-        parent::__construct($mods);
+        $this->mods = $mods;
         
         $this->name = 'colophon';
 

@@ -26,16 +26,6 @@ abstract class AbstractMod
     use Getter;
 
     /**
-     * Mods
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Mods $mods Mods.
-     */
-    protected $mods;
-
-    /**
      * Name
      *
      * @since 0.1.0
@@ -54,19 +44,6 @@ abstract class AbstractMod
      * @var mixed $default Default value.
      */
     protected $default;
-
-    /**
-     * Constructor
-     *
-     * @param Mods $mods
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function __construct(Mods $mods)
-    {
-        $this->mods = $mods;
-    }
 
     /**
      * Name

@@ -22,6 +22,16 @@ namespace GrottoPress\Jentil\Utilities\Mods;
 final class Posts extends AbstractMod
 {
     /**
+     * Mods
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Mods $mods Mods.
+     */
+    protected $mods;
+    
+    /**
      * Setting
      *
      * @since 0.1.0
@@ -73,7 +83,7 @@ final class Posts extends AbstractMod
      */
     public function __construct(Mods $mods, string $setting, array $args = [])
     {
-        parent::__construct($mods);
+        $this->mods = $mods;
         
         $this->setAttributes($setting, $args);
     }
