@@ -6,10 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased - 0.5.0
 
-### Added
-- Added abstract classes to enable inheritance from child themes
-
 ### Changed
+- Overhauled theme to make it seamless with child themes that use Object Oriented design.
 - Various enhancements to menu styles and scripts
 
 ### Removed
