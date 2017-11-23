@@ -50,7 +50,7 @@ final class PostType extends AbstractSetting
         $this->args['default'] = $this->mod->default;
 
         $this->control['active_callback'] = function () use ($post_type): bool {
-            $page = $this->title->customizer->theme->utilities
+            $page = $this->section->customizer->theme->utilities
                 ->page;
 
             if ('post' == $post_type->name) {

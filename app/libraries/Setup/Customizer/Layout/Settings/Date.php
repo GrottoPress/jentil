@@ -43,7 +43,7 @@ final class Date extends AbstractSetting
 
         $this->control['label'] = \esc_html__('Date Archives', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->layout->customizer->theme->utilities
+            return $this->section->customizer->theme->utilities
                 ->page->is('date');
         };
     }

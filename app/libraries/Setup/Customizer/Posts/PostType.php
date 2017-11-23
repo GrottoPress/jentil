@@ -36,7 +36,7 @@ final class PostType extends AbstractSection
     /**
      * Constructor
      *
-     * @param Posts $posts Posts.
+     * @param Posts $posts Posts panel.
      * @param WP_Post_Type $post_type Post type.
      *
      * @since 0.1.0
@@ -60,7 +60,7 @@ final class PostType extends AbstractSection
             $this->post_type->labels->name
         );
         $this->args['active_callback'] = function (): bool {
-            $page = $this->posts->customizer->theme->utilities->page;
+            $page = $this->panel->customizer->theme->utilities->page;
 
             if ('post' == $this->post_type->name) {
                 return $page->is('home');
@@ -82,7 +82,7 @@ final class PostType extends AbstractSection
     {
         $settings = parent::settings();
 
-        if (!$this->posts->customizer->theme->utilities
+        if (!$this->panel->customizer->theme->utilities
             ->page->posts->sticky->get($this->post_type->name)
         ) {
             unset($settings['sticky_posts']);

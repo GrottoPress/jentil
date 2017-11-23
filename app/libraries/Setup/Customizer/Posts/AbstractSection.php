@@ -34,32 +34,32 @@ abstract class AbstractSection extends Section
     protected $modArgs;
 
     /**
-     * Posts
+     * Panel
      *
      * @since 0.1.0
      * @access protected
      *
-     * @var Posts $posts Posts panel.
+     * @var Posts $panel Posts panel.
      */
-    protected $posts;
+    protected $panel;
 
      /**
      * Constructor
      *
-     * @param Posts $posts Posts.
+     * @param Posts $posts Posts panel.
      *
      * @since 0.1.0
      * @access public
      */
     public function __construct(Posts $posts)
     {
-        $this->posts = $posts;
+        $this->panel = $posts;
 
-        parent::__construct($this->posts->customizer);
+        parent::__construct($this->panel->customizer);
 
         $this->args = [
             'title' => \esc_html__('Posts', 'jentil'),
-            'panel' => $this->posts->name,
+            'panel' => $this->panel->name,
         ];
 
         $this->modArgs = [
@@ -70,16 +70,16 @@ abstract class AbstractSection extends Section
     }
 
     /**
-     * Posts
+     * Panel
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return Posts Posts.
+     * @return Posts Posts panel.
      */
-    final protected function getPosts(): Posts
+    final protected function getPanel(): Posts
     {
-        return $this->posts;
+        return $this->panel;
     }
 
     /**

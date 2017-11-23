@@ -42,7 +42,7 @@ final class Author extends AbstractSetting
         $this->args['default'] = $this->mod->default;
 
         $this->control['active_callback'] = function (): bool {
-            return $this->layout->customizer->theme->utilities
+            return $this->section->customizer->theme->utilities
                 ->page->is('author');
         };
 

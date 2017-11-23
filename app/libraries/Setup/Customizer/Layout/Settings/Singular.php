@@ -83,7 +83,7 @@ final class Singular extends AbstractSetting
             $post_type,
             $post
         ): bool {
-            $page = $this->layout->customizer->theme->utilities->page;
+            $page = $this->section->customizer->theme->utilities->page;
 
             if ($post) {
                 return ($page->is('page', $post->ID)

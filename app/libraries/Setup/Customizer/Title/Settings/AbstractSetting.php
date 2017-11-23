@@ -31,9 +31,9 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @var Title $title Title section.
+     * @var Title $section Title section.
      */
-    protected $title;
+    protected $section;
 
     /**
      * Mod
@@ -55,12 +55,12 @@ abstract class AbstractSetting extends Setting
      */
     protected function __construct(Title $title)
     {
-        $this->title = $title;
+        $this->section = $title;
 
         // $this->args['transport'] = 'postMessage';
         $this->arg['sanitize_callback'] = 'wp_kses_data';
 
-        $this->control['section'] = $this->title->name;
+        $this->control['section'] = $this->section->name;
         $this->control['label'] = \esc_html__('Enter title', 'jentil');
         $this->control['type'] = 'text';
     }
@@ -77,6 +77,6 @@ abstract class AbstractSetting extends Setting
      */
     protected function mod(array $args): TitleMod
     {
-        return $this->title->customizer->theme->utilities->mods->title($args);
+        return $this->section->customizer->theme->utilities->mods->title($args);
     }
 }

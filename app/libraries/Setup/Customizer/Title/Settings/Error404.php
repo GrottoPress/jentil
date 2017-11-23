@@ -43,8 +43,8 @@ final class Error404 extends AbstractSetting
 
         $this->control['label'] = \esc_html__('Error 404', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->title->customizer->theme->utilities
-                ->page->is('404');
+            return
+                $this->section->customizer->theme->utilities->page->is('404');
         };
     }
 }

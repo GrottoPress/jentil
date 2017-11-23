@@ -99,7 +99,7 @@ final class Taxonomy extends AbstractSetting
             $taxonomy,
             $term
         ): bool {
-            $page = $this->title->customizer->theme->utilities->page;
+            $page = $this->section->customizer->theme->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)

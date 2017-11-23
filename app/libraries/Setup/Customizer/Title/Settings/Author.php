@@ -43,7 +43,7 @@ final class Author extends AbstractSetting
 
         $this->control['label'] = \esc_html__('Author Archives', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->title->customizer->theme->utilities
+            return $this->section->customizer->theme->utilities
                 ->page->is('author');
         };
     }

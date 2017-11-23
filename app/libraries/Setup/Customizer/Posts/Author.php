@@ -24,7 +24,7 @@ final class Author extends AbstractSection
     /**
      * Constructor
      *
-     * @param Posts $posts Posts.
+     * @param Posts $posts Posts panel.
      *
      * @since 0.1.0
      * @access public
@@ -39,7 +39,7 @@ final class Author extends AbstractSection
 
         $this->args['title'] = \esc_html__('Author Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->posts->customizer->theme->utilities
+            return $this->panel->customizer->theme->utilities
                 ->page->is('author');
         };
     }

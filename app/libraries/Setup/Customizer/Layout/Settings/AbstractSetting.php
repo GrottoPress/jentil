@@ -31,9 +31,9 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @var Layout $layout Layout section.
+     * @var Layout $section Layout section.
      */
-    protected $layout;
+    protected $section;
 
     /**
      * Layout Mod
@@ -55,15 +55,15 @@ abstract class AbstractSetting extends Setting
      */
     protected function __construct(Layout $layout)
     {
-        $this->layout = $layout;
+        $this->section = $layout;
 
         $this->args = ['sanitize_callback' => 'sanitize_title'];
 
         $this->control = [
-            'section' => $this->layout->name,
+            'section' => $this->section->name,
             'label' => \esc_html__('Select layout', 'jentil'),
             'type' => 'select',
-            'choices' => $this->layout->customizer->theme->utilities
+            'choices' => $this->section->customizer->theme->utilities
                 ->page->layouts->IDNames(),
         ];
     }
@@ -80,6 +80,7 @@ abstract class AbstractSetting extends Setting
      */
     protected function mod(array $args): LayoutMod
     {
-        return $this->layout->customizer->theme->utilities->mods->layout($args);
+        return
+            $this->section->customizer->theme->utilities->mods->layout($args);
     }
 }
