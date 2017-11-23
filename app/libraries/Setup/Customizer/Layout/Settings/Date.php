@@ -35,10 +35,7 @@ final class Date extends AbstractSetting
     {
         parent::__construct($layout);
 
-        $this->mod = $this->layout->customizer->theme->utilities
-            ->mods->layout([
-                'context' => 'date',
-            ]);
+        $this->mod = $this->mod(['context' => 'date']);
 
         $this->name = $this->mod->name;
 

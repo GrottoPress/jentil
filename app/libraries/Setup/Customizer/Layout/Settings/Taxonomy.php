@@ -68,18 +68,16 @@ final class Taxonomy extends AbstractSetting
         }
 
         if ($term) {
-            $this->mod = $this->layout->customizer->theme->utilities
-                ->mods->layout([
-                    'context' => $mod_context,
-                    'specific' => $taxonomy->name,
-                    'more_specific' => $term->term_id,
-                ]);
+            $this->mod = $this->mod([
+                'context' => $mod_context,
+                'specific' => $taxonomy->name,
+                'more_specific' => $term->term_id,
+            ]);
         } else {
-            $this->mod = $this->layout->customizer->theme->utilities
-                ->mods->layout([
-                    'context' => $mod_context,
-                    'specific' => $taxonomy->name,
-                ]);
+            $this->mod = $this->mod([
+                'context' => $mod_context,
+                'specific' => $taxonomy->name,
+            ]);
         }
     }
 

@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\Title\Title;
 use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
+use GrottoPress\Jentil\Utilities\Mods\Title as TitleMod;
 
 /**
  * Abstract Title Setting
@@ -40,7 +41,7 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @var Title $mod Mod.
+     * @var \GrottoPress\Jentil\Utilities\Mods\Title $mod Mod.
      */
     protected $mod;
 
@@ -62,5 +63,20 @@ abstract class AbstractSetting extends Setting
         $this->control['section'] = $this->title->name;
         $this->control['label'] = \esc_html__('Enter title', 'jentil');
         $this->control['type'] = 'text';
+    }
+
+    /**
+     * Get mod
+     *
+     * @param array
+     *
+     * @since 0.5.0
+     * @access protected
+     *
+     * @return TitleMod
+     */
+    protected function mod(array $args): TitleMod
+    {
+        return $this->title->customizer->theme->utilities->mods->title($args);
     }
 }

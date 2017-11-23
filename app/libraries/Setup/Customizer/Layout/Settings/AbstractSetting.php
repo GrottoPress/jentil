@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
 use GrottoPress\Jentil\Setup\Customizer\Layout\Layout;
+use GrottoPress\Jentil\utilities\Mods\Layout as LayoutMod;
 
 /**
  * Abstract Layout Setting
@@ -65,5 +66,20 @@ abstract class AbstractSetting extends Setting
             'choices' => $this->layout->customizer->theme->utilities
                 ->page->layouts->IDNames(),
         ];
+    }
+
+    /**
+     * Get mod
+     *
+     * @param array
+     *
+     * @since 0.5.0
+     * @access protected
+     *
+     * @return LayoutMod
+     */
+    protected function mod(array $args): LayoutMod
+    {
+        return $this->layout->customizer->theme->utilities->mods->layout($args);
     }
 }

@@ -35,8 +35,7 @@ final class Author extends AbstractSetting
     {
         parent::__construct($layout);
 
-        $this->mod = $this->layout->customizer->theme->utilities
-            ->mods->layout(['context' => 'author']);
+        $this->mod = $this->mod(['context' => 'author']);
 
         $this->name = $this->mod->name;
 

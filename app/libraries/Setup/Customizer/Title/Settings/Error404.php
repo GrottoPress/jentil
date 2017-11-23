@@ -35,10 +35,7 @@ final class Error404 extends AbstractSetting
     {
         parent::__construct($title);
 
-        $this->mod = $this->title->customizer->theme->utilities
-            ->mods->title([
-                'context' => '404',
-            ]);
+        $this->mod = $this->mod(['context' => '404']);
 
         $this->name = $this->mod->name;
         
