@@ -100,20 +100,26 @@ abstract class AbstractCustomizer extends AbstractSetup
      * @since 0.1.0
      * @access protected
      *
-     * @return array Panels.
+     * @return AbstractPanel[] Panels.
      */
-    abstract protected function panels(): array;
+    protected function panels(): array
+    {
+        return [];
+    }
 
     /**
      * Get sections
      *
-     * These sections come under no panel. Each section
-     * comprises its settings.
+     * Use this ONLY if sections come under no panel.
+     * Each section comprises its settings.
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return array Sections.
+     * @return AbstractSection[] Sections.
      */
-    abstract protected function sections(): array;
+    protected function sections(): array
+    {
+        return [];
+    }
 }
