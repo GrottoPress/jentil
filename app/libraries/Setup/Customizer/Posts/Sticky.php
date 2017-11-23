@@ -69,7 +69,7 @@ final class Sticky extends AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @return array Settings.
+     * @return Settings\AbstractSetting[] Settings.
      */
     protected function settings(): array
     {

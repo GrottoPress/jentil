@@ -101,7 +101,7 @@ abstract class AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @return array Settings.
+     * @return AbstractSetting[] Settings.
      */
     abstract protected function settings(): array;
 

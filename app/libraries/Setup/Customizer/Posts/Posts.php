@@ -48,7 +48,7 @@ final class Posts extends AbstractPanel
      * @since 0.1.0
      * @access protected
      *
-     * @return array Sections.
+     * @return AbstractSection[] Sections.
      */
     protected function sections(): array
     {

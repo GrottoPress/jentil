@@ -89,7 +89,7 @@ final class Customizer extends AbstractCustomizer
      * @since 0.1.0
      * @access protected
      *
-     * @return array Panels.
+     * @return AbstractPanel[] Panels.
      */
     protected function panels(): array
     {
@@ -109,7 +109,7 @@ final class Customizer extends AbstractCustomizer
      * @since 0.1.0
      * @access protected
      *
-     * @return array Sections.
+     * @return AbstractSection[] Sections.
      */
     protected function sections(): array
     {

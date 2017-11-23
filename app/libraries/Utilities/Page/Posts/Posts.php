@@ -163,7 +163,7 @@ final class Posts
      * @since 0.1.0
      * @access public
      *
-     * @return array Public post types.
+     * @return \WP_Post_Type[] Public post types.
      */
     public function postTypes(): array
     {
@@ -176,7 +176,7 @@ final class Posts
      * @since 0.1.0
      * @access public
      *
-     * @return array Public taxonomies.
+     * @return \WP_Taxonomy[] Public taxonomies.
      */
     public function taxonomies(): array
     {

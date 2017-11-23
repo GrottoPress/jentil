@@ -33,7 +33,7 @@ abstract class AbstractTheme
      * @since 0.1.0
      * @access protected
      *
-     * @var array $setup Setups.
+     * @var Setup\AbstractSetup[] $setup Setups.
      */
     protected $setup = [];
 
@@ -53,7 +53,7 @@ abstract class AbstractTheme
      * @since 0.1.0
      * @access protected
      *
-     * @return array
+     * @return Setup\AbstractSetup[]
      */
     protected function getSetup(): array
     {

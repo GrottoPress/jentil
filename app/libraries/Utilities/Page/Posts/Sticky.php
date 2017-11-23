@@ -149,7 +149,7 @@ final class Sticky extends AbstractPosts
      * @since 0.1.0
      * @access public
      *
-     * @return array Sticky posts for post type.
+     * @return int[] Sticky posts for post type.
      */
     public function get(string $post_type = ''): array
     {

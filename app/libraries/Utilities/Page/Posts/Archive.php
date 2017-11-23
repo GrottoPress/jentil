@@ -175,7 +175,7 @@ final class Archive extends AbstractPosts
      * @since 0.1.0
      * @access public
      *
-     * @return array Public post types with archive.
+     * @return \WP_Post_Type[] Public post types with archive.
      */
     public function postTypes(): array
     {

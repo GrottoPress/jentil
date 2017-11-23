@@ -59,7 +59,7 @@ final class Metaboxes extends AbstractSetup
         /**
          * @filter jentil_metaboxes
          *
-         * @var array $boxes Metaboxes.
+         * @var Metaboxes[] $boxes Metaboxes.
          * @var WP_Post $post Post.
          *
          * @since 0.1.0

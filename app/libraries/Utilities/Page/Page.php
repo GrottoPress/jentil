@@ -83,7 +83,7 @@ final class Page extends PagePackage
      * @since 0.1.0
      * @access private
      *
-     * @var array $type Page type.
+     * @var string[] $type Page type.
      */
     private $type = null;
 
@@ -191,7 +191,7 @@ final class Page extends PagePackage
      * @since 0.1.0
      * @access private
      *
-     * @return array
+     * @return string[]
      */
     private function getType(): array
     {
