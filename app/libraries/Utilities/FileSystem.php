@@ -63,8 +63,8 @@ final class FileSystem
     {
         $this->utilities = $utilities;
 
-        $this->dirUrl = \get_template_directory_uri();
-        $this->dirPath = \get_template_directory();
+        $this->dirPath = $this->dirPath();
+        $this->dirUrl = $this->dirUrl();
     }
 
     /**
@@ -80,7 +80,7 @@ final class FileSystem
      */
     public function themeDir(string $type, string $append = ''): string
     {
-        return $this->dir($type, '', $append);
+        return $this->dir($type, $append);
     }
 
     /**
@@ -100,7 +100,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/dist/assets/scripts', $append, $form);
+        return $this->dir($type, "/dist/assets/scripts${append}", $form);
     }
 
     /**
@@ -120,7 +120,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/dist/assets/styles', $append, $form);
+        return $this->dir($type, "/dist/assets/styles${append}", $form);
     }
 
     /**
@@ -140,7 +140,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/app/partials', $append, $form);
+        return $this->dir($type, "/app/partials${append}", $form);
     }
 
     /**
@@ -160,16 +160,17 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/app/templates', $append, $form);
+        return $this->dir($type, "/app/templates${append}", $form);
     }
 
     /**
      * Get directory URL/path
      *
      * @param string $type 'path' or 'url'.
-     * @param string $append Filepath to prepend to URL/path.
      * @param string $append Filepath to append to URL/path.
      * @param string $form 'relative' or 'absolute'.
+     *
+     * NOTE: $relative is relative to theme directory.
      *
      * @since 0.1.0
      * @access private
@@ -178,16 +179,41 @@ final class FileSystem
      */
     private function dir(
         string $type,
-        string $prepend = '',
         string $append = '',
         string $form = ''
     ): string {
-        $relative = $prepend.$append;
-
         if ('relative' == $form) {
-            return $relative;
+            return $append;
         }
 
-        return $this->{'dir'.\ucfirst($type)}.$relative;
+        return $this->{'dir'.\ucfirst($type)}.$append;
+    }
+
+    /**
+     * Theme directory URL
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return string
+     */
+    private function dirUrl(): string
+    {
+        $path = \str_replace(\get_theme_root(), '', $this->dirPath());
+
+        return (\get_theme_root_uri().$path);
+    }
+
+    /**
+     * Theme directory path
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return string
+     */
+    private function dirPath(): string
+    {
+        return \dirname(__FILE__, 4);
     }
 }
