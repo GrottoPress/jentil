@@ -104,4 +104,24 @@ final class Jentil extends AbstractTheme
 
         return $this->utilities;
     }
+
+    /**
+     * Setup
+     *
+     * @param string $setup Setup type
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return Setup\AbstractSetup[]
+     */
+    protected function getSetup(): array
+    {
+        $setups = $this->setup;
+
+        unset($setups['loader']);
+        unset($setups['updater']);
+
+        return $setups;
+    }
 }
