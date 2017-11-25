@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Overhauled theme to make it seamless with child themes that use Object Oriented design.
-- Various enhancements to menu styles and scripts
+- You may now use this theme as package instead of as (parent) theme.
+- Various enhancements to menu styles and scripts.
 
 ### Removed
 - Removed version compatibility checks. Will develop a plugin for that.
