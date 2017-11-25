@@ -2,15 +2,11 @@
 
 ## Description
 
-Jentil is a modern WordPress theme, suitable for use as a parent theme from which child themes can be derived.
+Jentil is a modern WordPress theme framework, with more than enough features to make building your next theme a cinch. It has powerful content options which allows to configure how posts display on archives right from the customizer.
 
-It features powerful content options which allows to configure how posts display on archives right from the customizer.
+Jentil features six layout options, configured via the customizer and post meta boxes. Jentil can be used to build blogs, magazines, e-commerce, corporate websites and more.
 
-Jentil features six layout options, configured via the customizer and post meta boxes.
-
-Jentil can be used to build blogs, magazines, e-commerce, corporate websites and more.
-
-It integrates seamlessly with most WordPress page builders including:
+It integrates seamlessly with most WordPress page builders, including:
 
 - [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
 - [SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
@@ -33,11 +29,12 @@ It integrates seamlessly with most WordPress page builders including:
 - Responsive (mobile-ready)
 
 ### For the Developer:
+- Use as package in another theme, or as parent theme for a child theme.
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Cleanly-commented, object-oriented codebase.
 - Modern web development tools (npm, composer, gulp, sass, git etc).
 - Enforced a more organised directory structure in parent and child themes. Templates (eg: single.php, page.php etc) are loaded only from the `app/templates` directory, and partials (eg: sidebar.php, header.php etc) from the `app/partials` directory.
-- Compliance with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
+- Compliant with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ## Requirements
 
@@ -47,29 +44,25 @@ This theme requires **WordPress** version **4.6** or newer. Minimum required **P
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
 
-### End Users
+Jentil can be installed either one of 2 modes: As a parent theme for a child theme, or as a package in another theme.
 
-- Download theme from [here](https://api.grottopress.com/wp-update-server/v1/?action=download&slug=jentil) (in *zip* format)
-- Go to **Themes** submenu of the **Appearance** menu in the WordPress admin area.
-- Click the **Add New** button on the *Themes* screen. You should be taken to the *Add Themes* screen.
-- On the *Add Themes* screen, click the **Upload Theme** button. Choose the file from your local computer and click **Install Now**.
-- Do not activate Jentil. Only activate the child theme that comes with it.
+### Install as parent theme
 
-Read our tutorial on [how to install WordPress themes](https://www.grottopress.com/tutorials/wordpress-themes-installation/) to learn more.
+- Download and install the [jentil-child](#) theme to get started. (Link to be posted soon).
+- Download Jentil from [here](https://api.grottopress.com/wp-update-server/v1/?action=download&slug=jentil) (in *zip* format), and install.
+- Activate the jentil-child theme.
+- Head over to the documentation and start creating your child theme. (Link to be posted soon)
 
-### Developers
+### Install as package
 
 You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed.
 
-- From the root of your WordPress project, via the command line, enter `composer require grottopress/jentil`. (Use `--no-dev` flag for production).
-- Change to `jentil` directory  
- `cd /path/to/jentil`
-- Run `npm install`
-- Run `gulp` to build assets in a new `dist` directory.
-- You may run `npm install --production` at this stage for a production-ready build.
-- You're done.
+- Download and install the [jentil-starter](#) theme (Link to be posted soon).
+- From the starter theme's directory, via the command line, enter `composer update` to install packages.
+- This would install Jentil (as a package) and all dependencies. Alternatively: `composer require grottopress/jentil`.
+- Head over to the documentation and start creating your theme. (Link to be posted soon)
 
-## Example Child Theme
+## Documentation
 
 Link to be posted soon...
 
