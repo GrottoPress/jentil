@@ -100,7 +100,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, "/dist/assets/scripts${append}", $form);
+        return $this->dir($type, "/dist/assets/scripts{$append}", $form);
     }
 
     /**
@@ -120,7 +120,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, "/dist/assets/styles${append}", $form);
+        return $this->dir($type, "/dist/assets/styles{$append}", $form);
     }
 
     /**
@@ -140,7 +140,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, "/app/partials${append}", $form);
+        return $this->dir($type, "/app/partials{$append}", $form);
     }
 
     /**
@@ -160,7 +160,26 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, "/app/templates${append}", $form);
+        return $this->dir($type, "/app/templates{$append}", $form);
+    }
+
+    /**
+     * Gap
+     *
+     * If installed as package rather than as a theme,
+     * this would give us the location of this package
+     * relative to the theme's directory.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string
+     */
+    public function gap(): string
+    {
+        $gap = \str_replace(\get_stylesheet_directory(), '', $this->dirPath);
+
+        return \ltrim(\str_replace(\get_template_directory(), '', $gap), '/');
     }
 
     /**
@@ -183,7 +202,7 @@ final class FileSystem
         string $form = ''
     ): string {
         if ('relative' == $form) {
-            return $append;
+            return \ltrim($append, '/');
         }
 
         return $this->{'dir'.\ucfirst($type)}.$append;
@@ -199,7 +218,7 @@ final class FileSystem
      */
     private function dirUrl(): string
     {
-        $path = \str_replace(\get_theme_root(), '', $this->dirPath());
+        $path = \str_replace(\get_theme_root(), '', $this->dirPath);
 
         return (\get_theme_root_uri().$path);
     }

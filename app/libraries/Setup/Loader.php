@@ -72,14 +72,17 @@ final class Loader extends AbstractSetup
         $j_templates = [];
 
         foreach ($templates as $template) {
-            $j_templates[] = \ltrim(
-                $this->theme->utilities->fileSystem->templatesDir(
-                    'path',
-                    '/'.$template,
-                    'relative'
-                ),
-                '/'
+            $templates_dir = $this->theme->utilities->fileSystem->templatesDir(
+                'path',
+                "/{$template}",
+                'relative'
             );
+            
+            $j_templates[] = $templates_dir;
+
+            if (($gap = $this->theme->utilities->fileSystem->gap())) {
+                $j_templates[] = "{$gap}/{$templates_dir}";
+            }
         }
 
         return $j_templates;
