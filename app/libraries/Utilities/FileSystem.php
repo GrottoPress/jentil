@@ -185,7 +185,7 @@ final class FileSystem
      * @param string $type 'url' or 'path'
      * @param string $append
      *
-     * @return string Path. $this->dir('path') if Jentil is theme.
+     * @return string Path. Same as $this->dir() if Jentil is theme.
      */
     public function themeDir(string $type, string $append = ''): string
     {
