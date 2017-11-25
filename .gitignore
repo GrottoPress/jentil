@@ -119,8 +119,5 @@ components/
 # npm
 node_modules/
 
-# dist
-dist/
-
 # Visual Studio Code
 .vscode/
