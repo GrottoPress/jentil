@@ -21,7 +21,7 @@ class FileSystemTest extends WPTestCase
     public function testThemeDirWhenFrameworkIsTheme()
     {
         // $this->assertSame(
-        //     $this->fileSystem->themeDir('path'),
+        //     $this->fileSystem->dir('path'),
         //     \get_template_directory()
         // );
     }
