@@ -39,13 +39,13 @@ declare (strict_types = 1);
 
         <!--[if lt IE 9]>
             <script src="<?php
-                echo \Jentil()->utilities->fileSystem->themeDir(
+                echo \Jentil()->utilities->fileSystem->dir(
                     'url',
                     '/node_modules/html5shiv/dist/html5shiv.min.js'
                 );
             ?>"></script>
             <script src="<?php
-                echo \Jentil()->utilities->fileSystem->themeDir(
+                echo \Jentil()->utilities->fileSystem->dir(
                     'url',
                     '/node_modules/respond.js/dest/respond.min.js'
                 );

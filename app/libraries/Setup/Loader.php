@@ -80,8 +80,8 @@ final class Loader extends AbstractSetup
             
             $j_templates[] = $templates_dir;
 
-            if (($gap = $this->theme->utilities->fileSystem->gap())) {
-                $j_templates[] = "{$gap}/{$templates_dir}";
+            if (($rel_dir = $this->theme->utilities->fileSystem->relativeDir())) {
+                $j_templates[] = "{$rel_dir}/{$templates_dir}";
             }
         }
 

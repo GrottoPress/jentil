@@ -95,9 +95,9 @@ final class Loader
         
         if (!\is_readable(\get_stylesheet_directory()."/{$file}")
             && !\is_readable(\get_template_directory()."/{$file}")
-            && ($gap = $this->utilities->fileSystem->gap())
+            && ($rel_dir = $this->utilities->fileSystem->relativeDir())
         ) {
-            return \comments_template("/{$gap}/{$file}", $separated);
+            return \comments_template("/{$rel_dir}/{$file}", $separated);
         }
     
         return \comments_template("/{$file}", $separated);
@@ -133,22 +133,22 @@ final class Loader
             );
         }
 
-        $gap = $this->utilities->fileSystem->gap();
+        $rel_dir = $this->utilities->fileSystem->relativeDir();
     
         $templates = [];
 
         if ($name) {
             $templates[] = "{$slug}-{$name}.php";
 
-            if ($gap) {
-                $templates[] = "{$gap}/{$slug}-{$name}.php";
+            if ($rel_dir) {
+                $templates[] = "{$rel_dir}/{$slug}-{$name}.php";
             }
         }
     
         $templates[] = "{$slug}.php";
 
-        if ($gap) {
-            $templates[] = "{$gap}/{$slug}.php";
+        if ($rel_dir) {
+            $templates[] = "{$rel_dir}/{$slug}.php";
         }
     
         return \locate_template($templates, true, false);
