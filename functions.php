@@ -19,7 +19,7 @@ declare (strict_types = 1);
  *
  * @since 0.1.0
  */
-require \get_template_directory().'/vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 /**
  * Run this theme.
