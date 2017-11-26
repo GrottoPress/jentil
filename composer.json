@@ -32,12 +32,6 @@
         "lucatume/wp-browser": "^1.21"
     },
     "scripts": {
-        "pre-update-cmd": [
-            "npm update"
-        ],
-        "pre-install-cmd": [
-            "npm install"
-        ],
         "test": [
             "codecept run wpunit"
         ]
