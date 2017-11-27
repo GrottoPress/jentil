@@ -66,6 +66,10 @@ You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs
 
 Link to be posted soon...
 
+## Security
+
+Kindly send an email to admin[AT]grottopress[DOT]com about any security-related issue. We take messages we receive at this address very seriously.
+
 ## Showcase
 
 The following websites are powered by Jentil:
