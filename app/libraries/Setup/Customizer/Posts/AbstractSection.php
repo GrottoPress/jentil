@@ -101,7 +101,7 @@ abstract class AbstractSection extends Section
      * @since       Jentil 0.1.0
      * @access      protected
      */
-    protected function settings(): array
+    protected function getSettings(): array
     {
         $settings = [];
 

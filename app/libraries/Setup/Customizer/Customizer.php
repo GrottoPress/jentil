@@ -91,7 +91,7 @@ final class Customizer extends AbstractCustomizer
      *
      * @return AbstractPanel[] Panels.
      */
-    protected function panels(): array
+    protected function getPanels(): array
     {
         $panels = [];
 
@@ -111,7 +111,7 @@ final class Customizer extends AbstractCustomizer
      *
      * @return AbstractSection[] Sections.
      */
-    protected function sections(): array
+    protected function getSections(): array
     {
         $sections = [];
 

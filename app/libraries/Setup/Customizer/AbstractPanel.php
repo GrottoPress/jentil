@@ -103,7 +103,7 @@ abstract class AbstractPanel
      *
      * @return AbstractSection[] Sections.
      */
-    abstract protected function sections(): array;
+    abstract protected function getSections(): array;
 
     /**
      * Add Panel
@@ -121,7 +121,7 @@ abstract class AbstractPanel
         
         $wp_customize->add_panel($this->name, $this->args);
 
-        if (!($sections = $this->sections())) {
+        if (!($sections = $this->getSections())) {
             return;
         }
 

@@ -54,6 +54,19 @@ abstract class AbstractSetting
     protected $control = [];
 
     /**
+     * Name
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return string Name.
+     */
+    protected function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * Add setting
      *
      * @since 0.1.0

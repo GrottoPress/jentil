@@ -51,7 +51,7 @@ final class Title extends AbstractSection
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function settings(): array
+    protected function getSettings(): array
     {
         $settings = [];
 

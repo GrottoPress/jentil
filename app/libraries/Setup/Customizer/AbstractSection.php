@@ -55,6 +55,16 @@ abstract class AbstractSection
      * @var array $args Section arguments.
      */
     protected $args;
+
+    /**
+     * Settings
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var AbstractSetting[] $settings Settings.
+     */
+    protected $settings;
     
     /**
      * Constructor
@@ -103,7 +113,7 @@ abstract class AbstractSection
      *
      * @return AbstractSetting[] Settings.
      */
-    abstract protected function settings(): array;
+    abstract protected function getSettings(): array;
 
     /**
      * Add section
@@ -119,7 +129,7 @@ abstract class AbstractSection
 
         $wp_customize->add_section($this->name, $this->args);
 
-        if (!($settings = $this->settings())) {
+        if (!($settings = $this->getSettings())) {
             return;
         }
 

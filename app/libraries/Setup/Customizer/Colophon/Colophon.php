@@ -49,7 +49,7 @@ final class Colophon extends AbstractSection
      *
      * @return array Settings.
      */
-    protected function settings(): array
+    protected function getSettings(): array
     {
         $settings = [];
 

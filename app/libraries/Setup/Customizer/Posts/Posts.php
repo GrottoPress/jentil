@@ -50,7 +50,7 @@ final class Posts extends AbstractPanel
      *
      * @return AbstractSection[] Sections.
      */
-    protected function sections(): array
+    protected function getSections(): array
     {
         $sections = [];
 

@@ -27,6 +27,26 @@ use WP_Customize_Manager as WP_Customizer;
 abstract class AbstractCustomizer extends AbstractSetup
 {
     /**
+     * Panels
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var AbstractPanel[] $panels Panels.
+     */
+    protected $panels;
+
+    /**
+     * Sections
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var AbstractSection[] $sections Sections.
+     */
+    protected $sections;
+    
+    /**
      * Run setup
      *
      * @since 0.1.0
@@ -63,7 +83,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      */
     protected function addPanels(WP_Customizer $wp_customize)
     {
-        if (!($panels = $this->panels())) {
+        if (!($panels = $this->getPanels())) {
             return;
         }
 
@@ -82,7 +102,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      */
     protected function addSections(WP_Customizer $wp_customize)
     {
-        if (!($sections = $this->sections())) {
+        if (!($sections = $this->getSections())) {
             return;
         }
 
@@ -102,7 +122,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @return AbstractPanel[] Panels.
      */
-    protected function panels(): array
+    protected function getPanels(): array
     {
         return [];
     }
@@ -118,7 +138,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @return AbstractSection[] Sections.
      */
-    protected function sections(): array
+    protected function getSections(): array
     {
         return [];
     }
