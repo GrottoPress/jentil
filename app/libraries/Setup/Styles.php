@@ -72,7 +72,7 @@ final class Styles extends AbstractSetup
             'normalize',
             $this->theme->utilities->fileSystem->dir(
                 'url',
-                '/node_modules/normalize.css/normalize.css'
+                '/dist/vendor/normalize.css/normalize.css'
             )
         );
     }
@@ -91,7 +91,7 @@ final class Styles extends AbstractSetup
             'font-awesome',
             $this->theme->utilities->fileSystem->dir(
                 'url',
-                '/node_modules/font-awesome/css/font-awesome.min.css'
+                '/dist/vendor/font-awesome/css/font-awesome.min.css'
             ),
             ['normalize']
         );

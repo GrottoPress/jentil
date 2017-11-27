@@ -41,13 +41,13 @@ declare (strict_types = 1);
             <script src="<?php
                 echo \Jentil()->utilities->fileSystem->dir(
                     'url',
-                    '/node_modules/html5shiv/dist/html5shiv.min.js'
+                    '/dist/vendor/html5shiv/dist/html5shiv.min.js'
                 );
             ?>"></script>
             <script src="<?php
                 echo \Jentil()->utilities->fileSystem->dir(
                     'url',
-                    '/node_modules/respond.js/dest/respond.min.js'
+                    '/dist/vendor/respond.js/dest/respond.min.js'
                 );
             ?>"></script>
         <![endif]-->

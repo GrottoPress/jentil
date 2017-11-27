@@ -34,6 +34,14 @@
     "scripts": {
         "test": [
             "codecept run wpunit"
+        ],
+        "post-update-cmd": [
+            "npm update",
+            "./tools/migrate-assets.sh"
+        ],
+        "post-install-cmd": [
+            "npm install",
+            "./tools/migrate-assets.sh"
         ]
     },
     "autoload": {
