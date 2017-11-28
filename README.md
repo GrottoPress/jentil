@@ -1,6 +1,4 @@
-# Jentil WordPress Theme
-
-## Description
+# Jentil
 
 Jentil is a modern WordPress theme framework, with more than enough features to make building your next theme a cinch. It has powerful content options which allows to configure how posts display on archives right from the customizer.
 
@@ -68,7 +66,7 @@ Link to be posted soon...
 
 ## Security
 
-Kindly send an email to admin[AT]grottopress[DOT]com about any security-related issue. We take messages we receive at this address very seriously.
+Kindly send an email to *admin [at] grottopress [dot] com* about any security-related issue. We take messages we receive at this address very seriously.
 
 ## Showcase
 
