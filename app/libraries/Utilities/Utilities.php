@@ -256,7 +256,7 @@ final class Utilities
         if (null === $this->updater) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(
                 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-                $this->fileSystem->themeDir('path', '/functions.php'),
+                $this->fileSystem->dir('path', '/functions.php'),
                 'jentil'
             );
         }

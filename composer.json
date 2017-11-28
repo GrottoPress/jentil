@@ -1,7 +1,6 @@
 {
     "name": "grottopress/jentil",
     "description": "Jentil is a modern WordPress theme framework",
-    "type": "wordpress-theme",
     "license": "MIT",
     "homepage": "https://jentil.grottopress.com",
     "authors": [
@@ -23,15 +22,27 @@
     },
     "require": {
         "php": ">=7.0",
-        "composer/installers": "^1.3",
         "florianwolters/component-util-singleton": "^0.3",
         "yahnis-elsts/plugin-update-checker": "^4.1",
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "dev-dev"
+        "grottopress/wordpress-posts": "^0.2"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"
+    },
+    "scripts": {
+        "test": [
+            "codecept run wpunit"
+        ],
+        "post-update-cmd": [
+            "npm update",
+            "./tools/migrate-assets.sh"
+        ],
+        "post-install-cmd": [
+            "npm install",
+            "./tools/migrate-assets.sh"
+        ]
     },
     "autoload": {
         "psr-4": {

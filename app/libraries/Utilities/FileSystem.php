@@ -32,7 +32,7 @@ final class FileSystem
     private $utilities;
 
     /**
-     * Theme directory path
+     * Jentil directory path
      *
      * @since 0.1.0
      * @access private
@@ -42,7 +42,7 @@ final class FileSystem
     private $dirPath;
 
     /**
-     * Theme directory URI
+     * Jentil directory URI
      *
      * @since 0.1.0
      * @access private
@@ -63,12 +63,12 @@ final class FileSystem
     {
         $this->utilities = $utilities;
 
-        $this->dirUrl = \get_template_directory_uri();
-        $this->dirPath = \get_template_directory();
+        $this->dirPath = $this->dirPath();
+        $this->dirUrl = $this->dirUrl();
     }
 
     /**
-     * Get theme directory
+     * Get Jentil directory
      *
      * @param string $type 'path' or 'url'.
      * @param string $append Filepath to append to URL.
@@ -78,13 +78,13 @@ final class FileSystem
      *
      * @return string Path or URL.
      */
-    public function themeDir(string $type, string $append = ''): string
+    public function dir(string $type, string $append = ''): string
     {
-        return $this->dir($type, '', $append);
+        return $this->getDir($type, $append);
     }
 
     /**
-     * Get JavaScript directory
+     * Get Jentil JavaScript directory
      *
      * @param string $type 'path' or 'url'.
      * @param string $append Filepath to append to URL.
@@ -100,11 +100,11 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/dist/assets/scripts', $append, $form);
+        return $this->getDir($type, "/dist/assets/scripts{$append}", $form);
     }
 
     /**
-     * Get CSS directory
+     * Get Jentil CSS directory
      *
      * @param string $type 'path' or 'url'.
      * @param string $append Filepath to append to URL.
@@ -120,11 +120,11 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/dist/assets/styles', $append, $form);
+        return $this->getDir($type, "/dist/assets/styles{$append}", $form);
     }
 
     /**
-     * Get partials directory
+     * Get Jentil partials directory
      *
      * @param string $type 'path' or 'url'.
      * @param string $append Filepath to append to URL.
@@ -140,11 +140,11 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/app/partials', $append, $form);
+        return $this->getDir($type, "/app/partials{$append}", $form);
     }
 
     /**
-     * Get templates directory
+     * Get Jentil templates directory
      *
      * @param string $type 'path' or 'url'.
      * @param string $append Filepath to append to URL.
@@ -160,34 +160,99 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->dir($type, '/app/templates', $append, $form);
+        return $this->getDir($type, "/app/templates{$append}", $form);
     }
 
     /**
-     * Get directory URL/path
+     * Path of Jentil relative to theme's directory.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string Path. Empty if Jentil is theme.
+     */
+    public function relativeDir(): string
+    {
+        return \ltrim(
+            \str_replace($this->themeDir('path'), '', $this->dirPath),
+            '/'
+        );
+    }
+
+    /**
+     * Get directory of theme under which Jentil is installed.
+     *
+     * @param string $type 'url' or 'path'
+     * @param string $append
+     *
+     * @return string Path. Same as $this->dir() if Jentil is theme.
+     */
+    public function themeDir(string $type, string $append = ''): string
+    {
+        $stylesheet = $type == 'path'
+            ? \get_stylesheet_directory()
+            : \get_stylesheet_directory_uri();
+        
+        if (0 === strpos($this->{'dir'.\ucfirst($type)}, $stylesheet)) {
+            return $stylesheet.$append;
+        }
+
+        $template = $type == 'path'
+            ? \get_template_directory()
+            : \get_template_directory_uri();
+
+        return $template.$append;
+    }
+
+    /**
+     * Helper to get Jentil directory URL/path
      *
      * @param string $type 'path' or 'url'.
-     * @param string $append Filepath to prepend to URL/path.
      * @param string $append Filepath to append to URL/path.
-     * @param string $form 'relative' or 'absolute'.
+     * @param string $form 'relative' (to Jentil directory) or 'absolute'.
      *
      * @since 0.1.0
      * @access private
      *
      * @return string Path or URL.
      */
-    private function dir(
+    private function getDir(
         string $type,
-        string $prepend = '',
         string $append = '',
         string $form = ''
     ): string {
-        $relative = $prepend.$append;
-
         if ('relative' == $form) {
-            return $relative;
+            return \ltrim($append, '/');
         }
 
-        return $this->{'dir'.\ucfirst($type)}.$relative;
+        return $this->{'dir'.\ucfirst($type)}.$append;
+    }
+
+    /**
+     * Jentil directory URL
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return string
+     */
+    private function dirUrl(): string
+    {
+        $path = \str_replace(\get_theme_root(), '', $this->dirPath);
+
+        return (\get_theme_root_uri().$path);
+    }
+
+    /**
+     * Jentil directory path
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return string
+     */
+    private function dirPath(): string
+    {
+        return \dirname(__FILE__, 4);
     }
 }

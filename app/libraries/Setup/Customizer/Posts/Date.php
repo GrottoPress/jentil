@@ -52,9 +52,9 @@ final class Date extends AbstractSection
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function settings(): array
+    protected function getSettings(): array
     {
-        $settings = parent::settings();
+        $settings = parent::getSettings();
 
         unset($settings['sticky_posts']);
 

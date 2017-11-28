@@ -70,9 +70,9 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'normalize',
-            $this->theme->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->dir(
                 'url',
-                '/node_modules/normalize.css/normalize.css'
+                '/dist/vendor/normalize.css/normalize.css'
             )
         );
     }
@@ -89,9 +89,9 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'font-awesome',
-            $this->theme->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->dir(
                 'url',
-                '/node_modules/font-awesome/css/font-awesome.min.css'
+                '/dist/vendor/font-awesome/css/font-awesome.min.css'
             ),
             ['normalize']
         );
