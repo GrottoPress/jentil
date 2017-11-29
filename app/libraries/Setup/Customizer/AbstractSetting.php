@@ -14,6 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
 
+use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use WP_Customize_Manager as WP_Customizer;
 
 /**
@@ -23,6 +24,16 @@ use WP_Customize_Manager as WP_Customizer;
  */
 abstract class AbstractSetting
 {
+    /**
+     * Section
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var AbstractSection
+     */
+    protected $section;
+    
     /**
      * Setting name
      *
@@ -52,6 +63,19 @@ abstract class AbstractSetting
      * @var array $control Setting control.
      */
     protected $control = [];
+
+    /**
+     * Constructor
+     *
+     * @param AbstractSection $section
+     *
+     * @since 0.1.0
+     * @access protected
+     */
+    protected function __construct(AbstractSection $section)
+    {
+        $this->section = $section;
+    }
 
     /**
      * Name

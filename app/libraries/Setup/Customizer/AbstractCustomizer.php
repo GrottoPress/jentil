@@ -34,7 +34,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @var AbstractPanel[] $panels Panels.
      */
-    protected $panels;
+    protected $panels = [];
 
     /**
      * Sections
@@ -44,7 +44,39 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @var AbstractSection[] $sections Sections.
      */
-    protected $sections;
+    protected $sections = [];
+
+    /**
+     * Get panels
+     *
+     * Panels comprise sections which, in turn,
+     * comprise settings.
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return AbstractPanel[] Panels.
+     */
+    protected function getPanels(): array
+    {
+        return $this->panels;
+    }
+
+    /**
+     * Get sections
+     *
+     * Use this ONLY if sections come under no panel.
+     * Each section comprises its settings.
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return AbstractSection[] Sections.
+     */
+    protected function getSections(): array
+    {
+        return $this->sections;
+    }
     
     /**
      * Run setup
@@ -59,6 +91,9 @@ abstract class AbstractCustomizer extends AbstractSetup
     
     /**
      * Register theme customizer
+     *
+     * Be sure to set $this->panels, $this->sections here, in the child class.
+     * Doing that in the constructor would be too early; it won't work.
      *
      * @param WP_Customizer $wp_customize
      *
@@ -83,11 +118,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      */
     protected function addPanels(WP_Customizer $wp_customize)
     {
-        if (!($panels = $this->getPanels())) {
-            return;
-        }
-
-        foreach ($panels as $panel) {
+        foreach ($this->panels as $panel) {
             $panel->add($wp_customize);
         }
     }
@@ -102,44 +133,8 @@ abstract class AbstractCustomizer extends AbstractSetup
      */
     protected function addSections(WP_Customizer $wp_customize)
     {
-        if (!($sections = $this->getSections())) {
-            return;
-        }
-
-        foreach ($sections as $section) {
+        foreach ($this->sections as $section) {
             $section->add($wp_customize);
         }
-    }
-
-    /**
-     * Get panels
-     *
-     * Panels comprise sections which, in turn,
-     * comprise settings.
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return AbstractPanel[] Panels.
-     */
-    protected function getPanels(): array
-    {
-        return [];
-    }
-
-    /**
-     * Get sections
-     *
-     * Use this ONLY if sections come under no panel.
-     * Each section comprises its settings.
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return AbstractSection[] Sections.
-     */
-    protected function getSections(): array
-    {
-        return [];
     }
 }

@@ -34,17 +34,29 @@ final class Sticky extends AbstractSection
      */
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
-        parent::__construct($posts);
-
         $this->name = \sanitize_key($post_type->name.'_sticky_posts');
 
-        $this->modArgs['context'] = 'sticky';
-        $this->modArgs['specific'] = $post_type->name;
+        parent::__construct($posts);
+        
+        $this->setArgs($post_type);
+        $this->setModArgs($post_type);
+    }
 
-        $this->args['title'] = \sprintf(\esc_html__(
-            'Sticky %s',
-            'jentil'
-        ), $post_type->labels->name);
+    /**
+     * Set args
+     *
+     * @param WP_Post_Type $post_type Post type.
+     *
+     * @since 0.5.0
+     * @access private
+     */
+    private function setArgs(WP_Post_Type $post_type)
+    {
+        $this->args['title'] = \sprintf(
+            \esc_html__('Sticky %s', 'jentil'),
+            $post_type->labels->name
+        );
+
         $this->args['active_callback'] = function () use ($post_type): bool {
             $page = $this->panel->customizer->theme->utilities->page;
             $has_sticky = $this->panel->customizer->theme->utilities
@@ -63,6 +75,20 @@ final class Sticky extends AbstractSection
     }
 
     /**
+     * Set mod args
+     *
+     * @param WP_Post_Type $post_type Post type.
+     *
+     * @since 0.5.0
+     * @access private
+     */
+    private function setModArgs(WP_Post_Type $post_type)
+    {
+        $this->modArgs['context'] = 'sticky';
+        $this->modArgs['specific'] = $post_type->name;
+    }
+
+    /**
      * Get settings
      *
      * @since 0.1.0
@@ -70,9 +96,9 @@ final class Sticky extends AbstractSection
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function getSettings(): array
+    protected function settings(): array
     {
-        $settings = parent::getSettings();
+        $settings = parent::settings();
 
         unset($settings['sticky_posts']);
         unset($settings['number']);

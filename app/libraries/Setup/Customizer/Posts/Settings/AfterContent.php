@@ -42,11 +42,11 @@ final class AfterContent extends AbstractSetting
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
+        $this->control['type'] = 'text';
         $this->control['label'] = \esc_html__('After content', 'jentil');
         $this->control['description'] = \esc_html__(
             'Comma-separated',
             'jentil'
         );
-        $this->control['type'] = 'text';
     }
 }

@@ -64,7 +64,7 @@ abstract class AbstractSection
      *
      * @var AbstractSetting[] $settings Settings.
      */
-    protected $settings;
+    protected $settings = [];
     
     /**
      * Constructor
@@ -113,10 +113,18 @@ abstract class AbstractSection
      *
      * @return AbstractSetting[] Settings.
      */
-    abstract protected function getSettings(): array;
+    protected function getSettings(): array
+    {
+        return $this->settings;
+    }
 
     /**
      * Add section
+     *
+     * Be sure to set $this->settings here, in the child class.
+     * Doing that in the constructor would be too early; it won't work.
+     *
+     * @param WP_Customizer $wp_customizer
      *
      * @since 0.1.0
      * @access public
@@ -129,11 +137,7 @@ abstract class AbstractSection
 
         $wp_customize->add_section($this->name, $this->args);
 
-        if (!($settings = $this->getSettings())) {
-            return;
-        }
-
-        foreach ($settings as $setting) {
+        foreach ($this->settings as $setting) {
             $setting->add($wp_customize);
         }
     }

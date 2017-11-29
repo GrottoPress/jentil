@@ -26,16 +26,6 @@ use GrottoPress\Jentil\Utilities\Mods\Title as TitleMod;
 abstract class AbstractSetting extends Setting
 {
     /**
-     * Title section
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Title $section Title section.
-     */
-    protected $section;
-
-    /**
      * Mod
      *
      * @since 0.1.0
@@ -55,7 +45,7 @@ abstract class AbstractSetting extends Setting
      */
     protected function __construct(Title $title)
     {
-        $this->section = $title;
+        parent::__construct($title);
 
         // $this->args['transport'] = 'postMessage';
         $this->arg['sanitize_callback'] = 'wp_kses_data';

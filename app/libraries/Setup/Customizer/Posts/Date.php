@@ -31,10 +31,10 @@ final class Date extends AbstractSection
      */
     public function __construct(Posts $posts)
     {
-        parent::__construct($posts);
-
         $this->name = 'date_posts';
 
+        parent::__construct($posts);
+        
         $this->modArgs['context'] = 'date';
 
         $this->args['title'] = \esc_html__('Date Archives', 'jentil');
@@ -45,16 +45,16 @@ final class Date extends AbstractSection
     }
 
     /**
-     * Get settings
+     * Settings
      *
      * @since 0.1.0
      * @access protected
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function getSettings(): array
+    protected function settings(): array
     {
-        $settings = parent::getSettings();
+        $settings = parent::settings();
 
         unset($settings['sticky_posts']);
 

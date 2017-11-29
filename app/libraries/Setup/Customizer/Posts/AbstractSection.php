@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection as Section;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Abstract Posts Section
@@ -23,6 +24,16 @@ use GrottoPress\Jentil\Setup\Customizer\AbstractSection as Section;
  */
 abstract class AbstractSection extends Section
 {
+    /**
+     * Panel
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Posts $panel Posts panel.
+     */
+    protected $panel;
+
     /**
      * Constructor
      *
@@ -34,16 +45,6 @@ abstract class AbstractSection extends Section
     protected $modArgs;
 
     /**
-     * Panel
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Posts $panel Posts panel.
-     */
-    protected $panel;
-
-     /**
      * Constructor
      *
      * @param Posts $posts Posts panel.
@@ -96,12 +97,29 @@ abstract class AbstractSection extends Section
     }
 
     /**
-     * Get settings
+     * Add section
      *
-     * @since       Jentil 0.1.0
-     * @access      protected
+     * @param WP_Customizer $wp_customizer
+     *
+     * @since 0.1.0
+     * @access public
      */
-    protected function getSettings(): array
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->settings = $this->settings();
+
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Settings
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return array
+     */
+    protected function settings(): array
     {
         $settings = [];
 
