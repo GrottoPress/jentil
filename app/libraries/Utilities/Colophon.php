@@ -54,6 +54,8 @@ final class Colophon
      */
     public function mod(): string
     {
-        return $this->utilities->mods->colophon->get();
+        return $this->utilities->shortTags->replace(
+            $this->utilities->mods->colophon->get()
+        );
     }
 }

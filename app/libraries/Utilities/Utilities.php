@@ -116,6 +116,16 @@ final class Utilities
     private $updater = null;
 
     /**
+     * Short Tags
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @var ShortTags $shortTags
+     */
+    private $shortTags = null;
+
+    /**
      * Constructor
      *
      * @var Jentil $jentil Jentil.
@@ -136,7 +146,7 @@ final class Utilities
      *
      * @return Jentil Jentil.
      */
-    private function getTheme(): Jentil
+    final private function getTheme(): Jentil
     {
         return $this->theme;
     }
@@ -262,6 +272,18 @@ final class Utilities
         }
 
         return $this->updater;
+    }
+
+    /**
+     * Short Tags
+     */
+    public function getShortTags(): ShortTags
+    {
+        if (null === $this->shortTags) {
+            $this->shortTags = new ShortTags($this);
+        }
+
+        return $this->shortTags;
     }
 
     /**

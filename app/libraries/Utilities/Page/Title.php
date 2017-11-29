@@ -85,10 +85,10 @@ final class Title
             ]);
 
             if ($mod->name) {
-                return $mod->get();
+                return $this->page->utilities->shortTags->replace($mod->get());
             }
         }
 
-        return $mod->default;
+        return $this->page->utilities->shortTags->replace($mod->default);
     }
 }
