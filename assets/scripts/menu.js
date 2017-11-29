@@ -11,44 +11,66 @@
 
     var fxDuration = 200;
 
-    // Mobile menu button
+    /**
+     * Mobile menu button
+     */
     $('.js-mobile-menu').hide();
     $('.js-mobile-menu-button').attr('href', '#');
     $('.js-mobile-menu-button').on('click', function (e) {
         $('.js-mobile-menu').slideToggle(fxDuration);
+
         e.preventDefault();
     });
 
-    // Add icons to all parent menu items
-    $('.menu li > ul').before('<button class="js-sub-menu-button sub-menu-toggle">'+renderCaret('down')+'</button>');
+    /**
+     * Add icons to all parent menu items
+     */
+    $('.menu li > ul').before(
+        '<button class="js-sub-menu-button sub-menu-toggle">'+
+            renderCaret('down')+
+        '</button>'
+    );
 
-    // Sub-menu button
+    /**
+     * Sub-menu button
+     */
     $('.js-sub-menu-button').next('ul').hide();
     $('.js-sub-menu-button').prev('a').on('click', function (e) {
         if ('#' === $(this).attr('href')) {
             toggleSubMenu($(this).next('button'));
+
             e.preventDefault();
         }
     });
     $('.js-sub-menu-button').on('click', function (e) {
         toggleSubMenu(this);
+
         e.preventDefault();
     });
 
-    // Toggle Submenu
+    /**
+     * Toggle Submenu
+     */
     function toggleSubMenu(button)
     {
-        $(button).parent().toggleClass('active');
+        var activeClass = 'active';
+        
+        $(button).parent().toggleClass(activeClass);
         $(button).parent().siblings('li').children('ul').slideUp(fxDuration);
         $(button).parent().siblings('li').children('button').html(
             renderCaret('down')
         );
+
         toggleCaret(button);
-        $(button).next('ul').toggleClass('active').slideToggle(fxDuration);
+
+        $(button).next('ul').toggleClass(activeClass).slideToggle(fxDuration);
     }
 
-    // Toggle Caret
-    // To be called BEFORE opening submenu.
+    /**
+     * Toggle Caret
+     *
+     * To be called BEFORE opening submenu.
+     */
     function toggleCaret(button)
     {
         if ('none' === $(button).next('ul').css('display')) {
@@ -58,10 +80,12 @@
         }
     }
 
-    // Up/Down button HTML
+    /**
+     * Up/Down button HTML
+     */
     function renderCaret(direction)
     {
-        return '<span class="fa fa-caret-'+direction.toString().toLowerCase()+
+        return '<span class="fa fa-caret-'+direction.toString()+
             '" aria-hidden="true"></span>'+
             '<span class="screen-reader-text">Sub-menu</span>';
     }
