@@ -82,7 +82,9 @@ abstract class AbstractMod
     public function get()
     {
         if (!$this->name) {
-            return false;
+            \settype($null, gettype($this->default));
+            
+            return $null;
         }
 
         return \get_theme_mod($this->name, $this->default);
