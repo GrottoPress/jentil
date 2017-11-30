@@ -16,11 +16,7 @@
 declare (strict_types = 1);
 
 ?><!DOCTYPE html>
-<html data-site-name="<?php
-    echo \esc_attr(\get_bloginfo('name'));
-?>" data-site-decription="<?php
-    echo \esc_attr(\get_bloginfo('description'));
-?>" <?php \language_attributes(); ?>>
+<html <?php \language_attributes(); ?>>
     <head>
         <meta charset="<?php \bloginfo('charset'); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
