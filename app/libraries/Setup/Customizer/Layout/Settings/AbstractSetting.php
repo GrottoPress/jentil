@@ -26,16 +26,6 @@ use GrottoPress\Jentil\utilities\Mods\Layout as LayoutMod;
 abstract class AbstractSetting extends Setting
 {
     /**
-     * Layout section
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Layout $section Layout section.
-     */
-    protected $section;
-
-    /**
      * Layout Mod
      *
      * @since 0.1.0
@@ -55,7 +45,7 @@ abstract class AbstractSetting extends Setting
      */
     protected function __construct(Layout $layout)
     {
-        $this->section = $layout;
+        parent::__construct($layout);
 
         $this->args = ['sanitize_callback' => 'sanitize_title'];
 

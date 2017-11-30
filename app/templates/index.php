@@ -20,7 +20,7 @@ declare (strict_types = 1);
 \Jentil()->utilities->loader->loadPartial('header');
 
 if (!\Jentil()->utilities->page->is('singular')) {
-    if (($jentil_title = \Jentil()->utilities->page->title->mod())) { ?>
+    if (($jentil_title = \Jentil()->utilities->page->title->mod()->get())) { ?>
         <header class="page-header">
     <?php }
 

@@ -26,16 +26,6 @@ use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
 abstract class AbstractSetting extends Setting
 {
     /**
-     * Section
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Section $section Section.
-     */
-    protected $section;
-    
-    /**
      * Constructor
      *
      * @param Section $section Section.
@@ -45,7 +35,7 @@ abstract class AbstractSetting extends Setting
      */
     public function __construct(AbstractSection $section)
     {
-        $this->section = $section;
+        parent::__construct($section);
 
         $this->control['section'] = $this->section->name;
     }

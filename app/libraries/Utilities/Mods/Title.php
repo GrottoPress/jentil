@@ -197,55 +197,10 @@ final class Title extends AbstractMod
      * @since 0.1.0
      * @access public
      *
-     * @return string Mod.
+     * @return string
      */
     public function get(): string
     {
-        if (!$this->name) {
-            return false;
-        }
-
-        return $this->replacePlaceholders(parent::get());
-    }
-
-    /**
-     * Replace placeholders with actual info.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Mod with placeholders replaced.
-     */
-    private function replacePlaceholders(string $mod): string
-    {
-        return \str_ireplace(
-            [
-                '{{author_name}}',
-                '{{category_name}}',
-                '{{tag_name}}',
-                '{{term_name}}',
-                '{{taxonomy_name}}',
-                '{{post_type_name}}',
-                '{{date}}',
-                '{{search_query}}',
-            ],
-            [
-                \esc_attr(\get_the_author_meta('display_name')),
-                \esc_attr(\single_cat_title('', false)),
-                \esc_attr(\single_tag_title('', false)),
-                \esc_attr(\single_term_title('', false)),
-                \esc_attr(\get_query_var('taxonomy')),
-                \esc_attr(\post_type_archive_title('', false)),
-                \esc_attr(
-                    \get_query_var('day') ? \get_the_date() : (
-                        \get_query_var('monthnum')
-                        ? \get_the_date('F Y')
-                        : \get_the_date('Y')
-                    )
-                ),
-                \esc_attr(\get_search_query()),
-            ],
-            $mod
-        );
+        return $this->mods->utilities->shortTags->replace(parent::get());
     }
 }

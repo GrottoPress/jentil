@@ -60,6 +60,19 @@ final class Mods
     }
 
     /**
+     * Get utilities
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return Utilities Utilities.
+     */
+    private function getUtilities(): Utilities
+    {
+        return $this->utilities;
+    }
+
+    /**
      * Colophon
      *
      * @since 0.1.0

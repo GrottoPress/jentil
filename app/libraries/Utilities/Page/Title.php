@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
 
+use GrottoPress\Jentil\Utilities\Mods\Title as TitleMod;
+
 /**
  * Title
  *
@@ -52,7 +54,7 @@ final class Title
      *
      * @return string Title mod.
      */
-    public function mod(): string
+    public function mod(): TitleMod
     {
         $page = $this->page->type;
 
@@ -85,10 +87,10 @@ final class Title
             ]);
 
             if ($mod->name) {
-                return $mod->get();
+                return $mod;
             }
         }
 
-        return $mod->default;
+        return $mod;
     }
 }

@@ -5,6 +5,9 @@
  * effect immediately without page reload
  *
  * @since 0.1.0
+ *
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 (function ($) {
@@ -12,16 +15,45 @@
     
     /**
      * Footer credits
+     *
+     * @since 0.1.0
      */
-    wp.customize('colophon', function (value) {
+    wp.customize(colophonModName, function (value) {
         value.bind(function (to) {
-            var homeUrl = window.location.protocol+
-                '//'+window.location.host+'/';
-            var currentYear = (new Date()).getFullYear();
-            var siteName = $('html').attr('data-site-name');
-            var siteDescription = $('html').attr('data-site-description');
-
-            $('#colophon small').html(to.replace('{{site_url}}', homeUrl).replace('{{site_name}}', siteName).replace('{{this_year}}', currentYear).replace('{{site_description}}', siteDescription));
+            $('#colophon small').html(replaceShortTags(to));
         });
     });
+
+    /**
+     * Page Title
+     *
+     * @since 0.5.0
+     *
+     * @todo Work out how to replace tags
+     */
+    for (var i in titleModNames) {
+        wp.customize(titleModNames[i], function (value) {
+            value.bind(function (to) {
+                $('h1.page-title').html(to);
+            });
+        });
+    }
+
+    /**
+     * Replace Shortags
+     *
+     * @param {string} content
+     *
+     * @since 0.5.0
+     * @global [shortTags] Passed in via PHP
+     *
+     * @return {string}
+     */
+    function replaceShortTags(content) {
+        for (var tag in shortTags) {
+            content = content.split(tag).join(shortTags[tag]);
+        }
+
+        return content;
+    };
 })(jQuery);

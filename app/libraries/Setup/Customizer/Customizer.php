@@ -16,7 +16,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
 
-use GrottoPress\Jentil\Setup\AbstractSetup;
+use GrottoPress\Jentil\Jentil;
 use WP_Customize_Manager as WP_Customizer;
 
 /**
@@ -37,7 +37,29 @@ final class Customizer extends AbstractCustomizer
         parent::run();
         
         \add_action('customize_preview_init', [$this, 'enqueueJS']);
+        \add_action('customize_preview_init', [$this, 'enqueueInlineJS']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
+    }
+
+    /**
+     * Register theme customizer
+     *
+     * @param WP_Customizer $wp_customize
+     *
+     * @action customize_register
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function register(WP_Customizer $wp_customize)
+    {
+        $this->sections['title'] = new Title\Title($this);
+        $this->sections['layout'] = new Layout\Layout($this);
+        $this->sections['colophon'] = new Colophon\Colophon($this);
+        
+        $this->panels['posts'] = new Posts\Posts($this);
+        
+        parent::register($wp_customize);
     }
 
     /**
@@ -63,6 +85,34 @@ final class Customizer extends AbstractCustomizer
     }
 
     /**
+     * Enqueue Inlne JavaScript
+     *
+     * @action customize_preview_init
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @todo Find out how to get page type in customizer.
+     */
+    public function enqueueInlineJS()
+    {
+        $script = 'var shortTags = '.\json_encode(
+            $this->theme->utilities->shortTags->tags
+        ).';
+        var colophonModName = "'.$this->sections['colophon']->settings['colophon']->name.'";';
+
+        $titles = [];
+        
+        foreach ($this->sections['title']->settings as $setting) {
+            $titles[] = $setting->name;
+        }
+
+        $script .= 'var titleModNames = '.\json_encode($titles).';';
+        
+        \wp_add_inline_script('jentil-customizer', $script, 'before');
+    }
+
+    /**
      * Selective refresh
      *
      * Add selective refresh support to elements
@@ -78,47 +128,5 @@ final class Customizer extends AbstractCustomizer
     public function enableSelectiveRefresh()
     {
         \add_theme_support('customize-selective-refresh-widgets');
-    }
-
-    /**
-     * Get panels
-     *
-     * Panels comprise sections which, in turn,
-     * comprise settings.
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return AbstractPanel[] Panels.
-     */
-    protected function getPanels(): array
-    {
-        $panels = [];
-
-        $panels['posts'] = new Posts\Posts($this);
-
-        return $panels;
-    }
-
-    /**
-     * Get sections
-     *
-     * These sections come under no panel. Each section
-     * comprises its settings.
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return AbstractSection[] Sections.
-     */
-    protected function getSections(): array
-    {
-        $sections = [];
-
-        $sections['title'] = new Title\Title($this);
-        $sections['layout'] = new Layout\Layout($this);
-        $sections['colophon'] = new Colophon\Colophon($this);
-
-        return $sections;
     }
 }

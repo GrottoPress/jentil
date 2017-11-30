@@ -14,6 +14,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Posts Panel
@@ -43,14 +44,29 @@ final class Posts extends AbstractPanel
     }
 
     /**
-     * Get sections
+     * Add Panel
+     *
+     * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
-     * @access protected
+     * @access public
+     */
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->sections = $this->sections();
+
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Sections
+     *
+     * @since 0.1.0
+     * @access private
      *
      * @return AbstractSection[] Sections.
      */
-    protected function getSections(): array
+    private function sections(): array
     {
         $sections = [];
 

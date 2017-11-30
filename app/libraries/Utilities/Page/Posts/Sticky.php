@@ -32,36 +32,39 @@ final class Sticky extends AbstractPosts
     public function args(): array
     {
         $args = [
-            // 'tag' => $this->mod('wrap_tag'),
-            'class' => $this->mod('wrap_class'),
+            // 'tag' => $this->mod('wrap_tag')->get(),
+            'class' => $this->mod('wrap_class')->get(),
             'id' => 'main-query-sticky-posts',
-            'layout' => $this->mod('layout'),
-            'text_offset' => $this->mod('text_offset'),
+            'layout' => $this->mod('layout')->get(),
+            'text_offset' => $this->mod('text_offset')->get(),
             'image' => [
-                'size' => $this->mod('image'),
-                'align' => $this->mod('image_alignment'),
+                'size' => $this->mod('image')->get(),
+                'align' => $this->mod('image_alignment')->get(),
             ],
             'excerpt' => [
-                'length' => $this->mod('excerpt'),
+                'length' => $this->mod('excerpt')->get(),
                 'paginate' => false,
-                'more_text' => $this->mod('more_text'),
+                'more_text' => $this->mod('more_text')->get(),
                 'after' => [
-                    'types' => \explode(',', $this->mod('after_content')),
-                    'separator' => $this->mod('after_content_separator'),
+                    'types' => \explode(
+                        ',',
+                        $this->mod('after_content')->get()
+                    ),
+                    'separator' => $this->mod('after_content_separator')->get(),
                 ],
             ],
             'title' => [
-                'length' => $this->mod('title_words'),
-                'position' => $this->mod('title_position'),
+                'length' => $this->mod('title_words')->get(),
+                'position' => $this->mod('title_position')->get(),
                 'tag' => 'h2',
                 'link' => true,
                 'before' => [
-                    'types' => \explode(',', $this->mod('before_title')),
-                    'separator' => $this->mod('before_title_separator'),
+                    'types' => \explode(',', $this->mod('before_title')->get()),
+                    'separator' => $this->mod('before_title_separator')->get(),
                 ],
                 'after' => [
-                    'types' => \explode(',', $this->mod('after_title')),
-                    'separator' => $this->mod('after_title_separator'),
+                    'types' => \explode(',', $this->mod('after_title')->get()),
+                    'separator' => $this->mod('after_title_separator')->get(),
                 ],
             ],
             'wp_query' => [
@@ -184,7 +187,7 @@ final class Sticky extends AbstractPosts
      */
     public function isSet(): bool
     {
-        return (bool)$this->posts->mod('sticky_posts');
+        return (bool)$this->posts->mod('sticky_posts')->get();
     }
 
     /**
@@ -193,11 +196,11 @@ final class Sticky extends AbstractPosts
      * @param string $setting
      *
      * @since 0.1.0
-     * @access private
+     * @access public
      *
      * @return mixed Sticky posts mod.
      */
-    private function mod(string $setting)
+    public function mod(string $setting)
     {
         $args = [
             'context' => 'sticky',

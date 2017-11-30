@@ -39,9 +39,10 @@ final class Taxonomy extends AbstractSection
         WP_Taxonomy $taxonomy,
         WP_Term $term = null
     ) {
-        parent::__construct($posts);
-
         $this->setName($taxonomy, $term);
+        
+        parent::__construct($posts);
+                
         $this->setModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
     }
@@ -133,9 +134,9 @@ final class Taxonomy extends AbstractSection
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function getSettings(): array
+    protected function settings(): array
     {
-        $settings = parent::getSettings();
+        $settings = parent::settings();
 
         unset($settings['sticky_posts']);
 

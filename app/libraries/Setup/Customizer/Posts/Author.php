@@ -31,9 +31,9 @@ final class Author extends AbstractSection
      */
     public function __construct(Posts $posts)
     {
-        parent::__construct($posts);
-
         $this->name = 'author_posts';
+        
+        parent::__construct($posts);
         
         $this->modArgs['context'] = 'author';
 
@@ -45,16 +45,16 @@ final class Author extends AbstractSection
     }
 
     /**
-     * Get settings
+     * Settings
      *
      * @since 0.1.0
      * @access protected
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function getSettings(): array
+    protected function settings(): array
     {
-        $settings = parent::getSettings();
+        $settings = parent::settings();
 
         unset($settings['sticky_posts']);
 

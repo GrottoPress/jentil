@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Layout;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Page Layout Section
@@ -45,14 +46,29 @@ final class Layout extends AbstractSection
     }
 
     /**
-     * Get settings
+     * Add section
+     *
+     * @param WP_Customizer $wp_customizer
      *
      * @since 0.1.0
-     * @access protected
+     * @access public
+     */
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->settings = $this->settings();
+
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Settings
+     *
+     * @since 0.1.0
+     * @access private
      *
      * @return Settings\AbstractSetting[] Settings.
      */
-    protected function getSettings(): array
+    private function settings(): array
     {
         $settings = [];
 

@@ -31,10 +31,10 @@ final class Search extends AbstractSection
      */
     public function __construct(Posts $posts)
     {
-        parent::__construct($posts);
-
         $this->name = 'search_posts';
 
+        parent::__construct($posts);
+        
         $this->modArgs['context'] = 'search';
 
         $this->args['title'] = \esc_html__('Search Results', 'jentil');
@@ -45,14 +45,14 @@ final class Search extends AbstractSection
     }
 
     /**
-     * Get settings
+     * Settings
      *
      * @since  0.1.0
      * @access protected
      */
-    protected function getSettings(): array
+    protected function settings(): array
     {
-        $settings = parent::getSettings();
+        $settings = parent::settings();
 
         unset($settings['sticky_posts']);
 
