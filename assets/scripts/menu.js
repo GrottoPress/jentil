@@ -4,6 +4,9 @@
  * Handles the behaviour of menu items
  *
  * @since 0.1.0
+ *
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 (function ($) {
@@ -13,6 +16,8 @@
 
     /**
      * Mobile menu button
+     *
+     * @since 0.1.0
      */
     $('.js-mobile-menu').hide();
     $('.js-mobile-menu-button').attr('href', '#');
@@ -24,6 +29,8 @@
 
     /**
      * Add icons to all parent menu items
+     *
+     * @since 0.1.0
      */
     $('.menu li > ul').before(
         '<button class="js-sub-menu-button sub-menu-toggle">'+
@@ -33,6 +40,8 @@
 
     /**
      * Sub-menu button
+     *
+     * @since 0.1.0
      */
     $('.js-sub-menu-button').next('ul').hide();
     $('.js-sub-menu-button').prev('a').on('click', function (e) {
@@ -50,6 +59,10 @@
 
     /**
      * Toggle Submenu
+     *
+     * @param {string} button
+     *
+     * @return {string}
      */
     function toggleSubMenu(button)
     {
@@ -70,6 +83,8 @@
      * Toggle Caret
      *
      * To be called BEFORE opening submenu.
+     *
+     * @param {string} button
      */
     function toggleCaret(button)
     {
@@ -82,6 +97,10 @@
 
     /**
      * Up/Down button HTML
+     * 
+     * @param {string} direction 'up' or 'down'
+     * 
+     * @return {string}
      */
     function renderCaret(direction)
     {
