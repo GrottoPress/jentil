@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
 
+use GrottoPress\Jentil\Utilities\Mods\Layout as LayoutMod;
+
 /**
  * Layout
  *
@@ -43,7 +45,7 @@ final class Layout
     {
         $this->page = $page;
     }
-    
+
     /**
      * Get mod
      *
@@ -52,7 +54,7 @@ final class Layout
      *
      * @return string Layout mod.
      */
-    public function mod(): string
+    public function mod(): LayoutMod
     {
         $page = $this->page->type;
 
@@ -93,11 +95,11 @@ final class Layout
             ]);
 
             if ($mod->name) {
-                return $mod->get();
+                return $mod;
             }
         }
 
-        return $mod->default;
+        return $mod;
     }
     
     /**
@@ -112,7 +114,7 @@ final class Layout
     {
         foreach ($this->page->layouts->get() as $column_slug => $layouts) {
             foreach ($layouts as $layout_id => $layout_name) {
-                if ($this->mod() == $layout_id) {
+                if ($this->mod()->get() == $layout_id) {
                     return \sanitize_title($column_slug);
                 }
             }

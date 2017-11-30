@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
+use GrottoPress\Jentil\Utilities\Mods\Colophon as ColophonMod;
+
 /**
  * Colophon
  *
@@ -52,10 +54,8 @@ final class Colophon
      *
      * @return string Colophon mod.
      */
-    public function mod(): string
+    public function mod(): ColophonMod
     {
-        return $this->utilities->shortTags->replace(
-            $this->utilities->mods->colophon->get()
-        );
+        return $this->utilities->mods->colophon;
     }
 }

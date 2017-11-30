@@ -186,7 +186,8 @@ final class Page extends PagePackage
      *
      * Page type is used too many times on archives
      * for getting posts mods, so let's make sure method
-     * is called only once per page cycle.
+     * is called only once per page cycle, except, of course,
+     * in the customizer.
      *
      * @since 0.1.0
      * @access private
@@ -195,7 +196,7 @@ final class Page extends PagePackage
      */
     private function getType(): array
     {
-        if (null === $this->type) {
+        if (null === $this->type || $this->is('customize_preview')) {
             $this->type = parent::type();
         }
 

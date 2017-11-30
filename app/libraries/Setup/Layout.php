@@ -45,7 +45,7 @@ final class Layout extends AbstractSetup
     {
         $layout = $this->theme->utilities->page->layout;
 
-        if (($mod = $layout->mod())) {
+        if (($mod = $layout->mod()->get())) {
             $classes[] = \sanitize_title('layout-'.$mod);
         }
 

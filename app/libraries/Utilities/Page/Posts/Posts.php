@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\Page\Page;
+use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
 use GrottoPress\Getter\Getter;
 
 /**
@@ -194,13 +195,13 @@ final class Posts
      *
      * @return mixed Posts mod.
      */
-    public function mod(string $setting, array $args = [])
+    public function mod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {
             return $this->page->utilities->mods->posts(
                 $setting,
                 $args
-            )->get();
+            );
         }
 
         $page = $this->page->type;
@@ -234,10 +235,10 @@ final class Posts
             ]);
 
             if ($mod->name) {
-                return $mod->get();
+                return $mod;
             }
         }
 
-        return $mod->default;
+        return $mod;
     }
 }
