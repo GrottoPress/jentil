@@ -56,8 +56,6 @@ final class ShortTags
     public function __construct(Utilities $utilities)
     {
         $this->utilities = $utilities;
-
-        $this->tags = $this->tags();
     }
 
     /**
@@ -73,23 +71,10 @@ final class ShortTags
     public function replace(string $content): string
     {
         return \str_ireplace(
-            \array_keys($this->tags),
-            \array_values($this->tags),
+            \array_keys($this->getTags()),
+            \array_values($this->getTags()),
             $content
         );
-    }
-
-    /**
-     * Get tags
-     *
-     * @since 0.5.0
-     * @access private
-     *
-     * @return string
-     */
-    private function getTags()
-    {
-        return $this->tags;
     }
 
     /**
@@ -100,9 +85,9 @@ final class ShortTags
      *
      * @return string
      */
-    private function tags()
+    private function getTags(): array
     {
-        return [
+        $tags = [
             '{{site_name}}' => \esc_attr(\get_bloginfo('name')),
             '{{site_url}}' => \esc_attr(\home_url('/')),
             '{{this_year}}' => \esc_attr(
@@ -128,5 +113,14 @@ final class ShortTags
             ),
             '{{search_query}}' => \esc_attr(\get_search_query()),
         ];
+
+        /**
+         * @filter jentil_short_tags
+         *
+         * @var array $tags
+         *
+         * @since 0.5.0
+         */
+        return \apply_filters('jentil_short_tags', $tags);
     }
 }
