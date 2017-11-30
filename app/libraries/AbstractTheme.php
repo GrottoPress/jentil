@@ -4,7 +4,7 @@
  * Abstract Theme
  *
  * @package GrottoPress\Jentil
- * @since 0.1.0
+ * @since 0.5.0
  *
  * @author GrottoPress <info@grottopress.com>
  * @author N Atta Kus Adusei
@@ -21,7 +21,7 @@ use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 /**
  * Abstract Theme
  *
- * @since 0.1.0
+ * @since 0.5.0
  */
 abstract class AbstractTheme
 {
@@ -30,7 +30,7 @@ abstract class AbstractTheme
     /**
      * Theme setups
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @var Setup\AbstractSetup[] $setup Setups.
@@ -40,7 +40,7 @@ abstract class AbstractTheme
     /**
      * Constructor
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      */
     protected function __construct()
@@ -50,7 +50,7 @@ abstract class AbstractTheme
     /**
      * Setup
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return Setup\AbstractSetup[]
@@ -63,7 +63,7 @@ abstract class AbstractTheme
     /**
      * Run theme
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access public
      */
     public function run()

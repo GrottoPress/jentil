@@ -59,7 +59,7 @@ abstract class AbstractPanel
     /**
      * Sections
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @var AbstractSection[] $sections Sections.
@@ -95,7 +95,7 @@ abstract class AbstractPanel
     /**
      * Name
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return string Name.
@@ -108,7 +108,7 @@ abstract class AbstractPanel
     /**
      * Get sections
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return AbstractSection[] Sections.
@@ -121,7 +121,7 @@ abstract class AbstractPanel
     /**
      * Add Panel
      *
-     * Be sure to set $this->sections here, in the child class.
+     * Be sure to set $this->sections HERE, in the child class.
      * Doing that in the constructor would be too early; it won't work.
      *
      * @param WP_Customizer $wp_customize

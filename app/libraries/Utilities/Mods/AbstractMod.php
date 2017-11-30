@@ -74,7 +74,9 @@ abstract class AbstractMod
     /**
      * Get mod
      *
+     * @since 0.5.0 Returned type now matches type of $this->default
      * @since 0.1.0
+     *
      * @access public
      *
      * @return mixed Mod.

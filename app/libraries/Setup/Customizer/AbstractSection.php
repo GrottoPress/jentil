@@ -59,7 +59,7 @@ abstract class AbstractSection
     /**
      * Settings
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @var AbstractSetting[] $settings Settings.
@@ -95,7 +95,7 @@ abstract class AbstractSection
     /**
      * Name
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return string Name.
@@ -108,7 +108,7 @@ abstract class AbstractSection
     /**
      * Get settings
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return AbstractSetting[] Settings.

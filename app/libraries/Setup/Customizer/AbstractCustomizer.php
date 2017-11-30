@@ -4,7 +4,7 @@
  * Abstract Customizer
  *
  * @package GrottoPress\Jentil\Setup\Customizer
- * @since 0.1.0
+ * @since 0.5.0
  *
  * @see https://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
  *
@@ -22,14 +22,14 @@ use WP_Customize_Manager as WP_Customizer;
 /**
  * Abstract Customizer
  *
- * @since 0.1.0
+ * @since 0.5.0
  */
 abstract class AbstractCustomizer extends AbstractSetup
 {
     /**
      * Panels
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @var AbstractPanel[] $panels Panels.
@@ -39,7 +39,7 @@ abstract class AbstractCustomizer extends AbstractSetup
     /**
      * Sections
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @var AbstractSection[] $sections Sections.
@@ -52,7 +52,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      * Panels comprise sections which, in turn,
      * comprise settings.
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return AbstractPanel[] Panels.
@@ -68,7 +68,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      * Use this ONLY if sections come under no panel.
      * Each section comprises its settings.
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return AbstractSection[] Sections.
@@ -81,7 +81,7 @@ abstract class AbstractCustomizer extends AbstractSetup
     /**
      * Run setup
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access public
      */
     public function run()
@@ -92,14 +92,14 @@ abstract class AbstractCustomizer extends AbstractSetup
     /**
      * Register theme customizer
      *
-     * Be sure to set $this->panels, $this->sections here, in the child class.
+     * Be sure to set $this->panels, $this->sections HERE, in the child class.
      * Doing that in the constructor would be too early; it won't work.
      *
      * @param WP_Customizer $wp_customize
      *
      * @action customize_register
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access public
      */
     public function register(WP_Customizer $wp_customize)
@@ -113,7 +113,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @param WP_Customizer $wp_customize
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      */
     protected function addPanels(WP_Customizer $wp_customize)
@@ -128,7 +128,7 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @param WP_Customizer $wp_customize
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      */
     protected function addSections(WP_Customizer $wp_customize)

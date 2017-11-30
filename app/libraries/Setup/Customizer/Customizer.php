@@ -48,7 +48,7 @@ final class Customizer extends AbstractCustomizer
      *
      * @action customize_register
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access public
      */
     public function register(WP_Customizer $wp_customize)
