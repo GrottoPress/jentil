@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use WP_Customize_Manager as WP_Customizer;
+use GrottoPress\Getter\Getter;
 
 /**
  * Abstract Setting
@@ -24,6 +25,8 @@ use WP_Customize_Manager as WP_Customizer;
  */
 abstract class AbstractSetting
 {
+    use Getter;
+    
     /**
      * Section
      *

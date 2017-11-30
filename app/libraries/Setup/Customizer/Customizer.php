@@ -37,6 +37,7 @@ final class Customizer extends AbstractCustomizer
         parent::run();
         
         \add_action('customize_preview_init', [$this, 'enqueueJS']);
+        \add_action('customize_preview_init', [$this, 'enqueueInlineJS']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
 
@@ -81,6 +82,34 @@ final class Customizer extends AbstractCustomizer
             '',
             true
         );
+    }
+
+    /**
+     * Enqueue Inlne JavaScript
+     *
+     * @action customize_preview_init
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @todo Find out how to get page type in customizer.
+     */
+    public function enqueueInlineJS()
+    {
+        $script = 'var shortTags = '.\json_encode(
+            $this->theme->utilities->shortTags->tags
+        ).';
+        var colophonModName = "'.$this->sections['colophon']->settings['colophon']->name.'";';
+
+        $titles = [];
+        
+        foreach ($this->sections['title']->settings as $setting) {
+            $titles[] = $setting->name;
+        }
+
+        $script .= 'var titleModNames = '.\json_encode($titles).';';
+        
+        \wp_add_inline_script('jentil-customizer', $script, 'before');
     }
 
     /**
