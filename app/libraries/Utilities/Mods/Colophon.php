@@ -56,4 +56,17 @@ final class Colophon extends AbstractMod
             '<em><a itemprop="url" rel="nofollow" href="'.Jentil::WEBSITE.'">'.Jentil::NAME.'</a></em>.'
         );
     }
+
+    /**
+     * Get mod
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string
+     */
+    public function get(): string
+    {
+        return $this->mods->utilities->shortTags->replace(parent::get());
+    }
 }

@@ -162,7 +162,7 @@ final class Layout extends AbstractMod
     public function get(): string
     {
         if (!$this->name) {
-            return false;
+            return '';
         }
 
         if ($this->isPagelike()) {

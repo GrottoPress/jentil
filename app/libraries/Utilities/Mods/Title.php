@@ -190,4 +190,17 @@ final class Title extends AbstractMod
             $this->more_specific
         );
     }
+
+    /**
+     * Get mod
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string
+     */
+    public function get(): string
+    {
+        return $this->mods->utilities->shortTags->replace(parent::get());
+    }
 }
