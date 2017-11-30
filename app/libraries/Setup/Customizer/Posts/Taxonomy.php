@@ -39,10 +39,9 @@ final class Taxonomy extends AbstractSection
         WP_Taxonomy $taxonomy,
         WP_Term $term = null
     ) {
-        $this->setName($taxonomy, $term);
-        
         parent::__construct($posts);
-                
+        
+        $this->setName($taxonomy, $term);
         $this->setModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
     }

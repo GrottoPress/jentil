@@ -44,11 +44,11 @@ final class PostType extends AbstractSection
      */
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
+        parent::__construct($posts);
+        
         $this->post_type = $post_type;
 
         $this->name = \sanitize_key($this->post_type->name.'_post_type_posts');
-
-        parent::__construct($posts);
 
         $this->setArgs();
         $this->setModArgs();

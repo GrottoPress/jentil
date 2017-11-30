@@ -34,9 +34,9 @@ final class Sticky extends AbstractSection
      */
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
-        $this->name = \sanitize_key($post_type->name.'_sticky_posts');
-
         parent::__construct($posts);
+        
+        $this->name = \sanitize_key($post_type->name.'_sticky_posts');
         
         $this->setArgs($post_type);
         $this->setModArgs($post_type);
