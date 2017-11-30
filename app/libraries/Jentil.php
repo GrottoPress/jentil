@@ -16,7 +16,6 @@ namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\Getter\Getter;
 use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 
 /**
