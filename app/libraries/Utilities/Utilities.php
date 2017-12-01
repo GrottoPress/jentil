@@ -51,7 +51,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Mods\Mods $mods Mods.
+     * @var Mods $mods Mods.
      */
     private $mods = null;
 
@@ -61,7 +61,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Page\Page $page Page.
+     * @var Page $page Page.
      */
     private $page = null;
 
@@ -146,7 +146,7 @@ final class Utilities
      *
      * @return Jentil Jentil.
      */
-    final private function getTheme(): Jentil
+    private function getTheme(): Jentil
     {
         return $this->theme;
     }
