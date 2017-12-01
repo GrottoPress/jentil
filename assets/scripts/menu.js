@@ -1,14 +1,3 @@
-/**
- * Menus
- *
- * Handles the behaviour of menu items
- *
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 (function ($) {
     'use strict';
 
@@ -19,10 +8,9 @@
      *
      * @since 0.1.0
      */
-    $('.js-mobile-menu').hide();
-    $('.js-mobile-menu-button').attr('href', '#');
-    $('.js-mobile-menu-button').on('click', function (e) {
-        $('.js-mobile-menu').slideToggle(fxDuration);
+    $('.js-main-menu-button').attr('href', '#');
+    $('.js-main-menu-button').on('click', function (e) {
+        $('.js-main-menu').slideToggle(fxDuration);
 
         e.preventDefault();
     });

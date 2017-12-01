@@ -42,7 +42,7 @@
 }
 
 #header {
-    .menu-toggle.vertical {
+    .menu-toggle {
         text-align: center;
         @include paragraph;
         margin-top: 0;
@@ -53,16 +53,17 @@
     }
 
     .site-navigation {
-        @include paragraph;
-        
-        &.vertical .search-wrap {
-            display: block;
-            max-width: none;
-            @include paragraph;
-        }
+        // @include paragraph;
+        display: none;
 
-        &.horizontal {
-            display: none;
+        &.on {
+            display: block;
+        }
+        
+        .search-wrap {
+            // max-width: none;
+            @include paragraph;
+            margin-top: 0;
         }
     }
 }
@@ -82,73 +83,68 @@
 @media (min-width: map-get($breakpoints, 'wide')) {
     #header {
         .site-navigation {
-            &.horizontal {
-                display: block;
-                margin-bottom: 0;
-            }
-
-            // Override style[display=block] set by jquery
-            // on clicking menu button
-            &.vertical {
-                display: none !important;
-            }
+            margin-bottom: 0;
+            display: block !important; // Override `display: none;` set by JS
         }
 
-        .menu-toggle.vertical {
+        .menu-toggle {
             display: none;
         }
 
-        .site-navigation.horizontal {
-            .menu {
-                li {
-                    margin: 0;
-                }
+        .menu {
+            // text-align: center;
+            
+            li {
+                margin: 0;
+            }
 
-                > li {
-                    margin-left: 2%;
-                    @include inline-block;
+            > li {
+                margin-left: 2%;
+                @include inline-block;
 
-                    &:first-child {
-                        margin-left: 0;
-                    }
+                &:first-child {
+                    margin-left: 0;
                 }
+            }
 
-                ul,
-                li:hover ul ul,
-                li li:hover ul ul,
-                li li li:hover ul ul ,
-                li li li li:hover ul ul,
-                li li li li li:hover ul ul {
-                    display: none; /* Required to hide menu when inactive */
-                }
+            ul,
+            li:hover ul ul,
+            li li:hover ul ul,
+            li li li:hover ul ul ,
+            li li li li:hover ul ul,
+            li li li li li:hover ul ul {
+                display: none; /* Required to hide menu when inactive */
+            }
 
-                li:hover ul,
-                li li:hover ul,
-                li li li:hover ul ,
-                li li li li:hover ul,
-                li li li li li:hover ul {
-                    display: block;
-                }
+            li:hover ul,
+            li li:hover ul,
+            li li li:hover ul ,
+            li li li li:hover ul,
+            li li li li li:hover ul {
+                display: block;
+            }
+
+            ul {
+                width: 200px;
+                @include position(absolute, 22 null null 0);
+                margin: 0;
+                padding: 0;
+                z-index: 99;
 
                 ul {
-                    width: 200px;
-                    @include position(absolute, 22 null null 0);
-                    margin: 0;
-                    padding: 0;
-                    list-style-type: none;
-                    z-index: 99;
-
-                    ul {
-                        top: 0;
-                        left: 200px;
-                    }
+                    top: 0;
+                    left: 200px;
                 }
             }
         }
     }
 
+    // .sub-menu {
+    //     text-align: left;
+    // }
+
     .has-js {
-        #header .site-navigation.horizontal {
+        #header .site-navigation {
             .menu {
                 .menu-item-has-children {
                     > a {

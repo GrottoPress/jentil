@@ -76,7 +76,7 @@ final class Jentil extends AbstractTheme
         $this->setup['layout'] = new Setup\Layout($this);
         $this->setup['archives'] = new Setup\Archives($this);
         $this->setup['search'] = new Setup\Search($this);
-        $this->setup['menus'] = new Setup\Menus($this);
+        $this->setup['menu'] = new Setup\Menu($this);
         $this->setup['breadcrumbs'] = new Setup\Breadcrumbs($this);
         $this->setup['singular'] = new Setup\Singular($this);
         $this->setup['comments'] = new Setup\Comments($this);
