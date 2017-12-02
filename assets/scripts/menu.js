@@ -1,3 +1,14 @@
+/**
+ * Menus
+ *
+ * Handles the behaviour of menu items
+ *
+ * @since 0.5.0
+ *
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
+ */
+
 (function ($) {
     'use strict';
 
