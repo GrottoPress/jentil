@@ -37,11 +37,11 @@
         ],
         "post-update-cmd": [
             "npm update",
-            "./tools/migrate-assets.sh"
+            "./bin/migrate-assets"
         ],
         "post-install-cmd": [
             "npm install",
-            "./tools/migrate-assets.sh"
+            "./bin/migrate-assets"
         ]
     },
     "autoload": {
