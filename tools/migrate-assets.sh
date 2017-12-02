@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Move production assets from 'node_modules/'' to 'dist/vendor/'
+# Move production assets from 'node_modules/' to 'dist/vendor/'
 
 TO='./dist/vendor'
 FROM=('normalize.css' 'font-awesome' 'html5shiv' 'respond.js')
