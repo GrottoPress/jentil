@@ -3,7 +3,7 @@
  *
  * Handles the behaviour of menu items
  *
- * @since 0.5.0
+ * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
  * @author N Atta Kus Adusei
