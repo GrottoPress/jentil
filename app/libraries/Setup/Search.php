@@ -30,7 +30,6 @@ final class Search extends AbstractSetup
     public function run()
     {
         \add_action('get_search_form', [$this, 'form']);
-        \add_action('jentil_inside_header', [$this, 'render']);
         \add_action('jentil_before_content', [$this, 'renderOnSearchPage']);
     }
 
@@ -88,19 +87,6 @@ final class Search extends AbstractSetup
             return;
         }
 
-        $this->render();
-    }
-
-    /**
-     * Render search form
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @action jentil_inside_header
-     */
-    public function render()
-    {
         \get_search_form();
     }
 }

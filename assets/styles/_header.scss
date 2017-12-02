@@ -16,30 +16,15 @@
     @include paragraph;
     @include hobbit;
 
-    &:empty,
-    .search-wrap {
+    &:empty {
         display: none;
     }
 
-    .site-navigation {
-        &.vertical {
-            .search-wrap {
-                display: block;
-            }
-        }
+    .form.search {
+        margin: 0;
     }
-}
 
-@media (min-width: map-get($breakpoints, 'wide')) {
-    #header {
-        .search-wrap {
-            display: block;
-            @include paragraph;
-            @include center(600px);
-        }
-
-        .form.search {
-            margin-top: 0;
-        }
+    .search-wrap {
+        @include paragraph;
     }
 }

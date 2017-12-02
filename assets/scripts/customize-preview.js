@@ -55,5 +55,5 @@
         }
 
         return content;
-    };
+    }
 })(jQuery);
