@@ -53,7 +53,7 @@
     }
 
     .site-navigation {
-        // @include paragraph;
+        @include paragraph;
         display: none;
 
         &.on {
