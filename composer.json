@@ -41,7 +41,8 @@
         ],
         "post-install-cmd": [
             "npm install",
-            "./bin/migrate-assets"
+            "./bin/migrate-assets",
+            "chmod +x ./bin/*"
         ]
     },
     "autoload": {
