@@ -183,7 +183,7 @@ final class Layout extends AbstractMod
     /**
      * Is post type pagelike?
      *
-     * Determines if post type behavees like
+     * Determines if post type behaves like
      * the page post type.
      *
      * @since 0.1.0
@@ -197,7 +197,7 @@ final class Layout extends AbstractMod
             && !\get_post_type_archive_link($this->specific));
 
         if ($check && $this->more_specific) {
-            return ($this->more_specific != \get_option('page_for_posts'));
+            return ($this->more_specific !== \get_option('page_for_posts'));
         }
         
         return $check;
