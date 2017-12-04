@@ -41,7 +41,7 @@ final class Search extends AbstractSection
 
         $this->args['title'] = \esc_html__('Search Results', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->panel->customizer->theme->utilities
+            return $this->customizer->theme->utilities
                 ->page->is('search');
         };
     }

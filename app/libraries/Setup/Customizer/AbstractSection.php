@@ -54,7 +54,7 @@ abstract class AbstractSection
      *
      * @var array $args Section arguments.
      */
-    protected $args;
+    protected $args = [];
 
     /**
      * Settings

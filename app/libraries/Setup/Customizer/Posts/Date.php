@@ -41,8 +41,7 @@ final class Date extends AbstractSection
 
         $this->args['title'] = \esc_html__('Date Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {
-            return $this->panel->customizer->theme->utilities
-                ->page->is('date');
+            return $this->customizer->theme->utilities->page->is('date');
         };
     }
 

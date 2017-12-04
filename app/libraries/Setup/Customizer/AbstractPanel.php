@@ -54,7 +54,7 @@ abstract class AbstractPanel
      *
      * @var array $args Panel arguments.
      */
-    protected $args;
+    protected $args = [];
 
     /**
      * Sections

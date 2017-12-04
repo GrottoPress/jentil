@@ -75,8 +75,8 @@ final class Sticky extends AbstractSection
         );
 
         $this->args['active_callback'] = function () use ($post_type): bool {
-            $page = $this->panel->customizer->theme->utilities->page;
-            $has_sticky = $this->panel->customizer->theme->utilities
+            $page = $this->customizer->theme->utilities->page;
+            $has_sticky = $this->customizer->theme->utilities
                 ->page->posts->sticky->get($post_type->name);
 
             if ('post' === $post_type->name) {

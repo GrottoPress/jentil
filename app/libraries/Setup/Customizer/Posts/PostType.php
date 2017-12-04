@@ -85,7 +85,7 @@ final class PostType extends AbstractSection
         );
 
         $this->args['active_callback'] = function (): bool {
-            $page = $this->panel->customizer->theme->utilities->page;
+            $page = $this->customizer->theme->utilities->page;
 
             if ('post' === $this->post_type->name) {
                 return $page->is('home');
@@ -121,7 +121,7 @@ final class PostType extends AbstractSection
     {
         $settings = parent::settings();
 
-        if (!$this->panel->customizer->theme->utilities
+        if (!$this->customizer->theme->utilities
             ->page->posts->sticky->get($this->post_type->name)
         ) {
             unset($settings['sticky_posts']);
