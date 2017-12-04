@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - You may now use this theme as package instead of as (parent) theme.
 - Various enhancements to menu styles and scripts.
 - Live preview page title updates in customizer without preview pane refreshing.
-- Added development binaries
+- Added development binaries in a new `bin` directory
 
 ### Removed
 - Removed version compatibility checks. Will develop a plugin for that.
