@@ -10,3 +10,5 @@ FROM=('normalize.css' 'font-awesome' 'html5shiv' 'respond.js')
 for dir in ${FROM[@]}; do
     cp -rf ./node_modules/$dir ${TO}
 done
+
+exit 0

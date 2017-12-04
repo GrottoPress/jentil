@@ -32,9 +32,6 @@
         "lucatume/wp-browser": "^1.21"
     },
     "scripts": {
-        "test": [
-            "codecept run wpunit"
-        ],
         "post-update-cmd": [
             "npm update",
             "./bin/migrate-assets"
@@ -43,6 +40,12 @@
             "npm install",
             "./bin/migrate-assets",
             "chmod +x ./bin/*"
+        ],
+        "test": [
+            "codecept run wpunit"
+        ],
+        "release": [
+            "./bin/release"
         ]
     },
     "autoload": {
