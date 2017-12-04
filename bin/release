@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# Bump version and release
+
+TO_VERSION="$1"
+FILES=('package.json' 'style.css')
+DEV_BRANCH='dev'
+
+doChecks()
+{
+    [[ ! -d './.git' ]] && echo 'This is not a git repository!' && exit 1
+
+    ! git show-ref --verify --quiet "refs/heads/${DEV_BRANCH}" \
+        && echo "Branch '${DEV_BRANCH}' does not exist!" && exit 2
+    
+    current_branch=$(git symbolic-ref --short -q HEAD)
+    [[ "$current_branch" != "$DEV_BRANCH" ]] \
+    && echo "You need to swich to branch '${DEV_BRANCH}' to perform this action" \
+    && exit 3
+}
+
+updateFiles()
+{
+    sed -ri "s/\"version\": \"[0-9\.\-]+\"/\"version\": \"${TO_VERSION}\"/i" package.json
+    sed -ri "s/Version: [0-9\.\-]+/Version: ${TO_VERSION}/i" style.css
+}
+
+createCommit()
+{
+    git add .
+    git commit -m "Bumped version number to ${TO_VERSION}"
+}
+
+createTag()
+{
+    git merge master -m "Merge branch master into ${DEV_BRANCH}"
+    git checkout master
+    git merge --no-ff ${DEV_BRANCH} -m "Merge branch ${DEV_BRANCH} into master"
+    git tag -a "${TO_VERSION}" -m "version ${TO_VERSION}"
+    git checkout ${DEV_BRANCH}
+}
+
+run()
+{
+    doChecks
+    updateFiles
+    createCommit
+    createTag
+}
+
+run
+
+exit 0
