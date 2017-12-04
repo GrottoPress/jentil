@@ -87,9 +87,9 @@ final class Taxonomy extends AbstractSection
     {
         $this->modArgs['context'] = 'tax';
         
-        if ('post_tag' == $taxonomy->name) {
+        if ('post_tag' === $taxonomy->name) {
             $this->modArgs['context'] = 'tag';
-        } elseif ('category' == $taxonomy->name) {
+        } elseif ('category' === $taxonomy->name) {
             $this->modArgs['context'] = 'category';
         }
 
@@ -117,11 +117,11 @@ final class Taxonomy extends AbstractSection
                     || $page->is('tax', $taxonomy->name, $term->term_id));
             }
 
-            if ('post_tag' == $taxonomy->name) {
+            if ('post_tag' === $taxonomy->name) {
                 return $page->is('tag');
             }
 
-            if ('category' == $taxonomy->name) {
+            if ('category' === $taxonomy->name) {
                 return $page->is('category');
             }
 

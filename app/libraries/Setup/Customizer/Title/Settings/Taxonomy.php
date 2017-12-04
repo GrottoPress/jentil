@@ -64,9 +64,9 @@ final class Taxonomy extends AbstractSetting
     {
         $mod_context = 'tax';
         
-        if ('post_tag' == $taxonomy->name) {
+        if ('post_tag' === $taxonomy->name) {
             $mod_context = 'tag';
-        } elseif ('category' == $taxonomy->name) {
+        } elseif ('category' === $taxonomy->name) {
             $mod_context = 'category';
         }
 
@@ -107,11 +107,11 @@ final class Taxonomy extends AbstractSetting
                     || $page->is('tax', $taxonomy, $term->term_id));
             }
 
-            if ('post_tag' == $taxonomy->name) {
+            if ('post_tag' === $taxonomy->name) {
                 return $page->is('tag');
             }
 
-            if ('category' == $taxonomy->name) {
+            if ('category' === $taxonomy->name) {
                 return $page->is('category');
             }
 

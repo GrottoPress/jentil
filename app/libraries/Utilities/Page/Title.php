@@ -62,13 +62,13 @@ final class Title
         $more_specific = '';
 
         foreach ($page as $type) {
-            if ('post_type_archive' == $type) {
+            if ('post_type_archive' === $type) {
                 $specific = \get_query_var('post_type');
-            } elseif ('tax' == $type) {
+            } elseif ('tax' === $type) {
                 $specific = \get_query_var('taxonomy');
-            } elseif ('category' == $type) {
+            } elseif ('category' === $type) {
                 $specific = 'category';
-            } elseif ('tag' == $type) {
+            } elseif ('tag' === $type) {
                 $specific = 'post_tag';
             }
 

@@ -169,7 +169,7 @@ final class Sticky extends AbstractPosts
         $type_sticky_posts = [];
 
         foreach ($sticky_posts as $post) {
-            if (\get_post_type($post) == $post_type) {
+            if (\get_post_type($post) === $post_type) {
                 $type_sticky_posts[] = $post;
             }
         }

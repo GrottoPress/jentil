@@ -62,15 +62,15 @@ final class Layout
         $more_specific = '';
 
         foreach ($page as $type) {
-            if ('post_type_archive' == $type) {
+            if ('post_type_archive' === $type) {
                 $specific = \get_query_var('post_type');
-            } elseif ('tax' == $type) {
+            } elseif ('tax' === $type) {
                 $specific = \get_query_var('taxonomy');
-            } elseif ('category' == $type) {
+            } elseif ('category' === $type) {
                 $specific = 'category';
-            } elseif ('tag' == $type) {
+            } elseif ('tag' === $type) {
                 $specific = 'post_tag';
-            } elseif ('singular' == $type) {
+            } elseif ('singular' === $type) {
                 global $post;
 
                 $specific = $post->post_type;
@@ -114,7 +114,7 @@ final class Layout
     {
         foreach ($this->page->layouts->get() as $column_slug => $layouts) {
             foreach ($layouts as $layout_id => $layout_name) {
-                if ($this->mod()->get() == $layout_id) {
+                if ($this->mod()->get() === $layout_id) {
                     return \sanitize_title($column_slug);
                 }
             }

@@ -204,7 +204,7 @@ final class Posts extends AbstractMod
             'sticky_posts' => 0,
         ];
 
-        if ('search' == $this->context) {
+        if ('search' === $this->context) {
             $defaults['wrap_class'] = 'archive-posts';
             $defaults['image'] = 'nano-thumb';
             $defaults['title_position'] = 'top';
@@ -212,7 +212,7 @@ final class Posts extends AbstractMod
             $defaults['excerpt'] = 40;
         }
 
-        if ('sticky' == $this->context) {
+        if ('sticky' === $this->context) {
             $defaults['wrap_class'] = 'sticky-posts big';
 
             unset($defaults['number']);

@@ -73,7 +73,7 @@ final class Menu extends AbstractSetup
 
            .'<a class="js-main-menu-button hamburger" href="'.\esc_url(
                \add_query_arg(
-                   ['menu' => ($this->status() == 'off' ? 'on' : 'off')],
+                   ['menu' => ($this->status() === 'off' ? 'on' : 'off')],
                    $this->theme->utilities->page->URL('full')
                )
            ).'" rel="nofollow">

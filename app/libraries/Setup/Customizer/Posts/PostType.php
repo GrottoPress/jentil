@@ -87,7 +87,7 @@ final class PostType extends AbstractSection
         $this->args['active_callback'] = function (): bool {
             $page = $this->panel->customizer->theme->utilities->page;
 
-            if ('post' == $this->post_type->name) {
+            if ('post' === $this->post_type->name) {
                 return $page->is('home');
             }
 
@@ -105,7 +105,7 @@ final class PostType extends AbstractSection
     {
         $this->modArgs['specific'] = $this->post_type->name;
         $this->modArgs['context'] = (
-            'post' == $this->post_type->name ? 'home' : 'post_type_archive'
+            'post' === $this->post_type->name ? 'home' : 'post_type_archive'
         );
     }
 

@@ -37,7 +37,7 @@ final class PostType extends AbstractSetting
         parent::__construct($title);
 
         $mod_context = (
-            'post' == $post_type->name ? 'home' : 'post_type_archive'
+            'post' === $post_type->name ? 'home' : 'post_type_archive'
         );
 
         $this->mod = $this->mod([
@@ -53,7 +53,7 @@ final class PostType extends AbstractSetting
             $page = $this->section->customizer->theme->utilities
                 ->page;
 
-            if ('post' == $post_type->name) {
+            if ('post' === $post_type->name) {
                 return $page->is('home');
             }
 

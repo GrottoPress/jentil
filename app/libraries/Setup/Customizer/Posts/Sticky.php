@@ -79,7 +79,7 @@ final class Sticky extends AbstractSection
             $has_sticky = $this->panel->customizer->theme->utilities
                 ->page->posts->sticky->get($post_type->name);
 
-            if ('post' == $post_type->name) {
+            if ('post' === $post_type->name) {
                 return ($page->is('home') && $has_sticky);
             }
             

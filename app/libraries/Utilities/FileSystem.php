@@ -189,7 +189,7 @@ final class FileSystem
      */
     public function themeDir(string $type, string $append = ''): string
     {
-        $stylesheet = $type == 'path'
+        $stylesheet = $type === 'path'
             ? \get_stylesheet_directory()
             : \get_stylesheet_directory_uri();
         
@@ -197,7 +197,7 @@ final class FileSystem
             return $stylesheet.$append;
         }
 
-        $template = $type == 'path'
+        $template = $type === 'path'
             ? \get_template_directory()
             : \get_template_directory_uri();
 
@@ -221,7 +221,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        if ('relative' == $form) {
+        if ('relative' === $form) {
             return \ltrim($append, '/');
         }
 
