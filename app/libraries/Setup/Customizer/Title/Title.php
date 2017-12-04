@@ -38,10 +38,9 @@ final class Title extends AbstractSection
         parent::__construct($customizer);
 
         $this->name = 'title';
-        $this->args = [
-            'title' => \esc_html__('Title', 'jentil'),
-            // 'description' => \esc_html__('Description here', 'jentil'),
-        ];
+
+        $this->args['title'] = \esc_html__('Title', 'jentil');
+        $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     /**

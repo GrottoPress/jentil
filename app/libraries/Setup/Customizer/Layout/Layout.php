@@ -39,10 +39,8 @@ final class Layout extends AbstractSection
 
         $this->name = 'layout';
         
-        $this->args = [
-            'title' => \esc_html__('Layout', 'jentil'),
-            // 'description' => \esc_html__('Description here', 'jentil'),
-        ];
+        $this->args['title'] = \esc_html__('Layout', 'jentil');
+        // $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     /**

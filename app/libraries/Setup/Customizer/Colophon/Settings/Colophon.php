@@ -41,18 +41,14 @@ final class Colophon extends AbstractSetting
 
         $this->name = $mod->name;
 
-        $this->args = [
-            'default' => $mod->default,
-            'transport' => 'postMessage',
-            'sanitize_callback' => function (string $value): string {
-                return \wp_kses($value, 'pre_user_description');
-            },
-        ];
+        $this->args['default'] = $mod->default;
+        $this->args['transport'] = 'postMessage';
+        $this->args['sanitize_callback'] = function (string $value): string {
+            return \wp_kses($value, 'pre_user_description');
+        };
         
-        $this->control = [
-            'section' => $this->section->name,
-            'label' => \esc_html__('Colophon', 'jentil'),
-            'type' => 'textarea',
-        ];
+        $this->control['section'] = $this->section->name;
+        $this->control['label'] = \esc_html__('Colophon', 'jentil');
+        $this->control['type'] = 'textarea';
     }
 }

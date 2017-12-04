@@ -47,15 +47,13 @@ abstract class AbstractSetting extends Setting
     {
         parent::__construct($layout);
 
-        $this->args = ['sanitize_callback' => 'sanitize_title'];
+        $this->args['sanitize_callback'] = 'sanitize_title';
 
-        $this->control = [
-            'section' => $this->section->name,
-            'label' => \esc_html__('Select layout', 'jentil'),
-            'type' => 'select',
-            'choices' => $this->section->customizer->theme->utilities
-                ->page->layouts->IDNames(),
-        ];
+        $this->control['section'] = $this->section->name;
+        $this->control['label'] = \esc_html__('Select layout', 'jentil');
+        $this->control['type'] = 'select';
+        $this->control['choices'] = $this->section->customizer->theme
+            ->utilities->page->layouts->IDNames();
     }
 
     /**

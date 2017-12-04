@@ -57,16 +57,12 @@ abstract class AbstractSection extends Section
 
         parent::__construct($this->panel->customizer);
 
-        $this->args = [
-            'title' => \esc_html__('Posts', 'jentil'),
-            'panel' => $this->panel->name,
-        ];
+        $this->args['title'] = \esc_html__('Posts', 'jentil');
+        $this->args['panel'] = $this->panel->name;
 
-        $this->modArgs = [
-            'context' => '',
-            'specific' => '',
-            'more_specific' => '',
-        ];
+        $this->modArgs['context'] = '';
+        $this->modArgs['specific'] = '';
+        $this->modArgs['more_specific'] = '';
     }
 
     /**

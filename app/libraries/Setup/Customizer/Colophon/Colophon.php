@@ -39,7 +39,7 @@ final class Colophon extends AbstractSection
 
         $this->name = 'colophon';
         
-        $this->args = ['title' => \esc_html__('Colophon', 'jentil')];
+        $this->args['title'] = \esc_html__('Colophon', 'jentil');
     }
 
     /**

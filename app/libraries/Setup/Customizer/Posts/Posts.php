@@ -37,10 +37,8 @@ final class Posts extends AbstractPanel
 
         $this->name = 'posts';
 
-        $this->args = [
-            'title' => \esc_html__('Posts', 'jentil'),
-            // 'description' => \esc_html__('Description here', 'jentil'),
-        ];
+        $this->args['title'] = \esc_html__('Posts', 'jentil');
+        $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     /**
