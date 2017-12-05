@@ -41,7 +41,7 @@ abstract class AbstractSection extends Section
      *
      * @var array $modArgs Mod args.
      */
-    protected $modArgs;
+    protected $modArgs = [];
 
     /**
      * Constructor
