@@ -65,7 +65,7 @@ final class Layout extends AbstractMod
      * Constructor
      *
      * @param Mods $mods
-     * @var array $args Mod args
+     * @param array $args Mod args
      *
      * @since 0.1.0
      * @access public
