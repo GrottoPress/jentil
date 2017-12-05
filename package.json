@@ -20,9 +20,7 @@
         "jshint": "^2.9.5"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "update": "echo 'hi'",
-        "preupdate": "echo 'pre'"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
