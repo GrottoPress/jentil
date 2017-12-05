@@ -59,10 +59,6 @@ abstract class AbstractSection extends Section
 
         $this->args['title'] = \esc_html__('Posts', 'jentil');
         $this->args['panel'] = $this->panel->name;
-
-        $this->modArgs['context'] = '';
-        $this->modArgs['specific'] = '';
-        $this->modArgs['more_specific'] = '';
     }
 
     /**
