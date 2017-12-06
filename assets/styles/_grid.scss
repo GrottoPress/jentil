@@ -12,23 +12,7 @@
  */
 
 .grid {
-    margin-left: -10px;
-    margin-right: -10px;
-    @include paragraph;
-    @include clearfix;
-
-    &,
-    &:first-child {
-        margin-top: -20px;
-    }
-}
-
-.column {
-    @include float(left);
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 20px;
-    width: 100%;
+    @include grid;
 }
 
 .small-1 {

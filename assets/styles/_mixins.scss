@@ -217,3 +217,28 @@
         }
     }
 }
+
+/// Grid
+/// Include this in columns wrapper
+///
+@mixin grid($width: 100%, $gutter: 20px) {
+    $half-gutter: ($gutter / 2);
+
+    margin-left: - $half-gutter;
+    margin-right: - $half-gutter;
+    margin-top: 0;
+    @include paragraph($gutter);
+    @include clearfix;
+
+    &:first-child {
+        margin-top: - $gutter;
+    }
+
+    > * {
+        @include float(left);
+        padding-left: $half-gutter;
+        padding-right: $half-gutter;
+        margin-top: $gutter;
+        width: $width;
+    }
+}
