@@ -80,7 +80,7 @@
 
 /** Header Menu */
 
-@media (min-width: map-get($breakpoints, 'wide')) {
+@media (min-width: map-get($breakpoints, wide)) {
     #header {
         .site-navigation {
             margin-bottom: 0;

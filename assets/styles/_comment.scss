@@ -35,8 +35,8 @@
     }
 
     .children {
-        margin-top: map-get($gutter, 'small');
-        padding-top: map-get($gutter, 'small');
+        margin-top: map-get($gutter, small);
+        padding-top: map-get($gutter, small);
         border-top: $separator;
 
         &:first-child {
@@ -66,12 +66,12 @@
 }
 
 #comments {
-    margin-top: map-get($gutter, 'normal');
+    margin-top: map-get($gutter, normal);
     @include clearfix;
 }
 
 #comments-list {
-    margin-bottom: map-get($gutter, 'normal');
+    margin-bottom: map-get($gutter, normal);
 }
 
 .comment-meta,

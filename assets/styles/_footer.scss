@@ -18,7 +18,7 @@
     @include hobbit;
 
     .widget {
-        margin-bottom: map-get($gutter, 'normal');
+        margin-bottom: map-get($gutter, normal);
     }
 }
 
@@ -32,7 +32,7 @@
     line-height: $line-height-normal;
 }
 
-@media (min-width: map-get($breakpoints, 'medium')) {
+@media (min-width: map-get($breakpoints, medium)) {
     #footer {
         .widget-area {
             font-size: 0;

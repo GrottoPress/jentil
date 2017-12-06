@@ -20,11 +20,11 @@
     @include clearfix;
 
     &:first-child {
-        padding-top: map-get($gutter, 'normal');
+        padding-top: map-get($gutter, normal);
     }
 
     &:last-child {
-        padding-bottom: map-get($gutter, 'normal');
+        padding-bottom: map-get($gutter, normal);
     }
 }
 
@@ -33,7 +33,7 @@
     @include paragraph;
 }
 
-@media (min-width: map-get($breakpoints, 'medium')) {
+@media (min-width: map-get($breakpoints, medium)) {
     #wrap {
         max-width: 960px;
     }
@@ -70,7 +70,7 @@
 
         #primary-sidebar-wrap {
             float: right;
-            padding-left: map-get($gutter, 'normal');
+            padding-left: map-get($gutter, normal);
         }
     }
 
@@ -88,7 +88,7 @@
 
         #primary-sidebar-wrap {
             float: left;
-            padding-right: map-get($gutter, 'normal');
+            padding-right: map-get($gutter, normal);
         }
     }
 
@@ -96,11 +96,11 @@
 
     .layout-three-columns {
         #primary-sidebar-wrap {
-            width: map-get($sidebar-content-sidebar, 'primary');
+            width: map-get($sidebar-content-sidebar, primary);
         }
 
         #secondary-sidebar-wrap {
-            width: map-get($sidebar-content-sidebar, 'secondary');
+            width: map-get($sidebar-content-sidebar, secondary);
         }
     }
 
@@ -114,19 +114,19 @@
 
         #content {
             /** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-            margin-right: map-get($sidebar-content-sidebar, 'primary');
-            margin-left: map-get($sidebar-content-sidebar, 'secondary');
+            margin-right: map-get($sidebar-content-sidebar, primary);
+            margin-left: map-get($sidebar-content-sidebar, secondary);
         }
 
         #secondary-sidebar-wrap {
             margin-left: -100%;
-            padding-right: map-get($gutter, 'normal');
+            padding-right: map-get($gutter, normal);
         }
 
         #primary-sidebar-wrap {
             /** Set left margin to -(RightColumnWidth) */
-            margin-left: - map-get($sidebar-content-sidebar, 'primary');
-            padding-left: map-get($gutter, 'normal');
+            margin-left: - map-get($sidebar-content-sidebar, primary);
+            padding-left: map-get($gutter, normal);
         }
     }
 
@@ -141,21 +141,21 @@
 
         #content {
             /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-            margin-left: map-get($sidebar-sidebar-content, 'both');
+            margin-left: map-get($sidebar-sidebar-content, both);
         }
 
         .sidebar-wrap {
-            padding-right: map-get($gutter, 'normal');
+            padding-right: map-get($gutter, normal);
         }
 
         #secondary-sidebar-wrap {
             /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
-            margin-right: - map-get($sidebar-sidebar-content, 'both');
+            margin-right: - map-get($sidebar-sidebar-content, both);
         }
 
         #primary-sidebar-wrap {
             /** Set right margin to -(RightColumnWidth) */
-            margin-right: - map-get($sidebar-sidebar-content, 'primary');
+            margin-right: - map-get($sidebar-sidebar-content, primary);
         }
     }
 
@@ -170,21 +170,21 @@
 
         #content {
             /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-            margin-right: map-get($sidebar-sidebar-content, 'both');
+            margin-right: map-get($sidebar-sidebar-content, both);
         }
 
         .sidebar-wrap {
-            padding-left: map-get($gutter, 'normal');
+            padding-left: map-get($gutter, normal);
         }
 
         #secondary-sidebar-wrap {
             /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-            margin-left: - map-get($sidebar-sidebar-content, 'both');
+            margin-left: - map-get($sidebar-sidebar-content, both);
         }
 
         #primary-sidebar-wrap {
             /** Set left margin to -(RightColumnWidth) */
-            margin-left: - map-get($sidebar-sidebar-content, 'primary');
+            margin-left: - map-get($sidebar-sidebar-content, primary);
         }
     }
 }

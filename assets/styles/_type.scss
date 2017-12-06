@@ -141,7 +141,7 @@ h6 {
     font-size: 14px;
 }
 
-@media (min-width: map-get($breakpoints, 'medium')) {
+@media (min-width: map-get($breakpoints, medium)) {
     h1 {
         font-size: 34px;
     }

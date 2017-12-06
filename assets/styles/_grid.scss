@@ -63,7 +63,7 @@
     width: 100%;
 }
 
-@media (min-width: map-get($breakpoints, 'medium')) {
+@media (min-width: map-get($breakpoints, medium)) {
     .medium-1 {
         width: 8.33%;
     }
@@ -213,7 +213,7 @@
     }
 }
 
-@media (min-width: map-get($breakpoints, 'wide')) {
+@media (min-width: map-get($breakpoints, wide)) {
     .wide-1 {
         width: 8.33%;
     }
