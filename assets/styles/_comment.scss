@@ -12,15 +12,17 @@
  */
 
 .commentlist {
+    @include hobbit;
+    
     margin: auto auto 10px 0;
     padding: 10px auto;
     // border-top: $separator;
     // border-bottom: $separator;
-    @include hobbit;
 
     > li,
     .children > li {
         @include paragraph(10px);
+
         padding-bottom: 10px;
         border-bottom: $separator;
 
@@ -66,8 +68,9 @@
 }
 
 #comments {
-    margin-top: map-get($gutter, normal);
     @include clearfix;
+    
+    margin-top: map-get($gutter, normal);
 }
 
 #comments-list {
@@ -81,8 +84,9 @@
 }
 
 .comment-meta {
-    color: $font-color-lighter;
     @include clearfix;
+    
+    color: $font-color-lighter;
 
     .edit-link::before {
         content: "| ";
@@ -101,6 +105,7 @@
 .comment-author {
     .avatar {
         @include float(left);
+        
         margin-right: 10px;
     }
 }

@@ -12,8 +12,9 @@
  */
 
 form {
-    font-size: 0;
     @include paragraph;
+    
+    font-size: 0;
 
     > * {
         font-size: $font-size-small;
@@ -32,11 +33,12 @@ input,
 textarea,
 select,
 button {
+    @include border-radius(3px);
+    
     border: $separator;
     padding: 5px 7px;
     margin-bottom: 4px;
     width: 100%;
-    @include border-radius(3px);
 }
 
 input,
@@ -104,12 +106,13 @@ label {
 /** Search form */
 
 .form.search {
+    @include position(relative);
+    @include border-radius(3px);
+    
     margin: 0;
     padding: 1px;
     border: $separator;
     background-color: #fff;
-    @include position(relative);
-    @include border-radius(3px);
 
     &:focus {
         border-color: #ccc;
@@ -128,10 +131,11 @@ label {
     }
 
     button {
+        @include position(absolute, 1px 1px null null);
+
         font-size: 12px;
         text-align: right;
         padding: 7px 10px;
-        @include position(absolute, 1px 1px null null);
         z-index: 1;
     }
 }

@@ -12,8 +12,9 @@
  */
 
 .archive-description {
-    color: $font-color-light;
     @include paragraph;
+    
+    color: $font-color-light;
 }
 
 .page-header {
@@ -72,8 +73,9 @@
 
 .sticky-posts {
     @include paragraph;
-    background-color: $text-background;
     @include border-radius(3px);
+
+    background-color: $text-background;
     padding: 20px;
 
     &.layout-grid {
@@ -100,6 +102,7 @@
 
                 .avatar {
                     @include float(left);
+                    
                     margin-right: 10px;
                 }
             }

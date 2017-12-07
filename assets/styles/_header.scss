@@ -12,9 +12,10 @@
  */
 
 #header {
-    padding-top: map-get($gutter, normal);
     @include paragraph;
     @include hobbit;
+    
+    padding-top: map-get($gutter, normal);
 
     &:empty {
         display: none;

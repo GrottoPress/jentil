@@ -12,8 +12,9 @@
  */
 
 table {
-    line-height: $line-height-normal;
     @include paragraph;
+    
+    line-height: $line-height-normal;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
