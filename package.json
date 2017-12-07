@@ -2,6 +2,18 @@
     "name": "@grottopress/jentil",
     "version": "0.4.0",
     "description": "Jentil is a framework for rapid WordPress theme development",
+    "license": "MIT",
+    "author": {
+        "name": "GrottoPress.com",
+        "email": "info@grottopress.com",
+        "url": "https://www.grottopress.com"
+    },
+    "contributors": [
+        {
+            "name": "N Atta Kusi Adusei",
+            "url": "https://twitter.com/akadusei"
+        }
+    ],
     "dependencies": {
         "font-awesome": "^4.7.0",
         "html5shiv": "^3.7.3",
@@ -30,8 +42,6 @@
         "Jentil",
         "WordPress"
     ],
-    "author": "GrottoPress.com",
-    "license": "MIT",
     "bugs": {
         "url": "https://github.com/GrottoPress/jentil/issues"
     },
