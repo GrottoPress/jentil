@@ -3,7 +3,6 @@
 # Bump version and release
 
 TO_VERSION="$1"
-FILES=('package.json' 'style.css')
 DEV_BRANCH='dev'
 
 doChecks()
