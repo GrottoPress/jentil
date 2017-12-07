@@ -22,9 +22,9 @@ const sourcemaps = require('gulp-sourcemaps')
  * Define paths
  */
 const js_files = ['./assets/scripts/**/*.js']
-const js_dest = './dist/assets/scripts'
+const js_dest = './dist/scripts'
 const sass_files = ['./assets/styles/**/*.scss']
-const sass_dest = './dist/assets/styles'
+const sass_dest = './dist/styles'
 
 /**
  * Lint JS

@@ -100,7 +100,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->getDir($type, "/dist/assets/scripts{$append}", $form);
+        return $this->getDir($type, "/dist/scripts{$append}", $form);
     }
 
     /**
@@ -120,7 +120,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->getDir($type, "/dist/assets/styles{$append}", $form);
+        return $this->getDir($type, "/dist/styles{$append}", $form);
     }
 
     /**

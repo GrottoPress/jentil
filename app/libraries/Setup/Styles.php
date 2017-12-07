@@ -111,7 +111,7 @@ final class Styles extends AbstractSetup
             'wordpress-posts',
             $this->theme->utilities->fileSystem->themeDir(
                 'url',
-                '/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
+                '/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
             ),
             ['normalize']
         );
