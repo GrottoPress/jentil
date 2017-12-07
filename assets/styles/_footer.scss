@@ -13,39 +13,36 @@
 
 #footer {
     @include paragraph;
-    padding-bottom: 10px;
-    margin-bottom: 0;
     @include hobbit;
 
-    .widget {
+    padding-bottom: 10px;
+    margin-bottom: 0;
+
+    .widget:last-child {
         margin-bottom: map-get($gutter, normal);
     }
 }
 
 #colophon {
+    @include paragraph;
+    
+    text-align: center;
+    line-height: $line-height-normal;
+    
     &,
     small {
         font-size: $font-size-tiny;
     }
-
-    text-align: center;
-    line-height: $line-height-normal;
 }
 
 @media (min-width: map-get($breakpoints, medium)) {
     #footer {
         .widget-area {
-            font-size: 0;
-            margin-left: -10px;
-            margin-right: -10px;
+            @include grid((v-margin: 'bottom', width: 25%));
         }
 
         .widget {
-            font-size: $font-size-small;
-            @include inline-block;
             margin-top: 0;
-            padding: 0 10px;
-            width: 25%;
         }
     }
 }

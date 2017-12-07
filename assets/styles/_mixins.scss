@@ -7,6 +7,8 @@
 /// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
 ////
 
+@import '../../vendor/grottopress/wordpress-posts/src/assets/styles/mixins';
+
 /// Box Sizing
 @mixin box-sizing($sizing) {
     -webkit-box-sizing: $sizing;
@@ -59,41 +61,6 @@
     height: $height;
 }
 
-/// Float
-///
-/// @param {string} $direction Direction
-@mixin float($direction) {
-    float: $direction;
-    display: inline;
-}
-
-/// Block
-///
-/// Add top and bottom margin
-@mixin paragraph($vertical-margin: 20px) {
-    margin-top: $vertical-margin;
-    margin-bottom: $vertical-margin;
-
-    &:first-child {
-        margin-top: 0;
-    }
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-/// Inline block
-///
-///
-@mixin inline-block {
-    display: -moz-inline-stack;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    vertical-align: top;
-}
-
 /// Screen reader text
 ///
 /// Hide text from all except screen readers
@@ -108,17 +75,6 @@
     padding: 0;
     overflow: hidden;
     word-wrap: normal !important;
-}
-
-/// Clear fix
-///
-/// 
-@mixin clearfix {
-    &::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
 }
 
 /// Position
@@ -219,26 +175,69 @@
 }
 
 /// Grid
+///
 /// Include this in columns wrapper
 ///
-@mixin grid($width: 100%, $gutter: 20px) {
+/// @param {map} $args
+///     'width' Width of each column
+///     'gutter' Size of spaces between columns
+///     'v-margin' Position of vertical margin ('top' or 'bottom')
+///     'use' Use 'float' or 'inline-block' for grid
+///     'font-size' Font size. Useful only for 'use' == 'inline-block'
+@mixin grid($args: ()) {
+    $defaults: (
+        width: 100%,
+        gutter: 20px,
+        v-margin: 'top',
+        use: 'inline-block',
+        font-size: $font-size-small,
+    );
+
+    $args: map-merge($defaults, $args);
+    
+    $width: map-get($args, width);
+    $gutter: map-get($args, gutter );
+    $v-margin: map-get($args, v-margin);
+    $use: map-get($args, use);
+    $font-size: map-get($args, font-size);
+    
     $half-gutter: ($gutter / 2);
+
+    $n-child: 'first';
+
+    @if $v-margin == 'bottom' {
+        $n-child: 'last';
+    }
+
+    @include clearfix;
 
     margin-left: - $half-gutter;
     margin-right: - $half-gutter;
-    margin-top: 0;
-    @include paragraph($gutter);
-    @include clearfix;
 
-    &:first-child {
-        margin-top: - $gutter;
+    @if $use != 'float' {
+        font-size: 0;
+    }
+
+    &,
+    &:#{$n-child}-child {
+        margin-#{$v-margin}: - $gutter;
     }
 
     > * {
-        @include float(left);
+        @if $use == 'float' {
+            @include float(left);
+        } @else {
+            @include inline-block;
+            font-size: $font-size;
+        }
+
         padding-left: $half-gutter;
         padding-right: $half-gutter;
-        margin-top: $gutter;
         width: $width;
+
+        &,
+        &:#{$n-child}-child {
+            margin-#{$v-margin}: $gutter;
+        }
     }
 }

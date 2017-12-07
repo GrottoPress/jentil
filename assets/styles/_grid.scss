@@ -12,7 +12,8 @@
  */
 
 .grid {
-    @include grid;
+    @include paragraph;
+    @include grid((use: 'float'));
 }
 
 .small-1 {
