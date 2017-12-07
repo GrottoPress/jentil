@@ -3,12 +3,26 @@
 # Move production assets from 'node_modules/' to 'dist/vendor/'
 
 TO='./dist/vendor'
-FROM=('normalize.css' 'font-awesome' 'html5shiv' 'respond.js')
+FROM=(
+    'normalize.css'
+    'font-awesome'
+    'html5shiv'
+    'respond.js'
+    '@grottopress/scss'
+)
 
 [[ ! -d $TO ]] && mkdir -p $TO
 
 for dir in ${FROM[@]}; do
-    cp -rf ./node_modules/$dir ${TO}
+    dest="${TO}"
+
+    if expr match "$dir" '\@.*\/' >/dev/null; then
+        dest="${TO}/${dir%%\/*}"
+
+        [[ ! -d "${dest}" ]] && mkdir -p "${dest}"
+    fi
+
+    cp -urf ./node_modules/$dir ${dest}
 done
 
 exit 0

@@ -31,7 +31,7 @@ html {
 body {
     @include word-wrap(break-word);
     
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $helvetica;
     font-size: $font-size-small;
     line-height: $line-height-normal;
     text-align: left;
