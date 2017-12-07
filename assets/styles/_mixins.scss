@@ -65,12 +65,13 @@
 ///
 /// Hide text from all except screen readers
 @mixin screen-reader {
+    @include position(absolute);
+    @include size(1px);
+    
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);
     -webkit-clip-path: inset(50%);
     clip-path: inset(50%);
-    @include position(absolute);
-    @include size(1px);
     margin: -1px;
     padding: 0;
     overflow: hidden;
