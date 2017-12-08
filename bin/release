@@ -13,9 +13,10 @@ doChecks()
         && echo "Branch '${DEV_BRANCH}' does not exist!" && exit 2
     
     current_branch=$(git symbolic-ref --short -q HEAD)
+
     [[ "$current_branch" != "$DEV_BRANCH" ]] \
-    && echo "You need to swich to branch '${DEV_BRANCH}' to perform this action" \
-    && exit 3
+        && echo "You need to swich to branch '${DEV_BRANCH}' to perform this action" \
+        && exit 3
 }
 
 updateFiles()
