@@ -38,8 +38,8 @@
         ],
         "post-install-cmd": [
             "npm install",
-            "./bin/migrate-assets",
-            "chmod +x ./bin/*"
+            "chmod +x ./bin/*",
+            "./bin/migrate-assets"
         ],
         "test": [
             "codecept run wpunit"
@@ -55,5 +55,8 @@
         "files": [
             "app/functions.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": { "GrottoPress\\Jentil\\": "tests/" }
     }
 }
