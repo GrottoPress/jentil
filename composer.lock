@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8c13cb806a94b3b8c74f4f1b8c04708",
+    "content-hash": "bc82097cf4c97aee0344cd8cbae6c0c1",
     "packages": [
         {
             "name": "aura/html",
@@ -611,16 +611,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "dev-dev",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "eb798c4089d1c1050fc27185333552bb75fe8725"
+                "reference": "0a09a7d7ad330a214e5386c315ea7add4e7a4591"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/eb798c4089d1c1050fc27185333552bb75fe8725",
-                "reference": "eb798c4089d1c1050fc27185333552bb75fe8725",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/0a09a7d7ad330a214e5386c315ea7add4e7a4591",
+                "reference": "0a09a7d7ad330a214e5386c315ea7add4e7a4591",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-12-09T11:30:43+00:00"
+            "time": "2017-12-09T21:08:40+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6459,9 +6459,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "grottopress/wordpress-posts": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

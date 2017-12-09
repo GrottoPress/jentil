@@ -15,7 +15,7 @@
         }
     ],
     "dependencies": {
-        "@grottopress/scss": "^0.1.5",
+        "@grottopress/scss": "^0.1.7",
         "font-awesome": "^4.7.0",
         "html5shiv": "^3.7.3",
         "normalize.css": "^7.0.0",

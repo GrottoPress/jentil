@@ -164,16 +164,12 @@
 ///   'width' {number} Width of each column
 ///   'gutter' {number} Size of spaces between columns
 ///   'v-margin' {string} Position of vertical margin ('top' or 'bottom')
-///   'use' {string} Use 'float' or 'inline-block' for grid
-///   'font-size' {number} Font size. Useful only for 'use' == 'inline-block'
 ///   'columns' {string} Selector of immediate children to be used as columns.
 @mixin grid($args: ()) {
     $defaults: (
         width: 100%,
         gutter: 20px,
         v-margin: 'top',
-        use: 'inline-block',
-        font-size: 14px,
         columns: '*',
     );
 
@@ -182,8 +178,6 @@
     $width: map-get($args, width);
     $gutter: map-get($args, gutter );
     $v-margin: map-get($args, v-margin);
-    $use: map-get($args, use);
-    $font-size: map-get($args, font-size);
     $columns: map-get($args , columns );
     
     $half-gutter: ($gutter / 2);
@@ -193,28 +187,21 @@
         $n-child: 'last';
     }
 
-    @include clearfix;
-
     margin-left: -$half-gutter;
     margin-right: -$half-gutter;
-
-    @if $use != 'float' {
-        font-size: 0;
-    }
+    letter-spacing: -1em;
 
     &,
     &:#{$n-child}-child {
         margin-#{$v-margin}: -$gutter;
     }
 
+    > * {
+        letter-spacing: normal;
+    }
+
     > #{$columns} {
-        @if $use == 'float' {
-            @include float(left);
-        } @else {
-            @include inline-block;
-            
-            font-size: $font-size;
-        }
+        @include inline-block;
 
         padding-left: $half-gutter;
         padding-right: $half-gutter;

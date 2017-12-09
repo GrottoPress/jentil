@@ -1,28 +1,28 @@
 {
-  "_from": "@grottopress/scss@0.1.5",
-  "_id": "@grottopress/scss@0.1.5",
+  "_from": "@grottopress/scss@0.1.7",
+  "_id": "@grottopress/scss@0.1.7",
   "_inBundle": false,
-  "_integrity": "sha512-GFVn7JO2MUHtrbOHL1FfFbuOBYpxTghE3PhWkg0EOPdz1FlpMtxuNVtG/l6PA4jwdM+6B7jOgkFKD+isHuQY3A==",
+  "_integrity": "sha512-sBo/EnX7bbm2Khcji1jx+EHx3m4zRfrXK65eR8RgCDQqawe6zO9v04e9sG3Fp6LwTZGeNdZCi3Loa6NHvXYPdA==",
   "_location": "/@grottopress/scss",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "@grottopress/scss@0.1.5",
+    "raw": "@grottopress/scss@0.1.7",
     "name": "@grottopress/scss",
     "escapedName": "@grottopress%2fscss",
     "scope": "@grottopress",
-    "rawSpec": "0.1.5",
+    "rawSpec": "0.1.7",
     "saveSpec": null,
-    "fetchSpec": "0.1.5"
+    "fetchSpec": "0.1.7"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.1.5.tgz",
-  "_shasum": "761ae9ea054ae803bb80c72bc0f7a463604b0fe8",
-  "_spec": "@grottopress/scss@0.1.5",
+  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.1.7.tgz",
+  "_shasum": "ad4f7e4ea3aa3d42ceec7051d9ebd2f96338a134",
+  "_spec": "@grottopress/scss@0.1.7",
   "_where": "/var/www/bedrock/web/app/themes/jentil",
   "author": {
     "name": "GrottoPress.com",
@@ -60,5 +60,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.1.5"
+  "version": "0.1.7"
 }
