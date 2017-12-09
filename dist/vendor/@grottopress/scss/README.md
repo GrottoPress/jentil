@@ -14,9 +14,9 @@ Sass utilities: Mixins, variables and functions.
 
 Import into your project, thus:
 
-    @import 'node_modules/@grottopress/scss/src/variables';
-    @import 'node_modules/@grottopress/scss/src/functions';
-    @import 'node_modules/@grottopress/scss/src/mixins';
+    @import '/path/to/node_modules/@grottopress/scss/src/variables';
+    @import '/path/to/node_modules/@grottopress/scss/src/functions';
+    @import '/path/to/node_modules/@grottopress/scss/src/mixins';
 
 ### Variables
 

@@ -161,11 +161,12 @@
 /// To be used in the grids wrapper
 ///
 /// @param {map} $args - 
-///     'width' Width of each column
-///     'gutter' Size of spaces between columns
-///     'v-margin' Position of vertical margin ('top' or 'bottom')
-///     'use' Use 'float' or 'inline-block' for grid
-///     'font-size' Font size. Useful only for 'use' == 'inline-block'
+///   'width' {number} Width of each column
+///   'gutter' {number} Size of spaces between columns
+///   'v-margin' {string} Position of vertical margin ('top' or 'bottom')
+///   'use' {string} Use 'float' or 'inline-block' for grid
+///   'font-size' {number} Font size. Useful only for 'use' == 'inline-block'
+///   'columns' {string} Selector of immediate children to be used as columns.
 @mixin grid($args: ()) {
     $defaults: (
         width: 100%,
@@ -173,6 +174,7 @@
         v-margin: 'top',
         use: 'inline-block',
         font-size: 14px,
+        columns: '*',
     );
 
     $args: map-merge($defaults, $args);
@@ -182,6 +184,7 @@
     $v-margin: map-get($args, v-margin);
     $use: map-get($args, use);
     $font-size: map-get($args, font-size);
+    $columns: map-get($args , columns );
     
     $half-gutter: ($gutter / 2);
 
@@ -204,7 +207,7 @@
         margin-#{$v-margin}: -$gutter;
     }
 
-    > * {
+    > #{$columns} {
         @if $use == 'float' {
             @include float(left);
         } @else {
