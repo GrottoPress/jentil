@@ -76,6 +76,14 @@
     }
 }
 
+.gallery { // Override previous
+    margin-top: 20px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
 .gallery-item {
     line-height: $line-height-normal;
 }

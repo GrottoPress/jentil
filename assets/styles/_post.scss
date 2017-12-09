@@ -80,7 +80,11 @@
 
     &.layout-grid {
         padding-top: 0;
+        padding-left: 10px;
+        padding-right: 10px;
         margin-top: 20px;
+        margin-left: 0;
+        margin-right: 0;
 
         &:first-child {
             margin-top: 0;
