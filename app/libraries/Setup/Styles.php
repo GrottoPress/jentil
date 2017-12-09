@@ -30,9 +30,9 @@ final class Styles extends AbstractSetup
     public function run()
     {
         \add_action('wp_enqueue_scripts', [$this, 'enqueueNormalize']);
-        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
         \add_action('wp_enqueue_scripts', [$this, 'enqueueFontAwesome']);
         \add_action('wp_enqueue_scripts', [$this, 'enqueuePosts']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
     }
     
     /**

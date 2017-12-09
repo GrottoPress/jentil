@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6316116dc071cbf68debb7bb616cfe1c",
+    "content-hash": "0fbf4ca8c42606aa332d631177b8008c",
     "packages": [
         {
             "name": "aura/html",
@@ -611,16 +611,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.2.2",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "9036171ff954d41cec6f44c247f4b0fe47c273e5"
+                "reference": "6569bcbf8faf3c7dde8d18b7a5589d19cbba6eef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/9036171ff954d41cec6f44c247f4b0fe47c273e5",
-                "reference": "9036171ff954d41cec6f44c247f4b0fe47c273e5",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/6569bcbf8faf3c7dde8d18b7a5589d19cbba6eef",
+                "reference": "6569bcbf8faf3c7dde8d18b7a5589d19cbba6eef",
                 "shasum": ""
             },
             "require": {
@@ -634,7 +634,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\": "src/libraries/"
+                    "GrottoPress\\WordPress\\": "libraries/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -653,11 +653,11 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A library to query and display posts in WordPress",
+            "description": "Query and display posts in WordPress",
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-11-26T21:12:10+00:00"
+            "time": "2017-12-08T13:03:44+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
