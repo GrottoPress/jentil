@@ -80,7 +80,6 @@ button {
     height: auto;
     cursor: pointer;
     border: 0;
-    border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
     padding: 7px 10px 8px;
     font-weight: bold;
     font-size: $font-size-tiny;
@@ -92,6 +91,16 @@ button {
         border-width: 0;
         outline: none;
     }
+}
+
+/// Fix button background color not showing in opera mini
+/// @link https://github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+.opera:-o-prefocus,
+input[type=submit],
+input[type=button],
+input[type=reset],
+button {
+    border-right: 1px solid rgba(0,0,0,0.0);
 }
 
 label {
