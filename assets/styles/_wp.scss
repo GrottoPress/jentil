@@ -56,7 +56,6 @@
     @include border-radius(3px);
     @include grid((
         gutter: 10px,
-        font-size: $font-size-tiny,
         width: auto,
     ));
 
@@ -77,11 +76,7 @@
 }
 
 .gallery { // Override previous
-    margin-top: 20px;
-
-    &:first-child {
-        margin-top: 0;
-    }
+    @include paragraph;
 }
 
 .gallery-item {
