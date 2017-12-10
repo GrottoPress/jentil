@@ -21,6 +21,11 @@ form {
     }
 }
 
+*:disabled {
+    opacity: 0.7 !important;
+    cursor: default !important;
+}
+
 input,
 textarea,
 select,
@@ -57,13 +62,6 @@ button {
 }
 
 input {
-    &:disabled {
-        background-color: $text-background !important;
-        color: initial !important;
-        border-color: initial !important;
-        border-width: 1px !important;
-    }
-
     &[type=checkbox],
     &[type=radio] {
         margin: auto 5px;
