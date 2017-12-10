@@ -22,7 +22,7 @@
     $('.js-main-menu-button').attr('href', '#');
     $('.js-main-menu-button').on('click', function (e) {
         $('.js-main-menu').slideToggle(fxDuration, function () {
-            $(this).css({display: ''}).toggleClass('show hide');
+            $(this).toggleClass('show hide').css({display: ''});
         });
 
         e.preventDefault();
