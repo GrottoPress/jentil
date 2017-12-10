@@ -21,11 +21,11 @@
         display: none;
     }
 
-    .form.search {
-        margin: 0;
-    }
-
     .search-wrap {
         @include paragraph;
+    }
+
+    .form.search {
+        margin: 0;
     }
 }

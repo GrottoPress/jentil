@@ -21,7 +21,9 @@
      */
     $('.js-main-menu-button').attr('href', '#');
     $('.js-main-menu-button').on('click', function (e) {
-        $('.js-main-menu').slideToggle(fxDuration);
+        $('.js-main-menu').slideToggle(fxDuration, function () {
+            $(this).css({display: ''}).toggleClass('show hide');
+        });
 
         e.preventDefault();
     });
@@ -65,9 +67,6 @@
      */
     function toggleSubMenu(button)
     {
-        var activeClass = 'active';
-        
-        $(button).parent().toggleClass(activeClass);
         $(button).parent().siblings('li').children('ul').slideUp(fxDuration);
         $(button).parent().siblings('li').children('button').html(
             renderCaret('down')
@@ -75,7 +74,7 @@
 
         toggleCaret(button);
 
-        $(button).next('ul').toggleClass(activeClass).slideToggle(fxDuration);
+        $(button).next('ul').slideToggle(fxDuration);
     }
 
     /**

@@ -59,14 +59,13 @@
 
         display: none;
 
-        &.on {
+        &.show {
             display: block;
         }
         
         .search-wrap {
             @include paragraph;
 
-            // max-width: none;
             margin-top: 0;
         }
     }
@@ -89,7 +88,7 @@
     #header {
         .site-navigation {
             margin-bottom: 0;
-            display: block !important; // Override `display: none;` set by JS
+            display: block;
         }
 
         .menu-toggle {
@@ -159,14 +158,14 @@
                     }
                 }
 
-                ul,
-                li:hover ul ul,
-                li li:hover ul ul,
-                li li li:hover ul ul ,
-                li li li li:hover ul ul,
-                li li li li li:hover ul ul {
-                    display: block;
-                }
+                // ul,
+                // li:hover ul ul,
+                // li li:hover ul ul,
+                // li li li:hover ul ul ,
+                // li li li li:hover ul ul,
+                // li li li li li:hover ul ul {
+                //     display: block;
+                // }
             }
         }
     }

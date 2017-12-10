@@ -73,7 +73,7 @@ final class Menu extends AbstractSetup
 
            .'<a class="js-main-menu-button hamburger" href="'.\esc_url(
                \add_query_arg(
-                   ['menu' => ($this->status() === 'off' ? 'on' : 'off')],
+                   ['menu' => ($this->status() === 'hide' ? 'show' : 'hide')],
                    $this->theme->utilities->page->URL('full')
                )
            ).'" rel="nofollow">
@@ -153,10 +153,10 @@ final class Menu extends AbstractSetup
      * @since 0.1.0
      * @access private
      *
-     * @return string 'on' or 'off
+     * @return string 'show' or 'hide'
      */
     private function status(): string
     {
-        return (isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'off');
+        return (isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'hide');
     }
 }
