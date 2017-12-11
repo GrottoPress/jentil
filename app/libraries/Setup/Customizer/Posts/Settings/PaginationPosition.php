@@ -40,7 +40,7 @@ final class PaginationPosition extends AbstractSetting
         $this->name = $mod->name;
         
         $this->args['default'] = $mod->default;
-        $this->args['sanitize_callback'] = 'sanitize_key';
+        $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Pagination position', 'jentil');
         $this->control['type'] = 'select';
