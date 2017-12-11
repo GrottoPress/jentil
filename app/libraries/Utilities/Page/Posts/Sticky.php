@@ -72,6 +72,7 @@ final class Sticky extends AbstractPosts
                 'post__in' => $this->get(),
                 'post_status' => 'publish',
                 'ignore_sticky_posts' => 1,
+                'no_found_rows' => true,
             ],
         ];
 
