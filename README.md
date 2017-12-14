@@ -15,6 +15,7 @@ It integrates seamlessly with most WordPress page builders, including:
 
 ### For the End User:
 - Powerful posts/content display options via the customizer.
+- Page builder page/post templates
 - Six (6) layout options  
     * Content
     * Content / Sidebar
@@ -66,7 +67,7 @@ Link to be posted soon...
 
 ## Security
 
-Kindly send an email to *admin [at] grottopress [dot] com* about any security-related issue. We take messages we receive at this address very seriously.
+Kindly send an email to *admin [at] grottopress [dot] com* about any security-related issue.
 
 ## Showcase
 
