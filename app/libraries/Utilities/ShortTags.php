@@ -14,8 +14,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
-use GrottoPress\Getter\Getter;
-
 /**
  * Short Tags
  *
@@ -23,8 +21,6 @@ use GrottoPress\Getter\Getter;
  */
 final class ShortTags
 {
-    use Getter;
-    
     /**
      * Utilities
      *
@@ -34,16 +30,6 @@ final class ShortTags
      * @var Utilities
      */
     private $utilities;
-
-    /**
-     * Tags
-     *
-     * @since 0.5.0
-     * @access private
-     *
-     * @var string
-     */
-    private $tags;
 
     /**
      * Constructor
@@ -71,8 +57,8 @@ final class ShortTags
     public function replace(string $content): string
     {
         return \str_ireplace(
-            \array_keys($this->getTags()),
-            \array_values($this->getTags()),
+            \array_keys($this->get()),
+            \array_values($this->get()),
             $content
         );
     }
@@ -81,11 +67,11 @@ final class ShortTags
      * Tags
      *
      * @since 0.5.0
-     * @access private
+     * @access public
      *
      * @return string
      */
-    private function getTags(): array
+    public function get(): array
     {
         $tags = [
             '{{site_name}}' => \esc_attr(\get_bloginfo('name')),

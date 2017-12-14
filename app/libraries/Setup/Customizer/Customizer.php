@@ -97,7 +97,7 @@ final class Customizer extends AbstractCustomizer
     public function enqueueInlineJS()
     {
         $script = 'var shortTags = '.\json_encode(
-            $this->theme->utilities->shortTags->tags
+            $this->theme->utilities->shortTags->get()
         ).';
         var colophonModName = "'.$this->sections['colophon']->settings['colophon']->name.'";';
 
