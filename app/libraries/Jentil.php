@@ -84,6 +84,9 @@ final class Jentil extends AbstractTheme
         $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
         $this->setup['metaboxes'] = new Setup\Metaboxes($this);
         $this->setup['mobile'] = new Setup\Mobile($this);
+        $this->setup['page_builder_templates'] = new Setup\PageBuilderTemplates(
+            $this
+        );
     }
 
     /**
