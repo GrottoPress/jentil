@@ -158,14 +158,14 @@
                     }
                 }
 
-                // ul,
-                // li:hover ul ul,
-                // li li:hover ul ul,
-                // li li li:hover ul ul ,
-                // li li li li:hover ul ul,
-                // li li li li li:hover ul ul {
-                //     display: block;
-                // }
+                ul,
+                li:hover ul ul,
+                li li:hover ul ul,
+                li li li:hover ul ul ,
+                li li li li:hover ul ul,
+                li li li li li:hover ul ul {
+                    display: block;
+                }
             }
         }
     }
