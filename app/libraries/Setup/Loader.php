@@ -34,28 +34,10 @@ final class Loader extends AbstractSetup
      */
     public function run()
     {
-        $types = [
-            'index',
-            '404',
-            'archive',
-            'author',
-            'category',
-            'tag',
-            'taxonomy',
-            'date',
-            'embed',
-            'home',
-            'front_page',
-            'page',
-            'paged',
-            'search',
-            'single',
-            'singular',
-            'attachment',
-        ];
+        $templates = $this->templates();
 
-        foreach ($types as $type) {
-            \add_filter("{$type}_template_hierarchy", [$this, 'load']);
+        foreach ($templates as $template) {
+            \add_filter("{$template}_template_hierarchy", [$this, 'load']);
         }
     }
 
@@ -86,5 +68,36 @@ final class Loader extends AbstractSetup
         }
 
         return $j_templates;
+    }
+
+    /**
+     * Templates
+     *
+     * @since 0.5.0
+     * @access private
+     *
+     * @return string[]
+     */
+    private function templates(): array
+    {
+        return [
+            'index',
+            '404',
+            'archive',
+            'author',
+            'category',
+            'tag',
+            'taxonomy',
+            'date',
+            'embed',
+            'home',
+            'front_page',
+            'page',
+            'paged',
+            'search',
+            'single',
+            'singular',
+            'attachment',
+        ];
     }
 }
