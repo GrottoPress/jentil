@@ -26,7 +26,9 @@ declare (strict_types = 1);
          */
         if (\Jentil()->utilities->page->is('singular')) {
             if ('open' === \get_option('default_ping_status')) {
-                echo '<!--'; \trackback_rdf(); echo '-->';
+                echo '<!--';
+                \trackback_rdf();
+                echo '-->';
             }
 
             \Jentil()->utilities->loader->loadComments();

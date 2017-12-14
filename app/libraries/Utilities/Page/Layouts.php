@@ -111,7 +111,7 @@ final class Layouts
      */
     public function IDs(): array
     {
-         return \array_keys($this->IDNames());
+        return \array_keys($this->IDNames());
     }
 
     /**
