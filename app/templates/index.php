@@ -64,6 +64,13 @@ if (\Jentil()->utilities->page->is('404')
 }
 
 /**
+ * @action jentil_after_content
+ *
+ * @since 0.5.0
+ */
+\do_action('jentil_after_content');
+
+/**
  * Load footer template
  *
  * @since 0.1.0
