@@ -136,20 +136,7 @@ final class Title extends AbstractMod
             return $value;
         }, $names);
 
-        /**
-         * @filter jentil_title_mod_names
-         *
-         * @var string $names Title mod names.
-         *
-         * @since 0.1.0
-         */
-        return \apply_filters(
-            'jentil_title_mod_names',
-            $names,
-            $this->context,
-            $this->specific,
-            $this->more_specific
-        );
+        return $names;
     }
 
     /**

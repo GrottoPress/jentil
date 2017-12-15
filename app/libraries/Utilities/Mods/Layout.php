@@ -135,20 +135,7 @@ final class Layout extends AbstractMod
             return $value;
         }, $names);
 
-        /**
-         * @filter jentil_layout_mod_names
-         *
-         * @var string $names Layout mod names.
-         *
-         * @since 0.1.0
-         */
-        return \apply_filters(
-            'jentil_layout_mod_names',
-            $names,
-            $this->context,
-            $this->specific,
-            $this->more_specific
-        );
+        return $names;
     }
 
     /**

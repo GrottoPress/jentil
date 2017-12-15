@@ -147,21 +147,7 @@ final class Posts extends AbstractMod
             return $value;
         }, $names);
 
-        /**
-         * @filter jentil_posts_mod_names
-         *
-         * @var string $names
-         *
-         * @since 0.1.0
-         */
-        return \apply_filters(
-            'jentil_posts_mod_names',
-            $names,
-            $this->setting,
-            $this->context,
-            $this->specific,
-            $this->more_specific
-        );
+        return $names;
     }
 
     /**
