@@ -1,6 +1,6 @@
 # Jentil
 
-Jentil is a framework for rapid WordPress theme development. It is packed with predefined, pluggable features, including powerful content options which allows to configure how posts display on archives right from the customizer.
+Jentil is a modern framework for rapid WordPress theme development. It is packed with predefined, pluggable features, including powerful content options which allows to configure how posts display on archives right from the customizer.
 
 Jentil features six layout options, configured via the customizer and post meta boxes. Jentil can be used to build blogs, magazines, e-commerce, corporate websites and more.
 
