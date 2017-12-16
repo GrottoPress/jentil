@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Section
+ * Abstract Posts Section
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts
  * @since 0.1.0
@@ -17,12 +17,22 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection as Section;
 
 /**
- * Section
+ * Abstract Posts Section
  *
  * @since 0.1.0
  */
 abstract class AbstractSection extends Section
 {
+    /**
+     * Panel
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Posts $panel Posts panel.
+     */
+    protected $panel;
+
     /**
      * Constructor
      *
@@ -31,45 +41,37 @@ abstract class AbstractSection extends Section
      *
      * @var array $modArgs Mod args.
      */
-    protected $modArgs;
+    protected $modArgs = [];
 
-     /**
+    /**
      * Constructor
      *
-     * @param Posts $posts Posts.
+     * @param Posts $posts Posts panel.
      *
      * @since 0.1.0
      * @access public
      */
     public function __construct(Posts $posts)
     {
-        $this->posts = $posts;
+        $this->panel = $posts;
 
-        parent::__construct($this->posts->customizer);
+        parent::__construct($this->panel->customizer);
 
-        $this->args = [
-            'title' => \esc_html__('Posts', 'jentil'),
-            'panel' => $this->posts->name,
-        ];
-
-        $this->modArgs = [
-            'context' => '',
-            'specific' => '',
-            'more_specific' => '',
-        ];
+        $this->args['title'] = \esc_html__('Posts', 'jentil');
+        $this->args['panel'] = $this->panel->name;
     }
 
     /**
-     * Posts
+     * Panel
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return Posts Posts.
+     * @return Posts Posts panel.
      */
-    final protected function getPosts(): Posts
+    final protected function getPanel(): Posts
     {
-        return $this->posts;
+        return $this->panel;
     }
 
     /**
@@ -80,16 +82,18 @@ abstract class AbstractSection extends Section
      *
      * @return array Mod args.
      */
-    final protected function getModArgs(): array
+    protected function getModArgs(): array
     {
         return $this->modArgs;
     }
 
     /**
-     * Get settings
+     * Settings
      *
-     * @since       Jentil 0.1.0
-     * @access      protected
+     * @since 0.1.0
+     * @access protected
+     *
+     * @return array
      */
     protected function settings(): array
     {

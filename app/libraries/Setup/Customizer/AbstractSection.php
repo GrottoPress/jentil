@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Section
+ * Abstract Section
  *
  * @package GrottoPress\Jentil\Setup\Customizer
  * @since 0.1.0
@@ -18,7 +18,7 @@ use WP_Customize_Manager as WP_Customizer;
 use GrottoPress\Getter\Getter;
 
 /**
- * Section
+ * Abstract Section
  *
  * @since 0.1.0
  */
@@ -32,7 +32,7 @@ abstract class AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @var Customizer $customizer Customizer.
+     * @var AbstractCustomizer $customizer Customizer.
      */
     protected $customizer;
 
@@ -54,17 +54,27 @@ abstract class AbstractSection
      *
      * @var array $args Section arguments.
      */
-    protected $args;
+    protected $args = [];
+
+    /**
+     * Settings
+     *
+     * @since 0.5.0
+     * @access protected
+     *
+     * @var AbstractSetting[] $settings Settings.
+     */
+    protected $settings = [];
     
     /**
      * Constructor
      *
-     * @param Customizer $customizer Customizer.
+     * @param AbstractCustomizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Customizer $customizer)
+    public function __construct(AbstractCustomizer $customizer)
     {
         $this->customizer = $customizer;
     }
@@ -75,9 +85,9 @@ abstract class AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @return Customizer Customizer.
+     * @return AbstractCustomizer Customizer.
      */
-    final protected function getCustomizer(): Customizer
+    final protected function getCustomizer(): AbstractCustomizer
     {
         return $this->customizer;
     }
@@ -85,12 +95,12 @@ abstract class AbstractSection
     /**
      * Name
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return string Name.
      */
-    final protected function getName(): string
+    protected function getName(): string
     {
         return $this->name;
     }
@@ -98,20 +108,28 @@ abstract class AbstractSection
     /**
      * Get settings
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
-     * @return array Settings.
+     * @return AbstractSetting[] Settings.
      */
-    abstract protected function settings(): array;
+    protected function getSettings(): array
+    {
+        return $this->settings;
+    }
 
     /**
      * Add section
      *
+     * Be sure to set $this->settings here, in the child class.
+     * Doing that in the constructor would be too early; it won't work.
+     *
+     * @param WP_Customizer $wp_customizer
+     *
      * @since 0.1.0
      * @access public
      */
-    final public function add(WP_Customizer $wp_customize)
+    public function add(WP_Customizer $wp_customize)
     {
         if (!$this->name) {
             return;
@@ -119,11 +137,7 @@ abstract class AbstractSection
 
         $wp_customize->add_section($this->name, $this->args);
 
-        if (!($settings = $this->settings())) {
-            return;
-        }
-
-        foreach ($settings as $setting) {
+        foreach ($this->settings as $setting) {
             $setting->add($wp_customize);
         }
     }

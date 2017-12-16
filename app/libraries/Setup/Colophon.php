@@ -42,8 +42,8 @@ final class Colophon extends AbstractSetup
      */
     public function render()
     {
-        if (!($mod = $this->jentil->utilities->colophon->mod())
-            && !$this->jentil->utilities->page->is('customize_preview')
+        if (!($mod = $this->theme->utilities->colophon->mod()->get())
+            && !$this->theme->utilities->page->is('customize_preview')
         ) {
             return;
         }

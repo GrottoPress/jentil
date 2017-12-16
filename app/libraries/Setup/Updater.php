@@ -42,6 +42,10 @@ final class Updater extends AbstractSetup
      */
     public function checkForUpdate()
     {
-        $this->jentil->utilities->updater;
+        if ($this->theme->utilities->fileSystem->relativeDir()) {
+            return;
+        }
+        
+        $this->theme->utilities->updater;
     }
 }

@@ -25,44 +25,30 @@ use GrottoPress\Jentil\Setup\Customizer\Colophon\Colophon as Section;
 final class Colophon extends AbstractSetting
 {
     /**
-     * Colophon section
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Colophon $colophon Colophon.
-     */
-    private $colophon;
-    
-    /**
      * Constructor
      *
-     * @param Colophon $colophon Colophon section.
+     * @param Section $colophon Colophon section.
      *
      * @since 0.1.0
      * @access public
      */
     public function __construct(Section $colophon)
     {
-        $this->colophon = $colophon;
+        parent::__construct($colophon);
 
-        $mod = $this->colophon->customizer->jentil->utilities
+        $mod = $this->section->customizer->theme->utilities
             ->mods->colophon;
 
         $this->name = $mod->name;
 
-        $this->args = [
-            'default' => $mod->default,
-            'transport' => 'postMessage',
-            'sanitize_callback' => function (string $value): string {
-                return \wp_kses($value, 'pre_user_description');
-            },
-        ];
+        $this->args['default'] = $mod->default;
+        $this->args['transport'] = 'postMessage';
+        $this->args['sanitize_callback'] = function (string $value): string {
+            return \wp_kses($value, 'pre_user_description');
+        };
         
-        $this->control = [
-            'section' => $this->colophon->name,
-            'label' => \esc_html__('Colophon', 'jentil'),
-            'type' => 'textarea',
-        ];
+        $this->control['section'] = $this->section->name;
+        $this->control['label'] = \esc_html__('Colophon', 'jentil');
+        $this->control['type'] = 'textarea';
     }
 }

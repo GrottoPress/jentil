@@ -12,12 +12,19 @@
  */
 
 form {
-    font-size: 0;
     @include paragraph;
+    
+    font-size: 0;
 
     > * {
         font-size: $font-size-small;
     }
+}
+
+*:disabled {
+    -ms-filter: 'alpha(opacity=70)' !important;
+    opacity: 0.7 !important;
+    cursor: default !important;
 }
 
 input,
@@ -32,11 +39,12 @@ input,
 textarea,
 select,
 button {
+    @include border-radius(3px);
+    
     border: $separator;
     padding: 5px 7px;
     margin-bottom: 4px;
     width: 100%;
-    @include border-radius(3px);
 }
 
 input,
@@ -55,13 +63,6 @@ button {
 }
 
 input {
-    &:disabled {
-        background-color: $text-background !important;
-        color: initial !important;
-        border-color: initial !important;
-        border-width: 1px !important;
-    }
-
     &[type=checkbox],
     &[type=radio] {
         margin: auto 5px;
@@ -78,7 +79,6 @@ button {
     height: auto;
     cursor: pointer;
     border: 0;
-    border-right: 1px solid rgba(0,0,0,0.0); /* Fix background color not showing in opera mini */
     padding: 7px 10px 8px;
     font-weight: bold;
     font-size: $font-size-tiny;
@@ -92,7 +92,18 @@ button {
     }
 }
 
+/// Fix button background color not showing in opera mini
+/// @link https://github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+.opera:-o-prefocus,
+input[type=submit],
+input[type=button],
+input[type=reset],
+button {
+    border-right: 1px solid rgba(0,0,0,0.0);
+}
+
 label {
+    cursor: pointer;
     font-size: $font-size-tiny;
     width: 100%;
 
@@ -104,12 +115,13 @@ label {
 /** Search form */
 
 .form.search {
+    @include position(relative);
+    @include border-radius(3px);
+    
     margin: 0;
     padding: 1px;
     border: $separator;
     background-color: #fff;
-    @include position(relative);
-    @include border-radius(3px);
 
     &:focus {
         border-color: #ccc;
@@ -128,10 +140,11 @@ label {
     }
 
     button {
+        @include position(absolute, 1px 1px null null);
+
         font-size: 12px;
         text-align: right;
         padding: 7px 10px;
-        @include position(absolute, 1px 1px null null);
         z-index: 1;
     }
 }

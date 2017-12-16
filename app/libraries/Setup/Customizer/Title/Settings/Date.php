@@ -35,10 +35,7 @@ final class Date extends AbstractSetting
     {
         parent::__construct($title);
 
-        $this->mod = $this->title->customizer->jentil->utilities
-            ->mods->title([
-                'context' => 'date',
-            ]);
+        $this->mod = $this->mod(['context' => 'date']);
 
         $this->name = $this->mod->name;
         
@@ -46,7 +43,7 @@ final class Date extends AbstractSetting
 
         $this->control['label'] = \esc_html__('Date Archives', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->title->customizer->jentil->utilities
+            return $this->section->customizer->theme->utilities
                 ->page->is('date');
         };
     }

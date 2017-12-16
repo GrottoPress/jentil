@@ -16,28 +16,14 @@ namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\Getter\Getter;
-use FlorianWolters\Component\Util\Singleton\SingletonTrait;
 
 /**
  * Jentil
  *
  * @since 0.1.0
  */
-final class Jentil
+final class Jentil extends AbstractTheme
 {
-    use SingletonTrait, Getter;
-
-    /**
-     * Theme setups
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var array $setup Setups.
-     */
-    private $setup = [];
-
     /**
      * Theme utilities
      *
@@ -89,7 +75,7 @@ final class Jentil
         $this->setup['layout'] = new Setup\Layout($this);
         $this->setup['archives'] = new Setup\Archives($this);
         $this->setup['search'] = new Setup\Search($this);
-        $this->setup['menus'] = new Setup\Menus($this);
+        $this->setup['menu'] = new Setup\Menu($this);
         $this->setup['breadcrumbs'] = new Setup\Breadcrumbs($this);
         $this->setup['singular'] = new Setup\Singular($this);
         $this->setup['comments'] = new Setup\Comments($this);
@@ -98,17 +84,20 @@ final class Jentil
         $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
         $this->setup['metaboxes'] = new Setup\Metaboxes($this);
         $this->setup['mobile'] = new Setup\Mobile($this);
+        $this->setup['page_builder_templates'] = new Setup\PageBuilderTemplates(
+            $this
+        );
     }
 
     /**
      * Utilities
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return Utilities Utilities.
      */
-    private function getUtilities(): Utilities
+    protected function getUtilities(): Utilities
     {
         if (null === $this->utilities) {
             $this->utilities = new Utilities($this);
@@ -123,11 +112,11 @@ final class Jentil
      * @param string $setup Setup type
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
-     * @return array
+     * @return Setup\AbstractSetup[]
      */
-    private function getSetup(): array
+    protected function getSetup(): array
     {
         $setups = $this->setup;
 
@@ -135,18 +124,5 @@ final class Jentil
         unset($setups['updater']);
 
         return $setups;
-    }
-
-    /**
-     * Run theme
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function run()
-    {
-        foreach ($this->setup as $setup) {
-            $setup->run();
-        }
     }
 }

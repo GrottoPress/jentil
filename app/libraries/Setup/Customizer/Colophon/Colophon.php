@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Colophon;
 
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Colophon Section
@@ -38,23 +39,21 @@ final class Colophon extends AbstractSection
 
         $this->name = 'colophon';
         
-        $this->args = ['title' => \esc_html__('Colophon', 'jentil')];
+        $this->args['title'] = \esc_html__('Colophon', 'jentil');
     }
 
     /**
-     * Get settings
+     * Add section
+     *
+     * @param WP_Customizer $wp_customizer
      *
      * @since 0.1.0
-     * @access protected
-     *
-     * @return array Settings.
+     * @access public
      */
-    protected function settings(): array
+    public function add(WP_Customizer $wp_customize)
     {
-        $settings = [];
+        $this->settings['colophon'] = new Settings\Colophon($this);
 
-        $settings['colophon'] = new Settings\Colophon($this);
-
-        return $settings;
+        parent::add($wp_customize);
     }
 }

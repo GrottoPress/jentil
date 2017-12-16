@@ -29,7 +29,7 @@ final class Scripts extends AbstractSetup
      */
     public function run()
     {
-        \add_action('wp_footer', [$this, 'enqueue']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
         \add_filter('body_class', [$this, 'addBodyClasses']);
     }
 
@@ -45,7 +45,7 @@ final class Scripts extends AbstractSetup
     {
         \wp_enqueue_script(
             'jentil',
-            $this->jentil->utilities->fileSystem->scriptsDir(
+            $this->theme->utilities->fileSystem->scriptsDir(
                 'url',
                 '/jentil.min.js'
             ),

@@ -35,15 +35,14 @@ final class Author extends AbstractSetting
     {
         parent::__construct($layout);
 
-        $this->mod = $this->layout->customizer->jentil->utilities
-            ->mods->layout(['context' => 'author']);
+        $this->mod = $this->mod(['context' => 'author']);
 
         $this->name = $this->mod->name;
 
         $this->args['default'] = $this->mod->default;
 
         $this->control['active_callback'] = function (): bool {
-            return $this->layout->customizer->jentil->utilities
+            return $this->section->customizer->theme->utilities
                 ->page->is('author');
         };
 

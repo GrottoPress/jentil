@@ -35,10 +35,7 @@ final class Author extends AbstractSetting
     {
         parent::__construct($title);
 
-        $this->mod = $this->title->customizer->jentil->utilities
-            ->mods->title([
-                'context' => 'author',
-            ]);
+        $this->mod = $this->mod(['context' => 'author']);
 
         $this->name = $this->mod->name;
         
@@ -46,7 +43,7 @@ final class Author extends AbstractSetting
 
         $this->control['label'] = \esc_html__('Author Archives', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->title->customizer->jentil->utilities
+            return $this->section->customizer->theme->utilities
                 ->page->is('author');
         };
     }

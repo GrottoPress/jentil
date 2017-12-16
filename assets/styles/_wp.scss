@@ -14,15 +14,17 @@
 /** Alignment */
 
 .alignleft {
+    @include float(left);
+    
     margin-right: 20px;
     margin-bottom: 20px;
-    @include float(left);
 }
 
 .alignright {
+    @include float(right);
+    
     margin-bottom: 20px;
     margin-left: 20px;
-    @include float(right);
 }
 
 .aligncenter {
@@ -51,15 +53,21 @@
 /** Gallery */
 
 .gallery {
-    font-size: 0;
-    background-color: $text-background;
-    padding: 10px 5px 0;
-    text-align: center;
     @include border-radius(3px);
+    @include grid((
+        gutter: 10px,
+        width: auto,
+    ));
+
+    background-color: $text-background;
+    padding: 0 5px 10px;
+    margin-left: 0;
+    margin-right: 0;
 
     img {
-        border: $separator;
         @include border-radius(3px);
+
+        border: $separator;
 
         &:hover {
             border-color: #ccc;
@@ -67,16 +75,17 @@
     }
 }
 
+.gallery { // Override previous
+    @include paragraph;
+}
+
 .gallery-item {
-    font-size: $font-size-tiny;
     line-height: $line-height-normal;
-    @include inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
-    margin-bottom: 10px;
 }
 
 .gallery-caption {
+    @include screen-reader;
+    
     color: $font-color-light;
     font-size: $font-size-tiny;
 }

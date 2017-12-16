@@ -4,6 +4,9 @@
  * Handles the behaviour of menu items
  *
  * @since 0.1.0
+ *
+ * @author GrottoPress <info@grottopress.com>
+ * @author N Atta Kus Adusei
  */
 
 (function ($) {
@@ -11,57 +14,95 @@
 
     var fxDuration = 200;
 
-    // Mobile menu button
-    $('.js-mobile-menu').hide();
-    $('.js-mobile-menu-button').attr('href', '#');
-    $('.js-mobile-menu-button').on('click', function (e) {
-        $('.js-mobile-menu').slideToggle(fxDuration);
+    /**
+     * Mobile menu button
+     *
+     * @since 0.1.0
+     */
+    $('.js-main-menu-button').attr('href', '#');
+    $('.js-main-menu-button').on('click', function (e) {
+        $('.js-main-menu').slideToggle(fxDuration, function () {
+            $(this).toggleClass('show hide').css({display: ''});
+        });
+
         e.preventDefault();
     });
 
-    // Add icons to all parent menu items
-    $('.menu li > ul').before('<button class="js-sub-menu-button sub-menu-toggle closed">'+renderCaret('down')+'</button>');
+    /**
+     * Add icons to all parent menu items
+     *
+     * @since 0.1.0
+     */
+    $('.menu li > ul').before(
+        '<button class="js-sub-menu-button sub-menu-toggle">'+
+            renderCaret('down')+
+        '</button>'
+    );
 
-    // Sub-menu button
+    /**
+     * Sub-menu button
+     *
+     * @since 0.1.0
+     */
     $('.js-sub-menu-button').next('ul').hide();
     $('.js-sub-menu-button').prev('a').on('click', function (e) {
         if ('#' === $(this).attr('href')) {
             toggleSubMenu($(this).next('button'));
+
             e.preventDefault();
         }
     });
     $('.js-sub-menu-button').on('click', function (e) {
         toggleSubMenu(this);
+
         e.preventDefault();
     });
 
-    // Toggle Submenu
-    function toggleSubMenu(selector)
+    /**
+     * Toggle Submenu
+     *
+     * @param {string} button
+     *
+     * @return {string}
+     */
+    function toggleSubMenu(button)
     {
-        $(selector).toggleClass('closed');
-        $(selector).parent().siblings('li').children('ul').slideUp(fxDuration);
-        $(selector).parent().siblings('li').children('button').html(
+        $(button).parent().siblings('li').children('ul').slideUp(fxDuration);
+        $(button).parent().siblings('li').children('button').html(
             renderCaret('down')
         );
-        toggleCaret(selector);
-        $(selector).next('ul').slideToggle(fxDuration);
+
+        toggleCaret(button);
+
+        $(button).next('ul').slideToggle(fxDuration);
     }
 
-    // Toggle Caret
-    // To be called BEFORE opening submenu.
-    function toggleCaret(selector)
+    /**
+     * Toggle Caret
+     *
+     * To be called BEFORE opening submenu.
+     *
+     * @param {string} button
+     */
+    function toggleCaret(button)
     {
-        if ('none' === $(selector).next('ul').css('display')) {
-            $(selector).html(renderCaret('up'));
+        if ('none' === $(button).next('ul').css('display')) {
+            $(button).html(renderCaret('up'));
         } else {
-            $(selector).html(renderCaret('down'));
+            $(button).html(renderCaret('down'));
         }
     }
 
-    // Up/Down button HTML
+    /**
+     * Up/Down button HTML
+     * 
+     * @param {string} direction 'up' or 'down'
+     * 
+     * @return {string}
+     */
     function renderCaret(direction)
     {
-        return '<span class="fa fa-caret-'+direction.toString().toLowerCase()+
+        return '<span class="fa fa-caret-'+direction.toString()+
             '" aria-hidden="true"></span>'+
             '<span class="screen-reader-text">Sub-menu</span>';
     }

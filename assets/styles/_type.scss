@@ -41,19 +41,20 @@ del {
 pre,
 code,
 tt {
-    font-family: Monaco, monospace;
+    font-family: $monaco;
     font-size: 0.90em;
     padding: 2px 4px;
     background-color: $text-background;
 }
 
 pre {
+    @include paragraph;
+    @include border-radius(3px);
+    
     padding: 10px;
     border: $separator;
     overflow: auto;
     line-height: $line-height-normal;
-    @include paragraph;
-    @include border-radius(3px);
 }
 
 abbr,
@@ -68,11 +69,11 @@ ins {
 
 sup,
 sub {
+    @include position(relative);
+    
     height: 0;
     line-height: 1px;
     vertical-align: baseline;
-    @include position(relative);
-
 }
 
 sup {
@@ -84,15 +85,17 @@ sub {
 }
 
 hr {
+    @include paragraph;
+    
     border: 0;
     border-top: $separator;
-    @include paragraph;
 }
 
 blockquote {
+    @include paragraph;
+    
     font-size: $font-size-magnified;
     color: $font-color-lighter;
-    @include paragraph;
     font-style: italic;
     margin-right: 0;
     margin-left: 10px;
@@ -112,9 +115,10 @@ h3,
 h4,
 h5,
 h6 {
+    @include paragraph;
+    
     font-weight: bold;
     line-height: $line-height-small;
-    @include paragraph;
 }
 
 h1 {
@@ -141,7 +145,7 @@ h6 {
     font-size: 14px;
 }
 
-@media (min-width: map-get($breakpoints, 'medium')) {
+@media (min-width: map-get($breakpoints, medium)) {
     h1 {
         font-size: 34px;
     }

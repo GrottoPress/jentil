@@ -14,6 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
+use WP_Customize_Manager as WP_Customizer;
 use WP_Taxonomy;
 use WP_Term;
 
@@ -40,10 +41,25 @@ final class Taxonomy extends AbstractSection
         WP_Term $term = null
     ) {
         parent::__construct($posts);
-
+        
         $this->setName($taxonomy, $term);
         $this->setModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
+    }
+
+    /**
+     * Add section
+     *
+     * @param WP_Customizer $wp_customizer
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->settings = $this->settings();
+
+        parent::add($wp_customize);
     }
 
     /**
@@ -71,9 +87,9 @@ final class Taxonomy extends AbstractSection
     {
         $this->modArgs['context'] = 'tax';
         
-        if ('post_tag' == $taxonomy->name) {
+        if ('post_tag' === $taxonomy->name) {
             $this->modArgs['context'] = 'tag';
-        } elseif ('category' == $taxonomy->name) {
+        } elseif ('category' === $taxonomy->name) {
             $this->modArgs['context'] = 'category';
         }
 
@@ -93,7 +109,7 @@ final class Taxonomy extends AbstractSection
             $taxonomy,
             $term
         ): bool {
-            $page = $this->posts->customizer->jentil->utilities->page;
+            $page = $this->customizer->theme->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)
@@ -101,11 +117,11 @@ final class Taxonomy extends AbstractSection
                     || $page->is('tax', $taxonomy->name, $term->term_id));
             }
 
-            if ('post_tag' == $taxonomy->name) {
+            if ('post_tag' === $taxonomy->name) {
                 return $page->is('tag');
             }
 
-            if ('category' == $taxonomy->name) {
+            if ('category' === $taxonomy->name) {
                 return $page->is('category');
             }
 
@@ -131,7 +147,7 @@ final class Taxonomy extends AbstractSection
      * @since 0.1.0
      * @access protected
      *
-     * @return array Settings.
+     * @return Settings\AbstractSetting[] Settings.
      */
     protected function settings(): array
     {

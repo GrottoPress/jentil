@@ -34,48 +34,60 @@ final class Archive extends AbstractPosts
         global $wp_rewrite;
 
         $args = [
-            // 'tag' => $this->posts->mod('wrap_tag'),
-            'class' => $this->posts->mod('wrap_class'),
+            // 'tag' => $this->posts->mod('wrap_tag')->get(),
+            'class' => $this->posts->mod('wrap_class')->get(),
             'id' => 'main-query',
-            'layout' => $this->posts->mod('layout'),
-            'text_offset' => $this->posts->mod('text_offset'),
+            'layout' => $this->posts->mod('layout')->get(),
+            'text_offset' => $this->posts->mod('text_offset')->get(),
             'image' => [
-                'size' => $this->posts->mod('image'),
-                'align' => $this->posts->mod('image_alignment'),
+                'size' => $this->posts->mod('image')->get(),
+                'align' => $this->posts->mod('image_alignment')->get(),
             ],
             'excerpt' => [
-                'length' => $this->posts->mod('excerpt'),
+                'length' => $this->posts->mod('excerpt')->get(),
                 'paginate' => false,
-                'more_text' => $this->posts->mod('more_text'),
+                'more_text' => $this->posts->mod('more_text')->get(),
                 'after' => [
-                    'types' => \explode(',', $this->posts->mod('after_content')),
-                    'separator' => $this->posts->mod('after_content_separator'),
+                    'types' => \explode(
+                        ',',
+                        $this->posts->mod('after_content')->get()
+                    ),
+                    'separator' => $this->posts->mod('after_content_separator')->get(),
                 ],
             ],
             'pagination' => [
-                // 'type' => $this->posts->mod('pagination'),
-                // 'max' => $this->posts->mod('pagination_maximum'),
+                // 'type' => $this->posts->mod('pagination')->get(),
+                // 'max' => $this->posts->mod('pagination_maximum')->get(),
                 'key' => $wp_rewrite->pagination_base,
-                'position' => \explode(',', $this->posts->mod('pagination_position')),
-                'prev_text' => $this->posts->mod('pagination_previous_label'),
-                'next_text' => $this->posts->mod('pagination_next_label'),
+                'position' => \explode(
+                    ',',
+                    $this->posts->mod('pagination_position')->get()
+                ),
+                'prev_text' => $this->posts->mod('pagination_previous_label')->get(),
+                'next_text' => $this->posts->mod('pagination_next_label')->get(),
             ],
             'title' => [
-                'length' => $this->posts->mod('title_words'),
-                'position' => $this->posts->mod('title_position'),
+                'length' => $this->posts->mod('title_words')->get(),
+                'position' => $this->posts->mod('title_position')->get(),
                 'tag' => 'h2',
                 'link' => true,
                 'before' => [
-                    'types' => \explode(',', $this->posts->mod('before_title')),
-                    'separator' => $this->posts->mod('before_title_separator'),
+                    'types' => \explode(
+                        ',',
+                        $this->posts->mod('before_title')->get()
+                    ),
+                    'separator' => $this->posts->mod('before_title_separator')->get(),
                 ],
                 'after' => [
-                    'types' => \explode(',', $this->posts->mod('after_title')),
-                    'separator' => $this->posts->mod('after_title_separator'),
+                    'types' => \explode(
+                        ',',
+                        $this->posts->mod('after_title')->get()
+                    ),
+                    'separator' => $this->posts->mod('after_title_separator')->get(),
                 ],
             ],
             'wp_query' => [
-                'posts_per_page' => $this->posts->mod('number'),
+                'posts_per_page' => $this->posts->mod('number')->get(),
                 's' => \get_search_query(),
                 'post__not_in' => (
                     $this->posts->sticky->isSet()
@@ -175,7 +187,7 @@ final class Archive extends AbstractPosts
      * @since 0.1.0
      * @access public
      *
-     * @return array Public post types with archive.
+     * @return \WP_Post_Type[] Public post types with archive.
      */
     public function postTypes(): array
     {

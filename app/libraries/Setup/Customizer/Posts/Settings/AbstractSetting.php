@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Settings
+ * Abstract Post Setting
  *
  * @package GrottoPress\Jentil\Setup\Customizer\Posts\Settings
  * @since 0.1.0
@@ -16,25 +16,15 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts\Settings;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSetting as Setting;
 use GrottoPress\Jentil\Setup\Customizer\Posts\AbstractSection;
-use GrottoPress\Jentil\Utilities\Mods\Posts as Mod;
+use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
 
 /**
- * Settings
+ * Abstract Post Setting
  *
  * @since 0.1.0
  */
 abstract class AbstractSetting extends Setting
 {
-    /**
-     * Section
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Section $section Section.
-     */
-    protected $section;
-    
     /**
      * Constructor
      *
@@ -45,7 +35,7 @@ abstract class AbstractSetting extends Setting
      */
     public function __construct(AbstractSection $section)
     {
-        $this->section = $section;
+        parent::__construct($section);
 
         $this->control['section'] = $this->section->name;
     }
@@ -58,11 +48,11 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @return Mods Posts mod.
+     * @return PostsMod Posts mod.
      */
-    final protected function mod(string $setting): Mod
+    protected function mod(string $setting): PostsMod
     {
-        return $this->section->posts->customizer->jentil->utilities
+        return $this->section->panel->customizer->theme->utilities
             ->mods->posts($setting, $this->section->modArgs);
     }
 }

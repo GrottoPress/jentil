@@ -22,6 +22,16 @@ namespace GrottoPress\Jentil\Utilities\Mods;
 final class Posts extends AbstractMod
 {
     /**
+     * Mods
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Mods $mods Mods.
+     */
+    protected $mods;
+    
+    /**
      * Setting
      *
      * @since 0.1.0
@@ -73,9 +83,9 @@ final class Posts extends AbstractMod
      */
     public function __construct(Mods $mods, string $setting, array $args = [])
     {
+        $this->mods = $mods;
+        
         $this->setAttributes($setting, $args);
-
-        parent::__construct($mods);
     }
 
     /**
@@ -137,21 +147,7 @@ final class Posts extends AbstractMod
             return $value;
         }, $names);
 
-        /**
-         * @filter jentil_posts_mod_names
-         *
-         * @var string $names Layout mod names.
-         *
-         * @since 0.1.0
-         */
-        return \apply_filters(
-            'jentil_posts_mod_names',
-            $names,
-            $this->setting,
-            $this->context,
-            $this->specific,
-            $this->more_specific
-        );
+        return $names;
     }
 
     /**
@@ -194,7 +190,7 @@ final class Posts extends AbstractMod
             'sticky_posts' => 0,
         ];
 
-        if ('search' == $this->context) {
+        if ('search' === $this->context) {
             $defaults['wrap_class'] = 'archive-posts';
             $defaults['image'] = 'nano-thumb';
             $defaults['title_position'] = 'top';
@@ -202,7 +198,7 @@ final class Posts extends AbstractMod
             $defaults['excerpt'] = 40;
         }
 
-        if ('sticky' == $this->context) {
+        if ('sticky' === $this->context) {
             $defaults['wrap_class'] = 'sticky-posts big';
 
             unset($defaults['number']);

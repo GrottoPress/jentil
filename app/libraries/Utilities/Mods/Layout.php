@@ -22,6 +22,16 @@ namespace GrottoPress\Jentil\Utilities\Mods;
 final class Layout extends AbstractMod
 {
     /**
+     * Mods
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var Mods $mods Mods.
+     */
+    protected $mods;
+    
+    /**
      * Context
      *
      * @since 0.1.0
@@ -55,16 +65,16 @@ final class Layout extends AbstractMod
      * Constructor
      *
      * @param Mods $mods
-     * @var array $args Mod args
+     * @param array $args Mod args
      *
      * @since 0.1.0
      * @access public
      */
     public function __construct(Mods $mods, array $args = [])
     {
-        $this->setAttributes($args);
+        $this->mods = $mods;
 
-        parent::__construct($mods);
+        $this->setAttributes($args);
     }
 
     /**
@@ -125,20 +135,7 @@ final class Layout extends AbstractMod
             return $value;
         }, $names);
 
-        /**
-         * @filter jentil_layout_mod_names
-         *
-         * @var string $names Layout mod names.
-         *
-         * @since 0.1.0
-         */
-        return \apply_filters(
-            'jentil_layout_mod_names',
-            $names,
-            $this->context,
-            $this->specific,
-            $this->more_specific
-        );
+        return $names;
     }
 
     /**
@@ -152,7 +149,7 @@ final class Layout extends AbstractMod
     public function get(): string
     {
         if (!$this->name) {
-            return false;
+            return '';
         }
 
         if ($this->isPagelike()) {
@@ -173,7 +170,7 @@ final class Layout extends AbstractMod
     /**
      * Is post type pagelike?
      *
-     * Determines if post type behavees like
+     * Determines if post type behaves like
      * the page post type.
      *
      * @since 0.1.0
@@ -187,7 +184,7 @@ final class Layout extends AbstractMod
             && !\get_post_type_archive_link($this->specific));
 
         if ($check && $this->more_specific) {
-            return ($this->more_specific != \get_option('page_for_posts'));
+            return ($this->more_specific !== \get_option('page_for_posts'));
         }
         
         return $check;

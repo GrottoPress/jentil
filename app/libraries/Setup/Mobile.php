@@ -44,7 +44,7 @@ final class Mobile extends AbstractSetup
      */
     public function addBodyClasses(array $classes): array
     {
-        $detector = $this->jentil->utilities->mobileDetector;
+        $detector = $this->theme->utilities->mobileDetector;
 
         if ($detector->isMobile()) {
             $classes[] = 'mobile';

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Panel
+ * Abstract Panel
  *
  * @package GrottoPress\Jentil\Setup\Customizer
  * @since 0.1.0
@@ -18,7 +18,7 @@ use WP_Customize_Manager as WP_Customizer;
 use GrottoPress\Getter\Getter;
 
 /**
- * Panel
+ * Abstract Panel
  *
  * @since 0.1.0
  */
@@ -32,7 +32,7 @@ abstract class AbstractPanel
      * @since 0.1.0
      * @access protected
      *
-     * @var Customizer $customizer Customizer.
+     * @var AbstractCustomizer $customizer Customizer.
      */
     protected $customizer;
 
@@ -54,17 +54,27 @@ abstract class AbstractPanel
      *
      * @var array $args Panel arguments.
      */
-    protected $args;
+    protected $args = [];
+
+    /**
+     * Sections
+     *
+     * @since 0.5.0
+     * @access protected
+     *
+     * @var AbstractSection[] $sections Sections.
+     */
+    protected $sections = [];
 
     /**
      * Constructor
      *
-     * @param Customizer $customizer Customizer.
+     * @param AbstractCustomizer $customizer Customizer.
      *
      * @since 0.1.0
      * @access protected
      */
-    protected function __construct(Customizer $customizer)
+    protected function __construct(AbstractCustomizer $customizer)
     {
         $this->customizer = $customizer;
     }
@@ -75,9 +85,9 @@ abstract class AbstractPanel
      * @since 0.1.0
      * @access protected
      *
-     * @return Customizer Customizer.
+     * @return AbstractCustomizer Customizer.
      */
-    final protected function getCustomizer(): Customizer
+    final protected function getCustomizer(): AbstractCustomizer
     {
         return $this->customizer;
     }
@@ -85,12 +95,12 @@ abstract class AbstractPanel
     /**
      * Name
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
      * @return string Name.
      */
-    final protected function getName(): string
+    protected function getName(): string
     {
         return $this->name;
     }
@@ -98,22 +108,28 @@ abstract class AbstractPanel
     /**
      * Get sections
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access protected
      *
-     * @return array Sections.
+     * @return AbstractSection[] Sections.
      */
-    abstract protected function sections(): array;
+    protected function getSections(): array
+    {
+        return $this->sections;
+    }
 
     /**
      * Add Panel
+     *
+     * Be sure to set $this->sections HERE, in the child class.
+     * Doing that in the constructor would be too early; it won't work.
      *
      * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
      * @access public
      */
-    final public function add(WP_Customizer $wp_customize)
+    public function add(WP_Customizer $wp_customize)
     {
         if (!$this->name) {
             return;
@@ -121,11 +137,7 @@ abstract class AbstractPanel
         
         $wp_customize->add_panel($this->name, $this->args);
 
-        if (!($sections = $this->sections())) {
-            return;
-        }
-
-        foreach ($sections as $section) {
+        foreach ($this->sections as $section) {
             $section->add($wp_customize);
         }
     }

@@ -42,13 +42,13 @@ final class Breadcrumbs extends AbstractSetup
      */
     public function render()
     {
-        $page = $this->jentil->utilities->page;
+        $page = $this->theme->utilities->page;
         
         if ($page->is('front_page') && !$page->is('paged')) {
             return;
         }
 
-        echo $this->jentil->utilities->breadcrumbs([
+        echo $this->theme->utilities->breadcrumbs([
             'before' => \esc_html__('Path: ', 'jentil')
         ])->render();
     }

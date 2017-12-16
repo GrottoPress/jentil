@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Layout;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Page Layout Section
@@ -38,21 +39,34 @@ final class Layout extends AbstractSection
 
         $this->name = 'layout';
         
-        $this->args = [
-            'title' => \esc_html__('Layout', 'jentil'),
-            // 'description' => \esc_html__('Description here', 'jentil'),
-        ];
+        $this->args['title'] = \esc_html__('Layout', 'jentil');
+        // $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     /**
-     * Get settings
+     * Add section
+     *
+     * @param WP_Customizer $wp_customizer
      *
      * @since 0.1.0
-     * @access protected
-     *
-     * @return array Settings.
+     * @access public
      */
-    protected function settings(): array
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->settings = $this->settings();
+
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Settings
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return Settings\AbstractSetting[] Settings.
+     */
+    private function settings(): array
     {
         $settings = [];
 
@@ -61,7 +75,7 @@ final class Layout extends AbstractSection
         $settings['error_404'] = new Settings\Error404($this);
         $settings['search'] = new Settings\Search($this);
 
-        if (($taxonomies = $this->customizer->jentil->utilities
+        if (($taxonomies = $this->customizer->theme->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
@@ -70,7 +84,7 @@ final class Layout extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
@@ -79,11 +93,11 @@ final class Layout extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                if (!$this->customizer->jentil->utilities->mods ->layout([
+                if (!$this->customizer->theme->utilities->mods ->layout([
                     'context' => 'singular',
                     'specific' => $post_type->name,
                 ])->isPagelike()) {

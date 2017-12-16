@@ -12,15 +12,17 @@
  */
 
 .commentlist {
+    @include hobbit;
+    
     margin: auto auto 10px 0;
     padding: 10px auto;
     // border-top: $separator;
     // border-bottom: $separator;
-    @include hobbit;
 
     > li,
     .children > li {
         @include paragraph(10px);
+
         padding-bottom: 10px;
         border-bottom: $separator;
 
@@ -35,8 +37,8 @@
     }
 
     .children {
-        margin-top: map-get($gutter, 'small');
-        padding-top: map-get($gutter, 'small');
+        margin-top: map-get($gutter, small);
+        padding-top: map-get($gutter, small);
         border-top: $separator;
 
         &:first-child {
@@ -66,12 +68,13 @@
 }
 
 #comments {
-    margin-top: map-get($gutter, 'normal');
     @include clearfix;
+    
+    margin-top: map-get($gutter, normal);
 }
 
 #comments-list {
-    margin-bottom: map-get($gutter, 'normal');
+    margin-bottom: map-get($gutter, normal);
 }
 
 .comment-meta,
@@ -81,8 +84,9 @@
 }
 
 .comment-meta {
-    color: $font-color-lighter;
     @include clearfix;
+    
+    color: $font-color-lighter;
 
     .edit-link::before {
         content: "| ";
@@ -101,6 +105,7 @@
 .comment-author {
     .avatar {
         @include float(left);
+        
         margin-right: 10px;
     }
 }

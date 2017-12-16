@@ -25,11 +25,6 @@ use WP_Post;
  */
 final class Metaboxes extends AbstractSetup
 {
-    /**
-     * Import traits
-     *
-     * @since 0.1.0 Added MetaboxesTrait.
-     */
     use MetaboxesTrait;
 
     /**
@@ -49,11 +44,11 @@ final class Metaboxes extends AbstractSetup
      * @param WP_Post $post Post.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return array Metaboxes.
      */
-    protected function metaboxes(WP_Post $post): array
+    private function metaboxes(WP_Post $post): array
     {
         $boxes = [];
 
@@ -64,7 +59,7 @@ final class Metaboxes extends AbstractSetup
         /**
          * @filter jentil_metaboxes
          *
-         * @var array $boxes Metaboxes.
+         * @var Metaboxes[] $boxes Metaboxes.
          * @var WP_Post $post Post.
          *
          * @since 0.1.0
@@ -92,13 +87,13 @@ final class Metaboxes extends AbstractSetup
             return [];
         }
         
-        if (!($layouts = $this->jentil->utilities->page
+        if (!($layouts = $this->theme->utilities->page
                 ->layouts->IDNames())
         ) {
             return [];
         }
 
-        if (!($mod = $this->jentil->utilities->mods->layout([
+        if (!($mod = $this->theme->utilities->mods->layout([
             'context' => 'singular',
             'specific' => $post->post_type,
             'more_specific' => $post->ID,

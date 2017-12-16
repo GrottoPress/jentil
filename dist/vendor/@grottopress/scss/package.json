@@ -1,0 +1,64 @@
+{
+  "_from": "@grottopress/scss@0.1.7",
+  "_id": "@grottopress/scss@0.1.7",
+  "_inBundle": false,
+  "_integrity": "sha512-sBo/EnX7bbm2Khcji1jx+EHx3m4zRfrXK65eR8RgCDQqawe6zO9v04e9sG3Fp6LwTZGeNdZCi3Loa6NHvXYPdA==",
+  "_location": "/@grottopress/scss",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@grottopress/scss@0.1.7",
+    "name": "@grottopress/scss",
+    "escapedName": "@grottopress%2fscss",
+    "scope": "@grottopress",
+    "rawSpec": "0.1.7",
+    "saveSpec": null,
+    "fetchSpec": "0.1.7"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.1.7.tgz",
+  "_shasum": "ad4f7e4ea3aa3d42ceec7051d9ebd2f96338a134",
+  "_spec": "@grottopress/scss@0.1.7",
+  "_where": "/var/www/bedrock/web/app/themes/jentil",
+  "author": {
+    "name": "GrottoPress.com",
+    "email": "info@grottopress.com",
+    "url": "https://www.grottopress.com"
+  },
+  "bugs": {
+    "url": "https://github.com/GrottoPress/scss/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "N Atta Kusi Adusei",
+      "url": "https://twitter.com/akadusei"
+    }
+  ],
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Sass utilities: Mixins, variables and functions.",
+  "devDependencies": {},
+  "homepage": "https://github.com/GrottoPress/scss#README",
+  "keywords": [
+    "sass",
+    "scss"
+  ],
+  "license": "MIT",
+  "name": "@grottopress/scss",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrottoPress/scss.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.7"
+}

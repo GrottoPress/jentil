@@ -20,7 +20,7 @@ declare (strict_types = 1);
 \Jentil()->utilities->loader->loadPartial('header');
 
 if (!\Jentil()->utilities->page->is('singular')) {
-    if (($jentil_title = \Jentil()->utilities->page->title)) { ?>
+    if (($jentil_title = \Jentil()->utilities->page->title->mod()->get())) { ?>
         <header class="page-header">
     <?php }
 
@@ -62,6 +62,13 @@ if (\Jentil()->utilities->page->is('404')
 } else {
     echo $jentil_posts;
 }
+
+/**
+ * @action jentil_after_content
+ *
+ * @since 0.5.0
+ */
+\do_action('jentil_after_content');
 
 /**
  * Load footer template

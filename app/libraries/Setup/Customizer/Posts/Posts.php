@@ -14,6 +14,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Posts Panel
@@ -36,21 +37,34 @@ final class Posts extends AbstractPanel
 
         $this->name = 'posts';
 
-        $this->args = [
-            'title' => \esc_html__('Posts', 'jentil'),
-            // 'description' => \esc_html__('Description here', 'jentil'),
-        ];
+        $this->args['title'] = \esc_html__('Posts', 'jentil');
+        $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     /**
-     * Get sections
+     * Add Panel
+     *
+     * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
-     * @access protected
-     *
-     * @return array Sections.
+     * @access public
      */
-    protected function sections(): array
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->sections = $this->sections();
+
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Sections
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return AbstractSection[] Sections.
+     */
+    private function sections(): array
     {
         $sections = [];
 
@@ -58,7 +72,7 @@ final class Posts extends AbstractPanel
         $sections['date'] = new Date($this);
         $sections['search'] = new Search($this);
 
-        if (($taxonomies = $this->customizer->jentil->utilities
+        if (($taxonomies = $this->customizer->theme->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
@@ -69,7 +83,7 @@ final class Posts extends AbstractPanel
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {

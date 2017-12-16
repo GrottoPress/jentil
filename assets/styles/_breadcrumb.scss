@@ -12,7 +12,8 @@
  */
 
 .breadcrumbs {
+    @include paragraph;
+    
     color: $font-color-lighter;
     font-size: $font-size-tiny;
-    @include paragraph;
 }

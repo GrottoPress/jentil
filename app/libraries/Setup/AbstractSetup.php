@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setup
+ * Abstract Setup
  *
  * @package GrottoPress\Jentil\Setup
  * @since 0.1.0
@@ -14,11 +14,11 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup;
 
-use GrottoPress\Jentil\Jentil;
+use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Getter\Getter;
 
 /**
- * Setup
+ * Abstract Setup
  *
  * @since 0.1.0
  */
@@ -27,39 +27,39 @@ abstract class AbstractSetup
     use Getter;
     
     /**
-     * Jentil
+     * Theme
      *
      * @since 0.1.0
      * @access protected
      *
-     * @var Jentil $jentil Jentil.
+     * @var Theme $theme Theme.
      */
-    protected $jentil;
+    protected $theme;
 
     /**
      * Constructor
      *
-     * @param Jentil $jentil Jentil.
+     * @param AbstractTheme $theme Theme.
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Jentil $jentil)
+    public function __construct(AbstractTheme $theme)
     {
-        $this->jentil = $jentil;
+        $this->theme = $theme;
     }
 
     /**
-     * Jentil
+     * Theme
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return Jentil Jentil.
+     * @return AbstractTheme Theme.
      */
-    final protected function getJentil(): Jentil
+    final protected function getTheme(): AbstractTheme
     {
-        return $this->jentil;
+        return $this->theme;
     }
 
     /**

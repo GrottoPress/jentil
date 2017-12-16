@@ -16,7 +16,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer;
 
-use GrottoPress\Jentil\Setup\AbstractSetup;
+use GrottoPress\Jentil\Jentil;
 use WP_Customize_Manager as WP_Customizer;
 
 /**
@@ -24,7 +24,7 @@ use WP_Customize_Manager as WP_Customizer;
  *
  * @since 0.1.0
  */
-final class Customizer extends AbstractSetup
+final class Customizer extends AbstractCustomizer
 {
     /**
      * Run setup
@@ -34,8 +34,10 @@ final class Customizer extends AbstractSetup
      */
     public function run()
     {
-        \add_action('customize_register', [$this, 'register']);
+        parent::run();
+        
         \add_action('customize_preview_init', [$this, 'enqueueJS']);
+        \add_action('customize_preview_init', [$this, 'enqueueInlineJS']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
 
@@ -46,13 +48,18 @@ final class Customizer extends AbstractSetup
      *
      * @action customize_register
      *
-     * @since 0.1.0
+     * @since 0.5.0
      * @access public
      */
     public function register(WP_Customizer $wp_customize)
     {
-        $this->addPanels($wp_customize);
-        $this->addSections($wp_customize);
+        $this->sections['title'] = new Title\Title($this);
+        $this->sections['layout'] = new Layout\Layout($this);
+        $this->sections['colophon'] = new Colophon\Colophon($this);
+        
+        $this->panels['posts'] = new Posts\Posts($this);
+        
+        parent::register($wp_customize);
     }
 
     /**
@@ -67,7 +74,7 @@ final class Customizer extends AbstractSetup
     {
         \wp_enqueue_script(
             'jentil-customizer',
-            $this->jentil->utilities->fileSystem->scriptsDir(
+            $this->theme->utilities->fileSystem->scriptsDir(
                 'url',
                 '/customize-preview.min.js'
             ),
@@ -75,6 +82,34 @@ final class Customizer extends AbstractSetup
             '',
             true
         );
+    }
+
+    /**
+     * Enqueue Inlne JavaScript
+     *
+     * @action customize_preview_init
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @todo Find out how to get page type in customizer.
+     */
+    public function enqueueInlineJS()
+    {
+        $script = 'var shortTags = '.\json_encode(
+            $this->theme->utilities->shortTags->get()
+        ).';
+        var colophonModName = "'.$this->sections['colophon']->settings['colophon']->name.'";';
+
+        $titles = [];
+        
+        foreach ($this->sections['title']->settings as $setting) {
+            $titles[] = $setting->name;
+        }
+
+        $script .= 'var titleModNames = '.\json_encode($titles).';';
+        
+        \wp_add_inline_script('jentil-customizer', $script, 'before');
     }
 
     /**
@@ -93,85 +128,5 @@ final class Customizer extends AbstractSetup
     public function enableSelectiveRefresh()
     {
         \add_theme_support('customize-selective-refresh-widgets');
-    }
-
-    /**
-     * Get panels
-     *
-     * Panels comprise sections which, in turn,
-     * comprise settings.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Panels.
-     */
-    private function panels(): array
-    {
-        $panels = [];
-
-        $panels['posts'] = new Posts\Posts($this);
-
-        return $panels;
-    }
-
-    /**
-     * Get sections
-     *
-     * These sections come under no panel. Each section
-     * comprises its settings.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Sections.
-     */
-    private function sections(): array
-    {
-        $sections = [];
-
-        $sections['title'] = new Title\Title($this);
-        $sections['layout'] = new Layout\Layout($this);
-        $sections['colophon'] = new Colophon\Colophon($this);
-
-        return $sections;
-    }
-    
-    /**
-     * Add panels
-     *
-     * @param WP_Customizer $wp_customize
-     *
-     * @since 0.1.0
-     * @access private
-     */
-    private function addPanels(WP_Customizer $wp_customize)
-    {
-        if (!($panels = $this->panels())) {
-            return;
-        }
-
-        foreach ($panels as $panel) {
-            $panel->add($wp_customize);
-        }
-    }
-
-    /**
-     * Add sections
-     *
-     * @param WP_Customizer $wp_customize
-     *
-     * @since 0.1.0
-     * @access private
-     */
-    private function addSections(WP_Customizer $wp_customize)
-    {
-        if (!($sections = $this->sections())) {
-            return;
-        }
-
-        foreach ($sections as $section) {
-            $section->add($wp_customize);
-        }
     }
 }

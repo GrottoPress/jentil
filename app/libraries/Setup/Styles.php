@@ -30,9 +30,9 @@ final class Styles extends AbstractSetup
     public function run()
     {
         \add_action('wp_enqueue_scripts', [$this, 'enqueueNormalize']);
-        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
         \add_action('wp_enqueue_scripts', [$this, 'enqueueFontAwesome']);
         \add_action('wp_enqueue_scripts', [$this, 'enqueuePosts']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
     }
     
     /**
@@ -53,7 +53,7 @@ final class Styles extends AbstractSetup
         
         \wp_enqueue_style(
             'jentil',
-            $this->jentil->utilities->fileSystem->stylesDir('url', $style),
+            $this->theme->utilities->fileSystem->stylesDir('url', $style),
             ['normalize']
         );
     }
@@ -70,9 +70,9 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'normalize',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->dir(
                 'url',
-                '/node_modules/normalize.css/normalize.css'
+                '/dist/vendor/normalize.css/normalize.css'
             )
         );
     }
@@ -89,9 +89,9 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'font-awesome',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->dir(
                 'url',
-                '/node_modules/font-awesome/css/font-awesome.min.css'
+                '/dist/vendor/font-awesome/css/font-awesome.min.css'
             ),
             ['normalize']
         );
@@ -109,9 +109,9 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'wordpress-posts',
-            $this->jentil->utilities->fileSystem->themeDir(
+            $this->theme->utilities->fileSystem->themeDir(
                 'url',
-                '/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
+                '/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
             ),
             ['normalize']
         );

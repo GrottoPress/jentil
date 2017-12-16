@@ -107,11 +107,11 @@ final class Layouts
      * @since 0.1.0
      * @access public
      *
-     * @return array Layout ids mapping to names.
+     * @return string[] Layout ids mapping to names.
      */
     public function IDs(): array
     {
-         return \array_keys($this->IDNames());
+        return \array_keys($this->IDNames());
     }
 
     /**

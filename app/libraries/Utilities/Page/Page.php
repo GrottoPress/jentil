@@ -83,7 +83,7 @@ final class Page extends PagePackage
      * @since 0.1.0
      * @access private
      *
-     * @var array $type Page type.
+     * @var string[] $type Page type.
      */
     private $type = null;
 
@@ -121,13 +121,13 @@ final class Page extends PagePackage
      *
      * @return Title Title.
      */
-    private function getTitle(): string
+    private function getTitle(): Title
     {
         if (null === $this->title) {
             $this->title = new Title($this);
         }
 
-        return $this->title->mod();
+        return $this->title;
     }
 
     /**
@@ -186,16 +186,17 @@ final class Page extends PagePackage
      *
      * Page type is used too many times on archives
      * for getting posts mods, so let's make sure method
-     * is called only once per page cycle.
+     * is called only once per page cycle, except, of course,
+     * in the customizer.
      *
      * @since 0.1.0
      * @access private
      *
-     * @return array
+     * @return string[]
      */
     private function getType(): array
     {
-        if (null === $this->type) {
+        if (null === $this->type || $this->is('customize_preview')) {
             $this->type = parent::type();
         }
 

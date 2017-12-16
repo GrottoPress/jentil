@@ -13,10 +13,11 @@
 
 ul,
 ol {
+    @include paragraph;
+    
     list-style-image: none;
     margin-left: 30px;
     padding-left: 0;
-    @include paragraph;
 
     ul,
     ol {
@@ -53,8 +54,9 @@ ol {
 }
 
 li {
-    display: list-item;
     @include paragraph(5px);
+    
+    display: list-item;
 }
 
 /** Definition Lists */
@@ -69,7 +71,8 @@ dt {
 }
 
 dd {
+    @include paragraph;
+    
     margin-right: 0;
     margin-left: 0;
-    @include paragraph;
 }

@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
 
+use GrottoPress\Jentil\Utilities\Mods\Title as TitleMod;
+
 /**
  * Title
  *
@@ -52,7 +54,7 @@ final class Title
      *
      * @return string Title mod.
      */
-    public function mod(): string
+    public function mod(): TitleMod
     {
         $page = $this->page->type;
 
@@ -60,13 +62,13 @@ final class Title
         $more_specific = '';
 
         foreach ($page as $type) {
-            if ('post_type_archive' == $type) {
+            if ('post_type_archive' === $type) {
                 $specific = \get_query_var('post_type');
-            } elseif ('tax' == $type) {
+            } elseif ('tax' === $type) {
                 $specific = \get_query_var('taxonomy');
-            } elseif ('category' == $type) {
+            } elseif ('category' === $type) {
                 $specific = 'category';
-            } elseif ('tag' == $type) {
+            } elseif ('tag' === $type) {
                 $specific = 'post_tag';
             }
 
@@ -85,10 +87,10 @@ final class Title
             ]);
 
             if ($mod->name) {
-                return $mod->get();
+                return $mod;
             }
         }
 
-        return $mod->default;
+        return $mod;
     }
 }

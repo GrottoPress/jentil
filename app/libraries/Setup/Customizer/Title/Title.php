@@ -16,6 +16,7 @@ namespace GrottoPress\Jentil\Setup\Customizer\Title;
 
 use GrottoPress\Jentil\Setup\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setup\Customizer\Customizer;
+use WP_Customize_Manager as WP_Customizer;
 
 /**
  * Title Section
@@ -37,21 +38,35 @@ final class Title extends AbstractSection
         parent::__construct($customizer);
 
         $this->name = 'title';
-        $this->args = [
-            'title' => \esc_html__('Title', 'jentil'),
-            // 'description' => \esc_html__('Description here', 'jentil'),
-        ];
+
+        $this->args['title'] = \esc_html__('Title', 'jentil');
+        $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     /**
-     * Get settings
+     * Add section
+     *
+     * @param WP_Customizer $wp_customizer
      *
      * @since 0.1.0
-     * @access protected
-     *
-     * @return array Settings.
+     * @access public
      */
-    protected function settings(): array
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->settings = $this->settings();
+
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Settings
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return Settings\AbstractSetting[] Settings.
+     */
+    private function settings(): array
     {
         $settings = [];
 
@@ -60,7 +75,7 @@ final class Title extends AbstractSection
         $settings['error_404'] = new Settings\Error404($this);
         $settings['search'] = new Settings\Search($this);
 
-        if (($taxonomies = $this->customizer->jentil->utilities
+        if (($taxonomies = $this->customizer->theme->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
@@ -68,7 +83,7 @@ final class Title extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->jentil->utilities
+        if (($post_types = $this->customizer->theme->utilities
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {

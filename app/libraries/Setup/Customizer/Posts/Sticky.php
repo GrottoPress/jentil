@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setup\Customizer\Posts;
 
+use WP_Customize_Manager as WP_Customizer;
+
 use WP_Post_Type;
 
 /**
@@ -35,23 +37,49 @@ final class Sticky extends AbstractSection
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
         parent::__construct($posts);
-
+        
         $this->name = \sanitize_key($post_type->name.'_sticky_posts');
+        
+        $this->setArgs($post_type);
+        $this->setModArgs($post_type);
+    }
 
-        $this->modArgs['context'] = 'sticky';
-        $this->modArgs['specific'] = $post_type->name;
+    /**
+     * Add section
+     *
+     * @param WP_Customizer $wp_customizer
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function add(WP_Customizer $wp_customize)
+    {
+        $this->settings = $this->settings();
 
-        // $this->args['panel'] = '';
-        $this->args['title'] = \sprintf(\esc_html__(
-            'Sticky %s',
-            'jentil'
-        ), $post_type->labels->name);
+        parent::add($wp_customize);
+    }
+
+    /**
+     * Set args
+     *
+     * @param WP_Post_Type $post_type Post type.
+     *
+     * @since 0.5.0
+     * @access private
+     */
+    private function setArgs(WP_Post_Type $post_type)
+    {
+        $this->args['title'] = \sprintf(
+            \esc_html__('Sticky %s', 'jentil'),
+            $post_type->labels->name
+        );
+
         $this->args['active_callback'] = function () use ($post_type): bool {
-            $page = $this->posts->customizer->jentil->utilities->page;
-            $has_sticky = $this->posts->customizer->jentil->utilities
+            $page = $this->customizer->theme->utilities->page;
+            $has_sticky = $this->customizer->theme->utilities
                 ->page->posts->sticky->get($post_type->name);
 
-            if ('post' == $post_type->name) {
+            if ('post' === $post_type->name) {
                 return ($page->is('home') && $has_sticky);
             }
             
@@ -64,12 +92,26 @@ final class Sticky extends AbstractSection
     }
 
     /**
+     * Set mod args
+     *
+     * @param WP_Post_Type $post_type Post type.
+     *
+     * @since 0.5.0
+     * @access private
+     */
+    private function setModArgs(WP_Post_Type $post_type)
+    {
+        $this->modArgs['context'] = 'sticky';
+        $this->modArgs['specific'] = $post_type->name;
+    }
+
+    /**
      * Get settings
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return array Settings.
+     * @return Settings\AbstractSetting[] Settings.
      */
     protected function settings(): array
     {

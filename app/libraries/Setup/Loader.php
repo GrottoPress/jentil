@@ -34,7 +34,53 @@ final class Loader extends AbstractSetup
      */
     public function run()
     {
-        $types = [
+        $templates = $this->templates();
+
+        foreach ($templates as $template) {
+            \add_filter("{$template}_template_hierarchy", [$this, 'load']);
+        }
+    }
+
+    /**
+     * Load templates
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @filter {$type}_template_hierarchy
+     */
+    public function load(array $templates): array
+    {
+        $j_templates = [];
+
+        foreach ($templates as $template) {
+            $templates_dir = $this->theme->utilities->fileSystem->templatesDir(
+                'path',
+                "/{$template}",
+                'relative'
+            );
+            
+            $j_templates[] = $templates_dir;
+
+            if (($rel_dir = $this->theme->utilities->fileSystem->relativeDir())) {
+                $j_templates[] = "{$rel_dir}/{$templates_dir}";
+            }
+        }
+
+        return $j_templates;
+    }
+
+    /**
+     * Templates
+     *
+     * @since 0.5.0
+     * @access private
+     *
+     * @return string[]
+     */
+    private function templates(): array
+    {
+        return [
             'index',
             '404',
             'archive',
@@ -53,35 +99,5 @@ final class Loader extends AbstractSetup
             'singular',
             'attachment',
         ];
-
-        foreach ($types as $type) {
-            \add_filter("{$type}_template_hierarchy", [$this, 'load']);
-        }
-    }
-
-    /**
-     * Load templates
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @filter {$type}_template_hierarchy
-     */
-    public function load(array $templates): array
-    {
-        $j_templates = [];
-
-        foreach ($templates as $template) {
-            $j_templates[] = \ltrim(
-                $this->jentil->utilities->fileSystem->templatesDir(
-                    'path',
-                    '/'.$template,
-                    'relative'
-                ),
-                '/'
-            );
-        }
-
-        return $j_templates;
     }
 }

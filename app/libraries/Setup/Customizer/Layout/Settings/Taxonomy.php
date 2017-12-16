@@ -61,25 +61,23 @@ final class Taxonomy extends AbstractSetting
     {
         $mod_context = 'tax';
         
-        if ('post_tag' == $taxonomy->name) {
+        if ('post_tag' === $taxonomy->name) {
             $mod_context = 'tag';
-        } elseif ('category' == $taxonomy->name) {
+        } elseif ('category' === $taxonomy->name) {
             $mod_context = 'category';
         }
 
         if ($term) {
-            $this->mod = $this->layout->customizer->jentil->utilities
-                ->mods->layout([
-                    'context' => $mod_context,
-                    'specific' => $taxonomy->name,
-                    'more_specific' => $term->term_id,
-                ]);
+            $this->mod = $this->mod([
+                'context' => $mod_context,
+                'specific' => $taxonomy->name,
+                'more_specific' => $term->term_id,
+            ]);
         } else {
-            $this->mod = $this->layout->customizer->jentil->utilities
-                ->mods->layout([
-                    'context' => $mod_context,
-                    'specific' => $taxonomy->name,
-                ]);
+            $this->mod = $this->mod([
+                'context' => $mod_context,
+                'specific' => $taxonomy->name,
+            ]);
         }
     }
 
@@ -95,7 +93,7 @@ final class Taxonomy extends AbstractSetting
             $taxonomy,
             $term
         ): bool {
-            $page = $this->layout->customizer->jentil->utilities->page;
+            $page = $this->section->customizer->theme->utilities->page;
 
             if ($term) {
                 return ($page->is('tag', $term->term_id)
@@ -103,11 +101,11 @@ final class Taxonomy extends AbstractSetting
                     || $page->is('tax', $taxonomy, $term->term_id));
             }
 
-            if ('post_tag' == $taxonomy->name) {
+            if ('post_tag' === $taxonomy->name) {
                 return $page->is('tag');
             }
 
-            if ('category' == $taxonomy->name) {
+            if ('category' === $taxonomy->name) {
                 return $page->is('category');
             }
 

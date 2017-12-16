@@ -41,9 +41,9 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Jentil $jentil Jentil.
+     * @var Jentil $theme Jentil.
      */
-    private $jentil;
+    private $theme;
 
     /**
      * Mods
@@ -51,7 +51,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Mods\Mods $mods Mods.
+     * @var Mods $mods Mods.
      */
     private $mods = null;
 
@@ -61,7 +61,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Page\Page $page Page.
+     * @var Page $page Page.
      */
     private $page = null;
 
@@ -116,6 +116,16 @@ final class Utilities
     private $updater = null;
 
     /**
+     * Short Tags
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @var ShortTags $shortTags
+     */
+    private $shortTags = null;
+
+    /**
      * Constructor
      *
      * @var Jentil $jentil Jentil.
@@ -125,20 +135,20 @@ final class Utilities
      */
     public function __construct(Jentil $jentil)
     {
-        $this->jentil = $jentil;
+        $this->theme = $jentil;
     }
 
     /**
-     * Jentil
+     * Get theme
      *
      * @since 0.1.0
      * @access public
      *
      * @return Jentil Jentil.
      */
-    private function getJentil(): Jentil
+    private function getTheme(): Jentil
     {
-        return $this->jentil;
+        return $this->theme;
     }
 
     /**
@@ -256,12 +266,24 @@ final class Utilities
         if (null === $this->updater) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(
                 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-                $this->fileSystem->themeDir('path', '/functions.php'),
+                $this->fileSystem->dir('path', '/functions.php'),
                 'jentil'
             );
         }
 
         return $this->updater;
+    }
+
+    /**
+     * Short Tags
+     */
+    public function getShortTags(): ShortTags
+    {
+        if (null === $this->shortTags) {
+            $this->shortTags = new ShortTags($this);
+        }
+
+        return $this->shortTags;
     }
 
     /**

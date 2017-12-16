@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\Page\Page;
+use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
 use GrottoPress\Getter\Getter;
 
 /**
@@ -163,7 +164,7 @@ final class Posts
      * @since 0.1.0
      * @access public
      *
-     * @return array Public post types.
+     * @return \WP_Post_Type[] Public post types.
      */
     public function postTypes(): array
     {
@@ -176,7 +177,7 @@ final class Posts
      * @since 0.1.0
      * @access public
      *
-     * @return array Public taxonomies.
+     * @return \WP_Taxonomy[] Public taxonomies.
      */
     public function taxonomies(): array
     {
@@ -194,13 +195,13 @@ final class Posts
      *
      * @return mixed Posts mod.
      */
-    public function mod(string $setting, array $args = [])
+    public function mod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {
             return $this->page->utilities->mods->posts(
                 $setting,
                 $args
-            )->get();
+            );
         }
 
         $page = $this->page->type;
@@ -209,13 +210,13 @@ final class Posts
         $more_specific = '';
 
         foreach ($page as $type) {
-            if ('post_type_archive' == $type) {
+            if ('post_type_archive' === $type) {
                 $specific = \get_query_var('post_type');
-            } elseif ('tax' == $type) {
+            } elseif ('tax' === $type) {
                 $specific = \get_query_var('taxonomy');
-            } elseif ('category' == $type) {
+            } elseif ('category' === $type) {
                 $specific = 'category';
-            } elseif ('tag' == $type) {
+            } elseif ('tag' === $type) {
                 $specific = 'post_tag';
             }
 
@@ -234,10 +235,10 @@ final class Posts
             ]);
 
             if ($mod->name) {
-                return $mod->get();
+                return $mod;
             }
         }
 
-        return $mod->default;
+        return $mod;
     }
 }
