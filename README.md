@@ -2,20 +2,24 @@
 
 Jentil is a modern framework for rapid WordPress theme development. It is packed with predefined, pluggable features, including powerful content options which allows to configure how posts display on archives right from the customizer.
 
-Jentil features six layout options, configured via the customizer and post meta boxes. Jentil can be used to build blogs, magazines, e-commerce, corporate websites and more.
+Jentil may be installed either as a parent theme, or as a package (eg: via composer) in another theme.
 
-It integrates seamlessly with most WordPress page builders, including:
+Jentil features six layout options, configured via the customizer and post meta boxes. It can be used to build blogs, magazines, e-commerce, corporate websites and more.
+
+Jentil comes with page builder post type templates, and integrates seamlessly with most WordPress site builders, including:
 
 - [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
 - [SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 - [Elementor](https://wordpress.org/plugins/elementor/)
 - [Live Composer](https://wordpress.org/plugins/live-composer-page-builder/)
 
+We are following, closely, the development of [Gutenberg](https://wordpress.org/plugins/gutenberg/). We will be ready when Gutenberg is ready!
+
 ## Features
 
 ### For the End User:
-- Powerful posts/content display options via the customizer.
-- Page builder page/post templates
+- Powerful posts display options via the customizer.
+- Page builder post type templates
 - Six (6) layout options  
     * Content
     * Content / Sidebar
@@ -37,29 +41,18 @@ It integrates seamlessly with most WordPress page builders, including:
 
 ## Requirements
 
-This theme requires **WordPress** version **4.7** or newer. Minimum required **PHP** version is **7.0**.
+*Jentil* requires **WordPress** version **4.7** or newer. Minimum required **PHP** version is **7.0**.
 
 ## Installation
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
 
-Jentil can be installed either one of 2 modes: As a parent theme for a child theme, or as a package in another theme.
-
-### Install as parent theme
-
 - Download and install the [jentil-child](#) theme to get started. (Link to be posted soon).
-- Download Jentil from [here](https://api.grottopress.com/wp-update-server/v1/?action=download&slug=jentil) (in *zip* format), and install.
-- Activate the jentil-child theme.
-- Head over to the documentation and start creating your child theme. (Link to be posted soon)
-
-### Install as package
-
-You should have [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) installed.
-
-- Download and install the [jentil-starter](#) theme (Link to be posted soon).
-- From the starter theme's directory, via the command line, enter `composer update` to install packages.
-- This would install Jentil (as a package) and all dependencies. Alternatively: `composer require grottopress/jentil`.
-- Head over to the documentation and start creating your theme. (Link to be posted soon)
+- From the jentil-child directory, run `composer update` to update dependencies.
+- By default jentil-child installs as starter theme, with *Jentil* as a package. To use jentil-child as a child theme instead, run `composer run child`. Use `composer run starter` to switch back to starter theme mode.
+- Rename jentil-child to a new name via `composer run rename my-new-theme-name-here`
+- Activate the new theme.
+- Head over to the [documentation](#) and start hacking your new theme. (Link to be posted soon)
 
 ## Documentation
 
