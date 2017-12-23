@@ -61,7 +61,7 @@ final class Search extends AbstractSetup
                         $searchform .= $query;
                     }
 
-                    $searchform .= '" required />
+                    $searchform .= '" />
                 </label>
 
                 <button type="submit" class="button submit">
