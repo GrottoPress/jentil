@@ -18,12 +18,9 @@
 }
 
 .menu {
-    margin-left: 0;
-    letter-spacing: -1em;
+    @include inline-block-whitespace-fix;
 
-    > * {
-        letter-spacing: normal;
-    }
+    margin-left: 0;
 
     ul {
         margin-left: 15px;
