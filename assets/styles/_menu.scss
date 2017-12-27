@@ -19,7 +19,11 @@
 
 .menu {
     margin-left: 0;
-    font-size: 0;
+    letter-spacing: -1em;
+
+    > * {
+        letter-spacing: normal;
+    }
 
     ul {
         margin-left: 15px;
@@ -31,8 +35,6 @@
 
     li {
         @include position(relative);
-        
-        font-size: $font-size-small;
     }
 }
 
