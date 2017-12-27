@@ -24,6 +24,19 @@
     vertical-align: top;
 }
 
+/// Inline block whitespace fix
+///
+/// Include this in parent of inline block element
+///
+/// @since 0.1.8
+@mixin inline-block-whitespace-fix {
+    letter-spacing: -1em;
+
+    > * {
+        letter-spacing: normal;
+    }
+}
+
 /// Clear fix
 @mixin clearfix {
     &::after {
@@ -189,15 +202,10 @@
 
     margin-left: -$half-gutter;
     margin-right: -$half-gutter;
-    letter-spacing: -1em;
 
     &,
     &:#{$n-child}-child {
         margin-#{$v-margin}: -$gutter;
-    }
-
-    > * {
-        letter-spacing: normal;
     }
 
     > #{$columns} {
@@ -212,4 +220,16 @@
             margin-#{$v-margin}: $gutter;
         }
     }
+}
+
+/// Opacity
+///
+/// @param {number} $opacity
+///
+/// @since 0.1.8
+@mixin opacity($opacity) {
+    $ie: $opacity * 100;
+
+    -ms-filter: 'alpha(opacity=#{$ie})'; /* For IE8 and later */
+    opacity: $opacity;
 }
