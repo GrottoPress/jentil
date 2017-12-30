@@ -23,8 +23,8 @@
     },
     "devDependencies": {
         "gulp": "^3.9.1",
-        "gulp-clean-css": "^3.9.0",
-        "gulp-jshint": "^2.0.4",
+        "gulp-clean-css": "^3.9.2",
+        "gulp-jshint": "^2.1.0",
         "gulp-rename": "^1.2.2",
         "gulp-rtlcss": "^1.0.0",
         "gulp-sass": "^3.1.0",
