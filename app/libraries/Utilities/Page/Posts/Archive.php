@@ -25,16 +25,16 @@ final class Archive extends AbstractPosts
      * Archives Posts Args
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return array Archives posts args.
      */
-    public function args(): array
+    protected function args(): array
     {
         $args = [
             // 'tag' => $this->posts->mod('wrap_tag')->get(),
             'class' => $this->posts->mod('wrap_class')->get(),
-            'id' => 'main-query',
+            'id' => $this->posts->id,
             'layout' => $this->posts->mod('layout')->get(),
             'text_offset' => $this->posts->mod('text_offset')->get(),
             'image' => [
@@ -203,5 +203,20 @@ final class Archive extends AbstractPosts
         }
 
         return $archive_post_types;
+    }
+
+    /**
+     * Are we on a paged archive
+     *
+     * @since 0.5.1
+     * @access public
+     *
+     * @return bool
+     */
+    public function isPaged(): bool
+    {
+        $key = $this->posts()->pagination->key;
+
+        return (isset($_GET[$key]) && \absint($_GET[$key]) > 1);
     }
 }

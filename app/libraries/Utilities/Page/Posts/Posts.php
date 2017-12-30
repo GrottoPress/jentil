@@ -38,6 +38,16 @@ final class Posts
     private $page;
 
     /**
+     * Query ID
+     *
+     * @since 0.5.1
+     * @access private
+     *
+     * @var string
+     */
+    private $id;
+
+    /**
      * Sticky Posts
      *
      * @since 0.1.0
@@ -79,6 +89,8 @@ final class Posts
     {
         $this->page = $page;
 
+        $this->id = 'main-query';
+
         $this->sticky = new Sticky($this);
         $this->singular = new Singular($this);
         $this->archive =  new Archive($this);
@@ -92,9 +104,22 @@ final class Posts
      *
      * @return Page
      */
-    private function getPage()
+    private function getPage(): Page
     {
         return $this->page;
+    }
+
+    /**
+     * Get ID
+     *
+     * @since 0.5.1
+     * @access private
+     *
+     * @return string
+     */
+    private function getID(): string
+    {
+        return $this->id;
     }
 
     /**
@@ -105,7 +130,7 @@ final class Posts
      *
      * @return Sticky
      */
-    private function getSticky()
+    private function getSticky(): Sticky
     {
         return $this->sticky;
     }
@@ -116,9 +141,9 @@ final class Posts
      * @since 0.1.0
      * @access private
      *
-     * @return Sticky
+     * @return Archive
      */
-    private function getArchive()
+    private function getArchive(): Archive
     {
         return $this->archive;
     }
@@ -133,27 +158,20 @@ final class Posts
      */
     public function render(): string
     {
-        $out = '';
-
-        if (!$this->page->is('singular')
-            && !$this->page->is('paged')
-            && $this->sticky->isSet()
-            && $this->sticky->get()
-        ) {
-            $out .= $this->page->utilities->posts(
-                $this->sticky->args()
-            )->render();
-        }
-
         if ($this->page->is('singular')) {
-            $out .= $this->page->utilities->posts(
-                $this->singular->args()
-            )->render();
-        } else {
-            $out .= $this->page->utilities->posts(
-                $this->archive->args()
-            )->render();
+            return $this->singular->posts()->render();
         }
+
+        $out = '';
+        
+        if (!$this->archive->isPaged()
+            && $this->sticky->isSet()
+            && $this->sticky->get($this->postType())
+        ) {
+            $out .= $this->sticky->posts()->render();
+        }
+
+        $out .= $this->archive->posts()->render();
 
         return $out;
     }
@@ -240,5 +258,26 @@ final class Posts
         }
 
         return $mod;
+    }
+
+    /**
+     * Post type query var
+     *
+     * @since 0.5.1
+     * @access private
+     *
+     * @return string
+     */
+    private function postType(): string
+    {
+        if ($this->page->is('home')) {
+            return 'post';
+        }
+
+        if ($this->page->is('post_type_archive')) {
+            return \get_query_var('post_type');
+        }
+
+        return '';
     }
 }

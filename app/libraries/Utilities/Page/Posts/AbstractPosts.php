@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
+use GrottoPress\WordPress\Posts\Posts as PostsPackage;
+
 /**
  * Abstract Archive Posts
  *
@@ -30,7 +32,7 @@ abstract class AbstractPosts
      * @var Posts $posts Posts.
      */
     protected $posts;
-    
+
     /**
      * Constructor
      *
@@ -45,12 +47,27 @@ abstract class AbstractPosts
     }
 
     /**
+     * Get posts
+     *
+     * @since 0.5.1
+     * @access public
+     *
+     * @return PostsPackage
+     */
+    public function posts(): PostsPackage
+    {
+        return $this->posts->page->utilities->posts(
+            $this->args()
+        );
+    }
+
+    /**
      * Posts Args
      *
      * @since 0.1.0
-     * @access public
+     * @access protected
      *
      * @return array Archives posts args.
      */
-    abstract public function args(): array;
+    abstract protected function args(): array;
 }

@@ -34,7 +34,7 @@ final class Sticky extends AbstractPosts
         $args = [
             // 'tag' => $this->mod('wrap_tag')->get(),
             'class' => $this->mod('wrap_class')->get(),
-            'id' => 'main-query-sticky-posts',
+            'id' => $this->posts->id.'-sticky-posts',
             'layout' => $this->mod('layout')->get(),
             'text_offset' => $this->mod('text_offset')->get(),
             'image' => [
@@ -68,7 +68,7 @@ final class Sticky extends AbstractPosts
                 ],
             ],
             'wp_query' => [
-                'posts_per_page' => -1,
+                'posts_per_page' => \count($this->get()),
                 'post__in' => $this->get(),
                 'post_status' => 'publish',
                 'ignore_sticky_posts' => 1,
@@ -159,23 +159,19 @@ final class Sticky extends AbstractPosts
     {
         $sticky_posts = \get_option('sticky_posts');
 
-        if (!$sticky_posts) {
-            return $sticky_posts;
-        }
-        
-        if (!$post_type) {
+        if (!$sticky_posts || !$post_type) {
             return $sticky_posts;
         }
 
-        $type_sticky_posts = [];
+        $type_sticky = [];
 
         foreach ($sticky_posts as $post) {
             if (\get_post_type($post) === $post_type) {
-                $type_sticky_posts[] = $post;
+                $type_sticky[] = $post;
             }
         }
 
-        return $type_sticky_posts;
+        return $type_sticky;
     }
 
     /**

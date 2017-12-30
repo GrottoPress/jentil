@@ -35,7 +35,7 @@ final class Singular extends AbstractPosts
 
         return [
             'layout' => 'stack',
-            'id' => 'main-query',
+            'id' => $this->posts->id,
             'class' => 'singular-post',
             'excerpt' => [
                 'length' => -2,
