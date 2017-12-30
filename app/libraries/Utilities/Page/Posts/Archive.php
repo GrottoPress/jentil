@@ -31,8 +31,6 @@ final class Archive extends AbstractPosts
      */
     public function args(): array
     {
-        global $wp_rewrite;
-
         $args = [
             // 'tag' => $this->posts->mod('wrap_tag')->get(),
             'class' => $this->posts->mod('wrap_class')->get(),
@@ -58,7 +56,6 @@ final class Archive extends AbstractPosts
             'pagination' => [
                 // 'type' => $this->posts->mod('pagination')->get(),
                 // 'max' => $this->posts->mod('pagination_maximum')->get(),
-                'key' => $wp_rewrite->pagination_base,
                 'position' => \explode(
                     ',',
                     $this->posts->mod('pagination_position')->get()
