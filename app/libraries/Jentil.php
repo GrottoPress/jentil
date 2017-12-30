@@ -14,7 +14,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil;
 
-use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
 
 /**
