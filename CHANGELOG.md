@@ -4,7 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased - 0.5.0
+## Unreleased 0.5.1 - 
+
+### Fixed
+- Fixed 404 errors with posts pagination
+
+### Changed
+- Undo require search input filled on search submit
+- Replaced zero font size inline-block whitespace fix with letter spacing fix
+
+### Fixed
+- Fixed 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 
+
+## 0.5.0 - 2017-12-16
 
 ### Added
 - Added development binaries in a new `bin` directory
