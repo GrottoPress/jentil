@@ -104,23 +104,26 @@ abstract class AbstractSection extends Section
         $settings['number'] = new Settings\Number($this);
         // $settings['wrap_tag'] = new Settings\WrapTag($this);
         // $settings['layout'] = new Settings\Layout($this);
-        $settings['before_title'] = new Settings\BeforeTitle($this);
-        $settings['before_title_separator'] =
-            new Settings\BeforeTitleSeparator($this);
+
         $settings['title_words'] = new Settings\TitleWords($this);
         $settings['title_position'] = new Settings\TitlePosition($this);
-        $settings['after_title'] = new Settings\AfterTitle($this);
-        $settings['after_title_separator'] =
-            new Settings\AfterTitleSeparator($this);
         $settings['image'] = new Settings\Image($this);
         $settings['image_alignment'] = new Settings\ImageAlignment($this);
         $settings['image_margin'] = new Settings\ImageMargin($this);
         $settings['text_offset'] = new Settings\TextOffset($this);
         $settings['excerpt'] = new Settings\Excerpt($this);
         $settings['more_link'] = new Settings\MoreText($this);
+
+        $settings['before_title'] = new Settings\BeforeTitle($this);
+        $settings['before_title_separator'] =
+            new Settings\BeforeTitleSeparator($this);
+        $settings['after_title'] = new Settings\AfterTitle($this);
+        $settings['after_title_separator'] =
+            new Settings\AfterTitleSeparator($this);
         $settings['after_content'] = new Settings\AfterContent($this);
         $settings['after_content_separator'] =
             new Settings\AfterContentSeparator($this);
+
         // $settings['pagination'] = new Settings\Pagination($this);
         // $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
         $settings['pagination_position'] =
@@ -129,7 +132,7 @@ abstract class AbstractSection extends Section
             new Settings\PaginationPreviousLabel($this);
         $settings['pagination_next_label'] =
             new Settings\PaginationNextLabel($this);
-        
+
         return $settings;
     }
 }
