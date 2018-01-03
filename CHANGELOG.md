@@ -9,9 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Introduced the `AbstractChildTheme` class
 
-### Fixed
-- Fixed 404 errors with posts pagination
-
 ### Changed
 - Undo require search input filled on search submit
 - Replaced zero font size inline-block whitespace fix with letter spacing fix
