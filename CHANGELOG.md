@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Undo require search input filled on search submit
 - Replaced zero font size inline-block whitespace fix with letter spacing fix
+- Redirect `/?s={query}` search URLs to `/search/{query}` if using permalinks
 
 ### Fixed
 - Fixed 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 

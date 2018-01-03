@@ -30,6 +30,7 @@ final class Search extends AbstractSetup
     public function run()
     {
         \add_action('get_search_form', [$this, 'form']);
+        \add_action('template_redirect', [$this, 'redirect']);
         \add_action('jentil_before_content', [$this, 'renderOnSearchPage']);
     }
 
@@ -71,6 +72,37 @@ final class Search extends AbstractSetup
         </div>';
 
         return $searchform;
+    }
+
+    /**
+     * Redirect
+     *
+     * Redirect `/?s={query}` to `/search/{query}`
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @action template_redirect
+     */
+    public function redirect()
+    {
+        if (!$this->theme->utilities->page->is('search')) {
+            return;
+        }
+
+        if (empty($_GET['s'])) {
+            return;
+        }
+
+        global $wp_rewrite;
+
+        if (!$wp_rewrite->using_permalinks()) {
+            return;
+        }
+
+        \wp_redirect(\get_search_link(), 301);
+
+        exit;
     }
 
     /**
