@@ -20,30 +20,29 @@ declare (strict_types = 1);
 \Jentil()->utilities->loader->loadPartial('header');
 
 if (!\Jentil()->utilities->page->is('singular')) {
-    if (($jentil_title = \Jentil()->utilities->page->title->mod()->get())) { ?>
+    if (($jentil_title = \Jentil()->utilities->page->title->mod()->get())
+        || \Jentil()->utilities->page->is('customize_preview')
+    ) { ?>
         <header class="page-header">
-    <?php }
+            <?php
+            /**
+             * @action jentil_before_title
+             *
+             * @since 0.1.0
+             */
+            \do_action('jentil_before_title'); ?>
 
-    /**
-     * @action jentil_before_title
-     *
-     * @since 0.1.0
-     */
-    \do_action('jentil_before_title'); ?>
+            <h1 class="page-title entry-title" itemprop="name mainEntityOfPage"><?php
+                echo $jentil_title;
+            ?></h1>
 
-    <h1 class="page-title entry-title" itemprop="name mainEntityOfPage"><?php
-        echo $jentil_title;
-    ?></h1>
-
-    <?php
-    /**
-     * @action jentil_after_title
-     *
-     * @since 0.1.0
-     */
-    \do_action('jentil_after_title');
-
-    if ($jentil_title) { ?>
+            <?php
+            /**
+             * @action jentil_after_title
+             *
+             * @since 0.1.0
+             */
+            \do_action('jentil_after_title'); ?>
         </header>
     <?php }
 }
