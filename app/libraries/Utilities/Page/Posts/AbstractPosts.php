@@ -49,7 +49,7 @@ abstract class AbstractPosts
     /**
      * Get posts
      *
-     * @since 0.5.1
+     * @since 0.6.0
      * @access public
      *
      * @return PostsPackage

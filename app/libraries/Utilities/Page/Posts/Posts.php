@@ -40,7 +40,7 @@ final class Posts
     /**
      * Query ID
      *
-     * @since 0.5.1
+     * @since 0.6.0
      * @access private
      *
      * @var string
@@ -112,7 +112,7 @@ final class Posts
     /**
      * Get ID
      *
-     * @since 0.5.1
+     * @since 0.6.0
      * @access private
      *
      * @return string
@@ -263,7 +263,7 @@ final class Posts
     /**
      * Post type query var
      *
-     * @since 0.5.1
+     * @since 0.6.0
      * @access private
      *
      * @return string
