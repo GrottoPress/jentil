@@ -106,11 +106,6 @@ final class Archive extends AbstractPosts
             );
         }
 
-        if ($this->posts->page->is('search')) {
-            // $args['wp_query']['orderby']['all_time_views'] = 'DESC';
-            $args['wp_query']['orderby']['comment_count'] = 'DESC';
-        }
-
         if (($taxonomy = \get_query_var('taxonomy'))) {
             $args['wp_query']['tax_query'] = [
                 [
