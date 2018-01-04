@@ -200,6 +200,8 @@
         $n-child: 'last';
     }
 
+    @include inline-block-whitespace-fix;
+
     margin-left: -$half-gutter;
     margin-right: -$half-gutter;
 
