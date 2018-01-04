@@ -13,7 +13,7 @@
 
 .grid {
     @include paragraph;
-    @include grid;
+    @include grid((columns: '.column'));
 }
 
 .small-1 {
