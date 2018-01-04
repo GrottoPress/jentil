@@ -187,12 +187,12 @@
     );
 
     $args: map-merge($defaults, $args);
-    
+
     $width: map-get($args, width);
     $gutter: map-get($args, gutter );
     $v-margin: map-get($args, v-margin);
     $columns: map-get($args , columns );
-    
+
     $half-gutter: ($gutter / 2);
 
     $n-child: 'first';
@@ -205,6 +205,11 @@
     margin-left: -$half-gutter;
     margin-right: -$half-gutter;
 
+    > * {
+        padding-left: $half-gutter;
+        padding-right: $half-gutter;
+    }
+
     &,
     &:#{$n-child}-child {
         margin-#{$v-margin}: -$gutter;
@@ -213,8 +218,6 @@
     > #{$columns} {
         @include inline-block;
 
-        padding-left: $half-gutter;
-        padding-right: $half-gutter;
         width: $width;
 
         &,
