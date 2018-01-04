@@ -57,6 +57,7 @@
     @include grid((
         gutter: 10px,
         width: auto,
+        columns: '.gallery-item',
     ));
 
     background-color: $text-background;

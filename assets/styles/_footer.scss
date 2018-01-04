@@ -38,7 +38,11 @@
 @media (min-width: map-get($breakpoints, medium)) {
     #footer {
         .widget-area {
-            @include grid((v-margin: 'bottom', width: 25%));
+            @include grid((
+                v-margin: 'bottom',
+                width: 25%,
+                columns: '.widget',
+            ));
         }
 
         .widget {
