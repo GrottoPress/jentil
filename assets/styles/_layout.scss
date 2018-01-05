@@ -33,7 +33,7 @@
     @include paragraph;
 }
 
-@media (min-width: map-get($jentil-breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
     #wrap {
         max-width: 960px;
     }

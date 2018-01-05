@@ -27,15 +27,15 @@
     @include paragraph;
     
     text-align: center;
-    line-height: $jentil-line-height-normal;
+    line-height: map-get($jentil-line-height, normal);
     
     &,
     small {
-        font-size: $jentil-font-size-tiny;
+        font-size: map-get($jentil-font-size, tiny);
     }
 }
 
-@media (min-width: map-get($jentil-breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
     #footer {
         .widget-area {
             @include grid((

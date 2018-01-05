@@ -35,14 +35,14 @@
 /** Caption */
 
 .wp-caption {
-    line-height: $jentil-line-height-normal;
+    line-height: map-get($jentil-line-height, normal);
     max-width: 100%;
 }
 
 .wp-caption-text {
     padding: 0 5px;
-    font-size: $jentil-font-size-small;
-    color: $jentil-font-color-lighter;
+    font-size: map-get($jentil-font-size, small);
+    color: $jentil-font-lighter;
 }
 
 .wp-smiley {
@@ -78,14 +78,14 @@
 }
 
 .gallery-item {
-    line-height: $jentil-line-height-normal;
+    line-height: map-get($jentil-line-height, normal);
 }
 
 .gallery-caption {
     @include screen-reader;
     
-    color: $jentil-font-color-light;
-    font-size: $jentil-font-size-tiny;
+    color: $jentil-font-light;
+    font-size: map-get($jentil-font-size, tiny);
 }
 
 .gallery-icon {

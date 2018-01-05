@@ -13,7 +13,7 @@
 ///
 /// For areas that require smaller sizes of everything
 @mixin hobbit {
-    // font-size: $jentil-font-size-small;
+    // font-size: map-get($jentil-font-size, small);
 
     p,
     hr,

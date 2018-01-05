@@ -31,7 +31,7 @@ var {
 }
 
 q {
-    font-size: $jentil-font-size-magnified;
+    font-size: map-get($jentil-font-size, magnified);
 }
 
 del {
@@ -54,7 +54,7 @@ pre {
     padding: 10px;
     border: $jentil-separator;
     overflow: auto;
-    line-height: $jentil-line-height-normal;
+    line-height: map-get($jentil-line-height, normal);
 }
 
 abbr,
@@ -94,8 +94,8 @@ hr {
 blockquote {
     @include paragraph;
     
-    font-size: $jentil-font-size-magnified;
-    color: $jentil-font-color-lighter;
+    font-size: map-get($jentil-font-size, magnified);
+    color: $jentil-font-lighter;
     font-style: italic;
     margin-right: 0;
     margin-left: 10px;
@@ -118,7 +118,7 @@ h6 {
     @include paragraph;
     
     font-weight: bold;
-    line-height: $jentil-line-height-small;
+    line-height: map-get($jentil-line-height, small);
 }
 
 h1 {
@@ -145,7 +145,7 @@ h6 {
     font-size: 14px;
 }
 
-@media (min-width: map-get($jentil-breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
     h1 {
         font-size: 34px;
     }

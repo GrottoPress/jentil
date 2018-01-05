@@ -20,7 +20,7 @@
     }
 }
 
-@media (min-width: map-get($jentil-breakpoints, wide)) {
+@media (min-width: map-get($jentil-breakpoint, wide)) {
     .page-builder-blank-php {
         #wrap {
             max-width: none;

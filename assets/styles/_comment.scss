@@ -55,9 +55,9 @@
     }
 
     .reply {
-        color: $jentil-font-color-lighter;
-        font-size: $jentil-font-size-tiny;
-        line-height: $jentil-line-height-normal;
+        color: $jentil-font-lighter;
+        font-size: map-get($jentil-font-size, tiny);
+        line-height: map-get($jentil-line-height, normal);
         text-align: right;
     }
 }
@@ -79,14 +79,14 @@
 
 .comment-meta,
 #cancel-comment-reply-link {
-    line-height: $jentil-line-height-normal;
-    font-size: $jentil-font-size-tiny;
+    line-height: map-get($jentil-line-height, normal);
+    font-size: map-get($jentil-font-size, tiny);
 }
 
 .comment-meta {
     @include clearfix;
     
-    color: $jentil-font-color-lighter;
+    color: $jentil-font-lighter;
 
     .edit-link::before {
         content: "| ";
@@ -118,8 +118,8 @@
 
 .comment-notes,
 .logged-in-as {
-    color: $jentil-font-color-lighter;
-    font-size: $jentil-font-size-tiny;
+    color: $jentil-font-lighter;
+    font-size: map-get($jentil-font-size, tiny);
 }
 
 .required {
