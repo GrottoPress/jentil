@@ -19,7 +19,7 @@
     margin-bottom: 0;
 
     .widget:last-child {
-        margin-bottom: map-get($gutter, normal);
+        margin-bottom: map-get($jentil-gutter, normal);
     }
 }
 
@@ -27,15 +27,15 @@
     @include paragraph;
     
     text-align: center;
-    line-height: $line-height-normal;
+    line-height: $jentil-line-height-normal;
     
     &,
     small {
-        font-size: $font-size-tiny;
+        font-size: $jentil-font-size-tiny;
     }
 }
 
-@media (min-width: map-get($breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoints, medium)) {
     #footer {
         .widget-area {
             @include grid((

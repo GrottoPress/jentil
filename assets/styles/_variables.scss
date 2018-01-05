@@ -10,35 +10,35 @@
 @import '../../dist/vendor/@grottopress/scss/src/variables';
 
 // Breakpoints
-$breakpoints: (medium: 800px, wide: 960px) !default;
+$jentil-breakpoints: (medium: 800px, wide: 960px) !default;
 
 // Gutters: used for layouts.
-$gutter: (tiny: 5px, small: 10px, normal: 20px) !default;
+$jentil-gutter: (tiny: 5px, small: 10px, normal: 20px) !default;
 
 // Horizontal separator
-$separator: 1px solid #ddd !default;
+$jentil-separator: 1px solid #ddd !default;
 
 // Layouts
-$sidebar-content: 33.34% !default;
-$sidebar-content-sidebar: (primary: 26.32%, secondary: 21.06%) !default;
-$sidebar-sidebar-content: (primary: 26.32%, both: 47.38%) !default;
+$jentil-sidebar-content: 33.34% !default;
+$jentil-sidebar-content-sidebar: (primary: 26.32%, secondary: 21.06%) !default;
+$jentil-sidebar-sidebar-content: (primary: 26.32%, both: 47.38%) !default;
 
 // Font colors
-$font-color-lighter: #999 !default;
-$font-color-light: #777 !default;
+$jentil-font-color-lighter: #999 !default;
+$jentil-font-color-light: #777 !default;
 
 // Font sizes
-$font-size-tiny: 13px !default;
-$font-size-small: 14px !default;
-$font-size-normal: 16px !default;
-$font-size-magnified: 1.2em !default;
+$jentil-font-size-tiny: 13px !default;
+$jentil-font-size-small: 14px !default;
+$jentil-font-size-normal: 16px !default;
+$jentil-font-size-magnified: 1.2em !default;
 
 // Line heights
-$line-height-small: 140% !default;
-$line-height-normal: 160% !default;
+$jentil-line-height-small: 140% !default;
+$jentil-line-height-normal: 160% !default;
 
 // Background for text
-$text-background: #f4f4f4 !default;
+$jentil-text-background: #f4f4f4 !default;
 
 // Font-awesome
 $fa-font-path: '../../dist/vendor/font-awesome/fonts';

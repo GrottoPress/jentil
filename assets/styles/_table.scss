@@ -14,7 +14,7 @@
 table {
     @include paragraph;
     
-    line-height: $line-height-normal;
+    line-height: $jentil-line-height-normal;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -36,9 +36,9 @@ tbody {
 
 tr {
     &:nth-child(even) {
-        background-color: $text-background;
-        border-top: $separator;
-        border-bottom: $separator;
+        background-color: $jentil-text-background;
+        border-top: $jentil-separator;
+        border-bottom: $jentil-separator;
 
         td,
         th {
@@ -60,12 +60,12 @@ tfoot {
 
 thead {
     font-weight: bold;
-    border-top: $separator;
+    border-top: $jentil-separator;
 }
 
 tfoot {
     font-style: italic;
-    border-bottom: $separator;
+    border-bottom: $jentil-separator;
 }
 
 td,

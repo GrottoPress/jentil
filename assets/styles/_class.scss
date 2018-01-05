@@ -34,7 +34,7 @@
     display: none;
 }
 
-@media (min-width: map-get($breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoints, medium)) {
     /**
      * Toggle elements
      */
@@ -48,7 +48,7 @@
     }
 }
 
-@media (min-width: map-get($breakpoints, wide)) {
+@media (min-width: map-get($jentil-breakpoints, wide)) {
     /**
      * Toggle elements
      */

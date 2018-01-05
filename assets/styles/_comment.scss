@@ -16,15 +16,15 @@
     
     margin: auto auto 10px 0;
     padding: 10px auto;
-    // border-top: $separator;
-    // border-bottom: $separator;
+    // border-top: $jentil-separator;
+    // border-bottom: $jentil-separator;
 
     > li,
     .children > li {
         @include paragraph(10px);
 
         padding-bottom: 10px;
-        border-bottom: $separator;
+        border-bottom: $jentil-separator;
 
         &:first-child {
             margin-top: 10px;
@@ -37,9 +37,9 @@
     }
 
     .children {
-        margin-top: map-get($gutter, small);
-        padding-top: map-get($gutter, small);
-        border-top: $separator;
+        margin-top: map-get($jentil-gutter, small);
+        padding-top: map-get($jentil-gutter, small);
+        border-top: $jentil-separator;
 
         &:first-child {
             margin-top: 0;
@@ -55,9 +55,9 @@
     }
 
     .reply {
-        color: $font-color-lighter;
-        font-size: $font-size-tiny;
-        line-height: $line-height-normal;
+        color: $jentil-font-color-lighter;
+        font-size: $jentil-font-size-tiny;
+        line-height: $jentil-line-height-normal;
         text-align: right;
     }
 }
@@ -70,23 +70,23 @@
 #comments {
     @include clearfix;
     
-    margin-top: map-get($gutter, normal);
+    margin-top: map-get($jentil-gutter, normal);
 }
 
 #comments-list {
-    margin-bottom: map-get($gutter, normal);
+    margin-bottom: map-get($jentil-gutter, normal);
 }
 
 .comment-meta,
 #cancel-comment-reply-link {
-    line-height: $line-height-normal;
-    font-size: $font-size-tiny;
+    line-height: $jentil-line-height-normal;
+    font-size: $jentil-font-size-tiny;
 }
 
 .comment-meta {
     @include clearfix;
     
-    color: $font-color-lighter;
+    color: $jentil-font-color-lighter;
 
     .edit-link::before {
         content: "| ";
@@ -118,8 +118,8 @@
 
 .comment-notes,
 .logged-in-as {
-    color: $font-color-lighter;
-    font-size: $font-size-tiny;
+    color: $jentil-font-color-lighter;
+    font-size: $jentil-font-size-tiny;
 }
 
 .required {

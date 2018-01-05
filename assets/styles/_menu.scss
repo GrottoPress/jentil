@@ -37,7 +37,7 @@
 
 .sub-menu {
     li {
-        font-size: $font-size-tiny;
+        font-size: $jentil-font-size-tiny;
     }
 }
 
@@ -82,7 +82,7 @@
 
 /** Header Menu */
 
-@media (min-width: map-get($breakpoints, wide)) {
+@media (min-width: map-get($jentil-breakpoints, wide)) {
     #header {
         .site-navigation {
             margin-bottom: 0;

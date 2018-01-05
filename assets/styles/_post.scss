@@ -14,7 +14,7 @@
 .archive-description {
     @include paragraph;
     
-    color: $font-color-light;
+    color: $jentil-font-color-light;
 }
 
 .page-header {
@@ -23,7 +23,7 @@
 
 .page-title,
 .page.has-magpack-posts .singular-post > .post-wrap > header > .entry-title {
-    color: $font-color-lighter;
+    color: $jentil-font-color-lighter;
     font-size: 22px;
 }
 
@@ -36,7 +36,7 @@
 /** Attachment */
 
 .parent.entry-title {
-    font-size: $font-size-small;
+    font-size: $jentil-font-size-small;
 }
 
 .attachment {
@@ -52,8 +52,8 @@
 
     .entry-caption {
         text-align: center;
-        font-size: $font-size-small;
-        line-height: $line-height-normal;
+        font-size: $jentil-font-size-small;
+        line-height: $jentil-line-height-normal;
         margin-top: 10px;
     }
 }
@@ -75,7 +75,7 @@
     @include paragraph;
     @include border-radius(3px);
 
-    background-color: $text-background;
+    background-color: $jentil-text-background;
     padding: 20px;
 
     &.layout-grid {
@@ -92,7 +92,7 @@
     > .post-wrap {
         > header {
             > .entry-meta {
-                line-height: $line-height-normal;
+                line-height: $jentil-line-height-normal;
 
                 p {
                     margin: 0;
@@ -112,7 +112,7 @@
     }
 }
 
-@media (min-width: map-get($breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoints, medium)) {
     .singular-post.big {
         > .post-wrap {
             > header {

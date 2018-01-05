@@ -32,8 +32,8 @@ body {
     @include word-wrap(break-word);
     
     font-family: $helvetica;
-    font-size: $font-size-small;
-    line-height: $line-height-normal;
+    font-size: $jentil-font-size-small;
+    line-height: $jentil-line-height-normal;
     text-align: left;
     padding-left: 20px;
     padding-right: 20px;
