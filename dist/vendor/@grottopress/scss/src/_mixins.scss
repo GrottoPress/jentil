@@ -176,13 +176,11 @@
 /// @param {map} $args - 
 ///   'width' {number} Width of each column
 ///   'gutter' {number} Size of spaces between columns
-///   'v-margin' {string} Position of vertical margin ('top' or 'bottom')
 ///   'columns' {string} Selector of immediate children to be used as columns.
 @mixin grid($args: ()) {
     $defaults: (
         width: 100%,
         gutter: 20px,
-        v-margin: 'top',
         columns: '*',
     );
 
@@ -195,35 +193,27 @@
 
     $half-gutter: ($gutter / 2);
 
-    $n-child: 'first';
-    @if $v-margin == 'bottom' {
-        $n-child: 'last';
-    }
-
     @include inline-block-whitespace-fix;
 
-    margin-left: -$half-gutter;
-    margin-right: -$half-gutter;
+    margin: -#{$half-gutter};
 
-    > * {
-        padding-left: $half-gutter;
-        padding-right: $half-gutter;
+    &:first-child {
+        margin-top: -$half-gutter;
     }
 
-    &,
-    &:#{$n-child}-child {
-        margin-#{$v-margin}: -$gutter;
+    &:last-child {
+        margin-bottom: -$half-gutter;
+    }
+
+    > * {
+        padding: $half-gutter;
     }
 
     > #{$columns} {
         @include inline-block;
 
+        margin: 0;
         width: $width;
-
-        &,
-        &:#{$n-child}-child {
-            margin-#{$v-margin}: $gutter;
-        }
     }
 }
 
