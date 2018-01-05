@@ -12,7 +12,6 @@
  */
 
 .grid {
-    @include paragraph;
     @include grid((columns: '.column'));
 
     .small-1 {
