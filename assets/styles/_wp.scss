@@ -61,9 +61,10 @@
     ));
 
     background-color: $text-background;
-    padding: 0 5px 10px;
-    margin-left: 0;
-    margin-right: 0;
+    padding: 5px;
+    margin: 0;
+
+    @include paragraph;
 
     img {
         @include border-radius(3px);
@@ -74,10 +75,6 @@
             border-color: #ccc;
         }
     }
-}
-
-.gallery { // Override previous
-    @include paragraph;
 }
 
 .gallery-item {
