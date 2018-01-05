@@ -8,6 +8,7 @@ FROM=(
     'font-awesome'
     'html5shiv'
     'respond.js'
+    '@grottopress/scss'
 )
 
 [[ ! -d $TO ]] && mkdir -p $TO

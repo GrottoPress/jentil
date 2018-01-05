@@ -1,0 +1,230 @@
+////
+/// Mixins
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/// Full screen
+@mixin full-screen {
+    margin-right: -9999px;
+    margin-left: -9999px;
+    padding-right: 9999px;
+    padding-left: 9999px;
+}
+
+/// Inline block
+@mixin inline-block {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+}
+
+/// Inline block whitespace fix
+///
+/// Include this in parent of inline block element
+///
+/// @since 0.1.8
+@mixin inline-block-whitespace-fix {
+    letter-spacing: -1em;
+
+    > * {
+        letter-spacing: normal;
+    }
+}
+
+/// Clear fix
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/// Box Sizing
+///
+/// @param {number} $sizing
+@mixin box-sizing($sizing) {
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+    box-sizing: $sizing;
+}
+
+/// Border Radius
+///
+/// @param {number} $radius
+@mixin border-radius($radius) {
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+/// Word Wrap
+///
+/// @param {string} $wrap
+@mixin word-wrap($wrap) {
+    -ms-word-wrap: $wrap;
+    word-wrap: $wrap;
+}
+
+/// Text Size Adjust
+///
+/// @param {string} $adjust
+@mixin text-size-adjust($adjust) {
+    -webkit-text-size-adjust: $adjust;
+}
+
+/// Float
+///
+/// @param {string} $direction
+@mixin float($direction) {
+    float: $direction;
+    display: inline;
+}
+
+/// Paragraph
+///
+/// Add top and bottom margin
+///
+/// @param {number} $vertical-margin [20px]
+@mixin paragraph($vertical-margin: 20px) {
+    margin-top: $vertical-margin;
+    margin-bottom: $vertical-margin;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/// Center
+///
+/// @param {number} $width
+@mixin center($width) {
+    width: 100%;
+    max-width: $width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/// Size
+///
+/// @param {number} $width
+/// @param {number} $height [$width]
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+/// Screen reader text
+///
+/// Hide text from all except screen readers
+@mixin screen-reader {
+    @include position(absolute);
+    @include size(1px);
+    
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    word-wrap: normal !important;
+}
+
+/// Position
+///
+/// @param {string} $position [relative]
+/// @param {list} $offsets [()] - Order: (top,right,bottom,left)
+@mixin position($position: relative, $offsets: ()) {
+    position: $position;
+
+    @if length($offsets) > 0 {
+        @if nth($offsets, 1) {
+            top: nth($offsets, 1);
+        }
+
+        @if nth($offsets, 2) {
+            right: nth($offsets, 2);
+        }
+
+        @if nth($offsets, 3) {
+            bottom: nth($offsets, 3);
+        }
+
+        @if nth($offsets, 4) {
+            left: nth($offsets, 4);
+        }
+    }
+}
+
+/// Grid
+///
+/// To be used in the grids wrapper
+///
+/// @param {map} $args - 
+///   'width' {number} Width of each column
+///   'gutter' {number} Size of spaces between columns
+///   'columns' {string} Selector of immediate children to be used as columns.
+@mixin grid($args: ()) {
+    $defaults: (
+        width: 100%,
+        gutter: 20px,
+        columns: '*',
+    );
+
+    $args: map-merge($defaults, $args);
+
+    $width: map-get($args, width);
+    $gutter: map-get($args, gutter );
+    $v-margin: map-get($args, v-margin);
+    $columns: map-get($args , columns );
+
+    $half-gutter: ($gutter / 2);
+
+    @include inline-block-whitespace-fix;
+
+    margin: -#{$half-gutter};
+
+    &:first-child {
+        margin-top: -$half-gutter;
+    }
+
+    &:last-child {
+        margin-bottom: -$half-gutter;
+    }
+
+    > * {
+        padding: $half-gutter;
+    }
+
+    > #{$columns} {
+        @include inline-block;
+
+        margin: 0;
+        width: $width;
+    }
+}
+
+/// Opacity
+///
+/// @param {number} $opacity
+///
+/// @since 0.1.8
+@mixin opacity($opacity) {
+    $ie: $opacity * 100;
+
+    -ms-filter: 'alpha(opacity=#{$ie})'; /* For IE8 and later */
+    opacity: $opacity;
+}

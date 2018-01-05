@@ -7,6 +7,8 @@
 /// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
 ////
 
+@import '../../dist/vendor/@grottopress/scss/src/variables';
+
 // Breakpoints
 $jentil-breakpoint: (medium: 800px, wide: 960px) !default;
 
@@ -38,6 +40,3 @@ $jentil-line-height: (small: 140%, normal: 160%) !default;
 
 // Background for text
 $jentil-text-background: #f4f4f4 !default;
-
-// Font-awesome
-$fa-font-path: '../../dist/vendor/font-awesome/fonts' !default;
