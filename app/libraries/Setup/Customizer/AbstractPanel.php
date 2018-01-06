@@ -145,6 +145,8 @@ abstract class AbstractPanel
     /**
      * Remove panel
      *
+     * @param WP_Customizer $wp_customize
+     *
      * @since 0.1.0
      * @access public
      */

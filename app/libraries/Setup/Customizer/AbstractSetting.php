@@ -96,6 +96,8 @@ abstract class AbstractSetting
     /**
      * Add setting
      *
+     * @param WP_Customizer $wp_customize
+     *
      * @since 0.1.0
      * @access public
      */
@@ -111,6 +113,8 @@ abstract class AbstractSetting
 
     /**
      * Remove setting
+     *
+     * @param WP_Customizer $wp_customize
      *
      * @since 0.1.0
      * @access public
