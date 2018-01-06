@@ -126,5 +126,6 @@ abstract class AbstractSetting
         }
         
         $wp_customize->remove_setting($this->name);
+        $wp_customize->remove_control($this->name);
     }
 }
