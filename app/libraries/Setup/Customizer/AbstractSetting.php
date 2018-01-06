@@ -108,4 +108,19 @@ abstract class AbstractSetting
         $wp_customize->add_setting($this->name, $this->args);
         $wp_customize->add_control($this->name, $this->control);
     }
+
+    /**
+     * Remove setting
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function remove(WP_Customizer $wp_customize)
+    {
+        if (!$this->name) {
+            return;
+        }
+        
+        $wp_customize->remove_setting($this->name);
+    }
 }

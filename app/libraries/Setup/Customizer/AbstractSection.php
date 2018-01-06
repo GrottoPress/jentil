@@ -141,4 +141,19 @@ abstract class AbstractSection
             $setting->add($wp_customize);
         }
     }
+
+    /**
+     * Remove section
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function remove(WP_Customizer $wp_customize)
+    {
+        if (!$this->name) {
+            return;
+        }
+        
+        $wp_customize->remove_section($this->name);
+    }
 }

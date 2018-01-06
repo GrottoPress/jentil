@@ -141,4 +141,19 @@ abstract class AbstractPanel
             $section->add($wp_customize);
         }
     }
+
+    /**
+     * Remove panel
+     *
+     * @since 0.1.0
+     * @access public
+     */
+    public function remove(WP_Customizer $wp_customize)
+    {
+        if (!$this->name) {
+            return;
+        }
+        
+        $wp_customize->remove_panel($this->name);
+    }
 }
