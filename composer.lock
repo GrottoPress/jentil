@@ -611,16 +611,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.3.5",
+            "version": "0.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "c49879af6c8c5e0b33cbcc3281805cbc9f684869"
+                "reference": "37a638b78db9478e32820896ee79e02f3dc6ed72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/c49879af6c8c5e0b33cbcc3281805cbc9f684869",
-                "reference": "c49879af6c8c5e0b33cbcc3281805cbc9f684869",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/37a638b78db9478e32820896ee79e02f3dc6ed72",
+                "reference": "37a638b78db9478e32820896ee79e02f3dc6ed72",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-01-05T19:32:10+00:00"
+            "time": "2018-01-06T17:04:48+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
