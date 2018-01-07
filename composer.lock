@@ -665,12 +665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
-                "reference": "42ec191c7c0882f56b4336811d30cfe7c914a8e8"
+                "reference": "53c838574cbb5bb8999ab76a5a44214b1e18fab5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/42ec191c7c0882f56b4336811d30cfe7c914a8e8",
-                "reference": "42ec191c7c0882f56b4336811d30cfe7c914a8e8",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/53c838574cbb5bb8999ab76a5a44214b1e18fab5",
+                "reference": "53c838574cbb5bb8999ab76a5a44214b1e18fab5",
                 "shasum": ""
             },
             "require": {
@@ -705,7 +705,7 @@
                 "suv",
                 "wordpress"
             ],
-            "time": "2018-01-07T00:43:23+00:00"
+            "time": "2018-01-07T14:18:18+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
