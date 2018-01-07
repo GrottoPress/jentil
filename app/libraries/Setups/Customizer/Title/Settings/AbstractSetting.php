@@ -67,6 +67,8 @@ abstract class AbstractSetting extends Setting
      */
     protected function themeMod(array $args): TitleMod
     {
-        return $this->section->customizer->app->utilities->themeMods->title($args);
+        return $this->section->customizer->app->utilities->themeMods->title(
+            $args
+        );
     }
 }

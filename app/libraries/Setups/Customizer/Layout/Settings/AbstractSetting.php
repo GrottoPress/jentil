@@ -69,6 +69,8 @@ abstract class AbstractSetting extends Setting
     protected function themeMod(array $args): LayoutMod
     {
         return
-            $this->section->customizer->app->utilities->themeMods->layout($args);
+            $this->section->customizer->app->utilities->themeMods->layout(
+                $args
+            );
     }
 }
