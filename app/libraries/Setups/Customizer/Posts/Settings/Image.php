@@ -35,7 +35,7 @@ final class Image extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('image');
+        $mod = $this->themeMod('image');
 
         $this->name = $mod->name;
         

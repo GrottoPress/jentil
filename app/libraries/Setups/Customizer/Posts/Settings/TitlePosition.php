@@ -35,7 +35,7 @@ final class TitlePosition extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('title_position');
+        $mod = $this->themeMod('title_position');
         
         $this->name = $mod->name;
         

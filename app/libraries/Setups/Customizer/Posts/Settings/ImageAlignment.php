@@ -35,7 +35,7 @@ final class ImageAlignment extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('image_alignment');
+        $mod = $this->themeMod('image_alignment');
 
         $this->name = $mod->name;
         

@@ -3,7 +3,7 @@
 /**
  * Colophon
  *
- * @package GrottoPress\Jentil\Utilities\Mods
+ * @package GrottoPress\Jentil\Utilities\ThemeMods
  * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,7 +12,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Utilities\Mods;
+namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use GrottoPress\Jentil\Jentil;
 use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
@@ -25,26 +25,26 @@ use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
 final class Colophon extends AbstractThemeMod
 {
     /**
-     * Mods
+     * ThemeMods
      *
      * @since 0.1.0
      * @access protected
      *
-     * @var Mods $mods Mods.
+     * @var ThemeMods $themeMods ThemeMods.
      */
-    protected $mods;
+    protected $themeMods;
     
     /**
      * Constructor
      *
-     * @param Mods $mods
+     * @param ThemeMods $themeMods
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Mods $mods)
+    public function __construct(ThemeMods $themeMods)
     {
-        $this->mods = $mods;
+        $this->themeMods = $themeMods;
         
         $this->name = 'colophon';
         $this->default = \sprintf(
@@ -68,6 +68,6 @@ final class Colophon extends AbstractThemeMod
      */
     public function get(): string
     {
-        return $this->mods->utilities->shortTags->replace(parent::get());
+        return $this->themeMods->utilities->shortTags->replace(parent::get());
     }
 }

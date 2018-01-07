@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\Page\Page;
-use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
+use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\Getter\Getter;
 
 /**
@@ -213,10 +213,10 @@ final class Posts
      *
      * @return mixed Posts mod.
      */
-    public function mod(string $setting, array $args = []): PostsMod
+    public function themeMod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {
-            return $this->page->utilities->mods->posts(
+            return $this->page->utilities->themeMods->posts(
                 $setting,
                 $args
             );
@@ -246,7 +246,7 @@ final class Posts
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities->mods->posts($setting, [
+            $mod = $this->page->utilities->themeMods->posts($setting, [
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific,

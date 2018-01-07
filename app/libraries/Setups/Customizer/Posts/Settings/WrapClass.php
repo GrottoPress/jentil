@@ -35,7 +35,7 @@ final class WrapClass extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('wrap_class');
+        $mod = $this->themeMod('wrap_class');
         
         $this->name = $mod->name;
         

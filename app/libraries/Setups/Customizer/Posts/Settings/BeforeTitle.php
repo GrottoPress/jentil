@@ -35,7 +35,7 @@ final class BeforeTitle extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('before_title');
+        $mod = $this->themeMod('before_title');
 
         $this->name = $mod->name;
         

@@ -35,7 +35,7 @@ final class BeforeTitleSeparator extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('before_title_separator');
+        $mod = $this->themeMod('before_title_separator');
 
         $this->name = $mod->name;
         

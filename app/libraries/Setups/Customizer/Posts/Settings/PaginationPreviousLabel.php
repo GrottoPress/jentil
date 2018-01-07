@@ -35,7 +35,7 @@ final class PaginationPreviousLabel extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('pagination_previous_label');
+        $mod = $this->themeMod('pagination_previous_label');
 
         $this->name = $mod->name;
         

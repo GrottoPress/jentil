@@ -48,10 +48,10 @@ final class Layout extends AbstractSetup
         if (\is_page_template(['page-builder.php', 'page-builder-blank.php'])) {
             return $classes;
         }
-        
+
         $layout = $this->app->utilities->page->layout;
 
-        if (($mod = $layout->mod()->get())) {
+        if (($mod = $layout->themeMod()->get())) {
             $classes[] = \sanitize_title('layout-'.$mod);
         }
 

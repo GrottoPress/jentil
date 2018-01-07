@@ -44,7 +44,7 @@ final class Colophon extends AbstractSetup
      */
     public function render()
     {
-        if (!($mod = $this->app->utilities->colophon->mod()->get())
+        if (!($mod = $this->app->utilities->colophon->themeMod()->get())
             && !$this->app->utilities->page->is('customize_preview')
         ) {
             return;

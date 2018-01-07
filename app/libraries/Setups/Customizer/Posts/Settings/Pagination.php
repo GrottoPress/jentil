@@ -35,7 +35,7 @@ final class Pagination extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('pagination');
+        $mod = $this->themeMod('pagination');
 
         $this->name = $mod->name;
         

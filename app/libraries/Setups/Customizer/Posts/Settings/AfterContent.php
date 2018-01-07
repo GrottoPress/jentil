@@ -35,7 +35,7 @@ final class AfterContent extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('after_content');
+        $mod = $this->themeMod('after_content');
 
         $this->name = $mod->name;
         

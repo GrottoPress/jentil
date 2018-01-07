@@ -35,7 +35,7 @@ final class StickyPosts extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('sticky_posts');
+        $mod = $this->themeMod('sticky_posts');
       
         $this->name = $mod->name;
         

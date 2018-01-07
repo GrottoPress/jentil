@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 use GrottoPress\Jentil\Setups\Customizer\Layout\Layout;
-use GrottoPress\Jentil\utilities\Mods\Layout as LayoutMod;
+use GrottoPress\Jentil\utilities\ThemeMods\Layout as LayoutMod;
 
 /**
  * Abstract Layout Setting
@@ -66,9 +66,9 @@ abstract class AbstractSetting extends Setting
      *
      * @return LayoutMod
      */
-    protected function mod(array $args): LayoutMod
+    protected function themeMod(array $args): LayoutMod
     {
         return
-            $this->section->customizer->app->utilities->mods->layout($args);
+            $this->section->customizer->app->utilities->themeMods->layout($args);
     }
 }

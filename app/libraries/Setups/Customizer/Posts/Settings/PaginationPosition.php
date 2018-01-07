@@ -35,7 +35,7 @@ final class PaginationPosition extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('pagination_position');
+        $mod = $this->themeMod('pagination_position');
 
         $this->name = $mod->name;
         

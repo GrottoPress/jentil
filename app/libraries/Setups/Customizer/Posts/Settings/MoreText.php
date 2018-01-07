@@ -35,7 +35,7 @@ final class MoreText extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('more_text');
+        $mod = $this->themeMod('more_text');
         
         $this->name = $mod->name;
         

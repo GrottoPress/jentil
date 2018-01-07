@@ -94,7 +94,7 @@ final class Metaboxes extends AbstractSetup
             return [];
         }
 
-        if (!($mod = $this->app->utilities->mods->layout([
+        if (!($mod = $this->app->utilities->themeMods->layout([
             'context' => 'singular',
             'specific' => $post->post_type,
             'more_specific' => $post->ID,

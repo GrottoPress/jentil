@@ -35,7 +35,7 @@ final class ImageMargin extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('image_margin');
+        $mod = $this->themeMod('image_margin');
       
         $this->name = $mod->name;
         

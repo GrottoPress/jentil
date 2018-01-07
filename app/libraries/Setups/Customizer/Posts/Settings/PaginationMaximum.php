@@ -35,7 +35,7 @@ final class PaginationMaximum extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('pagination_maximum');
+        $mod = $this->themeMod('pagination_maximum');
 
         $this->name = $mod->name;
         

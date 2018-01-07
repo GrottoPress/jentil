@@ -35,7 +35,7 @@ final class TitleWords extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('title_words');
+        $mod = $this->themeMod('title_words');
         
         $this->name = $mod->name;
         

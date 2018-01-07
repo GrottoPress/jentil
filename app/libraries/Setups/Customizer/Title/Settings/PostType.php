@@ -40,7 +40,7 @@ final class PostType extends AbstractSetting
             'post' === $post_type->name ? 'home' : 'post_type_archive'
         );
 
-        $this->mod = $this->mod([
+        $this->mod = $this->themeMod([
             'context' => $mod_context,
             'specific' => $post_type->name,
         ]);

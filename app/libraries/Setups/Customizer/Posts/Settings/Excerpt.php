@@ -35,7 +35,7 @@ final class Excerpt extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('excerpt');
+        $mod = $this->themeMod('excerpt');
 
         $this->name = $mod->name;
         

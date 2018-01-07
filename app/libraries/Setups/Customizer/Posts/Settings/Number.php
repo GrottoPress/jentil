@@ -35,7 +35,7 @@ final class Number extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('number');
+        $mod = $this->themeMod('number');
         
         $this->name = $mod->name;
         

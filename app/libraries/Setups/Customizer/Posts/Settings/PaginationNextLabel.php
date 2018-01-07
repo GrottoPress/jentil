@@ -35,7 +35,7 @@ final class PaginationNextLabel extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('pagination_next_label');
+        $mod = $this->themeMod('pagination_next_label');
 
         $this->name = $mod->name;
         

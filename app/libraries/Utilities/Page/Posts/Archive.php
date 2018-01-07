@@ -32,59 +32,59 @@ final class Archive extends AbstractPosts
     protected function args(): array
     {
         $args = [
-            // 'tag' => $this->posts->mod('wrap_tag')->get(),
-            'class' => $this->posts->mod('wrap_class')->get(),
+            // 'tag' => $this->posts->themeMod('wrap_tag')->get(),
+            'class' => $this->posts->themeMod('wrap_class')->get(),
             'id' => $this->posts->id,
-            'layout' => $this->posts->mod('layout')->get(),
-            'text_offset' => $this->posts->mod('text_offset')->get(),
+            'layout' => $this->posts->themeMod('layout')->get(),
+            'text_offset' => $this->posts->themeMod('text_offset')->get(),
             'image' => [
-                'size' => $this->posts->mod('image')->get(),
-                'align' => $this->posts->mod('image_alignment')->get(),
+                'size' => $this->posts->themeMod('image')->get(),
+                'align' => $this->posts->themeMod('image_alignment')->get(),
             ],
             'excerpt' => [
-                'length' => $this->posts->mod('excerpt')->get(),
+                'length' => $this->posts->themeMod('excerpt')->get(),
                 'paginate' => false,
-                'more_text' => $this->posts->mod('more_text')->get(),
+                'more_text' => $this->posts->themeMod('more_text')->get(),
                 'after' => [
                     'types' => \explode(
                         ',',
-                        $this->posts->mod('after_content')->get()
+                        $this->posts->themeMod('after_content')->get()
                     ),
-                    'separator' => $this->posts->mod('after_content_separator')->get(),
+                    'separator' => $this->posts->themeMod('after_content_separator')->get(),
                 ],
             ],
             'pagination' => [
-                // 'type' => $this->posts->mod('pagination')->get(),
-                // 'max' => $this->posts->mod('pagination_maximum')->get(),
+                // 'type' => $this->posts->themeMod('pagination')->get(),
+                // 'max' => $this->posts->themeMod('pagination_maximum')->get(),
                 'position' => \explode(
                     ',',
-                    $this->posts->mod('pagination_position')->get()
+                    $this->posts->themeMod('pagination_position')->get()
                 ),
-                'prev_text' => $this->posts->mod('pagination_previous_label')->get(),
-                'next_text' => $this->posts->mod('pagination_next_label')->get(),
+                'prev_text' => $this->posts->themeMod('pagination_previous_label')->get(),
+                'next_text' => $this->posts->themeMod('pagination_next_label')->get(),
             ],
             'title' => [
-                'length' => $this->posts->mod('title_words')->get(),
-                'position' => $this->posts->mod('title_position')->get(),
+                'length' => $this->posts->themeMod('title_words')->get(),
+                'position' => $this->posts->themeMod('title_position')->get(),
                 'tag' => 'h2',
                 'link' => true,
                 'before' => [
                     'types' => \explode(
                         ',',
-                        $this->posts->mod('before_title')->get()
+                        $this->posts->themeMod('before_title')->get()
                     ),
-                    'separator' => $this->posts->mod('before_title_separator')->get(),
+                    'separator' => $this->posts->themeMod('before_title_separator')->get(),
                 ],
                 'after' => [
                     'types' => \explode(
                         ',',
-                        $this->posts->mod('after_title')->get()
+                        $this->posts->themeMod('after_title')->get()
                     ),
-                    'separator' => $this->posts->mod('after_title_separator')->get(),
+                    'separator' => $this->posts->themeMod('after_title_separator')->get(),
                 ],
             ],
             'wp_query' => [
-                'posts_per_page' => $this->posts->mod('number')->get(),
+                'posts_per_page' => $this->posts->themeMod('number')->get(),
                 's' => \get_search_query(),
                 'post__not_in' => (
                     $this->posts->sticky->isSet()

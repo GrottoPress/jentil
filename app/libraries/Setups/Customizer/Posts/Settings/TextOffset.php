@@ -35,7 +35,7 @@ final class TextOffset extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('text_offset');
+        $mod = $this->themeMod('text_offset');
         
         $this->name = $mod->name;
         

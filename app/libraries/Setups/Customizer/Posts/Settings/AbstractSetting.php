@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setups\Customizer\Posts\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 use GrottoPress\Jentil\Setups\Customizer\Posts\AbstractSection;
-use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
+use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 
 /**
  * Abstract Post Setting
@@ -50,9 +50,9 @@ abstract class AbstractSetting extends Setting
      *
      * @return PostsMod Posts mod.
      */
-    protected function mod(string $setting): PostsMod
+    protected function themeMod(string $setting): PostsMod
     {
         return $this->section->panel->customizer->app->utilities
-            ->mods->posts($setting, $this->section->modArgs);
+            ->themeMods->posts($setting, $this->section->modArgs);
     }
 }

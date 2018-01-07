@@ -54,13 +54,13 @@ final class Singular extends AbstractSetting
     private function setMod(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
-            $this->mod = $this->mod([
+            $this->mod = $this->themeMod([
                 'context' => 'singular',
                 'specific' => $post_type->name,
                 'more_specific' => $post->ID,
             ]);
         } else {
-            $this->mod = $this->mod([
+            $this->mod = $this->themeMod([
                 'context' => 'singular',
                 'specific' => $post_type->name,
             ]);

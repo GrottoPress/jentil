@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities;
 
 use GrottoPress\Jentil\Jentil;
-use GrottoPress\Jentil\Utilities\Mods\Mods;
+use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Colophon;
 use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
@@ -46,14 +46,14 @@ final class Utilities
     private $app;
 
     /**
-     * Mods
+     * ThemeMods
      *
      * @since 0.1.0
      * @access private
      *
-     * @var Mods
+     * @var ThemeMods
      */
-    private $mods = null;
+    private $themeMods = null;
 
     /**
      * Page
@@ -157,15 +157,15 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @return Mods
+     * @return ThemeMods
      */
-    private function getMods(): Mods
+    private function getThemeMods(): ThemeMods
     {
-        if (null === $this->mods) {
-            $this->mods = new Mods($this);
+        if (null === $this->themeMods) {
+            $this->themeMods = new ThemeMods($this);
         }
 
-        return $this->mods;
+        return $this->themeMods;
     }
 
     /**

@@ -37,7 +37,7 @@ final class Colophon extends AbstractSetting
         parent::__construct($colophon);
 
         $mod = $this->section->customizer->app->utilities
-            ->mods->colophon;
+            ->themeMods->colophon;
 
         $this->name = $mod->name;
 

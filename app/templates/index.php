@@ -20,7 +20,7 @@ declare (strict_types = 1);
 \Jentil()->utilities->loader->loadPartial('header');
 
 if (!\Jentil()->utilities->page->is('singular')) {
-    if (($jentil_title = \Jentil()->utilities->page->title->mod()->get())
+    if (($jentil_title = \Jentil()->utilities->page->title->themeMod()->get())
         || \Jentil()->utilities->page->is('customize_preview')
     ) { ?>
         <header class="page-header">

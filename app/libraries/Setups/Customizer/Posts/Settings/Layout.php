@@ -35,7 +35,7 @@ final class Layout extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('layout');
+        $mod = $this->themeMod('layout');
         
         $this->name = $mod->name;
         

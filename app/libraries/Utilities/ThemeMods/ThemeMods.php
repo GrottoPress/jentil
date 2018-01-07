@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Theme Mods
+ * Theme ThemeMods
  *
- * @package GrottoPress\Jentil\Utilities\Mods
+ * @package GrottoPress\Jentil\Utilities\ThemeMods
  * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,17 +12,17 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Utilities\Mods;
+namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Getter\Getter;
 
 /**
- * Theme Mods
+ * Theme ThemeMods
  *
  * @since 0.1.0
  */
-final class Mods
+final class ThemeMods
 {
     use Getter;
     

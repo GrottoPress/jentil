@@ -32,39 +32,39 @@ final class Sticky extends AbstractPosts
     public function args(): array
     {
         $args = [
-            // 'tag' => $this->mod('wrap_tag')->get(),
-            'class' => $this->mod('wrap_class')->get(),
+            // 'tag' => $this->themeMod('wrap_tag')->get(),
+            'class' => $this->themeMod('wrap_class')->get(),
             'id' => $this->posts->id.'-sticky-posts',
-            'layout' => $this->mod('layout')->get(),
-            'text_offset' => $this->mod('text_offset')->get(),
+            'layout' => $this->themeMod('layout')->get(),
+            'text_offset' => $this->themeMod('text_offset')->get(),
             'image' => [
-                'size' => $this->mod('image')->get(),
-                'align' => $this->mod('image_alignment')->get(),
+                'size' => $this->themeMod('image')->get(),
+                'align' => $this->themeMod('image_alignment')->get(),
             ],
             'excerpt' => [
-                'length' => $this->mod('excerpt')->get(),
+                'length' => $this->themeMod('excerpt')->get(),
                 'paginate' => false,
-                'more_text' => $this->mod('more_text')->get(),
+                'more_text' => $this->themeMod('more_text')->get(),
                 'after' => [
                     'types' => \explode(
                         ',',
-                        $this->mod('after_content')->get()
+                        $this->themeMod('after_content')->get()
                     ),
-                    'separator' => $this->mod('after_content_separator')->get(),
+                    'separator' => $this->themeMod('after_content_separator')->get(),
                 ],
             ],
             'title' => [
-                'length' => $this->mod('title_words')->get(),
-                'position' => $this->mod('title_position')->get(),
+                'length' => $this->themeMod('title_words')->get(),
+                'position' => $this->themeMod('title_position')->get(),
                 'tag' => 'h2',
                 'link' => true,
                 'before' => [
-                    'types' => \explode(',', $this->mod('before_title')->get()),
-                    'separator' => $this->mod('before_title_separator')->get(),
+                    'types' => \explode(',', $this->themeMod('before_title')->get()),
+                    'separator' => $this->themeMod('before_title_separator')->get(),
                 ],
                 'after' => [
-                    'types' => \explode(',', $this->mod('after_title')->get()),
-                    'separator' => $this->mod('after_title_separator')->get(),
+                    'types' => \explode(',', $this->themeMod('after_title')->get()),
+                    'separator' => $this->themeMod('after_title_separator')->get(),
                 ],
             ],
             'wp_query' => [
@@ -184,7 +184,7 @@ final class Sticky extends AbstractPosts
      */
     public function isSet(): bool
     {
-        return (bool)$this->posts->mod('sticky_posts')->get();
+        return (bool)$this->posts->themeMod('sticky_posts')->get();
     }
 
     /**
@@ -197,7 +197,7 @@ final class Sticky extends AbstractPosts
      *
      * @return mixed Sticky posts mod.
      */
-    public function mod(string $setting)
+    public function themeMod(string $setting)
     {
         $args = [
             'context' => 'sticky',
@@ -213,6 +213,6 @@ final class Sticky extends AbstractPosts
             $args['specific'] = $args['specific'][0];
         }
 
-        return $this->posts->mod($setting, $args);
+        return $this->posts->themeMod($setting, $args);
     }
 }

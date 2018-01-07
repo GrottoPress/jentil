@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setups\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Title\Title;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
-use GrottoPress\Jentil\Utilities\Mods\Title as TitleMod;
+use GrottoPress\Jentil\Utilities\ThemeMods\Title as TitleMod;
 
 /**
  * Abstract Title Setting
@@ -31,7 +31,7 @@ abstract class AbstractSetting extends Setting
      * @since 0.1.0
      * @access protected
      *
-     * @var \GrottoPress\Jentil\Utilities\Mods\Title $mod Mod.
+     * @var \GrottoPress\Jentil\Utilities\ThemeMods\Title $mod Mod.
      */
     protected $mod;
 
@@ -65,8 +65,8 @@ abstract class AbstractSetting extends Setting
      *
      * @return TitleMod
      */
-    protected function mod(array $args): TitleMod
+    protected function themeMod(array $args): TitleMod
     {
-        return $this->section->customizer->app->utilities->mods->title($args);
+        return $this->section->customizer->app->utilities->themeMods->title($args);
     }
 }

@@ -35,7 +35,7 @@ final class Search extends AbstractSetting
     {
         parent::__construct($layout);
         
-        $this->mod = $this->mod(['context' => 'search']);
+        $this->mod = $this->themeMod(['context' => 'search']);
 
         $this->name = $this->mod->name;
 

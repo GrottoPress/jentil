@@ -71,13 +71,13 @@ final class Taxonomy extends AbstractSetting
         }
 
         if ($term) {
-            $this->mod = $this->mod([
+            $this->mod = $this->themeMod([
                 'context' => $mod_context,
                 'specific' => $taxonomy->name,
                 'more_specific' => $term->term_id,
             ]);
         } else {
-            $this->mod = $this->mod([
+            $this->mod = $this->themeMod([
                 'context' => $mod_context,
                 'specific' => $taxonomy->name
             ]);

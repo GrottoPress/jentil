@@ -35,7 +35,7 @@ final class AfterTitleSeparator extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->mod('after_title_separator');
+        $mod = $this->themeMod('after_title_separator');
 
         $this->name = $mod->name;
         

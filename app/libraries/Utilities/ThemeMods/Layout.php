@@ -3,7 +3,7 @@
 /**
  * Layout
  *
- * @package GrottoPress\Jentil\Utilities\Mods
+ * @package GrottoPress\Jentil\Utilities\ThemeMods
  * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,7 +12,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Utilities\Mods;
+namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
 
@@ -24,14 +24,14 @@ use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
 final class Layout extends AbstractThemeMod
 {
     /**
-     * Mods
+     * ThemeMods
      *
      * @since 0.1.0
      * @access protected
      *
-     * @var Mods $mods Mods.
+     * @var ThemeMods $themeMods ThemeMods.
      */
-    protected $mods;
+    protected $themeMods;
     
     /**
      * Context
@@ -66,15 +66,15 @@ final class Layout extends AbstractThemeMod
     /**
      * Constructor
      *
-     * @param Mods $mods
+     * @param ThemeMods $themeMods
      * @param array $args Mod args
      *
      * @since 0.1.0
      * @access public
      */
-    public function __construct(Mods $mods, array $args = [])
+    public function __construct(ThemeMods $themeMods, array $args = [])
     {
-        $this->mods = $mods;
+        $this->themeMods = $themeMods;
 
         $this->setAttributes($args);
     }
