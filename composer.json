@@ -15,6 +15,10 @@
           "role": "Developer"
         }
     ],
+    "keywords": [
+        "jentil",
+        "wordpress"
+    ],
     "support": {
         "issues": "https://github.com/GrottoPress/jentil/issues",
         "wiki": "https://github.com/GrottoPress/jentil/wiki",
@@ -26,7 +30,7 @@
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
         "grottopress/wordpress-posts": "^0.3",
-        "grottopress/wordpress-suv": "dev-dev"
+        "grottopress/wordpress-suv": "^0.1"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"

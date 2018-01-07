@@ -40,8 +40,8 @@
         "url": "git+https://github.com/GrottoPress/jentil.git"
     },
     "keywords": [
-        "Jentil",
-        "WordPress"
+        "jentil",
+        "wordpress"
     ],
     "bugs": {
         "url": "https://github.com/GrottoPress/jentil/issues"
