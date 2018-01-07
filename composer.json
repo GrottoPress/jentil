@@ -22,11 +22,11 @@
     },
     "require": {
         "php": ">=7.0",
-        "florianwolters/component-util-singleton": "^0.3",
         "yahnis-elsts/plugin-update-checker": "^4.1",
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "^0.3"
+        "grottopress/wordpress-posts": "^0.3",
+        "grottopress/wordpress-suv": "dev-dev"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"

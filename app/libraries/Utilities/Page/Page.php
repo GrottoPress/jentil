@@ -33,7 +33,7 @@ final class Page extends PagePackage
      * @since 0.1.0
      * @access private
      *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities;
     
@@ -90,7 +90,8 @@ final class Page extends PagePackage
     /**
      * Constructor
      *
-     * @param Utilities $utilities Utilities.
+     * @param Utilities $utilities
+     * 
      *
      * @since 0.1.0
      * @access public

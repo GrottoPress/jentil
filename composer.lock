@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc82097cf4c97aee0344cd8cbae6c0c1",
+    "content-hash": "21af59d32db54ac02b89bc0c8677c25c",
     "packages": [
         {
             "name": "aura/html",
@@ -658,6 +658,54 @@
                 "wordpress"
             ],
             "time": "2018-01-06T17:04:48+00:00"
+        },
+        {
+            "name": "grottopress/wordpress-suv",
+            "version": "dev-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrottoPress/wordpress-suv.git",
+                "reference": "42ec191c7c0882f56b4336811d30cfe7c914a8e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/42ec191c7c0882f56b4336811d30cfe7c914a8e8",
+                "reference": "42ec191c7c0882f56b4336811d30cfe7c914a8e8",
+                "shasum": ""
+            },
+            "require": {
+                "florianwolters/component-util-singleton": "^0.3.2",
+                "grottopress/getter": "^0.2.1",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GrottoPress\\WordPress\\SUV\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GrottoPress.com",
+                    "email": "info@grottopress.com",
+                    "homepage": "https://www.grottopress.com"
+                },
+                {
+                    "name": "N Atta Kusi Adusei",
+                    "homepage": "https://twitter.com/akadusei",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A scaffold for implementing the SUV architecture",
+            "keywords": [
+                "suv",
+                "wordpress"
+            ],
+            "time": "2018-01-07T00:43:23+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6556,7 +6604,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "grottopress/wordpress-suv": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -41,9 +41,9 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Jentil $theme Jentil.
+     * @var Jentil
      */
-    private $theme;
+    private $app;
 
     /**
      * Mods
@@ -51,7 +51,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Mods $mods Mods.
+     * @var Mods
      */
     private $mods = null;
 
@@ -61,7 +61,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Page $page Page.
+     * @var Page
      */
     private $page = null;
 
@@ -71,7 +71,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Colophon $colophon Colophon.
+     * @var Colophon
      */
     private $colophon = null;
 
@@ -81,7 +81,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var FileSystem $fileSystem FileSystem.
+     * @var FileSystem
      */
     private $fileSystem = null;
 
@@ -91,7 +91,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Loader $loader Loader.
+     * @var Loader
      */
     private $loader = null;
 
@@ -101,7 +101,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Detector $mobileDetector Mobile detector.
+     * @var Detector
      */
     private $mobileDetector = null;
 
@@ -111,7 +111,7 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var Theme_UpdateChecker $updater Updater.
+     * @var Puc_v4p2_Theme_UpdateChecker
      */
     private $updater = null;
 
@@ -121,43 +121,43 @@ final class Utilities
      * @since 0.1.0
      * @access private
      *
-     * @var ShortTags $shortTags
+     * @var ShortTags
      */
     private $shortTags = null;
 
     /**
      * Constructor
      *
-     * @var Jentil $jentil Jentil.
+     * @var Jentil $jentil
      *
      * @since 0.1.0
      * @access public
      */
     public function __construct(Jentil $jentil)
     {
-        $this->theme = $jentil;
+        $this->app = $jentil;
     }
 
     /**
-     * Get theme
+     * Get app
      *
      * @since 0.1.0
      * @access public
      *
-     * @return Jentil Jentil.
+     * @return Jentil
      */
-    private function getTheme(): Jentil
+    private function getApp(): Jentil
     {
-        return $this->theme;
+        return $this->app;
     }
 
     /**
-     * Mods
+     * Get mods
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Mods Mods.
+     * @return Mods
      */
     private function getMods(): Mods
     {
@@ -169,12 +169,12 @@ final class Utilities
     }
 
     /**
-     * Page
+     * Get page
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Page Page.
+     * @return Page
      */
     private function getPage(): Page
     {
@@ -186,12 +186,12 @@ final class Utilities
     }
 
     /**
-     * Colophon
+     * Get colophon
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Colophon Colophon.
+     * @return Colophon
      */
     private function getColophon(): Colophon
     {
@@ -203,12 +203,12 @@ final class Utilities
     }
 
     /**
-     * File System
+     * Get file System
      *
      * @since 0.1.0
      * @access private
      *
-     * @return FileSystem FileSystem.
+     * @return FileSystem
      */
     private function getFileSystem(): FileSystem
     {
@@ -220,12 +220,12 @@ final class Utilities
     }
 
     /**
-     * Loader
+     * Get loader
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Loader Loader.
+     * @return Loader
      */
     private function getLoader(): Loader
     {
@@ -237,12 +237,12 @@ final class Utilities
     }
 
     /**
-     * Mobile Detector
+     * Get mobile detector
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Detector Mobile detector.
+     * @return Detector
      */
     private function getMobileDetector(): Detector
     {
@@ -254,19 +254,19 @@ final class Utilities
     }
 
     /**
-     * Updater
+     * Get updater
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Theme_UpdateChecker Updater.
+     * @return Puc_v4p2_Theme_UpdateChecker
      */
     private function getUpdater(): Puc_v4p2_Theme_UpdateChecker
     {
         if (null === $this->updater) {
             $this->updater = Puc_v4_Factory::buildUpdateChecker(
                 'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-                $this->fileSystem->dir('path', '/functions.php'),
+                $this->fileSystem()->dir('path', '/functions.php'),
                 'jentil'
             );
         }
@@ -275,7 +275,12 @@ final class Utilities
     }
 
     /**
-     * Short Tags
+     * Get short tags
+     *
+     * @since 0.5.0
+     * @access public
+     *
+     * @return ShortTags
      */
     public function getShortTags(): ShortTags
     {
@@ -289,27 +294,29 @@ final class Utilities
     /**
      * Breadcrumbs
      *
-     * @param array $args Breadcrumb args.
+     * @param array $args
      *
      * @since 0.1.0
      * @access public
      *
-     * @return Breadcrumbs Breadcrumbs.
+     * @return Breadcrumbs
      */
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
-        return (new Breadcrumbs($this->getPage(), $args))->collectLinks();
+        $breadcrumbs = new Breadcrumbs($this->getPage(), $args);
+        
+        return $breadcrumbs->collectLinks();
     }
 
     /**
      * Posts
      *
-     * @param array $args Posts args.
+     * @param array $args
      *
      * @since 0.1.0
      * @access public
      *
-     * @return Posts Posts.
+     * @return Posts
      */
     public function posts(array $args = []): Posts
     {
@@ -319,12 +326,12 @@ final class Utilities
     /**
      * Post
      *
-     * @param integer $id Posts ID.
+     * @param integer $id Post ID.
      *
      * @since 0.1.0
      * @access public
      *
-     * @return Post Post.
+     * @return Post
      */
     public function post(int $id = 0): Post
     {

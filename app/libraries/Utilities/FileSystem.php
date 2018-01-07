@@ -27,7 +27,7 @@ final class FileSystem
      * @since 0.1.0
      * @access private
      *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities;
 
@@ -37,7 +37,7 @@ final class FileSystem
      * @since 0.1.0
      * @access private
      *
-     * @var string $dirPath Theme directory path.
+     * @var string
      */
     private $dirPath;
 
@@ -47,14 +47,14 @@ final class FileSystem
      * @since 0.1.0
      * @access private
      *
-     * @var string $dirUrl Theme directory URI.
+     * @var string
      */
     private $dirUrl;
 
     /**
      * Constructor
      *
-     * @param Utilities $utilities Utilities.
+     * @param Utilities $utilities
      *
      * @since 0.1.0
      * @access public

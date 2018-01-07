@@ -32,7 +32,7 @@ final class Mods
      * @since 0.1.0
      * @access private
      *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities;
 
@@ -49,7 +49,7 @@ final class Mods
     /**
      * Constructor
      *
-     * @param Utilities $utilities Utilities.
+     * @param Utilities $utilities
      *
      * @since 0.1.0
      * @access public
@@ -67,18 +67,18 @@ final class Mods
      *
      * @return Utilities Utilities.
      */
-    private function getUtilities(): Utilities
+    final private function getUtilities(): Utilities
     {
         return $this->utilities;
     }
 
     /**
-     * Colophon
+     * Get colophon
      *
      * @since 0.1.0
      * @access private
      *
-     * @return Colophon Colophon.
+     * @return Colophon
      */
     private function getColophon(): Colophon
     {
@@ -97,7 +97,7 @@ final class Mods
      * @since 0.1.0
      * @access public
      *
-     * @return Layout Layout mod.
+     * @return Layout
      */
     public function layout(array $args = []): Layout
     {

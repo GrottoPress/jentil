@@ -15,13 +15,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\WordPress\SUV\AbstractApp;
 
 /**
  * Jentil
  *
  * @since 0.1.0
  */
-final class Jentil extends AbstractTheme
+final class Jentil extends AbstractApp
 {
     /**
      * Theme utilities
@@ -29,7 +30,7 @@ final class Jentil extends AbstractTheme
      * @since 0.1.0
      * @access private
      *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities = null;
 
@@ -62,39 +63,38 @@ final class Jentil extends AbstractTheme
      */
     protected function __construct()
     {
-        $this->setup['loader'] = new Setup\Loader($this);
-        // $this->setup['updater'] = new Setup\Updater($this);
-        $this->setup['language'] = new Setup\Language($this);
-        $this->setup['styles'] = new Setup\Styles($this);
-        $this->setup['scripts'] = new Setup\Scripts($this);
-        $this->setup['thumbnails'] = new Setup\Thumbnails($this);
-        $this->setup['feeds'] = new Setup\Feeds($this);
-        $this->setup['html5'] = new Setup\HTML5($this);
-        $this->setup['title'] = new Setup\Title($this);
-        $this->setup['layout'] = new Setup\Layout($this);
-        $this->setup['archives'] = new Setup\Archives($this);
-        $this->setup['search'] = new Setup\Search($this);
-        $this->setup['menu'] = new Setup\Menu($this);
-        $this->setup['breadcrumbs'] = new Setup\Breadcrumbs($this);
-        $this->setup['singular'] = new Setup\Singular($this);
-        $this->setup['comments'] = new Setup\Comments($this);
-        $this->setup['widgets'] = new Setup\Widgets($this);
-        $this->setup['colophon'] = new Setup\Colophon($this);
-        $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
-        $this->setup['metaboxes'] = new Setup\Metaboxes($this);
-        $this->setup['mobile'] = new Setup\Mobile($this);
-        $this->setup['page_builder_templates'] = new Setup\PageBuilderTemplates(
-            $this
-        );
+        $this->setups['loader'] = new Setups\Loader($this);
+        // $this->setups['updater'] = new Setups\Updater($this);
+        $this->setups['language'] = new Setups\Language($this);
+        $this->setups['styles'] = new Setups\Styles($this);
+        $this->setups['scripts'] = new Setups\Scripts($this);
+        $this->setups['thumbnails'] = new Setups\Thumbnails($this);
+        $this->setups['feeds'] = new Setups\Feeds($this);
+        $this->setups['html5'] = new Setups\HTML5($this);
+        $this->setups['title'] = new Setups\Title($this);
+        $this->setups['layout'] = new Setups\Layout($this);
+        $this->setups['archives'] = new Setups\Archives($this);
+        $this->setups['search'] = new Setups\Search($this);
+        $this->setups['menu'] = new Setups\Menu($this);
+        $this->setups['breadcrumbs'] = new Setups\Breadcrumbs($this);
+        $this->setups['singular'] = new Setups\Singular($this);
+        $this->setups['comments'] = new Setups\Comments($this);
+        $this->setups['widgets'] = new Setups\Widgets($this);
+        $this->setups['colophon'] = new Setups\Colophon($this);
+        $this->setups['customizer'] = new Setups\Customizer\Customizer($this);
+        $this->setups['metaboxes'] = new Setups\Metaboxes($this);
+        $this->setups['mobile'] = new Setups\Mobile($this);
+        $this->setups['page_builder_templates'] =
+            new Setups\PageBuilderTemplates($this);
     }
 
     /**
-     * Utilities
+     * Get utilities
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return Utilities Utilities.
+     * @return Utilities
      */
     protected function getUtilities(): Utilities
     {
@@ -106,18 +106,16 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * Setup
-     *
-     * @param string $setup Setup type
+     * Get setups
      *
      * @since 0.1.0
      * @access protected
      *
-     * @return Setup\AbstractSetup[]
+     * @return Setups\AbstractSetups[]
      */
-    protected function getSetup(): array
+    protected function getSetups(): array
     {
-        $setups = $this->setup;
+        $setups = $this->setups;
 
         unset($setups['loader']);
         unset($setups['updater']);

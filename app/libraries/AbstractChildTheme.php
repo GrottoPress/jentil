@@ -14,12 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil;
 
+use GrottoPress\WordPress\SUV\AbstractApp;
+
 /**
  * Abstract Child Theme
  *
  * @since 0.6.0
  */
-abstract class AbstractChildTheme extends AbstractTheme
+abstract class AbstractChildTheme extends AbstractApp
 {
     /**
      * Parent theme
@@ -27,7 +29,7 @@ abstract class AbstractChildTheme extends AbstractTheme
      * @since 0.6.0
      * @access protected
      *
-     * @var Jentil $parent Parent Theme.
+     * @var Jentil
      */
     protected $parent;
 

@@ -32,14 +32,14 @@ final class Loader
      * @since 0.1.0
      * @access private
      *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities;
 
     /**
      * Constructor
      *
-     * @param Utilities $utilities Utilities.
+     * @param Utilities $utilities
      *
      * @since 0.1.0
      * @access public
@@ -57,6 +57,8 @@ final class Loader
      *
      * @since 0.1.0
      * @access public
+     *
+     * @return string
      */
     public function loadPartial(string $slug, string $name = '')
     {
@@ -71,6 +73,8 @@ final class Loader
      *
      * @since 0.1.0
      * @access public
+     *
+     * @return string
      */
     public function loadTemplate(string $slug, string $name = '')
     {
@@ -109,7 +113,7 @@ final class Loader
      * This mimics, and uses code from, WordPress'
      * `\get_template_part()` function.
      *
-     * @param string $type 'comment', 'template' or 'partial'
+     * @param string $type 'template' or 'partial'
      * @param string $slug
      * @param string $name
      *

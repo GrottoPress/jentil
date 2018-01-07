@@ -29,14 +29,14 @@ final class Title
      * @since 0.1.0
      * @access private
      *
-     * @var Page $page Page.
+     * @var Page
      */
     private $page;
     
     /**
      * Constructor
      *
-     * @param Page $page Page.
+     * @param Page $page
      *
      * @since 0.1.0
      * @access public

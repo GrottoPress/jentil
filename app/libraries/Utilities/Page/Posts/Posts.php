@@ -33,7 +33,7 @@ final class Posts
      * @since 0.1.0
      * @access private
      *
-     * @var Page $page Page.
+     * @var Page
      */
     private $page;
 
@@ -53,7 +53,7 @@ final class Posts
      * @since 0.1.0
      * @access private
      *
-     * @var Sticky $sticky Sticky posts.
+     * @var Sticky
      */
     private $sticky;
 
@@ -63,7 +63,7 @@ final class Posts
      * @since 0.1.0
      * @access private
      *
-     * @var Singular $singular Singular posts.
+     * @var Singular
      */
     private $singular;
 
@@ -73,14 +73,14 @@ final class Posts
      * @since 0.1.0
      * @access private
      *
-     * @var Archive $archive Archive posts.
+     * @var Archive
      */
     private $archive;
     
     /**
      * Constructor
      *
-     * @param Page $page Page.
+     * @param Page $page
      *
      * @since 0.1.0
      * @access public
@@ -149,7 +149,7 @@ final class Posts
     }
 
     /**
-     * Get Posts
+     * Render posts
      *
      * @since 0.1.0
      * @access public

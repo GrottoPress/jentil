@@ -15,13 +15,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\Mods;
 
 use GrottoPress\Jentil\Jentil;
+use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
 
 /**
  * Colophon
  *
  * @since 0.1.0
  */
-final class Colophon extends AbstractMod
+final class Colophon extends AbstractThemeMod
 {
     /**
      * Mods

@@ -29,14 +29,14 @@ final class Colophon
      * @since 0.1.0
      * @access private
      *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities;
 
     /**
      * Constructor
      *
-     * @param Utilities $utilities Utilities.
+     * @param Utilities $utilities
      *
      * @since 0.1.0
      * @access public

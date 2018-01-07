@@ -14,12 +14,14 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Mods;
 
+use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
+
 /**
  * Layout
  *
  * @since 0.1.0
  */
-final class Layout extends AbstractMod
+final class Layout extends AbstractThemeMod
 {
     /**
      * Mods
