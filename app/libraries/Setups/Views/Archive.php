@@ -3,7 +3,7 @@
 /**
  * Archives
  *
- * @package GrottoPress\Jentil\Setups
+ * @package GrottoPress\Jentil\Setups\Views
  * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,7 +12,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
 
@@ -21,7 +21,7 @@ use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
  *
  * @since 0.1.0
  */
-final class Archives extends AbstractSetup
+final class Archive extends AbstractSetup
 {
     /**
      * Run setup
@@ -31,18 +31,18 @@ final class Archives extends AbstractSetup
      */
     public function run()
     {
-        \add_action('jentil_before_content', [$this, 'description']);
+        \add_action('jentil_before_content', [$this, 'renderDescription']);
     }
 
     /**
-     * Description
+     * Render description
      *
      * @since 0.1.0
      * @access public
      *
      * @action jentil_before_content
      */
-    public function description()
+    public function renderDescription()
     {
         if (!$this->app->utilities->page->is('archive')) {
             return;

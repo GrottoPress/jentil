@@ -1,15 +1,12 @@
 <?php
 
 /**
- * Page Builder Templates
+ * Abstract Template
  *
- * We need this to be able to load the page builder
- * custom page/post templates.
+ * @see https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/
  *
- * @see https://developer.wordpress.org/reference/functions/get_query_template/
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.5.0
+ * @package GrottoPress\Jentil\Setups\CustomTemplates
+ * @since 0.6.0
  *
  * @author GrottoPress <info@grottopress.com>
  * @author N Atta Kus Adusei
@@ -17,22 +14,22 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\CustomTemplates;
 
 use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
 use WP_Theme;
 
 /**
- * Page Builder Templates
+ * Abstract Template
  *
- * @since 0.5.0
+ * @since 0.6.0
  */
-final class PageBuilderTemplates extends AbstractSetup
+abstract class AbstractTemplate extends AbstractSetup
 {
     /**
      * Run setup
      *
-     * @since 0.5.0
+     * @since 0.6.0
      * @access public
      */
     public function run()
@@ -41,16 +38,16 @@ final class PageBuilderTemplates extends AbstractSetup
     }
 
     /**
-     * Load
+     * Load template
      *
-     * @since 0.5.0
+     * @since 0.6.0
      * @access public
      *
      * @action wp_loaded
      */
     public function load()
     {
-        $post_types = \get_post_types(['public' => true, 'show_ui' => true]);
+        $post_types = $this->postTypes();
         
         foreach ($post_types as $post_type) {
             \add_action("theme_{$post_type}_templates", [$this, 'add'], 10, 4);
@@ -58,38 +55,37 @@ final class PageBuilderTemplates extends AbstractSetup
     }
 
     /**
-     * Add page builder templates
+     * Add template
      *
      * @param array $templates
      * @param WP_Theme $theme
      * @param \WP_Post $post
      * @param string $post_type
      *
-     * @see https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/
-     *
-     * @since 0.5.0
+     * @since 0.6.0
      * @access public
      *
      * @filter theme_{$post_type}_templates
      *
      * @return array
      */
-    public function add(
+    abstract public function add(
         array $templates,
         WP_Theme $theme,
         $post,
         string $post_type
-    ): array {
-        $templates['page-builder.php'] = \esc_html__(
-            'Page builder',
-            'jentil'
-        );
+    ): array;
 
-        $templates['page-builder-blank.php'] = \esc_html__(
-            'Page builder (blank)',
-            'jentil'
-        );
-
-        return $templates;
+    /**
+     * Post types to load template for.
+     *
+     * @since 0.6.0
+     * @access protected
+     *
+     * @return array
+     */
+    protected function postTypes(): array
+    {
+        return \get_post_types(['public' => true, 'show_ui' => true]);
     }
 }
