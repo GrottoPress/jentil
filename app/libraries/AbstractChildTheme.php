@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil;
 
 use GrottoPress\WordPress\SUV\AbstractChildTheme as ChildTheme;
+use GrottoPress\WordPress\SUV\AbstractTheme;
 
 /**
  * Abstract Child Theme
@@ -31,7 +32,7 @@ abstract class AbstractChildTheme extends ChildTheme
      *
      * @return array
      */
-    protected function getParent(): Jentil
+    protected function getParent(): AbstractTheme
     {
         return Jentil::getInstance();
     }
