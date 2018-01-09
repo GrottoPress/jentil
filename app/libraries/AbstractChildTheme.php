@@ -14,25 +14,15 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil;
 
-use GrottoPress\WordPress\SUV\AbstractApp;
+use GrottoPress\WordPress\SUV\AbstractChildTheme as ChildTheme;
 
 /**
  * Abstract Child Theme
  *
  * @since 0.6.0
  */
-abstract class AbstractChildTheme extends AbstractApp
+abstract class AbstractChildTheme extends ChildTheme
 {
-    /**
-     * Parent theme
-     *
-     * @since 0.6.0
-     * @access protected
-     *
-     * @var Jentil
-     */
-    protected $parent;
-
     /**
      * Get parent theme
      *
