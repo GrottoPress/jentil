@@ -15,14 +15,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\WordPress\SUV\AbstractApp;
+use GrottoPress\WordPress\SUV\AbstractTheme;
 
 /**
  * Jentil
  *
  * @since 0.1.0
  */
-final class Jentil extends AbstractApp
+final class Jentil extends AbstractTheme
 {
     /**
      * Theme utilities
