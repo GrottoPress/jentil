@@ -184,11 +184,11 @@ final class Posts extends AbstractThemeMod
             'pagination' => '',
             'pagination_maximum' => -1,
             'pagination_position' => 'bottom',
-            'pagination_previous_label' => \esc_html__(
+            'pagination_previous_text' => \esc_html__(
                 '&larr; Previous',
                 'jentil'
             ),
-            'pagination_next_label' => \esc_html__('Next &rarr;', 'jentil'),
+            'pagination_next_text' => \esc_html__('Next &rarr;', 'jentil'),
             'sticky_posts' => 0,
         ];
 
@@ -207,8 +207,8 @@ final class Posts extends AbstractThemeMod
             unset($defaults['pagination']);
             unset($defaults['pagination_maximum']);
             unset($defaults['pagination_position']);
-            unset($defaults['pagination_previous_label']);
-            unset($defaults['pagination_next_label']);
+            unset($defaults['pagination_previous_text']);
+            unset($defaults['pagination_next_text']);
         }
 
         if (!\in_array($this->context, [

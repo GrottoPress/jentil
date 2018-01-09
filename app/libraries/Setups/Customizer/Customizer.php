@@ -53,11 +53,11 @@ final class Customizer extends AbstractCustomizer
      */
     public function register(WPCustomizer $WPCustomizer)
     {
-        $this->sections['title'] = new Title\Title($this);
-        $this->sections['layout'] = new Layout\Layout($this);
-        $this->sections['colophon'] = new Colophon\Colophon($this);
+        $this->sections['Title\Title'] = new Title\Title($this);
+        $this->sections['Layout\Layout'] = new Layout\Layout($this);
+        $this->sections['Colophon\Colophon'] = new Colophon\Colophon($this);
         
-        $this->panels['posts'] = new Posts\Posts($this);
+        $this->panels['Posts\Posts'] = new Posts\Posts($this);
         
         parent::register($WPCustomizer);
     }
@@ -99,16 +99,17 @@ final class Customizer extends AbstractCustomizer
         $script = 'var shortTags = '.\json_encode(
             $this->app->utilities->shortTags->get()
         ).';
-        var colophonModName = "'.$this->sections['colophon']->settings['colophon']->name.'";';
+        var colophonModName = "'.$this->sections['Colophon\Colophon']
+            ->settings['Colophon']->name.'";';
 
         $titles = [];
-        
-        foreach ($this->sections['title']->settings as $setting) {
+
+        foreach ($this->sections['Title\Title']->settings as $setting) {
             $titles[] = $setting->name;
         }
 
         $script .= 'var titleModNames = '.\json_encode($titles).';';
-        
+
         \wp_add_inline_script('jentil-customizer', $script, 'before');
     }
 

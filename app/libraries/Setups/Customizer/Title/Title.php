@@ -70,16 +70,19 @@ final class Title extends AbstractSection
     {
         $settings = [];
 
-        $settings['author'] = new Settings\Author($this);
-        $settings['date'] = new Settings\Date($this);
-        $settings['error_404'] = new Settings\Error404($this);
-        $settings['search'] = new Settings\Search($this);
+        $settings['Author'] = new Settings\Author($this);
+        $settings['Date'] = new Settings\Date($this);
+        $settings['Error404'] = new Settings\Error404($this);
+        $settings['Search'] = new Settings\Search($this);
 
         if (($taxonomies = $this->customizer->app->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
-                $settings['taxonomy_'.$taxonomy->name] = new Settings\Taxonomy($this, $taxonomy);
+                $settings['Taxonomy_'.$taxonomy->name] = new Settings\Taxonomy(
+                    $this,
+                    $taxonomy
+                );
             }
         }
 
@@ -87,7 +90,7 @@ final class Title extends AbstractSection
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                $settings['post_type_'.$post_type->name] =
+                $settings['PostType_'.$post_type->name] =
                     new Settings\PostType($this, $post_type);
             }
         }

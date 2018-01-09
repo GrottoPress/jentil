@@ -68,15 +68,15 @@ final class Posts extends AbstractPanel
     {
         $sections = [];
 
-        $sections['author'] = new Author($this);
-        $sections['date'] = new Date($this);
-        $sections['search'] = new Search($this);
+        $sections['Author'] = new Author($this);
+        $sections['Date'] = new Date($this);
+        $sections['Search'] = new Search($this);
 
         if (($taxonomies = $this->customizer->app->utilities
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
-                $sections['taxonomy_'.$taxonomy->name] = new Taxonomy(
+                $sections['Taxonomy_'.$taxonomy->name] = new Taxonomy(
                     $this,
                     $taxonomy
                 );
@@ -87,11 +87,11 @@ final class Posts extends AbstractPanel
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                $sections['sticky_'.$post_type->name] = new Sticky(
+                $sections['Sticky_'.$post_type->name] = new Sticky(
                     $this,
                     $post_type
                 );
-                $sections['post_type_'.$post_type->name] = new PostType(
+                $sections['PostType_'.$post_type->name] = new PostType(
                     $this,
                     $post_type
                 );

@@ -117,13 +117,13 @@ final class Sticky extends AbstractSection
     {
         $settings = parent::settings();
 
-        unset($settings['sticky_posts']);
-        unset($settings['number']);
-        unset($settings['pagination']);
-        unset($settings['pagination_maximum']);
-        unset($settings['pagination_position']);
-        unset($settings['pagination_previous_label']);
-        unset($settings['pagination_next_label']);
+        unset($settings['StickyPosts']);
+        unset($settings['Number']);
+        unset($settings['Pagination']);
+        unset($settings['PaginationMaximum']);
+        unset($settings['PaginationPosition']);
+        unset($settings['PaginationPrevious_label']);
+        unset($settings['PaginationNextLabel']);
 
         return $settings;
     }

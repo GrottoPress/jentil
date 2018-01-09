@@ -52,7 +52,7 @@ final class Colophon extends AbstractSection
      */
     public function add(WPCustomizer $WPCustomizer)
     {
-        $this->settings['colophon'] = new Settings\Colophon($this);
+        $this->settings['Colophon'] = new Settings\Colophon($this);
 
         parent::add($WPCustomizer);
     }

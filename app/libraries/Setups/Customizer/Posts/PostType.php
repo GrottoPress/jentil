@@ -123,7 +123,7 @@ final class PostType extends AbstractSection
         if (!$this->customizer->app->utilities
             ->page->posts->sticky->get($this->post_type->name)
         ) {
-            unset($settings['sticky_posts']);
+            unset($settings['StickyPosts']);
         }
 
         return $settings;

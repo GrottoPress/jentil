@@ -60,8 +60,12 @@ final class Archive extends AbstractPosts
                     ',',
                     $this->posts->themeMod('pagination_position')->get()
                 ),
-                'prev_text' => $this->posts->themeMod('pagination_previous_label')->get(),
-                'next_text' => $this->posts->themeMod('pagination_next_label')->get(),
+                'prev_text' => $this->posts->themeMod(
+                    'pagination_previous_text'
+                )->get(),
+                'next_text' => $this->posts->themeMod(
+                    'pagination_next_text'
+                )->get(),
             ],
             'title' => [
                 'length' => $this->posts->themeMod('title_words')->get(),

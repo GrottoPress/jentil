@@ -153,7 +153,7 @@ final class Taxonomy extends AbstractSection
     {
         $settings = parent::settings();
 
-        unset($settings['sticky_posts']);
+        unset($settings['StickyPosts']);
 
         return $settings;
     }

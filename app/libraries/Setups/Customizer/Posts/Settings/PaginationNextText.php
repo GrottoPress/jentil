@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Previous Pagination Label
+ * Next Pagination Text
  *
  * @package GrottoPress\Jentil\Setups\Customizer\Posts\Settings
  * @since 0.1.0
@@ -17,11 +17,11 @@ namespace GrottoPress\Jentil\Setups\Customizer\Posts\Settings;
 use GrottoPress\Jentil\Setups\Customizer\Posts\AbstractSection;
 
 /**
- * Previous Pagination Label
+ * Next Pagination Text
  *
  * @since 0.1.0
  */
-final class PaginationPreviousLabel extends AbstractSetting
+final class PaginationNextText extends AbstractSetting
 {
     /**
      * Constructor
@@ -35,17 +35,14 @@ final class PaginationPreviousLabel extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('pagination_previous_label');
+        $mod = $this->themeMod('pagination_next_text');
 
         $this->name = $mod->name;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
-        $this->control['label'] = \esc_html__(
-            'Previous page link label',
-            'jentil'
-        );
+        $this->control['label'] = \esc_html__('Next page link label', 'jentil');
         $this->control['type'] = 'text';
     }
 }

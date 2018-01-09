@@ -99,39 +99,40 @@ abstract class AbstractSection extends Section
     {
         $settings = [];
 
-        $settings['sticky_posts'] = new Settings\StickyPosts($this);
-        $settings['wrap_class'] = new Settings\WrapClass($this);
-        $settings['number'] = new Settings\Number($this);
-        // $settings['wrap_tag'] = new Settings\WrapTag($this);
-        // $settings['layout'] = new Settings\Layout($this);
+        $settings['StickyPosts'] = new Settings\StickyPosts($this);
+        $settings['WrapClass'] = new Settings\WrapClass($this);
+        $settings['Number'] = new Settings\Number($this);
+        // $settings['WrapTag'] = new Settings\WrapTag($this);
+        // $settings['Layout'] = new Settings\Layout($this);
 
-        $settings['title_words'] = new Settings\TitleWords($this);
-        $settings['title_position'] = new Settings\TitlePosition($this);
-        $settings['image'] = new Settings\Image($this);
-        $settings['image_alignment'] = new Settings\ImageAlignment($this);
-        $settings['image_margin'] = new Settings\ImageMargin($this);
-        $settings['text_offset'] = new Settings\TextOffset($this);
-        $settings['excerpt'] = new Settings\Excerpt($this);
-        $settings['more_link'] = new Settings\MoreText($this);
+        $settings['TitleWords'] = new Settings\TitleWords($this);
+        $settings['TitlePosition'] = new Settings\TitlePosition($this);
+        $settings['Image'] = new Settings\Image($this);
+        $settings['ImageAlignment'] = new Settings\ImageAlignment($this);
+        $settings['ImageMargin'] = new Settings\ImageMargin($this);
+        $settings['TextOffset'] = new Settings\TextOffset($this);
+        $settings['Excerpt'] = new Settings\Excerpt($this);
+        $settings['MoreText'] = new Settings\MoreText($this);
 
-        $settings['before_title'] = new Settings\BeforeTitle($this);
-        $settings['before_title_separator'] =
+        $settings['BeforeTitle'] = new Settings\BeforeTitle($this);
+        $settings['BeforeTitleSeparator'] =
             new Settings\BeforeTitleSeparator($this);
-        $settings['after_title'] = new Settings\AfterTitle($this);
-        $settings['after_title_separator'] =
+        $settings['AfterTitle'] = new Settings\AfterTitle($this);
+        $settings['AfterTitleSeparator'] =
             new Settings\AfterTitleSeparator($this);
-        $settings['after_content'] = new Settings\AfterContent($this);
-        $settings['after_content_separator'] =
+        $settings['AfterContent'] = new Settings\AfterContent($this);
+        $settings['AfterContentSeparator'] =
             new Settings\AfterContentSeparator($this);
 
-        // $settings['pagination'] = new Settings\Pagination($this);
-        // $settings['pagination_maximum'] = new Settings\PaginationMaximum($this);
-        $settings['pagination_position'] =
+        // $settings['Pagination'] = new Settings\Pagination($this);
+        // $settings['PaginationMaximum'] =
+            // new Settings\PaginationMaximum($this);
+        $settings['PaginationPosition'] =
             new Settings\PaginationPosition($this);
-        $settings['pagination_previous_label'] =
-            new Settings\PaginationPreviousLabel($this);
-        $settings['pagination_next_label'] =
-            new Settings\PaginationNextLabel($this);
+        $settings['PaginationPreviousText'] =
+            new Settings\PaginationPreviousText($this);
+        $settings['PaginationNextText'] =
+            new Settings\PaginationNextText($this);
 
         return $settings;
     }
