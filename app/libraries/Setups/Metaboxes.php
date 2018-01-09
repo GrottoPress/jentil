@@ -88,9 +88,7 @@ final class Metaboxes extends AbstractSetup
             return [];
         }
         
-        if (!($layouts = $this->app->utilities->page
-                ->layouts->IDNames())
-        ) {
+        if (!($layouts = $this->app->utilities->page->layouts->IDNames())) {
             return [];
         }
 
@@ -98,7 +96,7 @@ final class Metaboxes extends AbstractSetup
             'context' => 'singular',
             'specific' => $post->post_type,
             'more_specific' => $post->ID,
-        ]))) {
+        ]))->get()) {
             return [];
         }
 

@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Replaced zero font size inline-block whitespace fix with letter spacing fix
 - Redirect `/?s={query}` search URLs to `/search/{query}` if using permalinks
 - Using the `grottopress/wordpress-suv` package for this theme.
+- Reorganised directory structure of setup classes into groups.
 
 ### Fixed
 - Fixed 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 

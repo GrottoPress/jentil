@@ -63,29 +63,42 @@ final class Jentil extends AbstractApp
      */
     protected function __construct()
     {
-        $this->setups['loader'] = new Setups\Loader($this);
-        // $this->setups['updater'] = new Setups\Updater($this);
-        $this->setups['language'] = new Setups\Language($this);
-        $this->setups['styles'] = new Setups\Styles($this);
-        $this->setups['scripts'] = new Setups\Scripts($this);
-        $this->setups['thumbnails'] = new Setups\Thumbnails($this);
-        $this->setups['feeds'] = new Setups\Feeds($this);
-        $this->setups['html5'] = new Setups\HTML5($this);
-        $this->setups['title'] = new Setups\Title($this);
-        $this->setups['layout'] = new Setups\Layout($this);
-        $this->setups['archives'] = new Setups\Archives($this);
-        $this->setups['search'] = new Setups\Search($this);
-        $this->setups['menu'] = new Setups\Menu($this);
-        $this->setups['breadcrumbs'] = new Setups\Breadcrumbs($this);
-        $this->setups['singular'] = new Setups\Singular($this);
-        $this->setups['comments'] = new Setups\Comments($this);
-        $this->setups['widgets'] = new Setups\Widgets($this);
-        $this->setups['colophon'] = new Setups\Colophon($this);
-        $this->setups['customizer'] = new Setups\Customizer\Customizer($this);
-        $this->setups['metaboxes'] = new Setups\Metaboxes($this);
-        $this->setups['mobile'] = new Setups\Mobile($this);
-        $this->setups['page_builder_templates'] =
-            new Setups\PageBuilderTemplates($this);
+        $this->setups['Loader'] = new Setups\Loader($this);
+        // $this->setups['Updater'] = new Setups\Updater($this);
+        $this->setups['Language'] = new Setups\Language($this);
+        $this->setups['Styles'] = new Setups\Styles($this);
+        $this->setups['Scripts'] = new Setups\Scripts($this);
+        $this->setups['Thumbnails'] = new Setups\Thumbnails($this);
+        $this->setups['Feeds'] = new Setups\Feeds($this);
+        $this->setups['HTML5'] = new Setups\HTML5($this);
+        $this->setups['Title'] = new Setups\Title($this);
+        $this->setups['Layout'] = new Setups\Layout($this);
+        $this->setups['Search'] = new Setups\Search($this);
+        $this->setups['Menu'] = new Setups\Menu($this);
+        $this->setups['Comments'] = new Setups\Comments($this);
+        $this->setups['Customizer\Customizer'] =
+            new Setups\Customizer\Customizer($this);
+        $this->setups['Metaboxes'] = new Setups\Metaboxes($this);
+        $this->setups['Mobile'] = new Setups\Mobile($this);
+
+        $this->setups['CustomTemplates\PageBuilder'] =
+            new Setups\CustomTemplates\PageBuilder($this);
+        $this->setups['CustomTemplates\PageBuilderBlank'] =
+            new Setups\CustomTemplates\PageBuilderBlank($this);
+
+        $this->setups['Sidebars\Primary'] =
+            new Setups\Sidebars\Primary($this);
+        $this->setups['Sidebars\Secondary'] =
+            new Setups\Sidebars\Secondary($this);
+        $this->setups['Sidebars\Footer'] = new Setups\Sidebars\Footer($this);
+
+        $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
+        $this->setups['Views\Search'] = new Setups\Views\Search($this);
+        $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
+        $this->setups['Views\Breadcrumbs'] =
+            new Setups\Views\Breadcrumbs($this);
+        $this->setups['Views\Header'] = new Setups\Views\Header($this);
+        $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
     }
 
     /**
@@ -117,8 +130,8 @@ final class Jentil extends AbstractApp
     {
         $setups = $this->setups;
 
-        unset($setups['loader']);
-        unset($setups['updater']);
+        unset($setups['Loader']);
+        unset($setups['Updater']);
 
         return $setups;
     }

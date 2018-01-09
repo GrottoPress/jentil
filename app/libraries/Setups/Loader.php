@@ -39,7 +39,10 @@ final class Loader extends AbstractSetup
         $templates = $this->templates();
 
         foreach ($templates as $template) {
-            \add_filter("{$template}_template_hierarchy", [$this, 'load']);
+            \add_filter(
+                "{$template}_template_hierarchy",
+                [$this, 'loadTemplates']
+            );
         }
     }
 
@@ -51,7 +54,7 @@ final class Loader extends AbstractSetup
      *
      * @filter {$type}_template_hierarchy
      */
-    public function load(array $templates): array
+    public function loadTemplates(array $templates): array
     {
         $j_templates = [];
 

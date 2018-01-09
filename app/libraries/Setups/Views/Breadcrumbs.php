@@ -3,7 +3,7 @@
 /**
  * Breadcrumbs
  *
- * @package GrottoPress\Jentil\Setups
+ * @package GrottoPress\Jentil\Setups\Views
  * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,7 +12,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
 

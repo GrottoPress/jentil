@@ -3,7 +3,7 @@
 /**
  * Singular
  *
- * @package GrottoPress\Jentil\Setups
+ * @package GrottoPress\Jentil\Setups\Views
  * @since 0.1.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,7 +12,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
 
@@ -34,17 +34,16 @@ final class Singular extends AbstractSetup
         \add_filter('body_class', [$this, 'addBodyClasses']);
         // \add_action(
         //     'jentil_before_before_title',
-        //     [$this,
-        //     'renderParentLink']
+        //     [$this, 'renderParentLink']
         // );
         \add_action('jentil_before_content', [$this, 'renderAttachment']);
         \add_filter(
             'jentil_singular_after_title',
-            [$this, 'renderByline'],
+            [$this, 'byline'],
             10,
             3
         );
-        \add_action('jentil_after_title', [$this, 'byline']);
+        \add_action('jentil_after_title', [$this, 'renderByline']);
     }
 
     /**
@@ -162,16 +161,18 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Single post after title
+     * Byline
      *
-     * Used for single posts when using the index.php template.
+     * Used for single posts when using the `index.php` template.
      *
      * @since 0.1.0
      * @access public
      *
      * @filter jentil_singular_after_title
+     *
+     * @return string
      */
-    public function renderByline(
+    public function byline(
         string $output,
         int $id,
         string $separator
@@ -184,7 +185,7 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Single post after title
+     * Render byline
      *
      * Replicates the functionality above for when
      * using the singular.php template
@@ -194,7 +195,7 @@ final class Singular extends AbstractSetup
      *
      * @action jentil_after_title
      */
-    public function byline()
+    public function renderByline()
     {
         if (!$this->app->utilities->page->is('singular', 'post')) {
             return;
@@ -209,6 +210,8 @@ final class Singular extends AbstractSetup
 
     /**
      * Single post after title
+     *
+     * @param int $id Post ID.
      *
      * @since 0.1.0
      * @access public
