@@ -26,7 +26,7 @@
         "gulp-clean-css": "^3.9.2",
         "gulp-jshint": "^2.1.0",
         "gulp-rename": "^1.2.2",
-        "gulp-rtlcss": "^1.0.0",
+        "gulp-rtlcss": "^1.1.0",
         "gulp-sass": "^3.1.0",
         "gulp-sourcemaps": "^2.6.3",
         "gulp-uglify": "^3.0.0",
