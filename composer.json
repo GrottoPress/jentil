@@ -1,5 +1,6 @@
 {
     "name": "grottopress/jentil",
+    "type": "wordpress-theme",
     "description": "Jentil is a modern framework for rapid WordPress theme development",
     "license": "MIT",
     "homepage": "https://jentil.grottopress.com",
