@@ -9,7 +9,7 @@
  * @see https://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
  *
  * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
+ * @author N Atta Kusi Adusei
  */
 
 declare (strict_types = 1);
