@@ -203,12 +203,14 @@ final class Posts extends AbstractThemeMod
         if ('sticky' === $this->context) {
             $defaults['wrap_class'] = 'sticky-posts big';
 
-            unset($defaults['number']);
-            unset($defaults['pagination']);
-            unset($defaults['pagination_maximum']);
-            unset($defaults['pagination_position']);
-            unset($defaults['pagination_previous_text']);
-            unset($defaults['pagination_next_text']);
+            unset(
+                $defaults['number'],
+                $defaults['pagination'],
+                $defaults['pagination_maximum'],
+                $defaults['pagination_position'],
+                $defaults['pagination_previous_text'],
+                $defaults['pagination_next_text']
+            );
         }
 
         if (!\in_array($this->context, [
