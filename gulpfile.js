@@ -29,7 +29,7 @@ const sass_dest = './dist/styles'
 /**
  * Lint JS
  */
-gulp.task('lint_js', () =>
+gulp.task('lint-js', () =>
     gulp.src(js_files)
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
@@ -38,7 +38,7 @@ gulp.task('lint_js', () =>
 /**
  * Minify JS
  */
-gulp.task('minify_js', () =>
+gulp.task('minify-js', () =>
     gulp.src(js_files)
     .pipe(sourcemaps.init())
     .pipe(uglify())
@@ -50,7 +50,7 @@ gulp.task('minify_js', () =>
 /**
  * Compile scss, rtl, minify css
  */
-gulp.task('compile_sass', () =>
+gulp.task('compile-sass', () =>
     gulp.src(sass_files)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -71,16 +71,16 @@ gulp.task('compile_sass', () =>
  * Watch files for changes
  */
 gulp.task('watch', () => {
-    gulp.watch(js_files, ['lint_js', 'minify_js'])
-    gulp.watch(sass_files, ['compile_sass'])
+    gulp.watch(js_files, ['lint-js', 'minify-js'])
+    gulp.watch(sass_files, ['compile-sass'])
 })
 
 /**
  * Default task
  */
 gulp.task('default', [
-    'lint_js',
-    'minify_js',
-    'compile_sass',
+    'lint-js',
+    'minify-js',
+    'compile-sass',
     'watch'
 ])
