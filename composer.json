@@ -30,20 +30,31 @@
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
         "grottopress/wordpress-posts": "^0.3",
-        "grottopress/wordpress-suv": "^0.2"
+        "grottopress/wordpress-suv": "^0.2",
+        "fxp/composer-asset-plugin": "^1.4",
+        "npm-asset/grottopress--scss": "^0.1.11",
+        "npm-asset/font-awesome": "^4.7",
+        "npm-asset/html5shiv": "^3.7",
+        "npm-asset/normalize.css": "^7.0",
+        "npm-asset/respond.js": "^1.4"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"
     },
+    "config": {
+        "fxp-asset": {
+            "installer-paths": {
+                "npm-asset-library": "assets/vendor"
+            }
+        }
+    },
     "scripts": {
         "post-update-cmd": [
-            "npm update",
-            "./bin/migrate-assets"
+            "npm update"
         ],
         "post-install-cmd": [
             "npm install",
-            "chmod +x ./bin/*",
-            "./bin/migrate-assets"
+            "chmod +x ./bin/*"
         ],
         "test": [
             "codecept run wpunit"

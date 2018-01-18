@@ -34,13 +34,13 @@ declare (strict_types = 1);
             <script src="<?php
                 echo \Jentil()->utilities->fileSystem->dir(
                     'url',
-                    '/dist/vendor/html5shiv/dist/html5shiv.min.js'
+                    '/assets/vendor/html5shiv/dist/html5shiv.min.js'
                 );
             ?>"></script>
             <script src="<?php
                 echo \Jentil()->utilities->fileSystem->dir(
                     'url',
-                    '/dist/vendor/respond.js/dest/respond.min.js'
+                    '/assets/vendor/respond.js/dest/respond.min.js'
                 );
             ?>"></script>
         <![endif]-->

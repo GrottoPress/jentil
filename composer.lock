@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d1452785eecc7097feb88ac7bd0eb42",
+    "content-hash": "79c837eb8f826e29df6fabb77cefafed",
     "packages": [
         {
             "name": "aura/html",
@@ -262,6 +262,65 @@
                 "utility"
             ],
             "time": "2013-06-29T12:35:22+00:00"
+        },
+        {
+            "name": "fxp/composer-asset-plugin",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fxpio/composer-asset-plugin.git",
+                "reference": "61352d99940d2b2392a5d2db83b8c0ef5faf222a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/61352d99940d2b2392a5d2db83b8c0ef5faf222a",
+                "reference": "61352d99940d2b2392a5d2db83b8c0ef5faf222a",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "composer/composer": "^1.4.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Fxp\\Composer\\AssetPlugin\\FxpAssetPlugin",
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fxp\\Composer\\AssetPlugin\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Pluchino",
+                    "email": "francois.pluchino@gmail.com"
+                }
+            ],
+            "description": "NPM/Bower Dependency Manager for Composer",
+            "homepage": "https://github.com/fxpio/composer-asset-plugin",
+            "keywords": [
+                "asset",
+                "bower",
+                "composer",
+                "dependency manager",
+                "nodejs",
+                "npm",
+                "package"
+            ],
+            "time": "2017-10-20T06:53:56+00:00"
         },
         {
             "name": "grottopress/form-field",
@@ -758,6 +817,226 @@
                 "php mobile detect"
             ],
             "time": "2017-12-18T10:38:51+00:00"
+        },
+        {
+            "name": "npm-asset/font-awesome",
+            "version": "4.7.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
+                "reference": null,
+                "shasum": "8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "http://github.com/FortAwesome/Font-Awesome/issues"
+                },
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git+https://github.com/FortAwesome/Font-Awesome.git"
+                },
+                "npm-asset-scripts": [],
+                "npm-asset-engines": {
+                    "node": ">=0.10.3"
+                }
+            },
+            "license": [
+                "(OFL-1.1 AND MIT)"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Gandy",
+                    "email": "dave@fontawesome.io",
+                    "url": "http://twitter.com/davegandy"
+                },
+                {
+                    "name": "Brian Talbot",
+                    "url": "http://twitter.com/talbs"
+                },
+                {
+                    "name": "Travis Chase",
+                    "url": "http://twitter.com/supercodepoet"
+                },
+                {
+                    "name": "Rob Madole",
+                    "url": "http://twitter.com/robmadole"
+                },
+                {
+                    "name": "Geremia Taglialatela",
+                    "url": "http://twitter.com/gtagliala"
+                }
+            ],
+            "description": "The iconic font and CSS framework",
+            "homepage": "http://fontawesome.io/",
+            "keywords": [
+                "awesome",
+                "bootstrap",
+                "font",
+                "font",
+                "fontawesome",
+                "icon"
+            ],
+            "time": "2016-10-24T21:33:40+00:00"
+        },
+        {
+            "name": "npm-asset/grottopress--scss",
+            "version": "0.1.11",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.1.11.tgz",
+                "reference": null,
+                "shasum": "9f62fa9d718f981584e561330e20fb72ebf58bcd"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/GrottoPress/scss/issues"
+                },
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git+https://github.com/GrottoPress/scss.git"
+                },
+                "npm-asset-scripts": {
+                    "test": "echo \"Error: no test specified\" && exit 1"
+                },
+                "npm-asset-publish-config": {
+                    "access": "public"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GrottoPress.com",
+                    "email": "info@grottopress.com",
+                    "url": "https://www.grottopress.com"
+                },
+                {
+                    "name": "N Atta Kusi Adusei",
+                    "url": "https://twitter.com/akadusei"
+                }
+            ],
+            "description": "Sass utilities: Mixins, variables and functions.",
+            "homepage": "https://github.com/GrottoPress/scss#README",
+            "keywords": [
+                "sass",
+                "scss"
+            ],
+            "time": "2018-01-05T14:52:27+00:00"
+        },
+        {
+            "name": "npm-asset/html5shiv",
+            "version": "3.7.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/html5shiv/-/html5shiv-3.7.3.tgz",
+                "reference": null,
+                "shasum": "d78a84a367bcb9a710100d57802c387b084631d2"
+            },
+            "require-dev": {
+                "npm-asset/grunt": ">=0.4.1",
+                "npm-asset/grunt-bytesize": ">=0.1.0",
+                "npm-asset/grunt-contrib-copy": ">=0.4.0",
+                "npm-asset/grunt-contrib-uglify": ">=0.2.7",
+                "npm-asset/grunt-contrib-watch": ">=0.3.0"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/aFarkas/html5shiv/issues"
+                },
+                "npm-asset-main": "dist/html5shiv.js",
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git+https://github.com/aFarkas/html5shiv.git"
+                },
+                "npm-asset-scripts": []
+            },
+            "description": "The HTML5 Shiv enables use of HTML5 sectioning elements in legacy Internet Explorer and provides basic HTML5 styling for Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x.",
+            "homepage": "https://github.com/aFarkas/html5shiv#readme",
+            "time": "2015-07-20T20:01:55+00:00"
+        },
+        {
+            "name": "npm-asset/normalize.css",
+            "version": "7.0.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/normalize.css/-/normalize.css-7.0.0.tgz",
+                "reference": null,
+                "shasum": "abfb1dd82470674e0322b53ceb1aaf412938e4bf"
+            },
+            "require-dev": {
+                "npm-asset/stylelint": ">=7.9.0,<8.0.0",
+                "npm-asset/stylelint-config-standard": ">=16.0.0,<17.0.0"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/necolas/normalize.css/issues"
+                },
+                "npm-asset-files": [
+                    "LICENSE.md",
+                    "normalize.css"
+                ],
+                "npm-asset-main": "normalize.css",
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git+https://github.com/necolas/normalize.css.git"
+                },
+                "npm-asset-scripts": {
+                    "test": "stylelint normalize.css"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A modern alternative to CSS resets",
+            "homepage": "https://necolas.github.io/normalize.css",
+            "time": "2017-05-02T18:16:35+00:00"
+        },
+        {
+            "name": "npm-asset/respond.js",
+            "version": "1.4.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/respond.js/-/respond.js-1.4.2.tgz",
+                "reference": null,
+                "shasum": "fd5c07450acce6090916d8d090b86b672dd9748b"
+            },
+            "require-dev": {
+                "npm-asset/grunt": "~0.4.0",
+                "npm-asset/grunt-cli": "~0.1",
+                "npm-asset/grunt-contrib-jshint": "~0.2.0",
+                "npm-asset/grunt-contrib-qunit": "~0.3.0",
+                "npm-asset/grunt-contrib-uglify": "0.2.7"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/scottjehl/Respond/issues"
+                },
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "https://github.com/scottjehl/Respond.git"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Scott Jehl",
+                    "email": "scott@filamentgroup.com",
+                    "url": "http://filamentgroup.com"
+                }
+            ],
+            "description": "min/max-width media query polyfill",
+            "homepage": "https://github.com/scottjehl/Respond",
+            "time": "2014-09-04T15:07:48+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
