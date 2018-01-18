@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "79c837eb8f826e29df6fabb77cefafed",
+    "content-hash": "5726495f017da877a46b70fdb5342f5b",
     "packages": [
         {
             "name": "aura/html",
@@ -670,21 +670,23 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.3.6",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "37a638b78db9478e32820896ee79e02f3dc6ed72"
+                "reference": "2d4611ed9b6b7ba1532099444e112e45374c89e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/37a638b78db9478e32820896ee79e02f3dc6ed72",
-                "reference": "37a638b78db9478e32820896ee79e02f3dc6ed72",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/2d4611ed9b6b7ba1532099444e112e45374c89e8",
+                "reference": "2d4611ed9b6b7ba1532099444e112e45374c89e8",
                 "shasum": ""
             },
             "require": {
+                "fxp/composer-asset-plugin": "^1.4",
                 "grottopress/getter": "^0.2",
                 "grottopress/mobile-detector": "^0.1",
+                "npm-asset/grottopress--scss": "^0.1.11",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -716,7 +718,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-01-06T17:04:48+00:00"
+            "time": "2018-01-18T21:51:33+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",

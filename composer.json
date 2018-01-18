@@ -29,7 +29,7 @@
         "yahnis-elsts/plugin-update-checker": "^4.1",
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "^0.3",
+        "grottopress/wordpress-posts": "^0.4",
         "grottopress/wordpress-suv": "^0.2",
         "fxp/composer-asset-plugin": "^1.4",
         "npm-asset/grottopress--scss": "^0.1.11",
