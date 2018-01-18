@@ -1,0 +1,36 @@
+////
+/// Content
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Content
+ */
+
+.post-wrap {
+    .entry-content {
+        line-height: 180%;
+        font-size: 1.14em;
+        @include paragraph;
+        @include clearfix;
+    }
+}
+
+.show-content > .post-wrap {
+    .more-link {
+        font-size: 0.93em;
+    }
+
+    > header,
+    > footer,
+    > header > .entry-title,
+    > .entry-summary,
+    > header > .entry-meta,
+    > footer > .entry-meta {
+       @include paragraph;
+    }
+}

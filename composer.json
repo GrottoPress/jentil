@@ -50,11 +50,19 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "npm update"
+            "npm update",
+            "./bin/migrate-assets"
         ],
         "post-install-cmd": [
+            "composer run start"
+        ],
+        "post-create-project-cmd": [
+            "composer run start"
+        ],
+        "start": [
             "npm install",
-            "chmod +x ./bin/*"
+            "chmod +x ./bin/*",
+            "./bin/migrate-assets"
         ],
         "test": [
             "codecept run wpunit"

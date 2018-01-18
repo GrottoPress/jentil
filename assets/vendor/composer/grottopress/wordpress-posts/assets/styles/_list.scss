@@ -1,0 +1,28 @@
+////
+/// Lists
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Lists
+ */
+
+.posts-wrap li {
+    .post-wrap {
+        &,
+        .entry-title,
+        .entry-summary,
+        .entry-meta {
+            @include paragraph(map-get($gwpp-gutter, tiny));
+        }
+
+        .entry-title {
+            font-weight: normal;
+            font-size: 1em;
+        }
+    }
+}

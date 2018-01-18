@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Move production assets from `vendor/` to `assets/vendor/composer`
+
+TO='./assets/vendor/composer'
+FROM=(
+    'grottopress/wordpress-posts/assets'
+    'grottopress/wordpress-posts/dist'
+)
+
+for dir in ${FROM[@]}; do
+    dest="${TO}/${dir}"
+
+    [[ ! -d "${dest}" ]] && mkdir -p "${dest}"
+
+    rsync -azPx --delete-after "./vendor/${dir}/" "${dest}/"
+done
+
+exit 0
