@@ -80,7 +80,7 @@ final class FileSystem
      */
     public function dir(string $type, string $append = ''): string
     {
-        return $this->getDir($type, $append);
+        return $this->_dir($type, $append);
     }
 
     /**
@@ -100,7 +100,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->getDir($type, "/dist/scripts{$append}", $form);
+        return $this->_dir($type, "/dist/scripts{$append}", $form);
     }
 
     /**
@@ -120,7 +120,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->getDir($type, "/dist/styles{$append}", $form);
+        return $this->_dir($type, "/dist/styles{$append}", $form);
     }
 
     /**
@@ -140,7 +140,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->getDir($type, "/app/partials{$append}", $form);
+        return $this->_dir($type, "/app/partials{$append}", $form);
     }
 
     /**
@@ -160,7 +160,7 @@ final class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->getDir($type, "/app/templates{$append}", $form);
+        return $this->_dir($type, "/app/templates{$append}", $form);
     }
 
     /**
@@ -216,7 +216,7 @@ final class FileSystem
      *
      * @return string Path or URL.
      */
-    private function getDir(
+    private function _dir(
         string $type,
         string $append = '',
         string $form = ''
