@@ -181,7 +181,7 @@ final class Singular extends AbstractSetup
             return $output;
         }
         
-        return $this->getByline($id).'<div class="self-clear"></div>';
+        return $this->_byline($id).'<div class="self-clear"></div>';
     }
 
     /**
@@ -204,7 +204,7 @@ final class Singular extends AbstractSetup
         global $post;
 
         echo '<aside class="entry-meta after-title self-clear">';
-        echo $this->getByline($post->ID);
+        echo $this->_byline($post->ID);
         echo '</aside>';
     }
 
@@ -218,7 +218,7 @@ final class Singular extends AbstractSetup
      *
      * @return string
      */
-    private function getByline(int $id): string
+    private function _byline(int $id): string
     {
         $jentil_post = $this->app->utilities->post($id);
 
