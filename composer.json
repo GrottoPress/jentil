@@ -32,7 +32,6 @@
         "grottopress/wordpress-posts": "^0.4",
         "grottopress/wordpress-suv": "^0.2",
         "fxp/composer-asset-plugin": "^1.4",
-        "npm-asset/grottopress--scss": "^0.1.11",
         "npm-asset/font-awesome": "^4.7",
         "npm-asset/html5shiv": "^3.7",
         "npm-asset/normalize.css": "^7.0",
