@@ -48,11 +48,11 @@ final class Styles extends AbstractSetup
     public function enqueue()
     {
         if (\is_rtl()) {
-            $style = '/jentil-rtl.min.css';
+            $style = 'jentil-rtl.min.css';
         } else {
-            $style = '/jentil.min.css';
+            $style = 'jentil.min.css';
         }
-        
+
         \wp_enqueue_style(
             'jentil',
             $this->app->utilities->fileSystem->dir(
