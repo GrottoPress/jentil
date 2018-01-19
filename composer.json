@@ -44,7 +44,7 @@
     "config": {
         "fxp-asset": {
             "installer-paths": {
-                "npm-asset-library": "assets/vendor/npm"
+                "npm-asset-library": "assets/vendor"
             }
         }
     },
