@@ -29,7 +29,7 @@
         "yahnis-elsts/plugin-update-checker": "^4.1",
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "^0.3",
+        "grottopress/wordpress-posts": "dev-dev",
         "grottopress/wordpress-suv": "^0.2"
     },
     "require-dev": {
@@ -41,15 +41,21 @@
             "./bin/migrate-assets"
         ],
         "post-install-cmd": [
-            "npm install",
-            "chmod +x ./bin/*",
-            "./bin/migrate-assets"
+            "composer run refresh"
+        ],
+        "post-create-project-cmd": [
+            "composer run refresh"
         ],
         "test": [
             "codecept run wpunit"
         ],
         "release": [
             "./bin/release"
+        ],
+        "refresh": [
+            "npm install",
+            "chmod +x ./bin/*",
+            "./bin/migrate-assets"
         ]
     },
     "autoload": {

@@ -1,28 +1,57 @@
 #!/bin/bash
 #
-# Move production assets from 'node_modules/' to 'dist/vendor/'
+# Move production assets to './assets/vendor/'
 
-TO='./dist/vendor'
+TO='./assets/vendor'
 FROM=(
     'normalize.css'
     'font-awesome'
     'html5shiv'
     'respond.js'
-    '@grottopress/scss'
+    'grottopress/wordpress-posts/assets'
+    'grottopress/wordpress-posts/dist'
 )
 
-[[ ! -d $TO ]] && mkdir -p $TO
+migrate()
+{
+    for dir in ${FROM[@]}; do
+        dest="${TO}/${dir}"
+        
+        if [[ -d "./node_modules/${dir}" ]]; then
+            src="./node_modules/${dir}"
+        elif [[ -d "./vendor/${dir}" ]]; then
+            src="./vendor/${dir}"
+        else
+            [[ -d "${dest}" ]] && rm -rf ${dest}
 
-for dir in ${FROM[@]}; do
-    dest="${TO}"
-
-    if expr match "$dir" '\@.*\/' >/dev/null; then
-        dest="${TO}/${dir%%\/*}"
+            continue
+        fi
 
         [[ ! -d "${dest}" ]] && mkdir -p "${dest}"
-    fi
 
-    cp -urf ./node_modules/$dir ${dest}
-done
+        rsync -azPx --delete-after "${src}/" "${dest}/"
+    done
+}
+
+removeUninstalledPackages()
+{
+    dirs=(${TO}/*)
+
+    for dir in ${dirs[@]}; do
+        dest="${dir##*\/}"
+
+        [[ -d "./node_modules/${dest}" || -d "./vendor/${dest}" ]] && continue
+
+        rm -rf ${dir}
+    done
+}
+
+run()
+{
+    migrate
+    removeUninstalledPackages
+}
+
+run
 
 exit 0

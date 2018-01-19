@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d1452785eecc7097feb88ac7bd0eb42",
+    "content-hash": "4226578a190f86489c6c8fcf904be84e",
     "packages": [
         {
             "name": "aura/html",
@@ -611,23 +611,21 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.4.0",
+            "version": "dev-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "2d4611ed9b6b7ba1532099444e112e45374c89e8"
+                "reference": "ad674a6c54e6a6e08a5e5a06f7544abb4ce0d652"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/2d4611ed9b6b7ba1532099444e112e45374c89e8",
-                "reference": "2d4611ed9b6b7ba1532099444e112e45374c89e8",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/ad674a6c54e6a6e08a5e5a06f7544abb4ce0d652",
+                "reference": "ad674a6c54e6a6e08a5e5a06f7544abb4ce0d652",
                 "shasum": ""
             },
             "require": {
-                "fxp/composer-asset-plugin": "^1.4",
                 "grottopress/getter": "^0.2",
                 "grottopress/mobile-detector": "^0.1",
-                "npm-asset/grottopress--scss": "^0.1.11",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -659,7 +657,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-01-18T21:51:33+00:00"
+            "time": "2018-01-19T00:12:17+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
@@ -6672,7 +6670,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "grottopress/wordpress-posts": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
