@@ -1,5 +1,6 @@
 # composer
-/vendor/
+vendor/
+!dist/vendor/
 
 # npm
-/node_modules/
+node_modules/

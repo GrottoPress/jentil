@@ -77,7 +77,7 @@ final class Styles extends AbstractSetup
             'normalize',
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/npm/normalize.css/normalize.css'
+                '/assets/vendor/normalize.css/normalize.css'
             )
         );
     }
@@ -96,7 +96,7 @@ final class Styles extends AbstractSetup
             'font-awesome',
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/npm/font-awesome/css/font-awesome.min.css'
+                '/assets/vendor/font-awesome/css/font-awesome.min.css'
             ),
             ['normalize']
         );
@@ -116,7 +116,7 @@ final class Styles extends AbstractSetup
             'wordpress-posts',
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/composer/grottopress/wordpress-posts/dist/styles/posts.min.css'
+                '/assets/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
             ),
             ['normalize']
         );
