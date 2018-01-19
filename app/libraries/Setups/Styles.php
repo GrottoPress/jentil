@@ -114,9 +114,9 @@ final class Styles extends AbstractSetup
     {
         \wp_enqueue_style(
             'wordpress-posts',
-            $this->app->utilities->fileSystem->dir(
+            $this->app->utilities->fileSystem->themeDir(
                 'url',
-                '/assets/vendor/composer/grottopress/wordpress-posts/dist/styles/posts.min.css'
+                '/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
             ),
             ['normalize']
         );
