@@ -7,7 +7,7 @@
 /// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
 ////
 
-@import '../vendor/npm/grottopress--scss/src/variables';
+@import '../../dist/vendor/@grottopress/scss/src/variables';
 
 // Breakpoints
 $jentil-breakpoint: (medium: 800px, wide: 960px) !default;

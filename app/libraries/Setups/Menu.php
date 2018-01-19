@@ -64,9 +64,9 @@ final class Menu extends AbstractSetup
     {
         \wp_enqueue_script(
             'jentil-menu',
-            $this->app->utilities->fileSystem->dir(
+            $this->app->utilities->fileSystem->scriptsDir(
                 'url',
-                '/dist/scripts/menu.min.js'
+                '/menu.min.js'
             ),
             ['jquery'],
             '',

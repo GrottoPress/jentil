@@ -84,6 +84,46 @@ final class FileSystem
     }
 
     /**
+     * Get Jentil JavaScript directory
+     *
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
+     * @param string $form 'relative' or 'absolute'.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string Path or URL.
+     */
+    public function scriptsDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        return $this->_dir($type, "/dist/scripts{$append}", $form);
+    }
+
+    /**
+     * Get Jentil CSS directory
+     *
+     * @param string $type 'path' or 'url'.
+     * @param string $append Filepath to append to URL.
+     * @param string $form 'relative' or 'absolute'.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return string Path or URL.
+     */
+    public function stylesDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        return $this->_dir($type, "/dist/styles{$append}", $form);
+    }
+
+    /**
      * Get Jentil partials directory
      *
      * @param string $type 'path' or 'url'.

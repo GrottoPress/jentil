@@ -55,10 +55,7 @@ final class Styles extends AbstractSetup
 
         \wp_enqueue_style(
             'jentil',
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                "/dist/styles/{$style}"
-            ),
+            $this->app->utilities->fileSystem->stylesDir('url', $style),
             ['normalize']
         );
     }
@@ -77,7 +74,7 @@ final class Styles extends AbstractSetup
             'normalize',
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/normalize.css/normalize.css'
+                '/dist/vendor/normalize.css/normalize.css'
             )
         );
     }
@@ -96,7 +93,7 @@ final class Styles extends AbstractSetup
             'font-awesome',
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/font-awesome/css/font-awesome.min.css'
+                '/dist/vendor/font-awesome/css/font-awesome.min.css'
             ),
             ['normalize']
         );

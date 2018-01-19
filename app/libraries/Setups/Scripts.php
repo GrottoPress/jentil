@@ -47,9 +47,9 @@ final class Scripts extends AbstractSetup
     {
         \wp_enqueue_script(
             'jentil',
-            $this->app->utilities->fileSystem->dir(
+            $this->app->utilities->fileSystem->scriptsDir(
                 'url',
-                '/dist/scripts/jentil.min.js'
+                '/jentil.min.js'
             ),
             ['jquery'],
             '',
