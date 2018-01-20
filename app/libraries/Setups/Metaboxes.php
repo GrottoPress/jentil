@@ -83,10 +83,6 @@ final class Metaboxes extends AbstractSetup
         if (!\current_user_can('edit_theme_options')) {
             return [];
         }
-        
-        if (!\is_post_type_hierarchical($post->post_type)) {
-            return [];
-        }
 
         $utilities = $this->app->utilities;
 
