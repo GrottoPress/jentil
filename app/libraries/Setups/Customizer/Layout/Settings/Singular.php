@@ -83,15 +83,19 @@ final class Singular extends AbstractSetting
             $post_type,
             $post
         ): bool {
-            $page = $this->section->customizer->app->utilities->page;
+            $utilities = $this->section->customizer->app->utilities;
 
-            if ($post) {
-                return ($page->is('page', $post->ID)
-                    || $page->is('single', $post->ID)
-                    || $page->is('attachment', $post->ID));
+            if ($utilities->customTemplate->isPageBuilder()) {
+                return false;
             }
 
-            return $page->is('singular', $post_type->name);
+            if ($post) {
+                return ($utilities->page->is('page', $post->ID)
+                    || $utilities->page->is('single', $post->ID)
+                    || $utilities->page->is('attachment', $post->ID));
+            }
+
+            return $utilities->page->is('singular', $post_type->name);
         };
 
         if ($post) {
