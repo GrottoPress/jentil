@@ -87,12 +87,14 @@ final class Metaboxes extends AbstractSetup
         if (!\is_post_type_hierarchical($post->post_type)) {
             return [];
         }
-        
-        if (!($layouts = $this->app->utilities->page->layouts->IDNames())) {
+
+        $utilities = $this->app->utilities;
+
+        if (!($layouts = $utilities->page->layouts->IDNames())) {
             return [];
         }
 
-        if (!($mod = $this->app->utilities->themeMods->layout([
+        if (!($mod = $utilities->themeMods->layout([
             'context' => 'singular',
             'specific' => $post->post_type,
             'more_specific' => $post->ID,
