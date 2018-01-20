@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Functions API
+ * Helper functions
  *
  * @package GrottoPress\Jentil
  * @since 0.1.0
