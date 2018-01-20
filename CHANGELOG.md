@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Using the `grottopress/wordpress-suv` package for this theme.
 - Reorganised directory structure of setup classes into groups.
 - Autoload script is now included only if exists. (Credit: [@XedinUnknown](https://github.com/XedinUnknown))
+- Ensure layout customizer settings do not show for page builder pages.
 
 ### Fixed
 - Fixed 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 
