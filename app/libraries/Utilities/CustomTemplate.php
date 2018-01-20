@@ -45,16 +45,40 @@ final class CustomTemplate
     }
 
     /**
-     * Are we on a page builder page?
+     * Is page a page builder page?
+     *
+     * @param int $post_id
      *
      * @since 0.6.0
      * @access public
      *
      * @return bool
      */
-    public function isPageBuilder(): bool
+    public function isPageBuilder(int $post_id = null): bool
     {
+        if ($post_id) {
+            return \in_array(
+                $this->slug($post_id),
+                ['page-builder.php', 'page-builder-blank.php']
+            );
+        }
+
         return $this->is(['page-builder.php', 'page-builder-blank.php']);
+    }
+
+    /**
+     * Get page template slug
+     *
+     * @param int $post_id
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return string
+     */
+    public function slug(int $post_id = null): string
+    {
+        return (string)\get_page_template_slug($post_id);
     }
 
     /**
