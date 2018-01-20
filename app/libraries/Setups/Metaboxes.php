@@ -90,6 +90,10 @@ final class Metaboxes extends AbstractSetup
             return [];
         }
 
+        if ($utilities->customTemplate->isPageBuilder((int)$post->ID)) {
+            return [];
+        }
+
         if (!($mod = $utilities->themeMods->layout([
             'context' => 'singular',
             'specific' => $post->post_type,
