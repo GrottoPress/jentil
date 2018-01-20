@@ -90,9 +90,11 @@ final class Singular extends AbstractSetting
             }
 
             if ($post) {
-                return ($utilities->page->is('page', $post->ID)
-                    || $utilities->page->is('single', $post->ID)
-                    || $utilities->page->is('attachment', $post->ID));
+                return (
+                    $utilities->page->is('page', $post->ID) ||
+                    $utilities->page->is('single', $post->ID) ||
+                    $utilities->page->is('attachment', $post->ID)
+                );
             }
 
             return $utilities->page->is('singular', $post_type->name);

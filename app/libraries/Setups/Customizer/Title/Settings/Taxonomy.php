@@ -102,9 +102,11 @@ final class Taxonomy extends AbstractSetting
             $page = $this->section->customizer->app->utilities->page;
 
             if ($term) {
-                return ($page->is('tag', $term->term_id)
-                    || $page->is('category', $term->term_id)
-                    || $page->is('tax', $taxonomy, $term->term_id));
+                return (
+                    $page->is('tag', $term->term_id) ||
+                    $page->is('category', $term->term_id) ||
+                    $page->is('tax', $taxonomy, $term->term_id)
+                );
             }
 
             if ('post_tag' === $taxonomy->name) {

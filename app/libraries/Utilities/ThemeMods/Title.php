@@ -96,8 +96,8 @@ final class Title extends AbstractThemeMod
         $this->context = \sanitize_key($args['context']);
         $this->more_specific = \sanitize_key($args['more_specific']);
 
-        $this->specific = \post_type_exists($args['specific'])
-            || \taxonomy_exists($args['specific']) ? $args['specific'] : '';
+        $this->specific = \post_type_exists($args['specific']) ||
+            \taxonomy_exists($args['specific']) ? $args['specific'] : '';
 
         $names = $this->names();
         $this->name = isset($names[$this->context])

@@ -99,9 +99,9 @@ final class Archive extends AbstractPosts
             ],
         ];
 
-        if (($post_type = \get_query_var('post_type'))
-            || $this->posts->page->is('home')
-            || $this->posts->page->is('post_type_archive')
+        if (($post_type = \get_query_var('post_type')) ||
+            $this->posts->page->is('home') ||
+            $this->posts->page->is('post_type_archive')
         ) {
             $args['wp_query']['post_type'] = $post_type;
         } else {
@@ -120,7 +120,10 @@ final class Archive extends AbstractPosts
             ];
         }
 
-        if (\get_query_var('year') || \get_query_var('monthnum') || \get_query_var('day')) {
+        if (\get_query_var('year') ||
+            \get_query_var('monthnum') ||
+            \get_query_var('day')
+        ) {
             $args['wp_query']['date_query'] = [
                 [
                     'year' => \get_query_var('year'),
