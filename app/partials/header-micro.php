@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Header Template: Start
+ * Header Template: Micro
  *
  * @package GrottoPress\Jentil
  * @since 0.1.0

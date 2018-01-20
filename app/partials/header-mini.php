@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Header Template: Reduced
+ * Header Template: Mini
  *
  * @package GrottoPress\Jentil
  * @since 0.1.0

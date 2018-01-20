@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Footer Template: Reduced
+ * Footer Template: Micro
  *
  * @package GrottoPress\Jentil
  * @since 0.1.0
