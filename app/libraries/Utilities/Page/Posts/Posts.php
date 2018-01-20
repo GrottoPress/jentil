@@ -164,9 +164,9 @@ final class Posts
 
         $out = '';
         
-        if (!$this->archive->isPaged()
-            && $this->sticky->isSet()
-            && $this->sticky->get($this->postType())
+        if (!$this->archive->isPaged() &&
+            $this->sticky->isSet() &&
+            $this->sticky->get($this->postType())
         ) {
             $out .= $this->sticky->posts()->render();
         }

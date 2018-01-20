@@ -66,8 +66,8 @@ final class Footer extends AbstractSetup
      */
     public function renderColophon()
     {
-        if (!($mod = $this->app->utilities->colophon->themeMod()->get())
-            && !$this->app->utilities->page->is('customize_preview')
+        if (!($mod = $this->app->utilities->colophon->themeMod()->get()) &&
+            !$this->app->utilities->page->is('customize_preview')
         ) {
             return;
         }

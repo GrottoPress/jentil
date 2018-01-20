@@ -182,8 +182,10 @@ final class Layout extends AbstractThemeMod
      */
     public function isPagelike()
     {
-        $check = (\is_post_type_hierarchical($this->specific)
-            && !\get_post_type_archive_link($this->specific));
+        $check = (
+            \is_post_type_hierarchical($this->specific) &&
+            !\get_post_type_archive_link($this->specific)
+        );
 
         if ($check && $this->more_specific) {
             return ($this->more_specific !== \get_option('page_for_posts'));

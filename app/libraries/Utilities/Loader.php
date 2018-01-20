@@ -97,9 +97,9 @@ final class Loader
             'relative'
         );
         
-        if (!\is_readable(\get_stylesheet_directory()."/{$file}")
-            && !\is_readable(\get_template_directory()."/{$file}")
-            && ($rel_dir = $this->utilities->fileSystem->relativeDir())
+        if (!\is_readable(\get_stylesheet_directory()."/{$file}") &&
+            !\is_readable(\get_template_directory()."/{$file}") &&
+            ($rel_dir = $this->utilities->fileSystem->relativeDir())
         ) {
             return \comments_template("/{$rel_dir}/{$file}", $separated);
         }
