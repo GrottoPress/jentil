@@ -45,11 +45,13 @@ final class Layout extends AbstractSetup
      */
     public function addBodyClasses(array $classes): array
     {
-        if (\is_page_template(['page-builder.php', 'page-builder-blank.php'])) {
+        $utilities = $this->app->utilities;
+
+        if ($utilities->customTemplate->isPageBuilder()) {
             return $classes;
         }
 
-        $layout = $this->app->utilities->page->layout;
+        $layout = $utilities->page->layout;
 
         if (($mod = $layout->themeMod()->get())) {
             $classes[] = \sanitize_title('layout-'.$mod);

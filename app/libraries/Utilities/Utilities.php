@@ -17,7 +17,7 @@ namespace GrottoPress\Jentil\Utilities;
 use GrottoPress\Jentil\Jentil;
 use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
 use GrottoPress\Jentil\Utilities\Page\Page;
-use GrottoPress\Jentil\Utilities\Colophon;
+// use GrottoPress\Jentil\Utilities\Colophon;
 use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
 use GrottoPress\WordPress\Posts\Posts;
 use GrottoPress\WordPress\Post\Post;
@@ -124,6 +124,16 @@ final class Utilities
      * @var ShortTags
      */
     private $shortTags = null;
+
+    /**
+     * Custom Template
+     *
+     * @since 0.6.0
+     * @access private
+     *
+     * @var CustomTemplate
+     */
+    private $customTemplate = null;
 
     /**
      * Constructor
@@ -289,6 +299,23 @@ final class Utilities
         }
 
         return $this->shortTags;
+    }
+
+    /**
+     * Get custom template
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return CustomTemplate
+     */
+    public function getCustomTemplate(): CustomTemplate
+    {
+        if (null === $this->customTemplate) {
+            $this->customTemplate = new CustomTemplate($this);
+        }
+
+        return $this->customTemplate;
     }
 
     /**
