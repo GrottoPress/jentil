@@ -72,11 +72,11 @@ final class CustomTemplate
      * @param int $post_id
      *
      * @since 0.6.0
-     * @access public
+     * @access private
      *
      * @return string
      */
-    public function slug(int $post_id = null): string
+    private function slug(int $post_id = null): string
     {
         return (string)\get_page_template_slug($post_id);
     }
@@ -87,11 +87,11 @@ final class CustomTemplate
      * @param array $type
      *
      * @since 0.6.0
-     * @access public
+     * @access private
      *
      * @return bool
      */
-    public function is(array $type): bool
+    private function is(array $type): bool
     {
         return $this->utilities->page->is('page_template', $type);
     }
