@@ -102,19 +102,6 @@ final class Layouts
     }
 
     /**
-     * Layouts IDs
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string[] Layout ids mapping to names.
-     */
-    public function IDs(): array
-    {
-        return \array_keys($this->IDNames());
-    }
-
-    /**
      * Layouts [ IDs => Names ]
      *
      * Used to build a dropdown of layouts.
