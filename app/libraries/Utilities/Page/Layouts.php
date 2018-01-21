@@ -30,7 +30,7 @@ final class Layouts
      * @var Page
      */
     private $page;
-    
+
     /**
      * Constructor
      *
@@ -43,7 +43,7 @@ final class Layouts
     {
         $this->page = $page;
     }
-    
+
     /**
      * Layouts
      *
@@ -87,19 +87,6 @@ final class Layouts
          */
         return \apply_filters('jentil_page_layouts', $layouts);
     }
-    
-    /**
-     * Layouts columns
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Layout columns.
-     */
-    public function columns(): array
-    {
-        return \array_map('sanitize_title', \array_keys($this->get()));
-    }
 
     /**
      * Layouts [ IDs => Names ]
@@ -122,7 +109,7 @@ final class Layouts
                 );
             }
         }
-    
+
         return $return;
     }
 }
