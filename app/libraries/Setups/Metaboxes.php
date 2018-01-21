@@ -86,7 +86,7 @@ final class Metaboxes extends AbstractSetup
 
         $utilities = $this->app->utilities;
 
-        if (!($layouts = $utilities->page->layouts->IDNames())) {
+        if (!($layouts = $utilities->page->layouts->IDs())) {
             return [];
         }
 

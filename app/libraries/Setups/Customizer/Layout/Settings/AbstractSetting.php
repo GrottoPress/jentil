@@ -53,7 +53,7 @@ abstract class AbstractSetting extends Setting
         $this->control['label'] = \esc_html__('Select layout', 'jentil');
         $this->control['type'] = 'select';
         $this->control['choices'] = $this->section->customizer->app
-            ->utilities->page->layouts->IDNames();
+            ->utilities->page->layouts->IDs();
     }
 
     /**

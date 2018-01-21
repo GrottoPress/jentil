@@ -111,7 +111,7 @@ final class Layouts
      *
      * @return array Layout ids mapping to names.
      */
-    public function IDNames(): array
+    public function IDs(): array
     {
         $return = [];
         
