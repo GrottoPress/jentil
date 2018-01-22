@@ -87,7 +87,7 @@ final class Header extends AbstractSetup
     {
         echo '<nav id="main-menu" class="js-main-menu site-navigation '.
         $this->menuStatus().'">'.
-            $this->menuSkipTo('content', \esc_html__('Skip to content', 'jentil'));
+            $this->menuSkipTo('main', \esc_html__('Skip to content', 'jentil'));
             \get_search_form();
             \wp_nav_menu(['theme_location' => 'primary-menu']);
         echo '</nav>';
