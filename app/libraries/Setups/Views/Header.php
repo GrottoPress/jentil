@@ -53,7 +53,7 @@ final class Header extends AbstractSetup
     {
         echo '<div class="menu-toggle">'.
             $this->menuSkipTo(
-                'main-menu',
+                'primary-menu',
                 \esc_html__('Skip to menu', 'jentil')
             ).
 
@@ -85,7 +85,7 @@ final class Header extends AbstractSetup
      */
     public function renderMenu()
     {
-        echo '<nav id="main-menu" class="js-main-menu site-navigation '.
+        echo '<nav id="primary-menu" class="js-main-menu site-navigation '.
         $this->menuStatus().'">'.
             $this->menuSkipTo('main', \esc_html__('Skip to content', 'jentil'));
             \get_search_form();
