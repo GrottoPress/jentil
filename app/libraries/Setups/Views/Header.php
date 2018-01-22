@@ -86,9 +86,14 @@ final class Header extends AbstractSetup
     public function renderMenu()
     {
         echo '<nav id="primary-menu" class="js-main-menu site-navigation '.
-        $this->menuStatus().'">'.
-            $this->menuSkipTo('main', \esc_html__('Skip to content', 'jentil'));
+        $this->menuStatus().'">';
             \get_search_form();
+
+            echo $this->menuSkipTo(
+                'main',
+                \esc_html__('Skip to content', 'jentil')
+            );
+
             \wp_nav_menu(['theme_location' => 'primary-menu']);
         echo '</nav>';
     }
