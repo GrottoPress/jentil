@@ -11,7 +11,7 @@
 
 ///<reference path="./global.d.ts"/>
 
-(($: JQueryStatic) => {
+(($: JQueryStatic): void => {
     'use strict'
 
     const fxDuration = 200
@@ -22,8 +22,8 @@
      * @since 0.6.0
      */
     $('.js-main-menu-button').attr('href', '#')
-    $('.js-main-menu-button').on('click', (e: JQuery.Event) => {
-        $('.js-main-menu').slideToggle(fxDuration, () => {
+    $('.js-main-menu-button').on('click', (e: JQuery.Event): void => {
+        $('.js-main-menu').slideToggle(fxDuration, (): void => {
             $(e.currentTarget).toggleClass('show hide').css({display: ''})
         })
 
@@ -47,14 +47,14 @@
      * @since 0.6.0
      */
     $('.js-sub-menu-button').next('ul').hide()
-    $('.js-sub-menu-button').prev('a').on('click', (e: JQuery.Event) => {
+    $('.js-sub-menu-button').prev('a').on('click', (e: JQuery.Event): void => {
         if ('#' === $(e.currentTarget).attr('href')) {
             toggleSubMenu($(e.currentTarget).next('button'))
 
             e.preventDefault()
         }
     })
-    $('.js-sub-menu-button').on('click', (e: JQuery.Event) => {
+    $('.js-sub-menu-button').on('click', (e: JQuery.Event): void => {
         toggleSubMenu(e.currentTarget)
 
         e.preventDefault()

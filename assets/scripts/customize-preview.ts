@@ -12,7 +12,7 @@
 
 ///<reference path="./global.d.ts"/>
 
-(($: JQueryStatic) => {
+(($: JQueryStatic): void => {
     'use strict'
 
     /**
@@ -20,8 +20,8 @@
      *
      * @since 0.6.0
      */
-    wp.customize(colophonModName, (value: any) => {
-        value.bind((to: string) => {
+    wp.customize(colophonModName, (value: any): void => {
+        value.bind((to: string): void => {
             $('#colophon small').html(replaceShortTags(to))
         })
     })
@@ -34,8 +34,8 @@
      * @todo Work out how to replace tags
      */
     for (var i in titleModNames) {
-        wp.customize(titleModNames[i], (value: any) => {
-            value.bind((to: string) => {
+        wp.customize(titleModNames[i], (value: any): void => {
+            value.bind((to: string): void => {
                 $('h1.page-title').html(to)
             })
         })
