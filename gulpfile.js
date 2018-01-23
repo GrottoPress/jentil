@@ -10,37 +10,37 @@
  * Import gulp, plugins
  */
 const gulp = require('gulp')
-const jshint = require('gulp-jshint')
 const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
 const cleanCSS = require('gulp-clean-css')
 const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
+const ts = require('gulp-typescript')
 
 /**
  * Define paths
  */
-const js_files = ['./assets/scripts/**/*.js']
+const ts_files = ['./assets/scripts/**/*.ts']
 const js_dest = './dist/scripts'
 const sass_files = ['./assets/styles/**/*.scss']
 const sass_dest = './dist/styles'
 
 /**
- * Lint JS
+ * Compile ts, rtl and minify js
  */
-gulp.task('lint-js', () =>
-    gulp.src(js_files)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-)
-
-/**
- * Minify JS
- */
-gulp.task('minify-js', () =>
-    gulp.src(js_files)
+gulp.task('scripts', () =>
+    gulp.src(ts_files)
     .pipe(sourcemaps.init())
+    .pipe(ts({
+        "module": "commonjs",
+        "target": "es3",
+        "noImplicitAny": true,
+        "noImplicitUseStrict": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true
+    }))
     .pipe(uglify())
     .pipe(rename({'suffix' : '.min'}))
     .pipe(sourcemaps.write())
@@ -50,7 +50,7 @@ gulp.task('minify-js', () =>
 /**
  * Compile scss, rtl, minify css
  */
-gulp.task('compile-sass', () =>
+gulp.task('styles', () =>
     gulp.src(sass_files)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -71,16 +71,15 @@ gulp.task('compile-sass', () =>
  * Watch files for changes
  */
 gulp.task('watch', () => {
-    gulp.watch(js_files, ['lint-js', 'minify-js'])
-    gulp.watch(sass_files, ['compile-sass'])
+    gulp.watch(ts_files, ['scripts'])
+    gulp.watch(sass_files, ['styles'])
 })
 
 /**
  * Default task
  */
 gulp.task('default', [
-    'lint-js',
-    'minify-js',
-    'compile-sass',
+    'scripts',
+    'styles',
     'watch'
 ])
