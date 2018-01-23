@@ -31,7 +31,7 @@ updateFiles()
 createCommit()
 {
     git add .
-    git commit -m "Bumped version number to ${TO_VERSION}"
+    git commit -m "Bump version number to ${TO_VERSION}"
 }
 
 createTag()
