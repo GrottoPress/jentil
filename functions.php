@@ -19,9 +19,10 @@ declare (strict_types = 1);
  *
  * @since 0.1.0
  */
-(function ($basePath) {
+(function (string $basePath) {
     $path = $basePath.'/vendor/autoload.php';
-    file_exists($path) && require($path);
+
+    \file_exists($path) && require($path);
 })(__DIR__);
 
 /**
