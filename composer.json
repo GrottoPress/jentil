@@ -63,7 +63,8 @@
             "GrottoPress\\Jentil\\": "app/libraries/"
         },
         "files": [
-            "app/functions.php"
+            "app/functions.php",
+            "functions.php"
         ]
     },
     "autoload-dev": {
