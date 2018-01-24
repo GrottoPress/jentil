@@ -19,7 +19,7 @@ use GrottoPress\Jentil\Jentil;
  *
  * @since 0.1.0
  *
- * @return Jentil Jentil.
+ * @return Jentil
  */
 function Jentil(): Jentil
 {
