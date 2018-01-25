@@ -6,14 +6,14 @@ Jentil may be installed either as a parent theme, or as a package (eg: via compo
 
 Jentil features six layout options, configured via the customizer and post meta boxes. It can be used to build blogs, magazines, e-commerce, corporate websites and more.
 
-Jentil comes with page builder post type templates, and integrates seamlessly with most WordPress site builders, including:
+Jentil comes with page builder [post type templates](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/), and integrates seamlessly with most WordPress site builders, including:
 
 - [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
 - [SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 - [Elementor](https://wordpress.org/plugins/elementor/)
 - [Live Composer](https://wordpress.org/plugins/live-composer-page-builder/)
 
-We are following, closely, the development of [Gutenberg](https://wordpress.org/plugins/gutenberg/). We will be ready when Gutenberg is ready!
+We are following the development of [Gutenberg](https://wordpress.org/plugins/gutenberg/) closely.
 
 ## Features
 
@@ -32,31 +32,36 @@ We are following, closely, the development of [Gutenberg](https://wordpress.org/
 - Responsive (mobile-ready)
 
 ### For the Developer:
+- Robust [architecture](https://github.com/grottopress/wordpress-suv/), with a more organised directory structure. Templates (eg: `single.php`, `page.php` etc) are loaded **only** from the `app/templates` directory, and partials (eg: `sidebar.php`, `header.php` etc) from the `app/partials` directory. The days of dumping files in your theme's root are over!
 - Use as package in another theme, or as parent theme for a child theme.
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Cleanly-commented, object-oriented codebase.
-- Modern web development tools (npm, composer, gulp, sass, git etc).
-- Enforced a more organised directory structure in parent and child themes. Templates (eg: single.php, page.php etc) are loaded only from the `app/templates` directory, and partials (eg: sidebar.php, header.php etc) from the `app/partials` directory.
+- Modern web development tools.
 - Compliant with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ## Requirements
 
-*Jentil* requires **WordPress** version **4.7** or newer. Minimum required **PHP** version is **7.0**.
+- [PHP](https://secure.php.net) >= 7.0
+- [WordPress](https://wordpress.org) >= 4.7
+- [Composer](https://getcomposer.org)
+- [Node JS](https://nodejs.org)
+- [NPM](https://www.npmjs.com)
+
+These are the core requirements you need to get in place. The rest would be installed by the theme itself when the theme is installed.
 
 ## Installation
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
 
-- Download and install the [jentil-child](#) theme to get started. (Link to be posted soon).
-- From the jentil-child directory, run `composer update` to update dependencies.
-- By default jentil-child installs as starter theme, with *Jentil* as a package. To use jentil-child as a child theme instead, run `composer run child`. Use `composer run starter` to switch back to starter theme mode.
-- Rename jentil-child to a new name via `composer run rename my-new-theme-name-here`
-- Activate the new theme.
-- Head over to the [documentation](#) and start hacking your new theme. (Link to be posted soon)
+1. From the `wp-content/themes` directory, run `composer create-project grottopress/jentil-starter your-theme-slug-here` (*Jentil starter* theme is not ready yet, so this won't work now)
+1. By default *[jentil starter](#)* installs as starter theme, with *Jentil* as a package. To use *jentil starter* as a child theme instead, run `composer run child`. Use `composer run starter` to switch back to starter theme mode.
+1. If you have [WP CLI](https://wp-cli.org/) set up, run `wp theme activate your-theme-slug-here` to activate your new theme. Otherwise, just head over to the WordPress admin area and activate the theme.
 
-## Documentation
+*Jentil starter* provides a scaffold for building your own theme. The source code is elaborately commented. Dive in to find out how to go about building your next awesome theme.
 
-Link to be posted soon...
+## Architecture
+
+*Jentil* is developed using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://wp-cli.org/), as it may give a better understanding of the core philosophy underpinning *Jentil*'s development.
 
 ## Security
 
