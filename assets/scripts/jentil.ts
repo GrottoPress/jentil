@@ -9,7 +9,7 @@
 
 ///<reference path="./global.d.ts"/>
 
-(($: JQueryStatic) => {
+(($: JQueryStatic): void => {
     'use strict'
 
     /**
