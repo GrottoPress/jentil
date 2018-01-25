@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Reorganised directory structure of setup classes into groups.
 - Autoload script is now included only if exists. (Credit: [@XedinUnknown](https://github.com/XedinUnknown))
 - Ensure layout customizer settings do not show for page builder pages.
+- Ensure layout metabox do not show on pages using page builder template
 
 ### Fixed
 - Fixed 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 
