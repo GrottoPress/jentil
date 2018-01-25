@@ -69,7 +69,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GrottoPress\\Jentil\\": "tests/"
+            "GrottoPress\\Jentil\\": "tests/wpunit/"
         }
     }
 }
