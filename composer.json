@@ -63,7 +63,7 @@
             "GrottoPress\\Jentil\\": "app/libraries/"
         },
         "files": [
-            "app/functions.php",
+            "app/helpers.php",
             "functions.php"
         ]
     },
