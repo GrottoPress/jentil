@@ -53,7 +53,11 @@ These are the core requirements you need to get in place. The rest would be inst
 
 **Disclaimer:** *This software is still in development. Use at your own risk.*
 
-1. From the `wp-content/themes` directory, run `composer create-project grottopress/jentil-starter your-theme-slug-here` (*Jentil starter* theme is not ready yet, so this won't work now)
+From the `wp-content/themes` directory:
+
+(**Note:** *Jentil starter* theme is not ready yet, so these won't work now)
+
+1. Run `composer create-project grottopress/jentil-starter your-theme-slug-here`.
 1. By default *[jentil starter](#)* installs as starter theme, with *Jentil* as a package. To use *jentil starter* as a child theme instead, run `composer run child`. Use `composer run starter` to switch back to starter theme mode.
 1. If you have [WP CLI](https://wp-cli.org/) set up, run `wp theme activate your-theme-slug-here` to activate your new theme. Otherwise, just head over to the WordPress admin area and activate the theme.
 
