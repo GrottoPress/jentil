@@ -4,21 +4,22 @@
 
 actor: WpunitTester
 modules:
-    enabled:
-        - WPLoader
-        - \Helper\Wpunit
-    config:
-        WPLoader:
-            wpRootFolder: "/var/www/bedrock/web/wp"
-            dbName: "wordpress_test"
-            dbHost: "localhost"
-            dbUser: "username"
-            dbPassword: "password"
-            tablePrefix: "wptests_"
-            domain: "wp.localhost"
-            adminEmail: "admin@wp.localhost"
-            title: "Test"            
-            theme: jentil        
-            plugins: ['']
-            activatePlugins: ['']
-            wpDebug: true
+  enabled:
+    - WPLoader
+    - \Helper\Wpunit
+  config:
+    WPLoader:
+      wpRootFolder: "/var/www/svn/wordpress-dev/trunk/src"
+      dbName: "wordpress_test"
+      dbHost: "localhost"
+      dbUser: "username"
+      dbPassword: "password"
+      tablePrefix: "wptests_"
+      domain: "wp.localhost"
+      adminEmail: "admin@wp.localhost"
+      title: "Test"            
+      theme: jentil        
+      plugins: ['']
+      activatePlugins: ['']
+      wpDebug: true
+      loadOnly: false
