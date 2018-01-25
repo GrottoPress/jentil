@@ -661,21 +661,21 @@
         },
         {
             "name": "grottopress/wordpress-suv",
-            "version": "0.2.0",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
-                "reference": "efdd92796d40cf678441fc9810cb97961ce7605b"
+                "reference": "2dba279449199877fec93efb6867fae9dad17736"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/efdd92796d40cf678441fc9810cb97961ce7605b",
-                "reference": "efdd92796d40cf678441fc9810cb97961ce7605b",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/2dba279449199877fec93efb6867fae9dad17736",
+                "reference": "2dba279449199877fec93efb6867fae9dad17736",
                 "shasum": ""
             },
             "require": {
-                "florianwolters/component-util-singleton": "^0.3.2",
-                "grottopress/getter": "^0.2.1",
+                "florianwolters/component-util-singleton": "^0.3",
+                "grottopress/getter": "^0.2",
                 "php": ">=7.0"
             },
             "type": "library",
@@ -705,7 +705,7 @@
                 "suv",
                 "wordpress"
             ],
-            "time": "2018-01-09T19:40:13+00:00"
+            "time": "2018-01-25T01:29:07+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -4027,16 +4027,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "9b355654ea99460397b89c132b5c1087b6bf4473"
+                "reference": "d15f59a67ff805a44c50ea0516d2341740f81a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/9b355654ea99460397b89c132b5c1087b6bf4473",
-                "reference": "9b355654ea99460397b89c132b5c1087b6bf4473",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/d15f59a67ff805a44c50ea0516d2341740f81a38",
+                "reference": "d15f59a67ff805a44c50ea0516d2341740f81a38",
                 "shasum": ""
             },
             "require": {
@@ -4072,7 +4072,7 @@
                 "parser",
                 "validator"
             ],
-            "time": "2018-01-03T12:13:57+00:00"
+            "time": "2018-01-24T12:46:19+00:00"
         },
         {
             "name": "seld/phar-utils",
@@ -5076,21 +5076,21 @@
         },
         {
             "name": "wp-cli/checksum-command",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/checksum-command.git",
-                "reference": "a2719a5ba84ffd7d47511967433da7211e0da55a"
+                "reference": "c96d43de04e32d84a20e75a34ac80ccf2e125a94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/checksum-command/zipball/a2719a5ba84ffd7d47511967433da7211e0da55a",
-                "reference": "a2719a5ba84ffd7d47511967433da7211e0da55a",
+                "url": "https://api.github.com/repos/wp-cli/checksum-command/zipball/c96d43de04e32d84a20e75a34ac80ccf2e125a94",
+                "reference": "c96d43de04e32d84a20e75a34ac80ccf2e125a94",
                 "shasum": ""
             },
             "require-dev": {
                 "behat/behat": "~2.5",
-                "wp-cli/wp-cli": "*"
+                "wp-cli/wp-cli": "^1.5"
             },
             "type": "wp-cli-package",
             "extra": {
@@ -5099,7 +5099,8 @@
                 },
                 "bundled": true,
                 "commands": [
-                    "checksum core"
+                    "checksum core",
+                    "checksum plugin"
                 ]
             },
             "autoload": {
@@ -5123,7 +5124,7 @@
             ],
             "description": "Verifies file integrity by comparing to published checksums.",
             "homepage": "https://github.com/wp-cli/checksum-command",
-            "time": "2017-12-08T15:12:46+00:00"
+            "time": "2018-01-22T21:23:15+00:00"
         },
         {
             "name": "wp-cli/config-command",
