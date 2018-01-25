@@ -17,9 +17,6 @@ modules:
       tablePrefix: "wptests_"
       domain: "wp.localhost"
       adminEmail: "admin@wp.localhost"
-      title: "Test"            
-      theme: jentil        
-      plugins: ['']
-      activatePlugins: ['']
+      title: "Test"
+      theme: jentil
       wpDebug: true
-      loadOnly: false
