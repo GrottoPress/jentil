@@ -33,7 +33,7 @@ final class HTML5 extends AbstractSetup
     {
         \add_action('after_setup_theme', [$this, 'addSupport']);
         \add_filter('language_attributes', [$this, 'addMicrodata']);
-        \add_action('wp_kses_allowed_html', [$this, 'ksesWhitelist'], 10, 2);
+        \add_filter('wp_kses_allowed_html', [$this, 'ksesWhitelist'], 10, 2);
     }
 
     /**
@@ -87,7 +87,7 @@ final class HTML5 extends AbstractSetup
             $output .= 'ProfilePage';
         } elseif ($page->is('search')) {
             $output .= 'SearchResultsPage';
-        } elseif ($page->is('singular', 'post')) {
+        } elseif ($page->is('single')) {
             $output .= 'BlogPosting';
         } else {
             $output .= 'WebPage';
