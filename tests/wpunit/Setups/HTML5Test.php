@@ -6,6 +6,7 @@ namespace GrottoPress\Jentil\Setups;
 use Codeception\TestCase\WPTestCase;
 use GrottoPress\WordPress\Page\Page;
 use GrottoPress\WordPress\SUV\AbstractTheme;
+use Codeception\Util\Stub;
 
 class HTML5Test extends WPTestCase
 {
@@ -21,7 +22,7 @@ class HTML5Test extends WPTestCase
     {
         $this->assertSame(10, \has_action(
             'after_setup_theme',
-            [$this->html5, 'addSupport']
+            [$this->html5, 'addSuppor']
         ));
     }
 
@@ -35,131 +36,27 @@ class HTML5Test extends WPTestCase
 
     public function testAddMicrodataWorksOnHome()
     {
-        $page = $this->createMock(Page::class);
-        $page->method('is')->will($this->returnValueMap([
-            ['admin', false],
-            ['login', false],
-            ['register', false],
-            ['home', true]
-        ]));
-
-        $utilities = new class {};
-        $utilities->page = $page;
-
-        $jentil = $this->createMock(AbstractTheme::class);
-        $jentil->utilities = $utilities;
-
-        $html5 = new HTML5($jentil);
-
-        $expected = '<html itemscope itemtype="http://schema.org/Blog"';
-        $actual = $html5->addMicrodata('<html');
-
-        $this->assertSame($expected, $actual);
+        $this->assertMicrodataValidFor('home', 'Blog');
     }
 
     public function testAddMicrodataWorksOnAuthorArchive()
     {
-        $page = $this->createMock(Page::class);
-        $page->method('is')->will($this->returnValueMap([
-            ['admin', false],
-            ['login', false],
-            ['register', false],
-            ['home', false],
-            ['author', true]
-        ]));
-
-        $utilities = new class {};
-        $utilities->page = $page;
-
-        $jentil = $this->createMock(AbstractTheme::class);
-        $jentil->utilities = $utilities;
-
-        $html5 = new HTML5($jentil);
-
-        $expected = '<html itemscope itemtype="http://schema.org/ProfilePage"';
-        $actual = $html5->addMicrodata('<html');
-
-        $this->assertSame($expected, $actual);
+        $this->assertMicrodataValidFor('author', 'ProfilePage');
     }
 
     public function testAddMicrodataWorksOnSearchArchive()
     {
-        $page = $this->createMock(Page::class);
-        $page->method('is')->will($this->returnValueMap([
-            ['admin', false],
-            ['login', false],
-            ['register', false],
-            ['home', false],
-            ['author', false],
-            ['search', true]
-        ]));
-
-        $utilities = new class {};
-        $utilities->page = $page;
-
-        $jentil = $this->createMock(AbstractTheme::class);
-        $jentil->utilities = $utilities;
-
-        $html5 = new HTML5($jentil);
-
-        $expected = '<html itemscope itemtype="http://schema.org/SearchResultsPage"';
-        $actual = $html5->addMicrodata('<html');
-
-        $this->assertSame($expected, $actual);
+        $this->assertMicrodataValidFor('search', 'SearchResultsPage');
     }
 
     public function testAddMicrodataWorksOnSinglePost()
     {
-        $page = $this->createMock(Page::class);
-        $page->method('is')->will($this->returnValueMap([
-            ['admin', false],
-            ['login', false],
-            ['register', false],
-            ['home', false],
-            ['author', false],
-            ['search', false],
-            ['singular', 'post', true]
-        ]));
-
-        $utilities = new class {};
-        $utilities->page = $page;
-
-        $jentil = $this->createMock(AbstractTheme::class);
-        $jentil->utilities = $utilities;
-
-        $html5 = new HTML5($jentil);
-
-        $expected = '<html itemscope itemtype="http://schema.org/BlogPosting"';
-        $actual = $html5->addMicrodata('<html');
-
-        $this->assertSame($expected, $actual);
+        $this->assertMicrodataValidFor('single', 'BlogPosting');
     }
     
     public function testAddMicrodataWorksOnAllOtherPages()
     {
-        $page = $this->createMock(Page::class);
-        $page->method('is')->will($this->returnValueMap([
-            ['admin', false],
-            ['login', false],
-            ['register', false],
-            ['home', false],
-            ['author', false],
-            ['search', false],
-            ['singular', 'post', false]
-        ]));
-
-        $utilities = new class {};
-        $utilities->page = $page;
-
-        $jentil = $this->createMock(AbstractTheme::class);
-        $jentil->utilities = $utilities;
-
-        $html5 = new HTML5($jentil);
-
-        $expected = '<html itemscope itemtype="http://schema.org/WebPage"';
-        $actual = $html5->addMicrodata('<html');
-
-        $this->assertSame($expected, $actual);
+        $this->assertMicrodataValidFor('nonExistent', 'WebPage');
     }
 
     public function testHTML5AttributesWhitelistedInKses()
@@ -172,32 +69,61 @@ class HTML5Test extends WPTestCase
 
     public function testKsesWhitelistAddsHTML5AttributesToExistingTags()
     {
-        $tags = [
-            'a' => ['href' => true]
-        ];
-
-        $html5 = new HTML5($this->createMock(AbstractTheme::class));
-
-        $allowed = $html5->ksesWhitelist($tags, '');
-
-        $this->assertTrue($allowed['a']['href']);
-        $this->assertTrue($allowed['a']['itemprop']);
-        $this->assertTrue($allowed['a']['itemscope']);
-        $this->assertTrue($allowed['a']['itemtype']);
-        $this->assertTrue($allowed['a']['itemref']);
-        $this->assertTrue($allowed['a']['itemid']);
+        $this->assertHTML5AttributesExist('a', ['a' => ['href' => true]]);
     }
 
     public function testKsesWhitelistAddsNewSpanTagWithHTML5Attributes()
     {
+        $this->assertHTML5AttributesExist('span');
+    }
+
+    /**
+     * @param string $page Page to check
+     * @param string $itemtype Schema.org itemtype
+     */
+    private function assertMicrodataValidFor(string $page, string $itemtype)
+    {
+        $jentil = Stub::makeEmpty(AbstractTheme::class, [
+            'utilities' => new class($page) {
+                public $page;
+
+                public function __construct($page)
+                {
+                    $this->page = Stub::makeEmpty(Page::class, [
+                        'is' => function (string $type) use ($page): bool {
+                            if ($page === $type) {
+                                return true;
+                            }
+            
+                            return false;
+                        }
+                    ]);
+                }
+            }
+        ]);
+
+        $html5 = new HTML5($jentil);
+
+        $expected = "<html itemscope itemtype=\"http://schema.org/{$itemtype}\"";
+        $actual = $html5->addMicrodata('<html');
+
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @param array $in Existing tags passed in
+     * @param string $out Output tag to check
+     */
+    private function assertHTML5AttributesExist(string $out, array $in = [])
+    {
         $html5 = new HTML5($this->createMock(AbstractTheme::class));
 
-        $allowed = $html5->ksesWhitelist([], '');
+        $allowed = $html5->ksesWhitelist($in, '');
 
-        $this->assertTrue($allowed['span']['itemprop']);
-        $this->assertTrue($allowed['span']['itemscope']);
-        $this->assertTrue($allowed['span']['itemtype']);
-        $this->assertTrue($allowed['span']['itemref']);
-        $this->assertTrue($allowed['span']['itemid']);
+        $this->assertTrue($allowed[$out]['itemprop']);
+        $this->assertTrue($allowed[$out]['itemscope']);
+        $this->assertTrue($allowed[$out]['itemtype']);
+        $this->assertTrue($allowed[$out]['itemref']);
+        $this->assertTrue($allowed[$out]['itemid']);
     }
 }
