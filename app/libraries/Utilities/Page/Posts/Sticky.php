@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
  *
  * @since 0.1.0
  */
-final class Sticky extends AbstractPosts
+class Sticky extends AbstractPosts
 {
     /**
      * Sticky Posts Args

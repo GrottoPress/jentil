@@ -22,7 +22,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class ThemeMods
+class ThemeMods
 {
     use Getter;
     
@@ -67,7 +67,7 @@ final class ThemeMods
      *
      * @return Utilities Utilities.
      */
-    final private function getUtilities(): Utilities
+    private function getUtilities(): Utilities
     {
         return $this->utilities;
     }

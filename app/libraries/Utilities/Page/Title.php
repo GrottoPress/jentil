@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Title as TitleMod;
  *
  * @since 0.1.0
  */
-final class Title
+class Title
 {
     /**
      * Page

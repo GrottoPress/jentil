@@ -17,7 +17,6 @@ namespace GrottoPress\Jentil\Utilities;
 use GrottoPress\Jentil\Jentil;
 use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
 use GrottoPress\Jentil\Utilities\Page\Page;
-// use GrottoPress\Jentil\Utilities\Colophon;
 use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
 use GrottoPress\WordPress\Posts\Posts;
 use GrottoPress\WordPress\Post\Post;
@@ -31,7 +30,7 @@ use Puc_v4_Factory;
  *
  * @since 0.1.0
  */
-final class Utilities
+class Utilities
 {
     use Getter;
     

@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.5.0
  */
-final class ShortTags
+class ShortTags
 {
     /**
      * Utilities

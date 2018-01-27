@@ -23,7 +23,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class Page extends PagePackage
+class Page extends PagePackage
 {
     use Getter;
     
@@ -91,7 +91,6 @@ final class Page extends PagePackage
      * Constructor
      *
      * @param Utilities $utilities
-     * 
      *
      * @since 0.1.0
      * @access public

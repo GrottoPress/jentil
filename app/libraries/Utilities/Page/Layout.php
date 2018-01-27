@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Layout as LayoutMod;
  *
  * @since 1.0.0
  */
-final class Layout
+class Layout
 {
     /**
      * Page

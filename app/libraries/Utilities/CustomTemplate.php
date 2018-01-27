@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.6.0
  */
-final class CustomTemplate
+class CustomTemplate
 {
     /**
      * Utilities

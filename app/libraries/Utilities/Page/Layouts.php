@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities\Page;
  *
  * @since 1.0.0
  */
-final class Layouts
+class Layouts
 {
     /**
      * Page

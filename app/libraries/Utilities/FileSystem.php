@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.1.0
  */
-final class FileSystem
+class FileSystem
 {
     /**
      * Utilities

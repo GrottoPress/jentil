@@ -23,7 +23,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class Posts
+class Posts
 {
     use Getter;
     

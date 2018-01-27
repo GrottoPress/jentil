@@ -21,7 +21,7 @@ use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
  *
  * @since 0.1.0
  */
-final class Title extends AbstractThemeMod
+class Title extends AbstractThemeMod
 {
     /**
      * ThemeMods

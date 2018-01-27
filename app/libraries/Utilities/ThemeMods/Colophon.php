@@ -22,7 +22,7 @@ use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod;
  *
  * @since 0.1.0
  */
-final class Colophon extends AbstractThemeMod
+class Colophon extends AbstractThemeMod
 {
     /**
      * ThemeMods

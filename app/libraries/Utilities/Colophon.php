@@ -21,7 +21,7 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Colophon as ColophonMod;
  *
  * @since 0.1.0
  */
-final class Colophon
+class Colophon
 {
     /**
      * Utilities
