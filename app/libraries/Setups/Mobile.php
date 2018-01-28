@@ -48,13 +48,13 @@ final class Mobile extends AbstractSetup
     {
         $detector = $this->app->utilities->mobileDetector;
 
-        if ($detector->isMobile()) {
-            $classes[] = 'mobile';
-        } else {
+        if (!$detector->isMobile()) {
             $classes[] = 'desktop';
 
             return $classes;
         }
+
+        $classes[] = 'mobile';
 
         if ($detector->isTablet()) {
             $classes[] = 'tablet';
