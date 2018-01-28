@@ -64,7 +64,7 @@ final class Loader extends AbstractSetup
                 "/{$template}",
                 'relative'
             );
-            
+
             $j_templates[] = $templates_dir;
 
             if (($rel_dir = $this->app->utilities->fileSystem->relativeDir())) {
