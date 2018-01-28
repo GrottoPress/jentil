@@ -36,7 +36,7 @@ final class Customizer extends AbstractCustomizer
     {
         parent::run();
         
-        \add_action('customize_preview_init', [$this, 'enqueueJS']);
+        \add_action('customize_preview_init', [$this, 'enqueueScript']);
         \add_action('customize_preview_init', [$this, 'enqueueInlineJS']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
@@ -70,7 +70,7 @@ final class Customizer extends AbstractCustomizer
      * @since 0.1.0
      * @access public
      */
-    public function enqueueJS()
+    public function enqueueScript()
     {
         \wp_enqueue_script(
             'jentil-customizer',

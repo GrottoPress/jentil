@@ -31,7 +31,7 @@ final class Comments extends AbstractSetup
      */
     public function run()
     {
-        \add_action('wp_enqueue_scripts', [$this, 'enqueueJS']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueueScript']);
     }
     
     /**
@@ -42,7 +42,7 @@ final class Comments extends AbstractSetup
      *
      * @action wp_enqueue_scripts
      */
-    public function enqueueJS()
+    public function enqueueScript()
     {
         if (!$this->app->utilities->page->is('singular') ||
             !\comments_open() ||

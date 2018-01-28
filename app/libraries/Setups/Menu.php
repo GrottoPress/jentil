@@ -32,7 +32,7 @@ final class Menu extends AbstractSetup
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'register']);
-        \add_action('wp_enqueue_scripts', [$this, 'enqueueJS']);
+        \add_action('wp_enqueue_scripts', [$this, 'enqueueScript']);
     }
 
     /**
@@ -60,7 +60,7 @@ final class Menu extends AbstractSetup
      *
      * @action wp_enqueue_scripts
      */
-    public function enqueueJS()
+    public function enqueueScript()
     {
         \wp_enqueue_script(
             'jentil-menu',
