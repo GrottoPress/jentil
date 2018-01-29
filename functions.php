@@ -19,11 +19,7 @@ declare (strict_types = 1);
  *
  * @since 0.1.0
  */
-(function (string $basePath) {
-    $path = $basePath.'/vendor/autoload.php';
-
-    \file_exists($path) && require($path);
-})(__DIR__);
+require __DIR__.'/vendor/autoload.php';
 
 /**
  * Run this theme.
