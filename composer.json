@@ -48,7 +48,7 @@
             "composer run refresh"
         ],
         "test": [
-            "codecept run unit && codecept run wpunit"
+            "codecept run unit"
         ],
         "release": [
             "./bin/release"
