@@ -47,7 +47,7 @@ final class Updater extends AbstractSetup
         if ($this->app->utilities->fileSystem->relativeDir()) {
             return;
         }
-        
+
         $this->app->utilities->updater;
     }
 }

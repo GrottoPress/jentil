@@ -49,7 +49,7 @@ final class Thumbnails extends AbstractSetup
     {
         \add_theme_support('post-thumbnails');
     }
-    
+
     /**
      * Add/set thumbnail sizes.
      *
@@ -61,7 +61,7 @@ final class Thumbnails extends AbstractSetup
     public function addSizes()
     {
         \set_post_thumbnail_size(640, 360, true);
-        
+
         \add_image_size('mini-thumb', 100, 100, true);
         \add_image_size('micro-thumb', 75, 75, true);
         \add_image_size('nano-thumb', 50, 50, true);
