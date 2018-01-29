@@ -31,7 +31,7 @@ final class Search extends AbstractSetup
      */
     public function run()
     {
-        \add_action('get_search_form', [$this, 'form']);
+        \add_filter('get_search_form', [$this, 'form']);
     }
 
     /**
