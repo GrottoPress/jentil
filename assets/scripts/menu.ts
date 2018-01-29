@@ -24,7 +24,7 @@
     $('.js-main-menu-button').attr('href', '#')
     $('.js-main-menu-button').on('click', (e: JQuery.Event): void => {
         $('.js-main-menu').slideToggle(fxDuration, (): void => {
-            $(e.currentTarget).toggleClass('show hide').css({display: ''})
+            $('.js-main-menu').toggleClass('show hide').css({display: ''})
         })
 
         e.preventDefault()
