@@ -44,13 +44,13 @@ final class Archive extends AbstractSetup
      */
     public function renderDescription()
     {
-        if (!$this->app->utilities->page->is('archive')) {
+        $page = $this->app->utilities->page;
+
+        if (!$page->is('archive')) {
             return;
         }
 
-        if (!($description =
-            $this->app->utilities->page->description())
-        ) {
+        if (!($description = $page->description())) {
             return;
         }
 
