@@ -62,23 +62,28 @@ final class Singular extends AbstractSetup
 
         global $post;
 
-        if (\is_post_type_hierarchical($post->post_type)) {
-            if ($post->post_parent) {
-                $parent_id = $post->post_parent;
+        if ($parent = $post->post_parent) {
+            $classes[] = \sanitize_title("child-{$post->post_type}");
 
-                while ($parent_id) {
-                    $page = \get_post($parent_id);
-                    $classes[] = \sanitize_title(
-                        $post->post_type.'-parent-'.$page->ID
-                    );
-                    $parent_id = $page->post_parent;
+            $i = 1;
+            while ($parent) {
+                /**
+                 * Include parent level in classes
+                 * ('2' for grandparent, '3' for great grandparent etc)
+                 */
+                for ($level = '', $j = $i; $j > 1; --$j) {
+                    $level .= "-{$j}";
                 }
+                $object = \get_post($parent);
+                $classes[] = \sanitize_title(
+                    "{$post->post_type}-parent{$level}-{$object->ID}"
+                );
+                $parent = $object->post_parent;
+                ++$i;
             }
         }
 
-        $page_template = \get_page_template_slug($post->ID);
-
-        if ($page_template) {
+        if ($page_template = \get_page_template_slug($post->ID)) {
             $classes[] = \sanitize_title($page_template);
         }
 
