@@ -21,16 +21,16 @@ const ts = require('gulp-typescript')
 /**
  * Define paths
  */
-const ts_files = ['./assets/scripts/**/*.ts']
-const js_dest = './dist/scripts'
-const sass_files = ['./assets/styles/**/*.scss']
-const sass_dest = './dist/styles'
+const scripts_src = ['./assets/scripts/**/*.ts']
+const scripts_dest = './dist/scripts'
+const styles_src = ['./assets/styles/**/*.scss']
+const styles_dest = './dist/styles'
 
 /**
  * Compile ts, rtl and minify js
  */
 gulp.task('scripts', () =>
-    gulp.src(ts_files)
+    gulp.src(scripts_src)
     .pipe(sourcemaps.init())
     .pipe(ts({
         "module": "commonjs",
@@ -44,35 +44,35 @@ gulp.task('scripts', () =>
     .pipe(uglify())
     .pipe(rename({'suffix' : '.min'}))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(js_dest))
+    .pipe(gulp.dest(scripts_dest))
 )
 
 /**
  * Compile scss, rtl, minify css
  */
 gulp.task('styles', () =>
-    gulp.src(sass_files)
+    gulp.src(styles_src)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     // .pipe(cleanCSS({format: 'beautify'}))
-    // .pipe(gulp.dest(sass_dest))
+    // .pipe(gulp.dest(styles_dest))
     .pipe(cleanCSS())
     .pipe(rename({'suffix' : '.min'}))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(sass_dest))
+    .pipe(gulp.dest(styles_dest))
     .pipe(rtlcss())
     .pipe(rename((path) =>
         path.basename = path.basename.replace('.min', '-rtl.min')
     ))
-    .pipe(gulp.dest(sass_dest))
+    .pipe(gulp.dest(styles_dest))
 )
 
 /**
  * Watch files for changes
  */
 gulp.task('watch', () => {
-    gulp.watch(ts_files, ['scripts'])
-    gulp.watch(sass_files, ['styles'])
+    gulp.watch(scripts_src, ['scripts'])
+    gulp.watch(styles_src, ['styles'])
 })
 
 /**
