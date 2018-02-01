@@ -15,7 +15,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
-use Exception;
 
 /**
  * Search
@@ -64,7 +63,7 @@ final class Search extends AbstractSetup
 
         \wp_redirect(\get_search_link(), 301);
 
-        throw new Exception('Respect the location header, you idiot!');
+        exit;
     }
 
     /**
