@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
+use Exception;
 
 /**
  * Search
@@ -51,7 +52,7 @@ final class Search extends AbstractSetup
             return;
         }
 
-        if (empty($_GET['s'])) {
+        if (!$this->searchQuery()) {
             return;
         }
 
@@ -63,7 +64,7 @@ final class Search extends AbstractSetup
 
         \wp_redirect(\get_search_link(), 301);
 
-        exit;
+        throw new Exception('Respect the location header, you idiot!');
     }
 
     /**
@@ -81,5 +82,28 @@ final class Search extends AbstractSetup
         }
 
         \get_search_form();
+    }
+
+    /**
+     * Search query
+     *
+     * Returns the value of the 's' query parameter in the
+     * current page's URL.
+     *
+     * Unlike WordPress' `get_search_query()`, this looks for
+     * the presence of 's' query parameter in the URL, and
+     * ignores any URL rewrites of the search page URL.
+     *
+     * @since 0.6.0
+     * @access private
+     *
+     * @return string
+     */
+    private function searchQuery(): string
+    {
+        $url = \parse_url($this->app->utilities->page->URL('full'));
+        \parse_str((string)$url['query'], $query_params);
+
+        return $query_params['s'] ?? '';
     }
 }
