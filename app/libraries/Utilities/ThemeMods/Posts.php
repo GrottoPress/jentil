@@ -27,12 +27,12 @@ class Posts extends AbstractThemeMod
      * ThemeMods
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var ThemeMods $themeMods ThemeMods.
      */
-    protected $themeMods;
-    
+    private $themeMods;
+
     /**
      * Setting
      *

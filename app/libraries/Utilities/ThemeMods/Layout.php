@@ -27,41 +27,41 @@ class Layout extends AbstractThemeMod
      * ThemeMods
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var ThemeMods $themeMods ThemeMods.
      */
-    protected $themeMods;
+    private $themeMods;
     
     /**
      * Context
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var string $context Page type.
      */
-    protected $context;
+    private $context;
 
     /**
      * Specific page type
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var string $specific Post type or taxonomy name.
      */
-    protected $specific;
+    private $specific;
 
     /**
      * More specific page type
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @var mixed $more_specific Post ID or term ID/name.
      */
-    protected $more_specific;
+    private $more_specific;
 
     /**
      * Constructor

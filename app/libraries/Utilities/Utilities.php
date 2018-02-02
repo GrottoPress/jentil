@@ -33,7 +33,7 @@ use Puc_v4_Factory;
 class Utilities
 {
     use Getter;
-    
+
     /**
      * Jentil
      *
@@ -287,11 +287,11 @@ class Utilities
      * Get short tags
      *
      * @since 0.5.0
-     * @access public
+     * @access private
      *
      * @return ShortTags
      */
-    public function getShortTags(): ShortTags
+    private function getShortTags(): ShortTags
     {
         if (null === $this->shortTags) {
             $this->shortTags = new ShortTags($this);
@@ -304,11 +304,11 @@ class Utilities
      * Get custom template
      *
      * @since 0.6.0
-     * @access public
+     * @access private
      *
      * @return CustomTemplate
      */
-    public function getCustomTemplate(): CustomTemplate
+    private function getCustomTemplate(): CustomTemplate
     {
         if (null === $this->customTemplate) {
             $this->customTemplate = new CustomTemplate($this);
