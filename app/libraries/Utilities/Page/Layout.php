@@ -101,7 +101,7 @@ class Layout
 
         return $mod;
     }
-    
+
     /**
      * Get current layout's column
      *
@@ -119,7 +119,7 @@ class Layout
                 }
             }
         }
-    
+
         return '';
     }
 }
