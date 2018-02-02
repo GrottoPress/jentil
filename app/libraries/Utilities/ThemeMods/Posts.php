@@ -83,8 +83,11 @@ class Posts extends AbstractThemeMod
      * @since 0.1.0
      * @access public
      */
-    public function __construct(ThemeMods $themeMods, string $setting, array $args = [])
-    {
+    public function __construct(
+        ThemeMods $themeMods,
+        string $setting,
+        array $args = []
+    ) {
         $this->themeMods = $themeMods;
         
         $this->setAttributes($setting, $args);
