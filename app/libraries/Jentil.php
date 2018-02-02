@@ -134,4 +134,23 @@ final class Jentil extends AbstractTheme
 
         return $setups;
     }
+
+    /**
+     * Check install mode
+     *
+     * Checks if installed as 'theme' or as 'package'.
+     *
+     * @param string $type
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return bool
+     */
+    public function is(string $type): bool
+    {
+        $relDir = (bool)$this->utilities->fileSystem->relativeDir();
+
+        return 'package' === $type ? $relDir : ('theme' === $type && !$relDir);
+    }
 }

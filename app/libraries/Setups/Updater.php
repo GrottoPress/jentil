@@ -44,7 +44,7 @@ final class Updater extends AbstractSetup
      */
     public function checkForUpdate()
     {
-        if ($this->app->utilities->fileSystem->relativeDir()) {
+        if ($this->app->is('package')) {
             return;
         }
 
