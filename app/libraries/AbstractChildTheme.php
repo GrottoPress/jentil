@@ -36,4 +36,19 @@ abstract class AbstractChildTheme extends ChildTheme
     {
         return Jentil::getInstance();
     }
+
+    /**
+     * Run theme
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function run()
+    {
+        if ($this->getParent()->is('package')) {
+            $this->getParent()->run();
+        }
+
+        parent::run();
+    }
 }
