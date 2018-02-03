@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractSection as Section;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSection as Section;
 
 /**
  * Abstract Posts Section

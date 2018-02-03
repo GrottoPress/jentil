@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Views;
 
-use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
+use GrottoPress\Jentil\Setups\AbstractSetup;
 
 /**
  * Singular

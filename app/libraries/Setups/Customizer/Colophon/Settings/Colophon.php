@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Customizer\Colophon\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Colophon\Colophon as Section;
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractSetting;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
 
 /**
  * Colophon Setting

@@ -15,8 +15,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups;
 
 use GrottoPress\Jentil\Jentil;
-use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
-use GrottoPress\WordPress\Metaboxes\MetaboxesTrait;
 use WP_Post;
 
 /**

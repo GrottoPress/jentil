@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Layout\Layout;
 use GrottoPress\Jentil\utilities\ThemeMods\Layout as LayoutMod;
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractSetting as Setting;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 /**
  * Abstract Layout Setting

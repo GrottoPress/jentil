@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Customizer\Title;
 
 use GrottoPress\Jentil\Setups\Customizer\Customizer;
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractSection;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSection;
 use WP_Customize_Manager as WPCustomizer;
 
 /**

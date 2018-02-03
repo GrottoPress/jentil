@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setups\Customizer\Posts\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Posts\AbstractSection;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractSetting as Setting;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 /**
  * Abstract Post Setting

@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Setups\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Title\Title;
 use GrottoPress\Jentil\Utilities\ThemeMods\Title as TitleMod;
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractSetting as Setting;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 /**
  * Abstract Title Setting

@@ -16,7 +16,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\CustomTemplates;
 
-use GrottoPress\WordPress\SUV\Setups\AbstractSetup;
+use GrottoPress\Jentil\Setups\AbstractSetup;
 use WP_Theme;
 
 /**

@@ -13,7 +13,7 @@
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
 use GrottoPress\Jentil\Setups\Customizer\Customizer;
-use GrottoPress\WordPress\SUV\Setups\Customizer\AbstractPanel;
+use GrottoPress\Jentil\Setups\Customizer\AbstractPanel;
 use WP_Customize_Manager as WPCustomizer;
 
 /**
