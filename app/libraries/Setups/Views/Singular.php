@@ -175,7 +175,7 @@ final class Singular extends AbstractSetup
         int $id,
         string $separator
     ): string {
-        if (!$this->app->utilities->page->is('singular', 'post')) {
+        if (!$this->app->utilities->page->is('single')) {
             return $output;
         }
 
@@ -195,7 +195,7 @@ final class Singular extends AbstractSetup
      */
     public function renderByline()
     {
-        if (!$this->app->utilities->page->is('singular', 'post')) {
+        if (!$this->app->utilities->page->is('single')) {
             return;
         }
 
