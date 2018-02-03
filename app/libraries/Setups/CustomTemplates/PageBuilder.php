@@ -40,7 +40,7 @@ final class PageBuilder extends AbstractTemplate
      */
     public function add(
         array $templates,
-        WP_Theme $theme,
+        WP_Theme $theme = null,
         $post,
         string $post_type
     ): array {
