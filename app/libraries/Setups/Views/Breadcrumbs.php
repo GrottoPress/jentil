@@ -45,7 +45,7 @@ final class Breadcrumbs extends AbstractSetup
     public function render()
     {
         $page = $this->app->utilities->page;
-        
+
         if ($page->is('front_page') && !$page->is('paged')) {
             return;
         }
