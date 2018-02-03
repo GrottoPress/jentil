@@ -34,9 +34,9 @@ final class Customizer extends AbstractCustomizer
     public function run()
     {
         parent::run();
-        
+
         \add_action('customize_preview_init', [$this, 'enqueueScript']);
-        \add_action('customize_preview_init', [$this, 'enqueueInlineJS']);
+        \add_action('customize_preview_init', [$this, 'enqueueInlineScript']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
 
@@ -55,9 +55,9 @@ final class Customizer extends AbstractCustomizer
         $this->sections['Title\Title'] = new Title\Title($this);
         $this->sections['Layout\Layout'] = new Layout\Layout($this);
         $this->sections['Colophon\Colophon'] = new Colophon\Colophon($this);
-        
+
         $this->panels['Posts\Posts'] = new Posts\Posts($this);
-        
+
         parent::register($WPCustomizer);
     }
 
@@ -93,7 +93,7 @@ final class Customizer extends AbstractCustomizer
      *
      * @todo Find out how to get page type in customizer.
      */
-    public function enqueueInlineJS()
+    public function enqueueInlineScript()
     {
         $script = 'var shortTags = '.\json_encode(
             $this->app->utilities->shortTags->get()
