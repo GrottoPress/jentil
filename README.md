@@ -64,7 +64,7 @@ These are the core requirements you need to get in place. The rest would be inst
 
 ## Architecture
 
-*Jentil* is developed using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://wp-cli.org/), as it may give a better understanding of the core philosophy underpinning *Jentil*'s development.
+*Jentil* is developed using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://github.com/grottopress/wordpress-suv/), as it may give a better understanding of the core philosophy underpinning *Jentil*'s development.
 
 ## Security
 
