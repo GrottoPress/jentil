@@ -65,21 +65,14 @@ final class Singular extends AbstractSetup
         if ($parent = $post->post_parent) {
             $classes[] = \sanitize_title("child-{$post->post_type}");
 
-            $i = 1;
-            while ($parent) {
-                /**
-                 * Include parent level in classes
-                 * ('2' for grandparent, '3' for great grandparent etc)
-                 */
-                for ($level = '', $j = $i; $j > 1; --$j) {
-                    $level .= "-{$j}";
-                }
+            for ($i = 1; $parent; ++$i) {
                 $object = \get_post($parent);
+
                 $classes[] = \sanitize_title(
-                    "{$post->post_type}-parent{$level}-{$object->ID}"
+                    "{$post->post_type}-parent-{$i}-{$object->ID}"
                 );
+
                 $parent = $object->post_parent;
-                ++$i;
             }
         }
 
@@ -185,7 +178,7 @@ final class Singular extends AbstractSetup
         if (!$this->app->utilities->page->is('singular', 'post')) {
             return $output;
         }
-        
+
         return $this->_byline($id).'<div class="self-clear"></div>';
     }
 
