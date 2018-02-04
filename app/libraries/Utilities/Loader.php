@@ -96,7 +96,7 @@ class Loader
             "/comments.php",
             'relative'
         );
-        
+
         if (!\is_readable(\get_stylesheet_directory()."/{$file}") &&
             !\is_readable(\get_template_directory()."/{$file}") &&
             ($rel_dir = $this->utilities->fileSystem->relativeDir())
@@ -106,7 +106,7 @@ class Loader
     
         return \comments_template("/{$file}", $separated);
     }
-    
+
     /**
      * Helper to load partial or template
      *
