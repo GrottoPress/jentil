@@ -1928,7 +1928,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.33",
+            "version": "v5.5.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1972,16 +1972,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.33",
+            "version": "v5.5.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "f6eb4fc687a1956cb44007604cd31dc50858eca9"
+                "reference": "139eb279bc18a1229c6c49a618d122c613edb2c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/f6eb4fc687a1956cb44007604cd31dc50858eca9",
-                "reference": "f6eb4fc687a1956cb44007604cd31dc50858eca9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/139eb279bc18a1229c6c49a618d122c613edb2c7",
+                "reference": "139eb279bc18a1229c6c49a618d122c613edb2c7",
                 "shasum": ""
             },
             "require": {
@@ -2025,7 +2025,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-01-19T13:47:08+00:00"
+            "time": "2018-02-04T20:29:16+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
