@@ -69,7 +69,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GrottoPress\\Jentil\\Tests\\WPUnit\\": "tests/wpunit/",
             "GrottoPress\\Jentil\\Tests\\Unit\\": "tests/unit/"
         }
     }
