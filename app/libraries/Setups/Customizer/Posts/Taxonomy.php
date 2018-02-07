@@ -94,7 +94,7 @@ final class Taxonomy extends AbstractSection
         }
 
         $this->modArgs['specific'] = $taxonomy->name;
-        $this->modArgs['more_specific'] = ($term ? $term->term_id : '');
+        $this->modArgs['more_specific'] = ($term ? $term->term_id : 0);
     }
 
     /**

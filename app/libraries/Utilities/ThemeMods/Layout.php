@@ -57,7 +57,7 @@ class Layout extends AbstractThemeMod
      * @since 0.1.0
      * @access private
      *
-     * @var mixed $more_specific Post ID or term ID/name.
+     * @var int $more_specific Post ID or term ID.
      */
     private $more_specific;
 
@@ -88,11 +88,11 @@ class Layout extends AbstractThemeMod
         $args = \wp_parse_args($args, [
             'context' => '',
             'specific' => '',
-            'more_specific' => '',
+            'more_specific' => 0,
         ]);
 
         $this->context = \sanitize_key($args['context']);
-        $this->more_specific = \sanitize_key($args['more_specific']);
+        $this->more_specific = (int)$args['more_specific'];
         $this->default = 'content-sidebar';
 
         $this->specific = \post_type_exists($args['specific']) ||
@@ -131,7 +131,7 @@ class Layout extends AbstractThemeMod
         ];
 
         $names = \array_map(function (string $value): string {
-            $value = \str_replace('__', '_', $value);
+            $value = \str_replace(['__', '_0_'], '_', $value);
             $value = \trim($value, '_');
 
             return $value;

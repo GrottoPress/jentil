@@ -225,7 +225,7 @@ class Posts
         $page = $this->page->type;
 
         $specific = '';
-        $more_specific = '';
+        $more_specific = 0;
 
         foreach ($page as $type) {
             if ('post_type_archive' === $type) {
