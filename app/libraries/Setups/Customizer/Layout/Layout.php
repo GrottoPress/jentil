@@ -99,7 +99,7 @@ final class Layout extends AbstractSection
             ->page->posts->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                if (!$this->customizer->app->utilities->themeMods ->layout([
+                if (!$this->customizer->app->utilities->themeMods->layout([
                     'context' => 'singular',
                     'specific' => $post_type->name,
                 ])->isPagelike()) {
