@@ -178,9 +178,9 @@ class Layout extends AbstractThemeMod
      * @since 0.1.0
      * @access public
      *
-     * @return string Mod.
+     * @return bool
      */
-    public function isPagelike():
+    public function isPagelike(): bool
     {
         if ('singular' !== $this->context) {
             return false;
