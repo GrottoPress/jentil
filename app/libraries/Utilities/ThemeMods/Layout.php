@@ -115,8 +115,10 @@ class Layout extends AbstractThemeMod
     {
         $names = [
             'home' => 'post_post_type_layout',
-            'singular' => ($this->isPagelike() ? 'layout'
-                : 'singular_'.$this->specific.'_'.$this->more_specific.'_layout'),
+            'singular' => (
+                $this->isPagelike() ? 'layout' :
+                'singular_'.$this->specific.'_'.$this->more_specific.'_layout'
+            ),
             'author' => 'author_layout',
             'category' => 'category_'.$this->more_specific.'_taxonomy_layout',
             'date' => 'date_layout',
@@ -178,8 +180,12 @@ class Layout extends AbstractThemeMod
      *
      * @return string Mod.
      */
-    public function isPagelike()
+    public function isPagelike():
     {
+        if ('singular' !== $this->context) {
+            return false;
+        }
+
         $check = (
             \is_post_type_hierarchical($this->specific) &&
             !\get_post_type_archive_link($this->specific)
@@ -188,7 +194,7 @@ class Layout extends AbstractThemeMod
         if ($check && $this->more_specific) {
             return ($this->more_specific !== \get_option('page_for_posts'));
         }
-        
+
         return $check;
     }
 }
