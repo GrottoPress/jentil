@@ -186,15 +186,9 @@ class Layout extends AbstractThemeMod
             return false;
         }
 
-        $check = (
-            \is_post_type_hierarchical($this->specific) &&
-            !\get_post_type_archive_link($this->specific)
+        return $this->themeMods->utilities->page->layout->isPagelike(
+            $this->specific,
+            $this->more_specific
         );
-
-        if ($check && $this->more_specific) {
-            return ($this->more_specific !== \get_option('page_for_posts'));
-        }
-
-        return $check;
     }
 }
