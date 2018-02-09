@@ -208,6 +208,27 @@ class Archive extends AbstractPosts
     }
 
     /**
+     * Post type query var
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return string
+     */
+    public function postType(): string
+    {
+        if ($this->posts->page->is('home')) {
+            return 'post';
+        }
+
+        if ($this->posts->page->is('post_type_archive')) {
+            return \get_query_var('post_type');
+        }
+
+        return '';
+    }
+
+    /**
      * Are we on a paged archive
      *
      * @since 0.6.0

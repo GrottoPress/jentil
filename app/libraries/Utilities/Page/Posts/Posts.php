@@ -163,10 +163,10 @@ class Posts
         }
 
         $out = '';
-        
+
         if (!$this->archive->isPaged() &&
             $this->sticky->isSet() &&
-            $this->sticky->get($this->postType())
+            $this->sticky->get($this->archive->postType())
         ) {
             $out .= $this->sticky->posts()->render();
         }
@@ -276,7 +276,7 @@ class Posts
      */
     public function isPagelike(string $post_type = '', int $post_id = 0): bool
     {
-        $post_type = $post_type ?: $this->postType();
+        $post_type = $post_type ?: $this->archive->postType();
 
         $check = (
             \is_post_type_hierarchical($post_type) &&
@@ -288,26 +288,5 @@ class Posts
         }
 
         return $check;
-    }
-
-    /**
-     * Post type query var
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return string
-     */
-    private function postType(): string
-    {
-        if ($this->page->is('home')) {
-            return 'post';
-        }
-
-        if ($this->page->is('post_type_archive')) {
-            return \get_query_var('post_type');
-        }
-
-        return '';
     }
 }
