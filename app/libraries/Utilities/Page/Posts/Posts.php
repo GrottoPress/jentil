@@ -276,8 +276,6 @@ class Posts
      */
     public function isPagelike(string $post_type = '', int $post_id = 0): bool
     {
-        $post_type = $post_type ?: $this->archive->postType();
-
         $check = (
             \is_post_type_hierarchical($post_type) &&
             !\get_post_type_archive_link($post_type)
