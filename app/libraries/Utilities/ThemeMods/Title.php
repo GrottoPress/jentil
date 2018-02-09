@@ -102,8 +102,7 @@ class Title extends AbstractThemeMod
             ? \sanitize_key($names[$this->context]) : '';
 
         $defaults = $this->defaults();
-        $this->default = isset($defaults[$this->context])
-            ? $defaults[$this->context] : '';
+        $this->default = $defaults[$this->context] ?? '';
     }
 
     /**
