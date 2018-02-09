@@ -261,6 +261,36 @@ class Posts
     }
 
     /**
+     * Is post type pagelike?
+     *
+     * Determines if post type behaves like
+     * the page post type.
+     *
+     * @param string $post_type
+     * @param int $post_id
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return bool
+     */
+    public function isPagelike(string $post_type = '', int $post_id = 0): bool
+    {
+        $post_type = $post_type ?: $this->postType();
+
+        $check = (
+            \is_post_type_hierarchical($post_type) &&
+            !\get_post_type_archive_link($post_type)
+        );
+
+        if ($check && $post_id) {
+            return ($post_id !== (int)\get_option('page_for_posts'));
+        }
+
+        return $check;
+    }
+
+    /**
      * Post type query var
      *
      * @since 0.6.0
