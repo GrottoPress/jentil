@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Introduced the `AbstractChildTheme` class
-- Added ability to remove customizer components
+- Added unit tests
 
 ### Changed
 - Undo require search input filled on search submit
@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Redirect `/?s={query}` search URLs to `/search/{query}` if using permalinks
 - Using the `grottopress/wordpress-suv` package for this theme.
 - Reorganised directory structure of setup classes into groups.
-- Autoload script is now included only if exists. (Credit: [@XedinUnknown](https://github.com/XedinUnknown))
+- Added ability to remove customizer components.
 - Ensure layout customizer settings do not show for page builder pages.
 - Ensure layout metabox do not show on pages using page builder template
 

@@ -1,0 +1,213 @@
+<?php
+declare (strict_types = 1);
+
+namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page\Posts;
+
+use Codeception\Util\Stub;
+use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
+use GrottoPress\Jentil\Utilities\Page\Posts\Singular;
+use GrottoPress\Jentil\Utilities\Page\Posts\Archive;
+use GrottoPress\Jentil\Utilities\Page\Posts\Sticky;
+use GrottoPress\Jentil\Utilities\Page\Page;
+use tad\FunctionMocker\FunctionMocker;
+
+class PostsTest extends TestCase
+{
+    /**
+     * @dataProvider renderProvider
+     */
+    public function testRender(
+        string $page,
+        bool $isPaged,
+        bool $stickySet,
+        array $stickyPosts,
+        string $expected
+    ) {
+        $this->markTestSkipped();
+
+        $posts = Stub::make(Posts::class);
+
+        $posts->page = Stub::makeEmpty(Page::class, [
+            'is' => function (string $type) use ($page): bool {
+                return ($page === $type);
+            }
+        ]);
+
+        $posts->singular = Stub::makeEmpty(Singular::class, [
+            'posts' => Stub::makeEmpty(Posts::class, ['render' => 'singular']),
+        ]);
+
+        $posts->archive = Stub::makeEmpty(Archive::class, [
+            'isPaged' => $isPaged,
+            'posts' => Stub::makeEmpty(Posts::class, ['render' => 'archive']),
+        ]);
+
+        $posts->sticky = Stub::makeEmpty(Sticky::class, [
+            'isSet' => $stickySet,
+            'get' => $stickyPosts,
+            'posts' => Stub::makeEmpty(Posts::class, ['render' => 'sticky']),
+        ]);
+
+        $this->assertSame($expected, $posts->render());
+    }
+
+    public function testPostTypes()
+    {
+        FunctionMocker::replace('get_post_types', function (
+            array $args,
+            string $type
+        ): array {
+            return [$args, $type];
+        });
+
+        $posts = new Posts(Stub::makeEmpty(Page::class));
+
+        $this->assertSame([['public' => true], 'objects'], $posts->postTypes());
+    }
+
+    public function testTaxonomies()
+    {
+        FunctionMocker::replace('get_taxonomies', function (
+            array $args,
+            string $type
+        ): array {
+            return [$args, $type];
+        });
+
+        $posts = new Posts(Stub::makeEmpty(Page::class));
+
+        $this->assertSame(
+            [['public' => true], 'objects'],
+            $posts->taxonomies()
+        );
+    }
+
+    /**
+     * @dataProvider isPagelikeProvider
+     */
+    public function testIsPagelike(
+        string $post_type,
+        int $post_id,
+        int $page_for_posts,
+        array $post_types,
+        bool $expected
+    ) {
+        FunctionMocker::replace('is_post_type_hierarchical', function (
+            string $type
+        ) use ($post_types): bool {
+            return !empty($post_types[$type]['h']);
+        });
+
+        FunctionMocker::replace('get_post_type_archive_link', function (
+            string $type
+        ) use ($post_types): bool {
+            return !empty($post_types[$type]['link']);
+        });
+
+        FunctionMocker::replace('get_option', $page_for_posts);
+
+        FunctionMocker::replace('post_type_exists', function (
+            string $post_type
+        ) use ($post_types): bool {
+            return \array_key_exists($post_type, $post_types);
+        });
+
+        $posts = new Posts(Stub::makeEmpty(Page::class));
+
+        $this->assertSame($expected, $posts->isPagelike($post_type, $post_id));
+    }
+
+    public function renderProvider()
+    {
+        return [
+            'page is singular' => ['singular', false, false, [], 'singular'],
+        ];
+    }
+
+    public function isPagelikeProvider(): array
+    {
+        return [
+            'post type is non-hierarchical, has archive' => [
+                'post',
+                4,
+                222,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type is non-hierarchical, no archive' => [
+                'post',
+                4,
+                222,
+                [
+                    'post' => ['h' => false, 'link' => false],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type arg is hierarchical, is front page, no archive' => [
+                'page',
+                123,
+                123,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type arg is hierarchical, not front page, no archive' => [
+                'page',
+                123,
+                111,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                true,
+            ],
+            'post type arg is hierarchical, has archive' => [
+                'page',
+                123,
+                111,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => true]
+                ],
+                false,
+            ],
+            'post type arg not set' => [
+                '',
+                4,
+                111,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type arg non-existent' => [
+                'book',
+                111,
+                123,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post id not set' => [
+                'page',
+                0,
+                111,
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                true,
+            ],
+        ];
+    }
+}
