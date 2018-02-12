@@ -76,7 +76,9 @@ final class Singular extends AbstractSetup
             }
         }
 
-        if ($page_template = \get_page_template_slug($post->ID)) {
+        if ($page_template = $this->app->utilities->customTemplate->slug(
+            $post->ID
+        )) {
             $classes[] = \sanitize_title($page_template);
         }
 
