@@ -149,7 +149,7 @@ final class Jentil extends AbstractTheme
      */
     public function is(string $type): bool
     {
-        $relDir = (bool)$this->utilities->fileSystem->relativeDir();
+        $relDir = (bool)$this->getUtilities()->fileSystem->relativeDir();
 
         return 'package' === $type ? $relDir : ('theme' === $type && !$relDir);
     }
