@@ -36,9 +36,9 @@ final class Sticky extends AbstractSection
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
         parent::__construct($posts);
-        
+
         $this->name = \sanitize_key("{$post_type->name}_sticky_posts");
-        
+
         $this->setArgs($post_type);
         $this->setModArgs($post_type);
     }
@@ -81,7 +81,7 @@ final class Sticky extends AbstractSection
             if ('post' === $post_type->name) {
                 return ($page->is('home') && $has_sticky);
             }
-            
+
             if (\post_type_exists($post_type->name)) {
                 return ($page->is('post_type_archive') && $has_sticky);
             }
