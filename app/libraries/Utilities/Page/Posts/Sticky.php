@@ -201,9 +201,8 @@ class Sticky extends AbstractPosts
     {
         $args = [
             'context' => 'sticky',
+            'specific' => $this->posts->archive->postType(),
         ];
-
-        $args['specific'] = $this->posts->archive->postType();
 
         if (\is_array($args['specific'])) {
             $args['specific'] = $args['specific'][0];
