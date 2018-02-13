@@ -122,8 +122,8 @@ final class Sticky extends AbstractSection
             $settings['Pagination'],
             $settings['PaginationMaximum'],
             $settings['PaginationPosition'],
-            $settings['PaginationPrevious_label'],
-            $settings['PaginationNextLabel']
+            $settings['PaginationPreviousText'],
+            $settings['PaginationNextText']
         );
 
         return $settings;
