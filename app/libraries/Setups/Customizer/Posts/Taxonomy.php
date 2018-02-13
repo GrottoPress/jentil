@@ -71,9 +71,11 @@ final class Taxonomy extends AbstractSection
     private function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         if ($term) {
-            $this->name = \sanitize_key($taxonomy->name.'_'.$term->term_id.'_taxonomy_posts');
+            $this->name = \sanitize_key(
+                "{$taxonomy->name}_{$term->term_id}_taxonomy_posts"
+            );
         } else {
-            $this->name = \sanitize_key($taxonomy->name.'_taxonomy_posts');
+            $this->name = \sanitize_key("{$taxonomy->name}_taxonomy_posts");
         }
     }
 

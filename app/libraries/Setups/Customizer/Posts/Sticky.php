@@ -37,7 +37,7 @@ final class Sticky extends AbstractSection
     {
         parent::__construct($posts);
         
-        $this->name = \sanitize_key($post_type->name.'_sticky_posts');
+        $this->name = \sanitize_key("{$post_type->name}_sticky_posts");
         
         $this->setArgs($post_type);
         $this->setModArgs($post_type);

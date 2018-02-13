@@ -49,7 +49,7 @@ final class PostType extends AbstractSection
         
         $this->post_type = $post_type;
 
-        $this->name = \sanitize_key($this->post_type->name.'_post_type_posts');
+        $this->name = \sanitize_key("{$this->post_type->name}_post_type_posts");
 
         $this->setArgs();
         $this->setModArgs();

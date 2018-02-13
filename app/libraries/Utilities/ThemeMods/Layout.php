@@ -117,15 +117,14 @@ class Layout extends AbstractThemeMod
             'home' => 'post_post_type_layout',
             'singular' => (
                 $this->isPagelike() ? 'layout' :
-                'singular_'.$this->specific.'_'.$this->more_specific.'_layout'
+                "singular_{$this->specific}_{$this->more_specific}_layout"
             ),
             'author' => 'author_layout',
-            'category' => 'category_'.$this->more_specific.'_taxonomy_layout',
+            'category' => "category_{$this->more_specific}_taxonomy_layout",
             'date' => 'date_layout',
-            'post_type_archive' => $this->specific.'_post_type_layout',
-            'tag' => 'post_tag_'.$this->more_specific.'_taxonomy_layout',
-            'tax' => $this->specific.'_'.
-                $this->more_specific.'_taxonomy_layout',
+            'post_type_archive' => "{$this->specific}_post_type_layout",
+            'tag' => "post_tag_{$this->more_specific}_taxonomy_layout",
+            'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_layout",
             '404' => 'error_404_layout',
             'search' => 'search_layout',
         ];

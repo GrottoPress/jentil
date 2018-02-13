@@ -117,13 +117,12 @@ class Title extends AbstractThemeMod
     {
         $names = [
             'home' => 'post_post_type_title',
-            // 'singular' => 'singular_'.$this->specific.'_'.$this->more_specific.'_title',
             'author' => 'author_title',
-            'category' => 'category_'.$this->more_specific.'_taxonomy_title',
+            'category' => "category_{$this->more_specific}_taxonomy_title",
             'date' => 'date_title',
-            'post_type_archive' => $this->specific.'_post_type_title',
-            'tag' => 'post_tag_'.$this->more_specific.'_taxonomy_title',
-            'tax' => $this->specific.'_'.$this->more_specific.'_taxonomy_title',
+            'post_type_archive' => "{$this->specific}_post_type_title",
+            'tag' => "post_tag_{$this->more_specific}_taxonomy_title",
+            'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_title",
             '404' => 'error_404_title',
             'search' => 'search_title',
         ];

@@ -131,19 +131,18 @@ class Posts extends AbstractThemeMod
     {
         $names = [
             'home' => 'post_post_type_posts',
-            // 'singular' => 'singular_'.$this->specific.'_'.$this->more_specific.'_posts',
             'author' => 'author_posts',
-            'category' => 'category_'.$this->more_specific.'_taxonomy_posts',
+            'category' => "category_{$this->more_specific}_taxonomy_posts",
             'date' => 'date_posts',
-            'post_type_archive' => $this->specific.'_post_type_posts',
-            'tag' => 'post_tag_'.$this->more_specific.'_taxonomy_posts',
-            'tax' => $this->specific.'_'.$this->more_specific.'_taxonomy_posts',
+            'post_type_archive' => "{$this->specific}_post_type_posts",
+            'tag' => "post_tag_{$this->more_specific}_taxonomy_posts",
+            'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_posts",
             'search' => 'search_posts',
-            'sticky' => $this->specific.'_sticky_posts',
+            'sticky' => "{$this->specific}_sticky_posts",
         ];
 
         $names = \array_map(function (string $value): string {
-            $value .= '_'.$this->setting;
+            $value .= "_{$this->setting}";
             $value = \str_replace(['__', '_0_'], '_', $value);
             $value = \trim($value, '_');
 

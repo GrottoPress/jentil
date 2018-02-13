@@ -79,7 +79,7 @@ final class Layout extends AbstractSection
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
-                $settings['Taxonomy_'.$taxonomy->name] = new Settings\Taxonomy(
+                $settings["Taxonomy_{$taxonomy->name}"] = new Settings\Taxonomy(
                     $this,
                     $taxonomy
                 );
@@ -90,7 +90,7 @@ final class Layout extends AbstractSection
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                $settings['PostType_'.$post_type->name] =
+                $settings["PostType_{$post_type->name}"] =
                     new Settings\PostType($this, $post_type);
             }
         }
@@ -103,7 +103,7 @@ final class Layout extends AbstractSection
                     'context' => 'singular',
                     'specific' => $post_type->name,
                 ])->isPagelike()) {
-                    $settings['Singular_'.$post_type->name] =
+                    $settings["Singular_{$post_type->name}"] =
                         new Settings\Singular($this, $post_type);
                 }
             }

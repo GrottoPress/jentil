@@ -79,7 +79,7 @@ final class Title extends AbstractSection
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
-                $settings['Taxonomy_'.$taxonomy->name] = new Settings\Taxonomy(
+                $settings["Taxonomy_{$taxonomy->name}"] = new Settings\Taxonomy(
                     $this,
                     $taxonomy
                 );
@@ -90,7 +90,7 @@ final class Title extends AbstractSection
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                $settings['PostType_'.$post_type->name] =
+                $settings["PostType_{$post_type->name}"] =
                     new Settings\PostType($this, $post_type);
             }
         }

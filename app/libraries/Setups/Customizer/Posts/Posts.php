@@ -76,7 +76,7 @@ final class Posts extends AbstractPanel
             ->page->posts->taxonomies())
         ) {
             foreach ($taxonomies as $taxonomy) {
-                $sections['Taxonomy_'.$taxonomy->name] = new Taxonomy(
+                $sections["Taxonomy_{$taxonomy->name}"] = new Taxonomy(
                     $this,
                     $taxonomy
                 );
@@ -87,14 +87,23 @@ final class Posts extends AbstractPanel
             ->page->posts->archive->postTypes())
         ) {
             foreach ($post_types as $post_type) {
-                $sections['Sticky_'.$post_type->name] = new Sticky(
+                $sections["Sticky_{$post_type->name}"] = new Sticky(
                     $this,
                     $post_type
                 );
-                $sections['PostType_'.$post_type->name] = new PostType(
+                $sections["PostType_{$post_type->name}"] = new PostType(
                     $this,
                     $post_type
                 );
+            }
+        }
+
+        if (($post_types = $this->customizer->app->utilities
+            ->page->posts->postTypes())
+        ) {
+            foreach ($post_types as $post_type) {
+                $sections["Related_{$post_type->name}"] =
+                    new Related($this, $post_type);
             }
         }
 

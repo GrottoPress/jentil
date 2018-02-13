@@ -34,7 +34,7 @@ class Sticky extends AbstractPosts
         $args = [
             // 'tag' => $this->themeMod('wrap_tag')->get(),
             'class' => $this->themeMod('wrap_class')->get(),
-            'id' => $this->posts->id.'-sticky-posts',
+            'id' => "{$this->posts->id}-sticky-posts",
             'layout' => $this->themeMod('layout')->get(),
             'text_offset' => $this->themeMod('text_offset')->get(),
             'image' => [
