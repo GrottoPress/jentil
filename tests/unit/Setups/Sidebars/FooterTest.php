@@ -11,22 +11,6 @@ use tad\FunctionMocker\FunctionMocker;
 
 class FooterTest extends TestCase
 {
-    public function testRun()
-    {
-        $footer = new Footer(Stub::makeEmpty(AbstractTheme::class));
-
-        $add_action = FunctionMocker::replace('add_action');
-
-        $footer->run();
-
-        $add_action->wasCalledOnce();
-
-        $add_action->wasCalledWithOnce([
-            'widgets_init',
-            [$footer, 'register']
-        ]);
-    }
-
     public function testRegister()
     {
         $footer = new Footer(Stub::makeEmpty(AbstractTheme::class));

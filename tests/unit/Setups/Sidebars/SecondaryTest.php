@@ -11,22 +11,6 @@ use tad\FunctionMocker\FunctionMocker;
 
 class SecondaryTest extends TestCase
 {
-    public function testRun()
-    {
-        $secondary = new Secondary(Stub::makeEmpty(AbstractTheme::class));
-
-        $add_action = FunctionMocker::replace('add_action');
-
-        $secondary->run();
-
-        $add_action->wasCalledOnce();
-
-        $add_action->wasCalledWithOnce([
-            'widgets_init',
-            [$secondary, 'register']
-        ]);
-    }
-
     public function testRegister()
     {
         $secondary = new Secondary(Stub::makeEmpty(AbstractTheme::class));

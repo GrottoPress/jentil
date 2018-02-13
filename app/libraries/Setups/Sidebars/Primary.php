@@ -14,26 +14,13 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Sidebars;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
-
 /**
  * Primary sidebar
  *
  * @since 0.6.0
  */
-final class Primary extends AbstractSetup
+final class Primary extends AbstractSidebar
 {
-    /**
-     * Run setup
-     *
-     * @since 0.6.0
-     * @access public
-     */
-    public function run()
-    {
-        \add_action('widgets_init', [$this, 'register']);
-    }
-
     /**
      * Register widget area
      *
