@@ -15,7 +15,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
 use WP_Customize_Manager as WPCustomizer;
-
 use WP_Post_Type;
 
 /**
