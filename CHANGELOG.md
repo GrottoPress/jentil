@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Introduced the `AbstractChildTheme` class
 - Added unit tests
+- Set up [travis-ci](https://travis-ci.org)
 
 ### Changed
 - Undo require search input filled on search submit
