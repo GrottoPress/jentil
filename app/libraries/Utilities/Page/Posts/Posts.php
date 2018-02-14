@@ -100,10 +100,6 @@ class Posts
         $this->page = $page;
 
         $this->id = 'main-query';
-
-        $this->sticky = new Sticky($this);
-        $this->singular = new Singular($this);
-        $this->archive =  new Archive($this);
     }
 
     /**
@@ -133,19 +129,6 @@ class Posts
     }
 
     /**
-     * Get Sticky Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Sticky
-     */
-    private function getSticky(): Sticky
-    {
-        return $this->sticky;
-    }
-
-    /**
      * Get singular posts
      *
      * @since 0.6.0
@@ -160,6 +143,23 @@ class Posts
         }
 
         return $this->singular;
+    }
+
+    /**
+     * Get Sticky Posts
+     *
+     * @since 0.1.0
+     * @access private
+     *
+     * @return Sticky
+     */
+    private function getSticky(): Sticky
+    {
+        if (null === $this->sticky) {
+            return new Sticky($this);
+        }
+
+        return $this->sticky;
     }
 
     /**
@@ -189,6 +189,10 @@ class Posts
      */
     private function getArchive(): Archive
     {
+        if (null === $this->archive) {
+            return new Archive($this);
+        }
+
         return $this->archive;
     }
 
@@ -203,19 +207,19 @@ class Posts
     public function render(): string
     {
         if ($this->page->is('singular')) {
-            return $this->singular->posts()->render();
+            return $this->getSingular()->posts()->render();
         }
 
         $out = '';
 
-        if (!$this->archive->isPaged() &&
-            $this->sticky->isSet() &&
-            $this->sticky->get($this->archive->postType())
+        if (!$this->getArchive()->isPaged() &&
+            $this->getSticky()->isSet() &&
+            $this->getSticky()->get($this->getArchive()->postType())
         ) {
-            $out .= $this->sticky->posts()->render();
+            $out .= $this->getSticky()->posts()->render();
         }
 
-        $out .= $this->archive->posts()->render();
+        $out .= $this->getArchive()->posts()->render();
 
         return $out;
     }
