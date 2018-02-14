@@ -30,6 +30,11 @@ class SingularTest extends TestCase
      */
     private $page;
 
+    /**
+     * @var string
+     */
+    private $subPage = '';
+
     public function _before()
     {
         $this->jentil = Stub::makeEmpty(AbstractTheme::class, [
@@ -37,7 +42,11 @@ class SingularTest extends TestCase
         ]);
 
         $this->jentil->utilities->page = Stub::makeEmpty(Page::class, [
-            'is' => function (string $type): bool {
+            'is' => function (string $type, string $subtype = ''): bool {
+                if ($subtype) {
+                    return $this->page === $type && $this->subPage === $subtype;
+                }
+                
                 return ($this->page === $type);
             }
         ]);
@@ -247,9 +256,10 @@ class SingularTest extends TestCase
     /**
      * @dataProvider bylineProvider
      */
-    public function testByline(string $page)
+    public function testByline(string $page, string $subPage)
     {
         $this->page = $page;
+        $this->subPage = $subPage;
 
         $this->jentil->utilities->post = Stub::makeEmpty(Post::class, [
             'info' => true,
@@ -257,7 +267,7 @@ class SingularTest extends TestCase
 
         $singular = new Singular($this->jentil);
 
-        if ('single' === $page) {
+        if ('singular' === $page && 'post' === $subPage) {
             $this->jentil->utilities->post
                 ->expects($this->atLeastOnce())->method('info');
         } else {
@@ -267,7 +277,7 @@ class SingularTest extends TestCase
 
         $byline = $singular->byline('hello...', 1, '|');
 
-        if ('single' !== $page) {
+        if ('singular' !== $page || 'post' !== $subPage) {
             $this->assertSame('hello...', $byline);
         }
     }
@@ -275,7 +285,7 @@ class SingularTest extends TestCase
     /**
      * @dataProvider renderBylineProvider
      */
-    public function testRenderByline(string $page)
+    public function testRenderByline(string $page, string $subPage)
     {
         $this->page = $page;
 
@@ -289,7 +299,7 @@ class SingularTest extends TestCase
 
         $singular = new Singular($this->jentil);
 
-        if ('single' === $page) {
+        if ('singular' === $page && 'post' === $subPage) {
             $this->jentil->utilities->post
                 ->expects($this->atLeastOnce())->method('info');
         } else {
@@ -567,16 +577,16 @@ class SingularTest extends TestCase
     public function bylineProvider(): array
     {
         return [
-            'page is single' => ['single'],
-            'page is not single' => ['home'],
+            'page is single post' => ['singular', 'post'],
+            'page is not single post' => ['home', ''],
         ];
     }
 
     public function renderBylineProvider(): array
     {
         return [
-            'page is single' => ['single'],
-            'page is not single' => ['home'],
+            'page is single post' => ['singular', 'post'],
+            'page is not single post' => ['home', ''],
         ];
     }
 

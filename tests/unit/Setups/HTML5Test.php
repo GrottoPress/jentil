@@ -69,15 +69,28 @@ class HTML5Test extends TestCase
      *
      * @dataProvider addMicrodataProvider
      */
-    public function testAddMicrodata(string $page, string $itemtype)
-    {
+    public function testAddMicrodata(
+        string $page,
+        string $subPage,
+        string $itemtype
+    ) {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
 
         $jentil->utilities->page = Stub::makeEmpty(Page::class, [
-            'is' => function (string $type) use ($page): bool {
-                return ($page === $type);
+            'is' => function (
+                string $type,
+                string $subtype = null
+            ) use (
+                $page,
+                $subPage
+            ): bool {
+                if ($subtype) {
+                    return ($page === $type && $subPage === $subtype);
+                }
+
+                return $page === $type;
             }
         ]);
 
@@ -111,11 +124,11 @@ class HTML5Test extends TestCase
     public function addMicrodataProvider(): array
     {
         return [
-            'home (posts archive)' => ['home', 'Blog'],
-            'author archive' => ['author', 'ProfilePage'],
-            'single post' => ['single', 'BlogPosting'],
-            'search archive' => ['search', 'SearchResultsPage'],
-            'all other pages' => ['non-existent', 'WebPage'],
+            'home (posts archive)' => ['home', '', 'Blog'],
+            'author archive' => ['author', '', 'ProfilePage'],
+            'single post' => ['singular', 'post', 'BlogPosting'],
+            'search archive' => ['search', '', 'SearchResultsPage'],
+            'all other pages' => ['non-existent', '', 'WebPage'],
         ];
     }
 

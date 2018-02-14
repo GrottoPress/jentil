@@ -85,7 +85,7 @@ final class HTML5 extends AbstractSetup
             $output .= 'ProfilePage';
         } elseif ($page->is('search')) {
             $output .= 'SearchResultsPage';
-        } elseif ($page->is('single')) {
+        } elseif ($page->is('singular', 'post')) {
             $output .= 'BlogPosting';
         } else {
             $output .= 'WebPage';
