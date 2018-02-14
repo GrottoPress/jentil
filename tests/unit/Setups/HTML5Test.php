@@ -90,7 +90,7 @@ class HTML5Test extends TestCase
                     return ($page === $type && $subPage === $subtype);
                 }
 
-                return $page === $type;
+                return ($page === $type);
             }
         ]);
 
@@ -128,6 +128,7 @@ class HTML5Test extends TestCase
             'author archive' => ['author', '', 'ProfilePage'],
             'single post' => ['singular', 'post', 'BlogPosting'],
             'search archive' => ['search', '', 'SearchResultsPage'],
+            'attachment' => ['attachment', '', 'MediaObject'],
             'all other pages' => ['non-existent', '', 'WebPage'],
         ];
     }

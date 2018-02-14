@@ -87,6 +87,8 @@ final class HTML5 extends AbstractSetup
             $output .= 'SearchResultsPage';
         } elseif ($page->is('singular', 'post')) {
             $output .= 'BlogPosting';
+        } elseif ($page->is('attachment')) {
+            $output .= 'MediaObject';
         } else {
             $output .= 'WebPage';
         }
