@@ -14,8 +14,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
-use WP_Post;
-
 /**
  * Singular Posts
  *
