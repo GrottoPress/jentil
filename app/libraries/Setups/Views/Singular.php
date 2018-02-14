@@ -61,7 +61,7 @@ final class Singular extends AbstractSetup
             return $classes;
         }
 
-        global $post;
+        $post = \get_post();
 
         if ($parent = $post->post_parent) {
             $classes[] = \sanitize_title("child-{$post->post_type}");
@@ -109,16 +109,14 @@ final class Singular extends AbstractSetup
             return;
         }
 
-        global $post;
-
-        if (!$post->post_parent) {
+        if (!($parent = \get_post()->post_parent)) {
             return;
         }
 
         echo '<h4 class="parent entry-title">
-            <a href="'.\get_permalink($post->post_parent).'">
+            <a href="'.\get_permalink($parent).'">
                 <span class="meta-nav">&laquo;</span> '.
-                \get_the_title($post->post_parent)
+                \get_the_title($parent)
            .'</a>
         </h4>';
     }
@@ -139,19 +137,17 @@ final class Singular extends AbstractSetup
 
         \remove_filter('the_content', 'prepend_attachment');
 
-        global $post;
-
-        if (\wp_attachment_is_image($post->ID)) {
+        if (\wp_attachment_is_image($id = \get_post()->ID)) {
             $this->app->utilities->loader->loadPartial(
                 'attachment',
                 'image'
             );
-        } elseif (\wp_attachment_is('audio', $post->ID)) {
+        } elseif (\wp_attachment_is('audio', $id)) {
             $this->app->utilities->loader->loadPartial(
                 'attachment',
                 'audio'
             );
-        } elseif (\wp_attachment_is('video', $post->ID)) {
+        } elseif (\wp_attachment_is('video', $id)) {
             $this->app->utilities->loader->loadPartial(
                 'attachment',
                 'video'
@@ -202,10 +198,8 @@ final class Singular extends AbstractSetup
             return;
         }
 
-        global $post;
-
         echo '<aside class="entry-meta after-title self-clear">';
-        echo $this->_byline($post->ID);
+        echo $this->_byline(\get_post()->ID);
         echo '</aside>';
     }
 

@@ -96,7 +96,7 @@ class Related extends AbstractPosts
     {
         $args = [
             'context' => 'related',
-            'specific' => $this->posts->singular->postType(),
+            'specific' => \get_post()->post_type,
         ];
 
         return $this->posts->themeMod($setting, $args);

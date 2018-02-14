@@ -71,11 +71,12 @@ class Layout
             } elseif ('tag' === $type) {
                 $specific = 'post_tag';
             } elseif ('singular' === $type) {
-                global $post;
+                $specific = ($post = \get_post())->post_type;
 
-                $specific = $post->post_type;
-
-                if ($this->page->posts->isPagelike($post->post_type, $post->ID)) {
+                if ($this->page->posts->isPagelike(
+                    $post->post_type,
+                    $post->ID
+                )) {
                     $more_specific = $post->ID;
                 }
             }

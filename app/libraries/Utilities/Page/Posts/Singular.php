@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
+use WP_Post;
+
 /**
  * Singular Posts
  *
@@ -31,8 +33,6 @@ class Singular extends AbstractPosts
      */
     public function args(): array
     {
-        global $post;
-
         return [
             'layout' => 'stack',
             'id' => $this->posts->id,
@@ -53,23 +53,10 @@ class Singular extends AbstractPosts
             ],
             'wp_query' => [
                 'posts_per_page' => 1,
-                'post_type' => $post->post_type,
-                'p' => $post->ID,
+                'post_type' => \get_post()->post_type,
+                'p' => \get_post()->ID,
                 'ignore_sticky_posts' => 1,
             ],
         ];
-    }
-
-    /**
-     * Post type
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return string
-     */
-    public function postType(): string
-    {
-        return (string)\get_post_type();
     }
 }

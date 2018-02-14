@@ -107,8 +107,6 @@ class SingularTest extends TestCase
 
         $singular = new Singular($this->jentil);
 
-        $GLOBALS['post'] = \json_decode(\json_encode($post));
-
         $sanitize_title = FunctionMocker::replace(
             'sanitize_title',
             function (string $content): string {
@@ -116,7 +114,13 @@ class SingularTest extends TestCase
             }
         );
 
-        $get_post = FunctionMocker::replace('get_post', function ($post) {
+        $get_post = FunctionMocker::replace('get_post', function (
+            $p = null
+        ) use ($post) {
+            if ($p) {
+                return \json_decode(\json_encode($p));
+            }
+
             return \json_decode(\json_encode($post));
         });
 
@@ -159,7 +163,7 @@ class SingularTest extends TestCase
 
         $singular = new Singular($this->jentil);
 
-        $GLOBALS['post'] = \json_decode(\json_encode($post));
+        FunctionMocker::replace('get_post', \json_decode(\json_encode($post)));
 
         $get_permalink = FunctionMocker::replace('get_permalink');
         $get_the_title = FunctionMocker::replace('get_the_title');
@@ -194,7 +198,7 @@ class SingularTest extends TestCase
 
         $singular = new Singular($this->jentil);
 
-        $GLOBALS['post'] = \json_decode(\json_encode($post));
+        FunctionMocker::replace('get_post', \json_decode(\json_encode($post)));
 
         $remove_filter = FunctionMocker::replace('remove_filter');
         $get_the_title = FunctionMocker::replace('get_the_title');
@@ -279,9 +283,9 @@ class SingularTest extends TestCase
             'info' => true,
         ]);
 
-        $GLOBALS['post'] = new class {
+        FunctionMocker::replace('get_post', new class {
             public $ID = 1;
-        };
+        });
 
         $singular = new Singular($this->jentil);
 
