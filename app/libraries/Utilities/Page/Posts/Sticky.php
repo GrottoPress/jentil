@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
+use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
+
 /**
  * Sticky Posts
  *
@@ -197,7 +199,7 @@ class Sticky extends AbstractPosts
      *
      * @return mixed Sticky posts mod.
      */
-    public function themeMod(string $setting)
+    public function themeMod(string $setting): PostsMod
     {
         $args = [
             'context' => 'sticky',
