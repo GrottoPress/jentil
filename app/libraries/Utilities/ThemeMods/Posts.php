@@ -139,6 +139,7 @@ class Posts extends AbstractThemeMod
             'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_posts",
             'search' => 'search_posts',
             'sticky' => "{$this->specific}_sticky_posts",
+            'related' => "{$this->specific}_related_posts",
         ];
 
         $names = \array_map(function (string $value): string {
@@ -200,17 +201,33 @@ class Posts extends AbstractThemeMod
             $defaults['excerpt'] = 40;
         }
 
-        if ('sticky' === $this->context) {
-            $defaults['wrap_class'] = 'sticky-posts big';
-
+        if (\in_array($this->context, ['sticky', 'related'])) {
             unset(
-                $defaults['number'],
                 $defaults['pagination'],
                 $defaults['pagination_maximum'],
                 $defaults['pagination_position'],
                 $defaults['pagination_previous_text'],
                 $defaults['pagination_next_text']
             );
+        }
+
+        if ('sticky' === $this->context) {
+            $defaults['wrap_class'] = 'sticky-posts big';
+
+            unset($defaults['number']);
+        }
+
+        if ('related' === $this->context) {
+            $defaults['wrap_class'] = 'related-posts layout-grid';
+            $defaults['before_title'] = '';
+            $defaults['after_title'] = '';
+            $defaults['after_content'] = '';
+            $defaults['image'] = 'post-thumbnail';
+            $defaults['image_alignment'] = 'none';
+            $defaults['image_margin'] = '0 0 3px';
+            $defaults['heading'] = \esc_html__('Recommended', 'jentil');
+            $defaults['excerpt'] = 0;
+            $defaults['number'] = ('post' === $this->specific ? 6 : 0);
         }
 
         if (!\in_array($this->context, [

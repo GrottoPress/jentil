@@ -100,6 +100,7 @@ abstract class AbstractSection extends Section
         $settings = [];
 
         $settings['StickyPosts'] = new Settings\StickyPosts($this);
+        $settings['Heading'] = new Settings\Heading($this);
         $settings['WrapClass'] = new Settings\WrapClass($this);
         $settings['Number'] = new Settings\Number($this);
         // $settings['WrapTag'] = new Settings\WrapTag($this);

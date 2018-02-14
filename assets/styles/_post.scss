@@ -86,6 +86,12 @@
     }
 }
 
+/** Related posts */
+
+#related-posts-wrap {
+    @include paragraph;
+}
+
 /** Single posts */
 
 .singular-post.big {

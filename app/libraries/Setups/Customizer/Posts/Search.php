@@ -71,7 +71,7 @@ final class Search extends AbstractSection
     {
         $settings = parent::settings();
 
-        unset($settings['StickyPosts']);
+        unset($settings['StickyPosts'], $settings['Heading']);
 
         return $settings;
     }

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Sticky Posts Section
+ * Related Posts Section
  *
  * @package GrottoPress\Jentil\Setups\Customizer\Posts
- * @since 0.1.0
+ * @since 0.6.0
  *
  * @author GrottoPress <info@grottopress.com>
  * @author N Atta Kusi Adusei
@@ -18,11 +18,11 @@ use WP_Customize_Manager as WPCustomizer;
 use WP_Post_Type;
 
 /**
- * Sticky Posts Section
+ * Related Posts Section
  *
- * @since 0.1.0
+ * @since 0.6.0
  */
-final class Sticky extends AbstractSection
+final class Related extends AbstractSection
 {
     /**
      * Constructor
@@ -30,14 +30,14 @@ final class Sticky extends AbstractSection
      * @param Posts $posts Posts.
      * @param WP_Post_Type $post_type Post type.
      *
-     * @since 0.1.0
+     * @since 0.6.0
      * @access public
      */
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
         parent::__construct($posts);
 
-        $this->name = \sanitize_key("{$post_type->name}_sticky_posts");
+        $this->name = \sanitize_key("{$post_type->name}_related_posts");
 
         $this->setArgs($post_type);
         $this->setModArgs($post_type);
@@ -48,7 +48,7 @@ final class Sticky extends AbstractSection
      *
      * @param WPCustomizer $WPCustomizer
      *
-     * @since 0.1.0
+     * @since 0.6.0
      * @access public
      */
     public function add(WPCustomizer $WPCustomizer)
@@ -63,30 +63,29 @@ final class Sticky extends AbstractSection
      *
      * @param WP_Post_Type $post_type Post type.
      *
-     * @since 0.5.0
+     * @since 0.6.0
      * @access private
      */
     private function setArgs(WP_Post_Type $post_type)
     {
         $this->args['title'] = \sprintf(
-            \esc_html__('Sticky %s', 'jentil'),
+            \esc_html__('Related %s', 'jentil'),
             $post_type->labels->name
         );
 
         $this->args['active_callback'] = function () use ($post_type): bool {
-            $page = $this->customizer->app->utilities->page;
-            $has_sticky = $this->customizer->app->utilities
-                ->page->posts->sticky->get($post_type->name);
+            $utilities = $this->customizer->app->utilities;
 
-            if ('post' === $post_type->name) {
-                return ($page->is('home') && $has_sticky);
+            if ($utilities->customTemplate->isPageBuilder() ||
+                !\post_type_exists($post_type->name)
+            ) {
+                return false;
             }
 
-            if (\post_type_exists($post_type->name)) {
-                return ($page->is('post_type_archive') && $has_sticky);
-            }
-
-            return false;
+            return $this->customizer->app->utilities->page->is(
+                'singular',
+                $post_type->name
+            );
         };
     }
 
@@ -95,19 +94,19 @@ final class Sticky extends AbstractSection
      *
      * @param WP_Post_Type $post_type Post type.
      *
-     * @since 0.5.0
+     * @since 0.6.0
      * @access private
      */
     private function setModArgs(WP_Post_Type $post_type)
     {
-        $this->modArgs['context'] = 'sticky';
+        $this->modArgs['context'] = 'related';
         $this->modArgs['specific'] = $post_type->name;
     }
 
     /**
      * Get settings
      *
-     * @since 0.1.0
+     * @since 0.6.0
      * @access protected
      *
      * @return Settings\AbstractSetting[] Settings.
@@ -118,13 +117,11 @@ final class Sticky extends AbstractSection
 
         unset(
             $settings['StickyPosts'],
-            $settings['Number'],
             $settings['Pagination'],
             $settings['PaginationMaximum'],
             $settings['PaginationPosition'],
             $settings['PaginationPreviousText'],
-            $settings['PaginationNextText'],
-            $settings['Heading']
+            $settings['PaginationNextText']
         );
 
         return $settings;

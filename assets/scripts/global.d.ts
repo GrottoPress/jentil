@@ -23,6 +23,11 @@ declare const colophonModName: string
 declare const titleModNames: string[]
 
 /**
+ * @var relatedPostsHeadingModNames
+ */
+declare const relatedPostsHeadingModNames: string[]
+
+/**
  * @var wp
  */
 declare const wp: {

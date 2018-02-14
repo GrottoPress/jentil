@@ -32,18 +32,19 @@ final class Singular extends AbstractSetup
     public function run()
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
+        \add_action('jentil_after_title', [$this, 'renderByline']);
+        \add_action('jentil_before_content', [$this, 'renderAttachment']);
+        \add_action('jentil_after_content', [$this, 'renderRelatedPosts']);
         // \add_action(
         //     'jentil_before_before_title',
         //     [$this, 'renderParentLink']
         // );
-        \add_action('jentil_before_content', [$this, 'renderAttachment']);
         \add_filter(
             'jentil_singular_after_title',
             [$this, 'byline'],
             10,
             3
         );
-        \add_action('jentil_after_title', [$this, 'renderByline']);
     }
 
     /**
@@ -206,6 +207,35 @@ final class Singular extends AbstractSetup
         echo '<aside class="entry-meta after-title self-clear">';
         echo $this->_byline($post->ID);
         echo '</aside>';
+    }
+
+    /**
+     * Render related posts
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @action jentil_after_content
+     */
+    public function renderRelatedPosts()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        $related = $this->app->utilities->page->posts->related;
+
+        if (!($posts = $related->posts()->render())) {
+            return;
+        }
+
+        echo '<aside id="related-posts-wrap">';
+
+        if ($heading = $related->themeMod('heading')->get()) {
+            echo '<h3 class="widget-title posts-heading">'.$heading.'</h3>';
+        }
+
+        echo $posts.'</aside>';
     }
 
     /**

@@ -8,9 +8,13 @@ use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\Views\Singular;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page\Page;
+use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
+use GrottoPress\Jentil\Utilities\Page\Posts\Related;
 use GrottoPress\Jentil\Utilities\Loader;
 use GrottoPress\Jentil\Utilities\CustomTemplate;
+use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\WordPress\Post\Post;
+use GrottoPress\WordPress\Posts\Posts as PostsPackage;
 use GrottoPress\WordPress\SUV\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
@@ -48,12 +52,17 @@ class SingularTest extends TestCase
 
         $singular->run();
 
-        $add_action->wasCalledTimes(2);
+        $add_action->wasCalledTimes(3);
         $add_filter->wasCalledTimes(2);
 
         $add_action->wasCalledWithOnce([
             'jentil_before_content',
             [$singular, 'renderAttachment']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_after_content',
+            [$singular, 'renderRelatedPosts']
         ]);
 
         $add_action->wasCalledWithOnce([
@@ -285,6 +294,48 @@ class SingularTest extends TestCase
         }
 
         $singular->renderByline();
+    }
+
+    /**
+     * @dataProvider renderRelatedPostsProvider
+     */
+    public function testRenderRelatedPosts(string $page, string $posts)
+    {
+        $this->page = $page;
+
+        $this->jentil->utilities->page->posts = Stub::makeEmpty(Posts::class);
+        $this->jentil->utilities->page->posts->related = Stub::makeEmpty(
+            Related::class,
+            [
+                'posts' => Stub::makeEmpty(PostsPackage::class, [
+                    'render' => $posts,
+                ]),
+                'themeMod' => Stub::makeEmpty(PostsMod::class, [
+                    'get' => 'Related Posts',
+                ]),
+            ]
+        );
+
+        $singular = new Singular($this->jentil);
+
+        if ('singular' === $page) {
+            $this->jentil->utilities->page->posts->related
+                ->expects($this->once())->method('posts');
+
+            if ($posts) {
+                $this->jentil->utilities->page->posts->related
+                    ->expects($this->once())->method('themeMod')
+                    ->with($this->equalTo('heading'));
+            }
+        } else {
+            $this->jentil->utilities->page->posts->related
+                ->expects($this->never())->method('posts');
+
+            $this->jentil->utilities->page->posts->related
+                ->expects($this->never())->method('themeMod');
+        }
+
+        $singular->renderRelatedPosts();
     }
 
     public function addBodyClassesProvider(): array
@@ -522,6 +573,18 @@ class SingularTest extends TestCase
         return [
             'page is single' => ['single'],
             'page is not single' => ['home'],
+        ];
+    }
+
+    public function renderRelatedPostsProvider(): array
+    {
+        return [
+            'page is not singular' => ['home', 'related posts'],
+            'page is singular, posts empty' => ['singular', ''],
+            'page is singular, posts not empty' => [
+                'singular',
+                'related posts'
+            ],
         ];
     }
 }

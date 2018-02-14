@@ -59,4 +59,17 @@ class Singular extends AbstractPosts
             ],
         ];
     }
+
+    /**
+     * Post type
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return string
+     */
+    public function postType(): string
+    {
+        return (string)\get_post_type();
+    }
 }

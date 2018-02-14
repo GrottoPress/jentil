@@ -126,6 +126,8 @@ final class PostType extends AbstractSection
             unset($settings['StickyPosts']);
         }
 
+        unset($settings['Heading']);
+
         return $settings;
     }
 }

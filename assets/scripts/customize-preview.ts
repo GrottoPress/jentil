@@ -42,6 +42,19 @@
     }
 
     /**
+     * Posts heading
+     *
+     * @since 0.6.0
+     */
+    for (var i in relatedPostsHeadingModNames) {
+        wp.customize(relatedPostsHeadingModNames[i], (value: any): void => {
+            value.bind((to: string): void => {
+                $('#related-posts-wrap .posts-heading').html(to)
+            })
+        })
+    }
+
+    /**
      * Replace Shortags
      *
      * @param {string} content

@@ -26,7 +26,7 @@ use GrottoPress\Getter\Getter;
 class Posts
 {
     use Getter;
-    
+
     /**
      * Page
      *
@@ -58,6 +58,16 @@ class Posts
     private $sticky;
 
     /**
+     * Related Posts
+     *
+     * @since 0.6.0
+     * @access private
+     *
+     * @var Related
+     */
+    private $related;
+
+    /**
      * Singular Posts
      *
      * @since 0.1.0
@@ -76,7 +86,7 @@ class Posts
      * @var Archive
      */
     private $archive;
-    
+
     /**
      * Constructor
      *
@@ -133,6 +143,40 @@ class Posts
     private function getSticky(): Sticky
     {
         return $this->sticky;
+    }
+
+    /**
+     * Get singular posts
+     *
+     * @since 0.6.0
+     * @access private
+     *
+     * @return Singular
+     */
+    private function getSingular(): Singular
+    {
+        if (null === $this->singular) {
+            return new Singular($this);
+        }
+
+        return $this->singular;
+    }
+
+    /**
+     * Get related posts
+     *
+     * @since 0.6.0
+     * @access private
+     *
+     * @return Related
+     */
+    private function getRelated(): Related
+    {
+        if (null === $this->related) {
+            return new Related($this);
+        }
+
+        return $this->related;
     }
 
     /**
