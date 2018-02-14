@@ -2229,16 +2229,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "1.22.5",
+            "version": "1.22.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "46725b35db9ae7f4f803ee97329d1bdae9afc296"
+                "reference": "14f7652a62a0c179cc390c4a3554c81b2853c700"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/46725b35db9ae7f4f803ee97329d1bdae9afc296",
-                "reference": "46725b35db9ae7f4f803ee97329d1bdae9afc296",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/14f7652a62a0c179cc390c4a3554c81b2853c700",
+                "reference": "14f7652a62a0c179cc390c4a3554c81b2853c700",
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2289,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2018-02-12T19:49:26+00:00"
+            "time": "2018-02-14T12:22:38+00:00"
         },
         {
             "name": "lucatume/wp-browser-commons",
@@ -6200,16 +6200,16 @@
         },
         {
             "name": "wp-cli/package-command",
-            "version": "v1.0.11",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/package-command.git",
-                "reference": "b0f0e59a1d174c80bd11833b2f4a650d835d7a29"
+                "reference": "bb8b02d9ba1cded95564767000738ceaefbc885b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/package-command/zipball/b0f0e59a1d174c80bd11833b2f4a650d835d7a29",
-                "reference": "b0f0e59a1d174c80bd11833b2f4a650d835d7a29",
+                "url": "https://api.github.com/repos/wp-cli/package-command/zipball/bb8b02d9ba1cded95564767000738ceaefbc885b",
+                "reference": "bb8b02d9ba1cded95564767000738ceaefbc885b",
                 "shasum": ""
             },
             "require": {
@@ -6255,7 +6255,7 @@
             ],
             "description": "Lists, installs, and removes WP-CLI packages.",
             "homepage": "https://github.com/wp-cli/package-command",
-            "time": "2018-01-29T02:32:25+00:00"
+            "time": "2018-02-09T09:55:33+00:00"
         },
         {
             "name": "wp-cli/php-cli-tools",
