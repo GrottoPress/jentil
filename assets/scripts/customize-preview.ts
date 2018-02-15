@@ -33,7 +33,7 @@
      *
      * @todo Work out how to replace tags
      */
-    for (var i in titleModNames) {
+    for (let i in titleModNames) {
         wp.customize(titleModNames[i], (value: any): void => {
             value.bind((to: string): void => {
                 $('h1.page-title').html(to)
@@ -46,7 +46,7 @@
      *
      * @since 0.6.0
      */
-    for (var i in relatedPostsHeadingModNames) {
+    for (let i in relatedPostsHeadingModNames) {
         wp.customize(relatedPostsHeadingModNames[i], (value: any): void => {
             value.bind((to: string): void => {
                 $('#related-posts-wrap .posts-heading').html(to)
@@ -65,7 +65,7 @@
      * @return {string}
      */
     function replaceShortTags(content: string): string {
-        for (var tag in shortTags) {
+        for (let tag in shortTags) {
             content = content.split(tag).join(shortTags[tag])
         }
 
