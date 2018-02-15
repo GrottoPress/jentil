@@ -261,7 +261,7 @@ final class Singular extends AbstractSetup
         }
 
         $output .= '<p>'.$jentil_post->info([
-            'types' => ['published_date', 'published_time', 'comments_link']
+            'types' => ['published_date', 'comments_link']
         ])->list().'</p>';
 
         return $output;
