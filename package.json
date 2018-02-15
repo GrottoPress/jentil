@@ -34,7 +34,7 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "gulp styles && gulp scripts",
+        "build": "gulp styles scripts",
         "watch": "gulp watch"
     },
     "repository": {
