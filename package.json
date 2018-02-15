@@ -37,14 +37,14 @@
         "build": "gulp styles scripts",
         "watch": "gulp watch"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/GrottoPress/jentil.git"
-    },
     "keywords": [
         "jentil",
         "wordpress"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GrottoPress/jentil.git"
+    },
     "bugs": {
         "url": "https://github.com/GrottoPress/jentil/issues"
     },
