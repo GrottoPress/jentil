@@ -31,5 +31,5 @@ declare const relatedPostsHeadingModNames: string[]
  * @var wp
  */
 declare const wp: {
-    customize(name: string, callback: (value: any) => void): void
+    customize(name: string, callback: (value: () => void) => void): void
 }

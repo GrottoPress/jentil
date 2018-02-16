@@ -20,7 +20,7 @@
      *
      * @since 0.6.0
      */
-    wp.customize(colophonModName, (value: any): void => {
+    wp.customize(colophonModName, (value: () => void): void => {
         value.bind((to: string): void => {
             $('#colophon small').html(replaceShortTags(to))
         })
@@ -34,7 +34,7 @@
      * @todo Work out how to replace tags
      */
     for (let i in titleModNames) {
-        wp.customize(titleModNames[i], (value: any): void => {
+        wp.customize(titleModNames[i], (value: () => void): void => {
             value.bind((to: string): void => {
                 $('h1.page-title').html(to)
             })
@@ -47,7 +47,7 @@
      * @since 0.6.0
      */
     for (let i in relatedPostsHeadingModNames) {
-        wp.customize(relatedPostsHeadingModNames[i], (value: any): void => {
+        wp.customize(relatedPostsHeadingModNames[i], (value: () => void): void => {
             value.bind((to: string): void => {
                 $('#related-posts-wrap .posts-heading').html(to)
             })
