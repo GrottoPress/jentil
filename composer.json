@@ -29,7 +29,7 @@
         "yahnis-elsts/plugin-update-checker": "^4.1",
         "grottopress/wordpress-breadcrumbs": "^0.3",
         "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "^0.5",
+        "grottopress/wordpress-posts": "^0.6",
         "grottopress/wordpress-suv": "^0.2"
     },
     "require-dev": {
