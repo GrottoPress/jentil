@@ -22,7 +22,7 @@
     "support": {
         "issues": "https://github.com/GrottoPress/jentil/issues",
         "wiki": "https://github.com/GrottoPress/jentil/wiki",
-        "source": "https://github.com/GrottoPress/jentil/"
+        "source": "https://github.com/GrottoPress/jentil"
     },
     "require": {
         "php": ">=7.0",
