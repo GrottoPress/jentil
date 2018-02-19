@@ -8,12 +8,11 @@ Jentil features six layout options, configured via the customizer and post meta 
 
 Jentil comes with page builder [post type templates](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/), and integrates seamlessly with most WordPress site builders, including:
 
+- [Gutenberg](https://wordpress.org/plugins/gutenberg/)
 - [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
 - [SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 - [Elementor](https://wordpress.org/plugins/elementor/)
 - [Live Composer](https://wordpress.org/plugins/live-composer-page-builder/)
-
-We are following the development of [Gutenberg](https://wordpress.org/plugins/gutenberg/) closely.
 
 ## Features
 
