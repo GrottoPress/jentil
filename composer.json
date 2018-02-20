@@ -71,7 +71,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GrottoPress\\Jentil\\Tests\\Unit\\": "tests/unit/"
+            "GrottoPress\\Jentil\\Tests\\Unit\\": "tests/unit/libraries/"
         }
     }
 }
