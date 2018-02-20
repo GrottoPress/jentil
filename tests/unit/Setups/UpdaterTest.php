@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\Updater;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class UpdaterTest extends TestCase

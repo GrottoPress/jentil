@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 
 /**
  * Jentil

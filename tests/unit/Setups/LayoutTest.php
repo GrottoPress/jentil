@@ -10,7 +10,7 @@ use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page;
 use GrottoPress\Jentil\Utilities\CustomTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class LayoutTest extends TestCase

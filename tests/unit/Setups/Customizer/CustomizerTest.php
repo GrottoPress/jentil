@@ -9,7 +9,7 @@ use GrottoPress\Jentil\Setups\Customizer\Customizer;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
 use GrottoPress\Jentil\Utilities\ShortTags;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class CustomizerTest extends TestCase

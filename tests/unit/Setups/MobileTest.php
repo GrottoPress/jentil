@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\Mobile;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Mobile\Detector;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class MobileTest extends TestCase

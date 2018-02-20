@@ -15,7 +15,7 @@ use GrottoPress\Jentil\Utilities\CustomTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\WordPress\Posts\Posts as PostsPackage;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class SingularTest extends TestCase

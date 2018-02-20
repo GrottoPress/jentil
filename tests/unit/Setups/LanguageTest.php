@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\Language;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class LanguageTest extends TestCase

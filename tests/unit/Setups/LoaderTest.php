@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\Loader;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class LoaderTest extends TestCase

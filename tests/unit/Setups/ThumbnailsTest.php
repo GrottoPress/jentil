@@ -6,7 +6,7 @@ namespace GrottoPress\Jentil\Tests\Unit\Setups;
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\Thumbnails;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class ThumbnailsTest extends TestCase

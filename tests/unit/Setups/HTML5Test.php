@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Tests\Unit\TestCase;
 use GrottoPress\Jentil\Setups\HTML5;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\WordPress\SUV\AbstractTheme;
+use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class HTML5Test extends TestCase
