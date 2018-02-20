@@ -30,7 +30,7 @@ final class Thumbnails extends AbstractSetup
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'addSupport']);
-        \add_action('after_setup_theme', [$this, 'setThumbnailSize']);
+        \add_action('after_setup_theme', [$this, 'setSize']);
         \add_action('after_setup_theme', [$this, 'addSizes']);
     }
 

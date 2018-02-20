@@ -28,7 +28,7 @@ class ThumbnailsTest extends TestCase
 
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
-            [$thumbnails, 'setThumbnailSize']
+            [$thumbnails, 'setSize']
         ]);
 
         $add_action->wasCalledWithOnce([
