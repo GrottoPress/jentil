@@ -67,7 +67,7 @@ abstract class AbstractPosts
      * @since 0.1.0
      * @access protected
      *
-     * @return array Archives posts args.
+     * @return array Posts args.
      */
     abstract protected function args(): array;
 }

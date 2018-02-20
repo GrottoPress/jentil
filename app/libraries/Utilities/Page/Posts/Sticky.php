@@ -197,7 +197,7 @@ class Sticky extends AbstractPosts
      * @since 0.1.0
      * @access public
      *
-     * @return mixed Sticky posts mod.
+     * @return PostsMod Sticky posts mod.
      */
     public function themeMod(string $setting): PostsMod
     {

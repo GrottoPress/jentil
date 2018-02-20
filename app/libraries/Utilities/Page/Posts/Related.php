@@ -88,7 +88,7 @@ class Related extends AbstractPosts
      * @since 0.6.0
      * @access public
      *
-     * @return mixed Related posts mod.
+     * @return PostsMod Related posts mod.
      */
     public function themeMod(string $setting): PostsMod
     {
