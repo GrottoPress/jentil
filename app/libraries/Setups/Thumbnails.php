@@ -30,6 +30,7 @@ final class Thumbnails extends AbstractSetup
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'addSupport']);
+        \add_action('after_setup_theme', [$this, 'setThumbnailSize']);
         \add_action('after_setup_theme', [$this, 'addSizes']);
     }
 
@@ -49,7 +50,20 @@ final class Thumbnails extends AbstractSetup
     }
 
     /**
-     * Add/set thumbnail sizes.
+     * Set post thumbnail size
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @action after_setup_theme
+     */
+    public function setSize()
+    {
+        \set_post_thumbnail_size(640, 360, true);
+    }
+
+    /**
+     * Add additional thumbnail sizes.
      *
      * @since 0.1.0
      * @access public
@@ -58,8 +72,6 @@ final class Thumbnails extends AbstractSetup
      */
     public function addSizes()
     {
-        \set_post_thumbnail_size(640, 360, true);
-
         \add_image_size('mini-thumb', 100, 100, true);
         \add_image_size('micro-thumb', 75, 75, true);
         \add_image_size('nano-thumb', 50, 50, true);

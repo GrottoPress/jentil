@@ -19,11 +19,16 @@ class ThumbnailsTest extends TestCase
 
         $thumbnails->run();
 
-        $add_action->wasCalledTimes(2);
+        $add_action->wasCalledTimes(3);
 
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
             [$thumbnails, 'addSupport']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'after_setup_theme',
+            [$thumbnails, 'setThumbnailSize']
         ]);
 
         $add_action->wasCalledWithOnce([
@@ -44,6 +49,18 @@ class ThumbnailsTest extends TestCase
         $add_support->wasCalledWithOnce(['post-thumbnails']);
     }
 
+    public function testSetSize()
+    {
+        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
+
+        $set_thumb_size = FunctionMocker::replace('set_post_thumbnail_size');
+
+        $thumbnails->setSize();
+
+        $set_thumb_size->wasCalledOnce();
+        $set_thumb_size->wasCalledWithOnce([640, 360, true]);
+    }
+
     public function testAddSizes()
     {
         $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
@@ -52,9 +69,6 @@ class ThumbnailsTest extends TestCase
         $add_size = FunctionMocker::replace('add_image_size');
 
         $thumbnails->addSizes();
-
-        $set_thumb_size->wasCalledOnce();
-        $set_thumb_size->wasCalledWithOnce([640, 360, true]);
 
         $add_size->wasCalledTimes(3);
         $add_size->wasCalledWithOnce(['mini-thumb', 100, 100, true]);
