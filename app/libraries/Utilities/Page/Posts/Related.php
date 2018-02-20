@@ -33,7 +33,7 @@ class Related extends AbstractPosts
      */
     public function args(): array
     {
-        $args = [
+        return [
             // 'tag' => $this->themeMod('wrap_tag')->get(),
             'class' => $this->themeMod('wrap_class')->get(),
             'id' => 'related-posts',
@@ -78,8 +78,6 @@ class Related extends AbstractPosts
                 'no_found_rows' => true,
             ],
         ];
-
-        return $args;
     }
 
     /**
