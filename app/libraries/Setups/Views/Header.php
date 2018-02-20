@@ -31,14 +31,8 @@ final class Header extends AbstractSetup
      */
     public function run()
     {
-        \add_action(
-            'jentil_inside_header',
-            [$this, 'renderMenuToggle']
-        );
-        \add_action(
-            'jentil_inside_header',
-            [$this, 'renderMenu']
-        );
+        \add_action('jentil_inside_header', [$this, 'renderMenuToggle']);
+        \add_action('jentil_inside_header', [$this, 'renderMenu']);
     }
 
     /**
