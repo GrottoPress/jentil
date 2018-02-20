@@ -46,7 +46,7 @@ Jentil comes with page builder [post type templates](https://make.wordpress.org/
 - [Node JS](https://nodejs.org)
 - [NPM](https://www.npmjs.com)
 
-These are the core requirements you need to get in place. The rest would be installed by the theme itself when the theme is installed.
+These are the core requirements you need to get in place. The rest would be installed by the theme itself during installation.
 
 ## Installation
 
