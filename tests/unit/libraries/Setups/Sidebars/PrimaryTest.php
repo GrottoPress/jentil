@@ -4,12 +4,12 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Setups\Sidebars;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Setups\Sidebars\Primary;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class PrimaryTest extends TestCase
+class PrimaryTest extends AbstractTestCase
 {
     public function testRegister()
     {

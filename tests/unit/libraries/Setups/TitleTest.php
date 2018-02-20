@@ -4,12 +4,12 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Setups;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Setups\Title;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class TitleTest extends TestCase
+class TitleTest extends AbstractTestCase
 {
     public function testRun()
     {

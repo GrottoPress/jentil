@@ -4,12 +4,12 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\ThemeMods;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts;
 use tad\FunctionMocker\FunctionMocker;
 
-class PostsTest extends TestCase
+class PostsTest extends AbstractTestCase
 {
     public function _before()
     {

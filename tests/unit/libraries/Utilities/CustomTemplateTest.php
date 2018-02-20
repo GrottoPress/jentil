@@ -4,13 +4,13 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\CustomTemplate;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use tad\FunctionMocker\FunctionMocker;
 
-class CustomTemplateTest extends TestCase
+class CustomTemplateTest extends AbstractTestCase
 {
     /**
      * @dataProvider isPageBuilderProvider

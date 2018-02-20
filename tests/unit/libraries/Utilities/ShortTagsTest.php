@@ -4,12 +4,12 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\ShortTags;
 use tad\FunctionMocker\FunctionMocker;
 
-class ShortTagsTest extends TestCase
+class ShortTagsTest extends AbstractTestCase
 {
     public function testReplace()
     {

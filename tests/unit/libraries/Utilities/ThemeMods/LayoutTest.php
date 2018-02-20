@@ -4,7 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\ThemeMods;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
 use GrottoPress\Jentil\Utilities\ThemeMods\Layout;
 use GrottoPress\Jentil\Utilities\Page\Layout as LayoutUtil;
@@ -12,7 +12,7 @@ use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Utilities;
 use tad\FunctionMocker\FunctionMocker;
 
-class LayoutTest extends TestCase
+class LayoutTest extends AbstractTestCase
 {
     public function _before()
     {

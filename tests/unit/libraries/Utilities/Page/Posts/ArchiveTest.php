@@ -4,12 +4,12 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page\Posts;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
 use GrottoPress\Jentil\Utilities\Page\Posts\Archive;
 use tad\FunctionMocker\FunctionMocker;
 
-class ArchiveTest extends TestCase
+class ArchiveTest extends AbstractTestCase
 {
     /**
      * @dataProvider postTypesProvider

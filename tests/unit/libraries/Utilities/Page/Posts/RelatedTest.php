@@ -4,14 +4,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page\Posts;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
 use GrottoPress\Jentil\Utilities\Page\Posts\Related;
 use GrottoPress\Jentil\Utilities\Page\Posts\Singular;
 use tad\FunctionMocker\FunctionMocker;
 
-class RelatedTest extends TestCase
+class RelatedTest extends AbstractTestCase
 {
     public function testThemeMod()
     {

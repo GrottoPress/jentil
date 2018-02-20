@@ -4,7 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page\Posts;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
@@ -12,7 +12,7 @@ use GrottoPress\Jentil\Utilities\Page\Posts\AbstractPosts;
 use GrottoPress\WordPress\Posts\Posts as PostsPackage;
 use tad\FunctionMocker\FunctionMocker;
 
-class AbstractPostsTest extends TestCase
+class AbstractPostsTest extends AbstractTestCase
 {
     public function testPosts()
     {

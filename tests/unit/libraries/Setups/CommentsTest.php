@@ -4,14 +4,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Setups;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Setups\Comments;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class CommentsTest extends TestCase
+class CommentsTest extends AbstractTestCase
 {
     public function testRun()
     {

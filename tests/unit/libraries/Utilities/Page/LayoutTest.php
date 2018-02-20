@@ -4,14 +4,14 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\ThemeMods\Layout as LayoutMod;
 use GrottoPress\Jentil\Utilities\Page\Layout;
 use GrottoPress\Jentil\Utilities\Page\Layouts;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use tad\FunctionMocker\FunctionMocker;
 
-class LayoutTest extends TestCase
+class LayoutTest extends AbstractTestCase
 {
     /**
      * @dataProvider columnProvider

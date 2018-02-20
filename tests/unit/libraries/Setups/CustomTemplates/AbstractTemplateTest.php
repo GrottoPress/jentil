@@ -4,12 +4,12 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Setups\CustomTemplates;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Setups\CustomTemplates\AbstractTemplate;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class AbstractTemplatesTest extends TestCase
+class AbstractTemplatesTest extends AbstractTestCase
 {
     /**
      * @var AbstractTemplates

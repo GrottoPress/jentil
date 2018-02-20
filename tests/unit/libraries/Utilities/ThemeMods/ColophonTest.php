@@ -4,11 +4,11 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\ThemeMods;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
 use GrottoPress\Jentil\Utilities\ThemeMods\Colophon;
 
-class ColophonTest extends TestCase
+class ColophonTest extends AbstractTestCase
 {
     public function testGetName()
     {

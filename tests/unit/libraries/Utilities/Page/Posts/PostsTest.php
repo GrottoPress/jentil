@@ -4,7 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page\Posts;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\TestCase;
+use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
 use GrottoPress\Jentil\Utilities\Page\Posts\Singular;
 use GrottoPress\Jentil\Utilities\Page\Posts\Archive;
@@ -12,7 +12,7 @@ use GrottoPress\Jentil\Utilities\Page\Posts\Sticky;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use tad\FunctionMocker\FunctionMocker;
 
-class PostsTest extends TestCase
+class PostsTest extends AbstractTestCase
 {
     /**
      * @dataProvider renderProvider

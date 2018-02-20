@@ -6,7 +6,7 @@ namespace GrottoPress\Jentil\Tests\Unit;
 use Codeception\Test\Unit;
 use tad\FunctionMocker\FunctionMocker;
 
-abstract class TestCase extends Unit
+abstract class AbstractTestCase extends Unit
 {
     public function _before()
     {
