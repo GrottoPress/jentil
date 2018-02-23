@@ -88,7 +88,7 @@ final class Metaboxes extends AbstractSetup
             return [];
         }
 
-        if ($utilities->customTemplate->isPageBuilder((int)$post->ID)) {
+        if ($utilities->postTypeTemplate->isPageBuilder((int)$post->ID)) {
             return [];
         }
 

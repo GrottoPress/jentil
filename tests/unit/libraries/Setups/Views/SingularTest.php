@@ -11,7 +11,7 @@ use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
 use GrottoPress\Jentil\Utilities\Page\Posts\Related;
 use GrottoPress\Jentil\Utilities\Loader;
-use GrottoPress\Jentil\Utilities\CustomTemplate;
+use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\WordPress\Posts\Posts as PostsPackage;
@@ -107,8 +107,8 @@ class SingularTest extends AbstractTestCase
     ) {
         $this->page = $page;
 
-        $this->jentil->utilities->customTemplate = Stub::makeEmpty(
-            CustomTemplate::class,
+        $this->jentil->utilities->postTypeTemplate = Stub::makeEmpty(
+            PostTypeTemplate::class,
             [
                 'slug' => $template,
             ]

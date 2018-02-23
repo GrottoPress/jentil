@@ -76,7 +76,7 @@ final class Related extends AbstractSection
         $this->args['active_callback'] = function () use ($post_type): bool {
             $utilities = $this->customizer->app->utilities;
 
-            if ($utilities->customTemplate->isPageBuilder() ||
+            if ($utilities->postTypeTemplate->isPageBuilder() ||
                 !\post_type_exists($post_type->name)
             ) {
                 return false;

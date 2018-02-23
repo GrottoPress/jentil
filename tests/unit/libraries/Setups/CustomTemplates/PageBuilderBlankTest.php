@@ -1,11 +1,11 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups\CustomTemplates;
+namespace GrottoPress\Jentil\Tests\Unit\Setups\PostTypeTemplates;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\CustomTemplates\PageBuilderBlank;
+use GrottoPress\Jentil\Setups\PostTypeTemplates\PageBuilderBlank;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 

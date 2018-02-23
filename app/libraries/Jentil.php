@@ -81,10 +81,10 @@ final class Jentil extends AbstractTheme
         $this->setups['Metaboxes'] = new Setups\Metaboxes($this);
         $this->setups['Mobile'] = new Setups\Mobile($this);
 
-        $this->setups['CustomTemplates\PageBuilder'] =
-            new Setups\CustomTemplates\PageBuilder($this);
-        $this->setups['CustomTemplates\PageBuilderBlank'] =
-            new Setups\CustomTemplates\PageBuilderBlank($this);
+        $this->setups['PostTypeTemplates\PageBuilder'] =
+            new Setups\PostTypeTemplates\PageBuilder($this);
+        $this->setups['PostTypeTemplates\PageBuilderBlank'] =
+            new Setups\PostTypeTemplates\PageBuilderBlank($this);
 
         $this->setups['Sidebars\Primary'] =
             new Setups\Sidebars\Primary($this);

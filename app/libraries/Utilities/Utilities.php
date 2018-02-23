@@ -125,14 +125,14 @@ class Utilities
     private $shortTags = null;
 
     /**
-     * Custom Template
+     * Post Type Template
      *
      * @since 0.6.0
      * @access private
      *
-     * @var CustomTemplate
+     * @var PostTypeTemplate
      */
-    private $customTemplate = null;
+    private $postTypeTemplate = null;
 
     /**
      * Constructor
@@ -306,15 +306,15 @@ class Utilities
      * @since 0.6.0
      * @access private
      *
-     * @return CustomTemplate
+     * @return PostTypeTemplate
      */
-    private function getCustomTemplate(): CustomTemplate
+    private function getPostTypeTemplate(): PostTypeTemplate
     {
-        if (null === $this->customTemplate) {
-            $this->customTemplate = new CustomTemplate($this);
+        if (null === $this->postTypeTemplate) {
+            $this->postTypeTemplate = new PostTypeTemplate($this);
         }
 
-        return $this->customTemplate;
+        return $this->postTypeTemplate;
     }
 
     /**

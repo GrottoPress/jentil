@@ -5,7 +5,7 @@
  *
  * @see https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/
  *
- * @package GrottoPress\Jentil\Setups\CustomTemplates
+ * @package GrottoPress\Jentil\Setups\PostTypeTemplates
  * @since 0.6.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -14,7 +14,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups\CustomTemplates;
+namespace GrottoPress\Jentil\Setups\PostTypeTemplates;
 
 use GrottoPress\Jentil\Setups\AbstractSetup;
 use WP_Theme;

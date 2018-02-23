@@ -85,7 +85,7 @@ final class Singular extends AbstractSetting
         ): bool {
             $utilities = $this->section->customizer->app->utilities;
 
-            if ($utilities->customTemplate->isPageBuilder()) {
+            if ($utilities->postTypeTemplate->isPageBuilder()) {
                 return false;
             }
 

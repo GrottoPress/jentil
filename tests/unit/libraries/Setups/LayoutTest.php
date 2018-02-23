@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Setups\Layout;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page;
-use GrottoPress\Jentil\Utilities\CustomTemplate;
+use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
@@ -51,8 +51,8 @@ class LayoutTest extends AbstractTestCase
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
 
-        $jentil->utilities->customTemplate = Stub::makeEmpty(
-            CustomTemplate::class,
+        $jentil->utilities->postTypeTemplate = Stub::makeEmpty(
+            PostTypeTemplate::class,
             ['isPageBuilder' => $isPageBuilder]
         );
 

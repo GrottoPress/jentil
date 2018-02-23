@@ -6,11 +6,11 @@ namespace GrottoPress\Jentil\Tests\Unit\Utilities;
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\Jentil\Utilities\CustomTemplate;
+use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use tad\FunctionMocker\FunctionMocker;
 
-class CustomTemplateTest extends AbstractTestCase
+class PostTypeTemplateTest extends AbstractTestCase
 {
     /**
      * @dataProvider isPageBuilderProvider
@@ -27,7 +27,7 @@ class CustomTemplateTest extends AbstractTestCase
             }
         ]);
 
-        $template = new CustomTemplate($utilities);
+        $template = new PostTypeTemplate($utilities);
 
         FunctionMocker::replace('get_page_template_slug', $slug);
 
@@ -40,7 +40,7 @@ class CustomTemplateTest extends AbstractTestCase
             'get_page_template_slug'
         );
 
-        $template = new CustomTemplate(Stub::makeEmpty(Utilities::class));
+        $template = new PostTypeTemplate(Stub::makeEmpty(Utilities::class));
 
         $template->slug(1011);
 
@@ -53,7 +53,7 @@ class CustomTemplateTest extends AbstractTestCase
         $utilities = Stub::makeEmpty(Utilities::class);
         $utilities->page = Stub::makeEmpty(Page::class, ['is' => true]);
 
-        $template = new CustomTemplate($utilities);
+        $template = new PostTypeTemplate($utilities);
 
         $utilities->page->expects($this->once())->method('is')
             ->with($this->equalTo('page_template'), $this->equalTo(['a.php']));

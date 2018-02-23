@@ -3,7 +3,7 @@
 /**
  * Page builder blank template
  *
- * @package GrottoPress\Jentil\Setups\CustomTemplates
+ * @package GrottoPress\Jentil\Setups\PostTypeTemplates
  * @since 0.5.0
  *
  * @author GrottoPress <info@grottopress.com>
@@ -12,7 +12,7 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups\CustomTemplates;
+namespace GrottoPress\Jentil\Setups\PostTypeTemplates;
 
 use WP_Theme;
 

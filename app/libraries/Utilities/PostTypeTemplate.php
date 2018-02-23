@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Custom Template
+ * Post Type Template
  *
  * @package GrottoPress\Jentil\Utilities
  * @since 0.6.0
@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Utilities;
  *
  * @since 0.6.0
  */
-class CustomTemplate
+class PostTypeTemplate
 {
     /**
      * Utilities
