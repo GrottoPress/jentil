@@ -50,7 +50,7 @@ abstract class AbstractTemplate extends AbstractSetup
         $post_types = $this->postTypes();
         
         foreach ($post_types as $post_type) {
-            \add_action("theme_{$post_type}_templates", [$this, 'add'], 10, 4);
+            \add_filter("theme_{$post_type}_templates", [$this, 'add'], 10, 4);
         }
     }
 

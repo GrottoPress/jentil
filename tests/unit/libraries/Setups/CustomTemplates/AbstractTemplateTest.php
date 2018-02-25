@@ -43,7 +43,7 @@ class AbstractTemplatesTest extends AbstractTestCase
     {
         $post_types = ['post', 'page', 'tutorial'];
 
-        $add_action = FunctionMocker::replace('add_action');
+        $add_filter = FunctionMocker::replace('add_filter');
         $get_post_types = FunctionMocker::replace(
             'get_post_types',
             $post_types
@@ -51,10 +51,10 @@ class AbstractTemplatesTest extends AbstractTestCase
 
         $this->templates->load();
 
-        $add_action->wasCalledTimes(\count($post_types));
+        $add_filter->wasCalledTimes(\count($post_types));
 
         foreach ($post_types as $post_type) {
-            $add_action->wasCalledWithOnce([
+            $add_filter->wasCalledWithOnce([
                 "theme_{$post_type}_templates",
                 [$this->templates, 'add'],
                 10,
