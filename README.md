@@ -56,9 +56,10 @@ These are the core requirements you need to get in place. The rest would be inst
 
 Install *jentil-theme*, which is a starter for building your own theme with Jentil:
 
-1. From the `wp-content/themes` directory, run `composer create-project grottopress/jentil-theme your-theme-slug-here`.
-1. Switch to `your-theme-slug-here` directory: `cd your-theme-slug-here`. Run `composer install`.
+1. From the `wp-content/themes` directory, run `composer create-project --stability=dev grottopress/jentil-theme your-theme-slug-here`.
+1. Switch to `your-theme-slug-here` directory: `cd your-theme-slug-here`.
 1. Update theme information in `style.css`. You may also want to change package name, description and author in `composer.json` and `package.json`.
+1. Replace all occurrences of `'jentil-theme'` text domain with your own theme slug. Your theme slug should match your theme folder name, which should just be the *slugified* version of your theme's name.
 1. Run `vendor/bin/wp theme activate your-theme-slug-here` to activate your new theme.
 1. Dive into your theme's source, and customize the code to taste.
 
@@ -72,6 +73,8 @@ If, for any reason, you would like to install Jentil as parent theme for your th
 1. Run `composer remove grottopress/jentil` to remove Jentil from your theme's dependencies.
 1. Swicth to `wp-content/themes` directory: `cd ../`
 1. Install Jentil as (parent) theme: `composer create-project grottopress/jentil`
+1. Switch to your own theme's directory: `cd your-theme-slug-here`
+1. Replace relevant calls to `get_template_directory()` and `get_template_directory_uri()` with their equivalent `get_stylesheet_directory()` and `get_stylesheet_directory_uri()`, respectively.
 1. Activate your own theme (not Jentil), if not already active.
 
 ### Install Jentil without using the `jentil-theme` starter
@@ -86,8 +89,14 @@ The entire Jentil instance is available to your theme via a call to `\Jentil()`.
 
 ```php
 \add_action('init', function () {
-    \remove_action('action_hook_name_here', [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']);
-    // Or 'remove_filter('filter_hook_name_here', [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']);'
+    \remove_action(
+        'action_hook_name_here',
+        [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']
+    );
+    // /* OR */ '\remove_filter(
+    //    'filter_hook_name_here',
+    //    [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']
+    //);'
 });
 ```
 
