@@ -93,7 +93,7 @@ The entire Jentil instance is available to your theme via a call to `\Jentil()`.
         'action_hook_name_here',
         [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']
     );
-    // /* OR */ '\remove_filter(
+    // /* OR */ \remove_filter(
     //    'filter_hook_name_here',
     //    [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']
     //);'
