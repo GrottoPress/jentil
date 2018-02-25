@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Jentil\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 17:57+0000\n"
+"POT-Creation-Date: 2018-02-25 22:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,26 +14,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: app/templates/singular.php:69
-msgid "Pages: "
+#: app/libraries/Setups/Customizer/Posts/Taxonomy.php:136
+#: app/libraries/Setups/Customizer/Title/Settings/Taxonomy.php:124
+#: app/libraries/Setups/Customizer/Layout/Settings/Taxonomy.php:118
+#, php-format
+msgid "%1$s Archive: %2$s"
 msgstr ""
 
-#: app/partials/none.php:30
-msgid "Nothing Found"
+#: app/libraries/Setups/Customizer/Title/Settings/Taxonomy.php:129
+#: app/libraries/Setups/Customizer/Layout/Settings/Taxonomy.php:123
+#, php-format
+msgid "%1$s Archives"
 msgstr ""
 
-#: app/partials/none.php:32
-msgid "Sorry, nothing here):"
+#: app/libraries/Setups/Customizer/Posts/PostType.php:82
+#: app/libraries/Setups/Customizer/Title/Settings/PostType.php:63
+#: app/libraries/Setups/Customizer/Layout/Settings/PostType.php:53
+#, php-format
+msgid "%s Archive"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Taxonomy.php:141
+#, php-format
+msgid "%s Archives"
+msgstr ""
+
+#: app/libraries/Utilities/ThemeMods/Colophon.php:50
+#, php-format
+msgid "&copy; %1$s %2$s. Built with %3$s"
 msgstr ""
 
 #: app/partials/attachment-image.php:28 app/partials/comments.php:70
-#: app/libraries/Utilities/Mods/Posts.php:189
+#: app/libraries/Utilities/ThemeMods/Posts.php:188
 msgid "&larr; Previous"
-msgstr ""
-
-#: app/partials/attachment-image.php:43 app/partials/comments.php:85
-#: app/libraries/Utilities/Mods/Posts.php:193
-msgid "Next &rarr;"
 msgstr ""
 
 #: app/partials/comments.php:44
@@ -43,95 +56,57 @@ msgid_plural "%1$s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
+#: app/libraries/Setups/Customizer/Posts/Settings/AfterContent.php:46
+msgid "After content"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/AfterContentSeparator.php:45
+msgid "After content separator"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/AfterTitle.php:45
+msgid "After title"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/AfterTitleSeparator.php:45
+msgid "After title separator"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Author.php:42
+#: app/libraries/Setups/Customizer/Title/Settings/Author.php:44
+#: app/libraries/Setups/Customizer/Layout/Settings/Author.php:49
+msgid "Author Archives"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/BeforeTitle.php:45
+msgid "Before title"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/BeforeTitleSeparator.php:45
+msgid "Before title separator"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationPosition.php:50
+msgid "Bottom"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Colophon/Colophon.php:42
+#: app/libraries/Setups/Customizer/Colophon/Settings/Colophon.php:51
+msgid "Colophon"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/WrapClass.php:46
+msgid "Comma- or space-separated"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/AfterContent.php:47
+#: app/libraries/Setups/Customizer/Posts/Settings/AfterTitle.php:46
+#: app/libraries/Setups/Customizer/Posts/Settings/BeforeTitle.php:46
+msgid "Comma-separated"
+msgstr ""
+
 #: app/partials/comments.php:147
 msgid "Comments closed"
-msgstr ""
-
-#: app/libraries/Setup/Breadcrumbs.php:52
-msgid "Path: "
-msgstr ""
-
-#: app/libraries/Setup/Search.php:57
-msgid "Search for:"
-msgstr ""
-
-#: app/libraries/Setup/Search.php:59 app/libraries/Setup/Search.php:69
-msgid "Search"
-msgstr ""
-
-#: app/libraries/Setup/Menus.php:52
-msgid "Primary menu"
-msgstr ""
-
-#: app/libraries/Setup/Menus.php:67 app/libraries/Setup/Menus.php:117
-msgid "Skip to content"
-msgstr ""
-
-#: app/libraries/Setup/Menus.php:86
-msgid "Skip to menu"
-msgstr ""
-
-#: app/libraries/Setup/Menus.php:96
-msgid "Menu"
-msgstr ""
-
-#: app/libraries/Setup/Widgets.php:47
-msgid "Primary"
-msgstr ""
-
-#: app/libraries/Setup/Widgets.php:49
-msgid "Primary widget area"
-msgstr ""
-
-#: app/libraries/Setup/Widgets.php:57
-msgid "Secondary"
-msgstr ""
-
-#: app/libraries/Setup/Widgets.php:59
-msgid "Secondary widget area"
-msgstr ""
-
-#: app/libraries/Setup/Widgets.php:67
-msgid "Footer"
-msgstr ""
-
-#: app/libraries/Setup/Widgets.php:69
-msgid "Footer widget area"
-msgstr ""
-
-#: app/libraries/Setup/Metaboxes.php:115
-#: app/libraries/Setup/Customizer/Layout/Layout.php:42
-#: app/libraries/Setup/Customizer/Posts/Settings/Layout.php:45
-msgid "Layout"
-msgstr ""
-
-#: app/libraries/Setup/Metaboxes.php:124
-#: app/libraries/Setup/Customizer/Layout/Settings/AbstractSetting.php:63
-msgid "Select layout"
-msgstr ""
-
-#: app/libraries/Setup/Metaboxes.php:129
-#, php-format
-msgid ""
-"Need help? Check out the <a href=\"%s\" target=\"_blank\" rel=\"noreferrer "
-"noopener nofollow\">documentation</a>."
-msgstr ""
-
-#: app/libraries/Utilities/Mods/Colophon.php:39
-#, php-format
-msgid "Copyright &copy; %1$s %2$s. All rights reserved. Built with %3$s"
-msgstr ""
-
-#: app/libraries/Utilities/Mods/Posts.php:183
-msgid "read more"
-msgstr ""
-
-#: app/libraries/Utilities/Mods/Title.php:156
-msgid "Latest Posts"
-msgstr ""
-
-#: app/libraries/Utilities/Mods/Title.php:164
-msgid "Not Found"
 msgstr ""
 
 #: app/libraries/Utilities/Page/Layouts.php:59
@@ -142,6 +117,257 @@ msgstr ""
 msgid "content / sidebar"
 msgstr ""
 
+#: app/libraries/Utilities/Page/Layouts.php:70
+msgid "content / sidebar / sidebar"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Date.php:42
+#: app/libraries/Setups/Customizer/Title/Settings/Date.php:44
+#: app/libraries/Setups/Customizer/Layout/Settings/Date.php:44
+msgid "Date Archives"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Title/Title.php:43
+#: app/libraries/Setups/Customizer/Posts/Posts.php:41
+msgid "Description here"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Title/Settings/AbstractSetting.php:54
+msgid "Enter title"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Title/Settings/Error404.php:44
+#: app/libraries/Setups/Customizer/Layout/Settings/Error404.php:44
+msgid "Error 404"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Excerpt.php:47
+msgid "Excerpt"
+msgstr ""
+
+#: app/libraries/Setups/Sidebars/Footer.php:35
+msgid "Footer"
+msgstr ""
+
+#: app/libraries/Setups/Sidebars/Footer.php:37
+msgid "Footer widget area"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/TextOffset.php:46
+msgid "From image align side (px)"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Layout.php:49
+msgid "Grid"
+msgstr ""
+
+#. Author of the theme
+msgid "GrottoPress"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Heading.php:46
+msgid "Heading"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://www.grottopress.com"
+msgstr ""
+
+#. URI of the theme
+msgid "https://www.grottopress.com/jentil/"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/ImageAlignment.php:45
+msgid "Image alignment"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/ImageMargin.php:45
+msgid "Image margin"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Image.php:45
+msgid "Image size"
+msgstr ""
+
+#. Name of the theme
+msgid "Jentil"
+msgstr ""
+
+#. Description of the theme
+msgid "Jentil is a modern framework for rapid WordPress theme development"
+msgstr ""
+
+#: app/libraries/Utilities/ThemeMods/Title.php:151
+msgid "Latest Posts"
+msgstr ""
+
+#: app/libraries/Setups/Metaboxes.php:109
+#: app/libraries/Setups/Customizer/Layout/Layout.php:42
+#: app/libraries/Setups/Customizer/Posts/Settings/Layout.php:45
+msgid "Layout"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/ImageAlignment.php:49
+msgid "Left"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationMaximum.php:47
+msgid "Maximum pagination"
+msgstr ""
+
+#: app/libraries/Setups/Views/Header.php:66
+msgid "Menu"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/MoreText.php:45
+msgid "More link label"
+msgstr ""
+
+#: app/libraries/Setups/Metaboxes.php:123
+#, php-format
+msgid ""
+"Need help? Check out the <a href=\"%s\" target=\"_blank\" rel=\"noreferrer "
+"noopener nofollow\">documentation</a>."
+msgstr ""
+
+#: app/partials/attachment-image.php:43 app/partials/comments.php:85
+#: app/libraries/Utilities/ThemeMods/Posts.php:192
+msgid "Next &rarr;"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationNextText.php:45
+msgid "Next page link label"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationPosition.php:48
+msgid "None"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/ImageAlignment.php:48
+msgid "none"
+msgstr ""
+
+#: app/libraries/Utilities/ThemeMods/Title.php:159
+msgid "Not Found"
+msgstr ""
+
+#: app/partials/none.php:30
+msgid "Nothing Found"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Number.php:47
+msgid "Number of posts"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/TitleWords.php:48
+msgid "Number of words"
+msgstr ""
+
+#: app/libraries/Setups/PostTypeTemplates/PageBuilder.php:47
+msgid "Page builder"
+msgstr ""
+
+#: app/libraries/Setups/PostTypeTemplates/PageBuilderBlank.php:47
+msgid "Page builder (blank)"
+msgstr ""
+
+#: app/templates/singular.php:69
+msgid "Pages: "
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationPosition.php:45
+msgid "Pagination position"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Pagination.php:45
+msgid "Pagination type"
+msgstr ""
+
+#: app/libraries/Setups/Views/Breadcrumbs.php:54
+msgid "Path: "
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Posts.php:40
+#: app/libraries/Setups/Customizer/Posts/AbstractSection.php:60
+msgid "Posts"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/Heading.php:48
+msgid "Posts heading"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationPreviousText.php:45
+msgid "Previous page link label"
+msgstr ""
+
+#: app/libraries/Setups/Sidebars/Primary.php:35
+msgid "Primary"
+msgstr ""
+
+#: app/libraries/Setups/Menu.php:49
+msgid "Primary menu"
+msgstr ""
+
+#: app/libraries/Setups/Sidebars/Primary.php:37
+msgid "Primary widget area"
+msgstr ""
+
+#: app/libraries/Utilities/ThemeMods/Posts.php:182
+msgid "read more"
+msgstr ""
+
+#: app/libraries/Utilities/ThemeMods/Posts.php:228
+msgid "Recommended"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Related.php:72
+#, php-format
+msgid "Related %s"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/TitlePosition.php:46
+msgid "Relative to image"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/ImageAlignment.php:50
+msgid "Right"
+msgstr ""
+
+#: app/libraries/Setups/Search.php:57 app/libraries/Setups/Search.php:67
+msgid "Search"
+msgstr ""
+
+#: app/libraries/Setups/Search.php:55
+msgid "Search for:"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Search.php:42
+#: app/libraries/Setups/Customizer/Title/Settings/Search.php:44
+#: app/libraries/Setups/Customizer/Layout/Settings/Search.php:44
+msgid "Search Results"
+msgstr ""
+
+#: app/libraries/Setups/Sidebars/Secondary.php:35
+msgid "Secondary"
+msgstr ""
+
+#: app/libraries/Setups/Sidebars/Secondary.php:37
+msgid "Secondary widget area"
+msgstr ""
+
+#: app/libraries/Setups/Metaboxes.php:118
+#: app/libraries/Setups/Customizer/Layout/Settings/AbstractSetting.php:53
+msgid "Select layout"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/StickyPosts.php:45
+msgid "Show sticky posts?"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/TitlePosition.php:52
+msgid "Side"
+msgstr ""
+
 #: app/libraries/Utilities/Page/Layouts.php:63
 msgid "sidebar / content"
 msgstr ""
@@ -150,266 +376,70 @@ msgstr ""
 msgid "sidebar / content / sidebar"
 msgstr ""
 
-#: app/libraries/Utilities/Page/Layouts.php:70
-msgid "content / sidebar / sidebar"
-msgstr ""
-
 #: app/libraries/Utilities/Page/Layouts.php:74
 msgid "sidebar / sidebar / content"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Title/Title.php:41
-msgid "Title"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Sticky.php:45
-#, php-format
-msgid "Sticky %s"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Date.php:40
-#: app/libraries/Setup/Customizer/Title/Settings/Date.php:47
-#: app/libraries/Setup/Customizer/Layout/Settings/Date.php:47
-msgid "Date Archives"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Search.php:40
-#: app/libraries/Setup/Customizer/Title/Settings/Search.php:47
-#: app/libraries/Setup/Customizer/Layout/Settings/Search.php:45
-msgid "Search Results"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Author.php:40
-#: app/libraries/Setup/Customizer/Title/Settings/Author.php:47
-#: app/libraries/Setup/Customizer/Layout/Settings/Author.php:50
-msgid "Author Archives"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Taxonomy.php:116
-#: app/libraries/Setup/Customizer/Title/Settings/Taxonomy.php:124
-#: app/libraries/Setup/Customizer/Layout/Settings/Taxonomy.php:118
-#, php-format
-msgid "%1$s Archive: %2$s"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Taxonomy.php:121
-#, php-format
-msgid "%s Archives"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Posts.php:40
-#: app/libraries/Setup/Customizer/Posts/AbstractSection.php:51
-msgid "Posts"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/PostType.php:61
-#: app/libraries/Setup/Customizer/Title/Settings/PostType.php:64
-#: app/libraries/Setup/Customizer/Layout/Settings/PostType.php:54
-#, php-format
-msgid "%s Archive"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Colophon/Colophon.php:41
-#: app/libraries/Setup/Customizer/Colophon/Settings/Colophon.php:64
-msgid "Colophon"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Title/Settings/Error404.php:47
-#: app/libraries/Setup/Customizer/Layout/Settings/Error404.php:45
-msgid "Error 404"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Title/Settings/Taxonomy.php:129
-#: app/libraries/Setup/Customizer/Layout/Settings/Taxonomy.php:123
-#, php-format
-msgid "%1$s Archives"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Title/Settings/AbstractSetting.php:63
-msgid "Enter title"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Layout/Settings/Singular.php:100
-#, php-format
-msgid "Single %1$s: %2$s"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Layout/Settings/Singular.php:105
+#: app/libraries/Setups/Customizer/Layout/Settings/Singular.php:109
 #, php-format
 msgid "Single %1$s"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/StickyPosts.php:45
-msgid "Show sticky posts?"
+#: app/libraries/Setups/Customizer/Layout/Settings/Singular.php:104
+#, php-format
+msgid "Single %1$s: %2$s"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationPreviousLabel.php:45
-msgid "Previous page link label"
+#: app/libraries/Setups/Views/Header.php:88
+msgid "Skip to content"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/WrapClass.php:45
-msgid "Wrapper class"
+#: app/libraries/Setups/Views/Header.php:51
+msgid "Skip to menu"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/WrapClass.php:46
-msgid "Comma- or space-separated"
+#: app/partials/none.php:32
+msgid "Sorry, nothing here):"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationMaximum.php:47
-msgid "Maximum pagination"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/BeforeTitleSeparator.php:45
-msgid "Before title separator"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/ImageMargin.php:45
-msgid "Image margin"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TitleWords.php:47
-msgid "Title length"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TitleWords.php:48
-msgid "Number of words"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/Image.php:45
-msgid "Image size"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/MoreText.php:45
-msgid "More link label"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/AfterContentSeparator.php:45
-msgid "After content separator"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/ImageAlignment.php:45
-msgid "Image alignment"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/ImageAlignment.php:48
-msgid "none"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/ImageAlignment.php:49
-msgid "Left"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/ImageAlignment.php:50
-msgid "Right"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/WrapTag.php:45
-msgid "Wrapper tag"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/AfterContent.php:45
-msgid "After content"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/AfterContent.php:46
-#: app/libraries/Setup/Customizer/Posts/Settings/AfterTitle.php:46
-#: app/libraries/Setup/Customizer/Posts/Settings/BeforeTitle.php:46
-msgid "Comma-separated"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationPosition.php:45
-msgid "Pagination position"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationPosition.php:48
-msgid "None"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationPosition.php:49
-#: app/libraries/Setup/Customizer/Posts/Settings/TitlePosition.php:53
-msgid "Top"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationPosition.php:50
-msgid "Bottom"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationPosition.php:51
-msgid "Top and bottom"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/Pagination.php:45
-msgid "Pagination type"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/AfterTitle.php:45
-msgid "After title"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/Number.php:47
-msgid "Number of posts"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TitlePosition.php:45
-msgid "Title position"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TitlePosition.php:46
-msgid "Relative to image"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TitlePosition.php:52
-msgid "Side"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/Excerpt.php:47
-msgid "Excerpt"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/PaginationNextLabel.php:45
-msgid "Next page link label"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TextOffset.php:45
-msgid "Text offset"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/TextOffset.php:46
-msgid "From image align side (px)"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/AfterTitleSeparator.php:45
-msgid "After title separator"
-msgstr ""
-
-#: app/libraries/Setup/Customizer/Posts/Settings/Layout.php:48
+#: app/libraries/Setups/Customizer/Posts/Settings/Layout.php:48
 msgid "Stack"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/Layout.php:49
-msgid "Grid"
+#: app/libraries/Setups/Customizer/Posts/Sticky.php:72
+#, php-format
+msgid "Sticky %s"
 msgstr ""
 
-#: app/libraries/Setup/Customizer/Posts/Settings/BeforeTitle.php:45
-msgid "Before title"
+#: app/libraries/Setups/Customizer/Posts/Settings/TextOffset.php:45
+msgid "Text offset"
 msgstr ""
 
-#. Name of the theme
-msgid "Jentil"
+#: app/libraries/Setups/Customizer/Title/Title.php:42
+msgid "Title"
 msgstr ""
 
-#. Description of the theme
-msgid "Jentil is a responsive, SEO parent theme for WordPress."
+#: app/libraries/Setups/Customizer/Posts/Settings/TitleWords.php:47
+msgid "Title length"
 msgstr ""
 
-#. URI of the theme
-msgid "https://jentil.grottopress.com"
+#: app/libraries/Setups/Customizer/Posts/Settings/TitlePosition.php:45
+msgid "Title position"
 msgstr ""
 
-#. Author of the theme
-msgid "GrottoPress"
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationPosition.php:49
+#: app/libraries/Setups/Customizer/Posts/Settings/TitlePosition.php:53
+msgid "Top"
 msgstr ""
 
-#. Author URI of the theme
-msgid "https://www.grottopress.com"
+#: app/libraries/Setups/Customizer/Posts/Settings/PaginationPosition.php:51
+msgid "Top and bottom"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/WrapClass.php:45
+msgid "Wrapper class"
+msgstr ""
+
+#: app/libraries/Setups/Customizer/Posts/Settings/WrapTag.php:45
+msgid "Wrapper tag"
 msgstr ""
