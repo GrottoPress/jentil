@@ -7,28 +7,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased 0.6.0 - 
 
 ### Added
-- Added unit tests
-- Add related posts
+- Unit tests
+- Related posts
 - Set up [travis-ci](https://travis-ci.org)
+- `.security.txt`
 
 ### Changed
 - Undo require search input filled on search submit
 - Replaced zero font size inline-block whitespace fix with letter spacing fix
 - Redirect `/?s={query}` search URLs to `/search/{query}` if using permalinks
-- Using the `grottopress/wordpress-suv` package for this theme.
-- Reorganised directory structure of setup classes into groups.
-- Added ability to remove customizer components.
+- Use WordPress SUV package for this theme.
+- Reorganise directory structure of setup classes into groups.
+- Add ability to remove customizer components.
 - Ensure layout customizer settings do not show for page builder pages.
 - Ensure layout metabox do not show on pages using page builder template
+- Replace GrottoPress logo with Jentil's as theme screenshot
 
 ### Fixed
-- Fixed 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 
+- 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 
 
 ## 0.5.0 - 2017-12-16
 
 ### Added
-- Added development binaries in a new `bin` directory
-- Added page builder page templates
+- Development binaries in a new `bin` directory
+- Page builder page templates
 
 ### Changed
 - Overhauled theme to make it seamless with child themes that use Object Oriented design.
