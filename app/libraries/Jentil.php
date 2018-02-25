@@ -53,7 +53,7 @@ final class Jentil extends AbstractTheme
      *
      * @since 0.1.0
      */
-    const DOCUMENTATION = 'https://www.grottopress.com/docs/themes/jentil/';
+    const DOCUMENTATION = 'https://www.grottopress.com/jentil/';
 
     /**
      * Constructor
