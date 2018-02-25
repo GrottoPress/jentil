@@ -46,7 +46,7 @@ final class Jentil extends AbstractTheme
      *
      * @since 0.1.0
      */
-    const WEBSITE = 'https://jentil.grottopress.com';
+    const WEBSITE = 'https://www.grottopress.com/jentil/';
 
     /**
      * Theme documentation URL
