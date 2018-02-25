@@ -3,6 +3,7 @@
     "version": "0.5.0",
     "description": "Jentil is a modern framework for rapid WordPress theme development",
     "license": "MIT",
+    "homepage": "https://www.grottopress.com/jentil/",
     "author": {
         "name": "GrottoPress.com",
         "email": "info@grottopress.com",
@@ -47,6 +48,5 @@
     },
     "bugs": {
         "url": "https://github.com/GrottoPress/jentil/issues"
-    },
-    "homepage": "https://www.grottopress.com/jentil/"
+    }
 }
