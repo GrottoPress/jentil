@@ -48,7 +48,7 @@ final class Footer extends AbstractSetup
     public function renderWidgets()
     {
         if (!\is_active_sidebar(
-            $id = \Jentil()->setups['Sidebars\Footer']->id
+            $id = $this->app->setups['Sidebars\Footer']->id
         )) {
             return;
         } ?>

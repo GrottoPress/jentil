@@ -56,22 +56,21 @@ class PostTypeTemplate
      */
     public function isPageBuilder(int $post_id = null): bool
     {
-        $page_builder = \Jentil()->setups[
-            'PostTypeTemplates\PageBuilder'
-        ]->slug;
+        $page_builder = [
+            $this->utilities->app->setups[
+                'PostTypeTemplates\PageBuilder'
+            ]->slug,
 
-        $page_builder_blank = \Jentil()->setups[
-            'PostTypeTemplates\PageBuilderBlank'
-        ]->slug;
+            $this->utilities->app->setups[
+                'PostTypeTemplates\PageBuilderBlank'
+            ]->slug,
+        ];
 
         if ($post_id) {
-            return \in_array(
-                $this->slug($post_id),
-                [$page_builder, $page_builder_blank]
-            );
+            return \in_array($this->slug($post_id), $page_builder);
         }
 
-        return $this->is([$page_builder, $page_builder]);
+        return $this->is($page_builder);
     }
 
     /**
