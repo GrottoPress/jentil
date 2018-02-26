@@ -22,6 +22,17 @@ namespace GrottoPress\Jentil\Setups\Sidebars;
 final class Secondary extends AbstractSidebar
 {
     /**
+     * Constructor
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct()
+    {
+        $this->id = 'secondary-widget-area';
+    }
+
+    /**
      * Register widget area
      *
      * @since 0.6.0
@@ -31,8 +42,6 @@ final class Secondary extends AbstractSidebar
      */
     public function register()
     {
-        $this->id = 'secondary-widget-area';
-
         \register_sidebar([
             'name'          => \esc_html__('Secondary', 'jentil'),
             'id'            => $this->id,

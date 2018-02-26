@@ -22,6 +22,17 @@ namespace GrottoPress\Jentil\Setups\Sidebars;
 final class Footer extends AbstractSidebar
 {
     /**
+     * Constructor
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct()
+    {
+        $this->id = 'footer-widget-area';
+    }
+
+    /**
      * Register widget area
      *
      * @since 0.1.0
@@ -31,8 +42,6 @@ final class Footer extends AbstractSidebar
      */
     public function register()
     {
-        $this->id = 'footer-widget-area';
-
         \register_sidebar([
             'name'          => \esc_html__('Footer', 'jentil'),
             'id'            => $this->id,
