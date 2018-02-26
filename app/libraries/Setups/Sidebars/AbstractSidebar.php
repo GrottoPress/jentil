@@ -24,6 +24,27 @@ use GrottoPress\Jentil\Setups\AbstractSetup;
 abstract class AbstractSidebar extends AbstractSetup
 {
     /**
+     * ID
+     *
+     * @since 0.6.0
+     * @access protected
+     *
+     * @var string
+     */
+    protected $id;
+
+    /**
+     * Get handle
+     *
+     * @since 0.6.0
+     * @access protected
+     */
+    protected function getID(): string
+    {
+        return $this->id;
+    }
+
+    /**
      * Run setup
      *
      * @since 0.6.0
@@ -35,7 +56,7 @@ abstract class AbstractSidebar extends AbstractSetup
     }
 
     /**
-     * Register widget area
+     * Register/unregister widget area
      *
      * @since 0.6.0
      * @access public

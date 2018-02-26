@@ -47,12 +47,14 @@ final class Footer extends AbstractSetup
      */
     public function renderWidgets()
     {
-        if (!\is_active_sidebar('footer-widget-area')) {
+        if (!\is_active_sidebar(
+            $id = \Jentil()->setups['Sidebars\Footer']->id
+        )) {
             return;
         } ?>
 
         <aside id="footer-widget-area" class="widget-area">
-            <?php \dynamic_sidebar('footer-widget-area'); ?>
+            <?php \dynamic_sidebar($id); ?>
         </aside><!-- .widget-area -->
     <?php }
 

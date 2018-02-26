@@ -31,9 +31,11 @@ final class Primary extends AbstractSidebar
      */
     public function register()
     {
+        $this->id = 'primary-widget-area';
+
         \register_sidebar([
             'name'          => \esc_html__('Primary', 'jentil'),
-            'id'            => 'primary-widget-area',
+            'id'            => $this->id,
             'description'   => \esc_html__('Primary widget area', 'jentil'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
