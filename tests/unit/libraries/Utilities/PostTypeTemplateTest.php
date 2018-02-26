@@ -8,6 +8,8 @@ use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\Page\Page;
+use GrottoPress\Jentil\AbstractTheme;
+use GrottoPress\Jentil\Setups\PostTypeTemplates\AbstractTemplate;
 use tad\FunctionMocker\FunctionMocker;
 
 class PostTypeTemplateTest extends AbstractTestCase
@@ -21,6 +23,18 @@ class PostTypeTemplateTest extends AbstractTestCase
         bool $expected
     ) {
         $utilities = Stub::makeEmpty(Utilities::class);
+        $utilities->app = Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => [
+                'PostTypeTemplates\PageBuilder' => Stub::makeEmpty(
+                    AbstractTemplate::class,
+                    ['slug' => 'page-builder.php']
+                ),
+                'PostTypeTemplates\PageBuilderBlank' => Stub::makeEmpty(
+                    AbstractTemplate::class,
+                    ['slug' => 'page-builder-blank.php']
+                ),
+            ],
+        ]);
         $utilities->page = Stub::makeEmpty(Page::class, [
             'is' => function (string $type, array $subtype) use ($slug): bool {
                 return \in_array($slug, $subtype);
