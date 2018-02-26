@@ -66,7 +66,14 @@ final class Jentil extends AbstractTheme
         $this->setups['Loader'] = new Setups\Loader($this);
         // $this->setups['Updater'] = new Setups\Updater($this);
         $this->setups['Language'] = new Setups\Language($this);
-        $this->setups['Styles'] = new Setups\Styles($this);
+
+        $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
+        $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
+        $this->setups['Styles\FontAwesome'] =
+            new Setups\Styles\FontAwesome($this);
+        $this->setups['Styles\WordPressPosts'] =
+            new Setups\Styles\WordPressPosts($this);
+
         $this->setups['Scripts'] = new Setups\Scripts($this);
         $this->setups['Thumbnails'] = new Setups\Thumbnails($this);
         $this->setups['Feeds'] = new Setups\Feeds($this);
