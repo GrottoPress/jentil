@@ -22,7 +22,9 @@ class PageBuildersTest extends AbstractTestCase
                 'my-template.php' => 'My template',
                 'page-builder.php' => 'Page builder',
             ],
-            $pageBuilder->add(['my-template.php' => 'My template'], null, null, '')
+            $pageBuilder->add([
+                'my-template.php' => 'My template',
+            ], null, null, '')
         );
     }
 }

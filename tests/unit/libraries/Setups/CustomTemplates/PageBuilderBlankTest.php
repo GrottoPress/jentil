@@ -24,7 +24,9 @@ class PageBuildersBlankTest extends AbstractTestCase
                 'my-template.php' => 'My template',
                 'page-builder-blank.php' => 'Page builder (blank)',
             ],
-            $pageBuilder->add(['my-template.php' => 'My template'], null, null, '')
+            $pageBuilder->add([
+                'my-template.php' => 'My template',
+            ], null, null, '')
         );
     }
 }

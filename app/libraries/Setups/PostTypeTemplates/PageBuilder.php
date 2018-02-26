@@ -44,10 +44,9 @@ final class PageBuilder extends AbstractTemplate
         $post,
         string $post_type
     ): array {
-        $templates['page-builder.php'] = \esc_html__(
-            'Page builder',
-            'jentil'
-        );
+        $this->slug = 'page-builder.php';
+
+        $templates[$this->slug] = \esc_html__('Page builder', 'jentil');
 
         return $templates;
     }

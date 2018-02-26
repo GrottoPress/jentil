@@ -27,6 +27,29 @@ use WP_Theme;
 abstract class AbstractTemplate extends AbstractSetup
 {
     /**
+     * Slug
+     *
+     * @since 0.6.0
+     * @access protected
+     *
+     * @var string
+     */
+    protected $slug;
+
+    /**
+     * Get slug
+     *
+     * @since 0.6.0
+     * @access protected
+     *
+     * @return string
+     */
+    protected function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
      * Run setup
      *
      * @since 0.6.0
@@ -47,15 +70,15 @@ abstract class AbstractTemplate extends AbstractSetup
      */
     public function load()
     {
-        $post_types = $this->postTypes();
-        
+        $post_types = \get_post_types(['public' => true, 'show_ui' => true]);
+
         foreach ($post_types as $post_type) {
             \add_filter("theme_{$post_type}_templates", [$this, 'add'], 10, 4);
         }
     }
 
     /**
-     * Add template
+     * Add/remove template
      *
      * @param array $templates
      * @param WP_Theme $theme
@@ -71,21 +94,8 @@ abstract class AbstractTemplate extends AbstractSetup
      */
     abstract public function add(
         array $templates,
-        WP_Theme $theme,
+        WP_Theme $theme = null,
         $post,
         string $post_type
     ): array;
-
-    /**
-     * Post types to load template for.
-     *
-     * @since 0.6.0
-     * @access protected
-     *
-     * @return array
-     */
-    protected function postTypes(): array
-    {
-        return \get_post_types(['public' => true, 'show_ui' => true]);
-    }
 }
