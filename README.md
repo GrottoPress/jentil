@@ -61,11 +61,11 @@ Install *jentil-theme*, which is a starter for building your own theme with Jent
 1. Update theme information in `style.css`. You may also want to change package name, description and author in `composer.json` and `package.json`.
 1. Replace all occurrences of `'jentil-theme'` text domain with your own theme slug. Your theme slug should match your theme folder name, which should just be the *slugified* version of your theme's name.
 1. Run `vendor/bin/wp theme activate your-theme-slug-here` to activate your new theme.
-1. Dive into your theme's source, and customize the code to taste.
+1. Dive into your theme's source, and start developing.
 
 ### Install Jentil as parent theme
 
-By default, your new theme is installed with *Jentil* as package (in the `vendor` directory). This is recommended. However, Jentil is a full-fledged WordPress theme by itself, and can, therefore, be installed as such.
+By default, your new theme is installed with Jentil as package (in the `vendor` directory). This is recommended. However, Jentil is a full-fledged WordPress theme by itself, and can, therefore, be installed as such.
 
 If, for any reason, you would like to install Jentil as parent theme for your theme, follow the steps below:
 
@@ -136,7 +136,7 @@ Jentil's loader does not load any template (or partial) from your theme's root a
 
 To use post type templates in your own theme, add the templates in the `app/templates` directory, and use the [`theme_{$post_type}_templates`](https://developer.wordpress.org/reference/hooks/theme_post_type_templates/) filter.
 
-Jentil uses this to add page builder templates. (See Jentil's `app/libraries/Setups/PostTypeTemplates` files).
+Jentil uses this hook to add page builder templates, and provides an `AbstractPostTypeTemplate` setup class your theme's post type templates can inherit from. (See Jentil's `app/libraries/Setups/PostTypeTemplates`).
 
 ### Testing
 
@@ -148,7 +148,7 @@ Run all tests with `composer run test`, as defined in `composer.json`, under `sc
 
 ## Architecture
 
-*Jentil* is developed using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://github.com/grottopress/wordpress-suv/), as it may give a better understanding of the core philosophy underpinning *Jentil*'s development.
+Jentil is developed using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://github.com/grottopress/wordpress-suv/), as it may give a better understanding of the core philosophy underpinning Jentil's development.
 
 ## Security
 
