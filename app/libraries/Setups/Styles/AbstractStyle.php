@@ -40,7 +40,7 @@ abstract class AbstractStyle extends AbstractSetup
      * @since 0.6.0
      * @access protected
      */
-    protected function getID()
+    protected function getID(): string
     {
         return $this->id;
     }
