@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Styles;
 
+use GrottoPress\Jentil\AbstractTheme;
+
 /**
  * Normalize CSS
  *
@@ -21,6 +23,21 @@ namespace GrottoPress\Jentil\Setups\Styles;
  */
 final class Normalize extends AbstractStyle
 {
+    /**
+     * Constructor
+     *
+     * @param AbstractTheme $jentil
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct(AbstractTheme $jentil)
+    {
+        parent::__construct($jentil);
+
+        $this->id = 'normalize';
+    }
+
     /**
      * Enqueue Stylesheet
      *
@@ -31,8 +48,6 @@ final class Normalize extends AbstractStyle
      */
     public function enqueue()
     {
-        $this->id = 'normalize';
-
         \wp_enqueue_style(
             $this->id,
             $this->app->utilities->fileSystem->dir(

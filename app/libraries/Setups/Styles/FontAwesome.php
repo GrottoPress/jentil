@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Normalize CSS
+ * Font Awesome styles
  *
  * @package GrottoPress\Jentil\Setups\Styles
  * @since 0.6.0
@@ -14,13 +14,30 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Styles;
 
+use GrottoPress\Jentil\AbstractTheme;
+
 /**
- * Normalize CSS
+ * Font Awesome styles
  *
  * @since 0.6.0
  */
 final class FontAwesome extends AbstractStyle
 {
+    /**
+     * Constructor
+     *
+     * @param AbstractTheme $jentil
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct(AbstractTheme $jentil)
+    {
+        parent::__construct($jentil);
+
+        $this->id = 'font-awesome';
+    }
+
     /**
      * Enqueue Stylesheet
      *
@@ -31,8 +48,6 @@ final class FontAwesome extends AbstractStyle
      */
     public function enqueue()
     {
-        $this->id = 'font-awesome';
-
         \wp_enqueue_style(
             $this->id,
             $this->app->utilities->fileSystem->dir(

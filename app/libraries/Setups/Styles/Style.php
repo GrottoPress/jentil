@@ -14,6 +14,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Styles;
 
+use GrottoPress\Jentil\AbstractTheme;
+
 /**
  * Main theme stylesheet
  *
@@ -21,6 +23,21 @@ namespace GrottoPress\Jentil\Setups\Styles;
  */
 final class Style extends AbstractStyle
 {
+    /**
+     * Constructor
+     *
+     * @param AbstractTheme $jentil
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct(AbstractTheme $jentil)
+    {
+        parent::__construct($jentil);
+
+        $this->id = 'jentil';
+    }
+
     /**
      * Enqueue Stylesheet
      *
@@ -31,8 +48,6 @@ final class Style extends AbstractStyle
      */
     public function enqueue()
     {
-        $this->id = 'jentil';
-
         if (\is_rtl()) {
             $style = 'jentil-rtl.min.css';
         } else {

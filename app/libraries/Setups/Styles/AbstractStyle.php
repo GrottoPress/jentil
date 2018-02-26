@@ -15,7 +15,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Styles;
 
 use GrottoPress\Jentil\Setups\AbstractSetup;
-use GrottoPress\Getter\Getter;
 
 /**
  * Abstract Stylesheet
@@ -25,7 +24,7 @@ use GrottoPress\Getter\Getter;
 abstract class AbstractStyle extends AbstractSetup
 {
     /**
-     * Handle
+     * ID
      *
      * @since 0.6.0
      * @access protected
@@ -35,7 +34,7 @@ abstract class AbstractStyle extends AbstractSetup
     protected $id;
 
     /**
-     * Get handle
+     * Get ID
      *
      * @since 0.6.0
      * @access protected
