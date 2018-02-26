@@ -19,7 +19,7 @@ namespace GrottoPress\Jentil\Setups;
  *
  * @since 0.1.0
  */
-final class Title extends AbstractSetup
+final class TitleTag extends AbstractSetup
 {
     /**
      * Run setup

@@ -5,15 +5,15 @@ namespace GrottoPress\Jentil\Tests\Unit\Setups;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Title;
+use GrottoPress\Jentil\Setups\TitleTag;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class TitleTest extends AbstractTestCase
+class TitleTagTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $title = new Title(Stub::makeEmpty(AbstractTheme::class));
+        $title = new TitleTag(Stub::makeEmpty(AbstractTheme::class));
 
         $add_action = FunctionMocker::replace('add_action');
 
@@ -29,7 +29,7 @@ class TitleTest extends AbstractTestCase
 
     public function testAddSupport()
     {
-        $title = new Title(Stub::makeEmpty(AbstractTheme::class));
+        $title = new TitleTag(Stub::makeEmpty(AbstractTheme::class));
 
         $add_support = FunctionMocker::replace('add_theme_support');
 
