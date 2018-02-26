@@ -24,6 +24,17 @@ use WP_Theme;
 final class PageBuilderBlank extends AbstractTemplate
 {
     /**
+     * Constructor
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct()
+    {
+        $this->slug = 'page-builder-blank.php';
+    }
+
+    /**
      * Add template
      *
      * @param array $templates
@@ -44,8 +55,6 @@ final class PageBuilderBlank extends AbstractTemplate
         $post,
         string $post_type
     ): array {
-        $this->slug = 'page-builder-blank.php';
-
         $templates[$this->slug] = \esc_html__('Page builder (blank)', 'jentil');
 
         return $templates;
