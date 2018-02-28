@@ -56,19 +56,19 @@ class SearchTest extends AbstractTestCase
             'URL' => "http://my.site/?s={$keywords}",
         ]);
 
-        $GLOBALS['wp_rewrite'] = new class($permalinks) {
+        FunctionMocker::setGlobal('wp_rewrite', new class($permalinks) {
             private $permalinks;
 
-            function __construct($perma)
+            function __construct($permalinks)
             {
-                $this->permalinks = $perma;
+                $this->permalinks = $permalinks;
             }
 
             function using_permalinks(): bool
             {
                 return $this->permalinks;
             }
-        };
+        });
 
         $search = new Search($jentil);
 
