@@ -35,8 +35,6 @@ final class Customizer extends AbstractCustomizer
     {
         parent::run();
 
-        \add_action('customize_preview_init', [$this, 'enqueueScript']);
-        \add_action('customize_preview_init', [$this, 'enqueueInlineScript']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
 
@@ -62,53 +60,6 @@ final class Customizer extends AbstractCustomizer
     }
 
     /**
-     * Enqueue JS
-     *
-     * @action customize_preview_init
-     *
-     * @since 0.1.0
-     * @access public
-     */
-    public function enqueueScript()
-    {
-        \wp_enqueue_script(
-            'jentil-customizer',
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                '/dist/scripts/customize-preview.min.js'
-            ),
-            ['jquery', 'customize-preview'],
-            '',
-            true
-        );
-    }
-
-    /**
-     * Enqueue Inlne JavaScript
-     *
-     * @action customize_preview_init
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @todo Find out how to get page type in customizer.
-     */
-    public function enqueueInlineScript()
-    {
-        $script = 'var shortTags = '.\json_encode(
-            $this->app->utilities->shortTags->get()
-        ).';
-        var colophonModName = "'.$this->sections['Colophon\Colophon']
-            ->settings['Colophon']->name.'";
-        var titleModNames = '.\json_encode($this->pageTitles()).';
-        var relatedPostsHeadingModNames = '.\json_encode(
-            $this->postsHeadings()
-        ).';';
-
-        \wp_add_inline_script('jentil-customizer', $script, 'before');
-    }
-
-    /**
      * Selective refresh
      *
      * Add selective refresh support to elements
@@ -124,47 +75,5 @@ final class Customizer extends AbstractCustomizer
     public function enableSelectiveRefresh()
     {
         \add_theme_support('customize-selective-refresh-widgets');
-    }
-
-    /**
-     * Page titles
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return string[]
-     */
-    private function pageTitles(): array
-    {
-        $titles = [];
-
-        foreach ($this->sections['Title\Title']->settings as $setting) {
-            $titles[] = $setting->name;
-        }
-
-        return $titles;
-    }
-
-    /**
-     * Posts headings
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return string[]
-     */
-    private function postsHeadings(): array
-    {
-        $headings = [];
-
-        if (($post_types = $this->app->utilities->page->posts->postTypes())) {
-            foreach ($post_types as $post_type) {
-                $headings[] = $this->panels['Posts\Posts']
-                    ->sections["Related_{$post_type->name}"]
-                    ->settings['Heading']->name;
-            }
-        }
-
-        return $headings;
     }
 }

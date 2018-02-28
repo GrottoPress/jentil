@@ -74,7 +74,13 @@ final class Jentil extends AbstractTheme
         $this->setups['Styles\WordPressPosts'] =
             new Setups\Styles\WordPressPosts($this);
 
-        $this->setups['Scripts'] = new Setups\Scripts($this);
+        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
+        $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
+        $this->setups['Scripts\CommentReply'] =
+            new Setups\Scripts\CommentReply($this);
+        $this->setups['Scripts\CustomizePreview'] =
+                new Setups\Scripts\CustomizePreview($this);
+
         $this->setups['Thumbnails'] = new Setups\Thumbnails($this);
         $this->setups['Feeds'] = new Setups\Feeds($this);
         $this->setups['HTML5'] = new Setups\HTML5($this);
@@ -82,7 +88,6 @@ final class Jentil extends AbstractTheme
         $this->setups['Layout'] = new Setups\Layout($this);
         $this->setups['Search'] = new Setups\Search($this);
         $this->setups['Menu'] = new Setups\Menu($this);
-        $this->setups['Comments'] = new Setups\Comments($this);
         $this->setups['Customizer\Customizer'] =
             new Setups\Customizer\Customizer($this);
         $this->setups['Metaboxes'] = new Setups\Metaboxes($this);

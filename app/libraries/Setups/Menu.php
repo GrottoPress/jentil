@@ -30,7 +30,6 @@ final class Menu extends AbstractSetup
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'register']);
-        \add_action('wp_enqueue_scripts', [$this, 'enqueueScript']);
     }
 
     /**
@@ -48,27 +47,5 @@ final class Menu extends AbstractSetup
         \register_nav_menus([
             'primary-menu' => \esc_html__('Primary menu', 'jentil'),
         ]);
-    }
-
-    /**
-     * Enqueue JS
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @action wp_enqueue_scripts
-     */
-    public function enqueueScript()
-    {
-        \wp_enqueue_script(
-            'jentil-menu',
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                '/dist/scripts/menu.min.js'
-            ),
-            ['jquery'],
-            '',
-            true
-        );
     }
 }

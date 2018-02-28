@@ -21,16 +21,11 @@ class MenuTest extends AbstractTestCase
 
         $menu->run();
 
-        $add_action->wasCalledTimes(2);
+        $add_action->wasCalledOnce();
 
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
             [$menu, 'register']
-        ]);
-
-        $add_action->wasCalledWithOnce([
-            'wp_enqueue_scripts',
-            [$menu, 'enqueueScript']
         ]);
     }
 
@@ -52,30 +47,5 @@ class MenuTest extends AbstractTestCase
 
         $esc_html->wasCalledOnce();
         $esc_html->wasCalledWithOnce(['Primary menu', 'jentil']);
-    }
-
-    public function testEnqueueScript()
-    {
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
-        $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.url/dist/scripts/menu.js',
-        ]);
-
-        $menu = new Menu($jentil);
-
-        $enqueue = FunctionMocker::replace('wp_enqueue_script');
-
-        $menu->enqueueScript();
-
-        $enqueue->wasCalledOnce();
-        $enqueue->wasCalledWithOnce([
-            'jentil-menu',
-            'http://my.url/dist/scripts/menu.js',
-            ['jquery'],
-            '',
-            true,
-        ]);
     }
 }

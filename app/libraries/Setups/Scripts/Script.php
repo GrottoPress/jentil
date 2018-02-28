@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Scripts (JavaScript)
+ * Main script
  *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
+ * @package GrottoPress\Jentil\Setups\Scripts
+ * @since 0.6.0
  *
  * @author GrottoPress <info@grottopress.com>
  * @author N Atta Kusi Adusei
@@ -12,31 +12,49 @@
 
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Scripts;
+
+use GrottoPress\Jentil\AbstractTheme;
 
 /**
- * Scripts (JavaScript)
+ * Main script
  *
- * @since 0.1.0
+ * @since 0.6.0
  */
-final class Scripts extends AbstractSetup
+final class Script extends AbstractScript
 {
+    /**
+     * Constructor
+     *
+     * @param AbstractTheme $jentil
+     *
+     * @since 0.6.0
+     * @access public
+     */
+    public function __construct(AbstractTheme $jentil)
+    {
+        parent::__construct($jentil);
+
+        $this->id = 'jentil';
+    }
+
     /**
      * Run setup
      *
-     * @since 0.1.0
+     * @since 0.6.0
      * @access public
      */
     public function run()
     {
-        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
+        parent::run();
+
         \add_filter('body_class', [$this, 'addBodyClasses']);
     }
 
     /**
-     * Enqueue Styles
+     * Enqueue
      *
-     * @since 0.1.0
+     * @since 0.6.0
      * @access public
      *
      * @action wp_footer
@@ -44,7 +62,7 @@ final class Scripts extends AbstractSetup
     public function enqueue()
     {
         \wp_enqueue_script(
-            'jentil',
+            $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
                 '/dist/scripts/jentil.min.js'
@@ -58,10 +76,10 @@ final class Scripts extends AbstractSetup
     /**
      * Add 'no-js' class to body
      *
-     * This should be removed by javascript if
+     * This should be removed by our script if
      * javascript is supported by client.
      *
-     * @since 0.1.0
+     * @since 0.6.0
      * @access public
      *
      * @filter body_class

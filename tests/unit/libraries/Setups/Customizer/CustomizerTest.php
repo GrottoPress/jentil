@@ -22,18 +22,6 @@ class CustomizerTest extends AbstractTestCase
 
         $customizer->run();
 
-        $add_action->wasCalledTimes('>=3');
-
-        $add_action->wasCalledWithOnce([
-            'customize_preview_init',
-            [$customizer, 'enqueueScript'],
-        ]);
-
-        $add_action->wasCalledWithOnce([
-            'customize_preview_init',
-            [$customizer, 'enqueueInlineScript'],
-        ]);
-
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
             [$customizer, 'enableSelectiveRefresh'],
@@ -43,53 +31,6 @@ class CustomizerTest extends AbstractTestCase
     public function testRegister()
     {
         $this->markTestSkipped();
-    }
-
-    public function testEnqueueScript()
-    {
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
-
-        $jentil->utilities->fileSystem = Stub::make(FileSystem::class, [
-            'dir' => 'http://my.site/dist/scripts/customizer.js',
-        ]);
-        
-        $customizer = new Customizer($jentil);
-
-        $wp_enqueue_script = FunctionMocker::replace('wp_enqueue_script');
-        
-        $customizer->enqueueScript($customizer);
-
-        $wp_enqueue_script->wasCalledOnce();
-        $wp_enqueue_script->wasCalledWithOnce([
-            'jentil-customizer',
-            'http://my.site/dist/scripts/customizer.js',
-            ['jquery', 'customize-preview'],
-            '',
-            true
-        ]);
-    }
-
-    public function testEnqueueInlineJS()
-    {
-        $this->markTestSkipped('We may need a Customizer stub for this');
-
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
-
-        $jentil->utilities->shortTags = Stub::make(ShortTags::class, [
-            'get' => ['{{short_tags}}'],
-        ]);
-
-        $customizer = new Customizer($jentil);
-
-        $add_script = FunctionMocker::replace('wp_add_inline_script');
-
-        $customizer->enqueueInlineScript();
-
-        $add_script->wasCalledOnce();
     }
 
     public function testEnableSelectiveRefresh()

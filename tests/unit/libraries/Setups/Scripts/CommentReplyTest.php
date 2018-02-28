@@ -1,39 +1,24 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups;
+namespace GrottoPress\Jentil\Tests\Unit\Setups\Scripts;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Comments;
+use GrottoPress\Jentil\Setups\Scripts\CommentReply;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class CommentsTest extends AbstractTestCase
+class CommentReplyTest extends AbstractTestCase
 {
-    public function testRun()
-    {
-        $comments = new Comments(Stub::makeEmpty(AbstractTheme::class));
-        
-        $add_action = FunctionMocker::replace('add_action');
-
-        $comments->run();
-
-        $add_action->wasCalledOnce();
-        $add_action->wasCalledWithOnce([
-            'wp_enqueue_scripts',
-            [$comments, 'enqueueScript']
-        ]);
-    }
-
     /**
-     * @dataProvider enqueueScriptProvider
+     * @dataProvider enqueueProvider
      */
-    public function testEnqueueScript(
+    public function testEnqueue(
         string $page,
-        bool $comments_open,
+        bool $script_open,
         bool $thread_comments
     ) {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
@@ -47,15 +32,15 @@ class CommentsTest extends AbstractTestCase
             }]
         );
 
-        $comments = new Comments($jentil);
+        $script = new CommentReply($jentil);
 
-        $copen = FunctionMocker::replace('comments_open', $comments_open);
+        $copen = FunctionMocker::replace('comments_open', $script_open);
         $get_option = FunctionMocker::replace('get_option', $thread_comments);
         $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
-        $comments->enqueueScript();
+        $script->enqueue();
 
-        if (!$comments_open || !$thread_comments || 'singular' !== $page) {
+        if (!$script_open || !$thread_comments || 'singular' !== $page) {
             $enqueue->wasNotCalled();
         } else {
             $enqueue->wasCalledOnce();
@@ -63,7 +48,7 @@ class CommentsTest extends AbstractTestCase
         }
     }
 
-    public function enqueueScriptProvider(): array
+    public function enqueueProvider(): array
     {
         return [
             'page is not singular' => ['home', true, true],

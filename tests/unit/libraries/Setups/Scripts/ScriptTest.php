@@ -1,37 +1,30 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups;
+namespace GrottoPress\Jentil\Tests\Unit\Setups\Scripts;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Scripts;
+use GrottoPress\Jentil\Setups\Scripts\Script;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class ScriptsTest extends AbstractTestCase
+class ScriptTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $scripts = new Scripts(Stub::makeEmpty(AbstractTheme::class));
+        $script = new Script(Stub::makeEmpty(AbstractTheme::class));
 
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
 
-        $scripts->run();
+        $script->run();
 
-        $add_filter->wasCalledOnce();
         $add_filter->wasCalledWithOnce([
             'body_class',
-            [$scripts, 'addBodyClasses']
-        ]);
-
-        $add_action->wasCalledOnce();
-        $add_action->wasCalledWithOnce([
-            'wp_enqueue_scripts',
-            [$scripts, 'enqueue']
+            [$script, 'addBodyClasses']
         ]);
     }
 
@@ -44,11 +37,11 @@ class ScriptsTest extends AbstractTestCase
             'dir' => 'http://my.url/dist/scripts/jentil.js',
         ]);
         
-        $scripts = new Scripts($jentil);
+        $script = new Script($jentil);
 
         $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
-        $scripts->enqueue();
+        $script->enqueue();
 
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
@@ -62,11 +55,11 @@ class ScriptsTest extends AbstractTestCase
 
     public function testAddBodyClasses()
     {
-        $scripts = new Scripts(Stub::makeEmpty(AbstractTheme::class));
+        $script = new Script(Stub::makeEmpty(AbstractTheme::class));
 
         $this->assertSame(
             ['class-1', 'no-js'],
-            $scripts->addBodyClasses(['class-1'])
+            $script->addBodyClasses(['class-1'])
         );
     }
 }
