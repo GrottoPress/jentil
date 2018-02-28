@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\Getter\Getter;
+use GrottoPress\Getter\GetterTrait;
 
 /**
  * Theme ThemeMods
@@ -24,7 +24,7 @@ use GrottoPress\Getter\Getter;
  */
 class ThemeMods
 {
-    use Getter;
+    use GetterTrait;
     
     /**
      * Utilities

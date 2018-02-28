@@ -21,7 +21,7 @@ use GrottoPress\WordPress\Breadcrumbs\Breadcrumbs;
 use GrottoPress\WordPress\Posts\Posts;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Mobile\Detector;
-use GrottoPress\Getter\Getter;
+use GrottoPress\Getter\GetterTrait;
 use Puc_v4p2_Theme_UpdateChecker;
 use Puc_v4_Factory;
 
@@ -32,7 +32,7 @@ use Puc_v4_Factory;
  */
 class Utilities
 {
-    use Getter;
+    use GetterTrait;
 
     /**
      * Jentil

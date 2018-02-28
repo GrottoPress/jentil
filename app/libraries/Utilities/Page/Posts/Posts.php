@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
-use GrottoPress\Getter\Getter;
+use GrottoPress\Getter\GetterTrait;
 
 /**
  * Posts
@@ -25,7 +25,7 @@ use GrottoPress\Getter\Getter;
  */
 class Posts
 {
-    use Getter;
+    use GetterTrait;
 
     /**
      * Page

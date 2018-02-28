@@ -16,7 +16,7 @@ namespace GrottoPress\Jentil\Utilities\Page;
 
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\WordPress\Page\Page as PagePackage;
-use GrottoPress\Getter\Getter;
+use GrottoPress\Getter\GetterTrait;
 
 /**
  * Page
@@ -25,7 +25,7 @@ use GrottoPress\Getter\Getter;
  */
 class Page extends PagePackage
 {
-    use Getter;
+    use GetterTrait;
     
     /**
      * Utilities
