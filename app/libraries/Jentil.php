@@ -65,7 +65,16 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Loader'] = new Setups\Loader($this);
         // $this->setups['Updater'] = new Setups\Updater($this);
+
         $this->setups['Language'] = new Setups\Language($this);
+        $this->setups['Thumbnails'] = new Setups\Thumbnails($this);
+        $this->setups['Feeds'] = new Setups\Feeds($this);
+        $this->setups['HTML5'] = new Setups\HTML5($this);
+        $this->setups['TitleTag'] = new Setups\TitleTag($this);
+        $this->setups['Layout'] = new Setups\Layout($this);
+        $this->setups['Search'] = new Setups\Search($this);
+        $this->setups['Metaboxes'] = new Setups\Metaboxes($this);
+        $this->setups['Mobile'] = new Setups\Mobile($this);
 
         $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
         $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
@@ -83,16 +92,8 @@ final class Jentil extends AbstractTheme
 
         $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
 
-        $this->setups['Thumbnails'] = new Setups\Thumbnails($this);
-        $this->setups['Feeds'] = new Setups\Feeds($this);
-        $this->setups['HTML5'] = new Setups\HTML5($this);
-        $this->setups['TitleTag'] = new Setups\TitleTag($this);
-        $this->setups['Layout'] = new Setups\Layout($this);
-        $this->setups['Search'] = new Setups\Search($this);
         $this->setups['Customizer\Customizer'] =
             new Setups\Customizer\Customizer($this);
-        $this->setups['Metaboxes'] = new Setups\Metaboxes($this);
-        $this->setups['Mobile'] = new Setups\Mobile($this);
 
         $this->setups['PostTypeTemplates\PageBuilder'] =
             new Setups\PostTypeTemplates\PageBuilder($this);
