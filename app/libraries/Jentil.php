@@ -138,7 +138,7 @@ final class Jentil extends AbstractTheme
      * @since 0.1.0
      * @access protected
      *
-     * @return Setups\AbstractSetups[]
+     * @return Setups\AbstractSetup[]
      */
     protected function getSetups(): array
     {
