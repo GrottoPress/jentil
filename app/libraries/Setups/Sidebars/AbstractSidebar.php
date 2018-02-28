@@ -14,54 +14,13 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Sidebars;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
+use GrottoPress\WordPress\SUV\Setups\Sidebars\AbstractSidebar as Sidebar;
 
 /**
  * Abstract sidebar
  *
  * @since 0.6.0
  */
-abstract class AbstractSidebar extends AbstractSetup
+abstract class AbstractSidebar extends Sidebar
 {
-    /**
-     * ID
-     *
-     * @since 0.6.0
-     * @access protected
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
-     * Get handle
-     *
-     * @since 0.6.0
-     * @access protected
-     */
-    protected function getID(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * Run setup
-     *
-     * @since 0.6.0
-     * @access public
-     */
-    public function run()
-    {
-        \add_action('widgets_init', [$this, 'register']);
-    }
-
-    /**
-     * Register/unregister widget area
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @action widgets_init
-     */
-    abstract public function register();
 }

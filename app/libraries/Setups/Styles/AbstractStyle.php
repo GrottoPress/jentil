@@ -14,54 +14,13 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Styles;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
+use GrottoPress\WordPress\SUV\Setups\Styles\AbstractStyle as Style;
 
 /**
  * Abstract Stylesheet
  *
  * @since 0.6.0
  */
-abstract class AbstractStyle extends AbstractSetup
+abstract class AbstractStyle extends Style
 {
-    /**
-     * ID
-     *
-     * @since 0.6.0
-     * @access protected
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
-     * Get ID
-     *
-     * @since 0.6.0
-     * @access protected
-     */
-    protected function getID(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * Run setup
-     *
-     * @since 0.6.0
-     * @access public
-     */
-    public function run()
-    {
-        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
-    }
-
-    /**
-     * Enqueue/dequeue stylesheet
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @action wp_enqueue_scripts
-     */
-    abstract public function enqueue();
 }
