@@ -101,7 +101,7 @@ final class Search extends AbstractSetup
     private function searchQuery(): string
     {
         $url = \parse_url($this->app->utilities->page->URL('full'));
-        \parse_str((string)$url['query'], $query_params);
+        \parse_str(($url['query'] ?? ''), $query_params);
 
         return $query_params['s'] ?? '';
     }

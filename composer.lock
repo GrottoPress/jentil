@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdbfa2d957782369d61c9006767dff35",
+    "content-hash": "4badeec8f94a231d6c95c71169afedb1",
     "packages": [
         {
             "name": "aura/html",
@@ -317,16 +317,16 @@
         },
         {
             "name": "grottopress/getter",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/getter.git",
-                "reference": "0eda2a300ea4f99a8b5e8fcb869eeeaa742a669c"
+                "reference": "786da1e594b359fd5651d321ed27943b6b9e5ad8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/0eda2a300ea4f99a8b5e8fcb869eeeaa742a669c",
-                "reference": "0eda2a300ea4f99a8b5e8fcb869eeeaa742a669c",
+                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/786da1e594b359fd5651d321ed27943b6b9e5ad8",
+                "reference": "786da1e594b359fd5651d321ed27943b6b9e5ad8",
                 "shasum": ""
             },
             "require": {
@@ -362,7 +362,7 @@
                 "OOP",
                 "getter"
             ],
-            "time": "2018-02-28T14:59:22+00:00"
+            "time": "2018-03-01T11:01:46+00:00"
         },
         {
             "name": "grottopress/mobile-detector",
@@ -611,16 +611,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.7.1",
+            "version": "0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "312521bec0ffb5d8fc6305857d491eb406dd5c13"
+                "reference": "0e4e6bcdc5a8d03a684d492c425dca0ea40cbcac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/312521bec0ffb5d8fc6305857d491eb406dd5c13",
-                "reference": "312521bec0ffb5d8fc6305857d491eb406dd5c13",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/0e4e6bcdc5a8d03a684d492c425dca0ea40cbcac",
+                "reference": "0e4e6bcdc5a8d03a684d492c425dca0ea40cbcac",
                 "shasum": ""
             },
             "require": {
@@ -657,11 +657,11 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-02-28T19:32:41+00:00"
+            "time": "2018-03-01T18:38:56+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
-            "version": "0.3.0",
+            "version": "dev-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
@@ -1971,7 +1971,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.35",
+            "version": "v5.5.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2015,7 +2015,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.35",
+            "version": "v5.5.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -4809,16 +4809,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.8.34",
+            "version": "v2.8.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "1f4e8351e0196562f5e8ec584baeceeb8e2e92f6"
+                "reference": "125403a59e4cb4e3ebf46d0162fabcde613d2b97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/1f4e8351e0196562f5e8ec584baeceeb8e2e92f6",
-                "reference": "1f4e8351e0196562f5e8ec584baeceeb8e2e92f6",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/125403a59e4cb4e3ebf46d0162fabcde613d2b97",
+                "reference": "125403a59e4cb4e3ebf46d0162fabcde613d2b97",
                 "shasum": ""
             },
             "require": {
@@ -4854,7 +4854,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T07:36:31+00:00"
+            "time": "2018-02-19T16:23:47+00:00"
         },
         {
             "name": "symfony/finder",
@@ -7013,7 +7013,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "grottopress/wordpress-suv": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
