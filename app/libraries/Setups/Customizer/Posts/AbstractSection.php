@@ -69,7 +69,7 @@ abstract class AbstractSection extends Section
      *
      * @return Posts Posts panel.
      */
-    final protected function getPanel(): Posts
+    protected function getPanel(): Posts
     {
         return $this->panel;
     }
