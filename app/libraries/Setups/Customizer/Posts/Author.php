@@ -34,9 +34,9 @@ final class Author extends AbstractSection
     public function __construct(Posts $posts)
     {
         parent::__construct($posts);
-        
+
         $this->id = 'author_posts';
-        
+
         $this->modArgs['context'] = 'author';
 
         $this->args['title'] = \esc_html__('Author Archives', 'jentil');

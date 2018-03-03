@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Replace GrottoPress logo with Jentil's as theme screenshot
 
 ### Fixed
-- 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key 
+- 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key
 
 ## 0.5.0 - 2017-12-16
 

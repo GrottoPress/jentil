@@ -46,7 +46,7 @@ final class PostType extends AbstractSetting
         ]);
 
         $this->id = $this->mod->id;
-        
+
         $this->args['default'] = $this->mod->default;
 
         $this->control['active_callback'] = function () use ($post_type): bool {

@@ -117,7 +117,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
             <ol class="commentlist">
                 <?php \wp_list_comments($comment_list_args); ?>
             </ol>
-    
+
             <?php
             /**
              * Bottom navigation
@@ -133,7 +133,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
                 </nav>
             <?php } ?>
         </section><!-- #comments-list -->
-        
+
         <?php
         /**
          *If comments are closed and there are comments,

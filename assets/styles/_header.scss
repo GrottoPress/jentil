@@ -14,7 +14,7 @@
 #header {
     @include paragraph;
     @include hobbit;
-    
+
     padding-top: map-get($jentil-gutter, normal);
 
     &:empty {

@@ -26,7 +26,7 @@ use GrottoPress\Getter\GetterTrait;
 class Page extends PagePackage
 {
     use GetterTrait;
-    
+
     /**
      * Utilities
      *
@@ -36,7 +36,7 @@ class Page extends PagePackage
      * @var Utilities
      */
     private $utilities;
-    
+
     /**
      * Layout
      *
@@ -160,7 +160,7 @@ class Page extends PagePackage
         if (null === $this->layouts) {
             $this->layouts = new Layouts($this);
         }
- 
+
         return $this->layouts;
     }
 

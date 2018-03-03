@@ -36,7 +36,7 @@ class ScriptTest extends AbstractTestCase
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => 'http://my.url/dist/scripts/jentil.js',
         ]);
-        
+
         $script = new Script($jentil);
 
         $enqueue = FunctionMocker::replace('wp_enqueue_script');

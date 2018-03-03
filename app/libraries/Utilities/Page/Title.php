@@ -32,7 +32,7 @@ class Title
      * @var Page
      */
     private $page;
-    
+
     /**
      * Constructor
      *

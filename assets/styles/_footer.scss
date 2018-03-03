@@ -25,10 +25,10 @@
 
 #colophon {
     @include paragraph;
-    
+
     text-align: center;
     line-height: map-get($jentil-line-height, normal);
-    
+
     &,
     small {
         font-size: map-get($jentil-font-size, tiny);

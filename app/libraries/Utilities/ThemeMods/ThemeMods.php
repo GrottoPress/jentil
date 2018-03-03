@@ -25,7 +25,7 @@ use GrottoPress\Getter\GetterTrait;
 class ThemeMods
 {
     use GetterTrait;
-    
+
     /**
      * Utilities
      *

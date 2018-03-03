@@ -44,7 +44,7 @@
 #header {
     .menu-toggle {
         @include paragraph;
-        
+
         text-align: center;
 
         a {
@@ -60,7 +60,7 @@
         &.show {
             display: block;
         }
-        
+
         .search-wrap {
             @include paragraph;
 
@@ -71,7 +71,7 @@
 
 .sub-menu-toggle {
     @include position(absolute, 0 0 null null);
-    
+
     background-color: transparent;
     font-size: inherit;
     width: auto;
@@ -95,14 +95,14 @@
 
         .menu {
             // text-align: center;
-            
+
             li {
                 margin: 0;
             }
 
             > li {
                 @include inline-block;
-                
+
                 margin-left: 2%;
 
                 &:first-child {
@@ -129,7 +129,7 @@
 
             ul {
                 @include position(absolute, 22 null null 0);
-                
+
                 width: 200px;
                 margin: 0;
                 padding: 0;

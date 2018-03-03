@@ -38,7 +38,7 @@ final class Date extends AbstractSetting
         $this->mod = $this->themeMod(['context' => 'date']);
 
         $this->id = $this->mod->id;
-        
+
         $this->args['default'] = $this->mod->default;
 
         $this->control['label'] = \esc_html__('Date Archives', 'jentil');

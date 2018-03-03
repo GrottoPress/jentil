@@ -38,7 +38,7 @@ final class AfterContent extends AbstractSetting
         $mod = $this->themeMod('after_content');
 
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 

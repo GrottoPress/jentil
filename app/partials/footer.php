@@ -18,7 +18,7 @@ declare (strict_types = 1);
          * @since 0.1.0
          */
         \do_action('jentil_after_after_content');
-        
+
         /**
          * Load comments
          *

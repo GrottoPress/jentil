@@ -1,6 +1,6 @@
 /**
  * Customizer
- * 
+ *
  * Handles postMessage transport, allowing changes to take
  * effect immediately without page reload
  *

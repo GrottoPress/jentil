@@ -34,7 +34,7 @@ final class Error404 extends AbstractSetting
     public function __construct(Layout $layout)
     {
         parent::__construct($layout);
-        
+
         $this->mod = $this->themeMod(['context' => '404']);
 
         $this->id = $this->mod->id;

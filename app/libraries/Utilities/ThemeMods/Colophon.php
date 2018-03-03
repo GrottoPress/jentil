@@ -32,7 +32,7 @@ class Colophon extends AbstractThemeMod
      * @var ThemeMods $themeMods ThemeMods.
      */
     private $themeMods;
-    
+
     /**
      * Constructor
      *
@@ -44,7 +44,7 @@ class Colophon extends AbstractThemeMod
     public function __construct(ThemeMods $themeMods)
     {
         $this->themeMods = $themeMods;
-        
+
         $this->id = 'colophon';
         $this->default = \sprintf(
             \esc_html__(

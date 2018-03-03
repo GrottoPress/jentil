@@ -13,7 +13,7 @@
 
 table {
     @include paragraph;
-    
+
     line-height: map-get($jentil-line-height, normal);
     width: 100%;
     border-collapse: collapse;

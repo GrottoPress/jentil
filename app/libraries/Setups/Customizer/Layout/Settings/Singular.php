@@ -39,7 +39,7 @@ final class Singular extends AbstractSetting
         WP_Post $post = null
     ) {
         parent::__construct($layout);
-        
+
         $this->setMod($post_type, $post);
 
         $this->setControl($post_type, $post);

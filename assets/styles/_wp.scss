@@ -15,14 +15,14 @@
 
 .alignleft {
     @include float(left);
-    
+
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
 .alignright {
     @include float(right);
-    
+
     margin-bottom: 20px;
     margin-left: 20px;
 }
@@ -113,19 +113,19 @@
         .gallery-columns-5 & {
             width: 20%;
         }
-    
+
         .gallery-columns-6 & {
             width: 16.66%;
         }
-    
+
         .gallery-columns-7 & {
             width: 14.28%;
         }
-    
+
         .gallery-columns-8 & {
             width: 12.5%;
         }
-    
+
         .gallery-columns-9 & {
             width: 11.11%;
         }

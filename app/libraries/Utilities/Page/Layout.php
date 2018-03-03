@@ -32,7 +32,7 @@ class Layout
      * @var Page
      */
     private $page;
-    
+
     /**
      * Constructor
      *

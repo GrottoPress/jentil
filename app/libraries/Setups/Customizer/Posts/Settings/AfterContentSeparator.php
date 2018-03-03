@@ -38,7 +38,7 @@ final class AfterContentSeparator extends AbstractSetting
         $mod = $this->themeMod('after_content_separator');
 
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
 

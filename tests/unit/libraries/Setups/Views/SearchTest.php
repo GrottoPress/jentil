@@ -44,7 +44,7 @@ class SearchTest extends AbstractTestCase
         bool $permalinks
     ) {
         $this->markTestSkipped('Find a better way to deal with the exit call');
-        
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);

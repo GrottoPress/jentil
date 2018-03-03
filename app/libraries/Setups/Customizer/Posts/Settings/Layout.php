@@ -36,9 +36,9 @@ final class Layout extends AbstractSetting
         parent::__construct($section);
 
         $mod = $this->themeMod('layout');
-        
+
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
 

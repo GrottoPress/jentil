@@ -36,7 +36,7 @@ class LanguageTest extends AbstractTestCase
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => '/var/www/jentil/languages',
         ]);
-    
+
         $language = new Language($jentil);
 
         $load = FunctionMocker::replace('load_theme_textdomain');

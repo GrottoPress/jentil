@@ -73,7 +73,7 @@ class Title extends AbstractThemeMod
     public function __construct(ThemeMods $themeMods, array $args = [])
     {
         $this->themeMods = $themeMods;
-        
+
         $this->setAttributes($args);
     }
 

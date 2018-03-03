@@ -38,7 +38,7 @@ final class Author extends AbstractSetting
         $this->mod = $this->themeMod(['context' => 'author']);
 
         $this->id = $this->mod->id;
-        
+
         $this->args['default'] = $this->mod->default;
 
         $this->control['label'] = \esc_html__('Author Archives', 'jentil');

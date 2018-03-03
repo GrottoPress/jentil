@@ -13,7 +13,7 @@
 
 .archive-description {
     @include paragraph;
-    
+
     color: $jentil-font-light;
 }
 
@@ -106,7 +106,7 @@
 
                 .avatar {
                     @include float(left);
-                    
+
                     margin-right: 10px;
                 }
             }

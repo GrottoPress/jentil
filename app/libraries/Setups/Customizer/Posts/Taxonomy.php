@@ -41,7 +41,7 @@ final class Taxonomy extends AbstractSection
         WP_Term $term = null
     ) {
         parent::__construct($posts);
-        
+
         $this->setName($taxonomy, $term);
         $this->setModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
@@ -88,7 +88,7 @@ final class Taxonomy extends AbstractSection
     private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->modArgs['context'] = 'tax';
-        
+
         if ('post_tag' === $taxonomy->name) {
             $this->modArgs['context'] = 'tag';
         } elseif ('category' === $taxonomy->name) {

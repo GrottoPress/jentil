@@ -101,7 +101,7 @@ class Layouts
     public function IDs(): array
     {
         $return = [];
-        
+
         foreach ($this->get() as $column_type => $layouts) {
             foreach ($layouts as $layout_id => $layout_name) {
                 $return[\sanitize_title($layout_id)] = \sanitize_text_field(

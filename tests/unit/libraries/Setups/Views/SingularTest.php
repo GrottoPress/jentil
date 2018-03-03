@@ -46,7 +46,7 @@ class SingularTest extends AbstractTestCase
                 if ($subtype) {
                     return $this->page === $type && $this->subPage === $subtype;
                 }
-                
+
                 return ($this->page === $type);
             }
         ]);

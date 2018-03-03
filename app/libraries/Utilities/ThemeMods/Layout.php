@@ -30,7 +30,7 @@ class Layout extends AbstractThemeMod
      * @var ThemeMods $themeMods ThemeMods.
      */
     private $themeMods;
-    
+
     /**
      * Context
      *

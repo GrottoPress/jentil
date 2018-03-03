@@ -38,7 +38,7 @@ final class BeforeTitleSeparator extends AbstractSetting
         $mod = $this->themeMod('before_title_separator');
 
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
 

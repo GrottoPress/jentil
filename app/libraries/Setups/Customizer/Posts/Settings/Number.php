@@ -36,9 +36,9 @@ final class Number extends AbstractSetting
         parent::__construct($section);
 
         $mod = $this->themeMod('number');
-        
+
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);

@@ -152,7 +152,7 @@ class FileSystem
         $stylesheet = $type === 'path'
             ? \get_stylesheet_directory()
             : \get_stylesheet_directory_uri();
-        
+
         if (0 === strpos($this->{'dir'.\ucfirst($type)}, $stylesheet)) {
             return $stylesheet.$append;
         }

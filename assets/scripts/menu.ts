@@ -103,9 +103,9 @@
      * Up/Down button HTML
      *
      * @since 0.6.0
-     * 
+     *
      * @param {string} direction 'up' or 'down'
-     * 
+     *
      * @return {string}
      */
     function renderCaret(direction: 'up' | 'down'): string

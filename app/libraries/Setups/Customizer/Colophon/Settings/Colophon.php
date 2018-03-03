@@ -46,7 +46,7 @@ final class Colophon extends AbstractSetting
         $this->args['sanitize_callback'] = function (string $value): string {
             return \wp_kses($value, 'pre_user_description');
         };
-        
+
         $this->control['section'] = $this->section->id;
         $this->control['label'] = \esc_html__('Colophon', 'jentil');
         $this->control['type'] = 'textarea';

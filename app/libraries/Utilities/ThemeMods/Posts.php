@@ -87,7 +87,7 @@ class Posts extends AbstractThemeMod
         array $args = []
     ) {
         $this->themeMods = $themeMods;
-        
+
         $this->setAttributes($setting, $args);
     }
 

@@ -34,9 +34,9 @@ final class Date extends AbstractSection
     public function __construct(Posts $posts)
     {
         parent::__construct($posts);
-        
+
         $this->id = 'date_posts';
-        
+
         $this->modArgs['context'] = 'date';
 
         $this->args['title'] = \esc_html__('Date Archives', 'jentil');

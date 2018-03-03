@@ -38,7 +38,7 @@ final class BeforeTitle extends AbstractSetting
         $mod = $this->themeMod('before_title');
 
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 

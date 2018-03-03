@@ -16,7 +16,7 @@ migrate()
 {
     for dir in ${FROM[@]}; do
         dest="${TO}/${dir}"
-        
+
         if [[ -d "./node_modules/${dir}" ]]; then
             src="./node_modules/${dir}"
         elif [[ -d "./vendor/${dir}" ]]; then

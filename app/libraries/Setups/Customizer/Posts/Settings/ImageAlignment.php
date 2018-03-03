@@ -38,7 +38,7 @@ final class ImageAlignment extends AbstractSetting
         $mod = $this->themeMod('image_alignment');
 
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_title';
 

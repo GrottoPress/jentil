@@ -50,7 +50,7 @@ tt {
 pre {
     @include paragraph;
     @include border-radius(3px);
-    
+
     padding: 10px;
     border: $jentil-separator;
     overflow: auto;
@@ -70,7 +70,7 @@ ins {
 sup,
 sub {
     @include position(relative);
-    
+
     height: 0;
     line-height: 1px;
     vertical-align: baseline;
@@ -86,14 +86,14 @@ sub {
 
 hr {
     @include paragraph;
-    
+
     border: 0;
     border-top: $jentil-separator;
 }
 
 blockquote {
     @include paragraph;
-    
+
     font-size: map-get($jentil-font-size, magnified);
     color: $jentil-font-lighter;
     font-style: italic;
@@ -116,7 +116,7 @@ h4,
 h5,
 h6 {
     @include paragraph;
-    
+
     font-weight: bold;
     line-height: map-get($jentil-line-height, small);
 }
@@ -149,7 +149,7 @@ h6 {
     h1 {
         font-size: 34px;
     }
-    
+
     h2 {
         font-size: 30px;
     }

@@ -330,7 +330,7 @@ class Utilities
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
         $breadcrumbs = new Breadcrumbs($this->getPage(), $args);
-        
+
         return $breadcrumbs->collectLinks();
     }
 

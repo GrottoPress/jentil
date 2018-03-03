@@ -38,7 +38,7 @@ final class PaginationMaximum extends AbstractSetting
         $mod = $this->themeMod('pagination_maximum');
 
         $this->id = $mod->id;
-        
+
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);

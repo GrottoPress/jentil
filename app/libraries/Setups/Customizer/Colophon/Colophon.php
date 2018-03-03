@@ -38,7 +38,7 @@ final class Colophon extends AbstractSection
         parent::__construct($customizer);
 
         $this->id = 'colophon';
-        
+
         $this->args['title'] = \esc_html__('Colophon', 'jentil');
     }
 

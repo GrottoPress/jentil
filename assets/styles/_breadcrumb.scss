@@ -13,7 +13,7 @@
 
 .breadcrumbs {
     @include paragraph;
-    
+
     color: $jentil-font-lighter;
     font-size: map-get($jentil-font-size, tiny);
 }

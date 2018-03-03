@@ -41,7 +41,7 @@ final class Taxonomy extends AbstractSetting
         WP_Term $term = null
     ) {
         parent::__construct($layout);
-        
+
         $this->setMod($taxonomy, $term);
 
         $this->id = $this->mod->id;
@@ -60,7 +60,7 @@ final class Taxonomy extends AbstractSetting
     private function setMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $mod_context = 'tax';
-        
+
         if ('post_tag' === $taxonomy->name) {
             $mod_context = 'tag';
         } elseif ('category' === $taxonomy->name) {

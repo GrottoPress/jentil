@@ -103,7 +103,7 @@ class Loader
         ) {
             return \comments_template("/{$rel_dir}/{$file}", $separated);
         }
-    
+
         return \comments_template("/{$file}", $separated);
     }
 
@@ -138,7 +138,7 @@ class Loader
         }
 
         $rel_dir = $this->utilities->fileSystem->relativeDir();
-    
+
         $templates = [];
 
         if ($name) {
@@ -148,13 +148,13 @@ class Loader
                 $templates[] = "{$rel_dir}/{$slug}-{$name}.php";
             }
         }
-    
+
         $templates[] = "{$slug}.php";
 
         if ($rel_dir) {
             $templates[] = "{$rel_dir}/{$slug}.php";
         }
-    
+
         return \locate_template($templates, true, false);
     }
 }
