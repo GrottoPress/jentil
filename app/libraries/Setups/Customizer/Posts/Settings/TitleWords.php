@@ -37,7 +37,7 @@ final class TitleWords extends AbstractSetting
 
         $mod = $this->themeMod('title_words');
         
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = function ($value): int {

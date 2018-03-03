@@ -68,7 +68,7 @@ class PostsTest extends AbstractTestCase
             'more_specific' => $more_specific,
         ]);
 
-        $this->assertSame($expected, $posts->name);
+        $this->assertSame($expected, $posts->id);
     }
 
     public function getNameProvider(): array

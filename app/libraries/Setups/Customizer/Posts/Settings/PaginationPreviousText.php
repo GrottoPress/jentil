@@ -37,7 +37,7 @@ final class PaginationPreviousText extends AbstractSetting
 
         $mod = $this->themeMod('pagination_previous_text');
 
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';

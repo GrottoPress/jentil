@@ -35,7 +35,7 @@ final class Search extends AbstractSection
     {
         parent::__construct($posts);
         
-        $this->name = 'search_posts';
+        $this->id = 'search_posts';
 
         $this->modArgs['context'] = 'search';
 

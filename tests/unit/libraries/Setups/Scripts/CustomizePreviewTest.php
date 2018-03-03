@@ -85,7 +85,7 @@ class CustomizePreviewTest extends AbstractTestCase
                                             'settings' => [
                                                 'Heading' => Stub::makeEmpty(
                                                     AbstractSetting::class,
-                                                    ['name' => 'Related posts']
+                                                    ['id' => 'Related posts']
                                                 ),
                                             ],
                                         ]
@@ -96,7 +96,7 @@ class CustomizePreviewTest extends AbstractTestCase
                                             'settings' => [
                                                 'Heading' => Stub::makeEmpty(
                                                     AbstractSetting::class,
-                                                    ['name' => 'Related pages']
+                                                    ['id' => 'Related pages']
                                                 ),
                                             ],
                                         ]
@@ -111,7 +111,7 @@ class CustomizePreviewTest extends AbstractTestCase
                                     'settings' => ['Colophon' => Stub::makeEmpty(
                                         AbstractSetting::class,
                                         [
-                                            'name' => 'colophon',
+                                            'id' => 'colophon',
                                         ]
                                     )],
                                 ]
@@ -122,7 +122,7 @@ class CustomizePreviewTest extends AbstractTestCase
                                     'settings' => ['Date' => Stub::makeEmpty(
                                         AbstractSetting::class,
                                         [
-                                            'name' => 'date_title',
+                                            'id' => 'date_title',
                                         ]
                                     )],
                                 ]

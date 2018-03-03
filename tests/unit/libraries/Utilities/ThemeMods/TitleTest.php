@@ -62,7 +62,7 @@ class TitleTest extends AbstractTestCase
             'more_specific' => $more_specific,
         ]);
 
-        $this->assertSame($expected_name, $title->name);
+        $this->assertSame($expected_name, $title->id);
         // $this->assertSame($expected_default, $title->default);
     }
 

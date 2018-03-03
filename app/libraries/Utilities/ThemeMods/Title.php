@@ -98,7 +98,7 @@ class Title extends AbstractThemeMod
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
 
         $names = $this->names();
-        $this->name = isset($names[$this->context])
+        $this->id = isset($names[$this->context])
             ? \sanitize_key($names[$this->context]) : '';
 
         $defaults = $this->defaults();

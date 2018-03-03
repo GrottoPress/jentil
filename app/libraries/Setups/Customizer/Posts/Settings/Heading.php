@@ -37,7 +37,7 @@ final class Heading extends AbstractSetting
 
         $mod = $this->themeMod('heading');
 
-        $this->name = $mod->name;
+        $this->id = $mod->id;
 
         $this->args['default'] = $mod->default;
         $this->args['transport'] = 'postMessage';

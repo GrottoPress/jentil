@@ -37,7 +37,7 @@ final class TitlePosition extends AbstractSetting
 
         $mod = $this->themeMod('title_position');
         
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';

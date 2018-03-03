@@ -37,7 +37,7 @@ final class Author extends AbstractSetting
 
         $this->mod = $this->themeMod(['context' => 'author']);
 
-        $this->name = $this->mod->name;
+        $this->id = $this->mod->id;
 
         $this->args['default'] = $this->mod->default;
 

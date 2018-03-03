@@ -37,7 +37,7 @@ final class Pagination extends AbstractSetting
 
         $mod = $this->themeMod('pagination');
 
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';

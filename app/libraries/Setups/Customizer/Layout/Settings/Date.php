@@ -37,7 +37,7 @@ final class Date extends AbstractSetting
 
         $this->mod = $this->themeMod(['context' => 'date']);
 
-        $this->name = $this->mod->name;
+        $this->id = $this->mod->id;
 
         $this->args['default'] = $this->mod->default;
 

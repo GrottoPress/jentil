@@ -35,7 +35,7 @@ final class Posts extends AbstractPanel
     {
         parent::__construct($customizer);
 
-        $this->name = 'posts';
+        $this->id = 'posts';
 
         $this->args['title'] = \esc_html__('Posts', 'jentil');
         $this->args['description'] = \esc_html__('Description here', 'jentil');

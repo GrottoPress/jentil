@@ -65,7 +65,7 @@ class LayoutTest extends AbstractTestCase
             'more_specific' => $more_specific,
         ]);
 
-        $this->assertSame($expected_name, $layout->name);
+        $this->assertSame($expected_name, $layout->id);
     }
 
     /**

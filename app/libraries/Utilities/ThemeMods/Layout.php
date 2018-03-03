@@ -99,7 +99,7 @@ class Layout extends AbstractThemeMod
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
 
         $names = $this->names();
-        $this->name = isset($names[$this->context])
+        $this->id = isset($names[$this->context])
             ? \sanitize_key($names[$this->context]) : '';
     }
 
@@ -149,14 +149,14 @@ class Layout extends AbstractThemeMod
      */
     public function get(): string
     {
-        if (!$this->name) {
+        if (!$this->id) {
             return '';
         }
 
         if ($this->isPagelike()) {
             if (($mod = \get_post_meta(
                 $this->more_specific,
-                $this->name,
+                $this->id,
                 true
             ))) {
                 return \sanitize_title($mod);

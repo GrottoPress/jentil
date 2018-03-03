@@ -14,6 +14,6 @@ class ColophonTest extends AbstractTestCase
     {
         $colophon = new Colophon(Stub::makeEmpty(ThemeMods::class));
 
-        $this->assertSame('colophon', $colophon->name);
+        $this->assertSame('colophon', $colophon->id);
     }
 }

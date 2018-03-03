@@ -46,7 +46,7 @@ final class PostType extends AbstractSetting
             'specific' => $post_type->name,
         ]);
 
-        $this->name = $this->mod->name;
+        $this->id = $this->mod->id;
 
         $this->args['default'] = $this->mod->default;
 

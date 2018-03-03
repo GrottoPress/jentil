@@ -66,7 +66,7 @@ final class Singular extends AbstractSetting
             ]);
         }
 
-        $this->name = $this->mod->name;
+        $this->id = $this->mod->id;
 
         $this->args['default'] = $this->mod->default;
     }

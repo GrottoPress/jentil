@@ -37,7 +37,7 @@ final class ImageMargin extends AbstractSetting
 
         $mod = $this->themeMod('image_margin');
       
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';

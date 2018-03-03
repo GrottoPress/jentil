@@ -37,7 +37,7 @@ final class Related extends AbstractSection
     {
         parent::__construct($posts);
 
-        $this->name = \sanitize_key("{$post_type->name}_related_posts");
+        $this->id = \sanitize_key("{$post_type->name}_related_posts");
 
         $this->setArgs($post_type);
         $this->setModArgs($post_type);

@@ -49,7 +49,7 @@ abstract class AbstractSetting extends Setting
 
         $this->args['sanitize_callback'] = 'sanitize_title';
 
-        $this->control['section'] = $this->section->name;
+        $this->control['section'] = $this->section->id;
         $this->control['label'] = \esc_html__('Select layout', 'jentil');
         $this->control['type'] = 'select';
         $this->control['choices'] = $this->section->customizer->app

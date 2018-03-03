@@ -37,7 +37,7 @@ final class StickyPosts extends AbstractSetting
 
         $mod = $this->themeMod('sticky_posts');
       
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'absint';

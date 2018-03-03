@@ -37,7 +37,7 @@ final class WrapClass extends AbstractSetting
 
         $mod = $this->themeMod('wrap_class');
         
-        $this->name = $mod->name;
+        $this->id = $mod->id;
         
         $this->args['default'] = $mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';

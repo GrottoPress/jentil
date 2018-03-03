@@ -37,7 +37,7 @@ abstract class AbstractSetting extends Setting
     {
         parent::__construct($section);
 
-        $this->control['section'] = $this->section->name;
+        $this->control['section'] = $this->section->id;
     }
 
     /**

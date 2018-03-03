@@ -35,7 +35,7 @@ final class Date extends AbstractSection
     {
         parent::__construct($posts);
         
-        $this->name = 'date_posts';
+        $this->id = 'date_posts';
         
         $this->modArgs['context'] = 'date';
 

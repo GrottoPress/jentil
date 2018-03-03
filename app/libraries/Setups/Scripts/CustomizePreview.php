@@ -86,7 +86,7 @@ final class CustomizePreview extends AbstractScript
             $this->app->utilities->shortTags->get()
         ).';
         var colophonModName = "'.$this->app->setups['Customizer\Customizer']
-            ->sections['Colophon\Colophon']->settings['Colophon']->name.'";
+            ->sections['Colophon\Colophon']->settings['Colophon']->id.'";
         var titleModNames = '.\json_encode($this->pageTitles()).';
         var relatedPostsHeadingModNames = '.\json_encode(
             $this->postsHeadings()
@@ -109,7 +109,7 @@ final class CustomizePreview extends AbstractScript
 
         foreach ($this->app->setups['Customizer\Customizer']
             ->sections['Title\Title']->settings as $setting) {
-            $titles[] = $setting->name;
+            $titles[] = $setting->id;
         }
 
         return $titles;
@@ -132,7 +132,7 @@ final class CustomizePreview extends AbstractScript
                 $headings[] = $this->app->setups['Customizer\Customizer']
                     ->panels['Posts\Posts']
                     ->sections["Related_{$post_type->name}"]
-                    ->settings['Heading']->name;
+                    ->settings['Heading']->id;
             }
         }
 

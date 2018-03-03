@@ -95,7 +95,7 @@ class Layout
                 'more_specific' => $more_specific
             ]);
 
-            if ($mod->name) {
+            if ($mod->id) {
                 return $mod;
             }
         }

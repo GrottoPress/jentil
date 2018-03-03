@@ -37,7 +37,7 @@ final class Layout extends AbstractSection
     {
         parent::__construct($customizer);
 
-        $this->name = 'layout';
+        $this->id = 'layout';
         
         $this->args['title'] = \esc_html__('Layout', 'jentil');
         // $this->args['description'] = \esc_html__('Description here', 'jentil');

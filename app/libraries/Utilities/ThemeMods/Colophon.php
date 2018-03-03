@@ -45,7 +45,7 @@ class Colophon extends AbstractThemeMod
     {
         $this->themeMods = $themeMods;
         
-        $this->name = 'colophon';
+        $this->id = 'colophon';
         $this->default = \sprintf(
             \esc_html__(
                 '&copy; %1$s %2$s. Built with %3$s',

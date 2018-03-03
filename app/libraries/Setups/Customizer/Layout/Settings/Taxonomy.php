@@ -44,7 +44,7 @@ final class Taxonomy extends AbstractSetting
         
         $this->setMod($taxonomy, $term);
 
-        $this->name = $this->mod->name;
+        $this->id = $this->mod->id;
 
         $this->args['default'] = $this->mod->default;
 

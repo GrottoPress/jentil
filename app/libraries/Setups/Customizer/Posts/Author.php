@@ -35,7 +35,7 @@ final class Author extends AbstractSection
     {
         parent::__construct($posts);
         
-        $this->name = 'author_posts';
+        $this->id = 'author_posts';
         
         $this->modArgs['context'] = 'author';
 

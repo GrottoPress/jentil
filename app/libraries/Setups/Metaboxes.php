@@ -112,7 +112,7 @@ final class Metaboxes extends AbstractSetup
             'callback' => '',
             'fields' => [
                 [
-                    'id' => $mod->name,
+                    'id' => $mod->id,
                     'type' => 'select',
                     'choices' => $layouts,
                     'label' => \esc_html__('Select layout', 'jentil'),

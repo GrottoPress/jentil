@@ -39,7 +39,7 @@ final class Colophon extends AbstractSetting
         $mod = $this->section->customizer->app->utilities
             ->themeMods->colophon;
 
-        $this->name = $mod->name;
+        $this->id = $mod->id;
 
         $this->args['default'] = $mod->default;
         $this->args['transport'] = 'postMessage';
@@ -47,7 +47,7 @@ final class Colophon extends AbstractSetting
             return \wp_kses($value, 'pre_user_description');
         };
         
-        $this->control['section'] = $this->section->name;
+        $this->control['section'] = $this->section->id;
         $this->control['label'] = \esc_html__('Colophon', 'jentil');
         $this->control['type'] = 'textarea';
     }

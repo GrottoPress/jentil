@@ -111,7 +111,7 @@ class Posts extends AbstractThemeMod
         $this->more_specific = (int)$args['more_specific'];
 
         $names = $this->names();
-        $this->name = isset($names[$this->context])
+        $this->id = isset($names[$this->context])
             ? \sanitize_key($names[$this->context]) : '';
 
         $defaults = $this->defaults();
