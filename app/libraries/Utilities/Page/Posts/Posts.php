@@ -38,16 +38,6 @@ class Posts
     private $page;
 
     /**
-     * Query ID
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @var string
-     */
-    private $id;
-
-    /**
      * Sticky Posts
      *
      * @since 0.1.0
@@ -98,8 +88,6 @@ class Posts
     public function __construct(Page $page)
     {
         $this->page = $page;
-
-        $this->id = 'main-query';
     }
 
     /**
@@ -113,19 +101,6 @@ class Posts
     private function getPage(): Page
     {
         return $this->page;
-    }
-
-    /**
-     * Get ID
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return string
-     */
-    private function getID(): string
-    {
-        return $this->id;
     }
 
     /**

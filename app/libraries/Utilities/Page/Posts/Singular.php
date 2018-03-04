@@ -33,7 +33,7 @@ class Singular extends AbstractPosts
     {
         return [
             'layout' => 'stack',
-            'id' => $this->posts->id,
+            'id' => $this->id,
             'class' => 'singular-post',
             'excerpt' => [
                 'length' => -2,

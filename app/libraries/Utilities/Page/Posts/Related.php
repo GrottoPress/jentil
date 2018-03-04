@@ -23,6 +23,15 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
  */
 class Related extends AbstractPosts
 {
+    protected $id;
+
+    public function __construct(Posts $posts)
+    {
+        parent::__construct($posts);
+
+        $this->id = 'related-posts';
+    }
+
     /**
      * Related Posts Args
      *
@@ -36,7 +45,7 @@ class Related extends AbstractPosts
         return [
             // 'tag' => $this->themeMod('wrap_tag')->get(),
             'class' => $this->themeMod('wrap_class')->get(),
-            'id' => 'related-posts',
+            'id' => $this->id,
             'layout' => $this->themeMod('layout')->get(),
             'text_offset' => $this->themeMod('text_offset')->get(),
             'related_to' => \get_post()->ID,

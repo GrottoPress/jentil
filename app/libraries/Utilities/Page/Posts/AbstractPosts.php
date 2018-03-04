@@ -34,6 +34,16 @@ abstract class AbstractPosts
     protected $posts;
 
     /**
+     * Query ID
+     *
+     * @since 0.1.0
+     * @access protected
+     *
+     * @var string
+     */
+    protected $id = 'main-query';
+
+    /**
      * Constructor
      *
      * @param Posts $posts Posts.
