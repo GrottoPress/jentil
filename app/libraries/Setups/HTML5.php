@@ -1,32 +1,10 @@
 <?php
-
-/**
- * HTML5
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-/**
- * HTML5
- *
- * @since 0.1.0
- */
 final class HTML5 extends AbstractSetup
 {
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'addSupport']);
@@ -35,13 +13,6 @@ final class HTML5 extends AbstractSetup
     }
 
     /**
-     * Add support for html5
-     *
-     * @see https://codex.wordpress.org/Theme_Markup
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action after_setup_theme
      */
     public function addSupport()
@@ -57,16 +28,6 @@ final class HTML5 extends AbstractSetup
     }
 
     /**
-     * Add Microdata
-     *
-     * Use schema.org's vocabulary to provide microdata
-     * markup for this theme.
-     *
-     * @see http://www.paulund.co.uk/add-schema-org-wordpress
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter language_attributes
      */
     public function addMicrodata(string $output): string
@@ -99,14 +60,6 @@ final class HTML5 extends AbstractSetup
     }
 
     /**
-     * Whitelist attributes in WP kses
-     *
-     * Allow itemscope, itemtype, itemprop and other
-     * html5 attributes to pass wp kses filters.
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter wp_kses_allowed_html
      */
     public function ksesWhitelist(array $allowed, string $context): array

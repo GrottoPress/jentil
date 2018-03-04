@@ -1,34 +1,12 @@
 <?php
-
-/**
- * Footer
- *
- * @package GrottoPress\Jentil\Setups\Views
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\Jentil\Setups\AbstractSetup;
 
-/**
- * Footer
- *
- * @since 0.1.0
- */
 final class Footer extends AbstractSetup
 {
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_action('jentil_inside_footer', [$this, 'renderWidgets']);
@@ -36,13 +14,6 @@ final class Footer extends AbstractSetup
     }
 
     /**
-     * Render widgets
-     *
-     * Render the footer widget area
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action jentil_inside_footer
      */
     public function renderWidgets()
@@ -59,11 +30,6 @@ final class Footer extends AbstractSetup
     <?php }
 
     /**
-     * Render colophon
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action jentil_inside_footer
      */
     public function renderColophon()

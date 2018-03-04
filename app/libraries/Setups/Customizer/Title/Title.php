@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Title Section
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Title
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Title;
@@ -18,21 +7,8 @@ use GrottoPress\Jentil\Setups\Customizer\Customizer;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection;
 use WP_Customize_Manager as WPCustomizer;
 
-/**
- * Title Section
- *
- * @since 0.1.0
- */
 final class Title extends AbstractSection
 {
-    /**
-     * Constructor
-     *
-     * @param Customizer $customizer Customizer.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Customizer $customizer)
     {
         parent::__construct($customizer);
@@ -43,14 +19,6 @@ final class Title extends AbstractSection
         $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
-    /**
-     * Add section
-     *
-     * @param WPCustomizer $WPCustomizer
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function add(WPCustomizer $WPCustomizer)
     {
         $this->settings = $this->settings();
@@ -59,12 +27,7 @@ final class Title extends AbstractSection
     }
 
     /**
-     * Settings
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Settings\AbstractSetting[] Settings.
+     * @return Settings\AbstractSetting[]
      */
     private function settings(): array
     {

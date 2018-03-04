@@ -1,34 +1,12 @@
 <?php
-
-/**
- * Singular
- *
- * @package GrottoPress\Jentil\Setups\Views
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\Jentil\Setups\AbstractSetup;
 
-/**
- * Singular
- *
- * @since 0.1.0
- */
 final class Singular extends AbstractSetup
 {
-   /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
@@ -48,11 +26,6 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Add <body> classes
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter body_class
      */
     public function addBodyClasses(array $classes): array
@@ -96,11 +69,6 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Post parent link
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action jentil_before_before_title
      */
     public function renderParentLink()
@@ -122,11 +90,6 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Attachment
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action jentil_before_content
      */
     public function renderAttachment()
@@ -158,16 +121,7 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Byline
-     *
-     * Used for single posts when using the `index.php` template.
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter jentil_singular_after_title
-     *
-     * @return string
      */
     public function byline(
         string $output,
@@ -182,14 +136,6 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Render byline
-     *
-     * Replicates the functionality above for when
-     * using the singular.php template
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action jentil_after_title
      */
     public function renderByline()
@@ -204,11 +150,6 @@ final class Singular extends AbstractSetup
     }
 
     /**
-     * Render related posts
-     *
-     * @since 0.6.0
-     * @access public
-     *
      * @action jentil_after_content
      */
     public function renderRelatedPosts()
@@ -232,16 +173,6 @@ final class Singular extends AbstractSetup
         echo $posts.'</aside>';
     }
 
-    /**
-     * Single post after title
-     *
-     * @param int $id Post ID.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string
-     */
     private function _byline(int $id): string
     {
         $jentil_post = $this->app->utilities->post($id);

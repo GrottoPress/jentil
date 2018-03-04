@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Post Type Section
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
@@ -17,32 +6,13 @@ namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 use WP_Customize_Manager as WPCustomizer;
 use WP_Post_Type;
 
-/**
- * Post Type Section
- *
- * @since 0.1.0
- */
 final class PostType extends AbstractSection
 {
     /**
-     * Post type
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var WP_Post_Type $post_type Post type.
+     * @var WP_Post_Type
      */
     protected $post_type;
 
-    /**
-     * Constructor
-     *
-     * @param Posts $posts Posts panel.
-     * @param WP_Post_Type $post_type Post type.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
         parent::__construct($posts);
@@ -55,14 +25,6 @@ final class PostType extends AbstractSection
         $this->setModArgs();
     }
 
-    /**
-     * Add section
-     *
-     * @param WPCustomizer $WPCustomizer
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function add(WPCustomizer $WPCustomizer)
     {
         $this->settings = $this->settings();
@@ -70,12 +32,6 @@ final class PostType extends AbstractSection
         parent::add($WPCustomizer);
     }
 
-    /**
-     * Set args
-     *
-     * @since 0.5.0
-     * @access private
-     */
     private function setArgs()
     {
         $this->args['title'] = \sprintf(
@@ -94,12 +50,6 @@ final class PostType extends AbstractSection
         };
     }
 
-    /**
-     * Set mod args
-     *
-     * @since 0.5.0
-     * @access private
-     */
     private function setModArgs()
     {
         $this->modArgs['specific'] = $this->post_type->name;
@@ -109,12 +59,7 @@ final class PostType extends AbstractSection
     }
 
     /**
-     * Settings
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return Settings\AbstractSetting[] Settings.
+     * @return Settings\AbstractSetting[]
      */
     protected function settings(): array
     {

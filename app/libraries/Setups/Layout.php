@@ -1,32 +1,10 @@
 <?php
-
-/**
- * Layout
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-/**
- * Layout
- *
- * @since 0.1.0
- */
 final class Layout extends AbstractSetup
 {
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
@@ -34,11 +12,6 @@ final class Layout extends AbstractSetup
     }
 
     /**
-     * Add Body Classes
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter body_class
      */
     public function addBodyClasses(array $classes): array
@@ -63,11 +36,6 @@ final class Layout extends AbstractSetup
     }
 
     /**
-     * Content width
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @global int $content_width Required by WordPress.
      *
      * @action after_setup_theme

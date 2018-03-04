@@ -1,75 +1,30 @@
 <?php
-
-/**
- * Title
- *
- * @package GrottoPress\Jentil\Utilities\ThemeMods
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
-/**
- * Title
- *
- * @since 0.1.0
- */
 class Title extends AbstractThemeMod
 {
     /**
-     * ThemeMods
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var ThemeMods $themeMods ThemeMods.
+     * @var ThemeMods
      */
     private $themeMods;
 
     /**
-     * Context
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string $context Page type
      */
     private $context;
 
     /**
-     * Specific template
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string $specific Post type name or taxonomy name
      */
     private $specific;
 
     /**
-     * More specific template
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var int $more_specific Post ID or term ID
      */
     private $more_specific;
 
-    /**
-     * Constructor
-     *
-     * @param ThemeMods $themeMods
-     * @param array $args Mod args
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(ThemeMods $themeMods, array $args = [])
     {
         $this->themeMods = $themeMods;
@@ -77,12 +32,6 @@ class Title extends AbstractThemeMod
         $this->setAttributes($args);
     }
 
-    /**
-     * Set attributes
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
@@ -105,14 +54,6 @@ class Title extends AbstractThemeMod
         $this->default = $defaults[$this->context] ?? '';
     }
 
-    /**
-     * Get mod names
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Mod names.
-     */
     private function names(): array
     {
         $names = [
@@ -137,14 +78,6 @@ class Title extends AbstractThemeMod
         return $names;
     }
 
-    /**
-     * Get settings defaults
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Mod defaults.
-     */
     private function defaults(): array
     {
         $defaults = [
@@ -161,11 +94,7 @@ class Title extends AbstractThemeMod
         ];
 
         /**
-         * @filter jentil_title_mod_defaults
-         *
          * @var string $defaults Posts mod defaults.
-         *
-         * @since 0.1.0
          */
         return \apply_filters(
             'jentil_title_mod_defaults',
@@ -176,14 +105,6 @@ class Title extends AbstractThemeMod
         );
     }
 
-    /**
-     * Get mod
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string
-     */
     public function get(): string
     {
         return $this->themeMods->utilities->shortTags->replace(parent::get());

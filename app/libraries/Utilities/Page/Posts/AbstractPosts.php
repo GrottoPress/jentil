@@ -1,69 +1,27 @@
 <?php
-
-/**
- * Abstract Archive Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\WordPress\Posts\Posts as PostsPackage;
 
-/**
- * Abstract Archive Posts
- *
- * @since 0.1.0
- */
 abstract class AbstractPosts
 {
     /**
-     * Posts
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Posts $posts Posts.
+     * @var Posts
      */
     protected $posts;
 
     /**
-     * Query ID
-     *
-     * @since 0.1.0
-     * @access protected
-     *
      * @var string
      */
     protected $id = 'main-query';
 
-    /**
-     * Constructor
-     *
-     * @param Posts $posts Posts.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Posts $posts)
     {
         $this->posts = $posts;
     }
 
-    /**
-     * Get posts
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return PostsPackage
-     */
     public function posts(): PostsPackage
     {
         return $this->posts->page->utilities->posts(
@@ -71,13 +29,5 @@ abstract class AbstractPosts
         );
     }
 
-    /**
-     * Posts Args
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return array Posts args.
-     */
     abstract protected function args(): array;
 }

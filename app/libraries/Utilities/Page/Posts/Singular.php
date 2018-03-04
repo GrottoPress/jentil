@@ -1,34 +1,10 @@
 <?php
-
-/**
- * Singular Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
-/**
- * Singular Posts
- *
- * @since 0.1.0
- */
 class Singular extends AbstractPosts
 {
-    /**
-     * Singular posts args.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Singular posts args.
-     */
     public function args(): array
     {
         return [

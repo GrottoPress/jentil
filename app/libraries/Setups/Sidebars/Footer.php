@@ -1,43 +1,16 @@
 <?php
-
-/**
- * Footer
- *
- * @package GrottoPress\Jentil\Setups\Sidebars
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Sidebars;
 
-/**
- * Footer
- *
- * @since 0.1.0
- */
 final class Footer extends AbstractSidebar
 {
-    /**
-     * Constructor
-     *
-     * @since 0.6.0
-     * @access public
-     */
     public function __construct()
     {
         $this->id = 'footer-widget-area';
     }
 
     /**
-     * Register widget area
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @action widgets_init
      */
     public function register()

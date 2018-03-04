@@ -1,56 +1,22 @@
 <?php
-
-/**
- * Abstract Posts Section
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection as Section;
 
-/**
- * Abstract Posts Section
- *
- * @since 0.1.0
- */
 abstract class AbstractSection extends Section
 {
     /**
-     * Panel
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Posts $panel Posts panel.
+     * @var Posts
      */
     protected $panel;
 
     /**
-     * Constructor
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var array $modArgs Mod args.
+     * @var array
      */
     protected $modArgs = [];
 
-    /**
-     * Constructor
-     *
-     * @param Posts $posts Posts panel.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Posts $posts)
     {
         $this->panel = $posts;
@@ -61,40 +27,16 @@ abstract class AbstractSection extends Section
         $this->args['panel'] = $this->panel->id;
     }
 
-    /**
-     * Panel
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return Posts Posts panel.
-     */
     protected function getPanel(): Posts
     {
         return $this->panel;
     }
 
-    /**
-     * Mod args
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return array Mod args.
-     */
     protected function getModArgs(): array
     {
         return $this->modArgs;
     }
 
-    /**
-     * Settings
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return array
-     */
     protected function settings(): array
     {
         $settings = [];

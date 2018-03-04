@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Metaboxes
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
@@ -17,36 +6,15 @@ namespace GrottoPress\Jentil\Setups;
 use GrottoPress\Jentil\Jentil;
 use WP_Post;
 
-/**
- * Metaboxes
- *
- * @since 0.1.0
- */
 final class Metaboxes extends AbstractSetup
 {
     use MetaboxesTrait;
 
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         $this->setup();
     }
 
-    /**
-     * Meta boxes.
-     *
-     * @param WP_Post $post Post.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Metaboxes.
-     */
     private function metaboxes(WP_Post $post): array
     {
         $boxes = [];
@@ -56,26 +24,12 @@ final class Metaboxes extends AbstractSetup
         }
 
         /**
-         * @filter jentil_metaboxes
-         *
          * @var Metaboxes[] $boxes Metaboxes.
          * @var WP_Post $post Post.
-         *
-         * @since 0.1.0
          */
         return \apply_filters('jentil_metaboxes', $boxes, $post);
     }
 
-    /**
-     * Layout metabox
-     *
-     * @param WP_Post $post Post.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Layout metabox.
-     */
     private function layoutMetabox(WP_Post $post): array
     {
         if (!\current_user_can('edit_theme_options')) {

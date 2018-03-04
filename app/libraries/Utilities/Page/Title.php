@@ -1,59 +1,22 @@
 <?php
-
-/**
- * Title
- *
- * @package GrottoPress\Jentil\Utilities\Page
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
 
 use GrottoPress\Jentil\Utilities\ThemeMods\Title as TitleMod;
 
-/**
- * Title
- *
- * @since 0.1.0
- */
 class Title
 {
     /**
-     * Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Page
      */
     private $page;
 
-    /**
-     * Constructor
-     *
-     * @param Page $page
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Page $page)
     {
         $this->page = $page;
     }
 
-    /**
-     * Title mod
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Title mod.
-     */
     public function themeMod(): TitleMod
     {
         $page = $this->page->type;

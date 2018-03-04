@@ -1,37 +1,10 @@
 <?php
-
-/**
- * Template Loader
- *
- * We're using this to load templates from the 'app/templates'
- * directory, instead of from the theme directory.
- *
- * @see https://developer.wordpress.org/reference/functions/get_query_template/
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-/**
- * Template Loader
- *
- * @since 0.1.0
- */
 final class Loader extends AbstractSetup
 {
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         $templates = $this->templates();
@@ -45,11 +18,6 @@ final class Loader extends AbstractSetup
     }
 
     /**
-     * Load templates
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter {$type}_template_hierarchy
      */
     public function loadTemplates(array $templates): array
@@ -74,11 +42,6 @@ final class Loader extends AbstractSetup
     }
 
     /**
-     * Templates
-     *
-     * @since 0.5.0
-     * @access private
-     *
      * @return string[]
      */
     private function templates(): array

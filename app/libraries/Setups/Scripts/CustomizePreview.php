@@ -1,36 +1,12 @@
 <?php
-
-/**
- * Customize preview script
- *
- * @package GrottoPress\Jentil\Setups\Scripts
- * @since 0.6.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Scripts;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-/**
- * Customize preview script
- *
- * @since 0.6.0
- */
 final class CustomizePreview extends AbstractScript
 {
-    /**
-     * Constructor
-     *
-     * @param AbstractTheme $jentil
-     *
-     * @since 0.6.0
-     * @access public
-     */
     public function __construct(AbstractTheme $jentil)
     {
         parent::__construct($jentil);
@@ -38,12 +14,6 @@ final class CustomizePreview extends AbstractScript
         $this->id = 'jentil-customize-preview';
     }
 
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_action('customize_preview_init', [$this, 'enqueue']);
@@ -51,11 +21,6 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * Enqueue
-     *
-     * @since 0.6.0
-     * @access public
-     *
      * @action customize_preview_init
      */
     public function enqueue()
@@ -73,11 +38,6 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * Pass data to our script via PHP
-     *
-     * @since 0.6.0
-     * @access public
-     *
      * @action customize_preview_init
      */
     public function addInlineScript()
@@ -96,11 +56,6 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * Page titles
-     *
-     * @since 0.6.0
-     * @access private
-     *
      * @return string[]
      */
     private function pageTitles(): array
@@ -116,11 +71,6 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * Posts headings
-     *
-     * @since 0.6.0
-     * @access private
-     *
      * @return string[]
      */
     private function postsHeadings(): array

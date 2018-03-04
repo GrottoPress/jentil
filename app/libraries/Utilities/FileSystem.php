@@ -1,64 +1,25 @@
 <?php
-
-/**
- * File System
- *
- * @package GrottoPress\Jentil\Utilities
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
-/**
- * File System
- *
- * @since 0.1.0
- */
 class FileSystem
 {
     /**
-     * Utilities
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Utilities
      */
     private $utilities;
 
     /**
-     * Jentil directory path
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string
      */
     private $dirPath;
 
     /**
-     * Jentil directory URI
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string
      */
     private $dirUrl;
 
-    /**
-     * Constructor
-     *
-     * @param Utilities $utilities
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Utilities $utilities)
     {
         $this->utilities = $utilities;
@@ -71,12 +32,6 @@ class FileSystem
      * Get Jentil directory
      *
      * @param string $type 'path' or 'url'.
-     * @param string $append Filepath to append to URL.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
      */
     public function dir(string $type, string $append = ''): string
     {
@@ -87,13 +42,7 @@ class FileSystem
      * Get Jentil partials directory
      *
      * @param string $type 'path' or 'url'.
-     * @param string $append Filepath to append to URL.
      * @param string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
      */
     public function partialsDir(
         string $type,
@@ -107,13 +56,7 @@ class FileSystem
      * Get Jentil templates directory
      *
      * @param string $type 'path' or 'url'.
-     * @param string $append Filepath to append to URL.
      * @param string $form 'relative' or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Path or URL.
      */
     public function templatesDir(
         string $type,
@@ -125,9 +68,6 @@ class FileSystem
 
     /**
      * Path of Jentil relative to theme's directory.
-     *
-     * @since 0.1.0
-     * @access public
      *
      * @return string Path. Empty if Jentil is theme.
      */
@@ -143,7 +83,6 @@ class FileSystem
      * Get directory of theme under which Jentil is installed.
      *
      * @param string $type 'url' or 'path'
-     * @param string $append
      *
      * @return string Path. Same as $this->dir() if Jentil is theme.
      */
@@ -168,13 +107,7 @@ class FileSystem
      * Helper to get Jentil directory URL/path
      *
      * @param string $type 'path' or 'url'.
-     * @param string $append Filepath to append to URL/path.
      * @param string $form 'relative' (to Jentil directory) or 'absolute'.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Path or URL.
      */
     private function _dir(
         string $type,
@@ -190,11 +123,6 @@ class FileSystem
 
     /**
      * Jentil directory URL
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function dirUrl(): string
     {
@@ -205,11 +133,6 @@ class FileSystem
 
     /**
      * Jentil directory path
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function dirPath(): string
     {

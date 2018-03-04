@@ -1,59 +1,20 @@
 <?php
-
-/**
- * Short Tags
- *
- * @package GrottoPress\Jentil\Utilities
- * @since 0.5.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
-/**
- * Short Tags
- *
- * @since 0.5.0
- */
 class ShortTags
 {
     /**
-     * Utilities
-     *
-     * @since 0.5.0
-     * @access private
-     *
      * @var Utilities
      */
     private $utilities;
 
-    /**
-     * Constructor
-     *
-     * @param Utilities $utilities
-     *
-     * @since 0.5.0
-     * @access public
-     */
     public function __construct(Utilities $utilities)
     {
         $this->utilities = $utilities;
     }
 
-    /**
-     * Replace short tags in a string
-     *
-     * @param string $content
-     *
-     * @since 0.5.0
-     * @access public
-     *
-     * @return string
-     */
     public function replace(string $content): string
     {
         return \str_ireplace(
@@ -63,14 +24,6 @@ class ShortTags
         );
     }
 
-    /**
-     * Tags
-     *
-     * @since 0.5.0
-     * @access public
-     *
-     * @return string
-     */
     public function get(): array
     {
         $tags = [
@@ -101,11 +54,7 @@ class ShortTags
         ];
 
         /**
-         * @filter jentil_short_tags
-         *
          * @var array $tags
-         *
-         * @since 0.5.0
          */
         return \apply_filters('jentil_short_tags', $tags);
     }

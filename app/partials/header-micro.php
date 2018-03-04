@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Header Template: Micro
- *
- * @package GrottoPress\Jentil
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 ?><!DOCTYPE html>
@@ -45,13 +34,7 @@ declare (strict_types = 1);
             ?>"></script>
         <![endif]-->
 
-        <?php
-        /**
-         * @action wp_head
-         *
-         * @since 0.1.0
-         */
-        \wp_head(); ?>
+        <?php \wp_head(); ?>
     </head>
 
     <body <?php \body_class(); ?>>

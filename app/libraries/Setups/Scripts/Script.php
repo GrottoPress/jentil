@@ -1,36 +1,12 @@
 <?php
-
-/**
- * Main script
- *
- * @package GrottoPress\Jentil\Setups\Scripts
- * @since 0.6.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Scripts;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-/**
- * Main script
- *
- * @since 0.6.0
- */
 final class Script extends AbstractScript
 {
-    /**
-     * Constructor
-     *
-     * @param AbstractTheme $jentil
-     *
-     * @since 0.6.0
-     * @access public
-     */
     public function __construct(AbstractTheme $jentil)
     {
         parent::__construct($jentil);
@@ -38,12 +14,6 @@ final class Script extends AbstractScript
         $this->id = 'jentil';
     }
 
-    /**
-     * Run setup
-     *
-     * @since 0.6.0
-     * @access public
-     */
     public function run()
     {
         parent::run();
@@ -52,11 +22,6 @@ final class Script extends AbstractScript
     }
 
     /**
-     * Enqueue
-     *
-     * @since 0.6.0
-     * @access public
-     *
      * @action wp_footer
      */
     public function enqueue()
@@ -78,9 +43,6 @@ final class Script extends AbstractScript
      *
      * This should be removed by our script if
      * javascript is supported by client.
-     *
-     * @since 0.6.0
-     * @access public
      *
      * @filter body_class
      */

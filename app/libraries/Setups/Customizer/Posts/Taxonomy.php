@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Taxonomy Section
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
@@ -18,23 +7,8 @@ use WP_Customize_Manager as WPCustomizer;
 use WP_Taxonomy;
 use WP_Term;
 
-/**
- * Taxonomy Section
- *
- * @since 0.1.0
- */
 final class Taxonomy extends AbstractSection
 {
-    /**
-     * Constructor
-     *
-     * @param Posts $posts Posts.
-     * @param WP_Taxonomy $taxonomy Taxonomy.
-     * @param WP_Term $term Term.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(
         Posts $posts,
         WP_Taxonomy $taxonomy,
@@ -47,14 +21,6 @@ final class Taxonomy extends AbstractSection
         $this->setArgs($taxonomy, $term);
     }
 
-    /**
-     * Add section
-     *
-     * @param WPCustomizer $WPCustomizer
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function add(WPCustomizer $WPCustomizer)
     {
         $this->settings = $this->settings();
@@ -62,12 +28,6 @@ final class Taxonomy extends AbstractSection
         parent::add($WPCustomizer);
     }
 
-    /**
-     * Set name
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         if ($term) {
@@ -79,12 +39,6 @@ final class Taxonomy extends AbstractSection
         }
     }
 
-    /**
-     * Set mod args
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->modArgs['context'] = 'tax';
@@ -99,12 +53,6 @@ final class Taxonomy extends AbstractSection
         $this->modArgs['more_specific'] = ($term ? $term->term_id : 0);
     }
 
-    /**
-     * Set active callback
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->args['active_callback'] = function () use (
@@ -145,14 +93,6 @@ final class Taxonomy extends AbstractSection
         }
     }
 
-    /**
-     * Get settings
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return Settings\AbstractSetting[] Settings.
-     */
     protected function settings(): array
     {
         $settings = parent::settings();

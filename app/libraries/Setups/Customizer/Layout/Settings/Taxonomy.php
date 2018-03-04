@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Taxonomy Layout Setting
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Layout\Settings
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
@@ -18,23 +7,8 @@ use GrottoPress\Jentil\Setups\Customizer\Layout\Layout;
 use WP_Taxonomy;
 use WP_Term;
 
-/**
- * Taxonomy Layout Setting
- *
- * @since 0.1.0
- */
 final class Taxonomy extends AbstractSetting
 {
-    /**
-     * Constructor
-     *
-     * @param Layout $layout Layout.
-     * @param WP_Taxonomy $taxonomy Taxonomy.
-     * @param WP_Term $term Term.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(
         Layout $layout,
         WP_Taxonomy $taxonomy,
@@ -51,12 +25,6 @@ final class Taxonomy extends AbstractSetting
         $this->setControl($taxonomy, $term);
     }
 
-    /**
-     * Set Mod
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $mod_context = 'tax';
@@ -81,12 +49,6 @@ final class Taxonomy extends AbstractSetting
         }
     }
 
-    /**
-     * Set Mod
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setControl(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->control['active_callback'] = function () use (

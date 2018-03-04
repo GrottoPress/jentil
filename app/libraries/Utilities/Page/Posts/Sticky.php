@@ -1,36 +1,12 @@
 <?php
-
-/**
- * Sticky Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 
-/**
- * Sticky Posts
- *
- * @since 0.1.0
- */
 class Sticky extends AbstractPosts
 {
-    /**
-     * Sticky Posts Args
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Sticky posts args.
-     */
     public function args(): array
     {
         $args = [
@@ -148,14 +124,7 @@ class Sticky extends AbstractPosts
     }
 
     /**
-     * Get sticky posts for post type
-     *
-     * @param string Post type name.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return int[] Sticky posts for post type.
+     * @return int[]
      */
     public function get(string $post_type = ''): array
     {
@@ -178,27 +147,12 @@ class Sticky extends AbstractPosts
 
     /**
      * Sticky posts enabled?
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool Do we have sticky posts enabled?
      */
     public function isSet(): bool
     {
         return (bool)$this->posts->themeMod('sticky_posts')->get();
     }
 
-    /**
-     * Sticky posts mod
-     *
-     * @param string $setting
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return PostsMod Sticky posts mod.
-     */
     public function themeMod(string $setting): PostsMod
     {
         $args = [

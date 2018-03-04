@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Post Type Layout Setting
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Layout\Settings
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
@@ -17,22 +6,8 @@ namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
 use GrottoPress\Jentil\Setups\Customizer\Layout\Layout;
 use WP_Post_Type;
 
-/**
- * Post Type Layout Setting
- *
- * @since 0.1.0
- */
 final class PostType extends AbstractSetting
 {
-    /**
-     * Constructor
-     *
-     * @param Layout $layout Layout section.
-     * @param WP_Post_Type $post_type Post type.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Layout $layout, WP_Post_Type $post_type)
     {
         parent::__construct($layout);

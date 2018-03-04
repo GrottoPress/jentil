@@ -1,75 +1,30 @@
 <?php
-
-/**
- * Layout
- *
- * @package GrottoPress\Jentil\Utilities\ThemeMods
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
-/**
- * Layout
- *
- * @since 0.1.0
- */
 class Layout extends AbstractThemeMod
 {
     /**
-     * ThemeMods
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var ThemeMods $themeMods ThemeMods.
+     * @var ThemeMods
      */
     private $themeMods;
 
     /**
-     * Context
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string $context Page type.
      */
     private $context;
 
     /**
-     * Specific page type
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string $specific Post type or taxonomy name.
      */
     private $specific;
 
     /**
-     * More specific page type
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var int $more_specific Post ID or term ID.
      */
     private $more_specific;
 
-    /**
-     * Constructor
-     *
-     * @param ThemeMods $themeMods
-     * @param array $args Mod args
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(ThemeMods $themeMods, array $args = [])
     {
         $this->themeMods = $themeMods;
@@ -77,12 +32,6 @@ class Layout extends AbstractThemeMod
         $this->setAttributes($args);
     }
 
-    /**
-     * Set attributes
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
@@ -103,14 +52,6 @@ class Layout extends AbstractThemeMod
             ? \sanitize_key($names[$this->context]) : '';
     }
 
-    /**
-     * Get mod names
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Mod names.
-     */
     private function names(): array
     {
         $names = [
@@ -139,14 +80,6 @@ class Layout extends AbstractThemeMod
         return $names;
     }
 
-    /**
-     * Get mod
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Mod.
-     */
     public function get(): string
     {
         if (!$this->id) {
@@ -168,17 +101,6 @@ class Layout extends AbstractThemeMod
         return \sanitize_title(parent::get());
     }
 
-    /**
-     * Is post type pagelike?
-     *
-     * Determines if post type behaves like
-     * the page post type.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool
-     */
     public function isPagelike(): bool
     {
         if ('singular' !== $this->context) {

@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Utilities
- *
- * @package GrottoPress\Jentil\Utilities
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
@@ -25,149 +14,70 @@ use GrottoPress\Getter\GetterTrait;
 use Puc_v4p2_Theme_UpdateChecker;
 use Puc_v4_Factory;
 
-/**
- * Utilities
- *
- * @since 0.1.0
- */
 class Utilities
 {
     use GetterTrait;
 
     /**
-     * Jentil
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Jentil
      */
     private $app;
 
     /**
-     * ThemeMods
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var ThemeMods
      */
     private $themeMods = null;
 
     /**
-     * Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Page
      */
     private $page = null;
 
     /**
-     * Colophon
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Colophon
      */
     private $colophon = null;
 
     /**
-     * File System
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var FileSystem
      */
     private $fileSystem = null;
 
     /**
-     * Loader
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Loader
      */
     private $loader = null;
 
     /**
-     * Mobile Detector
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Detector
      */
     private $mobileDetector = null;
 
     /**
-     * Updater
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Puc_v4p2_Theme_UpdateChecker
      */
     private $updater = null;
 
     /**
-     * Short Tags
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var ShortTags
      */
     private $shortTags = null;
 
     /**
-     * Post Type Template
-     *
-     * @since 0.6.0
-     * @access private
-     *
      * @var PostTypeTemplate
      */
     private $postTypeTemplate = null;
 
-    /**
-     * Constructor
-     *
-     * @var Jentil $jentil
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Jentil $jentil)
     {
         $this->app = $jentil;
     }
 
-    /**
-     * Get app
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Jentil
-     */
     private function getApp(): Jentil
     {
         return $this->app;
     }
 
-    /**
-     * Get mods
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return ThemeMods
-     */
     private function getThemeMods(): ThemeMods
     {
         if (null === $this->themeMods) {
@@ -177,14 +87,6 @@ class Utilities
         return $this->themeMods;
     }
 
-    /**
-     * Get page
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Page
-     */
     private function getPage(): Page
     {
         if (null === $this->page) {
@@ -194,14 +96,6 @@ class Utilities
         return $this->page;
     }
 
-    /**
-     * Get colophon
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Colophon
-     */
     private function getColophon(): Colophon
     {
         if (null === $this->colophon) {
@@ -211,14 +105,6 @@ class Utilities
         return $this->colophon;
     }
 
-    /**
-     * Get file System
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return FileSystem
-     */
     private function getFileSystem(): FileSystem
     {
         if (null === $this->fileSystem) {
@@ -228,14 +114,6 @@ class Utilities
         return $this->fileSystem;
     }
 
-    /**
-     * Get loader
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Loader
-     */
     private function getLoader(): Loader
     {
         if (null === $this->loader) {
@@ -245,14 +123,6 @@ class Utilities
         return $this->loader;
     }
 
-    /**
-     * Get mobile detector
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Detector
-     */
     private function getMobileDetector(): Detector
     {
         if (null === $this->mobileDetector) {
@@ -262,14 +132,6 @@ class Utilities
         return $this->mobileDetector;
     }
 
-    /**
-     * Get updater
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Puc_v4p2_Theme_UpdateChecker
-     */
     private function getUpdater(): Puc_v4p2_Theme_UpdateChecker
     {
         if (null === $this->updater) {
@@ -283,14 +145,6 @@ class Utilities
         return $this->updater;
     }
 
-    /**
-     * Get short tags
-     *
-     * @since 0.5.0
-     * @access private
-     *
-     * @return ShortTags
-     */
     private function getShortTags(): ShortTags
     {
         if (null === $this->shortTags) {
@@ -300,14 +154,6 @@ class Utilities
         return $this->shortTags;
     }
 
-    /**
-     * Get custom template
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return PostTypeTemplate
-     */
     private function getPostTypeTemplate(): PostTypeTemplate
     {
         if (null === $this->postTypeTemplate) {
@@ -317,16 +163,6 @@ class Utilities
         return $this->postTypeTemplate;
     }
 
-    /**
-     * Breadcrumbs
-     *
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Breadcrumbs
-     */
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
         $breadcrumbs = new Breadcrumbs($this->getPage(), $args);
@@ -334,31 +170,11 @@ class Utilities
         return $breadcrumbs->collectLinks();
     }
 
-    /**
-     * Posts
-     *
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Posts
-     */
     public function posts(array $args = []): Posts
     {
         return new Posts($args);
     }
 
-    /**
-     * Post
-     *
-     * @param integer $id Post ID.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Post
-     */
     public function post(int $id = 0): Post
     {
         return new Post($id);

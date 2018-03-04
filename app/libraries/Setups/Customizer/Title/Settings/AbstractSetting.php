@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Abstract Title Setting
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Title\Settings
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Title\Settings;
@@ -18,32 +7,14 @@ use GrottoPress\Jentil\Setups\Customizer\Title\Title;
 use GrottoPress\Jentil\Utilities\ThemeMods\Title as TitleMod;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
-/**
- * Abstract Title Setting
- *
- * @since 0.1.0
- */
 abstract class AbstractSetting extends Setting
 {
     /**
-     * Mod
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var \GrottoPress\Jentil\Utilities\ThemeMods\Title $mod Mod.
+     * @var TitleMod
      */
     protected $mod;
 
-    /**
-     * Constructor
-     *
-     * @param Title $title Title section.
-     *
-     * @since 0.1.0
-     * @access protected
-     */
-    protected function __construct(Title $title)
+    public function __construct(Title $title)
     {
         parent::__construct($title);
 
@@ -55,16 +26,6 @@ abstract class AbstractSetting extends Setting
         $this->control['type'] = 'text';
     }
 
-    /**
-     * Get mod
-     *
-     * @param array
-     *
-     * @since 0.5.0
-     * @access protected
-     *
-     * @return TitleMod
-     */
     protected function themeMod(array $args): TitleMod
     {
         return $this->section->customizer->app->utilities->themeMods->title(

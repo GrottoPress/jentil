@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
@@ -18,99 +7,45 @@ use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\Getter\GetterTrait;
 
-/**
- * Posts
- *
- * @since 0.1.0
- */
 class Posts
 {
     use GetterTrait;
 
     /**
-     * Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Page
      */
     private $page;
 
     /**
-     * Sticky Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Sticky
      */
     private $sticky;
 
     /**
-     * Related Posts
-     *
-     * @since 0.6.0
-     * @access private
-     *
      * @var Related
      */
     private $related;
 
     /**
-     * Singular Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Singular
      */
     private $singular;
 
     /**
-     * Archive Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Archive
      */
     private $archive;
 
-    /**
-     * Constructor
-     *
-     * @param Page $page
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Page $page)
     {
         $this->page = $page;
     }
 
-    /**
-     * Get Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Page
-     */
     private function getPage(): Page
     {
         return $this->page;
     }
 
-    /**
-     * Get singular posts
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return Singular
-     */
     private function getSingular(): Singular
     {
         if (null === $this->singular) {
@@ -120,14 +55,6 @@ class Posts
         return $this->singular;
     }
 
-    /**
-     * Get Sticky Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Sticky
-     */
     private function getSticky(): Sticky
     {
         if (null === $this->sticky) {
@@ -137,14 +64,6 @@ class Posts
         return $this->sticky;
     }
 
-    /**
-     * Get related posts
-     *
-     * @since 0.6.0
-     * @access private
-     *
-     * @return Related
-     */
     private function getRelated(): Related
     {
         if (null === $this->related) {
@@ -154,14 +73,6 @@ class Posts
         return $this->related;
     }
 
-    /**
-     * Get Archive Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Archive
-     */
     private function getArchive(): Archive
     {
         if (null === $this->archive) {
@@ -171,14 +82,6 @@ class Posts
         return $this->archive;
     }
 
-    /**
-     * Render posts
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Posts.
-     */
     public function render(): string
     {
         if ($this->page->is('singular')) {
@@ -200,11 +103,6 @@ class Posts
     }
 
     /**
-     * Post types
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @return \WP_Post_Type[] Public post types.
      */
     public function postTypes(): array
@@ -213,11 +111,6 @@ class Posts
     }
 
     /**
-     * Taxonomies
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @return \WP_Taxonomy[] Public taxonomies.
      */
     public function taxonomies(): array
@@ -225,17 +118,6 @@ class Posts
         return \get_taxonomies(['public' => true], 'objects');
     }
 
-    /**
-     * Posts mods
-     *
-     * @param string $setting
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return mixed Posts mod.
-     */
     public function themeMod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {
@@ -283,20 +165,6 @@ class Posts
         return $mod;
     }
 
-    /**
-     * Is post type pagelike?
-     *
-     * Determines if post type behaves like
-     * the page post type.
-     *
-     * @param string $post_type
-     * @param int $post_id
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool
-     */
     public function isPagelike(string $post_type = '', int $post_id = 0): bool
     {
         $check = (

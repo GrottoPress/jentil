@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Jentil
- *
- * @package GrottoPress\Jentil
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil;
@@ -17,50 +6,28 @@ namespace GrottoPress\Jentil;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\AbstractTheme;
 
-/**
- * Jentil
- *
- * @since 0.1.0
- */
 final class Jentil extends AbstractTheme
 {
     /**
-     * Theme utilities
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Utilities
      */
     private $utilities = null;
 
     /**
      * Theme Name
-     *
-     * @since 0.1.0
      */
     const NAME = 'Jentil';
 
     /**
      * Theme website URL
-     *
-     * @since 0.1.0
      */
     const WEBSITE = 'https://www.grottopress.com/jentil/';
 
     /**
      * Theme documentation URL
-     *
-     * @since 0.1.0
      */
     const DOCUMENTATION = 'https://www.grottopress.com/jentil/';
 
-    /**
-     * Constructor
-     *
-     * @since 0.1.0
-     * @access protected
-     */
     protected function __construct()
     {
         $this->setups['Loader'] = new Setups\Loader($this);
@@ -115,14 +82,6 @@ final class Jentil extends AbstractTheme
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
     }
 
-    /**
-     * Get utilities
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return Utilities
-     */
     protected function getUtilities(): Utilities
     {
         if (null === $this->utilities) {
@@ -133,11 +92,6 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * Get setups
-     *
-     * @since 0.1.0
-     * @access protected
-     *
      * @return Setups\AbstractSetup[]
      */
     protected function getSetups(): array
@@ -150,21 +104,12 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * Check install mode
-     *
-     * Checks if installed as 'theme' or as 'package'.
-     *
-     * @param string $type
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return bool
+     * Checks if installed as 'theme' or as 'package'
      */
-    public function is(string $type): bool
+    public function is(string $mode): bool
     {
         $relDir = (bool)$this->getUtilities()->fileSystem->relativeDir();
 
-        return 'package' === $type ? $relDir : ('theme' === $type && !$relDir);
+        return 'package' === $mode ? $relDir : ('theme' === $mode && !$relDir);
     }
 }

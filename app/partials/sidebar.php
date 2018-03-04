@@ -1,22 +1,6 @@
 <?php
-
-/**
- * Sidebar Template
- *
- * @package GrottoPress\Jentil
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
-/**
- * Do not show sidebars if page layout is one column
- *
- * @since 0.1.0
- */
 if ('one-column' === (
     $column = \Jentil()->utilities->page->layout->column()
 )) {
@@ -25,8 +9,6 @@ if ('one-column' === (
 
 /**
  * Primary Sidebar
- *
- * @since 0.1.0
  */
 if (\is_active_sidebar(
     $primary = \Jentil()->setups['Sidebars\Primary']->id
@@ -40,8 +22,6 @@ if (\is_active_sidebar(
 
 /**
  * Secondary sidebar
- *
- * @since 0.1.0
  */
 if ('three-columns' === $column) {
     if (\is_active_sidebar(

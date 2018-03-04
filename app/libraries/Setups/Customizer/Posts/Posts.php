@@ -1,36 +1,12 @@
 <?php
-
-/**
- * Posts Panel
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
 use GrottoPress\Jentil\Setups\Customizer\Customizer;
 use GrottoPress\Jentil\Setups\Customizer\AbstractPanel;
 use WP_Customize_Manager as WPCustomizer;
 
-/**
- * Posts Panel
- *
- * @since 0.1.0
- */
 final class Posts extends AbstractPanel
 {
-    /**
-     * Constructor
-     *
-     * @param Customizer $customizer Customizer.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Customizer $customizer)
     {
         parent::__construct($customizer);
@@ -41,14 +17,6 @@ final class Posts extends AbstractPanel
         $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
-    /**
-     * Add Panel
-     *
-     * @param WPCustomizer $WPCustomizer
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function add(WPCustomizer $WPCustomizer)
     {
         $this->sections = $this->sections();
@@ -57,12 +25,7 @@ final class Posts extends AbstractPanel
     }
 
     /**
-     * Sections
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return AbstractSection[] Sections.
+     * @return AbstractSection[]
      */
     private function sections(): array
     {

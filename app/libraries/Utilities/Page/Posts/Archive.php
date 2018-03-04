@@ -1,34 +1,10 @@
 <?php
-
-/**
- * Archive Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
-/**
- * Archive Posts
- *
- * @since 0.1.0
- */
 class Archive extends AbstractPosts
 {
-    /**
-     * Archives Posts Args
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return array Archives posts args.
-     */
     protected function args(): array
     {
         $args = [
@@ -181,12 +157,7 @@ class Archive extends AbstractPosts
     }
 
     /**
-     * Archive Post types
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return \WP_Post_Type[] Public post types with archive.
+     * @return \WP_Post_Type[] Public post types that has archive.
      */
     public function postTypes(): array
     {
@@ -207,14 +178,6 @@ class Archive extends AbstractPosts
         return $archive_post_types;
     }
 
-    /**
-     * Post type query var
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return string
-     */
     public function postType(): string
     {
         if ($this->posts->page->is('home')) {
@@ -228,14 +191,6 @@ class Archive extends AbstractPosts
         return '';
     }
 
-    /**
-     * Are we on a paged archive
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return bool
-     */
     public function isPaged(): bool
     {
         $key = $this->posts()->pagination->key;

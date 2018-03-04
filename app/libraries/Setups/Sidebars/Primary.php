@@ -1,43 +1,16 @@
 <?php
-
-/**
- * Primary sidebar
- *
- * @package GrottoPress\Jentil\Setups\Sidebars
- * @since 0.6.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Sidebars;
 
-/**
- * Primary sidebar
- *
- * @since 0.6.0
- */
 final class Primary extends AbstractSidebar
 {
-    /**
-     * Constructor
-     *
-     * @since 0.6.0
-     * @access public
-     */
     public function __construct()
     {
         $this->id = 'primary-widget-area';
     }
 
     /**
-     * Register widget area
-     *
-     * @since 0.6.0
-     * @access public
-     *
      * @action widgets_init
      */
     public function register()

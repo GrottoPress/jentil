@@ -1,44 +1,17 @@
 <?php
-
-/**
- * Search
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-/**
- * Search
- *
- * @since 0.1.0
- */
 final class Search extends AbstractSetup
 {
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_filter('get_search_form', [$this, 'form']);
     }
 
     /**
-     * Search form
-     *
      * @see https://developers.google.com/structured-data/slsb-overview
-     *
-     * @since 0.1.0
-     * @access public
      *
      * @filter get_search_form
      */

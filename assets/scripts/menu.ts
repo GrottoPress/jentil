@@ -1,9 +1,5 @@
-/**
+/*!
  * Menus
- *
- * Handles the behaviour of menu items
- *
- * @since 0.6.0
  *
  * @author GrottoPress <info@grottopress.com>
  * @author N Atta Kusi Adusei
@@ -17,9 +13,7 @@
     const fxDuration = 200
 
     /**
-     * Mobile menu button
-     *
-     * @since 0.6.0
+     * Open/close mobile menu
      */
     $('.js-main-menu-button').attr('href', '#')
     $('.js-main-menu-button').on('click', (e: JQuery.Event): void => {
@@ -32,8 +26,6 @@
 
     /**
      * Add icons to all parent menu items
-     *
-     * @since 0.6.0
      */
     $('.menu li > ul').before(
         '<button class="js-sub-menu-button sub-menu-toggle">'+
@@ -42,9 +34,7 @@
     )
 
     /**
-     * Sub-menu button
-     *
-     * @since 0.6.0
+     * Open/close sub-menu
      */
     $('.js-sub-menu-button').next('ul').hide()
     $('.js-sub-menu-button').prev('a').on('click', (e: JQuery.Event): void => {
@@ -60,15 +50,6 @@
         e.preventDefault()
     })
 
-    /**
-     * Toggle Submenu
-     *
-     * @since 0.6.0
-     *
-     * @param {string} button
-     *
-     * @return {string}
-     */
     function toggleSubMenu(button: JQuery | HTMLElement | EventTarget): void
     {
         $(button).parent().siblings('li').children('ul').slideUp(fxDuration)
@@ -81,15 +62,6 @@
         $(button).next('ul').slideToggle(fxDuration)
     }
 
-    /**
-     * Toggle Caret
-     *
-     * @since 0.6.0
-     *
-     * To be called BEFORE opening submenu.
-     *
-     * @param {string} button
-     */
     function toggleCaret(button: JQuery | HTMLElement | EventTarget): void
     {
         if ('none' === $(button).next('ul').css('display')) {
@@ -99,15 +71,6 @@
         }
     }
 
-    /**
-     * Up/Down button HTML
-     *
-     * @since 0.6.0
-     *
-     * @param {string} direction 'up' or 'down'
-     *
-     * @return {string}
-     */
     function renderCaret(direction: 'up' | 'down'): string
     {
         return '<span class="fa fa-caret-'+direction.toString()+

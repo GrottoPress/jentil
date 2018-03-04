@@ -1,45 +1,16 @@
 <?php
-
-/**
- * Mobile
- *
- * @package GrottoPress\Jentil\Setups
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-/**
- * Mobile
- *
- * @since 0.1.0
- */
 final class Mobile extends AbstractSetup
 {
-    /**
-     * Run setup
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function run()
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
     }
 
     /**
-     * Add body classes
-     *
-     * Add classes to <body> tag based on device types.
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @filter body_class
      */
     public function addBodyClasses(array $classes): array

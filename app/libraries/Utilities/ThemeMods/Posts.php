@@ -1,86 +1,35 @@
 <?php
-
-/**
- * Posts
- *
- * @package GrottoPress\Jentil\Utilities\ThemeMods
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
-/**
- * Posts
- *
- * @since 0.1.0
- */
 class Posts extends AbstractThemeMod
 {
     /**
-     * ThemeMods
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var ThemeMods $themeMods ThemeMods.
+     * @var ThemeMods
      */
     private $themeMods;
 
     /**
-     * Setting
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string $setting Post setting to retrieve
      */
     private $setting;
 
     /**
-     * Context
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var string $context Context
+     * @var string
      */
     private $context;
 
     /**
-     * Specific page type
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var string $specific Post type or taxonomy name.
      */
     private $specific;
 
     /**
-     * More specific page type
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var int $more_specific Post ID or term ID.
      */
     private $more_specific;
 
-    /**
-     * Constructor
-     *
-     * @param ThemeMods $themeMods
-     * @param string $setting Setting to retrieve.
-     * @param array $args Mod args.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(
         ThemeMods $themeMods,
         string $setting,
@@ -91,12 +40,6 @@ class Posts extends AbstractThemeMod
         $this->setAttributes($setting, $args);
     }
 
-    /**
-     * Set attributes
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setAttributes(string $setting, array $args = [])
     {
         $args = \wp_parse_args($args, [
@@ -119,14 +62,6 @@ class Posts extends AbstractThemeMod
             ? $defaults[$this->setting] : '';
     }
 
-    /**
-     * Get mod names
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Mod names.
-     */
     private function names(): array
     {
         $names = [
@@ -153,14 +88,6 @@ class Posts extends AbstractThemeMod
         return $names;
     }
 
-    /**
-     * Settings defaults
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Mod defaults.
-     */
     private function defaults(): array
     {
         $defaults = [
@@ -244,11 +171,7 @@ class Posts extends AbstractThemeMod
         }
 
         /**
-         * @filter jentil_posts_mod_defaults
-         *
          * @var string $defaults Posts mod defaults.
-         *
-         * @since 0.1.0
          */
         return \apply_filters(
             'jentil_posts_mod_defaults',

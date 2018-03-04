@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Abstract Layout Setting
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Layout\Settings
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
@@ -18,31 +7,13 @@ use GrottoPress\Jentil\Setups\Customizer\Layout\Layout;
 use GrottoPress\Jentil\utilities\ThemeMods\Layout as LayoutMod;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
-/**
- * Abstract Layout Setting
- *
- * @since 0.1.0
- */
 abstract class AbstractSetting extends Setting
 {
     /**
-     * Layout Mod
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var Layout $mod Layout mod.
+     * @var LayoutMod
      */
     protected $mod;
 
-    /**
-     * Constructor
-     *
-     * @param Layout $layout Layout section.
-     *
-     * @since 0.1.0
-     * @access protected
-     */
     protected function __construct(Layout $layout)
     {
         parent::__construct($layout);
@@ -56,16 +27,6 @@ abstract class AbstractSetting extends Setting
             ->utilities->page->layouts->IDs();
     }
 
-    /**
-     * Get mod
-     *
-     * @param array
-     *
-     * @since 0.5.0
-     * @access protected
-     *
-     * @return LayoutMod
-     */
     protected function themeMod(array $args): LayoutMod
     {
         return

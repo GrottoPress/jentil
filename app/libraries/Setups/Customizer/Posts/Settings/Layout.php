@@ -1,36 +1,12 @@
 <?php
-
-/**
- * Posts Layout
- *
- * @package GrottoPress\Jentil\Setups\Customizer\Posts\Settings
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Posts\AbstractSection;
 
-/**
- * Posts Layout
- *
- * @since 0.1.0
- */
 final class Layout extends AbstractSetting
 {
-    /**
-     * Constructor
-     *
-     * @param AbstractSection $section Section.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(AbstractSection $section)
     {
         parent::__construct($section);

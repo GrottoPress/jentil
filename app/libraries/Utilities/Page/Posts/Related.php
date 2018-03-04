@@ -1,30 +1,12 @@
 <?php
-
-/**
- * Related Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.6.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 
-/**
- * Related Posts
- *
- * @since 0.6.0
- */
 class Related extends AbstractPosts
 {
-    protected $id;
-
     public function __construct(Posts $posts)
     {
         parent::__construct($posts);
@@ -32,14 +14,6 @@ class Related extends AbstractPosts
         $this->id = 'related-posts';
     }
 
-    /**
-     * Related Posts Args
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return array
-     */
     public function args(): array
     {
         return [
@@ -89,16 +63,6 @@ class Related extends AbstractPosts
         ];
     }
 
-    /**
-     * Related posts mod
-     *
-     * @param string $setting
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return PostsMod Related posts mod.
-     */
     public function themeMod(string $setting): PostsMod
     {
         $args = [
