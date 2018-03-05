@@ -14,7 +14,7 @@ abstract class AbstractSetting extends Setting
      */
     protected $mod;
 
-    protected function __construct(Layout $layout)
+    public function __construct(Layout $layout)
     {
         parent::__construct($layout);
 
