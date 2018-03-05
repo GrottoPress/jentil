@@ -22,6 +22,13 @@ class ScriptTest extends AbstractTestCase
 
         $script->run();
 
+        $add_action->wasCalledOnce();
+        $add_action->wasCalledWithOnce([
+            'wp_enqueue_scripts',
+            [$script, 'enqueue']
+        ]);
+
+        $add_filter->wasCalledOnce();
         $add_filter->wasCalledWithOnce([
             'body_class',
             [$script, 'addBodyClasses']

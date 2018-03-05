@@ -6,6 +6,7 @@ namespace GrottoPress\Jentil\Tests\Unit\Setups\Views;
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
 use GrottoPress\Jentil\Setups\Views\Header;
+use GrottoPress\Jentil\Setups\Menus\AbstractMenu;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
@@ -34,7 +35,11 @@ class HeaderTest extends AbstractTestCase
 
     public function testRenderMenu()
     {
-        $header = new Header(Stub::makeEmpty(AbstractTheme::class));
+        $header = new Header(Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => ['Menus\Primary' => Stub::makeEmpty(AbstractMenu::class, [
+                'id' => 'primary',
+            ])],
+        ]));
 
         $get_search_form = FunctionMocker::replace('get_search_form');
         $esc_html = FunctionMocker::replace('esc_html__', 'some string');
@@ -47,6 +52,6 @@ class HeaderTest extends AbstractTestCase
         $get_search_form->wasCalledOnce();
         $esc_html->wasCalledOnce();
         $wp_nav_menu->wasCalledOnce();
-        $wp_nav_menu->wasCalledWithOnce([['theme_location' => 'primary-menu']]);
+        $wp_nav_menu->wasCalledWithOnce([['theme_location' => 'primary']]);
     }
 }

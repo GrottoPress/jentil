@@ -14,6 +14,11 @@ final class FontAwesome extends AbstractStyle
         $this->id = 'font-awesome';
     }
 
+    public function run()
+    {
+        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
+    }
+
     /**
      * @action wp_enqueue_scripts
      */

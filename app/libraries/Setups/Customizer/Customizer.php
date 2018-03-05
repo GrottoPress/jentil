@@ -9,8 +9,7 @@ final class Customizer extends AbstractCustomizer
 {
     public function run()
     {
-        parent::run();
-
+        \add_action('customize_register', [$this, 'register']);
         \add_action('after_setup_theme', [$this, 'enableSelectiveRefresh']);
     }
 

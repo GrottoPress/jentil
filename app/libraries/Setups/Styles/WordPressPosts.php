@@ -14,6 +14,11 @@ final class WordPressPosts extends AbstractStyle
         $this->id = 'wordpress-posts';
     }
 
+    public function run()
+    {
+        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
+    }
+
     /**
      * @action wp_enqueue_scripts
      */

@@ -11,14 +11,29 @@ use tad\FunctionMocker\FunctionMocker;
 
 class SecondaryTest extends AbstractTestCase
 {
+    public function testRun()
+    {
+        $add_action = FunctionMocker::replace('add_action');
+
+        $sidebar = new Secondary(Stub::makeEmpty(AbstractTheme::class));
+
+        $sidebar->run();
+
+        $add_action->wasCalledOnce();
+        $add_action->wasCalledWithOnce([
+            'widgets_init',
+            [$sidebar, 'register']
+        ]);
+    }
+
     public function testRegister()
     {
-        $secondary = new Secondary(Stub::makeEmpty(AbstractTheme::class));
+        $sidebar = new Secondary(Stub::makeEmpty(AbstractTheme::class));
 
         $register_sidebar = FunctionMocker::replace('register_sidebar');
         $esc_html = FunctionMocker::replace('esc_html__', 'Secondary');
 
-        $secondary->register();
+        $sidebar->register();
 
         $register_sidebar->wasCalledOnce();
         $esc_html->wasCalledTimes(2);

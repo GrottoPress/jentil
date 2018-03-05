@@ -23,6 +23,11 @@ class CustomizerTest extends AbstractTestCase
         $customizer->run();
 
         $add_action->wasCalledWithOnce([
+            'customize_register',
+            [$customizer, 'register']
+        ]);
+
+        $add_action->wasCalledWithOnce([
             'after_setup_theme',
             [$customizer, 'enableSelectiveRefresh'],
         ]);

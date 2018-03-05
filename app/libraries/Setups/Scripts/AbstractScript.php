@@ -3,8 +3,10 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Scripts;
 
-use GrottoPress\WordPress\SUV\Setups\Scripts\AbstractScript as Script;
+use GrottoPress\Jentil\Setups\AbstractSetup;
+use GrottoPress\Jentil\IdentityTrait;
 
-abstract class AbstractScript extends Script
+abstract class AbstractScript extends AbstractSetup
 {
+    use IdentityTrait;
 }

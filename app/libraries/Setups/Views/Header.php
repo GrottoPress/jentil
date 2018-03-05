@@ -56,7 +56,9 @@ final class Header extends AbstractSetup
                 \esc_html__('Skip to content', 'jentil')
             );
 
-            \wp_nav_menu(['theme_location' => 'primary-menu']);
+            \wp_nav_menu([
+                'theme_location' => $this->app->setups['Menus\Primary']->id,
+            ]);
         echo '</nav>';
     }
 

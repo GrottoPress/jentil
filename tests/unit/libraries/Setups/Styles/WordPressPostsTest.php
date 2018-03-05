@@ -13,6 +13,21 @@ use tad\FunctionMocker\FunctionMocker;
 
 class WordPressPostsTest extends AbstractTestCase
 {
+    public function testRun()
+    {
+        $add_action = FunctionMocker::replace('add_action');
+
+        $style = new WordPressPosts(Stub::makeEmpty(AbstractTheme::class));
+
+        $style->run();
+
+        $add_action->wasCalledOnce();
+        $add_action->wasCalledWithOnce([
+            'wp_enqueue_scripts',
+            [$style, 'enqueue']
+        ]);
+    }
+
     public function testEnqueue()
     {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [

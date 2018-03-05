@@ -28,47 +28,18 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $script->run();
 
-        $add_action->wasCalledTimes(2);
-
+        $add_action->wasCalledOnce();
         $add_action->wasCalledWithOnce([
             'customize_preview_init',
             [$script, 'enqueue'],
-        ]);
-
-        $add_action->wasCalledWithOnce([
-            'customize_preview_init',
-            [$script, 'addInlineScript'],
         ]);
     }
 
     public function testEnqueue()
     {
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
-
-        $jentil->utilities->fileSystem = Stub::make(FileSystem::class, [
-            'dir' => 'http://my.site/dist/scripts/customizer.js',
-        ]);
-
-        $script = new CustomizePreview($jentil);
-
         $wp_enqueue_script = FunctionMocker::replace('wp_enqueue_script');
+        $add_inline_script = FunctionMocker::replace('wp_add_inline_script');
 
-        $script->enqueue();
-
-        $wp_enqueue_script->wasCalledOnce();
-        $wp_enqueue_script->wasCalledWithOnce([
-            'jentil-customize-preview',
-            'http://my.site/dist/scripts/customizer.js',
-            ['jquery', 'customize-preview'],
-            '',
-            true
-        ]);
-    }
-
-    public function testAddInlineJS()
-    {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
             'setups' => [
@@ -149,13 +120,24 @@ class CustomizePreviewTest extends AbstractTestCase
             ],
         ]);
 
+        $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
+            'dir' => 'http://my.site/dist/scripts/customizer.js',
+        ]);
+
         $script = new CustomizePreview($jentil);
 
-        $add_script = FunctionMocker::replace('wp_add_inline_script');
+        $script->enqueue();
 
-        $script->addInlineScript();
+        $wp_enqueue_script->wasCalledOnce();
+        $wp_enqueue_script->wasCalledWithOnce([
+            'jentil-customize-preview',
+            'http://my.site/dist/scripts/customizer.js',
+            ['jquery', 'customize-preview'],
+            '',
+            true
+        ]);
 
-        $add_script->wasCalledOnce();
-        $add_script->wasCalledWithOnce(['jentil-customize-preview']);
+        $add_inline_script->wasCalledOnce();
+        $add_inline_script->wasCalledWithOnce(['jentil-customize-preview']);
     }
 }

@@ -16,8 +16,7 @@ final class Script extends AbstractScript
 
     public function run()
     {
-        parent::run();
-
+        \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
         \add_filter('body_class', [$this, 'addBodyClasses']);
     }
 

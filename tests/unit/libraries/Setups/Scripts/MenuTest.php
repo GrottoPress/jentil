@@ -13,6 +13,21 @@ use tad\FunctionMocker\FunctionMocker;
 
 class MenuTest extends AbstractTestCase
 {
+    public function testRun()
+    {
+        $add_action = FunctionMocker::replace('add_action');
+
+        $script = new Menu(Stub::makeEmpty(AbstractTheme::class));
+
+        $script->run();
+
+        $add_action->wasCalledOnce();
+        $add_action->wasCalledWithOnce([
+            'wp_enqueue_scripts',
+            [$script, 'enqueue']
+        ]);
+    }
+
     public function testEnqueue()
     {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [

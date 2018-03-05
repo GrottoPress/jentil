@@ -17,7 +17,6 @@ final class CustomizePreview extends AbstractScript
     public function run()
     {
         \add_action('customize_preview_init', [$this, 'enqueue']);
-        \add_action('customize_preview_init', [$this, 'addInlineScript']);
     }
 
     /**
@@ -35,14 +34,13 @@ final class CustomizePreview extends AbstractScript
             '',
             true
         );
+
+        \wp_add_inline_script($this->id, $this->inlineScript(), 'before');
     }
 
-    /**
-     * @action customize_preview_init
-     */
-    public function addInlineScript()
+    private function inlineScript(): string
     {
-        $script = 'var shortTags = '.\json_encode(
+        return 'var shortTags = '.\json_encode(
             $this->app->utilities->shortTags->get()
         ).';
         var colophonModName = "'.$this->app->setups['Customizer\Customizer']
@@ -51,8 +49,6 @@ final class CustomizePreview extends AbstractScript
         var relatedPostsHeadingModNames = '.\json_encode(
             $this->postsHeadings()
         ).';';
-
-        \wp_add_inline_script($this->id, $script, 'before');
     }
 
     /**

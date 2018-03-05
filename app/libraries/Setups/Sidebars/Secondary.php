@@ -3,11 +3,20 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Sidebars;
 
+use GrottoPress\Jentil\AbstractTheme;
+
 final class Secondary extends AbstractSidebar
 {
-    public function __construct()
+    public function __construct(AbstractTheme $jentil)
     {
+        parent::__construct($jentil);
+
         $this->id = 'secondary-widget-area';
+    }
+
+    public function run()
+    {
+        \add_action('widgets_init', [$this, 'register']);
     }
 
     /**

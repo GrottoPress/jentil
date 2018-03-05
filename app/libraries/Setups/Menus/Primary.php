@@ -14,6 +14,11 @@ final class Primary extends AbstractMenu
         $this->id = 'primary-menu';
     }
 
+    public function run()
+    {
+        \add_action('after_setup_theme', [$this, 'register']);
+    }
+
     /**
      * @action after_setup_theme
      */

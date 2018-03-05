@@ -13,6 +13,21 @@ use tad\FunctionMocker\FunctionMocker;
 
 class StylesTest extends AbstractTestCase
 {
+    public function testRun()
+    {
+        $add_action = FunctionMocker::replace('add_action');
+
+        $style = new FontAwesome(Stub::makeEmpty(AbstractTheme::class));
+
+        $style->run();
+
+        $add_action->wasCalledOnce();
+        $add_action->wasCalledWithOnce([
+            'wp_enqueue_scripts',
+            [$style, 'enqueue']
+        ]);
+    }
+
     public function testEnqueue()
     {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
