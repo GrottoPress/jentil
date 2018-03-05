@@ -13,11 +13,11 @@ class PageBuildersBlankTest extends AbstractTestCase
 {
     public function testAdd()
     {
+        FunctionMocker::replace('esc_html__', 'Page builder (blank)');
+
         $pageBuilder = new PageBuilderBlank(
             Stub::makeEmpty(AbstractTheme::class)
         );
-
-        FunctionMocker::replace('esc_html__', 'Page builder (blank)');
 
         $this->assertSame(
             [

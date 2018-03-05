@@ -54,10 +54,10 @@ class SingularTest extends AbstractTestCase
 
     public function testRun()
     {
-        $singular = new Singular(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $singular = new Singular(Stub::makeEmpty(AbstractTheme::class));
 
         $singular->run();
 
@@ -107,15 +107,6 @@ class SingularTest extends AbstractTestCase
     ) {
         $this->page = $page;
 
-        $this->jentil->utilities->postTypeTemplate = Stub::makeEmpty(
-            PostTypeTemplate::class,
-            [
-                'slug' => $template,
-            ]
-        );
-
-        $singular = new Singular($this->jentil);
-
         $sanitize_title = FunctionMocker::replace(
             'sanitize_title',
             function (string $content): string {
@@ -160,6 +151,15 @@ class SingularTest extends AbstractTestCase
             $commentsOpen
         );
 
+        $this->jentil->utilities->postTypeTemplate = Stub::makeEmpty(
+            PostTypeTemplate::class,
+            [
+                'slug' => $template,
+            ]
+        );
+
+        $singular = new Singular($this->jentil);
+
         $this->assertSame($expected, $singular->addBodyClasses(['class-1']));
     }
 
@@ -170,12 +170,12 @@ class SingularTest extends AbstractTestCase
     {
         $this->page = $page;
 
-        $singular = new Singular($this->jentil);
-
         FunctionMocker::replace('get_post', \json_decode(\json_encode($post)));
 
         $get_permalink = FunctionMocker::replace('get_permalink');
         $get_the_title = FunctionMocker::replace('get_the_title');
+
+        $singular = new Singular($this->jentil);
 
         $singular->renderParentLink();
 
@@ -201,12 +201,6 @@ class SingularTest extends AbstractTestCase
     ) {
         $this->page = $page;
 
-        $this->jentil->utilities->loader = Stub::makeEmpty(Loader::class, [
-            'loadPartial' => true,
-        ]);
-
-        $singular = new Singular($this->jentil);
-
         FunctionMocker::replace('get_post', \json_decode(\json_encode($post)));
 
         $remove_filter = FunctionMocker::replace('remove_filter');
@@ -223,6 +217,12 @@ class SingularTest extends AbstractTestCase
         ) use ($type): bool {
             return ($at_type === $type);
         });
+
+        $this->jentil->utilities->loader = Stub::makeEmpty(Loader::class, [
+            'loadPartial' => true,
+        ]);
+
+        $singular = new Singular($this->jentil);
 
         if ('attachment' === $page) {
             if (\in_array($type, ['image', 'audio', 'video'])) {
@@ -289,13 +289,13 @@ class SingularTest extends AbstractTestCase
     {
         $this->page = $page;
 
-        $this->jentil->utilities->post = Stub::makeEmpty(Post::class, [
-            'info' => true,
-        ]);
-
         FunctionMocker::replace('get_post', new class {
             public $ID = 1;
         });
+
+        $this->jentil->utilities->post = Stub::makeEmpty(Post::class, [
+            'info' => true,
+        ]);
 
         $singular = new Singular($this->jentil);
 

@@ -13,9 +13,9 @@ class PageBuildersTest extends AbstractTestCase
 {
     public function testAdd()
     {
-        $pageBuilder = new PageBuilder(Stub::makeEmpty(AbstractTheme::class));
-
         FunctionMocker::replace('esc_html__', 'Page builder');
+
+        $pageBuilder = new PageBuilder(Stub::makeEmpty(AbstractTheme::class));
 
         $this->assertSame(
             [

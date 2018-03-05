@@ -13,9 +13,9 @@ class ThumbnailsTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->run();
 
@@ -39,9 +39,9 @@ class ThumbnailsTest extends AbstractTestCase
 
     public function testAddSupport()
     {
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
-
         $add_support = FunctionMocker::replace('add_theme_support');
+
+        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->addSupport();
 
@@ -51,9 +51,9 @@ class ThumbnailsTest extends AbstractTestCase
 
     public function testSetSize()
     {
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
-
         $set_thumb_size = FunctionMocker::replace('set_post_thumbnail_size');
+
+        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->setSize();
 
@@ -63,10 +63,10 @@ class ThumbnailsTest extends AbstractTestCase
 
     public function testAddSizes()
     {
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
-
         $set_thumb_size = FunctionMocker::replace('set_post_thumbnail_size');
         $add_size = FunctionMocker::replace('add_image_size');
+
+        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->addSizes();
 

@@ -30,6 +30,8 @@ class MenuTest extends AbstractTestCase
 
     public function testEnqueue()
     {
+        $enqueue = FunctionMocker::replace('wp_enqueue_script');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -38,8 +40,6 @@ class MenuTest extends AbstractTestCase
         ]);
 
         $script = new Menu($jentil);
-
-        $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
         $script->enqueue();
 

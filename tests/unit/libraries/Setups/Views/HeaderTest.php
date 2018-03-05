@@ -14,9 +14,9 @@ class HeaderTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $header = new Header(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $header = new Header(Stub::makeEmpty(AbstractTheme::class));
 
         $header->run();
 
@@ -35,17 +35,17 @@ class HeaderTest extends AbstractTestCase
 
     public function testRenderMenu()
     {
-        $header = new Header(Stub::makeEmpty(AbstractTheme::class, [
-            'setups' => ['Menus\Primary' => Stub::makeEmpty(AbstractMenu::class, [
-                'id' => 'primary',
-            ])],
-        ]));
-
         $get_search_form = FunctionMocker::replace('get_search_form');
         $esc_html = FunctionMocker::replace('esc_html__', 'some string');
         $wp_nav_menu = FunctionMocker::replace('wp_nav_menu');
         $sanitize_title = FunctionMocker::replace('sanitize_title');
         $sanitize_text_field = FunctionMocker::replace('sanitize_text_field');
+
+        $header = new Header(Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => ['Menus\Primary' => Stub::makeEmpty(AbstractMenu::class, [
+                'id' => 'primary',
+            ])],
+        ]));
 
         $header->renderMenu();
 

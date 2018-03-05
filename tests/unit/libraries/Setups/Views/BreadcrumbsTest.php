@@ -15,9 +15,9 @@ class BreadcrumbsTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $breadcrumbs = new Breadcrumbs(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $breadcrumbs = new Breadcrumbs(Stub::makeEmpty(AbstractTheme::class));
 
         $breadcrumbs->run();
 
@@ -34,6 +34,8 @@ class BreadcrumbsTest extends AbstractTestCase
      */
     public function testRender(string $page1, string $page2 = '')
     {
+        FunctionMocker::replace('esc_html__', 'Path');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -43,8 +45,6 @@ class BreadcrumbsTest extends AbstractTestCase
                 return \in_array($type, [$page1, $page2]);
             }
         ]);
-
-        FunctionMocker::replace('esc_html__', 'Path');
 
         $breadcrumbs = new Breadcrumbs($jentil);
 

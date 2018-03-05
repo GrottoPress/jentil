@@ -28,10 +28,10 @@ class FooterTest extends AbstractTestCase
 
     public function testRegister()
     {
-        $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class));
-
         $register_sidebar = FunctionMocker::replace('register_sidebar');
         $esc_html = FunctionMocker::replace('esc_html__', 'Footer');
+
+        $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class));
 
         $sidebar->register();
 

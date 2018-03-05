@@ -28,10 +28,10 @@ class SecondaryTest extends AbstractTestCase
 
     public function testRegister()
     {
-        $sidebar = new Secondary(Stub::makeEmpty(AbstractTheme::class));
-
         $register_sidebar = FunctionMocker::replace('register_sidebar');
         $esc_html = FunctionMocker::replace('esc_html__', 'Secondary');
+
+        $sidebar = new Secondary(Stub::makeEmpty(AbstractTheme::class));
 
         $sidebar->register();
 

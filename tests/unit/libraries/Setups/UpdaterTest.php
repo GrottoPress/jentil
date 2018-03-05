@@ -15,9 +15,9 @@ class UpdaterTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $updater = new Updater(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $updater = new Updater(Stub::makeEmpty(AbstractTheme::class));
 
         $updater->run();
 

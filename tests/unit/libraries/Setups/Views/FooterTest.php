@@ -13,9 +13,9 @@ class FooterTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $footer = new Footer(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $footer = new Footer(Stub::makeEmpty(AbstractTheme::class));
 
         $footer->run();
 

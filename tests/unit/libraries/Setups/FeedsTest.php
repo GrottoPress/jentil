@@ -13,9 +13,9 @@ class FeedsTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $feeds = new Feeds(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $feeds = new Feeds(Stub::makeEmpty(AbstractTheme::class));
 
         $feeds->run();
 
@@ -28,9 +28,9 @@ class FeedsTest extends AbstractTestCase
 
     public function testAddSupport()
     {
-        $feeds = new Feeds(Stub::makeEmpty(AbstractTheme::class));
-
         $add_theme_support = FunctionMocker::replace('add_theme_support');
+
+        $feeds = new Feeds(Stub::makeEmpty(AbstractTheme::class));
 
         $feeds->addSupport();
 

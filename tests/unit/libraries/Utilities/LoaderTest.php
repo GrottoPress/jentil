@@ -12,11 +12,6 @@ use tad\FunctionMocker\FunctionMocker;
 
 class LoaderTest extends AbstractTestCase
 {
-    /**
-     * @var FunctionMocker
-     */
-    private $locate_template;
-
     public function _before()
     {
         FunctionMocker::replace('locate_template', function (
@@ -69,8 +64,6 @@ class LoaderTest extends AbstractTestCase
         bool $stylesheetDirReadable,
         string $expected
     ) {
-        $loader = new Loader($this->makeUtilities($relativeDir));
-
         FunctionMocker::replace('comments_template', function (
             string $file
         ): string {
@@ -89,6 +82,8 @@ class LoaderTest extends AbstractTestCase
 
             return $stylesheetDirReadable;
         });
+
+        $loader = new Loader($this->makeUtilities($relativeDir));
 
         $this->assertSame($expected, $loader->loadComments());
     }

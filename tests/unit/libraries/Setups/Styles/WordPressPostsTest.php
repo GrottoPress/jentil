@@ -30,6 +30,8 @@ class WordPressPostsTest extends AbstractTestCase
 
     public function testEnqueue()
     {
+        $enqueue = FunctionMocker::replace('wp_enqueue_style');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -38,8 +40,6 @@ class WordPressPostsTest extends AbstractTestCase
         ]);
 
         $style = new WordPressPosts($jentil);
-
-        $enqueue = FunctionMocker::replace('wp_enqueue_style');
 
         $style->enqueue();
 

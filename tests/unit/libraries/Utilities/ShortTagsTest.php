@@ -13,8 +13,6 @@ class ShortTagsTest extends AbstractTestCase
 {
     public function testReplace()
     {
-        $shortTags = new ShortTags(Stub::makeEmpty(Utilities::class));
-
         $add_action = FunctionMocker::replace('esc_attr', function (
             string $content
         ): string {
@@ -59,6 +57,8 @@ class ShortTagsTest extends AbstractTestCase
         $content = '{{site_name}}, {{site_url}}, {{this_year}}, {{site_description}}, {{author_name}}, {{category_name}}, {{tag_name}}, {{term_name}}, {{taxonomy_name}}, {{post_type_name}}, {{date}}, {{search_query}}';
 
         $expected = 'My Site, http://my.site/, 2018, My awesome site, John Doe, Bar, Foo, Baz, Level, Tutorial, 10 Oct 2010, Bat';
+
+        $shortTags = new ShortTags(Stub::makeEmpty(Utilities::class));
 
         $this->assertSame($expected, $shortTags->replace($content));
     }

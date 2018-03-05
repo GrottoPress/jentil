@@ -13,9 +13,9 @@ class SearchTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $search = new Search(Stub::makeEmpty(AbstractTheme::class));
-
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $search = new Search(Stub::makeEmpty(AbstractTheme::class));
 
         $search->run();
 

@@ -37,6 +37,8 @@ class ScriptTest extends AbstractTestCase
 
     public function testEnqueue()
     {
+        $enqueue = FunctionMocker::replace('wp_enqueue_script');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -45,8 +47,6 @@ class ScriptTest extends AbstractTestCase
         ]);
 
         $script = new Script($jentil);
-
-        $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
         $script->enqueue();
 

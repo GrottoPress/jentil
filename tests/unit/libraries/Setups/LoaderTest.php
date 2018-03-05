@@ -25,9 +25,9 @@ class LoaderTest extends AbstractTestCase
 
     public function testRun()
     {
-        $loader = new Loader(Stub::makeEmpty(AbstractTheme::class));
-
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $loader = new Loader(Stub::makeEmpty(AbstractTheme::class));
 
         $loader->run();
 

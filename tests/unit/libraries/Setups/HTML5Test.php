@@ -15,10 +15,10 @@ class HTML5Test extends AbstractTestCase
 {
     public function testRun()
     {
-        $html5 = new HTML5(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $html5 = new HTML5(Stub::makeEmpty(AbstractTheme::class));
 
         $html5->run();
 
@@ -43,9 +43,9 @@ class HTML5Test extends AbstractTestCase
 
     public function testAddSupport()
     {
-        $html5 = new HTML5(Stub::makeEmpty(AbstractTheme::class));
-
         $add_theme_support = FunctionMocker::replace('add_theme_support');
+
+        $html5 = new HTML5(Stub::makeEmpty(AbstractTheme::class));
 
         $html5->addSupport();
 

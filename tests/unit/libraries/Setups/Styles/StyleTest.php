@@ -33,6 +33,9 @@ class StyleTest extends AbstractTestCase
      */
     public function testEnqueue(bool $isRTL)
     {
+        $enqueue = FunctionMocker::replace('wp_enqueue_style');
+        $rtl = FunctionMocker::replace('is_rtl', $isRTL);
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -46,9 +49,6 @@ class StyleTest extends AbstractTestCase
         ]);
 
         $style = new Style($jentil);
-
-        $enqueue = FunctionMocker::replace('wp_enqueue_style');
-        $rtl = FunctionMocker::replace('is_rtl', $isRTL);
 
         $style->enqueue();
 

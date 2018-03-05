@@ -22,6 +22,8 @@ class PostTypeTemplateTest extends AbstractTestCase
         int $post_id,
         bool $expected
     ) {
+        FunctionMocker::replace('get_page_template_slug', $slug);
+
         $utilities = Stub::makeEmpty(Utilities::class);
         $utilities->app = Stub::makeEmpty(AbstractTheme::class, [
             'setups' => [
@@ -42,8 +44,6 @@ class PostTypeTemplateTest extends AbstractTestCase
         ]);
 
         $template = new PostTypeTemplate($utilities);
-
-        FunctionMocker::replace('get_page_template_slug', $slug);
 
         $this->assertSame($expected, $template->isPageBuilder($post_id));
     }

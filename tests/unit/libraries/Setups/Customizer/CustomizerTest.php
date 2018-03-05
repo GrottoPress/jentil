@@ -16,9 +16,9 @@ class CustomizerTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $customizer = new Customizer(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $customizer = new Customizer(Stub::makeEmpty(AbstractTheme::class));
 
         $customizer->run();
 
@@ -40,9 +40,9 @@ class CustomizerTest extends AbstractTestCase
 
     public function testEnableSelectiveRefresh()
     {
-        $customizer = new Customizer(Stub::makeEmpty(AbstractTheme::class));
-
         $add_theme_support = FunctionMocker::replace('add_theme_support');
+
+        $customizer = new Customizer(Stub::makeEmpty(AbstractTheme::class));
 
         $customizer->enableSelectiveRefresh();
 

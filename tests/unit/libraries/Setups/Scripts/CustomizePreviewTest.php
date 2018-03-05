@@ -22,9 +22,9 @@ class CustomizePreviewTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $script = new CustomizePreview(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $script = new CustomizePreview(Stub::makeEmpty(AbstractTheme::class));
 
         $script->run();
 

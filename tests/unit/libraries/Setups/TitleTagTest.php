@@ -13,9 +13,9 @@ class TitleTagTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $title = new TitleTag(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $title = new TitleTag(Stub::makeEmpty(AbstractTheme::class));
 
         $title->run();
 
@@ -29,9 +29,9 @@ class TitleTagTest extends AbstractTestCase
 
     public function testAddSupport()
     {
-        $title = new TitleTag(Stub::makeEmpty(AbstractTheme::class));
-
         $add_support = FunctionMocker::replace('add_theme_support');
+
+        $title = new TitleTag(Stub::makeEmpty(AbstractTheme::class));
 
         $title->addSupport();
 

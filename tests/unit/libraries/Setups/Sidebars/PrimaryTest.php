@@ -13,9 +13,9 @@ class PrimaryTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $add_action = FunctionMocker::replace('add_action');
-
         $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class));
+
+        $add_action = FunctionMocker::replace('add_action');
 
         $sidebar->run();
 
@@ -28,10 +28,10 @@ class PrimaryTest extends AbstractTestCase
 
     public function testRegister()
     {
-        $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class));
-
         $register_sidebar = FunctionMocker::replace('register_sidebar');
         $esc_html = FunctionMocker::replace('esc_html__', 'Primary');
+
+        $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class));
 
         $sidebar->register();
 

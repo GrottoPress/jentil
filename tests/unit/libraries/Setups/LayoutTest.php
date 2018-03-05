@@ -17,10 +17,10 @@ class LayoutTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $layout = new Layout(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $layout = new Layout(Stub::makeEmpty(AbstractTheme::class));
 
         $layout->run();
 
@@ -47,6 +47,13 @@ class LayoutTest extends AbstractTestCase
         string $column,
         array $expected
     ) {
+        $sanitize_title = FunctionMocker::replace(
+            'sanitize_title',
+            function (string $content): string {
+                return $content;
+            }
+        );
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -65,13 +72,6 @@ class LayoutTest extends AbstractTestCase
         ]);
 
         $layout = new Layout($jentil);
-
-        $sanitize_title = FunctionMocker::replace(
-            'sanitize_title',
-            function (string $content): string {
-                return $content;
-            }
-        );
 
         $this->assertSame($expected, $layout->addBodyClasses($classes));
 

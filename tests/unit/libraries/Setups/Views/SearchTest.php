@@ -16,9 +16,9 @@ class SearchTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $search = new Search(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $search = new Search(Stub::makeEmpty(AbstractTheme::class));
 
         $search->run();
 
@@ -45,17 +45,6 @@ class SearchTest extends AbstractTestCase
     ) {
         $this->markTestSkipped('Find a better way to deal with the exit call');
 
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
-
-        $jentil->utilities->page = Stub::makeEmpty(Page::class, [
-            'is' => function (string $type) use ($page): bool {
-                return ($page === $type);
-            },
-            'URL' => "http://my.site/?s={$keywords}",
-        ]);
-
         FunctionMocker::setGlobal('wp_rewrite', new class($permalinks) {
             private $permalinks;
 
@@ -69,6 +58,17 @@ class SearchTest extends AbstractTestCase
                 return $this->permalinks;
             }
         });
+
+        $jentil = Stub::makeEmpty(AbstractTheme::class, [
+            'utilities' => Stub::makeEmpty(Utilities::class),
+        ]);
+
+        $jentil->utilities->page = Stub::makeEmpty(Page::class, [
+            'is' => function (string $type) use ($page): bool {
+                return ($page === $type);
+            },
+            'URL' => "http://my.site/?s={$keywords}",
+        ]);
 
         $search = new Search($jentil);
 
@@ -102,6 +102,8 @@ class SearchTest extends AbstractTestCase
      */
     public function testRender(string $page)
     {
+        $get_search_form = FunctionMocker::replace('get_search_form');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -113,8 +115,6 @@ class SearchTest extends AbstractTestCase
         ]);
 
         $search = new Search($jentil);
-
-        $get_search_form = FunctionMocker::replace('get_search_form');
 
         $search->render();
 

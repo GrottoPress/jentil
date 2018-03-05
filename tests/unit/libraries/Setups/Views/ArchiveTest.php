@@ -13,9 +13,9 @@ class ArchiveTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $archive = new Archive(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $archive = new Archive(Stub::makeEmpty(AbstractTheme::class));
 
         $archive->run();
 

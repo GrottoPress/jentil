@@ -15,9 +15,9 @@ class MobileTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $mobile = new Mobile(Stub::makeEmpty(AbstractTheme::class));
-
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $mobile = new Mobile(Stub::makeEmpty(AbstractTheme::class));
 
         $mobile->run();
 
@@ -40,6 +40,13 @@ class MobileTest extends AbstractTestCase
         string $device,
         array $expected
     ) {
+        $sanitize_title = FunctionMocker::replace(
+            'sanitize_title',
+            function (string $content): string {
+                return $content;
+            }
+        );
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -54,13 +61,6 @@ class MobileTest extends AbstractTestCase
         ]);
 
         $mobile = new Mobile($jentil);
-
-        $sanitize_title = FunctionMocker::replace(
-            'sanitize_title',
-            function (string $content): string {
-                return $content;
-            }
-        );
 
         $this->assertSame($expected, $mobile->addBodyClasses(['class-1']));
 

@@ -15,9 +15,9 @@ class LanguageTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $language = new Language(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
+
+        $language = new Language(Stub::makeEmpty(AbstractTheme::class));
 
         $language->run();
 
@@ -30,6 +30,8 @@ class LanguageTest extends AbstractTestCase
 
     public function testLoadTextDomain()
     {
+        $load = FunctionMocker::replace('load_theme_textdomain');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
@@ -38,8 +40,6 @@ class LanguageTest extends AbstractTestCase
         ]);
 
         $language = new Language($jentil);
-
-        $load = FunctionMocker::replace('load_theme_textdomain');
 
         $language->loadTextDomain();
 
