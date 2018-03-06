@@ -34,7 +34,7 @@ gulp.task('scripts', () =>
     .pipe(sourcemaps.init())
     .pipe(ts({
         "module": "commonjs",
-        "target": "es3",
+        "target": "es5",
         "noImplicitAny": true,
         "noImplicitUseStrict": true,
         "noImplicitThis": true,
