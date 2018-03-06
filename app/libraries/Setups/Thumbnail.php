@@ -3,7 +3,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-final class Thumbnails extends AbstractSetup
+final class Thumbnail extends AbstractSetup
 {
     public function run()
     {

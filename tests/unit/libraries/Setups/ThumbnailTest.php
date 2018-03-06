@@ -5,17 +5,17 @@ namespace GrottoPress\Jentil\Tests\Unit\Setups;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Thumbnails;
+use GrottoPress\Jentil\Setups\Thumbnail;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class ThumbnailsTest extends AbstractTestCase
+class ThumbnailTest extends AbstractTestCase
 {
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
+        $thumbnails = new Thumbnail(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->run();
 
@@ -41,7 +41,7 @@ class ThumbnailsTest extends AbstractTestCase
     {
         $add_support = FunctionMocker::replace('add_theme_support');
 
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
+        $thumbnails = new Thumbnail(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->addSupport();
 
@@ -53,7 +53,7 @@ class ThumbnailsTest extends AbstractTestCase
     {
         $set_thumb_size = FunctionMocker::replace('set_post_thumbnail_size');
 
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
+        $thumbnails = new Thumbnail(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->setSize();
 
@@ -66,7 +66,7 @@ class ThumbnailsTest extends AbstractTestCase
         $set_thumb_size = FunctionMocker::replace('set_post_thumbnail_size');
         $add_size = FunctionMocker::replace('add_image_size');
 
-        $thumbnails = new Thumbnails(Stub::makeEmpty(AbstractTheme::class));
+        $thumbnails = new Thumbnail(Stub::makeEmpty(AbstractTheme::class));
 
         $thumbnails->addSizes();
 

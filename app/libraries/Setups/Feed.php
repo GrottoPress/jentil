@@ -3,7 +3,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-final class Feeds extends AbstractSetup
+final class Feed extends AbstractSetup
 {
     public function run()
     {
