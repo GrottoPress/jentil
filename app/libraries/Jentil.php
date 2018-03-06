@@ -40,8 +40,9 @@ final class Jentil extends AbstractTheme
         $this->setups['TitleTag'] = new Setups\TitleTag($this);
         $this->setups['Layout'] = new Setups\Layout($this);
         $this->setups['Search'] = new Setups\Search($this);
-        $this->setups['Metaboxes'] = new Setups\Metaboxes($this);
         $this->setups['Mobile'] = new Setups\Mobile($this);
+
+        $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
 
         $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
         $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);

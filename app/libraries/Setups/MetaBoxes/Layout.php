@@ -1,36 +1,55 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\MetaBoxes;
 
+use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Jentil\Jentil;
 use WP_Post;
 
-final class Metaboxes extends AbstractSetup
+final class Layout extends AbstractMetaBox
 {
-    use MetaboxesTrait;
+    public function __construct(AbstractTheme $jentil)
+    {
+        parent::__construct($jentil);
+
+        $this->id = 'jentil-layout';
+        $this->context = 'side';
+    }
 
     public function run()
     {
-        $this->setup();
+        \add_action('add_meta_boxes', [$this, 'add'], 10, 2);
+        \add_action('save_post', [$this, 'save']);
+        \add_action('edit_attachment', [$this, 'save']);
     }
 
-    private function metaboxes(WP_Post $post): array
+    /**
+     * @action add_meta_boxes
+     */
+    public function add(string $post_type, WP_Post $post)
     {
-        $boxes = [];
-
-        if (($layout = $this->layoutMetabox($post))) {
-            $boxes[] = $layout;
+        if (!($box = $this->box($post))) {
+            return;
         }
 
-        /**
-         * @var Metaboxes[] $boxes Metaboxes.
-         * @var WP_Post $post Post.
-         */
-        return \apply_filters('jentil_metaboxes', $boxes, $post);
+        $this->app->utilities->metaBox($box)->add();
     }
 
-    private function layoutMetabox(WP_Post $post): array
+    /**
+     * @action save_post
+     * @action edit_attachment
+     */
+    public function save(int $post_id)
+    {
+        if (!($box = $this->box(\get_post($post_id)))) {
+            return;
+        }
+
+        $this->app->utilities->metaBox($box)->save($post_id);
+    }
+
+    private function box(WP_Post $post): array
     {
         if (!\current_user_can('edit_theme_options')) {
             return [];
@@ -59,9 +78,9 @@ final class Metaboxes extends AbstractSetup
         }
 
         return [
-            'id' => 'jentil-layout',
+            'id' => $this->id,
             'title' => \esc_html__('Layout', 'jentil'),
-            'context' => 'side',
+            'context' => $this->context,
             'priority' => 'default',
             'callback' => '',
             'fields' => [
@@ -70,7 +89,8 @@ final class Metaboxes extends AbstractSetup
                     'type' => 'select',
                     'choices' => $layouts,
                     'label' => \esc_html__('Select layout', 'jentil'),
-                    'label_pos' => 'before_field',
+                    'labelPos' => 'before_field',
+                    'layout' => 'block',
                 ],
             ],
             'notes' => '<p>'.\sprintf(

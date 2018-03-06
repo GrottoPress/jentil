@@ -11,6 +11,7 @@ use GrottoPress\WordPress\Posts\Posts;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Mobile\Detector;
 use GrottoPress\Getter\GetterTrait;
+use GrottoPress\WordPress\MetaBox\MetaBox;
 use Puc_v4p2_Theme_UpdateChecker;
 use Puc_v4_Factory;
 
@@ -178,5 +179,10 @@ class Utilities
     public function post(int $id = 0): Post
     {
         return new Post($id);
+    }
+
+    public function metaBox(array $args): MetaBox
+    {
+        return new MetaBox($args);
     }
 }
