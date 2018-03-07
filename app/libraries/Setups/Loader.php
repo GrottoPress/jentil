@@ -7,38 +7,46 @@ final class Loader extends AbstractSetup
 {
     public function run()
     {
+        \add_action('after_setup_theme', [$this, 'loadTemplates']);
+    }
+
+    /**
+     * @action after_setup_theme
+     */
+    public function loadTemplates()
+    {
         $templates = $this->templates();
 
         foreach ($templates as $template) {
             \add_filter(
                 "{$template}_template_hierarchy",
-                [$this, 'loadTemplates']
+                [$this, 'templateHierarchy']
             );
         }
     }
 
     /**
-     * @filter {$type}_template_hierarchy
+     * @filter {$emplate}_template_hierarchy
      */
-    public function loadTemplates(array $templates): array
+    public function templateHierarchy(array $templates): array
     {
-        $j_templates = [];
+        $return = [];
 
         foreach ($templates as $template) {
-            $templates_dir = $this->app->utilities->fileSystem->templatesDir(
+            $new_template = $this->app->utilities->fileSystem->templatesDir(
                 'path',
                 "/{$template}",
                 'relative'
             );
 
-            $j_templates[] = $templates_dir;
+            $return[] = $new_template;
 
             if (($rel_dir = $this->app->utilities->fileSystem->relativeDir())) {
-                $j_templates[] = "{$rel_dir}/{$templates_dir}";
+                $return[] = "{$rel_dir}/{$new_template}";
             }
         }
 
-        return $j_templates;
+        return $return;
     }
 
     /**

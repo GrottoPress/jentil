@@ -24,32 +24,44 @@ class LoaderTest extends AbstractTestCase
 
     public function testRun()
     {
-        $add_filter = FunctionMocker::replace('add_filter');
+        $add_action = FunctionMocker::replace('add_action');
 
         $loader = new Loader(Stub::makeEmpty(AbstractTheme::class));
 
         $loader->run();
 
+        $add_action->wasCalledOnce();
+        $add_action->wasCalledWithOnce([
+            'after_setup_theme',
+            [$loader, 'loadTemplates']
+        ]);
+    }
+
+    public function testLoadTemplates()
+    {
+        $add_filter = FunctionMocker::replace('add_filter');
+
+        $loader = new Loader(Stub::makeEmpty(AbstractTheme::class));
+
+        $loader->loadTemplates();
+
         $add_filter->wasCalledTimes(\count($this->templates));
 
-        \array_walk(
-            $this->templates,
-            function (string $template) use ($loader, $add_filter) {
-                $add_filter->wasCalledWithOnce([
-                    "{$template}_template_hierarchy",
-                    [$loader, 'loadTemplates']
-                ]);
-            }
-        );
+        foreach ($this->templates as $template) {
+            $add_filter->wasCalledWithOnce([
+                "{$template}_template_hierarchy",
+                [$loader, 'templateHierarchy']
+            ]);
+        }
     }
 
     /**
      * @param string $relativeDir
      * @param string[] $expected
      *
-     * @dataProvider loadTemplatesProvider
+     * @dataProvider templateHierarchyProvider
      */
-    public function testLoadTemplates(string $relativeDir, array $expected)
+    public function testTemplateHierarchy(string $relativeDir, array $expected)
     {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
@@ -73,11 +85,11 @@ class LoaderTest extends AbstractTestCase
 
         $this->assertSame(
             $expected,
-            $loader->loadTemplates(['template-1', 'template-2'])
+            $loader->templateHierarchy(['template-1', 'template-2'])
         );
     }
 
-    public function loadTemplatesProvider(): array
+    public function templateHierarchyProvider(): array
     {
         return [
             'jentil is parent theme' => ['', [
