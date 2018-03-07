@@ -1,11 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups\Menus;
+namespace GrottoPress\Jentil\Setups\Menus;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Menus\Primary;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 

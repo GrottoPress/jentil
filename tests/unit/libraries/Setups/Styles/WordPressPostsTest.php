@@ -1,11 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups\Styles;
+namespace GrottoPress\Jentil\Setups\Styles;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Styles\WordPressPosts;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
 use GrottoPress\Jentil\AbstractTheme;

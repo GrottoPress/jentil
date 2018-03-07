@@ -1,11 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups;
+namespace GrottoPress\Jentil\Setups;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Mobile;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Mobile\Detector;
 use GrottoPress\Jentil\AbstractTheme;

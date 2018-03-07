@@ -1,12 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Utilities\ThemeMods;
+namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Utilities\ThemeMods\ThemeMods;
-use GrottoPress\Jentil\Utilities\ThemeMods\Posts;
+use GrottoPress\Jentil\AbstractTestCase;
 use tad\FunctionMocker\FunctionMocker;
 
 class PostsTest extends AbstractTestCase

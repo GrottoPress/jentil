@@ -1,12 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Utilities;
+namespace GrottoPress\Jentil\Utilities;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\Jentil\Utilities\FileSystem;
+use GrottoPress\Jentil\AbstractTestCase;
 use tad\FunctionMocker\FunctionMocker;
 
 class FileSystemTest extends AbstractTestCase

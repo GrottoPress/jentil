@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit;
+namespace GrottoPress\Jentil;
 
 use Codeception\Test\Unit;
 use tad\FunctionMocker\FunctionMocker;

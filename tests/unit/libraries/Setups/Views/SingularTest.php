@@ -1,11 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups\Views;
+namespace GrottoPress\Jentil\Setups\Views;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\Views\Singular;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;

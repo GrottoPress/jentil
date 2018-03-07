@@ -1,13 +1,11 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Utilities\Page\Posts;
+namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as StickyMod;
-use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
-use GrottoPress\Jentil\Utilities\Page\Posts\Sticky;
 use tad\FunctionMocker\FunctionMocker;
 
 class StickyTest extends AbstractTestCase

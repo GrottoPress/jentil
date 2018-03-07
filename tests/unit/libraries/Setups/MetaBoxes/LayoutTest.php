@@ -1,11 +1,10 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups\MetaBoxes;
+namespace GrottoPress\Jentil\Setups\MetaBoxes;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\MetaBoxes\Layout;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 

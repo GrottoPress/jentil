@@ -1,24 +1,23 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Tests\Unit\Setups\PostTypeTemplates;
+namespace GrottoPress\Jentil\Setups\PostTypeTemplates;
 
 use Codeception\Util\Stub;
-use GrottoPress\Jentil\Tests\Unit\AbstractTestCase;
-use GrottoPress\Jentil\Setups\PostTypeTemplates\AbstractTemplate;
+use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
 class AbstractTemplatesTest extends AbstractTestCase
 {
     /**
-     * @var AbstractTemplates
+     * @var AbstractTemplate
      */
-    private $templates;
+    private $template;
 
     public function _before()
     {
-        $this->templates = Stub::construct(
+        $this->template = Stub::construct(
             AbstractTemplate::class,
             [Stub::makeEmpty(AbstractTheme::class)],
             ['add' => false]
@@ -29,13 +28,13 @@ class AbstractTemplatesTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $this->templates->run();
+        $this->template->run();
 
         $add_action->wasCalledOnce();
 
         $add_action->wasCalledWithOnce([
             'wp_loaded',
-            [$this->templates, 'load']
+            [$this->template, 'load']
         ]);
     }
 
@@ -49,14 +48,14 @@ class AbstractTemplatesTest extends AbstractTestCase
             $post_types
         );
 
-        $this->templates->load();
+        $this->template->load();
 
         $add_filter->wasCalledTimes(\count($post_types));
 
         foreach ($post_types as $post_type) {
             $add_filter->wasCalledWithOnce([
                 "theme_{$post_type}_templates",
-                [$this->templates, 'add'],
+                [$this->template, 'add'],
                 10,
                 4
             ]);
