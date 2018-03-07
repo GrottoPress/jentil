@@ -17,13 +17,15 @@ final class Breadcrumbs extends AbstractSetup
      */
     public function render()
     {
-        $page = $this->app->utilities->page;
+        $utilities = $this->app->utilities;
 
-        if ($page->is('front_page') && !$page->is('paged')) {
+        if ($utilities->page->is('front_page') &&
+            !$utilities->page->is('paged')
+        ) {
             return;
         }
 
-        echo $this->app->utilities->breadcrumbs([
+        echo $utilities->breadcrumbs([
             'before' => \esc_html__('Path: ', 'jentil')
         ])->render();
     }
