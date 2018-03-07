@@ -4,7 +4,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\PostTypeTemplates;
 
 use GrottoPress\Jentil\Setups\AbstractSetup;
-use WP_Theme;
 
 abstract class AbstractTemplate extends AbstractSetup
 {
@@ -17,33 +16,4 @@ abstract class AbstractTemplate extends AbstractSetup
     {
         return $this->slug;
     }
-
-    public function run()
-    {
-        \add_action('wp_loaded', [$this, 'load']);
-    }
-
-    /**
-     * @action wp_loaded
-     */
-    public function load()
-    {
-        $post_types = \get_post_types(['public' => true, 'show_ui' => true]);
-
-        foreach ($post_types as $post_type) {
-            \add_filter("theme_{$post_type}_templates", [$this, 'add'], 10, 4);
-        }
-    }
-
-    /**
-     * @param \WP_Post $post
-     *
-     * @filter theme_{$post_type}_templates
-     */
-    abstract public function add(
-        array $templates,
-        WP_Theme $theme = null,
-        $post,
-        string $post_type
-    ): array;
 }
