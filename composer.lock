@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5044ce77e51bec6d02f9e399104a7ea",
+    "content-hash": "030724ecd99868f33351e15b7771cada",
     "packages": [
         {
             "name": "aura/html",
@@ -414,24 +414,26 @@
         },
         {
             "name": "grottopress/wordpress-breadcrumbs",
-            "version": "0.3.1",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-breadcrumbs.git",
-                "reference": "a9efc920705ab5b24b9cad902b8acf94f2e3a995"
+                "reference": "3ab88b5984b07f05aa1685d45f1af28b967ff5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/a9efc920705ab5b24b9cad902b8acf94f2e3a995",
-                "reference": "a9efc920705ab5b24b9cad902b8acf94f2e3a995",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/3ab88b5984b07f05aa1685d45f1af28b967ff5d6",
+                "reference": "3ab88b5984b07f05aa1685d45f1af28b967ff5d6",
                 "shasum": ""
             },
             "require": {
-                "grottopress/wordpress-page": "^0.4",
+                "grottopress/getter": "^0.3",
+                "grottopress/wordpress-page": "^0.5",
                 "php": ">=7.0"
             },
             "require-dev": {
-                "lucatume/wp-browser": "^1.21"
+                "codeception/codeception": "^2.4",
+                "lucatume/function-mocker": "^1.3"
             },
             "type": "library",
             "autoload": {
@@ -455,12 +457,12 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A library to render breadcrumbs for a WordPress page.",
+            "description": "Build and display breadcrumbs for WordPress pages",
             "keywords": [
                 "breadcrumbs",
                 "wordpress"
             ],
-            "time": "2017-11-16T18:43:48+00:00"
+            "time": "2018-03-08T17:19:00+00:00"
         },
         {
             "name": "grottopress/wordpress-field",
@@ -567,23 +569,24 @@
         },
         {
             "name": "grottopress/wordpress-page",
-            "version": "0.4.3",
+            "version": "0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "3b99c1fee15a39ae0482e09a571f952d2d1de34b"
+                "reference": "45c61a38917aa85ff10d41f2c06c76263c8ec76e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/3b99c1fee15a39ae0482e09a571f952d2d1de34b",
-                "reference": "3b99c1fee15a39ae0482e09a571f952d2d1de34b",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/45c61a38917aa85ff10d41f2c06c76263c8ec76e",
+                "reference": "45c61a38917aa85ff10d41f2c06c76263c8ec76e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.3"
+                "codeception/codeception": "^2.4",
+                "lucatume/function-mocker": "^1.3"
             },
             "type": "library",
             "autoload": {
@@ -607,11 +610,11 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A library to get WordPress page elements",
+            "description": "Get current page attributes in WordPress",
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-01-20T15:55:53+00:00"
+            "time": "2018-03-07T23:43:37+00:00"
         },
         {
             "name": "grottopress/wordpress-posts",
@@ -1975,7 +1978,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.36",
+            "version": "v5.5.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2019,16 +2022,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.36",
+            "version": "v5.5.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "c10c2fcabe8cb907ebb2dcae4f50e7c83a872055"
+                "reference": "400a321e52a4c93f71ed24b5b5f05ebadee2eff8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/c10c2fcabe8cb907ebb2dcae4f50e7c83a872055",
-                "reference": "c10c2fcabe8cb907ebb2dcae4f50e7c83a872055",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/400a321e52a4c93f71ed24b5b5f05ebadee2eff8",
+                "reference": "400a321e52a4c93f71ed24b5b5f05ebadee2eff8",
                 "shasum": ""
             },
             "require": {
@@ -2072,7 +2075,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-02-14T15:12:47+00:00"
+            "time": "2018-03-05T13:53:42+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

@@ -27,7 +27,7 @@
     "require": {
         "php": ">=7.0",
         "yahnis-elsts/plugin-update-checker": "^4.1",
-        "grottopress/wordpress-breadcrumbs": "^0.3",
+        "grottopress/wordpress-breadcrumbs": "^0.4",
         "grottopress/wordpress-meta-box": "^0.1",
         "grottopress/wordpress-posts": "^0.7",
         "grottopress/wordpress-suv": "^0.4"
