@@ -57,7 +57,7 @@ class Layout extends AbstractThemeMod
         $names = [
             'home' => 'post_post_type_layout',
             'singular' => (
-                $this->isPagelike() ? 'layout' :
+                $this->isPagelike() ? '_jentil-layout' :
                 "singular_{$this->specific}_{$this->more_specific}_layout"
             ),
             'author' => 'author_layout',
@@ -72,7 +72,10 @@ class Layout extends AbstractThemeMod
 
         $names = \array_map(function (string $value): string {
             $value = \str_replace(['__', '_0_'], '_', $value);
-            $value = \trim($value, '_');
+
+            if (!$this->isPagelike()) {
+                $value = \trim($value, '_');
+            }
 
             return $value;
         }, $names);
