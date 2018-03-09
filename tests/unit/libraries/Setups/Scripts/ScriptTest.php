@@ -51,7 +51,7 @@ class ScriptTest extends AbstractTestCase
 
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
-            'jentil',
+            $script->id,
             'http://my.url/dist/scripts/jentil.js',
             ['jquery'],
             '',

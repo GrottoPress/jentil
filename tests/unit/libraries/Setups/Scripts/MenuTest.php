@@ -44,7 +44,7 @@ class MenuTest extends AbstractTestCase
 
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
-            'jentil-menu',
+            $script->id,
             'http://my.url/dist/scripts/menu.js',
             ['jquery'],
             '',

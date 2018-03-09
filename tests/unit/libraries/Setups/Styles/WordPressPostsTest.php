@@ -33,6 +33,9 @@ class WordPressPostsTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
+            'setups' => ['Styles\Normalize' => new class {
+                public $id;
+            }],
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => 'http://my.url/dist/styles/posts.css'
@@ -44,9 +47,9 @@ class WordPressPostsTest extends AbstractTestCase
 
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
-            'wordpress-posts',
+            $style->id,
             'http://my.url/dist/styles/posts.css',
-            ['normalize'],
+            [$jentil->setups['Styles\Normalize']->id],
         ]);
     }
 }

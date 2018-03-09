@@ -129,7 +129,7 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $wp_enqueue_script->wasCalledOnce();
         $wp_enqueue_script->wasCalledWithOnce([
-            'jentil-customize-preview',
+            $script->id,
             'http://my.site/dist/scripts/customizer.js',
             ['jquery', 'customize-preview'],
             '',

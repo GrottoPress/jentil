@@ -251,7 +251,7 @@ class LayoutTest extends AbstractTestCase
                 ['page', 'post'],
                 [],
                 true,
-                'layout',
+                '_jentil-layout',
             ],
             'context is singular, not pagelike' => [
                 'singular',

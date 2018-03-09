@@ -37,6 +37,9 @@ class StyleTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
+            'setups' => ['Styles\Normalize' => new class {
+                public $id;
+            }],
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => function (
@@ -53,13 +56,13 @@ class StyleTest extends AbstractTestCase
 
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
-            'jentil',
+            $style->id,
             (
                 $isRTL ?
                 'http://my.url/dist/styles/jentil-rtl.min.css' :
                 'http://my.url/dist/styles/jentil.min.css'
             ),
-            ['normalize'],
+            [$jentil->setups['Styles\Normalize']->id],
         ]);
     }
 

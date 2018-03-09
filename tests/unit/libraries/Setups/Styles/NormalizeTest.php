@@ -44,7 +44,7 @@ class NormalizeTest extends AbstractTestCase
 
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
-            'normalize',
+            $style->id,
             'http://my.url/dist/styles/normalize.css',
         ]);
     }
