@@ -28,7 +28,7 @@ final class Normalize extends AbstractStyle
             $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/normalize.css/normalize.css'
+                '/dist/vendor/normalize.min.css'
             )
         );
     }

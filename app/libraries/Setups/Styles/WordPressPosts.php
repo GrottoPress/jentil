@@ -28,9 +28,9 @@ final class WordPressPosts extends AbstractStyle
             $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
+                '/dist/vendor/posts.min.css'
             ),
-            ['normalize']
+            [$this->app->setups['Styles\Normalize']->id]
         );
     }
 }

@@ -74,6 +74,18 @@ gulp.task('styles', () =>
  */
 gulp.task('vendor', () => {
     gulp.src([
+        './vendor/grottopress/wordpress-posts/dist/styles/*.min.css',
+        './node_modules/html5shiv/dist/html5shiv.min.js',
+        './node_modules/respond.js/dest/respond.min.js'
+    ])
+    .pipe(gulp.dest(vendor_dest))
+
+    gulp.src(['./node_modules/normalize.css/normalize.css'])
+    .pipe(cleanCSS())
+    .pipe(rename({'suffix' : '.min'}))
+    .pipe(gulp.dest(vendor_dest))
+
+    gulp.src([
         './node_modules/@fortawesome/fontawesome/index.js',
         './node_modules/@fortawesome/fontawesome-free-solid/index.js'
     ])

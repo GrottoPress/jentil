@@ -36,7 +36,7 @@ final class Style extends AbstractStyle
                 'url',
                 "/dist/styles/{$style}"
             ),
-            ['normalize']
+            [$this->app->setups['Styles\Normalize']->id]
         );
     }
 }

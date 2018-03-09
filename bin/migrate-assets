@@ -4,9 +4,6 @@
 
 TO='./assets/vendor'
 FROM=(
-    'normalize.css'
-    'html5shiv'
-    'respond.js'
     'grottopress/wordpress-posts/assets'
     'grottopress/wordpress-posts/dist'
 )
