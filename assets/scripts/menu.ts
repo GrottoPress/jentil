@@ -73,8 +73,8 @@
 
     function renderCaret(direction: 'up' | 'down'): string
     {
-        return '<span class="fa fa-caret-'+direction.toString()+
-            '" aria-hidden="true"></span>'+
+        return '<span class="fas fa-caret-'+direction.toString()+
+            ' fa-sm" aria-hidden="true"></span>'+
             '<span class="screen-reader-text">Sub-menu</span>'
     }
 })(jQuery)

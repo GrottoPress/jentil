@@ -45,8 +45,6 @@ final class Jentil extends AbstractTheme
         $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
 
         $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
-        $this->setups['Styles\FontAwesome'] =
-            new Setups\Styles\FontAwesome($this);
         $this->setups['Styles\WordPressPosts'] =
             new Setups\Styles\WordPressPosts($this);
         $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
@@ -57,6 +55,8 @@ final class Jentil extends AbstractTheme
             new Setups\Scripts\CommentReply($this);
         $this->setups['Scripts\CustomizePreview'] =
                 new Setups\Scripts\CustomizePreview($this);
+        $this->setups['Scripts\FontAwesome'] =
+            new Setups\Scripts\FontAwesome($this);
 
         $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
 

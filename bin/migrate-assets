@@ -5,7 +5,6 @@
 TO='./assets/vendor'
 FROM=(
     'normalize.css'
-    'font-awesome'
     'html5shiv'
     'respond.js'
     'grottopress/wordpress-posts/assets'
@@ -22,8 +21,6 @@ migrate()
         elif [[ -d "./vendor/${dir}" ]]; then
             src="./vendor/${dir}"
         else
-            [[ -d "${dest}" ]] && rm -rf ${dest}
-
             continue
         fi
 

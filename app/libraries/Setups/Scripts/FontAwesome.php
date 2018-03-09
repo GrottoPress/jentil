@@ -1,17 +1,17 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups\Styles;
+namespace GrottoPress\Jentil\Setups\Scripts;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-final class FontAwesome extends AbstractStyle
+final class FontAwesome extends AbstractScript
 {
     public function __construct(AbstractTheme $jentil)
     {
         parent::__construct($jentil);
 
-        $this->id = 'font-awesome';
+        $this->id = 'jentil-fontawesome';
     }
 
     public function run()
@@ -24,13 +24,15 @@ final class FontAwesome extends AbstractStyle
      */
     public function enqueue()
     {
-        \wp_enqueue_style(
+        \wp_enqueue_script(
             $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/assets/vendor/font-awesome/css/font-awesome.min.css'
+                '/dist/vendor/fontawesome.min.js'
             ),
-            ['normalize']
+            [],
+            '',
+            true
         );
     }
 }
