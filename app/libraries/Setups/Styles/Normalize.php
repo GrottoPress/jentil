@@ -11,7 +11,7 @@ final class Normalize extends AbstractStyle
     {
         parent::__construct($jentil);
 
-        $this->id = 'normalize';
+        $this->id = 'jentil-normalize';
     }
 
     public function run()
