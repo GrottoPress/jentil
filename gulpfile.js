@@ -29,7 +29,7 @@ const styles_dest = './dist/styles'
 const vendor_dest = './dist/vendor'
 
 /**
- * Compile ts, rtl and minify js
+ * Build scripts
  */
 gulp.task('scripts', () =>
     gulp.src(scripts_src)
@@ -50,7 +50,7 @@ gulp.task('scripts', () =>
 )
 
 /**
- * Compile scss, rtl, minify css
+ * Build styles
  */
 gulp.task('styles', () =>
     gulp.src(styles_src)
