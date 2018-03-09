@@ -42,7 +42,7 @@ class Layout extends AbstractThemeMod
 
         $this->context = \sanitize_key($args['context']);
         $this->more_specific = (int)$args['more_specific'];
-        $this->default = 'content-sidebar';
+        $this->default = 'content';
 
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
