@@ -1,14 +1,5 @@
-/**
- * Gulpfile
- *
- * @since 0.1.0
- */
-
 'use strict'
 
-/**
- * Import gulp, plugins
- */
 const gulp = require('gulp')
 const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
@@ -19,9 +10,6 @@ const sourcemaps = require('gulp-sourcemaps')
 const ts = require('gulp-typescript')
 const concat = require('gulp-concat')
 
-/**
- * Define paths
- */
 const scripts_src = ['./assets/scripts/**/*.ts']
 const scripts_dest = './dist/scripts'
 const styles_src = ['./assets/styles/**/*.scss']
@@ -29,9 +17,6 @@ const styles_dest = './dist/styles'
 const vendor_dest = './dist/vendor'
 const vendor_assets = './assets/vendor'
 
-/**
- * Build scripts
- */
 gulp.task('scripts', () =>
     gulp.src(scripts_src)
         .pipe(sourcemaps.init())
@@ -50,9 +35,6 @@ gulp.task('scripts', () =>
         .pipe(gulp.dest(scripts_dest))
 )
 
-/**
- * Build styles
- */
 gulp.task('styles', () =>
     gulp.src(styles_src)
         .pipe(sourcemaps.init())
@@ -70,9 +52,6 @@ gulp.task('styles', () =>
         .pipe(gulp.dest(styles_dest))
 )
 
-/**
- * Build vendor assets
- */
 gulp.task('vendor', () => {
     gulp.src([
         './vendor/grottopress/wordpress-posts/dist/styles/*.min.css',
@@ -98,17 +77,11 @@ gulp.task('vendor', () => {
         .pipe(gulp.dest(`${vendor_assets}/@grottopress/scss`))
 })
 
-/**
- * Watch files for changes
- */
 gulp.task('watch', () => {
     gulp.watch(scripts_src, ['scripts'])
     gulp.watch(styles_src, ['styles'])
 })
 
-/**
- * Default task
- */
 gulp.task('default', [
     'scripts',
     'styles',

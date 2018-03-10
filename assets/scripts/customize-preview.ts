@@ -1,10 +1,3 @@
-/*!
- * Customize preview
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 ///<reference path="./global.d.ts"/>
 
 (($: JQueryStatic): void => {

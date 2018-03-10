@@ -1,13 +1,3 @@
-/**
- * Declarations
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
-/**
- * Customizer
- */
 declare const shortTags: any
 declare const colophonModName: string
 declare const titleModNames: string[]
