@@ -34,20 +34,20 @@ const vendor_assets = './assets/vendor'
  */
 gulp.task('scripts', () =>
     gulp.src(scripts_src)
-    .pipe(sourcemaps.init())
-    .pipe(ts({
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": true,
-        "noImplicitUseStrict": true,
-        "noImplicitThis": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true
-    }))
-    .pipe(uglify())
-    .pipe(rename({'suffix' : '.min'}))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(scripts_dest))
+        .pipe(sourcemaps.init())
+        .pipe(ts({
+            "module": "commonjs",
+            "target": "es5",
+            "noImplicitAny": true,
+            "noImplicitUseStrict": true,
+            "noImplicitThis": true,
+            "strictNullChecks": true,
+            "strictFunctionTypes": true
+        }))
+        .pipe(uglify())
+        .pipe(rename({'suffix' : '.min'}))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(scripts_dest))
 )
 
 /**
@@ -55,19 +55,19 @@ gulp.task('scripts', () =>
  */
 gulp.task('styles', () =>
     gulp.src(styles_src)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    // .pipe(cleanCSS({format: 'beautify'}))
-    // .pipe(gulp.dest(styles_dest))
-    .pipe(cleanCSS())
-    .pipe(rename({'suffix' : '.min'}))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(styles_dest))
-    .pipe(rtlcss())
-    .pipe(rename((path) =>
-        path.basename = path.basename.replace('.min', '-rtl.min')
-    ))
-    .pipe(gulp.dest(styles_dest))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        // .pipe(cleanCSS({format: 'beautify'}))
+        // .pipe(gulp.dest(styles_dest))
+        .pipe(cleanCSS())
+        .pipe(rename({'suffix' : '.min'}))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(styles_dest))
+        .pipe(rtlcss())
+        .pipe(rename((path) =>
+            path.basename = path.basename.replace('.min', '-rtl.min')
+        ))
+        .pipe(gulp.dest(styles_dest))
 )
 
 /**
@@ -78,25 +78,24 @@ gulp.task('vendor', () => {
         './vendor/grottopress/wordpress-posts/dist/styles/*.min.css',
         './node_modules/html5shiv/dist/html5shiv.min.js',
         './node_modules/respond.js/dest/respond.min.js'
-    ])
-    .pipe(gulp.dest(vendor_dest))
+    ]).pipe(gulp.dest(vendor_dest))
 
     gulp.src(['./node_modules/normalize.css/normalize.css'])
-    .pipe(cleanCSS())
-    .pipe(rename({'suffix' : '.min'}))
-    .pipe(gulp.dest(vendor_dest))
+        .pipe(cleanCSS())
+        .pipe(rename({'suffix' : '.min'}))
+        .pipe(gulp.dest(vendor_dest))
 
     gulp.src([
         './node_modules/@fortawesome/fontawesome/index.js',
         './node_modules/@fortawesome/fontawesome-free-solid/index.js'
     ])
-    .pipe(concat('fontawesome.js'))
-    .pipe(uglify())
-    .pipe(rename({'suffix' : '.min'}))
-    .pipe(gulp.dest(vendor_dest))
+        .pipe(concat('fontawesome.js'))
+        .pipe(uglify())
+        .pipe(rename({'suffix' : '.min'}))
+        .pipe(gulp.dest(vendor_dest))
 
     gulp.src(['./node_modules/@grottopress/scss/**'])
-    .pipe(gulp.dest(`${vendor_assets}/@grottopress/scss`))
+        .pipe(gulp.dest(`${vendor_assets}/@grottopress/scss`))
 })
 
 /**
