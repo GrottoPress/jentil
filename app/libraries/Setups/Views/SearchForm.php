@@ -1,13 +1,15 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Views;
 
-final class Search extends AbstractSetup
+use GrottoPress\Jentil\Setups\AbstractSetup;
+
+final class SearchForm extends AbstractSetup
 {
     public function run()
     {
-        \add_filter('get_search_form', [$this, 'form']);
+        \add_filter('get_search_form', [$this, 'render']);
     }
 
     /**
@@ -15,7 +17,7 @@ final class Search extends AbstractSetup
      *
      * @filter get_search_form
      */
-    public function form(string $searchform): string
+    public function render(string $searchform): string
     {
         $home_url = \home_url('/');
 

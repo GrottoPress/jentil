@@ -39,7 +39,6 @@ final class Jentil extends AbstractTheme
         $this->setups['HTML5'] = new Setups\HTML5($this);
         $this->setups['TitleTag'] = new Setups\TitleTag($this);
         $this->setups['Layout'] = new Setups\Layout($this);
-        $this->setups['Search'] = new Setups\Search($this);
         $this->setups['Mobile'] = new Setups\Mobile($this);
 
         $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
@@ -74,6 +73,7 @@ final class Jentil extends AbstractTheme
             new Setups\Sidebars\Secondary($this);
         $this->setups['Sidebars\Footer'] = new Setups\Sidebars\Footer($this);
 
+        $this->setups['Views\SearchForm'] = new Setups\Views\SearchForm($this);
         $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
         $this->setups['Views\Search'] = new Setups\Views\Search($this);
         $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
