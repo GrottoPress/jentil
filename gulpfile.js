@@ -27,6 +27,7 @@ const scripts_dest = './dist/scripts'
 const styles_src = ['./assets/styles/**/*.scss']
 const styles_dest = './dist/styles'
 const vendor_dest = './dist/vendor'
+const vendor_assets = './assets/vendor'
 
 /**
  * Build scripts
@@ -93,6 +94,9 @@ gulp.task('vendor', () => {
     .pipe(uglify())
     .pipe(rename({'suffix' : '.min'}))
     .pipe(gulp.dest(vendor_dest))
+
+    gulp.src(['./node_modules/@grottopress/scss/**'])
+    .pipe(gulp.dest(`${vendor_assets}/@grottopress/scss`))
 })
 
 /**

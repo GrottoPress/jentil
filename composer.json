@@ -39,13 +39,11 @@
     "scripts": {
         "post-update-cmd": [
             "npm update",
-            "./bin/migrate-assets",
             "npm run build"
         ],
         "post-install-cmd": [
             "npm install",
             "chmod +x ./bin/*",
-            "./bin/migrate-assets",
             "npm run build"
         ],
         "test": [
