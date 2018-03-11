@@ -4,7 +4,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil;
 
 use GrottoPress\Jentil\Utilities\Utilities;
-use GrottoPress\Jentil\AbstractTheme;
 
 final class Jentil extends AbstractTheme
 {
