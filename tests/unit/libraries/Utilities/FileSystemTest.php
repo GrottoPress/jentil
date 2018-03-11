@@ -11,25 +11,39 @@ class FileSystemTest extends AbstractTestCase
 {
     /**
      * @dataProvider dirProvider
+     * @var string $mode 'package' or 'theme'
      */
-    public function testDir(string $append)
+    public function testDir(string $append, string $mode)
     {
-        $this->markTestSkipped();
+        $this->markTestSkipped('Mock `dirname()` not working');
 
-        $fileSystem = Stub::make(FileSystem::class, [
-            'dirPath' => '/var/www/vendor/jentil',
-            'dirUrl' => 'http://my.site/themes/vendor/jentil',
-        ]);
-        $fileSystem->dirPath = '/var/www/vendor/jentil';
-        $fileSystem->dirUrl = 'http://my.site/themes/vendor/jentil';
+        $dir_name = (
+            'theme' === $mode ?
+            '/var/www/themes/jentil' :
+            '/var/www/themes/kuul/vendor/jentil'
+        );
+
+        FunctionMocker::replace('dirname', $dir_name);
+        FunctionMocker::replace('get_theme_root', '/var/www/themes');
+        FunctionMocker::replace('get_theme_root_uri', 'http://my.site/themes');
+
+        $fileSystem = new FileSystem(Stub::makeEmpty(Utilities::class));
 
         $this->assertSame(
-            "/var/www/vendor/jentil{$append}",
+            (
+                'theme' === $mode ?
+                "/var/www/themes/jentil{$append}" :
+                "/var/www/themes/kuul/vendor/jentil{$append}"
+            ),
             $fileSystem->dir('path', $append)
         );
 
         $this->assertSame(
-            "http://my.site/themes/vendor/jentil{$append}",
+            (
+                'theme' === $mode ?
+                "http://my.site/themes/jentil{$append}" :
+                "http://my.site/themes/kuul/vendor/jentil{$append}"
+            ),
             $fileSystem->dir('url', $append)
         );
     }
@@ -37,8 +51,7 @@ class FileSystemTest extends AbstractTestCase
     public function dirProvider(): array
     {
         return [
-            'no append' => [''],
-            'with append' => ['/hello'],
+            'jentil installed as theme' => ['/assets', 'theme'],
         ];
     }
 }
