@@ -57,7 +57,7 @@ final class Jentil extends AbstractTheme
     {
         $setups = $this->setups;
 
-        unset($setups['Loader'], $setups['Updater']);
+        unset($setups['Loader']);
 
         return $setups;
     }
