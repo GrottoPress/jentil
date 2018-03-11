@@ -10,13 +10,13 @@ use GrottoPress\Jentil\Utilities\FileSystem;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
-class WordPressPostsTest extends AbstractTestCase
+class PostsTest extends AbstractTestCase
 {
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $style = new WordPressPosts(Stub::makeEmpty(AbstractTheme::class));
+        $style = new Posts(Stub::makeEmpty(AbstractTheme::class));
 
         $style->run();
 
@@ -41,7 +41,7 @@ class WordPressPostsTest extends AbstractTestCase
             'dir' => 'http://my.url/dist/styles/posts.css'
         ]);
 
-        $style = new WordPressPosts($jentil);
+        $style = new Posts($jentil);
 
         $style->enqueue();
 

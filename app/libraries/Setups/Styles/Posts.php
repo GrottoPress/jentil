@@ -5,13 +5,13 @@ namespace GrottoPress\Jentil\Setups\Styles;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-final class WordPressPosts extends AbstractStyle
+final class Posts extends AbstractStyle
 {
     public function __construct(AbstractTheme $jentil)
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-wordpress-posts';
+        $this->id = 'jentil-posts';
     }
 
     public function run()

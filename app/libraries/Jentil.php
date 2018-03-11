@@ -94,8 +94,7 @@ final class Jentil extends AbstractTheme
     private function setUpStyles()
     {
         $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
-        $this->setups['Styles\WordPressPosts'] =
-            new Setups\Styles\WordPressPosts($this);
+        $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
         $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
     }
 
