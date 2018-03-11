@@ -159,3 +159,4 @@ Kindly report suspected security vulnerabilities in private, via contact details
 The following websites are powered by Jentil:
 
 - [GrottoPress](https://www.grottopress.com)
+- [Ghana Gong](https://www.ghanagong.com)
