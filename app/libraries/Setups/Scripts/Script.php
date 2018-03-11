@@ -21,7 +21,7 @@ final class Script extends AbstractScript
     }
 
     /**
-     * @action wp_footer
+     * @action wp_enqueue_scripts
      */
     public function enqueue()
     {
