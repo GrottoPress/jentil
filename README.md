@@ -128,6 +128,26 @@ If you decide to add your own templates, do not use WordPress' `\get_header()`, 
 
 Jentil uses it's own loader to load partials from the `app/partials` directory. You should call eg: `\Jentil()->utilities->loader->loadPartial('header', 'some-slug')`, instead of `\get_header('some-slug')`.
 
+### Template hooks
+
+You should rarely need to add your own templates, as Jentil comes with template hooks you can use to add or remove stuff from the bundled templates.
+
+The following action hooks are available:
+
+- `jentil_before_header`
+- `jentil_inside_header`
+- `jentil_after_header`
+- `jentil_before_before_title`
+- `jentil_before_title`
+- `jentil_after_title`
+- `jentil_before_content`
+- `jentil_after_content`
+- `jentil_after_after_content`
+- `jentil_before_footer`
+- `jentil_inside_footer`
+
+See examples of how to use these hooks in `app/libraries/Setups/Views`.
+
 ### Post type templates
 
 WordPress introduced [post type templates](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/) in version 4.7, as an extension of page templates to all post types. WordPress looks for post type templates in the root of your theme.
