@@ -13,8 +13,8 @@ declare (strict_types = 1);
 
         <link rel="profile" href="http://gmpg.org/xfn/11" />
 
-        <?php if (\Jentil()->utilities->page->is('singular')
-            && \pings_open(\get_queried_object())
+        <?php if (\Jentil()->utilities->page->is('singular') &&
+            \pings_open(\get_queried_object())
         ) { ?>
             <link rel="pingback" href="<?php \bloginfo('pingback_url'); ?>" />
         <?php } ?>
