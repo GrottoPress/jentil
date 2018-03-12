@@ -19,6 +19,11 @@ if (!\Jentil()->utilities->page->is('singular')) {
     <?php }
 }
 
+/**
+ * Prevent calls to `global $jentil_title`.
+ */
+unset($jentil_title);
+
 \do_action('jentil_before_content');
 
 if (\Jentil()->utilities->page->is('404')
@@ -28,6 +33,11 @@ if (\Jentil()->utilities->page->is('404')
 } else {
     echo $jentil_posts;
 }
+
+/**
+ * Prevent calls to `global $jentil_posts`.
+ */
+unset($jentil_posts);
 
 \do_action('jentil_after_content');
 
