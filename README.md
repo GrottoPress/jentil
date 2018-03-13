@@ -143,6 +143,7 @@ The following action hooks are available:
 - `jentil_before_content`
 - `jentil_after_content`
 - `jentil_after_after_content`
+- `jentil_before_comments`
 - `jentil_before_footer`
 - `jentil_inside_footer`
 
