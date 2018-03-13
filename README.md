@@ -144,7 +144,6 @@ The following action hooks are available:
 - `jentil_after_content`
 - `jentil_after_after_content`
 - `jentil_before_comments`
-- `jentil_before_sidebar`
 - `jentil_before_sidebar` (Args: `string $id`)
 - `jentil_after_sidebar` (Args: `string $id`)
 - `jentil_before_footer`
