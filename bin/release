@@ -1,6 +1,9 @@
 #!/bin/bash
 #
-# Bump version and release
+# Release new version
+#
+# Usage: `./bin/release <version-number>`
+# Example `./bin/release 0.1.0`
 
 TO_VERSION="$1"
 DEV_BRANCH='dev'
