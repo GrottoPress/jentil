@@ -108,6 +108,8 @@ final class Jentil extends AbstractTheme
                 new Setups\Scripts\CustomizePreview($this);
         $this->setups['Scripts\FontAwesome'] =
             new Setups\Scripts\FontAwesome($this);
+        $this->setups['Scripts\FontAwesomeShim'] =
+            new Setups\Scripts\FontAwesomeShim($this);
     }
 
     private function setUpMenus()
