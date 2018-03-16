@@ -66,7 +66,9 @@ gulp.task('vendor', () => {
 
     gulp.src([
         './node_modules/@fortawesome/fontawesome/index.js',
-        './node_modules/@fortawesome/fontawesome-free-solid/index.js'
+        './node_modules/@fortawesome/fontawesome-free-solid/index.js',
+        './node_modules/@fortawesome/fontawesome-free-regular/index.js',
+        './node_modules/@fortawesome/fontawesome-free-brands/index.js'
     ])
         .pipe(concat('fontawesome.js'))
         .pipe(uglify())
