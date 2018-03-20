@@ -99,7 +99,6 @@ class SingularTest extends AbstractTestCase
         string $template,
         array $postTypeSupports,
         bool $commentsOpen,
-        bool $show_avatars,
         bool $thread_comments,
         array $post,
         array $expected
@@ -140,7 +139,7 @@ class SingularTest extends AbstractTestCase
 
         $get_option = FunctionMocker::replace(
             'get_option',
-            function (string $option) use ($show_avatars, $thread_comments) {
+            function (string $option) use ($thread_comments) {
                 return ${$option};
             }
         );
@@ -360,7 +359,6 @@ class SingularTest extends AbstractTestCase
                 ['comments'],
                 true,
                 true,
-                true,
                 ['ID' => 3, 'post_type' => 'page', 'post_parent' => [
                     'ID' => 1,
                     'post_type' => 'page',
@@ -374,12 +372,10 @@ class SingularTest extends AbstractTestCase
                 ['comments'],
                 true,
                 true,
-                true,
                 ['ID' => 3, 'post_type' => 'page', 'post_parent' => []],
                 [
                     'class-1',
                     'page-builder.php',
-                    'show-avatars',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -388,7 +384,6 @@ class SingularTest extends AbstractTestCase
                 'singular',
                 'page-builder.php',
                 ['comments'],
-                true,
                 true,
                 true,
                 ['ID' => 3, 'post_type' => 'page', 'post_parent' => [
@@ -401,7 +396,6 @@ class SingularTest extends AbstractTestCase
                     'child-page',
                     'page-parent-1-1000',
                     'page-builder.php',
-                    'show-avatars',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -410,7 +404,6 @@ class SingularTest extends AbstractTestCase
                 'singular',
                 'page-builder.php',
                 ['comments'],
-                true,
                 true,
                 true,
                 ['ID' => 3010, 'post_type' => 'tutorial', 'post_parent' => [
@@ -428,7 +421,6 @@ class SingularTest extends AbstractTestCase
                     'tutorial-parent-1-2010',
                     'tutorial-parent-2-1010',
                     'page-builder.php',
-                    'show-avatars',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -437,7 +429,6 @@ class SingularTest extends AbstractTestCase
                 'singular',
                 'page-builder.php',
                 ['comments'],
-                true,
                 true,
                 true,
                 ['ID' => 4111, 'post_type' => 'tutorial', 'post_parent' => [
@@ -460,7 +451,6 @@ class SingularTest extends AbstractTestCase
                     'tutorial-parent-2-2111',
                     'tutorial-parent-3-1111',
                     'page-builder.php',
-                    'show-avatars',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -471,7 +461,6 @@ class SingularTest extends AbstractTestCase
                 ['automatic-feed-links'],
                 true,
                 true,
-                true,
                 ['ID' => 3222, 'post_type' => 'book', 'post_parent' => [
                     'ID' => 2222,
                     'post_type' => 'book',
@@ -482,28 +471,6 @@ class SingularTest extends AbstractTestCase
                     'child-book',
                     'book-parent-1-2222',
                     'page-builder.php',
-                ],
-            ],
-            'no avatars' => [
-                'singular',
-                'page-builder.php',
-                ['comments'],
-                true,
-                false,
-                true,
-                ['ID' => 3222, 'post_type' => 'book', 'post_parent' => [
-                    'ID' => 2222,
-                    'post_type' => 'book',
-                    'post_parent' => [],
-                ]],
-                [
-                    'class-1',
-                    'child-book',
-                    'book-parent-1-2222',
-                    'page-builder.php',
-                    'hide-avatars',
-                    'threaded-comments',
-                    'comments-open',
                 ],
             ],
             'comments not threaded' => [
@@ -511,7 +478,6 @@ class SingularTest extends AbstractTestCase
                 'page-builder.php',
                 ['comments'],
                 true,
-                true,
                 false,
                 ['ID' => 3222, 'post_type' => 'book', 'post_parent' => [
                     'ID' => 2222,
@@ -523,7 +489,6 @@ class SingularTest extends AbstractTestCase
                     'child-book',
                     'book-parent-1-2222',
                     'page-builder.php',
-                    'show-avatars',
                     'unthreaded-comments',
                     'comments-open',
                 ],
@@ -534,7 +499,6 @@ class SingularTest extends AbstractTestCase
                 ['comments'],
                 false,
                 true,
-                true,
                 ['ID' => 3222, 'post_type' => 'book', 'post_parent' => [
                     'ID' => 2222,
                     'post_type' => 'book',
@@ -545,7 +509,6 @@ class SingularTest extends AbstractTestCase
                     'child-book',
                     'book-parent-1-2222',
                     'page-builder.php',
-                    'show-avatars',
                     'threaded-comments',
                     'comments-closed',
                 ],

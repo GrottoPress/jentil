@@ -21,7 +21,7 @@ class ArchiveTest extends AbstractTestCase
         $add_action->wasCalledOnce();
 
         $add_action->wasCalledWithOnce([
-            'jentil_before_content',
+            'jentil_after_title',
             [$archive, 'renderDescription']
         ]);
     }
