@@ -30,12 +30,12 @@ class SearchTest extends AbstractTestCase
 
         $add_action->wasCalledWithOnce([
             'jentil_before_content',
-            [$search, 'render']
+            [$search, 'renderSearchForm']
         ]);
     }
 
     /**
-     * @dataProvider redirectDataProvider
+     * @dataProvider redirectProvider
      */
     public function testRedirect(
         string $page,
@@ -97,9 +97,9 @@ class SearchTest extends AbstractTestCase
     }
 
     /**
-     * @dataProvider renderDataProvider
+     * @dataProvider renderSearchFormProvider
      */
-    public function testRender(string $page)
+    public function testRenderSearchForm(string $page)
     {
         $get_search_form = FunctionMocker::replace('get_search_form');
 
@@ -115,7 +115,7 @@ class SearchTest extends AbstractTestCase
 
         $search = new Search($jentil);
 
-        $search->render();
+        $search->renderSearchForm();
 
         if ('search' === $page) {
             $get_search_form->wasCalledOnce();
@@ -124,7 +124,7 @@ class SearchTest extends AbstractTestCase
         }
     }
 
-    public function redirectDataProvider(): array
+    public function redirectProvider(): array
     {
         return [
             'on search archive' => ['search', '', false],
@@ -145,7 +145,7 @@ class SearchTest extends AbstractTestCase
         ];
     }
 
-    public function renderDataProvider(): array
+    public function renderSearchFormProvider(): array
     {
         return [
             'on search archive' => ['search'],

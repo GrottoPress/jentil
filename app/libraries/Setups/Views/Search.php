@@ -10,7 +10,7 @@ final class Search extends AbstractSetup
     public function run()
     {
         \add_action('template_redirect', [$this, 'redirect']);
-        \add_action('jentil_before_content', [$this, 'render']);
+        \add_action('jentil_before_content', [$this, 'renderSearchForm']);
     }
 
     /**
@@ -42,7 +42,7 @@ final class Search extends AbstractSetup
     /**
      * @action jentil_before_content
      */
-    public function render()
+    public function renderSearchForm()
     {
         if (!$this->app->utilities->page->is('search')) {
             return;
