@@ -9,6 +9,20 @@
     color: $jentil-font-light;
 }
 
+.page-title,
+.page.has-magpack-posts .page-header .entry-title {
+    color: $jentil-font-lighter;
+    font-size: 22px;
+}
+
+.entry-content,
+.pagination {
+    @include paragraph;
+    @include clearfix;
+}
+
+/** Page Header */
+
 .page-header {
     @include paragraph;
     @include clearfix;
@@ -20,18 +34,36 @@
     .entry-title {
         margin-bottom: 10px;
     }
+
+    .singular-post.big & {
+        .entry-meta {
+            line-height: map-get($jentil-line-height, normal);
+
+            p {
+                margin: 0;
+            }
+
+            .avatar {
+                @include float(left);
+
+                margin-right: 10px;
+            }
+        }
+
+        .entry-title {
+            font-size: 29px;
+        }
+    }
 }
 
-.page-title,
-.page.has-magpack-posts .singular-post > .post-wrap > header > .entry-title {
-    color: $jentil-font-lighter;
-    font-size: 22px;
-}
-
-.entry-content,
-.pagination {
-    @include paragraph;
-    @include clearfix;
+@media (min-width: map-get($jentil-breakpoint, medium)) {
+    .page-header {
+        .singular-post.big & {
+            .entry-title {
+                font-size: 34px;
+            }
+        }
+    }
 }
 
 /** Attachment */
@@ -91,44 +123,6 @@
 
 #related-posts-wrap {
     @include paragraph;
-}
-
-/** Single posts */
-
-.singular-post.big {
-    > .post-wrap {
-        > header {
-            > .entry-meta {
-                line-height: map-get($jentil-line-height, normal);
-
-                p {
-                    margin: 0;
-                }
-
-                .avatar {
-                    @include float(left);
-
-                    margin-right: 10px;
-                }
-            }
-
-            > .entry-title {
-                font-size: 29px;
-            }
-        }
-    }
-}
-
-@media (min-width: map-get($jentil-breakpoint, medium)) {
-    .singular-post.big {
-        > .post-wrap {
-            > header {
-                > .entry-title {
-                    font-size: 34px;
-                }
-            }
-        }
-    }
 }
 
 /** Avatar */
