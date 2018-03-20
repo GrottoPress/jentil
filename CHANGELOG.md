@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Set up [travis-ci](https://travis-ci.org)
 - `.security.txt`
 - `jentil_before_sidebar` and `jentil_after_sidebar` template hooks
+- Author avatar on author archive
 
 ### Changed
 - Undo require search input filled on search submit
@@ -23,14 +24,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Ensure layout customizer settings do not show for page builder pages.
 - Ensure layout metabox do not show on pages using page builder template
 - Replace GrottoPress logo with Jentil's as theme screenshot
-- Break up menus, scripts, styles and sidebars setups into individual setups.
 - Rename page layout custom field key to '_jentil-layout'
 - Prefix asset ids with 'jentil' to avoid potential name collision
 - Upgrade font awesome to v5
 
 ### Removed
 - Redundant doc blocks, comments.
-- Shell script to copy assets from `node_modules` to `assets/vendor`
 
 ### Fixed
 - 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key
