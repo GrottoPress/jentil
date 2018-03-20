@@ -9,7 +9,6 @@ use GrottoPress\Jentil\Utilities\Utilities;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
 use GrottoPress\Jentil\Utilities\Page\Posts\Related;
-use GrottoPress\Jentil\Utilities\Loader;
 use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\WordPress\Post\Post;
@@ -60,13 +59,8 @@ class SingularTest extends AbstractTestCase
 
         $singular->run();
 
-        $add_action->wasCalledTimes(3);
+        $add_action->wasCalledTimes(2);
         $add_filter->wasCalledTimes(2);
-
-        $add_action->wasCalledWithOnce([
-            'jentil_before_content',
-            [$singular, 'renderAttachment']
-        ]);
 
         $add_action->wasCalledWithOnce([
             'jentil_after_content',
@@ -186,68 +180,6 @@ class SingularTest extends AbstractTestCase
         } else {
             $get_permalink->wasNotCalled();
             $get_the_title->wasNotCalled();
-        }
-    }
-
-    /**
-     * @dataProvider renderAttachmentProvider
-     */
-    public function testRenderAttachment(
-        string $page,
-        array $post,
-        string $type
-    ) {
-        $this->page = $page;
-
-        FunctionMocker::replace('get_post', \json_decode(\json_encode($post)));
-
-        $remove_filter = FunctionMocker::replace('remove_filter');
-        $get_the_title = FunctionMocker::replace('get_the_title');
-
-        $is_image = FunctionMocker::replace(
-            'wp_attachment_is_image',
-            'image' === $type
-        );
-
-        $is = FunctionMocker::replace('wp_attachment_is', function (
-            string $at_type,
-            int $postId
-        ) use ($type): bool {
-            return ($at_type === $type);
-        });
-
-        $this->jentil->utilities->loader = Stub::makeEmpty(Loader::class, [
-            'loadPartial' => true,
-        ]);
-
-        $singular = new Singular($this->jentil);
-
-        if ('attachment' === $page) {
-            if (\in_array($type, ['image', 'audio', 'video'])) {
-                $this->jentil->utilities->loader
-                    ->expects($this->once())->method('loadPartial')
-                    ->with($this->equalTo($page), $this->equalTo($type));
-            } else {
-                $this->jentil->utilities->loader
-                    ->expects($this->once())->method('loadPartial')
-                    ->with($this->equalTo($page));
-            }
-        } else {
-            $this->jentil->utilities->loader->expects($this->never())->method(
-                'loadPartial'
-            );
-        }
-
-        $singular->renderAttachment();
-
-        if ('attachment' === $page) {
-            $remove_filter->wasCalledOnce();
-            $remove_filter->wasCalledWithOnce([
-                'the_content',
-                'prepend_attachment'
-            ]);
-        } else {
-            $remove_filter->wasNotCalled();
         }
     }
 
@@ -522,17 +454,6 @@ class SingularTest extends AbstractTestCase
             'page is singular' => ['singular', ['post_parent' => 555]],
             'page is not singular' => ['search', ['post_parent' => 555]],
             'post has no parent' => ['singular', ['post_parent' => 0]],
-        ];
-    }
-
-    public function renderAttachmentProvider(): array
-    {
-        return [
-            'page is not attachment' => ['404', ['ID' => 44], ''],
-            'attachment is image' => ['attachment', ['ID'=> 99], 'image'],
-            'attachment is audio' => ['attachment', ['ID' => 55], 'audio'],
-            'attachment is video' => ['attachment', ['ID' => 55], 'video'],
-            'attachment is pdf' => ['attachment', ['ID' => 66], 'pdf']
         ];
     }
 

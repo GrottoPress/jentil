@@ -11,7 +11,6 @@ final class Singular extends AbstractSetup
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
         \add_action('jentil_after_title', [$this, 'renderByline']);
-        \add_action('jentil_before_content', [$this, 'renderAttachment']);
         \add_action('jentil_after_content', [$this, 'renderRelatedPosts']);
         // \add_action(
         //     'jentil_before_before_title',
@@ -85,37 +84,6 @@ final class Singular extends AbstractSetup
                 \get_the_title($parent)
            .'</a>
         </h4>';
-    }
-
-    /**
-     * @action jentil_before_content
-     */
-    public function renderAttachment()
-    {
-        if (!$this->app->utilities->page->is('attachment')) {
-            return;
-        }
-
-        \remove_filter('the_content', 'prepend_attachment');
-
-        if (\wp_attachment_is_image($id = \get_post()->ID)) {
-            $this->app->utilities->loader->loadPartial(
-                'attachment',
-                'image'
-            );
-        } elseif (\wp_attachment_is('audio', $id)) {
-            $this->app->utilities->loader->loadPartial(
-                'attachment',
-                'audio'
-            );
-        } elseif (\wp_attachment_is('video', $id)) {
-            $this->app->utilities->loader->loadPartial(
-                'attachment',
-                'video'
-            );
-        } else {
-            $this->app->utilities->loader->loadPartial('attachment');
-        }
     }
 
     /**
