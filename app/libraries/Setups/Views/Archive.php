@@ -9,11 +9,11 @@ final class Archive extends AbstractSetup
 {
     public function run()
     {
-        \add_action('jentil_before_content', [$this, 'renderDescription']);
+        \add_action('jentil_after_title', [$this, 'renderDescription']);
     }
 
     /**
-     * @action jentil_before_content
+     * @action jentil_after_title
      */
     public function renderDescription()
     {
