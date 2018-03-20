@@ -93,14 +93,6 @@
     margin-left: 20px;
 }
 
-.comment-author {
-    .avatar {
-        @include float(left);
-
-        margin-right: 10px;
-    }
-}
-
 .comment-form {
     .form-submit {
         margin-bottom: 0;

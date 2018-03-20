@@ -5,11 +5,21 @@
 .archive-description {
     @include paragraph;
 
+    margin-top: 10px;
     color: $jentil-font-light;
 }
 
 .page-header {
     @include paragraph;
+    @include clearfix;
+
+    .archive & .avatar {
+        margin-right: 15px;
+    }
+
+    .entry-title {
+        margin-bottom: 10px;
+    }
 }
 
 .page-title,
@@ -125,4 +135,7 @@
 
 .avatar {
     @include border-radius(50%);
+    @include float(left);
+
+    margin-right: 10px;
 }
