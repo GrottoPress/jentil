@@ -57,8 +57,6 @@ final class Singular extends AbstractSetup
         }
 
         if (\post_type_supports($post->post_type, 'comments')) {
-            $classes[] = \get_option('show_avatars')
-                ? 'show-avatars' : 'hide-avatars';
             $classes[] = \get_option('thread_comments')
                 ? 'threaded-comments' : 'unthreaded-comments';
             $classes[] = \comments_open($post->ID)
