@@ -147,10 +147,11 @@ final class Jentil extends AbstractTheme
         $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
         $this->setups['Views\Search'] = new Setups\Views\Search($this);
         $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
+        $this->setups['Views\Post'] = new Setups\Views\Post($this);
         $this->setups['Views\Attachment'] = new Setups\Views\Attachment($this);
-        $this->setups['Views\Breadcrumbs'] =
-            new Setups\Views\Breadcrumbs($this);
         $this->setups['Views\Header'] = new Setups\Views\Header($this);
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
+        $this->setups['Views\Breadcrumbs'] =
+            new Setups\Views\Breadcrumbs($this);
     }
 }

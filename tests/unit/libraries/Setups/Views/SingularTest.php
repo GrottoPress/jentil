@@ -11,7 +11,6 @@ use GrottoPress\Jentil\Utilities\Page\Posts\Posts;
 use GrottoPress\Jentil\Utilities\Page\Posts\Related;
 use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
-use GrottoPress\WordPress\Post\Post;
 use GrottoPress\WordPress\Posts\Posts as PostsPackage;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
@@ -59,29 +58,17 @@ class SingularTest extends AbstractTestCase
 
         $singular->run();
 
-        $add_action->wasCalledTimes(2);
-        $add_filter->wasCalledTimes(2);
+        $add_action->wasCalledOnce();
+        $add_filter->wasCalledOnce();
 
         $add_action->wasCalledWithOnce([
             'jentil_after_content',
             [$singular, 'renderRelatedPosts']
         ]);
 
-        $add_action->wasCalledWithOnce([
-            'jentil_after_title',
-            [$singular, 'renderByline']
-        ]);
-
         $add_filter->wasCalledWithOnce([
             'body_class',
             [$singular, 'addBodyClasses']
-        ]);
-
-        $add_filter->wasCalledWithOnce([
-            'jentil_singular_after_title',
-            [$singular, 'byline'],
-            10,
-            3
         ]);
     }
 
@@ -181,63 +168,6 @@ class SingularTest extends AbstractTestCase
             $get_permalink->wasNotCalled();
             $get_the_title->wasNotCalled();
         }
-    }
-
-    /**
-     * @dataProvider bylineProvider
-     */
-    public function testByline(string $page, string $subPage)
-    {
-        $this->page = $page;
-        $this->subPage = $subPage;
-
-        $this->jentil->utilities->post = Stub::makeEmpty(Post::class, [
-            'info' => true,
-        ]);
-
-        $singular = new Singular($this->jentil);
-
-        if ('singular' === $page && 'post' === $subPage) {
-            $this->jentil->utilities->post
-                ->expects($this->atLeastOnce())->method('info');
-        } else {
-            $this->jentil->utilities->post
-                ->expects($this->never())->method('info');
-        }
-
-        $byline = $singular->byline('hello...', 1, '|');
-
-        if ('singular' !== $page || 'post' !== $subPage) {
-            $this->assertSame('hello...', $byline);
-        }
-    }
-
-    /**
-     * @dataProvider renderBylineProvider
-     */
-    public function testRenderByline(string $page, string $subPage)
-    {
-        $this->page = $page;
-
-        FunctionMocker::replace('get_post', new class {
-            public $ID = 1;
-        });
-
-        $this->jentil->utilities->post = Stub::makeEmpty(Post::class, [
-            'info' => true,
-        ]);
-
-        $singular = new Singular($this->jentil);
-
-        if ('singular' === $page && 'post' === $subPage) {
-            $this->jentil->utilities->post
-                ->expects($this->atLeastOnce())->method('info');
-        } else {
-            $this->jentil->utilities->post
-                ->expects($this->never())->method('info');
-        }
-
-        $singular->renderByline();
     }
 
     /**
@@ -454,22 +384,6 @@ class SingularTest extends AbstractTestCase
             'page is singular' => ['singular', ['post_parent' => 555]],
             'page is not singular' => ['search', ['post_parent' => 555]],
             'post has no parent' => ['singular', ['post_parent' => 0]],
-        ];
-    }
-
-    public function bylineProvider(): array
-    {
-        return [
-            'page is single post' => ['singular', 'post'],
-            'page is not single post' => ['home', ''],
-        ];
-    }
-
-    public function renderBylineProvider(): array
-    {
-        return [
-            'page is single post' => ['singular', 'post'],
-            'page is not single post' => ['home', ''],
         ];
     }
 
