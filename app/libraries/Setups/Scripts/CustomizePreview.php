@@ -43,11 +43,11 @@ final class CustomizePreview extends AbstractScript
      */
     public function addInlineScript()
     {
-        $script = 'var colophonModName = "'.$this->app
+        $script = 'var jentilColophonModName = "'.$this->app
             ->setups['Customizer\Customizer']
             ->sections['Colophon\Colophon']->settings['Colophon']->id.'";
-        var titleModNames = '.\wp_json_encode($this->pageTitles()).';
-        var relatedPostsHeadingModNames = '.\wp_json_encode(
+        var jentilTitleModNames = '.\wp_json_encode($this->pageTitles()).';
+        var jentilRelatedPostsHeadingModNames = '.\wp_json_encode(
             $this->postsHeadings()
         ).';';
 
@@ -65,7 +65,7 @@ final class CustomizePreview extends AbstractScript
      */
     public function addInlineScript2()
     {
-        $script = 'var shortTags = '.\wp_json_encode(
+        $script = 'var jentilShortTags = '.\wp_json_encode(
             $this->app->utilities->shortTags->get()
         );
 
