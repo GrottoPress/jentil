@@ -20,10 +20,16 @@ class MenuTest extends AbstractTestCase
 
         $script->run();
 
-        $add_action->wasCalledOnce();
+        $add_action->wasCalledTimes(2);
+
         $add_action->wasCalledWithOnce([
             'wp_enqueue_scripts',
             [$script, 'enqueue']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'wp_enqueue_scripts',
+            [$script, 'localize']
         ]);
     }
 
@@ -50,5 +56,17 @@ class MenuTest extends AbstractTestCase
             '',
             true,
         ]);
+    }
+
+    public function testLocalize()
+    {
+        $localize = FunctionMocker::replace('wp_localize_script');
+
+        $script = new Menu(Stub::makeEmpty(AbstractTheme::class));
+
+        $script->localize();
+
+        $localize->wasCalledOnce();
+        $localize->wasCalledWithOnce([$script->id, 'jentilMenuL10n']);
     }
 }

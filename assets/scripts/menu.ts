@@ -68,6 +68,6 @@
     {
         return '<span class="fas fa-caret-'+direction.toString()+
             ' fa-sm" aria-hidden="true"></span>'+
-            '<span class="screen-reader-text">Sub-menu</span>'
+            '<span class="screen-reader-text">'+jentilMenuL10n.submenu+'</span>'
     }
 })(jQuery)

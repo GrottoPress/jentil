@@ -17,6 +17,7 @@ final class Menu extends AbstractScript
     public function run()
     {
         \add_action('wp_enqueue_scripts', [$this, 'enqueue']);
+        \add_action('wp_enqueue_scripts', [$this, 'localize']);
     }
 
     /**
@@ -34,5 +35,15 @@ final class Menu extends AbstractScript
             '',
             true
         );
+    }
+
+    /**
+     * @action wp_enqueue_scripts
+     */
+    public function localize()
+    {
+        \wp_localize_script($this->id, 'jentilMenuL10n', [
+            'submenu' => \esc_html__('Sub-menu', 'jentil')
+        ]);
     }
 }
