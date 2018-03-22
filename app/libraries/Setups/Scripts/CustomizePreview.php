@@ -46,8 +46,8 @@ final class CustomizePreview extends AbstractScript
         $script = 'var colophonModName = "'.$this->app
             ->setups['Customizer\Customizer']
             ->sections['Colophon\Colophon']->settings['Colophon']->id.'";
-        var titleModNames = '.\json_encode($this->pageTitles()).';
-        var relatedPostsHeadingModNames = '.\json_encode(
+        var titleModNames = '.\wp_json_encode($this->pageTitles()).';
+        var relatedPostsHeadingModNames = '.\wp_json_encode(
             $this->postsHeadings()
         ).';';
 
@@ -65,7 +65,7 @@ final class CustomizePreview extends AbstractScript
      */
     public function addInlineScript2()
     {
-        $script = 'var shortTags = '.\json_encode(
+        $script = 'var shortTags = '.\wp_json_encode(
             $this->app->utilities->shortTags->get()
         );
 

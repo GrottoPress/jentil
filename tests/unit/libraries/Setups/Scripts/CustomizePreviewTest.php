@@ -19,6 +19,13 @@ use tad\FunctionMocker\FunctionMocker;
 
 class CustomizePreviewTest extends AbstractTestCase
 {
+    public function _before()
+    {
+        FunctionMocker::replace('wp_json_encode', function ($content): string {
+            return \json_encode($content);
+        });
+    }
+
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
