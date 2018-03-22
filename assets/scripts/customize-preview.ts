@@ -14,13 +14,11 @@
 
     /**
      * Page Title
-     *
-     * @todo Work out how to replace tags
      */
     for (let i in titleModNames) {
         wp.customize(titleModNames[i], (value: () => void): void => {
             value.bind((to: string): void => {
-                $('h1.page-title').html(to)
+                $('h1.page-title').html(replaceShortTags(to))
             })
         })
     }

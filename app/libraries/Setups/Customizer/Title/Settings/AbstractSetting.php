@@ -18,7 +18,7 @@ abstract class AbstractSetting extends Setting
     {
         parent::__construct($title);
 
-        $this->args['transport'] = 'refresh';
+        $this->args['transport'] = 'postMessage';
         $this->args['sanitize_callback'] = 'wp_kses_data';
 
         $this->control['section'] = $this->section->id;

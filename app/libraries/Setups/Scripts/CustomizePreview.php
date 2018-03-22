@@ -17,6 +17,8 @@ final class CustomizePreview extends AbstractScript
     public function run()
     {
         \add_action('customize_preview_init', [$this, 'enqueue']);
+        \add_action('customize_preview_init', [$this, 'addInlineScript']);
+        \add_action('wp_enqueue_scripts', [$this, 'addInlineScript2']);
     }
 
     /**
@@ -34,21 +36,40 @@ final class CustomizePreview extends AbstractScript
             '',
             true
         );
-
-        \wp_add_inline_script($this->id, $this->inlineScript(), 'before');
     }
 
-    private function inlineScript(): string
+    /**
+     * @action customize_preview_init
+     */
+    public function addInlineScript()
     {
-        return 'var shortTags = '.\json_encode(
-            $this->app->utilities->shortTags->get()
-        ).';
-        var colophonModName = "'.$this->app->setups['Customizer\Customizer']
+        $script = 'var colophonModName = "'.$this->app
+            ->setups['Customizer\Customizer']
             ->sections['Colophon\Colophon']->settings['Colophon']->id.'";
         var titleModNames = '.\json_encode($this->pageTitles()).';
         var relatedPostsHeadingModNames = '.\json_encode(
             $this->postsHeadings()
         ).';';
+
+        \wp_add_inline_script($this->id, $script, 'before');
+    }
+
+    /**
+     * ShortTags uses page-specific functions that won't work
+     * in the customizer, so we're adding this inline script after
+     * those functions are ready.
+     *
+     * And oh, sorry I run out of names :-)
+     *
+     * @action wp_enqueue_scripts
+     */
+    public function addInlineScript2()
+    {
+        $script = 'var shortTags = '.\json_encode(
+            $this->app->utilities->shortTags->get()
+        );
+
+        \wp_add_inline_script($this->id, $script, 'before');
     }
 
     /**
