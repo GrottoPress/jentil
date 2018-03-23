@@ -18,7 +18,11 @@ abstract class AbstractSetting extends Setting
 
     protected function themeMod(string $setting): PostsMod
     {
-        return $this->section->panel->customizer->app->utilities
-            ->themeMods->posts($setting, $this->section->themeModArgs);
+        return (
+            $this->section->panel->customizer->app->utilities->themeMods->posts(
+                $setting,
+                $this->section->themeModArgs
+            )
+        );
     }
 }
