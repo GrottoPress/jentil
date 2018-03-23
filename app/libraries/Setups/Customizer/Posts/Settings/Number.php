@@ -11,11 +11,11 @@ final class Number extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('number');
+        $themeMod = $this->themeMod('number');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };

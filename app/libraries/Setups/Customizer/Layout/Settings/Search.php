@@ -11,11 +11,11 @@ final class Search extends AbstractSetting
     {
         parent::__construct($layout);
 
-        $this->mod = $this->themeMod(['context' => 'search']);
+        $this->themeMod = $this->themeMod(['context' => 'search']);
 
-        $this->id = $this->mod->id;
+        $this->id = $this->themeMod->id;
 
-        $this->args['default'] = $this->mod->default;
+        $this->args['default'] = $this->themeMod->default;
 
         $this->control['label'] = \esc_html__('Search Results', 'jentil');
         $this->control['active_callback'] = function (): bool {

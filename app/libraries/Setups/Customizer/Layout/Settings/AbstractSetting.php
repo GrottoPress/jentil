@@ -12,7 +12,7 @@ abstract class AbstractSetting extends Setting
     /**
      * @var LayoutMod
      */
-    protected $mod;
+    protected $themeMod;
 
     public function __construct(Layout $layout)
     {

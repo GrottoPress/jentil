@@ -16,14 +16,14 @@ final class PostType extends AbstractSetting
             'post' === $post_type->name ? 'home' : 'post_type_archive'
         );
 
-        $this->mod = $this->themeMod([
+        $this->themeMod = $this->themeMod([
             'context' => $mod_context,
             'specific' => $post_type->name,
         ]);
 
-        $this->id = $this->mod->id;
+        $this->id = $this->themeMod->id;
 
-        $this->args['default'] = $this->mod->default;
+        $this->args['default'] = $this->themeMod->default;
 
         $this->control['active_callback'] = function () use ($post_type): bool {
             $page = $this->section->customizer->app->utilities

@@ -11,11 +11,11 @@ final class BeforeTitle extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('before_title');
+        $themeMod = $this->themeMod('before_title');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Before title', 'jentil');

@@ -11,11 +11,11 @@ final class StickyPosts extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('sticky_posts');
+        $themeMod = $this->themeMod('sticky_posts');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['sanitize_callback'] = 'absint';
 
         $this->control['label'] = \esc_html__('Show sticky posts?', 'jentil');

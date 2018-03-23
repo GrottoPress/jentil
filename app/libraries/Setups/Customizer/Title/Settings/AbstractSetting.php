@@ -12,7 +12,7 @@ abstract class AbstractSetting extends Setting
     /**
      * @var TitleMod
      */
-    protected $mod;
+    protected $themeMod;
 
     public function __construct(Title $title)
     {

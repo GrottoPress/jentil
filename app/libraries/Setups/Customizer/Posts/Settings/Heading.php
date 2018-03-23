@@ -11,11 +11,11 @@ final class Heading extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('heading');
+        $themeMod = $this->themeMod('heading');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['transport'] = 'postMessage';
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 

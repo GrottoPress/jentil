@@ -18,9 +18,9 @@ final class Taxonomy extends AbstractSetting
 
         $this->setMod($taxonomy, $term);
 
-        $this->id = $this->mod->id;
+        $this->id = $this->themeMod->id;
 
-        $this->args['default'] = $this->mod->default;
+        $this->args['default'] = $this->themeMod->default;
 
         $this->setControl($taxonomy, $term);
     }
@@ -36,13 +36,13 @@ final class Taxonomy extends AbstractSetting
         }
 
         if ($term) {
-            $this->mod = $this->themeMod([
+            $this->themeMod = $this->themeMod([
                 'context' => $mod_context,
                 'specific' => $taxonomy->name,
                 'more_specific' => $term->term_id,
             ]);
         } else {
-            $this->mod = $this->themeMod([
+            $this->themeMod = $this->themeMod([
                 'context' => $mod_context,
                 'specific' => $taxonomy->name,
             ]);

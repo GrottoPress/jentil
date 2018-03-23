@@ -11,11 +11,11 @@ final class Author extends AbstractSetting
     {
         parent::__construct($title);
 
-        $this->mod = $this->themeMod(['context' => 'author']);
+        $this->themeMod = $this->themeMod(['context' => 'author']);
 
-        $this->id = $this->mod->id;
+        $this->id = $this->themeMod->id;
 
-        $this->args['default'] = $this->mod->default;
+        $this->args['default'] = $this->themeMod->default;
 
         $this->control['label'] = \esc_html__('Author Archives', 'jentil');
         $this->control['active_callback'] = function (): bool {

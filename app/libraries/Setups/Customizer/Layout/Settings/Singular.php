@@ -22,21 +22,21 @@ final class Singular extends AbstractSetting
     private function setMod(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
-            $this->mod = $this->themeMod([
+            $this->themeMod = $this->themeMod([
                 'context' => 'singular',
                 'specific' => $post_type->name,
                 'more_specific' => $post->ID,
             ]);
         } else {
-            $this->mod = $this->themeMod([
+            $this->themeMod = $this->themeMod([
                 'context' => 'singular',
                 'specific' => $post_type->name,
             ]);
         }
 
-        $this->id = $this->mod->id;
+        $this->id = $this->themeMod->id;
 
-        $this->args['default'] = $this->mod->default;
+        $this->args['default'] = $this->themeMod->default;
     }
 
     private function setControl(WP_Post_Type $post_type, WP_Post $post = null)

@@ -12,12 +12,12 @@ final class Colophon extends AbstractSetting
     {
         parent::__construct($colophon);
 
-        $mod = $this->section->customizer->app->utilities
+        $themeMod = $this->section->customizer->app->utilities
             ->themeMods->colophon;
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['transport'] = 'postMessage';
         $this->args['sanitize_callback'] = function (string $value): string {
             return \wp_kses($value, 'pre_user_description');

@@ -11,11 +11,11 @@ final class TitlePosition extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('title_position');
+        $themeMod = $this->themeMod('title_position');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
 
         $this->control['label'] = \esc_html__('Title position', 'jentil');

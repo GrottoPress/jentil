@@ -11,11 +11,11 @@ final class PaginationMaximum extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('pagination_maximum');
+        $themeMod = $this->themeMod('pagination_maximum');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };

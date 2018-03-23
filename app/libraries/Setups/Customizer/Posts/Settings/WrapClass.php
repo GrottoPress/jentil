@@ -11,11 +11,11 @@ final class WrapClass extends AbstractSetting
     {
         parent::__construct($section);
 
-        $mod = $this->themeMod('wrap_class');
+        $themeMod = $this->themeMod('wrap_class');
 
-        $this->id = $mod->id;
+        $this->id = $themeMod->id;
 
-        $this->args['default'] = $mod->default;
+        $this->args['default'] = $themeMod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Wrapper class', 'jentil');
