@@ -11,7 +11,7 @@ abstract class AbstractMetaBox extends AbstractSetup
     use IdentityTrait;
 
     /**
-     * @var string 'normal', 'side', or 'advanced'.
+     * @var string $context 'normal', 'side', or 'advanced'.
      */
     protected $context;
 
