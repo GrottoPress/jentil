@@ -12,7 +12,7 @@ final class PageBuilder extends AbstractTemplate
     {
         parent::__construct($jentil);
 
-        $this->slug = 'page-builder.php';
+        $this->slug = 'post-type/page-builder.php';
     }
 
     public function run()

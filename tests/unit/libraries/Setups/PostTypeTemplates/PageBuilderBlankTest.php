@@ -60,7 +60,7 @@ class PageBuildersBlankTest extends AbstractTestCase
         $this->assertSame(
             [
                 'my-template.php' => 'My template',
-                'page-builder-blank.php' => 'Page builder (blank)',
+                $template->slug => 'Page builder (blank)',
             ],
             $template->add([
                 'my-template.php' => 'My template',
