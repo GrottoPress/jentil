@@ -3,8 +3,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
-use WP_Customize_Manager as WPCustomizer;
-
 final class Search extends AbstractSection
 {
     public function __construct(Posts $posts)
@@ -20,13 +18,6 @@ final class Search extends AbstractSection
             return $this->customizer->app->utilities
                 ->page->is('search');
         };
-    }
-
-    public function add(WPCustomizer $WPCustomizer)
-    {
-        $this->settings = $this->settings();
-
-        parent::add($WPCustomizer);
     }
 
     protected function settings(): array

@@ -3,7 +3,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
-use WP_Customize_Manager as WPCustomizer;
 use WP_Taxonomy;
 use WP_Term;
 
@@ -19,13 +18,6 @@ final class Taxonomy extends AbstractSection
         $this->setName($taxonomy, $term);
         $this->setModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
-    }
-
-    public function add(WPCustomizer $WPCustomizer)
-    {
-        $this->settings = $this->settings();
-
-        parent::add($WPCustomizer);
     }
 
     private function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)

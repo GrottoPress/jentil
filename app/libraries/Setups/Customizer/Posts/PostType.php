@@ -3,7 +3,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
-use WP_Customize_Manager as WPCustomizer;
 use WP_Post_Type;
 
 final class PostType extends AbstractSection
@@ -23,13 +22,6 @@ final class PostType extends AbstractSection
 
         $this->setArgs();
         $this->setModArgs();
-    }
-
-    public function add(WPCustomizer $WPCustomizer)
-    {
-        $this->settings = $this->settings();
-
-        parent::add($WPCustomizer);
     }
 
     private function setArgs()

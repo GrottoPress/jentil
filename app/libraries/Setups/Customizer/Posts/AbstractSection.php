@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Customizer\Posts;
 
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection as Section;
+use WP_Customize_Manager as WPCustomizer;
 
 abstract class AbstractSection extends Section
 {
@@ -35,6 +36,13 @@ abstract class AbstractSection extends Section
     protected function getThemeModArgs(): array
     {
         return $this->themeModArgs;
+    }
+
+    public function add(WPCustomizer $WPCustomizer)
+    {
+        $this->settings = $this->settings();
+
+        parent::add($WPCustomizer);
     }
 
     protected function settings(): array
