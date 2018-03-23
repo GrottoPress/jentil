@@ -16,7 +16,7 @@ final class Taxonomy extends AbstractSection
         parent::__construct($posts);
 
         $this->setName($taxonomy, $term);
-        $this->setModArgs($taxonomy, $term);
+        $this->setThemeModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
     }
 
@@ -31,7 +31,7 @@ final class Taxonomy extends AbstractSection
         }
     }
 
-    private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    private function setThemeModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $this->themeModArgs['context'] = 'tax';
 

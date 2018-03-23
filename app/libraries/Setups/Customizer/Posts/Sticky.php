@@ -14,7 +14,7 @@ final class Sticky extends AbstractSection
         $this->id = \sanitize_key("{$post_type->name}_sticky_posts");
 
         $this->setArgs($post_type);
-        $this->setModArgs($post_type);
+        $this->setThemeModArgs($post_type);
     }
 
     private function setArgs(WP_Post_Type $post_type)
@@ -41,7 +41,7 @@ final class Sticky extends AbstractSection
         };
     }
 
-    private function setModArgs(WP_Post_Type $post_type)
+    private function setThemeModArgs(WP_Post_Type $post_type)
     {
         $this->themeModArgs['context'] = 'sticky';
         $this->themeModArgs['specific'] = $post_type->name;

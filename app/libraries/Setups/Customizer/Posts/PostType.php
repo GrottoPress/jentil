@@ -21,7 +21,7 @@ final class PostType extends AbstractSection
         $this->id = \sanitize_key("{$this->post_type->name}_post_type_posts");
 
         $this->setArgs();
-        $this->setModArgs();
+        $this->setThemeModArgs();
     }
 
     private function setArgs()
@@ -42,7 +42,7 @@ final class PostType extends AbstractSection
         };
     }
 
-    private function setModArgs()
+    private function setThemeModArgs()
     {
         $this->themeModArgs['specific'] = $this->post_type->name;
         $this->themeModArgs['context'] = (
