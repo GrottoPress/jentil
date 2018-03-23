@@ -53,15 +53,15 @@ final class Post extends AbstractSetup
 
         $output = '';
 
-        if (($avatar = $jentil_post->info([
+        if ($avatar = $jentil_post->info([
             'types' => ['avatar__40']
-        ])->list())) {
+        ])->list()) {
             $output .= $avatar;
         }
 
-        if (($author = $jentil_post->info([
+        if ($author = $jentil_post->info([
             'types' => ['author_name']
-        ])->list())) {
+        ])->list()) {
             $output .= '<p>'.$author.'</p>';
         }
 

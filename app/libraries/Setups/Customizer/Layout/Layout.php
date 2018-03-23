@@ -38,8 +38,8 @@ final class Layout extends AbstractSection
         $settings['Error404'] = new Settings\Error404($this);
         $settings['Search'] = new Settings\Search($this);
 
-        if (($taxonomies = $this->customizer->app->utilities
-            ->page->posts->taxonomies())
+        if ($taxonomies = $this->customizer->app->utilities
+            ->page->posts->taxonomies()
         ) {
             foreach ($taxonomies as $taxonomy) {
                 $settings["Taxonomy_{$taxonomy->name}"] = new Settings\Taxonomy(
@@ -49,8 +49,8 @@ final class Layout extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->app->utilities
-            ->page->posts->archive->postTypes())
+        if ($post_types = $this->customizer->app->utilities
+            ->page->posts->archive->postTypes()
         ) {
             foreach ($post_types as $post_type) {
                 $settings["PostType_{$post_type->name}"] =
@@ -58,8 +58,8 @@ final class Layout extends AbstractSection
             }
         }
 
-        if (($post_types = $this->customizer->app->utilities
-            ->page->posts->postTypes())
+        if ($post_types = $this->customizer->app->utilities
+            ->page->posts->postTypes()
         ) {
             foreach ($post_types as $post_type) {
                 if (!$this->customizer->app->utilities->themeMods->layout([

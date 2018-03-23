@@ -31,7 +31,7 @@ final class SearchForm extends AbstractSetup
 
                     <input itemprop="query-input" type="search" placeholder="'.\esc_attr__('Search', 'jentil').'" class="input search" name="s" value="';
 
-        if (($query = \get_search_query())) {
+        if ($query = \get_search_query()) {
             $searchform .= $query;
         }
 

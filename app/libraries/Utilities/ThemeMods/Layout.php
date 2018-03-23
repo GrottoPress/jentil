@@ -90,11 +90,7 @@ class Layout extends AbstractThemeMod
         }
 
         if ($this->isPagelike()) {
-            if (($mod = \get_post_meta(
-                $this->more_specific,
-                $this->id,
-                true
-            ))) {
+            if ($mod = \get_post_meta($this->more_specific, $this->id, true)) {
                 return \sanitize_title($mod);
             }
 

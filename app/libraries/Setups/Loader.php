@@ -41,7 +41,7 @@ final class Loader extends AbstractSetup
 
             $return[] = $new_template;
 
-            if (($rel_dir = $this->app->utilities->fileSystem->relativeDir())) {
+            if ($rel_dir = $this->app->utilities->fileSystem->relativeDir()) {
                 $return[] = "{$rel_dir}/{$new_template}";
             }
         }

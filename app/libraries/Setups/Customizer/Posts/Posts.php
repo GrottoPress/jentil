@@ -35,8 +35,8 @@ final class Posts extends AbstractPanel
         $sections['Date'] = new Date($this);
         $sections['Search'] = new Search($this);
 
-        if (($taxonomies = $this->customizer->app->utilities
-            ->page->posts->taxonomies())
+        if ($taxonomies = $this->customizer->app->utilities
+            ->page->posts->taxonomies()
         ) {
             foreach ($taxonomies as $taxonomy) {
                 $sections["Taxonomy_{$taxonomy->name}"] = new Taxonomy(
@@ -46,8 +46,8 @@ final class Posts extends AbstractPanel
             }
         }
 
-        if (($post_types = $this->customizer->app->utilities
-            ->page->posts->archive->postTypes())
+        if ($post_types = $this->customizer->app->utilities
+            ->page->posts->archive->postTypes()
         ) {
             foreach ($post_types as $post_type) {
                 $sections["Sticky_{$post_type->name}"] = new Sticky(
@@ -61,8 +61,8 @@ final class Posts extends AbstractPanel
             }
         }
 
-        if (($post_types = $this->customizer->app->utilities
-            ->page->posts->postTypes())
+        if ($post_types = $this->customizer->app->utilities
+            ->page->posts->postTypes()
         ) {
             foreach ($post_types as $post_type) {
                 $sections["Related_{$post_type->name}"] =

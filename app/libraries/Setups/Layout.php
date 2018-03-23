@@ -24,11 +24,11 @@ final class Layout extends AbstractSetup
 
         $layout = $utilities->page->layout;
 
-        if (($mod = $layout->themeMod()->get())) {
+        if ($mod = $layout->themeMod()->get()) {
             $classes[] = \sanitize_title("layout-{$mod}");
         }
 
-        if (($column = $layout->column())) {
+        if ($column = $layout->column()) {
             $classes[] = \sanitize_title("layout-{$column}");
         }
 

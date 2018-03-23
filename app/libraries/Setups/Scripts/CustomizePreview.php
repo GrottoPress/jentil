@@ -94,7 +94,7 @@ final class CustomizePreview extends AbstractScript
     {
         $headings = [];
 
-        if (($post_types = $this->app->utilities->page->posts->postTypes())) {
+        if ($post_types = $this->app->utilities->page->posts->postTypes()) {
             foreach ($post_types as $post_type) {
                 $headings[] = $this->app->setups['Customizer\Customizer']
                     ->panels['Posts\Posts']
