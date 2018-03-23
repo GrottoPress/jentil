@@ -13,7 +13,7 @@ final class Date extends AbstractSection
 
         $this->id = 'date_posts';
 
-        $this->modArgs['context'] = 'date';
+        $this->themeModArgs['context'] = 'date';
 
         $this->args['title'] = \esc_html__('Date Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {

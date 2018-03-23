@@ -50,8 +50,8 @@ final class Related extends AbstractSection
 
     private function setModArgs(WP_Post_Type $post_type)
     {
-        $this->modArgs['context'] = 'related';
-        $this->modArgs['specific'] = $post_type->name;
+        $this->themeModArgs['context'] = 'related';
+        $this->themeModArgs['specific'] = $post_type->name;
     }
 
     /**

@@ -15,7 +15,7 @@ abstract class AbstractSection extends Section
     /**
      * @var array
      */
-    protected $modArgs = [];
+    protected $themeModArgs = [];
 
     public function __construct(Posts $posts)
     {
@@ -32,9 +32,9 @@ abstract class AbstractSection extends Section
         return $this->panel;
     }
 
-    protected function getModArgs(): array
+    protected function getThemeModArgs(): array
     {
-        return $this->modArgs;
+        return $this->themeModArgs;
     }
 
     protected function settings(): array

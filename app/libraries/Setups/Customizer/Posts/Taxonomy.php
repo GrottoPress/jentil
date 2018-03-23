@@ -41,16 +41,16 @@ final class Taxonomy extends AbstractSection
 
     private function setModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
-        $this->modArgs['context'] = 'tax';
+        $this->themeModArgs['context'] = 'tax';
 
         if ('post_tag' === $taxonomy->name) {
-            $this->modArgs['context'] = 'tag';
+            $this->themeModArgs['context'] = 'tag';
         } elseif ('category' === $taxonomy->name) {
-            $this->modArgs['context'] = 'category';
+            $this->themeModArgs['context'] = 'category';
         }
 
-        $this->modArgs['specific'] = $taxonomy->name;
-        $this->modArgs['more_specific'] = ($term ? $term->term_id : 0);
+        $this->themeModArgs['specific'] = $taxonomy->name;
+        $this->themeModArgs['more_specific'] = ($term ? $term->term_id : 0);
     }
 
     private function setArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)

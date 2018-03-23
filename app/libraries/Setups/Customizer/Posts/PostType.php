@@ -52,8 +52,8 @@ final class PostType extends AbstractSection
 
     private function setModArgs()
     {
-        $this->modArgs['specific'] = $this->post_type->name;
-        $this->modArgs['context'] = (
+        $this->themeModArgs['specific'] = $this->post_type->name;
+        $this->themeModArgs['context'] = (
             'post' === $this->post_type->name ? 'home' : 'post_type_archive'
         );
     }

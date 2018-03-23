@@ -13,7 +13,7 @@ final class Author extends AbstractSection
 
         $this->id = 'author_posts';
 
-        $this->modArgs['context'] = 'author';
+        $this->themeModArgs['context'] = 'author';
 
         $this->args['title'] = \esc_html__('Author Archives', 'jentil');
         $this->args['active_callback'] = function (): bool {
