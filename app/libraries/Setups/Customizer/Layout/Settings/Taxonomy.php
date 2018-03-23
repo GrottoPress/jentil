@@ -16,7 +16,7 @@ final class Taxonomy extends AbstractSetting
     ) {
         parent::__construct($layout);
 
-        $this->setMod($taxonomy, $term);
+        $this->setThemeMod($taxonomy, $term);
 
         $this->id = $this->themeMod->id;
 
@@ -25,7 +25,7 @@ final class Taxonomy extends AbstractSetting
         $this->setControl($taxonomy, $term);
     }
 
-    private function setMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    private function setThemeMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         $mod_context = 'tax';
 

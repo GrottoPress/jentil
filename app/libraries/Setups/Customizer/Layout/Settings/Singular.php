@@ -14,12 +14,12 @@ final class Singular extends AbstractSetting
     ) {
         parent::__construct($layout);
 
-        $this->setMod($post_type, $post);
+        $this->setThemeMod($post_type, $post);
 
         $this->setControl($post_type, $post);
     }
 
-    private function setMod(WP_Post_Type $post_type, WP_Post $post = null)
+    private function setThemeMod(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
             $this->themeMod = $this->themeMod([
