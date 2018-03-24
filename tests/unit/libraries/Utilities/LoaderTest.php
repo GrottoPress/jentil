@@ -28,12 +28,16 @@ class LoaderTest extends AbstractTestCase
         string $relativeDir = '',
         array $expected = []
     ) {
+        $do_action = FunctionMocker::replace('do_action');
+
         $loader = new Loader($this->makeUtilities($relativeDir));
 
         $this->assertSame(
             \join(', ', $expected),
             $loader->loadPartial($slug, $name)
         );
+
+        $do_action->wasCalledOnce();
     }
 
     /**
@@ -73,7 +77,10 @@ class LoaderTest extends AbstractTestCase
 
         FunctionMocker::replace('is_readable', function (
             string $file
-        ) use ($templateDirReadable, $stylesheetDirReadable): bool {
+        ) use (
+            $templateDirReadable,
+            $stylesheetDirReadable
+        ): bool {
             if ('/var/www/jentil/comments.php' === $file) {
                 return $templateDirReadable;
             }
@@ -185,17 +192,17 @@ class LoaderTest extends AbstractTestCase
         $utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'partialsDir' => function (
                 string $type,
-                string $cont,
+                string $append,
                 string $form
             ): string {
-                return "app/partials{$cont}";
+                return "app/partials{$append}";
             },
             'templatesDir' => function (
                 string $type,
-                string $cont,
+                string $append,
                 string $form
             ): string {
-                return "app/templates{$cont}";
+                return "app/templates{$append}";
             },
             'relativeDir' => $relativeDir,
         ]);

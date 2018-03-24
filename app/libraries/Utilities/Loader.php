@@ -46,28 +46,18 @@ class Loader
     /**
      * Helper to load partial or template
      *
-     * This mimics, and uses code from, WordPress'
-     * `\get_template_part()` function.
+     * This mimics WordPress' `\get_template_part()` function.
      *
      * @see
      * https://developer.wordpress.org/reference/functions/get_template_part/
      */
     private function load(string $type, string $slug, string $name = ''): string
     {
-        if ('partial' === $type) {
-            $slug = $this->utilities->fileSystem->partialsDir(
-                'path',
-                "/{$slug}",
-                'relative'
-            );
-        } else {
-            $slug = $this->utilities->fileSystem->templatesDir(
-                'path',
-                "/{$slug}",
-                'relative'
-            );
-        }
+        $slug = \ltrim($slug, '/');
 
+        $this->doAction($type, $slug, $name);
+
+        $slug = $this->rewriteSlug($type, $slug);
         $rel_dir = $this->utilities->fileSystem->relativeDir();
 
         $templates = [];
@@ -87,5 +77,33 @@ class Loader
         }
 
         return \locate_template($templates, true, false);
+    }
+
+    private function doAction(string $type, string $slug, string $name = '')
+    {
+        if ('partial' === $type) {
+            if (\in_array($slug, ['header', 'footer', 'sidebar'])) {
+                \do_action("get_{$slug}", $name);
+            } else {
+                \do_action("get_template_part_{$slug}", $slug, $name);
+            }
+        }
+    }
+
+    private function rewriteSlug(string $type, string $slug): string
+    {
+        if ('partial' === $type) {
+            return $this->utilities->fileSystem->partialsDir(
+                'path',
+                "/{$slug}",
+                'relative'
+            );
+        }
+
+        return $this->utilities->fileSystem->templatesDir(
+            'path',
+            "/{$slug}",
+            'relative'
+        );
     }
 }
