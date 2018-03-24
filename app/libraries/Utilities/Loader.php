@@ -25,11 +25,11 @@ class Loader
         return $this->load('template', $slug, $name);
     }
 
-    public function loadComments(bool $separated = false)
+    public function loadComments(string $file = '', bool $separated = false)
     {
         $file = $this->utilities->fileSystem->partialsDir(
             'path',
-            "/comments.php",
+            '/'.(\ltrim($file, '/') ?: 'comments.php'),
             'relative'
         );
 
