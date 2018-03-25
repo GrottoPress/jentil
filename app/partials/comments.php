@@ -115,5 +115,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
         <?php }
     }
 
-    \comment_form(); ?>
+    \comment_form([
+        'title_reply' => \esc_html__('Leave a comment', 'jentil')
+    ]); ?>
 </div><!-- #comments -->
