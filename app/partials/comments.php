@@ -18,22 +18,30 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
 
     if (\have_comments()) {
         $total_pages = \absint(\get_comment_pages_count());
-        $comment_count = \absint(\get_comments_number()); ?>
-
-        <section id="comments-list">
-            <h3 class="comments-title"><?php \printf(\_n(
-                '1 Comment',
-                '%1$s Comments',
+        $comment_count = \absint(\get_comments_number());
+        $title = \sprintf(
+            \_n(
+                '1 comment on %2$s',
+                '%1$s comments on %2$s',
                 $comment_count,
                 'jentil'
-            ), \number_format_i18n($comment_count)); ?></h3>
+            ),
+            \number_format_i18n($comment_count),
+            '&ldquo;'.\get_the_title().'&rdquo;'
+        ); ?>
+
+        <section id="comments-list">
+            <h3 class="comments-title entry-title"><?php echo \apply_filters(
+                'jentil_comments_title',
+                $title
+            ); ?></h3>
 
             <?php
             /**
              * Top navigation
              */
-            if ($total_pages > 1
-                && ($is_paged = \get_option('page_comments'))
+            if ($total_pages > 1 &&
+                ($is_paged = \get_option('page_comments'))
             ) {
                 $prev_label = \sanitize_text_field(
                     \apply_filters(
