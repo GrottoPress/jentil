@@ -10,7 +10,7 @@ if (!\Jentil()->utilities->page->is('singular')) {
         <header class="page-header">
             <?php \do_action('jentil_before_title'); ?>
 
-            <h1 class="page-title entry-title" itemprop="name mainEntityOfPage"><?php
+            <h1 id="page-title" class="entry-title" itemprop="name mainEntityOfPage"><?php
                 echo $jentil_title;
             ?></h1>
 

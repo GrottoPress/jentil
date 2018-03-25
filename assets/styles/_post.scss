@@ -8,12 +8,6 @@
     color: $jentil-font-light;
 }
 
-.page-title,
-.page.has-magpack-posts .page-header .entry-title {
-    color: $jentil-font-lighter;
-    font-size: 22px;
-}
-
 .entry-content,
 .pagination {
     @include paragraph;
@@ -32,6 +26,13 @@
 
     .entry-title {
         @include paragraph(10px);
+
+        .archive &,
+        .blog &,
+        .search & {
+            color: $jentil-font-lighter;
+            font-size: 22px;
+        }
     }
 
     .singular-post.big & {
