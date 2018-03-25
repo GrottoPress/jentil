@@ -115,4 +115,6 @@
 
 .comments-closed-text {
     @include paragraph;
+
+    color: $jentil-font-lighter;
 }

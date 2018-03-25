@@ -107,7 +107,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
                 <?php echo \sanitize_text_field(
                     \apply_filters(
                         'jentil_comments_closed_text',
-                        \esc_html__('Comments closed', 'jentil'),
+                        \esc_html__('Comments are closed.', 'jentil'),
                         \get_comments_number()
                     )
                 ); ?>
