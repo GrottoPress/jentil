@@ -47,25 +47,25 @@ abstract class AbstractSection
      * Be sure to set $this->settings here, in the child class.
      * Doing so in the constructor would be too early; it won't work.
      */
-    public function add(WPCustomizer $WPCustomizer)
+    public function add(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
             return;
         }
 
-        $WPCustomizer->add_section($this->id, $this->args);
+        $wp_customizer->add_section($this->id, $this->args);
 
         foreach ($this->settings as $setting) {
-            $setting->add($WPCustomizer);
+            $setting->add($wp_customizer);
         }
     }
 
-    public function remove(WPCustomizer $WPCustomizer)
+    public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
             return;
         }
 
-        $WPCustomizer->remove_section($this->id);
+        $wp_customizer->remove_section($this->id);
     }
 }

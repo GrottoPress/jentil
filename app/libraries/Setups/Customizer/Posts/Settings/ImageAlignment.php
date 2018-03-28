@@ -11,11 +11,11 @@ final class ImageAlignment extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('image_alignment');
+        $theme_mod = $this->themeMod('image_alignment');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_title';
 
         $this->control['label'] = \esc_html__('Image alignment', 'jentil');

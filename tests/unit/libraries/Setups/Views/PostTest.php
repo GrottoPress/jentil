@@ -73,10 +73,10 @@ class PostTest extends AbstractTestCase
     /**
      * @dataProvider bylineProvider
      */
-    public function testByline(string $page, string $subPage)
+    public function testByline(string $page, string $subpage)
     {
         $this->page = $page;
-        $this->subPage = $subPage;
+        $this->subPage = $subpage;
 
         $this->jentil->utilities->post = Stub::makeEmpty(PostPackage::class, [
             'info' => true,
@@ -84,7 +84,7 @@ class PostTest extends AbstractTestCase
 
         $post = new Post($this->jentil);
 
-        if ('singular' === $page && 'post' === $subPage) {
+        if ('singular' === $page && 'post' === $subpage) {
             $this->jentil->utilities->post
                 ->expects($this->atLeastOnce())->method('info');
         } else {
@@ -94,7 +94,7 @@ class PostTest extends AbstractTestCase
 
         $byline = $post->byline('hello...', 1, '|');
 
-        if ('singular' !== $page || 'post' !== $subPage) {
+        if ('singular' !== $page || 'post' !== $subpage) {
             $this->assertSame('hello...', $byline);
         }
     }
@@ -102,7 +102,7 @@ class PostTest extends AbstractTestCase
     /**
      * @dataProvider renderBylineProvider
      */
-    public function testRenderByline(string $page, string $subPage)
+    public function testRenderByline(string $page, string $subpage)
     {
         $this->page = $page;
 
@@ -116,7 +116,7 @@ class PostTest extends AbstractTestCase
 
         $post = new Post($this->jentil);
 
-        if ('singular' === $page && 'post' === $subPage) {
+        if ('singular' === $page && 'post' === $subpage) {
             $this->jentil->utilities->post
                 ->expects($this->atLeastOnce())->method('info');
         } else {

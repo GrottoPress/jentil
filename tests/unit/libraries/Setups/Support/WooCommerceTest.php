@@ -18,20 +18,20 @@ class WooCommerceTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $wooCommerce = new WooCommerce(Stub::makeEmpty(AbstractTheme::class));
+        $woo_commerce = new WooCommerce(Stub::makeEmpty(AbstractTheme::class));
 
-        $wooCommerce->run();
+        $woo_commerce->run();
 
         $add_action->wasCalledTimes(2);
 
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
-            [$wooCommerce, 'loadComments']
+            [$woo_commerce, 'loadComments']
         ]);
 
         $add_action->wasCalledWithOnce([
             'customize_register',
-            [$wooCommerce, 'removeCustomizerItems'],
+            [$woo_commerce, 'removeCustomizerItems'],
             20
         ]);
     }
@@ -42,9 +42,9 @@ class WooCommerceTest extends AbstractTestCase
 
         $add_filter = FunctionMocker::replace('add_filter');
 
-        $wooCommerce = new WooCommerce(Stub::makeEmpty(AbstractTheme::class));
+        $woo_commerce = new WooCommerce(Stub::makeEmpty(AbstractTheme::class));
 
-        $wooCommerce->loadComments();
+        $woo_commerce->loadComments();
 
         $add_filter->wasCalledOnce();
         $add_filter->wasCalledWithOnce([
@@ -94,7 +94,7 @@ class WooCommerceTest extends AbstractTestCase
             )]
         ]);
 
-        $wooCommerce = new WooCommerce($jentil);
+        $woo_commerce = new WooCommerce($jentil);
 
         $taxes = ['product_tag', 'product_cat'];
 
@@ -110,6 +110,6 @@ class WooCommerceTest extends AbstractTestCase
                 ->with($this->equalTo($WPCustomizer));
         }
 
-        $wooCommerce->removeCustomizerItems($WPCustomizer);
+        $woo_commerce->removeCustomizerItems($WPCustomizer);
     }
 }

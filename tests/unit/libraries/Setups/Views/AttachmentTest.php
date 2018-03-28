@@ -112,7 +112,7 @@ class AttachmentTest extends AbstractTestCase
 
         $is = FunctionMocker::replace('wp_attachment_is', function (
             string $at_type,
-            int $postId
+            int $post_id
         ) use ($type): bool {
             return ($at_type === $type);
         });

@@ -13,10 +13,10 @@ class ArchiveTest extends AbstractTestCase
      * @dataProvider postTypesProvider
      */
     public function testPostTypes(
-        array $postTypes,
+        array $post_types,
         array $expected
     ) {
-        \array_walk($postTypes, function (&$v, $k) {
+        \array_walk($post_types, function (&$v, $k) {
             $v = \json_decode(\json_encode($v));
         });
 
@@ -24,14 +24,14 @@ class ArchiveTest extends AbstractTestCase
             $v = \json_decode(\json_encode($v));
         });
 
-        $posts = Stub::makeEmpty(Posts::class, ['postTypes' => $postTypes]);
+        $posts = Stub::makeEmpty(Posts::class, ['postTypes' => $post_types]);
 
         FunctionMocker::replace(
             'get_post_type_archive_link',
             function (
-                string $postType
-            ) use ($postTypes): string {
-                return $postTypes[$postType]->link;
+                string $post_type
+            ) use ($post_types): string {
+                return $post_types[$post_type]->link;
             }
         );
 

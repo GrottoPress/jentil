@@ -31,9 +31,9 @@ class MobileTest extends AbstractTestCase
      * @dataProvider addBodyClassesProvider
      */
     public function testAddBodyClasses(
-        bool $isMobile,
-        bool $isPhone,
-        bool $isTablet,
+        bool $is_mobile,
+        bool $is_phone,
+        bool $is_tablet,
         string $os,
         string $browser,
         string $device,
@@ -51,9 +51,9 @@ class MobileTest extends AbstractTestCase
         ]);
 
         $jentil->utilities->mobileDetector = Stub::makeEmpty(Detector::class, [
-            'isMobile' => $isMobile,
-            'isTablet' => $isTablet,
-            'isPhone' => $isPhone,
+            'isMobile' => $is_mobile,
+            'isTablet' => $is_tablet,
+            'isPhone' => $is_phone,
             'getOperatingSystem' => $os,
             'getBrowser' => $browser,
             'getDevice' => $device,
@@ -63,15 +63,15 @@ class MobileTest extends AbstractTestCase
 
         $this->assertSame($expected, $mobile->addBodyClasses(['class-1']));
 
-        if ($isMobile && $os) {
+        if ($is_mobile && $os) {
             $sanitize_title->wasCalledWithOnce([$os]);
         }
 
-        if ($isMobile && $browser) {
+        if ($is_mobile && $browser) {
             $sanitize_title->wasCalledWithOnce([$browser]);
         }
 
-        if ($isMobile && $device) {
+        if ($is_mobile && $device) {
             $sanitize_title->wasCalledWithOnce([$device]);
         }
 

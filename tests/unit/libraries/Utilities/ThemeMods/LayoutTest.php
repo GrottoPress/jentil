@@ -36,7 +36,7 @@ class LayoutTest extends AbstractTestCase
         int $more_specific,
         array $post_types,
         array $taxonomies,
-        bool $isPagelike,
+        bool $is_pagelike,
         string $expected_name
     ) {
         FunctionMocker::replace('post_type_exists', function (
@@ -51,14 +51,14 @@ class LayoutTest extends AbstractTestCase
             return \in_array($tax, $taxonomies);
         });
 
-        $themeMods = Stub::makeEmpty(ThemeMods::class);
-        $themeMods->utilities = Stub::makeEmpty(Utilities::class);
-        $themeMods->utilities->page = Stub::makeEmpty(Page::class);
-        $themeMods->utilities->page->posts = Stub::makeEmpty(Layout::class, [
-            'isPagelike' => $isPagelike,
+        $theme_mods = Stub::makeEmpty(ThemeMods::class);
+        $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
+        $theme_mods->utilities->page = Stub::makeEmpty(Page::class);
+        $theme_mods->utilities->page->posts = Stub::makeEmpty(Layout::class, [
+            'isPagelike' => $is_pagelike,
         ]);
 
-        $layout = new Layout($themeMods, [
+        $layout = new Layout($theme_mods, [
             'context' => $context,
             'specific' => $specific,
             'more_specific' => $more_specific,
@@ -74,7 +74,7 @@ class LayoutTest extends AbstractTestCase
         string $context,
         string $specific,
         int $more_specific,
-        bool $isPagelike,
+        bool $is_pagelike,
         string $expected
     ) {
         FunctionMocker::replace('get_post_meta', 'myMeta');
@@ -89,19 +89,19 @@ class LayoutTest extends AbstractTestCase
         FunctionMocker::replace('taxonomy_exists', true);
         FunctionMocker::replace('post_type_exists', true);
 
-        $themeMods = Stub::makeEmpty(ThemeMods::class);
-        $themeMods->utilities = Stub::makeEmpty(Utilities::class);
-        $themeMods->utilities->page = Stub::makeEmpty(Page::class);
-        $themeMods->utilities->page->layouts = Stub::makeEmpty(Layouts::class, [
+        $theme_mods = Stub::makeEmpty(ThemeMods::class);
+        $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
+        $theme_mods->utilities->page = Stub::makeEmpty(Page::class);
+        $theme_mods->utilities->page->layouts = Stub::makeEmpty(Layouts::class, [
             'IDs' => ['myMod' => 'My Mod', 'myMeta' => 'My Meta'],
         ]);
 
-        $layout = Stub::construct(Layout::class, [$themeMods, [
+        $layout = Stub::construct(Layout::class, [$theme_mods, [
             'context' => $context,
             'specific' => $specific,
             'more_specific' => $more_specific,
         ]], [
-            'isPagelike' => $isPagelike,
+            'isPagelike' => $is_pagelike,
         ]);
 
         $this->assertSame($expected, $layout->get());
@@ -125,14 +125,14 @@ class LayoutTest extends AbstractTestCase
 
         FunctionMocker::replace('taxonomy_exists', true);
 
-        $themeMods = Stub::makeEmpty(ThemeMods::class);
-        $themeMods->utilities = Stub::makeEmpty(Utilities::class);
-        $themeMods->utilities->page = Stub::makeEmpty(Page::class);
-        $themeMods->utilities->page->posts = Stub::makeEmpty(Layout::class, [
+        $theme_mods = Stub::makeEmpty(ThemeMods::class);
+        $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
+        $theme_mods->utilities->page = Stub::makeEmpty(Page::class);
+        $theme_mods->utilities->page->posts = Stub::makeEmpty(Layout::class, [
             'isPagelike' => true,
         ]);
 
-        $layout = new Layout($themeMods, [
+        $layout = new Layout($theme_mods, [
             'context' => $context,
             'specific' => $specific,
             'more_specific' => $more_specific,

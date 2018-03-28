@@ -25,12 +25,12 @@ class LoaderTest extends AbstractTestCase
     public function testLoadPartial(
         string $slug,
         string $name = '',
-        string $relativeDir = '',
+        string $relative_dir = '',
         array $expected = []
     ) {
         $do_action = FunctionMocker::replace('do_action');
 
-        $loader = new Loader($this->makeUtilities($relativeDir));
+        $loader = new Loader($this->makeUtilities($relative_dir));
 
         $this->assertSame(
             \join(', ', $expected),
@@ -46,10 +46,10 @@ class LoaderTest extends AbstractTestCase
     public function testLoadTemplate(
         string $slug,
         string $name = '',
-        string $relativeDir = '',
+        string $relative_dir = '',
         array $expected = []
     ) {
-        $loader = new Loader($this->makeUtilities($relativeDir));
+        $loader = new Loader($this->makeUtilities($relative_dir));
 
         $this->assertSame(
             \join(', ', $expected),
@@ -61,9 +61,9 @@ class LoaderTest extends AbstractTestCase
      * @dataProvider loadCommentsProvider
      */
     public function testLoadComments(
-        string $relativeDir,
-        bool $templateDirReadable,
-        bool $stylesheetDirReadable,
+        string $relative_dir,
+        bool $template_dir_readable,
+        bool $stylesheet_dir_readable,
         string $expected
     ) {
         FunctionMocker::replace('comments_template', function (
@@ -78,17 +78,17 @@ class LoaderTest extends AbstractTestCase
         FunctionMocker::replace('is_readable', function (
             string $file
         ) use (
-            $templateDirReadable,
-            $stylesheetDirReadable
+            $template_dir_readable,
+            $stylesheet_dir_readable
         ): bool {
             if ('/var/www/jentil/comments.php' === $file) {
-                return $templateDirReadable;
+                return $template_dir_readable;
             }
 
-            return $stylesheetDirReadable;
+            return $stylesheet_dir_readable;
         });
 
-        $loader = new Loader($this->makeUtilities($relativeDir));
+        $loader = new Loader($this->makeUtilities($relative_dir));
 
         $this->assertSame($expected, $loader->loadComments());
     }
@@ -186,7 +186,7 @@ class LoaderTest extends AbstractTestCase
         ];
     }
 
-    private function makeUtilities(string $relativeDir): Utilities
+    private function makeUtilities(string $relative_dir): Utilities
     {
         $utilities = Stub::makeEmpty(Utilities::class);
         $utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
@@ -204,7 +204,7 @@ class LoaderTest extends AbstractTestCase
             ): string {
                 return "app/templates{$append}";
             },
-            'relativeDir' => $relativeDir,
+            'relativeDir' => $relative_dir,
         ]);
 
         return $utilities;

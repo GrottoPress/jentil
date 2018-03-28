@@ -13,7 +13,7 @@ class LayoutTest extends AbstractTestCase
     /**
      * @dataProvider columnProvider
      */
-    public function testColumn(string $themeMod, string $expected)
+    public function testColumn(string $theme_mod, string $expected)
     {
         FunctionMocker::replace('sanitize_title', function (
             string $text
@@ -36,7 +36,7 @@ class LayoutTest extends AbstractTestCase
 
         $layout = Stub::construct(Layout::class, [$page], [
             'themeMod' => Stub::makeEmpty(LayoutMod::class, [
-                'get' => $themeMod,
+                'get' => $theme_mod,
             ]),
         ]);
 

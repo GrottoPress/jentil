@@ -18,10 +18,10 @@ final class Colophon extends AbstractSection
         $this->args['title'] = \esc_html__('Colophon', 'jentil');
     }
 
-    public function add(WPCustomizer $WPCustomizer)
+    public function add(WPCustomizer $wp_customizer)
     {
         $this->settings['Colophon'] = new Settings\Colophon($this);
 
-        parent::add($WPCustomizer);
+        parent::add($wp_customizer);
     }
 }

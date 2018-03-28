@@ -11,11 +11,11 @@ final class Layout extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('layout');
+        $theme_mod = $this->themeMod('layout');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
 
         $this->control['label'] = \esc_html__('Layout', 'jentil');

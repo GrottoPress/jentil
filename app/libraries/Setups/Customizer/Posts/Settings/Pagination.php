@@ -11,11 +11,11 @@ final class Pagination extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('pagination');
+        $theme_mod = $this->themeMod('pagination');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
 
         $this->control['label'] = \esc_html__('Pagination type', 'jentil');

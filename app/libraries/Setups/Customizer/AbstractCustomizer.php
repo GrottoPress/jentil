@@ -47,23 +47,23 @@ abstract class AbstractCustomizer extends AbstractSetup
      *
      * @action customize_register
      */
-    public function register(WPCustomizer $WPCustomizer)
+    public function register(WPCustomizer $wp_customizer)
     {
-        $this->addPanels($WPCustomizer);
-        $this->addSections($WPCustomizer);
+        $this->addPanels($wp_customizer);
+        $this->addSections($wp_customizer);
     }
 
-    private function addPanels(WPCustomizer $WPCustomizer)
+    private function addPanels(WPCustomizer $wp_customizer)
     {
         foreach ($this->panels as $panel) {
-            $panel->add($WPCustomizer);
+            $panel->add($wp_customizer);
         }
     }
 
-    private function addSections(WPCustomizer $WPCustomizer)
+    private function addSections(WPCustomizer $wp_customizer)
     {
         foreach ($this->sections as $section) {
-            $section->add($WPCustomizer);
+            $section->add($wp_customizer);
         }
     }
 }

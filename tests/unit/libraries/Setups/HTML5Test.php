@@ -70,7 +70,7 @@ class HTML5Test extends AbstractTestCase
      */
     public function testAddMicrodata(
         string $page,
-        string $subPage,
+        string $subpage,
         string $itemtype
     ) {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
@@ -83,10 +83,10 @@ class HTML5Test extends AbstractTestCase
                 string $subtype = null
             ) use (
                 $page,
-                $subPage
+                $subpage
             ): bool {
                 if ($subtype) {
-                    return ($page === $type && $subPage === $subtype);
+                    return ($page === $type && $subpage === $subtype);
                 }
 
                 return ($page === $type);

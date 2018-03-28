@@ -45,25 +45,25 @@ abstract class AbstractPanel
      * Be sure to set $this->sections HERE, in the child class.
      * Doing that in the constructor would be too early; it won't work.
      */
-    public function add(WPCustomizer $WPCustomizer)
+    public function add(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
             return;
         }
 
-        $WPCustomizer->add_panel($this->id, $this->args);
+        $wp_customizer->add_panel($this->id, $this->args);
 
         foreach ($this->sections as $section) {
-            $section->add($WPCustomizer);
+            $section->add($wp_customizer);
         }
     }
 
-    public function remove(WPCustomizer $WPCustomizer)
+    public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
             return;
         }
 
-        $WPCustomizer->remove_panel($this->id);
+        $wp_customizer->remove_panel($this->id);
     }
 }

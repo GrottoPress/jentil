@@ -41,8 +41,8 @@ class LayoutTest extends AbstractTestCase
      */
     public function testAddBodyClasses(
         array $classes,
-        bool $isPageBuilder,
-        string $themeMod,
+        bool $is_page_builder,
+        string $theme_mod,
         string $column,
         array $expected
     ) {
@@ -59,13 +59,13 @@ class LayoutTest extends AbstractTestCase
 
         $jentil->utilities->postTypeTemplate = Stub::makeEmpty(
             PostTypeTemplate::class,
-            ['isPageBuilder' => $isPageBuilder]
+            ['isPageBuilder' => $is_page_builder]
         );
 
         $jentil->utilities->page = Stub::makeEmpty(Page\Page::class);
         $jentil->utilities->page->layout = Stub::makeEmpty(Page\Layout::class, [
             'themeMod' => Stub::makeEmpty(ThemeMods\Layout::class, [
-                'get' => $themeMod,
+                'get' => $theme_mod,
             ]),
             'column' => $column,
         ]);
@@ -74,11 +74,11 @@ class LayoutTest extends AbstractTestCase
 
         $this->assertSame($expected, $layout->addBodyClasses($classes));
 
-        if ($isPageBuilder) {
+        if ($is_page_builder) {
             $sanitize_title->wasNotCalled();
         } else {
-            if ($themeMod) {
-                $sanitize_title->wasCalledWithOnce(["layout-{$themeMod}"]);
+            if ($theme_mod) {
+                $sanitize_title->wasCalledWithOnce(["layout-{$theme_mod}"]);
             }
 
             if ($column) {

@@ -11,11 +11,11 @@ final class Excerpt extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('excerpt');
+        $theme_mod = $this->themeMod('excerpt');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };

@@ -56,12 +56,12 @@ class LoaderTest extends AbstractTestCase
     }
 
     /**
-     * @param string $relativeDir
+     * @param string $relative_dir
      * @param string[] $expected
      *
      * @dataProvider templateHierarchyProvider
      */
-    public function testTemplateHierarchy(string $relativeDir, array $expected)
+    public function testTemplateHierarchy(string $relative_dir, array $expected)
     {
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
@@ -77,7 +77,7 @@ class LoaderTest extends AbstractTestCase
                 ): string {
                     return "app/templates{$template}";
                 },
-                'relativeDir' => $relativeDir,
+                'relativeDir' => $relative_dir,
             ]
         );
 

@@ -14,20 +14,20 @@ class StickyTest extends AbstractTestCase
      * @dataProvider getProvider
      */
     public function testGet(
-        array $stickyPosts,
-        string $postType,
+        array $sticky_posts,
+        string $post_type,
         array $expected
     ) {
-        FunctionMocker::replace('get_option', \array_keys($stickyPosts));
+        FunctionMocker::replace('get_option', \array_keys($sticky_posts));
         FunctionMocker::replace('get_post_type', function (int $post) use (
-            $stickyPosts
+            $sticky_posts
         ): string {
-            return $stickyPosts[$post];
+            return $sticky_posts[$post];
         });
 
         $sticky = new Sticky(Stub::makeEmpty(Posts::class));
 
-        $this->assertSame($expected, $sticky->get($postType));
+        $this->assertSame($expected, $sticky->get($post_type));
     }
 
     public function getProvider(): array

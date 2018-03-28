@@ -12,9 +12,9 @@ class Colophon extends AbstractThemeMod
      */
     private $themeMods;
 
-    public function __construct(ThemeMods $themeMods)
+    public function __construct(ThemeMods $theme_mods)
     {
-        $this->themeMods = $themeMods;
+        $this->themeMods = $theme_mods;
 
         $this->id = 'colophon';
 

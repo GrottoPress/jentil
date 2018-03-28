@@ -31,11 +31,11 @@ class Posts extends AbstractThemeMod
     private $moreSpecific;
 
     public function __construct(
-        ThemeMods $themeMods,
+        ThemeMods $theme_mods,
         string $setting,
         array $args = []
     ) {
-        $this->themeMods = $themeMods;
+        $this->themeMods = $theme_mods;
 
         $this->setAttributes($setting, $args);
     }

@@ -11,11 +11,11 @@ final class TitleWords extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('title_words');
+        $theme_mod = $this->themeMod('title_words');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };

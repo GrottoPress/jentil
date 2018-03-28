@@ -16,7 +16,7 @@ final class Customizer extends AbstractCustomizer
     /**
      * @action customize_register
      */
-    public function register(WPCustomizer $WPCustomizer)
+    public function register(WPCustomizer $wp_customizer)
     {
         $this->sections['Title\Title'] = new Title\Title($this);
         $this->sections['Layout\Layout'] = new Layout\Layout($this);
@@ -24,7 +24,7 @@ final class Customizer extends AbstractCustomizer
 
         $this->panels['Posts\Posts'] = new Posts\Posts($this);
 
-        parent::register($WPCustomizer);
+        parent::register($wp_customizer);
     }
 
     /**

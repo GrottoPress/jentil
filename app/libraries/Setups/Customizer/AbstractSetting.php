@@ -30,23 +30,23 @@ abstract class AbstractSetting
         $this->section = $section;
     }
 
-    public function add(WPCustomizer $WPCustomizer)
+    public function add(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
             return;
         }
 
-        $WPCustomizer->add_setting($this->id, $this->args);
-        $WPCustomizer->add_control($this->id, $this->control);
+        $wp_customizer->add_setting($this->id, $this->args);
+        $wp_customizer->add_control($this->id, $this->control);
     }
 
-    public function remove(WPCustomizer $WPCustomizer)
+    public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
             return;
         }
 
-        $WPCustomizer->remove_setting($this->id);
-        $WPCustomizer->remove_control($this->id);
+        $wp_customizer->remove_setting($this->id);
+        $wp_customizer->remove_control($this->id);
     }
 }

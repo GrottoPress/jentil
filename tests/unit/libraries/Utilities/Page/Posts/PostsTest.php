@@ -15,9 +15,9 @@ class PostsTest extends AbstractTestCase
      */
     public function testRender(
         string $page,
-        bool $isPaged,
-        bool $stickySet,
-        array $stickyPosts,
+        bool $is_paged,
+        bool $sticky_set,
+        array $sticky_posts,
         string $expected
     ) {
         $this->markTestSkipped();
@@ -35,13 +35,13 @@ class PostsTest extends AbstractTestCase
         ]);
 
         $posts->archive = Stub::makeEmpty(Archive::class, [
-            'isPaged' => $isPaged,
+            'isPaged' => $is_paged,
             'posts' => Stub::makeEmpty(Posts::class, ['render' => 'archive']),
         ]);
 
         $posts->sticky = Stub::makeEmpty(Sticky::class, [
-            'isSet' => $stickySet,
-            'get' => $stickyPosts,
+            'isSet' => $sticky_set,
+            'get' => $sticky_posts,
             'posts' => Stub::makeEmpty(Posts::class, ['render' => 'sticky']),
         ]);
 

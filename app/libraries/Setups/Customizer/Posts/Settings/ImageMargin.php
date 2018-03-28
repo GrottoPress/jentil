@@ -11,11 +11,11 @@ final class ImageMargin extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('image_margin');
+        $theme_mod = $this->themeMod('image_margin');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('Image margin', 'jentil');

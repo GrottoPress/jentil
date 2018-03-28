@@ -30,10 +30,10 @@ class StyleTest extends AbstractTestCase
     /**
      * @dataProvider enqueueProvider
      */
-    public function testEnqueue(bool $isRTL)
+    public function testEnqueue(bool $is_rtl)
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_style');
-        $rtl = FunctionMocker::replace('is_rtl', $isRTL);
+        $rtl = FunctionMocker::replace('is_rtl', $is_rtl);
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
@@ -58,7 +58,7 @@ class StyleTest extends AbstractTestCase
         $enqueue->wasCalledWithOnce([
             $style->id,
             (
-                $isRTL ?
+                $is_rtl ?
                 'http://my.url/dist/styles/jentil-rtl.min.css' :
                 'http://my.url/dist/styles/jentil.min.css'
             ),

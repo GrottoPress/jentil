@@ -11,11 +11,11 @@ final class AfterContentSeparator extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('after_content_separator');
+        $theme_mod = $this->themeMod('after_content_separator');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
 
         $this->control['label'] = \esc_html__(

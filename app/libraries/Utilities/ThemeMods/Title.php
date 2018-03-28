@@ -25,9 +25,9 @@ class Title extends AbstractThemeMod
      */
     private $moreSpecific;
 
-    public function __construct(ThemeMods $themeMods, array $args = [])
+    public function __construct(ThemeMods $theme_mods, array $args = [])
     {
-        $this->themeMods = $themeMods;
+        $this->themeMods = $theme_mods;
 
         $this->setAttributes($args);
     }

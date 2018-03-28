@@ -11,11 +11,11 @@ final class BeforeTitleSeparator extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('before_title_separator');
+        $theme_mod = $this->themeMod('before_title_separator');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
 
         $this->control['label'] = \esc_html__(

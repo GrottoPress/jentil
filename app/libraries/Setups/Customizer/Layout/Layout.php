@@ -19,11 +19,11 @@ final class Layout extends AbstractSection
         // $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
-    public function add(WPCustomizer $WPCustomizer)
+    public function add(WPCustomizer $wp_customizer)
     {
         $this->settings = $this->settings();
 
-        parent::add($WPCustomizer);
+        parent::add($wp_customizer);
     }
 
     /**

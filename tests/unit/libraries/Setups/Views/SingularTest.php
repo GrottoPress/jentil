@@ -78,8 +78,8 @@ class SingularTest extends AbstractTestCase
     public function testAddBodyClasses(
         string $page,
         string $template,
-        array $postTypeSupports,
-        bool $commentsOpen,
+        array $post_type_supports,
+        bool $comments_open,
         bool $thread_comments,
         array $post,
         array $expected
@@ -113,8 +113,8 @@ class SingularTest extends AbstractTestCase
             function (
                 string $type,
                 string $check
-            ) use ($postTypeSupports): bool {
-                return \in_array($check, $postTypeSupports);
+            ) use ($post_type_supports): bool {
+                return \in_array($check, $post_type_supports);
             }
         );
 
@@ -127,7 +127,7 @@ class SingularTest extends AbstractTestCase
 
         $comments_open = FunctionMocker::replace(
             'comments_open',
-            $commentsOpen
+            $comments_open
         );
 
         $this->jentil->utilities->postTypeTemplate = Stub::makeEmpty(

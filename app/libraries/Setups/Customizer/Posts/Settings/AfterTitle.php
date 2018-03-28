@@ -11,11 +11,11 @@ final class AfterTitle extends AbstractSetting
     {
         parent::__construct($section);
 
-        $themeMod = $this->themeMod('after_title');
+        $theme_mod = $this->themeMod('after_title');
 
-        $this->id = $themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $themeMod->default;
+        $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
 
         $this->control['label'] = \esc_html__('After title', 'jentil');
