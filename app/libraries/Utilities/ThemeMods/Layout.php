@@ -21,9 +21,9 @@ class Layout extends AbstractThemeMod
     private $specific;
 
     /**
-     * @var int $more_specific Post ID or term ID.
+     * @var int $moreSpecific Post ID or term ID.
      */
-    private $more_specific;
+    private $moreSpecific;
 
     public function __construct(ThemeMods $themeMods, array $args = [])
     {
@@ -41,7 +41,7 @@ class Layout extends AbstractThemeMod
         ]);
 
         $this->context = \sanitize_key($args['context']);
-        $this->more_specific = (int)$args['more_specific'];
+        $this->moreSpecific = (int)$args['more_specific'];
         $this->default = 'content';
 
         $this->specific = \post_type_exists($args['specific']) ||
@@ -58,14 +58,14 @@ class Layout extends AbstractThemeMod
             'home' => 'post_post_type_layout',
             'singular' => (
                 $this->isPagelike() ? '_jentil-layout' :
-                "singular_{$this->specific}_{$this->more_specific}_layout"
+                "singular_{$this->specific}_{$this->moreSpecific}_layout"
             ),
             'author' => 'author_layout',
-            'category' => "category_{$this->more_specific}_taxonomy_layout",
+            'category' => "category_{$this->moreSpecific}_taxonomy_layout",
             'date' => 'date_layout',
             'post_type_archive' => "{$this->specific}_post_type_layout",
-            'tag' => "post_tag_{$this->more_specific}_taxonomy_layout",
-            'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_layout",
+            'tag' => "post_tag_{$this->moreSpecific}_taxonomy_layout",
+            'tax' => "{$this->specific}_{$this->moreSpecific}_taxonomy_layout",
             '404' => 'error_404_layout',
             'search' => 'search_layout',
         ];
@@ -90,7 +90,7 @@ class Layout extends AbstractThemeMod
         }
 
         if ($this->isPagelike()) {
-            if ($mod = \get_post_meta($this->more_specific, $this->id, true)) {
+            if ($mod = \get_post_meta($this->moreSpecific, $this->id, true)) {
                 return $this->validate($mod);
             }
 
@@ -108,7 +108,7 @@ class Layout extends AbstractThemeMod
 
         return $this->themeMods->utilities->page->posts->isPagelike(
             $this->specific,
-            $this->more_specific
+            $this->moreSpecific
         );
     }
 

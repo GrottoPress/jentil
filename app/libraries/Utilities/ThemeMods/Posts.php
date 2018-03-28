@@ -26,9 +26,9 @@ class Posts extends AbstractThemeMod
     private $specific;
 
     /**
-     * @var int $more_specific Post ID or term ID.
+     * @var int $moreSpecific Post ID or term ID.
      */
-    private $more_specific;
+    private $moreSpecific;
 
     public function __construct(
         ThemeMods $themeMods,
@@ -51,7 +51,7 @@ class Posts extends AbstractThemeMod
         $this->setting = \sanitize_key($setting);
         $this->context = \sanitize_key($args['context']);
         $this->specific = \sanitize_key($args['specific']);
-        $this->more_specific = (int)$args['more_specific'];
+        $this->moreSpecific = (int)$args['more_specific'];
 
         $names = $this->names();
         $this->id = isset($names[$this->context])
@@ -67,11 +67,11 @@ class Posts extends AbstractThemeMod
         $names = [
             'home' => 'post_post_type_posts',
             'author' => 'author_posts',
-            'category' => "category_{$this->more_specific}_taxonomy_posts",
+            'category' => "category_{$this->moreSpecific}_taxonomy_posts",
             'date' => 'date_posts',
             'post_type_archive' => "{$this->specific}_post_type_posts",
-            'tag' => "post_tag_{$this->more_specific}_taxonomy_posts",
-            'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_posts",
+            'tag' => "post_tag_{$this->moreSpecific}_taxonomy_posts",
+            'tax' => "{$this->specific}_{$this->moreSpecific}_taxonomy_posts",
             'search' => 'search_posts',
             'sticky' => "{$this->specific}_sticky_posts",
             'related' => "{$this->specific}_related_posts",

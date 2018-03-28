@@ -21,9 +21,9 @@ class Title extends AbstractThemeMod
     private $specific;
 
     /**
-     * @var int $more_specific Post ID or term ID
+     * @var int $moreSpecific Post ID or term ID
      */
-    private $more_specific;
+    private $moreSpecific;
 
     public function __construct(ThemeMods $themeMods, array $args = [])
     {
@@ -41,7 +41,7 @@ class Title extends AbstractThemeMod
         ]);
 
         $this->context = \sanitize_key($args['context']);
-        $this->more_specific = (int)$args['more_specific'];
+        $this->moreSpecific = (int)$args['more_specific'];
 
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
@@ -59,11 +59,11 @@ class Title extends AbstractThemeMod
         $names = [
             'home' => 'post_post_type_title',
             'author' => 'author_title',
-            'category' => "category_{$this->more_specific}_taxonomy_title",
+            'category' => "category_{$this->moreSpecific}_taxonomy_title",
             'date' => 'date_title',
             'post_type_archive' => "{$this->specific}_post_type_title",
-            'tag' => "post_tag_{$this->more_specific}_taxonomy_title",
-            'tax' => "{$this->specific}_{$this->more_specific}_taxonomy_title",
+            'tag' => "post_tag_{$this->moreSpecific}_taxonomy_title",
+            'tax' => "{$this->specific}_{$this->moreSpecific}_taxonomy_title",
             '404' => 'error_404_title',
             'search' => 'search_title',
         ];
@@ -101,7 +101,7 @@ class Title extends AbstractThemeMod
             $defaults,
             $this->context,
             $this->specific,
-            $this->more_specific
+            $this->moreSpecific
         );
     }
 

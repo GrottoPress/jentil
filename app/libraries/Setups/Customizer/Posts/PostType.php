@@ -10,15 +10,15 @@ final class PostType extends AbstractSection
     /**
      * @var WP_Post_Type
      */
-    protected $post_type;
+    protected $postType;
 
     public function __construct(Posts $posts, WP_Post_Type $post_type)
     {
         parent::__construct($posts);
 
-        $this->post_type = $post_type;
+        $this->postType = $post_type;
 
-        $this->id = \sanitize_key("{$this->post_type->name}_post_type_posts");
+        $this->id = \sanitize_key("{$this->postType->name}_post_type_posts");
 
         $this->setArgs();
         $this->setThemeModArgs();
@@ -28,25 +28,25 @@ final class PostType extends AbstractSection
     {
         $this->args['title'] = \sprintf(
             \esc_html__('%s Archive', 'jentil'),
-            $this->post_type->labels->name
+            $this->postType->labels->name
         );
 
         $this->args['active_callback'] = function (): bool {
             $page = $this->customizer->app->utilities->page;
 
-            if ('post' === $this->post_type->name) {
+            if ('post' === $this->postType->name) {
                 return $page->is('home');
             }
 
-            return $page->is('post_type_archive', $this->post_type->name);
+            return $page->is('post_type_archive', $this->postType->name);
         };
     }
 
     private function setThemeModArgs()
     {
-        $this->themeModArgs['specific'] = $this->post_type->name;
+        $this->themeModArgs['specific'] = $this->postType->name;
         $this->themeModArgs['context'] = (
-            'post' === $this->post_type->name ? 'home' : 'post_type_archive'
+            'post' === $this->postType->name ? 'home' : 'post_type_archive'
         );
     }
 
@@ -58,7 +58,7 @@ final class PostType extends AbstractSection
         $settings = parent::settings();
 
         if (!$this->customizer->app->utilities
-            ->page->posts->sticky->get($this->post_type->name)
+            ->page->posts->sticky->get($this->postType->name)
         ) {
             unset($settings['StickyPosts']);
         }
