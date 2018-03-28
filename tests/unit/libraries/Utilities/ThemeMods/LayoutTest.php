@@ -6,6 +6,7 @@ namespace GrottoPress\Jentil\Utilities\ThemeMods;
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\AbstractTestCase;
 use GrottoPress\Jentil\Utilities\Page\Layout as LayoutUtil;
+use GrottoPress\Jentil\Utilities\Page\Layouts;
 use GrottoPress\Jentil\Utilities\Page\Page;
 use GrottoPress\Jentil\Utilities\Utilities;
 use tad\FunctionMocker\FunctionMocker;
@@ -77,7 +78,9 @@ class LayoutTest extends AbstractTestCase
         string $expected
     ) {
         FunctionMocker::replace('get_post_meta', 'myMeta');
-        FunctionMocker::replace('get_theme_mod', 'myMod');
+        FunctionMocker::replace('get_theme_mod', (
+            'tutorial' === $specific ? 'myOtherMod' : 'myMod'
+        ));
         FunctionMocker::replace('sanitize_title', function (
             string $text
         ): string {
@@ -87,6 +90,11 @@ class LayoutTest extends AbstractTestCase
         FunctionMocker::replace('post_type_exists', true);
 
         $themeMods = Stub::makeEmpty(ThemeMods::class);
+        $themeMods->utilities = Stub::makeEmpty(Utilities::class);
+        $themeMods->utilities->page = Stub::makeEmpty(Page::class);
+        $themeMods->utilities->page->layouts = Stub::makeEmpty(Layouts::class, [
+            'IDs' => ['myMod' => 'My Mod', 'myMeta' => 'My Meta'],
+        ]);
 
         $layout = Stub::construct(Layout::class, [$themeMods, [
             'context' => $context,
@@ -281,6 +289,7 @@ class LayoutTest extends AbstractTestCase
             'context not singular' => ['home', 'post', 2, false, 'myMod'],
             'is pagelike' => ['singular', 'page', 3, true, 'myMeta'],
             'is not pagelike' => ['singular', 'post', 4, false, 'myMod'],
+            'layout mod invalid' => ['singular', 'tutorial', 5, false, ''],
         ];
     }
 

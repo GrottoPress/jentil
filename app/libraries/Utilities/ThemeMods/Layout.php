@@ -91,13 +91,13 @@ class Layout extends AbstractThemeMod
 
         if ($this->isPagelike()) {
             if ($mod = \get_post_meta($this->more_specific, $this->id, true)) {
-                return \sanitize_title($mod);
+                return $this->validate($mod);
             }
 
             return $this->default;
         }
 
-        return \sanitize_title(parent::get());
+        return $this->validate(parent::get());
     }
 
     public function isPagelike(): bool
@@ -110,5 +110,17 @@ class Layout extends AbstractThemeMod
             $this->specific,
             $this->more_specific
         );
+    }
+
+    private function validate(string $mod): string
+    {
+        if (\array_key_exists(
+            $mod,
+            $this->themeMods->utilities->page->layouts->IDs()
+        )) {
+            return \sanitize_title($mod);
+        }
+
+        return '';
     }
 }
