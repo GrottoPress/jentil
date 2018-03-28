@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `.security.txt`
 - `jentil_before_sidebar` and `jentil_after_sidebar` template hooks
 - Author avatar on author archive
+- WooCommerce support
 
 ### Changed
 - Undo require search input filled on search submit

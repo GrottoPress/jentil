@@ -38,6 +38,7 @@ final class Jentil extends AbstractTheme
         $this->setUpPostTypeTemplates();
         $this->setUpSidebars();
         $this->setUpViews();
+        $this->setUpSupport();
     }
 
     protected function getUtilities(): Utilities
@@ -153,5 +154,11 @@ final class Jentil extends AbstractTheme
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
         $this->setups['Views\Breadcrumbs'] =
             new Setups\Views\Breadcrumbs($this);
+    }
+
+    private function setUpSupport()
+    {
+        $this->setups['Support\WooCommerce'] =
+            new Setups\Support\WooCommerce($this);
     }
 }

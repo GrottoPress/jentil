@@ -36,9 +36,15 @@ Jentil comes with page builder [post type templates](https://make.wordpress.org/
 - Robust [architecture](https://github.com/grottopress/wordpress-suv/), with a more organised directory structure. Templates are loaded **only** from the `app/templates` directory, and partials from the `app/partials` directory. The days of dumping files in your theme's root are over!
 - Use as package in another theme, or as parent theme for a child theme.
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
-- Cleanly-commented, object-oriented codebase.
+- Clean, object-oriented codebase.
 - Modern web development tools.
 - Compliant (mostly) with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
+
+### Supported
+
+Jentil has built-in support for the following:
+
+- [WooCommerce](https://wordpress.org/plugins/woocommerce/)
 
 ## Requirements
 
