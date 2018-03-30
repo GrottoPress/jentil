@@ -90,11 +90,11 @@ class Layout extends AbstractThemeMod
         }
 
         if ($this->isPagelike()) {
-            if ($mod = \get_post_meta($this->moreSpecific, $this->id, true)) {
-                return $this->validate($mod);
-            }
-
-            return $this->default;
+            return $this->validate(\get_post_meta(
+                $this->moreSpecific,
+                $this->id,
+                true
+            ));
         }
 
         return $this->validate(parent::get());
@@ -121,6 +121,6 @@ class Layout extends AbstractThemeMod
             return \sanitize_title($mod);
         }
 
-        return '';
+        return $this->default;
     }
 }

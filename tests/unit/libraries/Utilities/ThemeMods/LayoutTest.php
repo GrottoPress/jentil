@@ -289,7 +289,13 @@ class LayoutTest extends AbstractTestCase
             'context not singular' => ['home', 'post', 2, false, 'myMod'],
             'is pagelike' => ['singular', 'page', 3, true, 'myMeta'],
             'is not pagelike' => ['singular', 'post', 4, false, 'myMod'],
-            'layout mod invalid' => ['singular', 'tutorial', 5, false, ''],
+            'layout mod invalid' => [
+                'singular',
+                'tutorial',
+                5,
+                false,
+                'content'
+            ],
         ];
     }
 
