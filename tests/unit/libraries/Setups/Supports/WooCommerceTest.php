@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups\Support;
+namespace GrottoPress\Jentil\Setups\Supports;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\AbstractTestCase;
