@@ -2,7 +2,7 @@
 
 Jentil is a modern framework for rapid WordPress theme development. It is packed with predefined, pluggable features, including powerful content options which allows to configure how posts display on archives right from the customizer.
 
-Jentil may be installed either as a parent theme, or as a package (eg: via composer) in another theme.
+Jentil may be installed either as a parent theme, or as a package in another theme.
 
 Jentil features six layout options, configured via the customizer and post meta boxes. It can be used to build blogs, magazines, e-commerce, corporate websites and more.
 
@@ -34,7 +34,6 @@ Jentil comes with page builder [post type templates](https://make.wordpress.org/
 ### For the Developer:
 
 - Robust [architecture](https://github.com/grottopress/wordpress-suv/), with a more organised directory structure. Templates are loaded **only** from the `app/templates` directory, and partials from the `app/partials` directory. The days of dumping files in your theme's root are over!
-- Use as package in another theme, or as parent theme for a child theme.
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Clean, object-oriented codebase.
 - Modern web development tools.
@@ -82,29 +81,6 @@ If, for any reason, you would like to install Jentil as parent theme for your th
 1. Switch to your own theme's directory: `cd your-theme-slug-here`
 1. Replace relevant calls to `get_template_directory()` and `get_template_directory_uri()` with their equivalent `get_stylesheet_directory()` and `get_stylesheet_directory_uri()`, respectively.
 1. Activate your own theme (not Jentil), if not already active.
-
-### Install Jentil without using the `jentil-theme` starter
-
-It is highly recommended to use `jentil-theme` starter, and follow Jentil's architecture in your own theme. This, however, is not a requirement.
-
-Jentil can be used, either as package or parent theme, for any WordPress theme at all, as long as the theme has met all [requirements](#requirements) listed above.
-
-If using as package in another theme, be sure to call `\Jentil()->run()` in the theme's `functions.php` file, to load Jentil. You do not need to do this if using as parent theme, as WordPress takes care of loading Jentil for you.
-
-The entire Jentil instance is available to your theme via a call to `\Jentil()`. Removing a feature is as simple as:
-
-```php
-\add_action('init', function () {
-    \remove_action(
-        'action_hook_name_here',
-        [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']
-    );
-    // /* OR */ \remove_filter(
-    //    'filter_hook_name_here',
-    //    [\Jentil()->setups['Check\Jentil\For\Key\To\Use'], 'methodCalled']
-    //);'
-});
-```
 
 ## Developing your theme
 

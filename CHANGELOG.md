@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 - Redundant doc blocks, comments.
+- README section: "Install Jentil without using the `jentil-theme` starter"
 
 ### Fixed
 - 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key
