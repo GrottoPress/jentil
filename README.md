@@ -37,7 +37,7 @@ Jentil comes with page builder [post type templates](https://make.wordpress.org/
 - Numerous action and filter hooks to allow easy extension via child themes and plugins.
 - Clean, object-oriented codebase.
 - Modern web development tools.
-- Compliant (mostly) with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
+- Compliant with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ### Supported
 
