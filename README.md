@@ -70,16 +70,17 @@ Install *jentil-theme*, which is a starter for building your own theme with Jent
 
 ### Install Jentil as parent theme
 
-By default, your new theme is installed with Jentil as package (in the `vendor` directory). This is recommended. However, Jentil is a full-fledged WordPress theme by itself, and can, therefore, be installed as such.
+By default, your new theme is installed with Jentil as package (in the `vendor` directory). This is recommended.
 
-If, for any reason, you would like to install Jentil as parent theme for your theme, follow the steps below:
+However, Jentil is a full-fledged WordPress theme by itself, and can, therefore, be installed as such.
+
+If, for any reason, you would like to use Jentil as parent theme instead, follow the steps below:
 
 1. Add `Template: jentil` to your theme's `style.css` headers.
 1. Run `composer remove grottopress/jentil` to remove Jentil from your theme's dependencies.
 1. Swicth to `wp-content/themes` directory: `cd ../`
 1. Install Jentil as (parent) theme: `composer create-project grottopress/jentil jentil dev-dev`
 1. Switch to your own theme's directory: `cd your-theme-slug-here`
-1. Replace relevant calls to `get_template_directory()` and `get_template_directory_uri()` with their equivalent `get_stylesheet_directory()` and `get_stylesheet_directory_uri()`, respectively.
 1. Activate your own theme (not Jentil), if not already active.
 
 ## Developing your theme
