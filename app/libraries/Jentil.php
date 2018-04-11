@@ -107,7 +107,7 @@ final class Jentil extends AbstractTheme
         $this->setups['Scripts\CommentReply'] =
             new Setups\Scripts\CommentReply($this);
         $this->setups['Scripts\CustomizePreview'] =
-                new Setups\Scripts\CustomizePreview($this);
+            new Setups\Scripts\CustomizePreview($this);
         $this->setups['Scripts\FontAwesome'] =
             new Setups\Scripts\FontAwesome($this);
         $this->setups['Scripts\FontAwesomeShim'] =
