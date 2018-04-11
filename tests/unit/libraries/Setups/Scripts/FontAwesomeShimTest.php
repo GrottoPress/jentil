@@ -55,7 +55,7 @@ class FontAwesomeShimTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $script->id,
-            'https://use.fontawesome.com/releases/v5.0.8/js/v4-shims.js',
+            'https://use.fontawesome.com/releases/v5.0.10/js/v4-shims.js',
             ['fa'],
             '',
             true
