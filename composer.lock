@@ -669,16 +669,16 @@
         },
         {
             "name": "grottopress/wordpress-suv",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
-                "reference": "9458b6f6ace8fcf61ea5d04fb4065df37f6fc182"
+                "reference": "4c87bf98af2e0a0a20456ef75d867c4e74816166"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/9458b6f6ace8fcf61ea5d04fb4065df37f6fc182",
-                "reference": "9458b6f6ace8fcf61ea5d04fb4065df37f6fc182",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/4c87bf98af2e0a0a20456ef75d867c4e74816166",
+                "reference": "4c87bf98af2e0a0a20456ef75d867c4e74816166",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 "suv",
                 "wordpress"
             ],
-            "time": "2018-03-13T23:19:21+00:00"
+            "time": "2018-04-13T13:53:29+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -1254,16 +1254,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "88a69fda0f2187ad8714cedffd7a8872dceaa4c2"
+                "reference": "86ad51e8a3c64c9782446aae740a61fc6faa2522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/88a69fda0f2187ad8714cedffd7a8872dceaa4c2",
-                "reference": "88a69fda0f2187ad8714cedffd7a8872dceaa4c2",
+                "url": "https://api.github.com/repos/composer/composer/zipball/86ad51e8a3c64c9782446aae740a61fc6faa2522",
+                "reference": "86ad51e8a3c64c9782446aae740a61fc6faa2522",
                 "shasum": ""
             },
             "require": {
@@ -1327,7 +1327,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2018-01-31T15:28:18+00:00"
+            "time": "2018-04-13T10:04:24+00:00"
         },
         {
             "name": "composer/semver",
