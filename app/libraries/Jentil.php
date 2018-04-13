@@ -1,102 +1,46 @@
 <?php
-
-/**
- * Jentil
- *
- * @package GrottoPress\Jentil
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil;
 
-use GrottoPress\Jentil\Setup;
 use GrottoPress\Jentil\Utilities\Utilities;
 
-/**
- * Jentil
- *
- * @since 0.1.0
- */
 final class Jentil extends AbstractTheme
 {
     /**
-     * Theme utilities
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Utilities $utilities Utilities.
+     * @var Utilities
      */
     private $utilities = null;
 
     /**
      * Theme Name
-     *
-     * @since 0.1.0
      */
     const NAME = 'Jentil';
 
     /**
      * Theme website URL
-     *
-     * @since 0.1.0
      */
-    const WEBSITE = 'https://jentil.grottopress.com';
+    const WEBSITE = 'https://www.grottopress.com/jentil/';
 
     /**
      * Theme documentation URL
-     *
-     * @since 0.1.0
      */
-    const DOCUMENTATION = 'https://www.grottopress.com/docs/themes/jentil/';
+    const DOCUMENTATION = 'https://www.grottopress.com/jentil/';
 
-    /**
-     * Constructor
-     *
-     * @since 0.1.0
-     * @access protected
-     */
     protected function __construct()
     {
-        $this->setup['loader'] = new Setup\Loader($this);
-        // $this->setup['updater'] = new Setup\Updater($this);
-        $this->setup['language'] = new Setup\Language($this);
-        $this->setup['styles'] = new Setup\Styles($this);
-        $this->setup['scripts'] = new Setup\Scripts($this);
-        $this->setup['thumbnails'] = new Setup\Thumbnails($this);
-        $this->setup['feeds'] = new Setup\Feeds($this);
-        $this->setup['html5'] = new Setup\HTML5($this);
-        $this->setup['title'] = new Setup\Title($this);
-        $this->setup['layout'] = new Setup\Layout($this);
-        $this->setup['archives'] = new Setup\Archives($this);
-        $this->setup['search'] = new Setup\Search($this);
-        $this->setup['menu'] = new Setup\Menu($this);
-        $this->setup['breadcrumbs'] = new Setup\Breadcrumbs($this);
-        $this->setup['singular'] = new Setup\Singular($this);
-        $this->setup['comments'] = new Setup\Comments($this);
-        $this->setup['widgets'] = new Setup\Widgets($this);
-        $this->setup['colophon'] = new Setup\Colophon($this);
-        $this->setup['customizer'] = new Setup\Customizer\Customizer($this);
-        $this->setup['metaboxes'] = new Setup\Metaboxes($this);
-        $this->setup['mobile'] = new Setup\Mobile($this);
-        $this->setup['page_builder_templates'] = new Setup\PageBuilderTemplates(
-            $this
-        );
+        $this->setUpMisc();
+        $this->setUpMetaBoxes();
+        $this->setUpStyles();
+        $this->setUpScripts();
+        $this->setUpMenus();
+        $this->setUpCustomizer();
+        $this->setUpPostTypeTemplates();
+        $this->setUpSidebars();
+        $this->setUpViews();
+        $this->setUpSupports();
     }
 
-    /**
-     * Utilities
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return Utilities Utilities.
-     */
     protected function getUtilities(): Utilities
     {
         if (null === $this->utilities) {
@@ -107,22 +51,115 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * Setup
-     *
-     * @param string $setup Setup type
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return Setup\AbstractSetup[]
+     * @return Setups\AbstractSetup[]
      */
-    protected function getSetup(): array
+    protected function getSetups(): array
     {
-        $setups = $this->setup;
+        $setups = $this->setups;
 
-        unset($setups['loader']);
-        unset($setups['updater']);
+        unset($setups['Loader']);
 
         return $setups;
+    }
+
+    /**
+     * Checks if installed as 'theme' or as 'package'
+     */
+    public function is(string $mode): bool
+    {
+        $rel_dir = $this->getUtilities()->fileSystem->relativeDir();
+
+        return (
+            ('package' === $mode && $rel_dir) ||
+                ('theme' === $mode && !$rel_dir)
+        );
+    }
+
+    private function setUpMisc()
+    {
+        $this->setups['Loader'] = new Setups\Loader($this);
+        // $this->setups['Updater'] = new Setups\Updater($this);
+        $this->setups['Language'] = new Setups\Language($this);
+        $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
+        $this->setups['Feed'] = new Setups\Feed($this);
+        $this->setups['HTML5'] = new Setups\HTML5($this);
+        $this->setups['TitleTag'] = new Setups\TitleTag($this);
+        $this->setups['Layout'] = new Setups\Layout($this);
+        $this->setups['Mobile'] = new Setups\Mobile($this);
+    }
+
+    private function setUpMetaBoxes()
+    {
+        $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
+    }
+
+    private function setUpStyles()
+    {
+        $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
+        $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
+        $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
+    }
+
+    private function setUpScripts()
+    {
+        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
+        $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
+        $this->setups['Scripts\CommentReply'] =
+            new Setups\Scripts\CommentReply($this);
+        $this->setups['Scripts\CustomizePreview'] =
+            new Setups\Scripts\CustomizePreview($this);
+        $this->setups['Scripts\FontAwesome'] =
+            new Setups\Scripts\FontAwesome($this);
+        $this->setups['Scripts\FontAwesomeShim'] =
+            new Setups\Scripts\FontAwesomeShim($this);
+    }
+
+    private function setUpMenus()
+    {
+        $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
+    }
+
+    private function setUpCustomizer()
+    {
+        $this->setups['Customizer\Customizer'] =
+            new Setups\Customizer\Customizer($this);
+    }
+
+    private function setUpPostTypeTemplates()
+    {
+        $this->setups['PostTypeTemplates\PageBuilder'] =
+            new Setups\PostTypeTemplates\PageBuilder($this);
+        $this->setups['PostTypeTemplates\PageBuilderBlank'] =
+            new Setups\PostTypeTemplates\PageBuilderBlank($this);
+    }
+
+    private function setUpSidebars()
+    {
+        $this->setups['Sidebars\Primary'] =
+            new Setups\Sidebars\Primary($this);
+        $this->setups['Sidebars\Secondary'] =
+            new Setups\Sidebars\Secondary($this);
+        $this->setups['Sidebars\Footer'] = new Setups\Sidebars\Footer($this);
+    }
+
+    private function setUpViews()
+    {
+        $this->setups['Views\SearchForm'] = new Setups\Views\SearchForm($this);
+        $this->setups['Views\Author'] = new Setups\Views\Author($this);
+        $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
+        $this->setups['Views\Search'] = new Setups\Views\Search($this);
+        $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
+        $this->setups['Views\Post'] = new Setups\Views\Post($this);
+        $this->setups['Views\Attachment'] = new Setups\Views\Attachment($this);
+        $this->setups['Views\Header'] = new Setups\Views\Header($this);
+        $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
+        $this->setups['Views\Breadcrumbs'] =
+            new Setups\Views\Breadcrumbs($this);
+    }
+
+    private function setUpSupports()
+    {
+        $this->setups['Supports\WooCommerce'] =
+            new Setups\Supports\WooCommerce($this);
     }
 }

@@ -1,169 +1,108 @@
 <?php
-
-/**
- * Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 use GrottoPress\Jentil\Utilities\Page\Page;
-use GrottoPress\Jentil\Utilities\Mods\Posts as PostsMod;
-use GrottoPress\Getter\Getter;
+use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
+use GrottoPress\Getter\GetterTrait;
 
-/**
- * Posts
- *
- * @since 0.1.0
- */
-final class Posts
+class Posts
 {
-    use Getter;
-    
+    use GetterTrait;
+
     /**
-     * Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Page $page Page.
+     * @var Page
      */
     private $page;
 
     /**
-     * Sticky Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Sticky $sticky Sticky posts.
+     * @var Sticky
      */
     private $sticky;
 
     /**
-     * Singular Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Singular $singular Singular posts.
+     * @var Related
+     */
+    private $related;
+
+    /**
+     * @var Singular
      */
     private $singular;
 
     /**
-     * Archive Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Archive $archive Archive posts.
+     * @var Archive
      */
     private $archive;
-    
-    /**
-     * Constructor
-     *
-     * @param Page $page Page.
-     *
-     * @since 0.1.0
-     * @access public
-     */
+
     public function __construct(Page $page)
     {
         $this->page = $page;
-
-        $this->sticky = new Sticky($this);
-        $this->singular = new Singular($this);
-        $this->archive =  new Archive($this);
     }
 
-    /**
-     * Get Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Page
-     */
-    private function getPage()
+    private function getPage(): Page
     {
         return $this->page;
     }
 
-    /**
-     * Get Sticky Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Sticky
-     */
-    private function getSticky()
+    private function getSingular(): Singular
     {
+        if (null === $this->singular) {
+            return new Singular($this);
+        }
+
+        return $this->singular;
+    }
+
+    private function getSticky(): Sticky
+    {
+        if (null === $this->sticky) {
+            return new Sticky($this);
+        }
+
         return $this->sticky;
     }
 
-    /**
-     * Get Archive Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Sticky
-     */
-    private function getArchive()
+    private function getRelated(): Related
     {
+        if (null === $this->related) {
+            return new Related($this);
+        }
+
+        return $this->related;
+    }
+
+    private function getArchive(): Archive
+    {
+        if (null === $this->archive) {
+            return new Archive($this);
+        }
+
         return $this->archive;
     }
 
-    /**
-     * Get Posts
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Posts.
-     */
     public function render(): string
     {
+        if ($this->page->is('singular')) {
+            return $this->getSingular()->posts()->render();
+        }
+
         $out = '';
 
-        if (!$this->page->is('singular')
-            && !$this->page->is('paged')
-            && $this->sticky->isSet()
-            && $this->sticky->get()
+        if (!$this->getArchive()->isPaged() &&
+            $this->getSticky()->isSet() &&
+            $this->getSticky()->get($this->getArchive()->postType())
         ) {
-            $out .= $this->page->utilities->posts(
-                $this->sticky->args()
-            )->render();
+            $out .= $this->getSticky()->posts()->render();
         }
 
-        if ($this->page->is('singular')) {
-            $out .= $this->page->utilities->posts(
-                $this->singular->args()
-            )->render();
-        } else {
-            $out .= $this->page->utilities->posts(
-                $this->archive->args()
-            )->render();
-        }
+        $out .= $this->getArchive()->posts()->render();
 
         return $out;
     }
 
     /**
-     * Post types
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @return \WP_Post_Type[] Public post types.
      */
     public function postTypes(): array
@@ -172,11 +111,6 @@ final class Posts
     }
 
     /**
-     * Taxonomies
-     *
-     * @since 0.1.0
-     * @access public
-     *
      * @return \WP_Taxonomy[] Public taxonomies.
      */
     public function taxonomies(): array
@@ -184,21 +118,10 @@ final class Posts
         return \get_taxonomies(['public' => true], 'objects');
     }
 
-    /**
-     * Posts mods
-     *
-     * @param string $setting
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return mixed Posts mod.
-     */
-    public function mod(string $setting, array $args = []): PostsMod
+    public function themeMod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {
-            return $this->page->utilities->mods->posts(
+            return $this->page->utilities->themeMods->posts(
                 $setting,
                 $args
             );
@@ -207,7 +130,7 @@ final class Posts
         $page = $this->page->type;
 
         $specific = '';
-        $more_specific = '';
+        $more_specific = 0;
 
         foreach ($page as $type) {
             if ('post_type_archive' === $type) {
@@ -228,17 +151,31 @@ final class Posts
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities->mods->posts($setting, [
+            $mod = $this->page->utilities->themeMods->posts($setting, [
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific,
             ]);
 
-            if ($mod->name) {
+            if ($mod->id) {
                 return $mod;
             }
         }
 
         return $mod;
+    }
+
+    public function isPagelike(string $post_type = '', int $post_id = 0): bool
+    {
+        $check = (
+            \is_post_type_hierarchical($post_type) &&
+            !\get_post_type_archive_link($post_type)
+        );
+
+        if ($check && $post_id) {
+            return ($post_id !== (int)\get_option('page_for_posts'));
+        }
+
+        return $check;
     }
 }

@@ -1,28 +1,19 @@
-////
-/// WordPress styles
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
-////
-
 /**
- * WordPress
+ * WordPress (core)
  */
 
 /** Alignment */
 
 .alignleft {
     @include float(left);
-    
+
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
 .alignright {
     @include float(right);
-    
+
     margin-bottom: 20px;
     margin-left: 20px;
 }
@@ -35,14 +26,14 @@
 /** Caption */
 
 .wp-caption {
-    line-height: $line-height-normal;
     max-width: 100%;
 }
 
 .wp-caption-text {
     padding: 0 5px;
-    font-size: $font-size-small;
-    color: $font-color-lighter;
+    font-size: map-get($jentil-font-size, small);
+    color: $jentil-font-lighter;
+    line-height: map-get($jentil-line-height, small);
 }
 
 .wp-smiley {
@@ -56,43 +47,78 @@
     @include border-radius(3px);
     @include grid((
         gutter: 10px,
-        width: auto,
+        columns: '.gallery-item',
     ));
 
-    background-color: $text-background;
-    padding: 0 5px 10px;
-    margin-left: 0;
-    margin-right: 0;
+    background-color: $jentil-text-background;
+    padding: 5px;
+    margin: 0;
+
+    @include paragraph;
 
     img {
-        @include border-radius(3px);
-
-        border: $separator;
-
         &:hover {
-            border-color: #ccc;
+            @include opacity(0.7);
         }
     }
 }
 
-.gallery { // Override previous
-    @include paragraph;
-}
-
 .gallery-item {
-    line-height: $line-height-normal;
+    line-height: map-get($jentil-line-height, normal);
+
+    .gallery-columns-2 & {
+        width: 50%;
+    }
+
+    .gallery-columns-3 & {
+        width: 33.33%;
+    }
+
+    .gallery-columns-4 &,
+    .gallery-columns-5 &,
+    .gallery-columns-6 &,
+    .gallery-columns-7 &,
+    .gallery-columns-8 &,
+    .gallery-columns-9 & {
+        width: 25%;
+    }
 }
 
 .gallery-caption {
     @include screen-reader;
-    
-    color: $font-color-light;
-    font-size: $font-size-tiny;
+
+    color: $jentil-font-light;
+    font-size: map-get($jentil-font-size, tiny);
+    margin-top: 5px;
 }
 
 .gallery-icon {
     a {
         display: block;
         line-height: 1px;
+    }
+}
+
+@media (min-width: map-get($jentil-breakpoint , medium)) {
+    .gallery-item {
+        .gallery-columns-5 & {
+            width: 20%;
+        }
+
+        .gallery-columns-6 & {
+            width: 16.66%;
+        }
+
+        .gallery-columns-7 & {
+            width: 14.28%;
+        }
+
+        .gallery-columns-8 & {
+            width: 12.5%;
+        }
+
+        .gallery-columns-9 & {
+            width: 11.11%;
+        }
     }
 }

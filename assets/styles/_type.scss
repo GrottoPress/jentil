@@ -1,12 +1,3 @@
-////
-/// Typography
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
-////
-
 /**
  * Typography
  */
@@ -31,7 +22,7 @@ var {
 }
 
 q {
-    font-size: $font-size-magnified;
+    font-size: map-get($jentil-font-size, magnified);
 }
 
 del {
@@ -44,17 +35,17 @@ tt {
     font-family: $monaco;
     font-size: 0.90em;
     padding: 2px 4px;
-    background-color: $text-background;
+    background-color: $jentil-text-background;
 }
 
 pre {
     @include paragraph;
     @include border-radius(3px);
-    
+
     padding: 10px;
-    border: $separator;
+    border: $jentil-separator;
     overflow: auto;
-    line-height: $line-height-normal;
+    line-height: map-get($jentil-line-height, normal);
 }
 
 abbr,
@@ -70,7 +61,7 @@ ins {
 sup,
 sub {
     @include position(relative);
-    
+
     height: 0;
     line-height: 1px;
     vertical-align: baseline;
@@ -86,16 +77,16 @@ sub {
 
 hr {
     @include paragraph;
-    
+
     border: 0;
-    border-top: $separator;
+    border-top: $jentil-separator;
 }
 
 blockquote {
     @include paragraph;
-    
-    font-size: $font-size-magnified;
-    color: $font-color-lighter;
+
+    font-size: map-get($jentil-font-size, magnified);
+    color: $jentil-font-lighter;
     font-style: italic;
     margin-right: 0;
     margin-left: 10px;
@@ -116,9 +107,9 @@ h4,
 h5,
 h6 {
     @include paragraph;
-    
+
     font-weight: bold;
-    line-height: $line-height-small;
+    line-height: map-get($jentil-line-height, small);
 }
 
 h1 {
@@ -145,11 +136,11 @@ h6 {
     font-size: 14px;
 }
 
-@media (min-width: map-get($breakpoints, medium)) {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
     h1 {
         font-size: 34px;
     }
-    
+
     h2 {
         font-size: 30px;
     }

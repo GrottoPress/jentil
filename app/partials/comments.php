@@ -1,18 +1,4 @@
 <?php
-
-/**
- * Comments Template
- *
- * The template for displaying comments; the area of the page
- * that contains both current comments and the comment form.
- *
- * @package GrottoPress\Jentil
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 declare (strict_types = 1);
 
 if (\post_password_required()) {
@@ -28,42 +14,35 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
 } ?>
 
 <div id="comments" class="site-comments">
-    <?php
-    /**
-     * @action jentil_before_comments
-     *
-     * @since 0.1.0
-     */
-    \do_action('jentil_before_comments');
+    <?php \do_action('jentil_before_comments');
 
     if (\have_comments()) {
         $total_pages = \absint(\get_comment_pages_count());
-        $comment_count = \absint(\get_comments_number()); ?>
-
-        <section id="comments-list">
-            <h3 class="comments-title"><?php \printf(\_n(
-                '1 Comment',
-                '%1$s Comments',
+        $comment_count = \absint(\get_comments_number());
+        $title = \sprintf(
+            \_n(
+                '1 comment on %2$s',
+                '%1$s comments on %2$s',
                 $comment_count,
                 'jentil'
-            ), \number_format_i18n($comment_count)); ?></h3>
+            ),
+            \number_format_i18n($comment_count),
+            '&ldquo;'.\get_the_title().'&rdquo;'
+        ); ?>
+
+        <section id="comments-list">
+            <h3 class="comments-title entry-title"><?php echo \apply_filters(
+                'jentil_comments_title',
+                $title
+            ); ?></h3>
 
             <?php
             /**
              * Top navigation
-             *
-             * @since 0.1.0
              */
-            if ($total_pages > 1
-                && ($is_paged = \get_option('page_comments'))
+            if ($total_pages > 1 &&
+                ($is_paged = \get_option('page_comments'))
             ) {
-                /**
-                 * @filter jentil_pagination_prev_label
-                 *
-                 * @var string $prev_label Previous label.
-                 *
-                 * @since 0.1.0
-                 */
                 $prev_label = \sanitize_text_field(
                     \apply_filters(
                         'jentil_pagination_prev_label',
@@ -72,13 +51,6 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
                     )
                 );
 
-                /**
-                 * @filter jentil_pagination_next_label
-                 *
-                 * @var string $next_label Next label.
-                 *
-                 * @since 0.1.0
-                 */
                 $next_label = \sanitize_text_field(
                     \apply_filters(
                         'jentil_pagination_next_label',
@@ -95,13 +67,6 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
                 </nav>
             <?php }
 
-            /**
-             * @filter jentil_comments_avatar_size
-             *
-             * @var integer $comment_avatar_size Comments avatar size.
-             *
-             * @since 0.1.0
-             */
             $comment_avatar_size = \absint(
                 \apply_filters('jentil_comments_avatar_size', 40)
             );
@@ -117,12 +82,10 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
             <ol class="commentlist">
                 <?php \wp_list_comments($comment_list_args); ?>
             </ol>
-    
+
             <?php
             /**
              * Bottom navigation
-             *
-             * @since 0.1.0
              */
             if ($total_pages > 1 && $is_paged) { ?>
                 <nav class="pagination bottom comments-pagination">
@@ -133,7 +96,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
                 </nav>
             <?php } ?>
         </section><!-- #comments-list -->
-        
+
         <?php
         /**
          *If comments are closed and there are comments,
@@ -144,7 +107,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
                 <?php echo \sanitize_text_field(
                     \apply_filters(
                         'jentil_comments_closed_text',
-                        \esc_html__('Comments closed', 'jentil'),
+                        \esc_html__('Comments are closed.', 'jentil'),
                         \get_comments_number()
                     )
                 ); ?>
@@ -152,5 +115,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
         <?php }
     }
 
-    \comment_form(); ?>
+    \comment_form([
+        'title_reply' => \esc_html__('Leave a comment', 'jentil')
+    ]); ?>
 </div><!-- #comments -->

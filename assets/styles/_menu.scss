@@ -1,12 +1,3 @@
-////
-/// Menus
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
-////
-
 /**
  * Menus
  */
@@ -18,8 +9,9 @@
 }
 
 .menu {
+    @include inline-block-whitespace-fix;
+
     margin-left: 0;
-    font-size: 0;
 
     ul {
         margin-left: 15px;
@@ -31,23 +23,20 @@
 
     li {
         @include position(relative);
-        
-        font-size: $font-size-small;
     }
 }
 
 .sub-menu {
     li {
-        font-size: $font-size-tiny;
+        font-size: map-get($jentil-font-size, tiny);
     }
 }
 
 #header {
     .menu-toggle {
         @include paragraph;
-        
+
         text-align: center;
-        margin-top: 0;
 
         a {
             display: block;
@@ -62,7 +51,7 @@
         &.show {
             display: block;
         }
-        
+
         .search-wrap {
             @include paragraph;
 
@@ -73,7 +62,7 @@
 
 .sub-menu-toggle {
     @include position(absolute, 0 0 null null);
-    
+
     background-color: transparent;
     font-size: inherit;
     width: auto;
@@ -84,7 +73,7 @@
 
 /** Header Menu */
 
-@media (min-width: map-get($breakpoints, wide)) {
+@media (min-width: map-get($jentil-breakpoint, wide)) {
     #header {
         .site-navigation {
             margin-bottom: 0;
@@ -97,14 +86,14 @@
 
         .menu {
             // text-align: center;
-            
+
             li {
                 margin: 0;
             }
 
             > li {
                 @include inline-block;
-                
+
                 margin-left: 2%;
 
                 &:first-child {
@@ -131,7 +120,7 @@
 
             ul {
                 @include position(absolute, 22 null null 0);
-                
+
                 width: 200px;
                 margin: 0;
                 padding: 0;

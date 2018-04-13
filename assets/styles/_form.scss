@@ -1,24 +1,10 @@
-////
-/// Forms
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
-////
-
 /**
  * Forms
  */
 
 form {
     @include paragraph;
-    
-    font-size: 0;
-
-    > * {
-        font-size: $font-size-small;
-    }
+    @include inline-block-whitespace-fix;
 }
 
 *:disabled {
@@ -40,8 +26,8 @@ textarea,
 select,
 button {
     @include border-radius(3px);
-    
-    border: $separator;
+
+    border: $jentil-separator;
     padding: 5px 7px;
     margin-bottom: 4px;
     width: 100%;
@@ -81,7 +67,7 @@ button {
     border: 0;
     padding: 7px 10px 8px;
     font-weight: bold;
-    font-size: $font-size-tiny;
+    font-size: map-get($jentil-font-size, tiny);
     line-height: 100%;
     text-align: center;
     background-color: #ddd;
@@ -104,11 +90,11 @@ button {
 
 label {
     cursor: pointer;
-    font-size: $font-size-tiny;
+    font-size: map-get($jentil-font-size, tiny);
     width: 100%;
 
     > * {
-       font-size: $font-size-small;
+       font-size: map-get($jentil-font-size, small);
     }
 }
 
@@ -117,10 +103,10 @@ label {
 .form.search {
     @include position(relative);
     @include border-radius(3px);
-    
+
     margin: 0;
     padding: 1px;
-    border: $separator;
+    border: $jentil-separator;
     background-color: #fff;
 
     &:focus {

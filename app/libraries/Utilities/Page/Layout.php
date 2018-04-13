@@ -1,65 +1,28 @@
 <?php
-
-/**
- * Layout
- *
- * @package GrottoPress\Jentil\Utilities\Page
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page;
 
-use GrottoPress\Jentil\Utilities\Mods\Layout as LayoutMod;
+use GrottoPress\Jentil\Utilities\ThemeMods\Layout as LayoutMod;
 
-/**
- * Layout
- *
- * @since 1.0.0
- */
-final class Layout
+class Layout
 {
     /**
-     * Page
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Page $page Page.
+     * @var Page
      */
     private $page;
-    
-    /**
-     * Constructor
-     *
-     * @param Page $page Page.
-     *
-     * @since 0.1.0
-     * @access public
-     */
+
     public function __construct(Page $page)
     {
         $this->page = $page;
     }
 
-    /**
-     * Get mod
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Layout mod.
-     */
-    public function mod(): LayoutMod
+    public function themeMod(): LayoutMod
     {
         $page = $this->page->type;
 
         $specific = '';
-        $more_specific = '';
+        $more_specific = 0;
 
         foreach ($page as $type) {
             if ('post_type_archive' === $type) {
@@ -71,11 +34,12 @@ final class Layout
             } elseif ('tag' === $type) {
                 $specific = 'post_tag';
             } elseif ('singular' === $type) {
-                global $post;
+                $specific = ($post = \get_post())->post_type;
 
-                $specific = $post->post_type;
-
-                if (\is_post_type_hierarchical($post->post_type)) {
+                if ($this->page->posts->isPagelike(
+                    $post->post_type,
+                    $post->ID
+                )) {
                     $more_specific = $post->ID;
                 }
             }
@@ -88,38 +52,30 @@ final class Layout
                 $more_specific = $more_specific[0];
             }
 
-            $mod = $this->page->utilities->mods->layout([
+            $mod = $this->page->utilities->themeMods->layout([
                 'context' => $type,
                 'specific' => $specific,
                 'more_specific' => $more_specific
             ]);
 
-            if ($mod->name) {
+            if ($mod->id) {
                 return $mod;
             }
         }
 
         return $mod;
     }
-    
-    /**
-     * Get current layout's column
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Layout column name.
-     */
+
     public function column(): string
     {
         foreach ($this->page->layouts->get() as $column_slug => $layouts) {
             foreach ($layouts as $layout_id => $layout_name) {
-                if ($this->mod()->get() === $layout_id) {
+                if ($this->themeMod()->get() === $layout_id) {
                     return \sanitize_title($column_slug);
                 }
             }
         }
-    
+
         return '';
     }
 }

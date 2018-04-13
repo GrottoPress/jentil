@@ -4,11 +4,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased - 0.5.0
+## 0.6.0 - 2018-04-13
 
 ### Added
-- Added development binaries in a new `bin` directory
-- Added page builder page templates
+- Unit tests
+- Related posts
+- Set up [travis-ci](https://travis-ci.org)
+- `.security.txt`
+- `jentil_before_sidebar` and `jentil_after_sidebar` template hooks
+- Author avatar on author archive
+- WooCommerce support
+
+### Changed
+- Undo require search input filled on search submit
+- Replaced zero font size inline-block whitespace fix with letter spacing fix
+- Redirect `/?s={query}` search URLs to `/search/{query}` if using permalinks
+- Use WordPress SUV package for this theme.
+- Reorganise directory structure of setup classes into groups.
+- Add ability to remove customizer components.
+- Ensure layout customizer settings do not show for page builder pages.
+- Ensure layout metabox do not show on pages using page builder template
+- Replace GrottoPress logo with Jentil's as theme screenshot
+- Rename page layout custom field key to '_jentil-layout'
+- Prefix asset ids with 'jentil' to avoid potential name collision
+- Upgrade font awesome to v5
+
+### Removed
+- Redundant doc blocks, comments.
+- README section: "Install Jentil without using the `jentil-theme` starter"
+
+### Fixed
+- 404 errors on pagination when using `$wp_rewrite->pagination_base` as pagination key
+
+## 0.5.0 - 2017-12-16
+
+### Added
+- Development binaries in a new `bin` directory
+- Page builder page templates
 
 ### Changed
 - Overhauled theme to make it seamless with child themes that use Object Oriented design.

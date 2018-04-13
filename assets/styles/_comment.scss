@@ -1,30 +1,21 @@
-////
-/// Comments
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
-////
-
 /**
  * Comments
  */
 
 .commentlist {
     @include hobbit;
-    
+
     margin: auto auto 10px 0;
     padding: 10px auto;
-    // border-top: $separator;
-    // border-bottom: $separator;
+    // border-top: $jentil-separator;
+    // border-bottom: $jentil-separator;
 
     > li,
     .children > li {
         @include paragraph(10px);
 
         padding-bottom: 10px;
-        border-bottom: $separator;
+        border-bottom: $jentil-separator;
 
         &:first-child {
             margin-top: 10px;
@@ -37,9 +28,9 @@
     }
 
     .children {
-        margin-top: map-get($gutter, small);
-        padding-top: map-get($gutter, small);
-        border-top: $separator;
+        margin-top: map-get($jentil-gutter, small);
+        padding-top: map-get($jentil-gutter, small);
+        border-top: $jentil-separator;
 
         &:first-child {
             margin-top: 0;
@@ -55,9 +46,9 @@
     }
 
     .reply {
-        color: $font-color-lighter;
-        font-size: $font-size-tiny;
-        line-height: $line-height-normal;
+        color: $jentil-font-lighter;
+        font-size: map-get($jentil-font-size, tiny);
+        line-height: map-get($jentil-line-height, normal);
         text-align: right;
     }
 }
@@ -69,24 +60,24 @@
 
 #comments {
     @include clearfix;
-    
-    margin-top: map-get($gutter, normal);
+
+    margin-top: map-get($jentil-gutter, normal);
 }
 
 #comments-list {
-    margin-bottom: map-get($gutter, normal);
+    margin-bottom: map-get($jentil-gutter, normal);
 }
 
 .comment-meta,
 #cancel-comment-reply-link {
-    line-height: $line-height-normal;
-    font-size: $font-size-tiny;
+    line-height: map-get($jentil-line-height, normal);
+    font-size: map-get($jentil-font-size, tiny);
 }
 
 .comment-meta {
     @include clearfix;
-    
-    color: $font-color-lighter;
+
+    color: $jentil-font-lighter;
 
     .edit-link::before {
         content: "| ";
@@ -102,14 +93,6 @@
     margin-left: 20px;
 }
 
-.comment-author {
-    .avatar {
-        @include float(left);
-        
-        margin-right: 10px;
-    }
-}
-
 .comment-form {
     .form-submit {
         margin-bottom: 0;
@@ -118,8 +101,8 @@
 
 .comment-notes,
 .logged-in-as {
-    color: $font-color-lighter;
-    font-size: $font-size-tiny;
+    color: $jentil-font-lighter;
+    font-size: map-get($jentil-font-size, tiny);
 }
 
 .required {
@@ -132,4 +115,6 @@
 
 .comments-closed-text {
     @include paragraph;
+
+    color: $jentil-font-lighter;
 }

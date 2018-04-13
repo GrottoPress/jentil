@@ -1,19 +1,10 @@
-////
-/// Breadcrumbs
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
-////
-
 /**
  * Breadcrumbs
  */
 
 .breadcrumbs {
     @include paragraph;
-    
-    color: $font-color-lighter;
-    font-size: $font-size-tiny;
+
+    color: $jentil-font-lighter;
+    font-size: map-get($jentil-font-size, tiny);
 }

@@ -1,19 +1,14 @@
 ////
 /// Mixins
-///
-/// @since 0.1.0
-///
-/// @author [GrottoPress](https://www.grottopress.com)
-/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
 ////
 
-@import '../../dist/vendor/@grottopress/scss/src/mixins';
+@import '../vendor/@grottopress/scss/src/mixins';
 
 /// Hobbit
 ///
 /// For areas that require smaller sizes of everything
 @mixin hobbit {
-    font-size: $font-size-small;
+    // font-size: map-get($jentil-font-size, small);
 
     p,
     hr,

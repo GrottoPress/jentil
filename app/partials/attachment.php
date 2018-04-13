@@ -1,18 +1,4 @@
 <?php
-
-/**
- * Template Part: Attachment
- *
- * This contains code that would be included in
- * other templates via the `\jentil_get_template()` call.
- *
- * @package GrottoPress\Jentil
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 declare (strict_types = 1); ?>
 
 <div class="entry-attachment">
@@ -24,7 +10,7 @@ declare (strict_types = 1); ?>
 
     <?php if ($post->post_excerpt) { ?>
         <p class="entry-caption wp-caption-text" itemprop="description"><?php
-            echo \wp_kses_data($post->post_excerpt);
+            the_excerpt();
         ?></p>
     <?php } ?>
 </div>

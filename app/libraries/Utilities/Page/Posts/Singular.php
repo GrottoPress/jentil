@@ -1,41 +1,15 @@
 <?php
-
-/**
- * Singular Posts
- *
- * @package GrottoPress\Jentil\Utilities\Page\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
-/**
- * Singular Posts
- *
- * @since 0.1.0
- */
-final class Singular extends AbstractPosts
+class Singular extends AbstractPosts
 {
-    /**
-     * Singular posts args.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return array Singular posts args.
-     */
     public function args(): array
     {
-        global $post;
-
         return [
             'layout' => 'stack',
-            'id' => 'main-query',
+            'id' => $this->id,
             'class' => 'singular-post',
             'excerpt' => [
                 'length' => -2,
@@ -53,8 +27,8 @@ final class Singular extends AbstractPosts
             ],
             'wp_query' => [
                 'posts_per_page' => 1,
-                'post_type' => $post->post_type,
-                'p' => $post->ID,
+                'post_type' => \get_post()->post_type,
+                'p' => \get_post()->ID,
                 'ignore_sticky_posts' => 1,
             ],
         ];

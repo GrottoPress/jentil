@@ -1,50 +1,57 @@
 {
-    "name": "@grottopress/jentil",
-    "version": "0.5.0",
-    "description": "Jentil is a modern framework for rapid WordPress theme development",
-    "license": "MIT",
-    "author": {
-        "name": "GrottoPress.com",
-        "email": "info@grottopress.com",
-        "url": "https://www.grottopress.com"
-    },
-    "contributors": [
-        {
-            "name": "N Atta Kusi Adusei",
-            "url": "https://twitter.com/akadusei"
-        }
-    ],
-    "dependencies": {
-        "@grottopress/scss": "^0.1.7",
-        "font-awesome": "^4.7.0",
-        "html5shiv": "^3.7.3",
-        "normalize.css": "^7.0.0",
-        "respond.js": "^1.4.2"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-clean-css": "^3.9.0",
-        "gulp-jshint": "^2.0.4",
-        "gulp-rename": "^1.2.2",
-        "gulp-rtlcss": "^1.0.0",
-        "gulp-sass": "^3.1.0",
-        "gulp-sourcemaps": "^2.6.1",
-        "gulp-uglify": "^3.0.0",
-        "jshint": "^2.9.5"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/GrottoPress/jentil.git"
-    },
-    "keywords": [
-        "Jentil",
-        "WordPress"
-    ],
-    "bugs": {
-        "url": "https://github.com/GrottoPress/jentil/issues"
-    },
-    "homepage": "https://github.com/GrottoPress/jentil#README"
+  "name": "@grottopress/jentil",
+  "version": "0.6.0",
+  "description": "Jentil is a modern framework for rapid WordPress theme development",
+  "license": "MIT",
+  "homepage": "https://www.grottopress.com/jentil/",
+  "author": {
+    "name": "GrottoPress.com",
+    "email": "info@grottopress.com",
+    "url": "https://www.grottopress.com"
+  },
+  "contributors": [
+    {
+      "name": "N Atta Kusi Adusei",
+      "url": "https://twitter.com/akadusei"
+    }
+  ],
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.5",
+    "@fortawesome/fontawesome-free-brands": "^5.0.10",
+    "@fortawesome/fontawesome-free-regular": "^5.0.10",
+    "@fortawesome/fontawesome-free-solid": "^5.0.10",
+    "@grottopress/scss": "^0.1.12",
+    "html5shiv": "^3.7.3",
+    "normalize.css": "^7.0.0",
+    "respond.js": "^1.4.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.1",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rtlcss": "^1.2.0",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^4.0.2",
+    "gulp-uglify": "^3.0.0",
+    "typescript": "^2.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp styles scripts vendor",
+    "watch": "gulp watch"
+  },
+  "keywords": [
+    "jentil",
+    "wordpress"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrottoPress/jentil.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GrottoPress/jentil/issues"
+  }
 }

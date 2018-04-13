@@ -1,64 +1,69 @@
 {
-    "name": "grottopress/jentil",
-    "description": "Jentil is a modern framework for rapid WordPress theme development",
-    "license": "MIT",
-    "homepage": "https://jentil.grottopress.com",
-    "authors": [
-        {
-            "name": "GrottoPress.com",
-            "email": "info@grottopress.com",
-            "homepage": "https://www.grottopress.com"
-        },
-        {
-          "name": "N Atta Kusi Adusei",
-          "homepage": "https://twitter.com/akadusei",
-          "role": "Developer"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/GrottoPress/jentil/issues",
-        "wiki": "https://github.com/GrottoPress/jentil/wiki",
-        "source": "https://github.com/GrottoPress/jentil/"
+  "name": "grottopress/jentil",
+  "description": "Jentil is a modern framework for rapid WordPress theme development",
+  "license": "MIT",
+  "homepage": "https://www.grottopress.com/jentil/",
+  "authors": [
+    {
+      "name": "GrottoPress.com",
+      "email": "info@grottopress.com",
+      "homepage": "https://www.grottopress.com"
     },
-    "require": {
-        "php": ">=7.0",
-        "florianwolters/component-util-singleton": "^0.3",
-        "yahnis-elsts/plugin-update-checker": "^4.1",
-        "grottopress/wordpress-breadcrumbs": "^0.3",
-        "grottopress/wordpress-metaboxes": "^0.2",
-        "grottopress/wordpress-posts": "^0.3"
-    },
-    "require-dev": {
-        "lucatume/wp-browser": "^1.21"
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "npm update",
-            "./bin/migrate-assets"
-        ],
-        "post-install-cmd": [
-            "npm install",
-            "chmod +x ./bin/*",
-            "./bin/migrate-assets"
-        ],
-        "test": [
-            "codecept run wpunit"
-        ],
-        "release": [
-            "./bin/release"
-        ]
-    },
-    "autoload": {
-        "psr-4": {
-            "GrottoPress\\Jentil\\": "app/libraries/"
-        },
-        "files": [
-            "app/functions.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "GrottoPress\\Jentil\\": "tests/"
-        }
+    {
+      "name": "N Atta Kusi Adusei",
+      "homepage": "https://twitter.com/akadusei",
+      "role": "Developer"
     }
+  ],
+  "keywords": [
+    "jentil",
+    "wordpress"
+  ],
+  "support": {
+    "issues": "https://github.com/GrottoPress/jentil/issues",
+    "wiki": "https://github.com/GrottoPress/jentil/wiki",
+    "source": "https://github.com/GrottoPress/jentil"
+  },
+  "require": {
+    "php": ">=7.0",
+    "yahnis-elsts/plugin-update-checker": "^4.1",
+    "grottopress/wordpress-breadcrumbs": "^0.4",
+    "grottopress/wordpress-meta-box": "^0.1",
+    "grottopress/wordpress-posts": "^0.9",
+    "grottopress/wordpress-suv": "^0.4"
+  },
+  "require-dev": {
+    "lucatume/wp-browser": "^1.21",
+    "lucatume/function-mocker": "^1.3"
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "npm update",
+      "npm run build"
+    ],
+    "post-install-cmd": [
+      "npm install",
+      "chmod +x ./bin/*",
+      "npm run build"
+    ],
+    "test": [
+      "./vendor/bin/codecept run unit"
+    ],
+    "release": [
+      "./bin/release"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "GrottoPress\\Jentil\\": "app/libraries/"
+    },
+    "files": [
+      "app/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "GrottoPress\\Jentil\\": "tests/unit/libraries/"
+    }
+  }
 }

@@ -1,6 +1,9 @@
 #!/bin/bash
 #
-# Bump version and release
+# Release new version
+#
+# Usage: `./bin/release <version-number>`
+# Example `./bin/release 0.1.0`
 
 TO_VERSION="$1"
 DEV_BRANCH='dev'
@@ -9,12 +12,12 @@ doChecks()
 {
     [[ -z ${TO_VERSION} ]] && echo 'Error: You must specify a version number!' \
         && exit 1
-    
+
     [[ ! -d './.git' ]] && echo 'Error: This is not a git repository!' && exit 2
 
     ! git show-ref --verify --quiet "refs/heads/${DEV_BRANCH}" \
         && echo "Error: Branch '${DEV_BRANCH}' does not exist!" && exit 3
-    
+
     current_branch=$(git symbolic-ref --short -q HEAD)
 
     [[ "$current_branch" != "$DEV_BRANCH" ]] \
@@ -31,7 +34,7 @@ updateFiles()
 createCommit()
 {
     git add .
-    git commit -m "Bumped version number to ${TO_VERSION}"
+    git commit -m "Bump version number to ${TO_VERSION}"
 }
 
 createTag()
