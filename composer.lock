@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "75519de193cf770af80849715a9efd32",
+    "content-hash": "47ca6d018f36a55f6f78f67cc834f1e6",
     "packages": [
         {
             "name": "aura/html",
@@ -618,16 +618,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.8.0",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "99cf5fc8a8647684362a6be22a4fb1f81d48b46a"
+                "reference": "465f46d069ef80ff9fd7988fc16e67f951959654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/99cf5fc8a8647684362a6be22a4fb1f81d48b46a",
-                "reference": "99cf5fc8a8647684362a6be22a4fb1f81d48b46a",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/465f46d069ef80ff9fd7988fc16e67f951959654",
+                "reference": "465f46d069ef80ff9fd7988fc16e67f951959654",
                 "shasum": ""
             },
             "require": {
@@ -665,7 +665,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-03-22T23:13:17+00:00"
+            "time": "2018-04-13T14:28:41+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
