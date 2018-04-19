@@ -57,7 +57,7 @@ class WooCommerceTest extends AbstractTestCase
     {
         $this->getMockBuilder('WooCommerce')->getMock();
 
-        $WPCustomizer = $this->getMockBuilder('WP_Customize_Manager')
+        $wp_customizer = $this->getMockBuilder('WP_Customize_Manager')
             ->getMock();
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
@@ -102,14 +102,14 @@ class WooCommerceTest extends AbstractTestCase
             $jentil->setups['Customizer\Customizer']
                 ->panels['Posts\Posts']->sections["Taxonomy_{$tax}"]
                 ->expects($this->once())->method('remove')
-                ->with($this->equalTo($WPCustomizer));
+                ->with($this->equalTo($wp_customizer));
 
             $jentil->setups['Customizer\Customizer']
                 ->sections['Title\Title']->settings["Taxonomy_{$tax}"]
                 ->expects($this->once())->method('remove')
-                ->with($this->equalTo($WPCustomizer));
+                ->with($this->equalTo($wp_customizer));
         }
 
-        $woo_commerce->removeCustomizerItems($WPCustomizer);
+        $woo_commerce->removeCustomizerItems($wp_customizer);
     }
 }

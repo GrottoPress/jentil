@@ -26,11 +26,11 @@ abstract class AbstractSection extends Section
         return $this->themeModArgs;
     }
 
-    public function add(WPCustomizer $WPCustomizer)
+    public function add(WPCustomizer $wp_customizer)
     {
         $this->settings = $this->settings();
 
-        parent::add($WPCustomizer);
+        parent::add($wp_customizer);
     }
 
     protected function settings(): array

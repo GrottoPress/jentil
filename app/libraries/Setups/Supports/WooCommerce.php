@@ -34,7 +34,7 @@ final class WooCommerce extends AbstractSetup
     /**
      * @action customize_register
      */
-    public function removeCustomizerItems(WPCustomizer $WPCustomizer)
+    public function removeCustomizerItems(WPCustomizer $wp_customizer)
     {
         if (!\class_exists(WooCommercePlugin::class)) {
             return;
@@ -45,11 +45,11 @@ final class WooCommerce extends AbstractSetup
         foreach ($taxes as $tax) {
             $this->app->setups['Customizer\Customizer']
                 ->panels['Posts\Posts']->sections["Taxonomy_{$tax}"]
-                ->remove($WPCustomizer);
+                ->remove($wp_customizer);
 
             $this->app->setups['Customizer\Customizer']
                 ->sections['Title\Title']->settings["Taxonomy_{$tax}"]
-                ->remove($WPCustomizer);
+                ->remove($wp_customizer);
         }
     }
 }
