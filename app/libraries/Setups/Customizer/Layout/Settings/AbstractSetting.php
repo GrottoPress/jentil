@@ -4,7 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Customizer\Layout\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Layout\Layout;
-use GrottoPress\Jentil\utilities\ThemeMods\Layout as LayoutMod;
+use GrottoPress\Jentil\Utilities\ThemeMods\Layout as LayoutMod;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 abstract class AbstractSetting extends Setting
