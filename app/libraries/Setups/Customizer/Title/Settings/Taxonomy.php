@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Customizer\Title\Settings;
 
 use GrottoPress\Jentil\Setups\Customizer\Title\Title;
+use GrottoPress\Jentil\Utilities\ThemeMods\Title as TitleMod;
 use WP_Taxonomy;
 use WP_Term;
 
@@ -16,17 +17,19 @@ final class Taxonomy extends AbstractSetting
     ) {
         parent::__construct($title);
 
-        $this->setThemeMod($taxonomy, $term);
+        $theme_mod = $this->getThemeMod($taxonomy, $term);
 
-        $this->id = $this->themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $this->themeMod->default;
+        $this->args['default'] = $theme_mod->default;
 
         $this->setControl($taxonomy, $term);
     }
 
-    private function setThemeMod(WP_Taxonomy $taxonomy, WP_Term $term = null)
-    {
+    private function getThemeMod(
+        WP_Taxonomy $taxonomy,
+        WP_Term $term = null
+    ): TitleMod {
         $mod_context = 'tax';
 
         if ('post_tag' === $taxonomy->name) {
@@ -36,17 +39,17 @@ final class Taxonomy extends AbstractSetting
         }
 
         if ($term) {
-            $this->themeMod = $this->themeMod([
+            return $this->themeMod([
                 'context' => $mod_context,
                 'specific' => $taxonomy->name,
                 'more_specific' => $term->term_id,
             ]);
-        } else {
-            $this->themeMod = $this->themeMod([
-                'context' => $mod_context,
-                'specific' => $taxonomy->name
-            ]);
         }
+
+        return $this->themeMod([
+            'context' => $mod_context,
+            'specific' => $taxonomy->name
+        ]);
     }
 
     private function setControl(WP_Taxonomy $taxonomy, WP_Term $term = null)
@@ -55,7 +58,7 @@ final class Taxonomy extends AbstractSetting
             $taxonomy,
             $term
         ): bool {
-            $page = $this->section->customizer->app->utilities->page;
+            $page = $this->customizer->app->utilities->page;
 
             if ($term) {
                 return (

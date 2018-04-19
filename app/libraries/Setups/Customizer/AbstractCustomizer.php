@@ -9,20 +9,19 @@ use WP_Customize_Manager as WPCustomizer;
 abstract class AbstractCustomizer extends AbstractSetup
 {
     /**
-     * Panels comprise sections which, in turn,
-     * comprise settings.
-     *
      * @var AbstractPanel[]
      */
     protected $panels = [];
 
     /**
-     * Use this ONLY if sections come under no panel.
-     * Each section comprises its settings.
-     *
      * @var AbstractSection[]
      */
     protected $sections = [];
+
+    /**
+     * @var AbstractSetting[]
+     */
+    protected $settings = [];
 
     /**
      * @return AbstractPanel[]
@@ -41,9 +40,17 @@ abstract class AbstractCustomizer extends AbstractSetup
     }
 
     /**
-     * Be sure to set `$this->panels` and `$this->sections` HERE,
-     * in the child class. Doing so in the constructor would be too
-     * early; it won't work.
+     * @return AbstractSetting[]
+     */
+    protected function getSettings(): array
+    {
+        return $this->settings;
+    }
+
+    /**
+     * Be sure to set `$this->panels`, `$this->sections` and
+     * `$this->settings` HERE, in the child class. Doing so
+     * in the constructor may be too early; it mighty not work.
      *
      * @action customize_register
      */
@@ -51,6 +58,7 @@ abstract class AbstractCustomizer extends AbstractSetup
     {
         $this->addPanels($wp_customizer);
         $this->addSections($wp_customizer);
+        $this->addSettings($wp_customizer);
     }
 
     private function addPanels(WPCustomizer $wp_customizer)
@@ -64,6 +72,13 @@ abstract class AbstractCustomizer extends AbstractSetup
     {
         foreach ($this->sections as $section) {
             $section->add($wp_customizer);
+        }
+    }
+
+    private function addSettings(WPCustomizer $wp_customizer)
+    {
+        foreach ($this->settings as $setting) {
+            $setting->add($wp_customzier);
         }
     }
 }

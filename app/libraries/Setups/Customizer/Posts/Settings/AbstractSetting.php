@@ -9,9 +9,16 @@ use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 abstract class AbstractSetting extends Setting
 {
+    /**
+     * @var AbstractSection
+     */
+    protected $section;
+
     public function __construct(AbstractSection $section)
     {
-        parent::__construct($section);
+        $this->section = $section;
+
+        parent::__construct($this->section->customizer);
 
         $this->control['section'] = $this->section->id;
     }
@@ -19,7 +26,7 @@ abstract class AbstractSetting extends Setting
     protected function themeMod(string $setting): PostsMod
     {
         return (
-            $this->section->panel->customizer->app->utilities->themeMods->posts(
+            $this->customizer->app->utilities->themeMods->posts(
                 $setting,
                 $this->section->themeModArgs
             )

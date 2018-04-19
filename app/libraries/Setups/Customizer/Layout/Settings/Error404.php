@@ -11,16 +11,15 @@ final class Error404 extends AbstractSetting
     {
         parent::__construct($layout);
 
-        $this->themeMod = $this->themeMod(['context' => '404']);
+        $theme_mod = $this->themeMod(['context' => '404']);
 
-        $this->id = $this->themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $this->themeMod->default;
+        $this->args['default'] = $theme_mod->default;
 
         $this->control['label'] = \esc_html__('Error 404', 'jentil');
         $this->control['active_callback'] = function (): bool {
-            return $this->section->customizer->app->utilities
-                ->page->is('404');
+            return $this->customizer->app->utilities->page->is('404');
         };
     }
 }

@@ -14,29 +14,29 @@ final class Singular extends AbstractSetting
     ) {
         parent::__construct($layout);
 
-        $this->setThemeMod($post_type, $post);
+        $theme_mod = $this->getThemeMod($post_type, $post);
+
+        $this->id = $theme_mod->id;
+
+        $this->args['default'] = $theme_mod->default;
 
         $this->setControl($post_type, $post);
     }
 
-    private function setThemeMod(WP_Post_Type $post_type, WP_Post $post = null)
+    private function getThemeMod(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
-            $this->themeMod = $this->themeMod([
+            return $this->themeMod([
                 'context' => 'singular',
                 'specific' => $post_type->name,
                 'more_specific' => $post->ID,
             ]);
-        } else {
-            $this->themeMod = $this->themeMod([
-                'context' => 'singular',
-                'specific' => $post_type->name,
-            ]);
         }
 
-        $this->id = $this->themeMod->id;
-
-        $this->args['default'] = $this->themeMod->default;
+        return $this->themeMod([
+            'context' => 'singular',
+            'specific' => $post_type->name,
+        ]);
     }
 
     private function setControl(WP_Post_Type $post_type, WP_Post $post = null)
@@ -45,7 +45,7 @@ final class Singular extends AbstractSetting
             $post_type,
             $post
         ): bool {
-            $utilities = $this->section->customizer->app->utilities;
+            $utilities = $this->customizer->app->utilities;
 
             if ($utilities->postTypeTemplate->isPageBuilder()) {
                 return false;

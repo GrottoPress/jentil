@@ -11,9 +11,9 @@ abstract class AbstractSetting
     use IdentityTrait;
 
     /**
-     * @var AbstractSection
+     * @var AbstractCustomizer
      */
-    protected $section;
+    protected $customizer;
 
     /**
      * @var array
@@ -25,9 +25,9 @@ abstract class AbstractSetting
      */
     protected $control = [];
 
-    public function __construct(AbstractSection $section)
+    public function __construct(AbstractCustomizer $customizer)
     {
-        $this->section = $section;
+        $this->customizer = $customizer;
     }
 
     public function add(WPCustomizer $wp_customizer)

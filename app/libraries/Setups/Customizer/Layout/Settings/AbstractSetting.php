@@ -9,28 +9,21 @@ use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 abstract class AbstractSetting extends Setting
 {
-    /**
-     * @var LayoutMod
-     */
-    protected $themeMod;
-
     public function __construct(Layout $layout)
     {
-        parent::__construct($layout);
+        parent::__construct($layout->customizer);
 
         $this->args['sanitize_callback'] = 'sanitize_title';
 
-        $this->control['section'] = $this->section->id;
+        $this->control['section'] = $layout->id;
         $this->control['label'] = \esc_html__('Select layout', 'jentil');
         $this->control['type'] = 'select';
-        $this->control['choices'] = $this->section->customizer->app
+        $this->control['choices'] = $this->customizer->app
             ->utilities->page->layouts->IDs();
     }
 
     protected function themeMod(array $args): LayoutMod
     {
-        return $this->section->customizer->app->utilities->themeMods->layout(
-            $args
-        );
+        return $this->customizer->app->utilities->themeMods->layout($args);
     }
 }

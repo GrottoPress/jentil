@@ -9,28 +9,16 @@ use WP_Customize_Manager as WPCustomizer;
 abstract class AbstractSection extends Section
 {
     /**
-     * @var Posts
-     */
-    protected $panel;
-
-    /**
      * @var array
      */
     protected $themeModArgs = [];
 
     public function __construct(Posts $posts)
     {
-        $this->panel = $posts;
-
-        parent::__construct($this->panel->customizer);
+        parent::__construct($posts->customizer);
 
         $this->args['title'] = \esc_html__('Posts', 'jentil');
-        $this->args['panel'] = $this->panel->id;
-    }
-
-    protected function getPanel(): Posts
-    {
-        return $this->panel;
+        $this->args['panel'] = $posts->id;
     }
 
     protected function getThemeModArgs(): array
