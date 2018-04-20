@@ -1,11 +1,10 @@
 declare const jentilShortTags: any
-declare const jentilColophonModName: string
-declare const jentilTitleModNames: string[]
-declare const jentilRelatedPostsHeadingModNames: string[]
+declare const jentilColophonModId: string
+declare const jentilTitleModIds: string[]
+declare const jentilRelatedPostsHeadingModIds: string[]
 
 declare const jentilMenuL10n: {
     submenu: string
-    kkk: string
 }
 
 declare const wp: {

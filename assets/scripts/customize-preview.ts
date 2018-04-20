@@ -6,7 +6,7 @@
     /**
      * Footer credits
      */
-    wp.customize(jentilColophonModName, (value: () => void): void => {
+    wp.customize(jentilColophonModId, (value: () => void): void => {
         value.bind((to: string): void => {
             $('#colophon small').html(replaceShortTags(to))
         })
@@ -15,8 +15,8 @@
     /**
      * Page Title
      */
-    for (let i in jentilTitleModNames) {
-        wp.customize(jentilTitleModNames[i], (value: () => void): void => {
+    for (let i in jentilTitleModIds) {
+        wp.customize(jentilTitleModIds[i], (value: () => void): void => {
             value.bind((to: string): void => {
                 $('#page-title').html(replaceShortTags(to))
             })
@@ -26,8 +26,8 @@
     /**
      * Posts heading
      */
-    for (let i in jentilRelatedPostsHeadingModNames) {
-        wp.customize(jentilRelatedPostsHeadingModNames[i], (value: () => void): void => {
+    for (let i in jentilRelatedPostsHeadingModIds) {
+        wp.customize(jentilRelatedPostsHeadingModIds[i], (value: () => void): void => {
             value.bind((to: string): void => {
                 $('#related-posts-wrap .posts-heading').html(to)
             })

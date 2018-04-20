@@ -43,11 +43,11 @@ final class CustomizePreview extends AbstractScript
      */
     public function addInlineScript()
     {
-        $script = 'var jentilColophonModName = "'.$this->app
+        $script = 'var jentilColophonModId = "'.$this->app
             ->setups['Customizer\Customizer']
             ->sections['Colophon\Colophon']->settings['Colophon']->id.'";
-        var jentilTitleModNames = '.\wp_json_encode($this->pageTitles()).';
-        var jentilRelatedPostsHeadingModNames = '.\wp_json_encode(
+        var jentilTitleModIds = '.\wp_json_encode($this->pageTitles()).';
+        var jentilRelatedPostsHeadingModIds = '.\wp_json_encode(
             $this->postsHeadings()
         ).';';
 
