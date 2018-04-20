@@ -78,7 +78,7 @@ abstract class AbstractCustomizer extends AbstractSetup
     private function addSettings(WPCustomizer $wp_customizer)
     {
         foreach ($this->settings as $setting) {
-            $setting->add($wp_customzier);
+            $setting->add($wp_customizer);
         }
     }
 }
