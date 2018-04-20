@@ -47,14 +47,14 @@ class Layout extends AbstractThemeMod
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
 
-        $names = $this->names();
-        $this->id = isset($names[$this->context])
-            ? \sanitize_key($names[$this->context]) : '';
+        $ids = $this->ids();
+        $this->id = isset($ids[$this->context])
+            ? \sanitize_key($ids[$this->context]) : '';
     }
 
-    private function names(): array
+    private function ids(): array
     {
-        $names = [
+        $ids = [
             'home' => 'post_post_type_layout',
             'singular' => (
                 $this->isPagelike() ? '_jentil-layout' :
@@ -70,17 +70,12 @@ class Layout extends AbstractThemeMod
             'search' => 'search_layout',
         ];
 
-        $names = \array_map(function (string $value): string {
+        $ids = \array_map(function (string $value): string {
             $value = \str_replace(['__', '_0_'], '_', $value);
+            return ($this->isPagelike() ? $value : \trim($value, '_'));
+        }, $ids);
 
-            if (!$this->isPagelike()) {
-                $value = \trim($value, '_');
-            }
-
-            return $value;
-        }, $names);
-
-        return $names;
+        return $ids;
     }
 
     public function get(): string

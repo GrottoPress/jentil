@@ -53,18 +53,18 @@ class Posts extends AbstractThemeMod
         $this->specific = \sanitize_key($args['specific']);
         $this->moreSpecific = (int)$args['more_specific'];
 
-        $names = $this->names();
-        $this->id = isset($names[$this->context])
-            ? \sanitize_key($names[$this->context]) : '';
+        $ids = $this->ids();
+        $this->id = isset($ids[$this->context])
+            ? \sanitize_key($ids[$this->context]) : '';
 
         $defaults = $this->defaults();
         $this->default = isset($defaults[$this->setting])
             ? $defaults[$this->setting] : '';
     }
 
-    private function names(): array
+    private function ids(): array
     {
-        $names = [
+        $ids = [
             'home' => 'post_post_type_posts',
             'author' => 'author_posts',
             'category' => "category_{$this->moreSpecific}_taxonomy_posts",
@@ -77,15 +77,13 @@ class Posts extends AbstractThemeMod
             'related' => "{$this->specific}_related_posts",
         ];
 
-        $names = \array_map(function (string $value): string {
+        $ids = \array_map(function (string $value): string {
             $value .= "_{$this->setting}";
             $value = \str_replace(['__', '_0_'], '_', $value);
-            $value = \trim($value, '_');
+            return \trim($value, '_');
+        }, $ids);
 
-            return $value;
-        }, $names);
-
-        return $names;
+        return $ids;
     }
 
     private function defaults(): array

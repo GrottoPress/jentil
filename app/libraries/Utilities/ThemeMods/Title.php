@@ -46,17 +46,17 @@ class Title extends AbstractThemeMod
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
 
-        $names = $this->names();
-        $this->id = isset($names[$this->context])
-            ? \sanitize_key($names[$this->context]) : '';
+        $ids = $this->ids();
+        $this->id = isset($ids[$this->context])
+            ? \sanitize_key($ids[$this->context]) : '';
 
         $defaults = $this->defaults();
         $this->default = $defaults[$this->context] ?? '';
     }
 
-    private function names(): array
+    private function ids(): array
     {
-        $names = [
+        $ids = [
             'home' => 'post_post_type_title',
             'author' => 'author_title',
             'category' => "category_{$this->moreSpecific}_taxonomy_title",
@@ -68,14 +68,12 @@ class Title extends AbstractThemeMod
             'search' => 'search_title',
         ];
 
-        $names = \array_map(function (string $value): string {
+        $ids = \array_map(function (string $value): string {
             $value = \str_replace(['__', '_0_'], '_', $value);
-            $value = \trim($value, '_');
+            return \trim($value, '_');
+        }, $ids);
 
-            return $value;
-        }, $names);
-
-        return $names;
+        return $ids;
     }
 
     private function defaults(): array
