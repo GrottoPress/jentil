@@ -86,7 +86,7 @@ blockquote {
     @include paragraph;
 
     font-size: map-get($jentil-font-size, magnified);
-    color: $jentil-font-lighter;
+    color: map-get($jentil-font-color, lighter);
     font-style: italic;
     margin-right: 0;
     margin-left: 10px;
