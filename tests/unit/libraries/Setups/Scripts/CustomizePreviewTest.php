@@ -141,6 +141,17 @@ class CustomizePreviewTest extends AbstractTestCase
                                     )],
                                 ]
                             ),
+                            'Layout\Layout' => Stub::makeEmpty(
+                                AbstractSection::class,
+                                [
+                                    'settings' => ['Date' => Stub::makeEmpty(
+                                        AbstractSetting::class,
+                                        [
+                                            'id' => 'date_title',
+                                        ]
+                                    )],
+                                ]
+                            ),
                         ],
                     ]
                 ),

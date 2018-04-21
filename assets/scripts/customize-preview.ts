@@ -15,8 +15,8 @@
     /**
      * Page Title
      */
-    for (let i in jentilTitleModIds) {
-        wp.customize(jentilTitleModIds[i], (value: () => void): void => {
+    for (let i in jentilPageTitleModIds) {
+        wp.customize(jentilPageTitleModIds[i], (value: () => void): void => {
             value.bind((to: string): void => {
                 $('#page-title').html(replaceShortTags(to))
             })
@@ -30,6 +30,19 @@
         wp.customize(jentilRelatedPostsHeadingModIds[i], (value: () => void): void => {
             value.bind((to: string): void => {
                 $('#related-posts-wrap .posts-heading').html(to)
+            })
+        })
+    }
+
+    /**
+     * Layout
+     */
+    for (let i in jentilPageLayoutModIds) {
+        wp.customize(jentilPageLayoutModIds[i], (value: () => void): void => {
+            value.bind((to: string): void => {
+                $('body').attr('class', (i: number, c: string): string =>
+                    c.replace(/(^|\s)layout\-\S+/g, '')
+                ).addClass(`layout-${to} layout-columns-${to.split('-').length}`)
             })
         })
     }

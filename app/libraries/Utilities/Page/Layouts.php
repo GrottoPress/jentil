@@ -18,14 +18,14 @@ class Layouts
     public function get(): array
     {
         $layouts = [
-            'one-column' => [
+            'columns-1' => [
                 'content' => \esc_html__('content', 'jentil'),
             ],
-            'two-columns' => [
+            'columns-2' => [
                 'content-sidebar' => \esc_html__('content / sidebar', 'jentil'),
                 'sidebar-content' => \esc_html__('sidebar / content', 'jentil'),
             ],
-            'three-columns' => [
+            'columns-3' => [
                 'sidebar-content-sidebar' => \esc_html__(
                     'sidebar / content / sidebar',
                     'jentil'

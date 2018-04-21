@@ -14,6 +14,7 @@ abstract class AbstractSetting extends Setting
         parent::__construct($layout->customizer);
 
         $this->args['sanitize_callback'] = 'sanitize_title';
+        $this->args['transport'] = 'postMessage';
 
         $this->control['section'] = $layout->id;
         $this->control['label'] = \esc_html__('Select layout', 'jentil');

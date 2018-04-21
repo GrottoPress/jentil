@@ -24,6 +24,20 @@
     @include paragraph;
 }
 
+/** One Column */
+
+.layout-columns-1 {
+    .sidebar-wrap {
+        display: none;
+    }
+}
+
+.layout-columns-2 {
+    #secondary-sidebar-wrap {
+        display: none;
+    }
+}
+
 @media (min-width: map-get($jentil-breakpoint, medium)) {
     #wrap {
         max-width: 960px;
@@ -41,7 +55,7 @@
 
     /** Two Columns */
 
-    .layout-two-columns {
+    .layout-columns-2 {
         #primary-sidebar-wrap {
             width: $jentil-sidebar-content;
         }
@@ -85,7 +99,7 @@
 
     /** Three Columns */
 
-    .layout-three-columns {
+    .layout-columns-3 {
         #primary-sidebar-wrap {
             width: map-get($jentil-sidebar-content-sidebar, primary);
         }
