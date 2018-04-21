@@ -21,9 +21,9 @@
      * Add icons to all parent menu items
      */
     $('.menu li > ul').before(
-        '<button class="js-sub-menu-button sub-menu-toggle">'+
-            renderCaret('down')+
-        '</button>'
+        `<button class="js-sub-menu-button sub-menu-toggle">
+            ${renderCaret('down')}
+        </button>`
     )
 
     /**
@@ -66,8 +66,7 @@
 
     function renderCaret(direction: 'up' | 'down'): string
     {
-        return '<span class="fas fa-caret-'+direction.toString()+
-            ' fa-sm" aria-hidden="true"></span>'+
-            '<span class="screen-reader-text">'+jentilMenuL10n.submenu+'</span>'
+        return `<span class="fas fa-caret-${direction.toString()} fa-sm" aria-hidden="true"></span>
+        <span class="screen-reader-text">${jentilMenuL10n.submenu}</span>`
     }
 })(jQuery)
