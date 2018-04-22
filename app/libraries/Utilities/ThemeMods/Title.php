@@ -92,10 +92,10 @@ class Title extends AbstractThemeMod
         ];
 
         /**
-         * @var string $defaults Posts mod defaults.
+         * @var array $defaults
          */
         return \apply_filters(
-            'jentil_title_mod_defaults',
+            'jentil_title_mod_default',
             $defaults,
             $this->context,
             $this->specific,

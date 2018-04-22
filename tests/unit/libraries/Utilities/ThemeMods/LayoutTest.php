@@ -88,6 +88,12 @@ class LayoutTest extends AbstractTestCase
         });
         FunctionMocker::replace('taxonomy_exists', true);
         FunctionMocker::replace('post_type_exists', true);
+        FunctionMocker::replace(
+            'apply_filters',
+            function (string $hook, string $value): string {
+                return $value;
+            }
+        );
 
         $theme_mods = Stub::makeEmpty(ThemeMods::class);
         $theme_mods->utilities = Stub::makeEmpty(Utilities::class);

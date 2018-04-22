@@ -169,10 +169,10 @@ class Posts extends AbstractThemeMod
         }
 
         /**
-         * @var string $defaults Posts mod defaults.
+         * @var array $defaults
          */
         return \apply_filters(
-            'jentil_posts_mod_defaults',
+            'jentil_posts_mod_default',
             $defaults,
             $this->setting,
             $this->context
