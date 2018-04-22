@@ -85,7 +85,7 @@ class Layout extends AbstractThemeMod
         }
 
         if ($this->isPagelike()) {
-            return $this->validate(\get_post_meta(
+            return $this->validate((string)\get_post_meta(
                 $this->moreSpecific,
                 $this->id,
                 true
