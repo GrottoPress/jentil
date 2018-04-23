@@ -51,7 +51,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return Setups\AbstractSetup[]
+     * @return Setups\AbstractSetup[int]
      */
     protected function getSetups(): array
     {

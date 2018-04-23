@@ -9,7 +9,7 @@ use WP_Customize_Manager as WPCustomizer;
 abstract class AbstractSection extends Section
 {
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $themeModArgs = [];
 
@@ -21,6 +21,9 @@ abstract class AbstractSection extends Section
         $this->args['panel'] = $posts->id;
     }
 
+    /**
+     * @return mixed[string]
+     */
     protected function getThemeModArgs(): array
     {
         return $this->themeModArgs;
@@ -33,6 +36,9 @@ abstract class AbstractSection extends Section
         parent::add($wp_customizer);
     }
 
+    /**
+     * @return Settings\AbstractSetting[string]
+     */
     protected function settings(): array
     {
         $settings = [];

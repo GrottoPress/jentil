@@ -52,6 +52,9 @@ class Layout extends AbstractThemeMod
             ? \sanitize_key($ids[$this->context]) : '';
     }
 
+    /**
+     * @return string[string]
+     */
     private function ids(): array
     {
         $ids = [

@@ -16,12 +16,12 @@ abstract class AbstractSection
     protected $customizer;
 
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $args = [];
 
     /**
-     * @var AbstractSetting[]
+     * @var AbstractSetting[string]
      */
     protected $settings = [];
 
@@ -36,7 +36,7 @@ abstract class AbstractSection
     }
 
     /**
-     * @return AbstractSetting[]
+     * @return AbstractSetting[string]
      */
     protected function getSettings(): array
     {

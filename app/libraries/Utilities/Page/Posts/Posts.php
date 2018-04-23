@@ -103,7 +103,7 @@ class Posts
     }
 
     /**
-     * @return \WP_Post_Type[] Public post types.
+     * @return \WP_Post_Type[int] Public post types.
      */
     public function postTypes(): array
     {
@@ -111,7 +111,7 @@ class Posts
     }
 
     /**
-     * @return \WP_Taxonomy[] Public taxonomies.
+     * @return \WP_Taxonomy[int] Public taxonomies.
      */
     public function taxonomies(): array
     {

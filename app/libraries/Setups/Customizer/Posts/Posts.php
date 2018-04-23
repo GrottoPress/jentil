@@ -25,7 +25,7 @@ final class Posts extends AbstractPanel
     }
 
     /**
-     * @return AbstractSection[]
+     * @return AbstractSection[string]
      */
     private function sections(): array
     {

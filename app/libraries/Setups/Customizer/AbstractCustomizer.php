@@ -9,22 +9,22 @@ use WP_Customize_Manager as WPCustomizer;
 abstract class AbstractCustomizer extends AbstractSetup
 {
     /**
-     * @var AbstractPanel[]
+     * @var AbstractPanel[string]
      */
     protected $panels = [];
 
     /**
-     * @var AbstractSection[]
+     * @var AbstractSection[string]
      */
     protected $sections = [];
 
     /**
-     * @var AbstractSetting[]
+     * @var AbstractSetting[string]
      */
     protected $settings = [];
 
     /**
-     * @return AbstractPanel[]
+     * @return AbstractPanel[string]
      */
     protected function getPanels(): array
     {
@@ -32,7 +32,7 @@ abstract class AbstractCustomizer extends AbstractSetup
     }
 
     /**
-     * @return AbstractSection[]
+     * @return AbstractSection[string]
      */
     protected function getSections(): array
     {
@@ -40,7 +40,7 @@ abstract class AbstractCustomizer extends AbstractSetup
     }
 
     /**
-     * @return AbstractSetting[]
+     * @return AbstractSetting[string]
      */
     protected function getSettings(): array
     {

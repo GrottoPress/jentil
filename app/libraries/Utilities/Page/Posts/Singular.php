@@ -5,6 +5,9 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 class Singular extends AbstractPosts
 {
+    /**
+     * @return mixed[string]
+     */
     public function args(): array
     {
         return [

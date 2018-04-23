@@ -48,7 +48,7 @@ final class Sticky extends AbstractSection
     }
 
     /**
-     * @return Settings\AbstractSetting[]
+     * @return Settings\AbstractSetting[string]
      */
     protected function settings(): array
     {

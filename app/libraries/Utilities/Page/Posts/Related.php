@@ -14,6 +14,9 @@ class Related extends AbstractPosts
         $this->id = 'related-posts';
     }
 
+    /**
+     * @return mixed[string]
+     */
     public function args(): array
     {
         return [

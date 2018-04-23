@@ -54,6 +54,9 @@ class Title extends AbstractThemeMod
         $this->default = $defaults[$this->context] ?? '';
     }
 
+    /**
+     * @return string[string]
+     */
     private function ids(): array
     {
         $ids = [
@@ -76,6 +79,9 @@ class Title extends AbstractThemeMod
         return $ids;
     }
 
+    /**
+     * @return string[string]
+     */
     private function defaults(): array
     {
         $defaults = [

@@ -27,7 +27,7 @@ final class Title extends AbstractSection
     }
 
     /**
-     * @return Settings\AbstractSetting[]
+     * @return Settings\AbstractSetting[string]
      */
     private function settings(): array
     {

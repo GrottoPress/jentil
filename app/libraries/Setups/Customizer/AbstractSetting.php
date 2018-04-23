@@ -16,12 +16,12 @@ abstract class AbstractSetting
     protected $customizer;
 
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $args = [];
 
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $control = [];
 

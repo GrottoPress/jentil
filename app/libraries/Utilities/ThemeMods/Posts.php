@@ -62,6 +62,9 @@ class Posts extends AbstractThemeMod
             ? $defaults[$this->setting] : '';
     }
 
+     /**
+     * @return string[string]
+     */
     private function ids(): array
     {
         $ids = [
@@ -86,6 +89,9 @@ class Posts extends AbstractThemeMod
         return $ids;
     }
 
+    /**
+     * @return mixed[string]
+     */
     private function defaults(): array
     {
         $defaults = [

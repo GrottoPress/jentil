@@ -44,6 +44,8 @@ final class Script extends AbstractScript
      * javascript is supported by client.
      *
      * @filter body_class
+     *
+     * @return string[int]
      */
     public function addBodyClasses(array $classes): array
     {

@@ -15,6 +15,9 @@ class Layouts
         $this->page = $page;
     }
 
+    /**
+     * @return string[string][string]
+     */
     public function get(): array
     {
         $layouts = [
@@ -48,7 +51,7 @@ class Layouts
     }
 
     /**
-     * @return array Layout IDs: [ID => Name].
+     * @return string[string]
      */
     public function IDs(): array
     {

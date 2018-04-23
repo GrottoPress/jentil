@@ -14,12 +14,12 @@ abstract class AbstractPanel
     protected $customizer;
 
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $args = [];
 
     /**
-     * @var AbstractSection[]
+     * @var AbstractSection[string]
      */
     protected $sections = [];
 
@@ -34,7 +34,7 @@ abstract class AbstractPanel
     }
 
     /**
-     * @return AbstractSection[]
+     * @return AbstractSection[string]
      */
     protected function getSections(): array
     {

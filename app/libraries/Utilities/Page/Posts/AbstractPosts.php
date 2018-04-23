@@ -29,5 +29,8 @@ abstract class AbstractPosts
         );
     }
 
+    /**
+     * @return mixed[string]
+     */
     abstract protected function args(): array;
 }

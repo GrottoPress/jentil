@@ -20,6 +20,9 @@ final class Search extends AbstractSection
         };
     }
 
+    /**
+     * @return Settings\AbstractSetting[string]
+     */
     protected function settings(): array
     {
         $settings = parent::settings();

@@ -24,6 +24,9 @@ class ShortTags
         );
     }
 
+    /**
+     * @return string[string]
+     */
     public function get(): array
     {
         $tags = [

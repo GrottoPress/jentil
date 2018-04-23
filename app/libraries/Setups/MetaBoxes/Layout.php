@@ -49,6 +49,9 @@ final class Layout extends AbstractMetaBox
         $this->app->utilities->metaBox($box)->save($post_id);
     }
 
+    /**
+     * @return mixed[string]
+     */
     private function box(WP_Post $post): array
     {
         if (!\current_user_can('edit_theme_options')) {

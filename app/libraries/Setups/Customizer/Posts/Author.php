@@ -20,7 +20,7 @@ final class Author extends AbstractSection
     }
 
     /**
-     * @return Settings\AbstractSetting[]
+     * @return Settings\AbstractSetting[string]
      */
     protected function settings(): array
     {
