@@ -27,6 +27,7 @@ final class Loader extends AbstractSetup
 
     /**
      * @filter {$emplate}_template_hierarchy
+     * @param string[int] $templates
      * @return string[int]
      */
     public function templateHierarchy(array $templates): array

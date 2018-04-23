@@ -30,6 +30,9 @@ class Posts extends AbstractThemeMod
      */
     private $moreSpecific;
 
+    /**
+     * @param mixed[string] $args
+     */
     public function __construct(
         ThemeMods $theme_mods,
         string $setting,
@@ -40,6 +43,9 @@ class Posts extends AbstractThemeMod
         $this->setAttributes($setting, $args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     private function setAttributes(string $setting, array $args = [])
     {
         $args = \wp_parse_args($args, [
@@ -175,7 +181,7 @@ class Posts extends AbstractThemeMod
         }
 
         /**
-         * @var array $defaults
+         * @var mixed[string] $defaults
          */
         return \apply_filters(
             'jentil_posts_mod_default',

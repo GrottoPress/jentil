@@ -19,6 +19,7 @@ final class Singular extends AbstractSetup
 
     /**
      * @filter body_class
+     * @param string[int] $classes
      * @return string[int]
      */
     public function addBodyClasses(array $classes): array

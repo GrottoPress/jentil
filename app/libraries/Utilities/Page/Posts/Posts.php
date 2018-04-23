@@ -118,6 +118,9 @@ class Posts
         return \get_taxonomies(['public' => true], 'objects');
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function themeMod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {

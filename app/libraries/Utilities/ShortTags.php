@@ -57,7 +57,7 @@ class ShortTags
         ];
 
         /**
-         * @var array $tags
+         * @var string[string] $tags
          */
         return \apply_filters('jentil_short_tags', $tags);
     }

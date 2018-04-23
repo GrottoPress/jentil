@@ -25,6 +25,9 @@ class Layout extends AbstractThemeMod
      */
     private $moreSpecific;
 
+    /**
+     * @param mixed[string] $args
+     */
     public function __construct(ThemeMods $theme_mods, array $args = [])
     {
         $this->themeMods = $theme_mods;
@@ -32,6 +35,9 @@ class Layout extends AbstractThemeMod
         $this->setAttributes($args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [

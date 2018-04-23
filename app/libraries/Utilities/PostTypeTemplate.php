@@ -39,6 +39,9 @@ class PostTypeTemplate
         return (string)\get_page_template_slug($post_id);
     }
 
+    /**
+     * @param string[int] $type
+     */
     public function is(array $type): bool
     {
         return $this->utilities->page->is('page_template', $type);

@@ -164,11 +164,17 @@ class Utilities
         return $this->postTypeTemplate;
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
         return new Breadcrumbs($this->getPage(), $args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function posts(array $args = []): Posts
     {
         return new Posts($args);
@@ -179,6 +185,9 @@ class Utilities
         return new Post($id);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function metaBox(array $args): MetaBox
     {
         return new MetaBox($args);

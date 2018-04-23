@@ -34,6 +34,7 @@ final class PageBuilder extends AbstractTemplate
 
     /**
      * @param \WP_Post $post
+     * @param string[string] $templates
      *
      * @filter theme_{$post_type}_templates
      *

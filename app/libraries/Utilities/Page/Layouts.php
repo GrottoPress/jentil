@@ -45,7 +45,7 @@ class Layouts
         ];
 
         /**
-         * @var array $layouts
+         * @var string[string][string] $layouts
          */
         return \apply_filters('jentil_page_layouts', $layouts);
     }

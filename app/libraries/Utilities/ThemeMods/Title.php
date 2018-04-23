@@ -25,6 +25,9 @@ class Title extends AbstractThemeMod
      */
     private $moreSpecific;
 
+    /**
+     * @param mixed[string] $args
+     */
     public function __construct(ThemeMods $theme_mods, array $args = [])
     {
         $this->themeMods = $theme_mods;
@@ -32,6 +35,9 @@ class Title extends AbstractThemeMod
         $this->setAttributes($args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
@@ -98,7 +104,7 @@ class Title extends AbstractThemeMod
         ];
 
         /**
-         * @var array $defaults
+         * @var mixed[string] $defaults
          */
         return \apply_filters(
             'jentil_title_mod_default',

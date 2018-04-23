@@ -61,6 +61,7 @@ final class HTML5 extends AbstractSetup
 
     /**
      * @filter wp_kses_allowed_html
+     * @param bool[string][string] $allowed
      * @return bool[string][string]
      */
     public function ksesWhitelist(array $allowed, string $context): array

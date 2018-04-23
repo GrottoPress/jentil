@@ -23,6 +23,9 @@ abstract class AbstractSetting extends Setting
             ->utilities->page->layouts->IDs();
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     protected function themeMod(array $args): LayoutMod
     {
         return $this->customizer->app->utilities->themeMods->layout($args);

@@ -21,6 +21,9 @@ abstract class AbstractSetting extends Setting
         $this->control['type'] = 'text';
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     protected function themeMod(array $args): TitleMod
     {
         return $this->customizer->app->utilities->themeMods->title($args);
