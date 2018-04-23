@@ -136,7 +136,10 @@ class PostsTest extends AbstractTestCase
         $posts = new Posts(Stub::makeEmpty(Page::class));
 
         $this->assertSame(
-            ['mini-thumb' => '100 x 100', 'micro-thumb' => '75 x 75'],
+            [
+                'mini-thumb' => 'mini-thumb (100 x 100)',
+                'micro-thumb' => 'micro-thumb (75 x 75)'
+            ],
             $posts->imageSizes()
         );
     }

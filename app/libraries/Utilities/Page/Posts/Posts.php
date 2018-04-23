@@ -183,7 +183,7 @@ class Posts
     }
 
     /**
-     * @return mixed[string]
+     * @return string[string]
      */
     public function imageSizes(): array
     {
@@ -192,7 +192,7 @@ class Posts
         $return = [];
 
         foreach ($sizes as $id => $atrr) {
-            $return[$id] = "{$atrr['width']} x {$atrr['height']}";
+            $return[$id] = "{$id} ({$atrr['width']} x {$atrr['height']})";
         }
 
         return $return;
