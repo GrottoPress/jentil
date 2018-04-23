@@ -120,6 +120,27 @@ class PostsTest extends AbstractTestCase
         $this->assertSame($expected, $posts->isPagelike($post_type, $post_id));
     }
 
+    public function testImageSizes()
+    {
+        FunctionMocker::replace('wp_get_additional_image_sizes', [
+            'mini-thumb' => [
+                'width' => 100,
+                'height' => 100,
+            ],
+            'micro-thumb' => [
+                'width' => 75,
+                'height' => 75,
+            ]
+        ]);
+
+        $posts = new Posts(Stub::makeEmpty(Page::class));
+
+        $this->assertSame(
+            ['mini-thumb' => '100 x 100', 'micro-thumb' => '75 x 75'],
+            $posts->imageSizes()
+        );
+    }
+
     public function renderProvider()
     {
         return [

@@ -178,4 +178,20 @@ class Posts
 
         return $check;
     }
+
+    /**
+     * @return mixed[string]
+     */
+    public function imageSizes(): array
+    {
+        $sizes = \wp_get_additional_image_sizes();
+
+        $return = [];
+
+        foreach ($sizes as $id => $atrr) {
+            $return[$id] = "{$atrr['width']} x {$atrr['height']}";
+        }
+
+        return $return;
+    }
 }
