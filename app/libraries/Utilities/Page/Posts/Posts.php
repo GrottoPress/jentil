@@ -172,11 +172,7 @@ class Posts
             !\get_post_type_archive_link($post_type)
         );
 
-        if ('page' !== \get_option('show_on_front')) {
-            return $check;
-        }
-
-        if ($check && $post_id) {
+        if ($check && $post_id && ('page' === \get_option('show_on_front'))) {
             return ($post_id !== (int)\get_option('page_for_posts'));
         }
 
