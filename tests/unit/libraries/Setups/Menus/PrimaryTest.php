@@ -40,6 +40,6 @@ class PrimaryTest extends AbstractTestCase
         $menu->register();
 
         $register->wasCalledOnce();
-        $register->wasCalledWithOnce([['primary-menu' => 'Primary menu']]);
+        $register->wasCalledWithOnce([[$menu->id => 'Primary menu']]);
     }
 }

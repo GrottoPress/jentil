@@ -37,8 +37,8 @@ class FooterTest extends AbstractTestCase
         $register_sidebar->wasCalledOnce();
         $esc_html->wasCalledTimes(2);
         $register_sidebar->wasCalledWithOnce([[
+            'id'            => $sidebar->id,
             'name'          => 'Footer',
-            'id'            => 'footer-widget-area',
             'description'   => 'Footer',
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',

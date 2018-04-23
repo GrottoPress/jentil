@@ -37,8 +37,8 @@ class SecondaryTest extends AbstractTestCase
         $register_sidebar->wasCalledOnce();
         $esc_html->wasCalledTimes(2);
         $register_sidebar->wasCalledWithOnce([[
+            'id'            => $sidebar->id,
             'name'          => 'Secondary',
-            'id'            => 'secondary-widget-area',
             'description'   => 'Secondary',
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
