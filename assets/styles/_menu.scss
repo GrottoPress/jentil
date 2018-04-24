@@ -46,12 +46,6 @@
     .site-navigation {
         @include paragraph;
 
-        display: none;
-
-        &.show {
-            display: block;
-        }
-
         .search-wrap {
             @include paragraph;
 

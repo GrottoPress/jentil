@@ -18,6 +18,14 @@
     @include full-screen;
 }
 
+.show {
+    display: initial;
+}
+
+.hide {
+    display: none;
+}
+
 /** Toggle elements */
 
 .screen-min-small,
