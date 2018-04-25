@@ -30,6 +30,10 @@
      * Open/close sub-menu
      */
     $('.js-sub-menu-button').next('ul').hide()
+    $('.sidebar-wrap li.current-menu-ancestor > ul').show()
+    $('.sidebar-wrap li.current-menu-ancestor > .sub-menu-toggle').html(
+        `${renderCaret('up')}`
+    )
     $('.js-sub-menu-button').prev('a').on('click', (e: JQuery.Event): void => {
         if ('#' === $(e.currentTarget).attr('href')) {
             toggleSubMenu($(e.currentTarget).next('button'))
