@@ -9,12 +9,12 @@
      * Open/close mobile menu
      */
     $('.js-main-menu-button').attr('href', '#')
-    $('.js-main-menu-button').on('click', (e: JQuery.Event): void => {
+    $('.js-main-menu-button').on('click', (event: JQuery.Event): void => {
         $('.js-main-menu').slideToggle(fxDuration, (): void => {
             $('.js-main-menu').toggleClass('show hide').css({display: ''})
         })
 
-        e.preventDefault()
+        event.preventDefault()
     })
 
     /**
@@ -34,17 +34,17 @@
     $('.sidebar-wrap li.current-menu-ancestor > .sub-menu-toggle').html(
         `${renderCaret('up')}`
     )
-    $('.js-sub-menu-button').prev('a').on('click', (e: JQuery.Event): void => {
-        if ('#' === $(e.currentTarget).attr('href')) {
-            toggleSubMenu($(e.currentTarget).next('button'))
+    $('.js-sub-menu-button').prev('a').on('click', (event: JQuery.Event): void => {
+        if ('#' === $(event.currentTarget).attr('href')) {
+            toggleSubMenu($(event.currentTarget).next('button'))
 
-            e.preventDefault()
+            event.preventDefault()
         }
     })
-    $('.js-sub-menu-button').on('click', (e: JQuery.Event): void => {
-        toggleSubMenu(e.currentTarget)
+    $('.js-sub-menu-button').on('click', (event: JQuery.Event): void => {
+        toggleSubMenu(event.currentTarget)
 
-        e.preventDefault()
+        event.preventDefault()
     })
 
     function toggleSubMenu(button: JQuery | HTMLElement | EventTarget): void
