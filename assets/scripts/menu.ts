@@ -8,14 +8,16 @@
     /**
      * Open/close mobile menu
      */
-    $('.js-main-menu-button').attr('href', '#')
-    $('.js-main-menu-button').on('click', (event: JQuery.Event): void => {
-        $('.js-main-menu').slideToggle(fxDuration, (): void => {
-            $('.js-main-menu').toggleClass('show hide').css({display: ''})
-        })
+    $('.js-main-menu-button').attr('href', '#').on(
+        'click',
+        (event: JQuery.Event): void => {
+            $('.js-main-menu').slideToggle(fxDuration, (): void => {
+                $('.js-main-menu').toggleClass('show hide').css({display: ''})
+            })
 
-        event.preventDefault()
-    })
+            event.preventDefault()
+        }
+    )
 
     /**
      * Add icons to all parent menu items
@@ -31,16 +33,17 @@
      */
     $('.js-sub-menu-button').next('ul').hide()
     $('.sidebar-wrap li.current-menu-ancestor > ul').show()
-    $('.sidebar-wrap li.current-menu-ancestor > .sub-menu-toggle').html(
-        `${renderCaret('up')}`
-    )
-    $('.js-sub-menu-button').prev('a').on('click', (event: JQuery.Event): void => {
-        if ('#' === $(event.currentTarget).attr('href')) {
-            toggleSubMenu($(event.currentTarget).next('button'))
+        .siblings('.js-sub-menu-button').html(`${renderCaret('up')}`)
+    $('.js-sub-menu-button').prev('a').on(
+        'click',
+        (event: JQuery.Event): void => {
+            if ('#' === $(event.currentTarget).attr('href')) {
+                toggleSubMenu($(event.currentTarget).next('button'))
 
-            event.preventDefault()
+                event.preventDefault()
+            }
         }
-    })
+    )
     $('.js-sub-menu-button').on('click', (event: JQuery.Event): void => {
         toggleSubMenu(event.currentTarget)
 
