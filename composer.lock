@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47ca6d018f36a55f6f78f67cc834f1e6",
+    "content-hash": "c45bfc3bc847e31a17c8533db2a94f2f",
     "packages": [
         {
             "name": "aura/html",
@@ -1611,6 +1611,46 @@
             "time": "2015-06-14T21:17:01+00:00"
         },
         {
+            "name": "electrolinux/phpquery",
+            "version": "0.9.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/electrolinux/phpquery.git",
+                "reference": "6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/electrolinux/phpquery/zipball/6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a",
+                "reference": "6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "phpQuery/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobiasz Cudnik",
+                    "email": "tobiasz.cudnik@gmail.com",
+                    "homepage": "https://github.com/TobiaszCudnik",
+                    "role": "Developer"
+                },
+                {
+                    "name": "didier Belot",
+                    "role": "Packager"
+                }
+            ],
+            "description": "phpQuery is a server-side, chainable, CSS3 selector driven Document Object Model (DOM) API based on jQuery JavaScript Library",
+            "homepage": "http://code.google.com/p/phpquery/",
+            "time": "2013-03-21T12:39:33+00:00"
+        },
+        {
             "name": "facebook/webdriver",
             "version": "1.5.0",
             "source": {
@@ -2241,16 +2281,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "1.24",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "108e3f483d4d6bf5b3aeb2e9a5561b2faecb6727"
+                "reference": "4e6228f50202d63d7af89bc26a4daa5108181eb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/108e3f483d4d6bf5b3aeb2e9a5561b2faecb6727",
-                "reference": "108e3f483d4d6bf5b3aeb2e9a5561b2faecb6727",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/4e6228f50202d63d7af89bc26a4daa5108181eb5",
+                "reference": "4e6228f50202d63d7af89bc26a4daa5108181eb5",
                 "shasum": ""
             },
             "require": {
@@ -2259,6 +2299,8 @@
                 "gumlet/php-image-resize": "^1.6",
                 "lucatume/codeception-setup-local": "~1.0",
                 "lucatume/wp-browser-commons": "^1.2.5",
+                "lucatume/wp-snaphot-assertions": "~1.0",
+                "php": "^7.0",
                 "symfony/process": ">=2.7 <5.0",
                 "vlucas/phpdotenv": "^2.4",
                 "wp-cli/wp-cli": "^1.1"
@@ -2278,8 +2320,7 @@
                     "tad\\": "src\\tad"
                 },
                 "files": [
-                    "src/tad/WPBrowser/functions.php",
-                    "shims.php"
+                    "src/tad/WPBrowser/functions.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2300,7 +2341,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2018-04-17T11:14:40+00:00"
+            "time": "2018-04-26T11:42:49+00:00"
         },
         {
             "name": "lucatume/wp-browser-commons",
@@ -2346,6 +2387,50 @@
             ],
             "description": "Common libraries of the WP-Browser package.",
             "time": "2017-01-25T18:09:43+00:00"
+        },
+        {
+            "name": "lucatume/wp-snaphot-assertions",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucatume/wp-snapshot-assertions.git",
+                "reference": "b44c9716cf497f969f04dd0663bbe85917443512"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucatume/wp-snapshot-assertions/zipball/b44c9716cf497f969f04dd0663bbe85917443512",
+                "reference": "b44c9716cf497f969f04dd0663bbe85917443512",
+                "shasum": ""
+            },
+            "require": {
+                "electrolinux/phpquery": "^0.9.6",
+                "php": ">=7.0",
+                "spatie/phpunit-snapshot-assertions": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "tad\\WP\\Snapshots\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "theAverageDev (Luca Tumedei)",
+                    "email": "luca@theaveragedev.com"
+                }
+            ],
+            "description": "A set of utilities to support snapshot testing of WordPress code.",
+            "homepage": "https://github.com/lucatume/wp-snaphot-assertions",
+            "keywords": [
+                "snapshot",
+                "testing",
+                "wordpress"
+            ],
+            "time": "2018-03-10T13:04:35+00:00"
         },
         {
             "name": "mikemclin/laravel-wp-password",
@@ -4287,6 +4372,54 @@
                 "phra"
             ],
             "time": "2015-10-13T18:44:15+00:00"
+        },
+        {
+            "name": "spatie/phpunit-snapshot-assertions",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
+                "reference": "2aa4232896463e2a5eb8227172fc1b6bead01cd4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/2aa4232896463e2a5eb8227172fc1b6bead01cd4",
+                "reference": "2aa4232896463e2a5eb8227172fc1b6bead01cd4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "phpunit/phpunit": "^5.7|^6.0|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Snapshots\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Snapshot testing with PHPUnit",
+            "homepage": "https://github.com/spatie/phpunit-snapshot-assertions",
+            "keywords": [
+                "assert",
+                "phpunit",
+                "phpunit-snapshot-assertions",
+                "snapshot",
+                "spatie",
+                "testing"
+            ],
+            "time": "2018-02-02T10:27:45+00:00"
         },
         {
             "name": "symfony/browser-kit",

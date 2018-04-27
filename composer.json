@@ -33,7 +33,7 @@
     "grottopress/wordpress-suv": "^0.4"
   },
   "require-dev": {
-    "lucatume/wp-browser": "^1.21",
+    "lucatume/wp-browser": "^2.0",
     "lucatume/function-mocker": "^1.3"
   },
   "scripts": {
