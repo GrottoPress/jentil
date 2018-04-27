@@ -99,7 +99,7 @@ final class Singular extends AbstractSetup
         echo '<aside id="related-posts-wrap">';
 
         if ($heading = $related->themeMod('heading')->get()) {
-            echo '<h3 class="widget-title posts-heading">'.$heading.'</h3>';
+            echo '<h3 class="posts-heading">'.$heading.'</h3>';
         }
 
         echo $posts.'</aside>';
