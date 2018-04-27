@@ -31,7 +31,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
         ); ?>
 
         <section id="comments-list">
-            <h3 class="comments-title entry-title"><?php echo \apply_filters(
+            <h3 class="comments-title"><?php echo \apply_filters(
                 'jentil_comments_title',
                 $title
             ); ?></h3>
