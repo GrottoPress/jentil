@@ -20,7 +20,7 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.10",
     "@fortawesome/fontawesome-free-regular": "^5.0.10",
     "@fortawesome/fontawesome-free-solid": "^5.0.10",
-    "@grottopress/scss": "^0.1.12",
+    "@grottopress/scss": "^0.2.1",
     "html5shiv": "^3.7.3",
     "normalize.css": "^7.0.0",
     "respond.js": "^1.4.2"
