@@ -70,9 +70,8 @@ gulp.task('vendor', () => {
         './node_modules/@fortawesome/fontawesome-free-regular/index.js',
         './node_modules/@fortawesome/fontawesome-free-brands/index.js'
     ])
-        .pipe(concat('fontawesome.js'))
+        .pipe(concat('fontawesome.min.js'))
         .pipe(uglify())
-        .pipe(rename({'suffix' : '.min'}))
         .pipe(gulp.dest(vendor_dest))
 
     gulp.src(['./node_modules/@grottopress/scss/**'])
