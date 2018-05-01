@@ -18,7 +18,7 @@
     for (let i in jentilPageTitleModIds) {
         wp.customize(jentilPageTitleModIds[i], (value: () => void): void => {
             value.bind((to: string): void => {
-                $('#page-title').html(replaceShortTags(to))
+                $('.page-title').html(replaceShortTags(to))
             })
         })
     }
