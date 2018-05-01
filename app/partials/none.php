@@ -9,7 +9,7 @@ declare (strict_types = 1); ?>
                 '<h2 class="entry-title" itemprop="name headline">'.
                     \esc_html__('Nothing Found', 'jentil').
                 '</h2>'
-                .'<p>'.\esc_html__('Sorry, nothing here):', 'jentil').'</p>',
+                .'<p>'.\esc_html__('Sorry, nothing here 😞', 'jentil').'</p>',
                 \Jentil()->utilities->page->type
             ); ?>
         </div><!-- .entry-content -->
