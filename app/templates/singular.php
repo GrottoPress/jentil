@@ -5,7 +5,7 @@ declare (strict_types = 1);
 
 \the_post(); ?>
 
-<div class="posts-wrap show-content big singular-post">
+<div id="main-query" class="posts-wrap show-content big singular-post">
     <article data-post-id="<?php
         \the_ID();
     ?>" id="post-<?php \the_ID(); ?>" <?php
