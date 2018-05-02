@@ -68,7 +68,7 @@ class Posts extends AbstractThemeMod
             ? $defaults[$this->setting] : '';
     }
 
-     /**
+    /**
      * @return string[string]
      */
     private function ids(): array
