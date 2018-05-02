@@ -29,6 +29,7 @@ class Related extends AbstractPosts
             'image' => [
                 'size' => $this->themeMod('image')->get(),
                 'align' => $this->themeMod('image_alignment')->get(),
+                'margin' => $this->themeMod('image_margin')->get(),
             ],
             'excerpt' => [
                 'length' => $this->themeMod('excerpt')->get(),

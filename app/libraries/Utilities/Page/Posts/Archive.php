@@ -19,6 +19,7 @@ class Archive extends AbstractPosts
             'image' => [
                 'size' => $this->posts->themeMod('image')->get(),
                 'align' => $this->posts->themeMod('image_alignment')->get(),
+                'margin' => $this->posts->themeMod('image_margin')->get(),
             ],
             'excerpt' => [
                 'length' => $this->posts->themeMod('excerpt')->get(),
