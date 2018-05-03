@@ -12,6 +12,7 @@ use GrottoPress\Jentil\Utilities\Page\Posts\Related;
 use GrottoPress\Jentil\Utilities\PostTypeTemplate;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\WordPress\Posts\Posts as PostsPackage;
+use GrottoPress\WordPress\Post\Post as PostPackage;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
@@ -58,17 +59,40 @@ class SingularTest extends AbstractTestCase
 
         $singular->run();
 
-        $add_action->wasCalledOnce();
-        $add_filter->wasCalledOnce();
+        $add_action->wasCalledTimes(4);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_before_title',
+            [$singular, 'renderBeforeTitle']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_after_title',
+            [$singular, 'renderAfterTitle']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_after_content',
+            [$singular, 'renderAfterContent']
+        ]);
 
         $add_action->wasCalledWithOnce([
             'jentil_after_content',
             [$singular, 'renderRelatedPosts']
         ]);
+        
+        $add_filter->wasCalledTimes(2);
 
         $add_filter->wasCalledWithOnce([
             'body_class',
             [$singular, 'addBodyClasses']
+        ]);
+
+        $add_filter->wasCalledWithOnce([
+            'jentil_byline',
+            [$singular, 'renderByline'],
+            10,
+            3
         ]);
     }
 
@@ -168,6 +192,19 @@ class SingularTest extends AbstractTestCase
             $get_permalink->wasNotCalled();
             $get_the_title->wasNotCalled();
         }
+    }
+
+    public function testRenderByline()
+    {
+        $singular = new Singular($this->jentil);
+
+        $this->jentil->utilities
+            ->expects($this->once())->method('post')
+            ->with($this->equalTo(1));
+
+        $singular->renderByline('hello...', 1, '|');
+
+        $this->markTestIncomplete('Add spies for ->post()->info()');
     }
 
     /**

@@ -75,6 +75,7 @@ class Posts extends AbstractThemeMod
     {
         $ids = [
             'home' => 'post_post_type_posts',
+            'singular' => "singular_{$this->specific}_{$this->moreSpecific}_posts",
             'author' => 'author_posts',
             'category' => "category_{$this->moreSpecific}_taxonomy_posts",
             'date' => 'date_posts',
@@ -165,6 +166,16 @@ class Posts extends AbstractThemeMod
             $defaults['heading'] = \esc_html__('Recommended', 'jentil');
             $defaults['excerpt'] = 0;
             $defaults['number'] = ('post' === $this->specific ? 6 : 0);
+        }
+
+        if ('singular' === $this->context) {
+            if ('post' === $this->specific) {
+                $defaults['after_title'] = 'jentil_byline';
+            } else {
+                $defaults['after_title'] = '';
+            }
+
+            $defaults['after_content'] = '';
         }
 
         if (!\in_array($this->context, [

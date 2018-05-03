@@ -37,12 +37,12 @@
 
             p {
                 margin: 0;
-            }
 
-            .avatar {
-                @include float(left);
-
-                margin-right: 10px;
+                .avatar {
+                    @include float(left);
+    
+                    margin-right: 10px;
+                }
             }
         }
 

@@ -63,15 +63,16 @@ final class Singular extends AbstractSetting
         };
 
         if ($post) {
-            $this->control['label'] = \sprintf(\esc_html__(
-                'Single %1$s: %2$s',
-                'jentil'
-            ), $post_type->labels->singular_name, $post->post_title);
+            $this->control['label'] = \sprintf(
+                \esc_html__('Single %1$s: %2$s', 'jentil'),
+                $post_type->labels->singular_name,
+                $post->post_title
+            );
         } else {
-            $this->control['label'] = \sprintf(\esc_html__(
-                'Single %1$s',
-                'jentil'
-            ), $post_type->labels->name);
+            $this->control['label'] = \sprintf(
+                \esc_html__('Single %1$s', 'jentil'),
+                $post_type->labels->name
+            );
         }
     }
 }

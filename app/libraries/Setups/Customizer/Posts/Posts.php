@@ -14,7 +14,7 @@ final class Posts extends AbstractPanel
         $this->id = 'posts';
 
         $this->args['title'] = \esc_html__('Posts', 'jentil');
-        $this->args['description'] = \esc_html__('Description here', 'jentil');
+        // $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     public function add(WPCustomizer $wp_customizer)
@@ -65,6 +65,8 @@ final class Posts extends AbstractPanel
             ->page->posts->postTypes()
         ) {
             foreach ($post_types as $post_type) {
+                $sections["Singular_{$post_type->name}"] =
+                    new Singular($this, $post_type);
                 $sections["Related_{$post_type->name}"] =
                     new Related($this, $post_type);
             }

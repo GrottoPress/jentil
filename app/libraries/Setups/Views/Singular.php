@@ -10,6 +10,11 @@ final class Singular extends AbstractSetup
     public function run()
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
+        \add_filter('jentil_byline', [$this, 'renderByline'], 10, 3);
+
+        \add_action('jentil_before_title', [$this, 'renderBeforeTitle']);
+        \add_action('jentil_after_title', [$this, 'renderAfterTitle']);
+        \add_action('jentil_after_content', [$this, 'renderAfterContent']);
         \add_action('jentil_after_content', [$this, 'renderRelatedPosts']);
         // \add_action(
         //     'jentil_before_before_title',
@@ -82,6 +87,72 @@ final class Singular extends AbstractSetup
     }
 
     /**
+     * @action jentil_before_title
+     */
+    public function renderBeforeTitle()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+            'types' => \explode(
+                ',',
+                $this->app->utilities->page->posts->singular
+                    ->themeMod('before_title')->get()
+            ),
+            'separator' => $this->app->utilities->page->posts->singular
+                ->themeMod('before_title_separator')->get(),
+        ])->list()) {
+            echo '<div class="entry-meta before-title">'.$info.'</div>';
+        }
+    }
+
+    /**
+     * @action jentil_after_title
+     */
+    public function renderAfterTitle()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+            'types' => \explode(
+                ',',
+                $this->app->utilities->page->posts->singular
+                    ->themeMod('after_title')->get()
+            ),
+            'separator' => $this->app->utilities->page->posts->singular
+                ->themeMod('after_title_separator')->get(),
+        ])->list()) {
+            echo '<div class="entry-meta after-title">'.$info.'</div>';
+        }
+    }
+
+    /**
+     * @action jentil_after_content
+     */
+    public function renderAfterContent()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+            'types' => \explode(
+                ',',
+                $this->app->utilities->page->posts->singular
+                    ->themeMod('after_content')->get()
+            ),
+            'separator' => $this->app->utilities->page->posts->singular
+                ->themeMod('after_content_separator')->get(),
+        ])->list()) {
+            echo '<div class="entry-meta after-content">'.$info.'</div>';
+        }
+    }
+
+    /**
      * @action jentil_after_content
      */
     public function renderRelatedPosts()
@@ -103,5 +174,30 @@ final class Singular extends AbstractSetup
         }
 
         echo $posts.'</aside>';
+    }
+
+    /**
+     * @filter jentil_byline
+     */
+    public function renderByline(string $output, int $id, string $sep): string
+    {
+        $post = $this->app->utilities->post($id);
+
+        $output = '';
+
+        if ($avatar = $post->info(['types' => ['avatar__40']])->list()) {
+            $output .= "<p>{$avatar}</p>";
+        }
+
+        if ($author = $post->info(['types' => ['author_name']])->list()) {
+            $output .= "<p>{$author}</p>";
+        }
+
+        $output .= "<p>{$post->info([
+            'types' => ['published_date', 'comments_link'],
+            'separator' => $sep,
+        ])->list()}</p>";
+
+        return $output;
     }
 }

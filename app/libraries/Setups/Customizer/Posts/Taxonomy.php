@@ -31,8 +31,10 @@ final class Taxonomy extends AbstractSection
         }
     }
 
-    private function setThemeModArgs(WP_Taxonomy $taxonomy, WP_Term $term = null)
-    {
+    private function setThemeModArgs(
+        WP_Taxonomy $taxonomy,
+        WP_Term $term = null
+    ) {
         $this->themeModArgs['context'] = 'tax';
 
         if ('post_tag' === $taxonomy->name) {
