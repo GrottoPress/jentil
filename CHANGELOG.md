@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased 0.7.0 - 
+
+### Added
+- `.show` and `.hide` CSS classes
+- Posts customizer sections for singular posts
+
+### Changed
+- Refactor customizer to allow easily adding settings to sections other than this theme's.
+- Live preview page layout changes in the customizer without full page refresh.
+- Allow overriding theme mod defaults.
+- Convert image size customizer setting to dropdown.
+- Sidebar menus (accordion) open current menu pane on page load.
+
+### Fixed
+- Page layout metabox not showing on posts page, if no longer using static front page.
+- Posts image margin customizer setting not applied.
+
 ## 0.6.0 - 2018-04-13
 
 ### Added
