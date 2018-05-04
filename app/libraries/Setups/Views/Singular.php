@@ -181,9 +181,17 @@ final class Singular extends AbstractSetup
      */
     public function renderByline(string $output, int $id, string $sep): string
     {
-        $post = $this->app->utilities->post($id);
-
         $output = '';
+
+        if (!$this->app->utilities->page->is('singular')) {
+            return $output;
+        }
+
+        if (\get_post()->ID !== $id) {
+            return $output;
+        }
+
+        $post = $this->app->utilities->post($id);
 
         if ($avatar = $post->info(['types' => ['avatar__40']])->list()) {
             $output .= "<p>{$avatar}</p>";

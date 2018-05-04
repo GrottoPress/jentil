@@ -196,6 +196,8 @@ class SingularTest extends AbstractTestCase
 
     public function testRenderByline()
     {
+        $this->markTestIncomplete();
+
         $singular = new Singular($this->jentil);
 
         $this->jentil->utilities
@@ -203,8 +205,6 @@ class SingularTest extends AbstractTestCase
             ->with($this->equalTo(1));
 
         $singular->renderByline('hello...', 1, '|');
-
-        $this->markTestIncomplete('Add spies for ->post()->info()');
     }
 
     /**
