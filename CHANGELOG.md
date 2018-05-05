@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - `.show` and `.hide` CSS classes
+- Aliases for CSS grid classes
 - Posts customizer sections for singular posts
 
 ### Changed
