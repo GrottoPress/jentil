@@ -3,7 +3,7 @@
 (($: JQueryStatic): void => {
     'use strict'
 
-    const fxDuration = 200
+    const fxDuration: number = 200
 
     /**
      * Open/close mobile menu
