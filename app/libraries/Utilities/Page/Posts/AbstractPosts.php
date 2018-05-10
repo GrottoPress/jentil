@@ -24,9 +24,7 @@ abstract class AbstractPosts
 
     public function posts(): PostsPackage
     {
-        return $this->posts->page->utilities->posts(
-            $this->args()
-        );
+        return $this->posts->page->utilities->posts($this->args());
     }
 
     /**
