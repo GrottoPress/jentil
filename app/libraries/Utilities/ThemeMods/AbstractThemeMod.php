@@ -30,13 +30,13 @@ class AbstractThemeMod
         return \get_theme_mod($this->id, $this->default);
     }
 
-    public function update($newValue): bool
+    public function update($new_value): bool
     {
         if (!$this->id) {
             return false;
         }
 
-        return \set_theme_mod($this->id, $newValue);
+        return \set_theme_mod($this->id, $new_value);
     }
 
     public function delete()
