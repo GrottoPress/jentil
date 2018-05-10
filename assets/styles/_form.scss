@@ -2,6 +2,14 @@
  * Forms
  */
 
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; // Override normalize.css rule
+}
+
 form {
     @include paragraph;
     @include inline-block-whitespace-fix;
