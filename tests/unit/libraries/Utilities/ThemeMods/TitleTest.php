@@ -10,9 +10,9 @@ use tad\FunctionMocker\FunctionMocker;
 class TitleTest extends AbstractTestCase
 {
     /**
-     * @dataProvider getNameProvider
+     * @dataProvider getIDProvider
      */
-    public function testGetName(
+    public function testGetID(
         string $context,
         string $specific,
         int $more_specific,
@@ -24,12 +24,12 @@ class TitleTest extends AbstractTestCase
             return $text;
         });
 
-        FunctionMocker::replace('apply_filters', function (
-            string $filter,
-            array $content
-        ): array {
-            return $content;
-        });
+        FunctionMocker::replace(
+            'apply_filters',
+            function (string $name, $value) {
+                return $value;
+            }
+        );
 
         FunctionMocker::replace('wp_parse_args', function (
             array $args,
@@ -64,7 +64,7 @@ class TitleTest extends AbstractTestCase
         // $this->assertSame($expected_default, $title->default);
     }
 
-    public function getNameProvider(): array
+    public function getIDProvider(): array
     {
         return [
             'context is home' => [

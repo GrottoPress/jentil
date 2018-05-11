@@ -93,7 +93,14 @@ class Posts extends AbstractThemeMod
             return \trim($value, '_');
         }, $ids);
 
-        return $ids;
+        return \apply_filters(
+            'jentil_posts_mod_id',
+            $ids,
+            $this->setting,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
     /**
@@ -191,14 +198,13 @@ class Posts extends AbstractThemeMod
             $defaults['sticky_posts'] = 1;
         }
 
-        /**
-         * @var mixed[string] $defaults
-         */
         return \apply_filters(
             'jentil_posts_mod_default',
             $defaults,
             $this->setting,
-            $this->context
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
         );
     }
 }

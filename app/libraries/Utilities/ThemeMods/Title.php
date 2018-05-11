@@ -82,7 +82,13 @@ class Title extends AbstractThemeMod
             return \trim($value, '_');
         }, $ids);
 
-        return $ids;
+        return \apply_filters(
+            'jentil_title_mod_id',
+            $ids,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
     /**
@@ -103,9 +109,6 @@ class Title extends AbstractThemeMod
             'search' => '&ldquo;{{search_query}}&rdquo;',
         ];
 
-        /**
-         * @var mixed[string] $defaults
-         */
         return \apply_filters(
             'jentil_title_mod_default',
             $defaults,

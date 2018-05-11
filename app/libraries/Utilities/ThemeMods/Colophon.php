@@ -16,7 +16,7 @@ class Colophon extends AbstractThemeMod
     {
         $this->themeMods = $theme_mods;
 
-        $this->id = 'colophon';
+        $this->id = \apply_filters('jentil_colophon_mod_id', 'colophon');
 
         $this->default = \apply_filters(
             'jentil_colophon_mod_default',

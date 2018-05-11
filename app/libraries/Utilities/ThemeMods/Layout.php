@@ -47,11 +47,17 @@ class Layout extends AbstractThemeMod
         ]);
 
         $this->context = \sanitize_key($args['context']);
-        $this->moreSpecific = (int)$args['more_specific'];
-        $this->default = \apply_filters('jentil_layout_mod_default', 'content');
-
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
+        $this->moreSpecific = (int)$args['more_specific'];
+
+        $this->default = \apply_filters(
+            'jentil_layout_mod_default',
+            'content',
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
 
         $ids = $this->ids();
         $this->id = isset($ids[$this->context])
@@ -84,7 +90,13 @@ class Layout extends AbstractThemeMod
             return ($this->isPagelike() ? $value : \trim($value, '_'));
         }, $ids);
 
-        return $ids;
+        return \apply_filters(
+            'jentil_layout_mod_id',
+            $ids,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
     public function get(): string

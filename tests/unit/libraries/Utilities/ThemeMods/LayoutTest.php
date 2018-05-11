@@ -25,12 +25,19 @@ class LayoutTest extends AbstractTestCase
         FunctionMocker::replace('sanitize_key', function (string $key): string {
             return $key;
         });
+
+        FunctionMocker::replace(
+            'apply_filters',
+            function (string $name, $value) {
+                return $value;
+            }
+        );
     }
 
     /**
-     * @dataProvider getNameProvider
+     * @dataProvider getIDProvider
      */
-    public function testGetName(
+    public function testGetID(
         string $context,
         string $specific,
         int $more_specific,
@@ -88,12 +95,6 @@ class LayoutTest extends AbstractTestCase
         });
         FunctionMocker::replace('taxonomy_exists', true);
         FunctionMocker::replace('post_type_exists', true);
-        FunctionMocker::replace(
-            'apply_filters',
-            function (string $hook, string $value): string {
-                return $value;
-            }
-        );
 
         $theme_mods = Stub::makeEmpty(ThemeMods::class);
         $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
@@ -147,7 +148,7 @@ class LayoutTest extends AbstractTestCase
         $this->assertSame($expected, $layout->isPagelike());
     }
 
-    public function getNameProvider(): array
+    public function getIDProvider(): array
     {
         return [
             'context is home' => [
