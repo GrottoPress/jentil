@@ -64,8 +64,7 @@ class Posts extends AbstractThemeMod
             ? \sanitize_key($ids[$this->context]) : '';
 
         $defaults = $this->defaults();
-        $this->default = isset($defaults[$this->setting])
-            ? $defaults[$this->setting] : '';
+        $this->default = $defaults[$this->setting] ?? null;
     }
 
     /**
