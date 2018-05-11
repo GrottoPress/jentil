@@ -18,13 +18,11 @@ class PostTypeTemplate
     public function isPageBuilder(int $post_id = null): bool
     {
         $page_builder = [
-            $this->utilities->app->setups[
-                'PostTypeTemplates\PageBuilder'
-            ]->slug,
+            $this->utilities->app
+                ->setups['PostTypeTemplates\PageBuilder']->slug,
 
-            $this->utilities->app->setups[
-                'PostTypeTemplates\PageBuilderBlank'
-            ]->slug,
+            $this->utilities->app
+                ->setups['PostTypeTemplates\PageBuilderBlank']->slug,
         ];
 
         if ($post_id) {
