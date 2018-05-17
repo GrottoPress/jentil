@@ -21,10 +21,10 @@ final class TitleWords extends AbstractSetting
         };
 
         $this->control['label'] = \esc_html__('Title length', 'jentil');
+        $this->control['type'] = 'number';
         $this->control['description'] = \esc_html__(
-            "Number of words (or -1)",
+            "Number of words (or '-1')",
             'jentil'
         );
-        $this->control['type'] = 'number';
     }
 }
