@@ -19,7 +19,7 @@ final class CustomizePreview extends AbstractScript
     {
         \add_action('customize_preview_init', [$this, 'enqueue']);
         \add_action('customize_preview_init', [$this, 'addInlineScript']);
-        \add_action('wp_enqueue_scripts', [$this, 'addInlineScript2']);
+        \add_action('wp_enqueue_scripts', [$this, 'addFrontEndInlineScript']);
     }
 
     /**
@@ -60,14 +60,12 @@ final class CustomizePreview extends AbstractScript
 
     /**
      * ShortTags uses page-specific functions that won't work
-     * in the customizer, so we're adding this inline script after
-     * those functions are ready.
-     *
-     * And oh, sorry I run out of names :-)
+     * in the customizer, so we're adding this inline script to
+     * the front end (after those functions are ready).
      *
      * @action wp_enqueue_scripts
      */
-    public function addInlineScript2()
+    public function addFrontEndInlineScript()
     {
         $script = 'var jentilShortTags = '.\wp_json_encode(
             $this->app->utilities->shortTags->get()
