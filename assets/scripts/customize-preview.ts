@@ -5,31 +5,31 @@
 
     const customize = _wp.customize
 
-    customize(jentilColophonModId, (value: () => void): void => {
-        value.bind((to: string): void => {
+    customize(jentilColophonModId, (from: () => void): void => {
+        from.bind((to: string): void => {
             $('#colophon small').html(replaceShortTags(to))
         })
     })
 
     $.each(jentilPageTitleModIds, (i: number, id: string): void => {
-        customize(id, (value: () => void): void => {
-            value.bind((to: string): void => {
+        customize(id, (from: () => void): void => {
+            from.bind((to: string): void => {
                 $('.page-title').html(replaceShortTags(to))
             })
         })
     })
 
     $.each(jentilRelatedPostsHeadingModIds, (i: number, id: string): void => {
-        customize(id, (value: () => void): void => {
-            value.bind((to: string): void => {
+        customize(id, (from: () => void): void => {
+            from.bind((to: string): void => {
                 $('#related-posts-wrap .posts-heading').html(to)
             })
         })
     })
 
     $.each(jentilPageLayoutModIds, (i: number, id: string): void => {
-        customize(id, (value: () => void): void => {
-            value.bind((to: string): void => {
+        customize(id, (from: () => void): void => {
+            from.bind((to: string): void => {
                 $('body').attr('class', (i: number, c: string): string =>
                     c.replace(/(^|\s)layout\-\S+/g, '')
                 ).addClass(`layout-${to} layout-columns-${to.split('-').length}`)
