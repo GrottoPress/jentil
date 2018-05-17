@@ -33,7 +33,7 @@ final class CustomizePreview extends AbstractScript
                 'url',
                 '/dist/scripts/customize-preview.min.js'
             ),
-            ['jquery', 'customize-preview'],
+            ['customize-preview'],
             '',
             true
         );

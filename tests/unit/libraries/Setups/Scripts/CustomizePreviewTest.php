@@ -73,7 +73,7 @@ class CustomizePreviewTest extends AbstractTestCase
         $wp_enqueue_script->wasCalledWithOnce([
             $script->id,
             'http://my.site/dist/scripts/customizer.js',
-            ['jquery', 'customize-preview'],
+            ['customize-preview'],
             '',
             true
         ]);
