@@ -42,8 +42,21 @@ abstract class AbstractPanel
     }
 
     /**
+     * Get panel, if already added
+     */
+    public function get(WPCustomizer $wp_customizer)
+    {
+        if (!$this->id) {
+            return;
+        }
+
+        return $wp_customizer->get_panel($this->id);
+    }
+
+    /**
      * Be sure to set $this->sections HERE, in the child class.
-     * Doing that in the constructor would be too early; it won't work.
+     * Doing that in the constructor may be too early; it mighty
+     * not work.
      */
     public function add(WPCustomizer $wp_customizer)
     {

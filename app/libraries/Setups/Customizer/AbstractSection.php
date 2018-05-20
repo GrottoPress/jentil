@@ -44,8 +44,21 @@ abstract class AbstractSection
     }
 
     /**
+     * Get section, if already added
+     */
+    public function get(WPCustomizer $wp_customizer)
+    {
+        if (!$this->id) {
+            return;
+        }
+
+        return $wp_customizer->get_section($this->id);
+    }
+
+    /**
      * Be sure to set $this->settings here, in the child class.
-     * Doing so in the constructor would be too early; it won't work.
+     * Doing so in the constructor may be too early; it mighty
+     * not work.
      */
     public function add(WPCustomizer $wp_customizer)
     {
