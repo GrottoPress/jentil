@@ -15,12 +15,12 @@ final class Taxonomy extends AbstractSection
     ) {
         parent::__construct($posts);
 
-        $this->setName($taxonomy, $term);
+        $this->setID($taxonomy, $term);
         $this->setThemeModArgs($taxonomy, $term);
         $this->setArgs($taxonomy, $term);
     }
 
-    private function setName(WP_Taxonomy $taxonomy, WP_Term $term = null)
+    private function setID(WP_Taxonomy $taxonomy, WP_Term $term = null)
     {
         if ($term) {
             $this->id = \sanitize_key(

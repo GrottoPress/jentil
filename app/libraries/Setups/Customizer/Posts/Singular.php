@@ -13,12 +13,12 @@ final class Singular extends AbstractSection
     ) {
         parent::__construct($posts);
 
-        $this->setName($post_type, $post);
+        $this->setID($post_type, $post);
         $this->setThemeModArgs($post_type, $post);
         $this->setArgs($post_type, $post);
     }
 
-    private function setName(WP_Post_Type $post_type, WP_Post $post = null)
+    private function setID(WP_Post_Type $post_type, WP_Post $post = null)
     {
         if ($post) {
             $this->id = \sanitize_key(
