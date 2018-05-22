@@ -71,6 +71,9 @@ abstract class AbstractPanel
         }
     }
 
+    /**
+     * Remove panel, if already added
+     */
     public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {

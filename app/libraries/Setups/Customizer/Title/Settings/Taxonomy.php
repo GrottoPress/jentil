@@ -22,8 +22,6 @@ final class Taxonomy extends AbstractSetting
         $this->id = $theme_mod->id;
 
         $this->args['default'] = $theme_mod->default;
-
-        $this->setControl($taxonomy, $term);
     }
 
     private function getThemeMod(
@@ -50,45 +48,5 @@ final class Taxonomy extends AbstractSetting
             'context' => $mod_context,
             'specific' => $taxonomy->name
         ]);
-    }
-
-    private function setControl(WP_Taxonomy $taxonomy, WP_Term $term = null)
-    {
-        $this->control['active_callback'] = function () use (
-            $taxonomy,
-            $term
-        ): bool {
-            $page = $this->customizer->app->utilities->page;
-
-            if ($term) {
-                return (
-                    $page->is('tag', $term->term_id) ||
-                    $page->is('category', $term->term_id) ||
-                    $page->is('tax', $taxonomy, $term->term_id)
-                );
-            }
-
-            if ('post_tag' === $taxonomy->name) {
-                return $page->is('tag');
-            }
-
-            if ('category' === $taxonomy->name) {
-                return $page->is('category');
-            }
-
-            return $page->is('tax', $taxonomy->name);
-        };
-
-        if ($term) {
-            $this->control['label'] = \sprintf(\esc_html__(
-                '%1$s Archive: %2$s',
-                'jentil'
-            ), $taxonomy->labels->singular_name, $term->name);
-        } else {
-            $this->control['label'] = \sprintf(\esc_html__(
-                '%1$s Archives',
-                'jentil'
-            ), $taxonomy->labels->singular_name);
-        }
     }
 }

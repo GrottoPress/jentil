@@ -20,15 +20,15 @@ final class Search extends AbstractSection
         };
     }
 
-    /**
-     * @return Settings\AbstractSetting[string]
-     */
-    protected function settings(): array
+    protected function settings()
     {
-        $settings = parent::settings();
+        parent::setSettings();
 
-        unset($settings['StickyPosts'], $settings['Heading']);
-
-        return $settings;
+        unset(
+            $this->settings['StickyPosts'],
+            $this->controls['StickyPosts'],
+            $this->settings['Heading'],
+            $this->controls['Heading']
+        );
     }
 }

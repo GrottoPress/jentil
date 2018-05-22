@@ -17,12 +17,5 @@ final class Layout extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
-
-        $this->control['label'] = \esc_html__('Layout', 'jentil');
-        $this->control['type'] = 'select';
-        $this->control['choices'] = [
-            'stack' => \esc_html__('Stack', 'jentil'),
-            'grid' => \esc_html__('Grid', 'jentil'),
-        ];
     }
 }

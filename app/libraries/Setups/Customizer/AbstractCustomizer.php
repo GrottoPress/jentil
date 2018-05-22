@@ -24,6 +24,11 @@ abstract class AbstractCustomizer extends AbstractSetup
     protected $settings = [];
 
     /**
+     * @var AbstractControl[string]
+     */
+    protected $controls = [];
+
+    /**
      * @return AbstractPanel[string]
      */
     protected function getPanels(): array
@@ -48,9 +53,17 @@ abstract class AbstractCustomizer extends AbstractSetup
     }
 
     /**
-     * Be sure to set `$this->panels`, `$this->sections` and
-     * `$this->settings` HERE, in the child class. Doing so
-     * in the constructor may be too early; it mighty not work.
+     * @return AbstractControl[string]
+     */
+    protected function getControls(): array
+    {
+        return $this->controls;
+    }
+
+    /**
+     * Be sure to set `$this->panels`, `$this->sections`,
+     * `$this->settings`, `$this->controls` HERE, in the child class.
+     * Doing so in the constructor may be too early; it mighty not work.
      *
      * @action customize_register
      */
@@ -59,6 +72,7 @@ abstract class AbstractCustomizer extends AbstractSetup
         $this->addPanels($wp_customizer);
         $this->addSections($wp_customizer);
         $this->addSettings($wp_customizer);
+        $this->addControls($wp_customizer);
     }
 
     private function addPanels(WPCustomizer $wp_customizer)
@@ -79,6 +93,13 @@ abstract class AbstractCustomizer extends AbstractSetup
     {
         foreach ($this->settings as $setting) {
             $setting->add($wp_customizer);
+        }
+    }
+
+    private function addControls(WPCustomizer $wp_customizer)
+    {
+        foreach ($this->controls as $control) {
+            $control->add($wp_customizer);
         }
     }
 }

@@ -17,10 +17,5 @@ final class Image extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
-
-        $this->control['label'] = \esc_html__('Image size', 'jentil');
-        $this->control['type'] = 'select';
-        $this->control['choices'] = $this->customizer->app
-            ->utilities->page->posts->imageSizes();
     }
 }

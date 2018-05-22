@@ -19,12 +19,5 @@ final class Excerpt extends AbstractSetting
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };
-
-        $this->control['label'] = \esc_html__('Excerpt', 'jentil');
-        $this->control['type'] = 'number';
-        $this->control['description'] = \esc_html__(
-            "Number of words (or '-1', '-2')",
-            'jentil'
-        );
     }
 }

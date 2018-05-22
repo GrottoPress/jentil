@@ -19,8 +19,6 @@ abstract class AbstractSetting extends Setting
         $this->section = $section;
 
         parent::__construct($this->section->customizer);
-
-        $this->control['section'] = $this->section->id;
     }
 
     protected function themeMod(string $setting): PostsMod

@@ -19,27 +19,22 @@ final class Posts extends AbstractPanel
 
     public function add(WPCustomizer $wp_customizer)
     {
-        $this->sections = $this->sections();
+        $this->setSections();
 
         parent::add($wp_customizer);
     }
 
-    /**
-     * @return AbstractSection[string]
-     */
-    private function sections(): array
+    private function setSections()
     {
-        $sections = [];
-
-        $sections['Author'] = new Author($this);
-        $sections['Date'] = new Date($this);
-        $sections['Search'] = new Search($this);
+        $this->sections['Author'] = new Author($this);
+        $this->sections['Date'] = new Date($this);
+        $this->sections['Search'] = new Search($this);
 
         if ($taxonomies = $this->customizer->app->utilities
             ->page->posts->taxonomies()
         ) {
             foreach ($taxonomies as $taxonomy) {
-                $sections["Taxonomy_{$taxonomy->name}"] = new Taxonomy(
+                $this->sections["Taxonomy_{$taxonomy->name}"] = new Taxonomy(
                     $this,
                     $taxonomy
                 );
@@ -50,11 +45,11 @@ final class Posts extends AbstractPanel
             ->page->posts->archive->postTypes()
         ) {
             foreach ($post_types as $post_type) {
-                $sections["Sticky_{$post_type->name}"] = new Sticky(
+                $this->sections["Sticky_{$post_type->name}"] = new Sticky(
                     $this,
                     $post_type
                 );
-                $sections["PostType_{$post_type->name}"] = new PostType(
+                $this->sections["PostType_{$post_type->name}"] = new PostType(
                     $this,
                     $post_type
                 );
@@ -65,13 +60,11 @@ final class Posts extends AbstractPanel
             ->page->posts->postTypes()
         ) {
             foreach ($post_types as $post_type) {
-                $sections["Singular_{$post_type->name}"] =
+                $this->sections["Singular_{$post_type->name}"] =
                     new Singular($this, $post_type);
-                $sections["Related_{$post_type->name}"] =
+                $this->sections["Related_{$post_type->name}"] =
                     new Related($this, $post_type);
             }
         }
-
-        return $sections;
     }
 }

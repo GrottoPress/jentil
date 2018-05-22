@@ -17,11 +17,5 @@ final class AfterContentSeparator extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
-
-        $this->control['label'] = \esc_html__(
-            'After content separator',
-            'jentil'
-        );
-        $this->control['type'] = 'text';
     }
 }

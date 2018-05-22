@@ -75,35 +75,49 @@ final class Singular extends AbstractSection
         }
     }
 
-    /**
-     * @return Settings\AbstractSetting[string]
-     */
-    protected function settings(): array
+    protected function setSettings()
     {
-        $settings = parent::settings();
+        parent::setSettings();
 
         unset(
-            $settings['StickyPosts'],
-            $settings['Heading'],
-            $settings['Number'],
-            $settings['WrapClass'],
-            $settings['WrapClass'],
-            $settings['Layout'],
-            $settings['TitleWords'],
-            $settings['TitlePosition'],
-            $settings['Excerpt'],
-            $settings['Image'],
-            $settings['ImageAlignment'],
-            $settings['ImageMargin'],
-            $settings['TextOffset'],
-            $settings['MoreText'],
-            $settings['Pagination'],
-            $settings['PaginationMaximum'],
-            $settings['PaginationPosition'],
-            $settings['PaginationPreviousText'],
-            $settings['PaginationNextText']
+            $this->settings['StickyPosts'],
+            $this->controls['StickyPosts'],
+            $this->settings['Heading'],
+            $this->controls['Heading'],
+            $this->settings['Number'],
+            $this->controls['Number'],
+            $this->settings['WrapClass'],
+            $this->controls['WrapClass'],
+            $this->settings['WrapTag'],
+            $this->controls['WrapTag'],
+            $this->settings['Layout'],
+            $this->controls['Layout'],
+            $this->settings['TitleWords'],
+            $this->controls['TitleWords'],
+            $this->settings['TitlePosition'],
+            $this->controls['TitlePosition'],
+            $this->settings['Excerpt'],
+            $this->controls['Excerpt'],
+            $this->settings['Image'],
+            $this->controls['Image'],
+            $this->settings['ImageAlignment'],
+            $this->controls['ImageAlignment'],
+            $this->settings['ImageMargin'],
+            $this->controls['ImageMargin'],
+            $this->settings['TextOffset'],
+            $this->controls['TextOffset'],
+            $this->settings['MoreText'],
+            $this->controls['MoreText'],
+            $this->settings['Pagination'],
+            $this->controls['Pagination'],
+            $this->settings['PaginationMaximum'],
+            $this->controls['PaginationMaximum'],
+            $this->settings['PaginationPosition'],
+            $this->controls['PaginationPosition'],
+            $this->settings['PaginationPreviousText'],
+            $this->controls['PaginationPreviousText'],
+            $this->settings['PaginationNextText'],
+            $this->controls['PaginationNextText']
         );
-
-        return $settings;
     }
 }

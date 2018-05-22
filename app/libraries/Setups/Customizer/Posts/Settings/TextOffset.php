@@ -17,12 +17,5 @@ final class TextOffset extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'absint';
-
-        $this->control['label'] = \esc_html__('Text offset', 'jentil');
-        $this->control['description'] = \esc_html__(
-            'From image align side (px)',
-            'jentil'
-        );
-        $this->control['type'] = 'number';
     }
 }

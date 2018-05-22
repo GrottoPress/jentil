@@ -19,8 +19,5 @@ final class PaginationMaximum extends AbstractSetting
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };
-
-        $this->control['label'] = \esc_html__('Maximum pagination', 'jentil');
-        $this->control['type'] = 'number';
     }
 }

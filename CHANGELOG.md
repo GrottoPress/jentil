@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Refactor customizer to allow easily adding settings to sections other than this theme's.
+- Separate out customizer controls into their own classes
 - Live preview page layout changes in the customizer without full page refresh.
 - Allow overriding theme mod defaults.
 - Convert image size customizer setting to dropdown.

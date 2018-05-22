@@ -16,10 +16,5 @@ final class Author extends AbstractSetting
         $this->id = $theme_mod->id;
 
         $this->args['default'] = $theme_mod->default;
-
-        $this->control['label'] = \esc_html__('Author Archives', 'jentil');
-        $this->control['active_callback'] = function (): bool {
-            return $this->customizer->app->utilities->page->is('author');
-        };
     }
 }

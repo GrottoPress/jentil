@@ -17,8 +17,5 @@ final class StickyPosts extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'absint';
-
-        $this->control['label'] = \esc_html__('Show sticky posts?', 'jentil');
-        $this->control['type'] = 'checkbox';
     }
 }

@@ -16,10 +16,5 @@ final class Search extends AbstractSetting
         $this->id = $theme_mod->id;
 
         $this->args['default'] = $theme_mod->default;
-
-        $this->control['label'] = \esc_html__('Search Results', 'jentil');
-        $this->control['active_callback'] = function (): bool {
-            return $this->customizer->app->utilities->page->is('search');
-        };
     }
 }

@@ -20,11 +20,6 @@ abstract class AbstractSetting
      */
     protected $args = [];
 
-    /**
-     * @var mixed[string]
-     */
-    protected $control = [];
-
     public function __construct(AbstractCustomizer $customizer)
     {
         $this->customizer = $customizer;
@@ -49,9 +44,11 @@ abstract class AbstractSetting
         }
 
         $wp_customizer->add_setting($this->id, $this->args);
-        $wp_customizer->add_control($this->id, $this->control);
     }
 
+    /**
+     * Remove setting, if already added
+     */
     public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {

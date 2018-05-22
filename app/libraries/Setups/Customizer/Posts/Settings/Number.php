@@ -19,8 +19,5 @@ final class Number extends AbstractSetting
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };
-
-        $this->control['label'] = \esc_html__('Number of posts', 'jentil');
-        $this->control['type'] = 'number';
     }
 }

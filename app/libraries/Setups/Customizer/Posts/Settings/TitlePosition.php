@@ -17,16 +17,5 @@ final class TitlePosition extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
-
-        $this->control['label'] = \esc_html__('Title position', 'jentil');
-        $this->control['description'] = \esc_html__(
-            'Relative to image',
-            'jentil'
-        );
-        $this->control['type'] = 'select';
-        $this->control['choices'] = [
-            'side' => \esc_html__('Side', 'jentil'),
-            'top' => \esc_html__('Top', 'jentil'),
-        ];
     }
 }

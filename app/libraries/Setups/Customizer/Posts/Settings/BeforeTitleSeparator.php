@@ -17,11 +17,5 @@ final class BeforeTitleSeparator extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
-
-        $this->control['label'] = \esc_html__(
-            'Before title separator',
-            'jentil'
-        );
-        $this->control['type'] = 'text';
     }
 }

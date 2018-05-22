@@ -15,12 +15,6 @@ abstract class AbstractSetting extends Setting
 
         $this->args['sanitize_callback'] = 'sanitize_title';
         $this->args['transport'] = 'postMessage';
-
-        $this->control['section'] = $layout->id;
-        $this->control['label'] = \esc_html__('Select layout', 'jentil');
-        $this->control['type'] = 'select';
-        $this->control['choices'] = $this->customizer->app
-            ->utilities->page->layouts->IDs();
     }
 
     /**

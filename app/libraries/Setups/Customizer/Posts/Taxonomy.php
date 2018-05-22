@@ -87,15 +87,13 @@ final class Taxonomy extends AbstractSection
         }
     }
 
-    /**
-     * @return Settings\AbstractSetting[string]
-     */
-    protected function settings(): array
+    protected function setSettings()
     {
-        $settings = parent::settings();
+        parent::setSettings();
 
-        unset($settings['StickyPosts'], $settings['Heading']);
-
-        return $settings;
+        unset(
+            $this->settings['StickyPosts'],
+            $this->settings['Heading']
+        );
     }
 }

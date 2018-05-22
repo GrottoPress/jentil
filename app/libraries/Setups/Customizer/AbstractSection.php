@@ -25,6 +25,11 @@ abstract class AbstractSection
      */
     protected $settings = [];
 
+    /**
+     * @var AbstractControl[string]
+     */
+    protected $controls = [];
+
     public function __construct(AbstractCustomizer $customizer)
     {
         $this->customizer = $customizer;
@@ -44,6 +49,14 @@ abstract class AbstractSection
     }
 
     /**
+     * @return AbstractControl[string]
+     */
+    protected function getControls(): array
+    {
+        return $this->controls;
+    }
+
+    /**
      * Get section, if already added
      */
     public function get(WPCustomizer $wp_customizer)
@@ -56,9 +69,9 @@ abstract class AbstractSection
     }
 
     /**
-     * Be sure to set $this->settings here, in the child class.
-     * Doing so in the constructor may be too early; it mighty
-     * not work.
+     * Be sure to set $this->settings, $this->controls, here,
+     * in the child class. Doing so in the constructor may be too early;
+     * it mighty not work.
      */
     public function add(WPCustomizer $wp_customizer)
     {
@@ -71,8 +84,15 @@ abstract class AbstractSection
         foreach ($this->settings as $setting) {
             $setting->add($wp_customizer);
         }
+
+        foreach ($this->controls as $control) {
+            $control->add($wp_customizer);
+        }
     }
 
+    /**
+     * Remove section, if already added
+     */
     public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
