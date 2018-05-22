@@ -3,7 +3,7 @@
 ((_wp: WP, $: JQueryStatic): void => {
     'use strict'
 
-    const customize = _wp.customize
+    const { customize } = _wp
 
     customize(jentilColophonModId, (from: () => void): void => {
         from.bind((to: string): void => {
