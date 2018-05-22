@@ -55,6 +55,6 @@ abstract class AbstractControl
             return;
         }
 
-        $wp_customizer->remove_conotrol($this->id);
+        $wp_customizer->remove_control($this->id);
     }
 }
