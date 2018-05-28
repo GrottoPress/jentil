@@ -11,12 +11,4 @@
     &:empty {
         display: none;
     }
-
-    .search-wrap {
-        @include paragraph;
-    }
-
-    .form.search {
-        margin: 0;
-    }
 }
