@@ -115,7 +115,7 @@
             }
 
             ul {
-                @include position(absolute, 22 null null 0);
+                @include position(absolute);
 
                 width: 200px;
                 margin: 0;
@@ -124,7 +124,7 @@
 
                 ul {
                     top: 0;
-                    left: 200px;
+                    left: 100%;
                 }
             }
         }
