@@ -11,7 +11,7 @@ final class Image extends AbstractControl
     {
         parent::__construct($section);
 
-        $this->id = $secion->settings['Image']->id;
+        $this->id = $section->settings['Image']->id;
 
         $this->args['label'] = \esc_html__('Image size', 'jentil');
         $this->args['type'] = 'select';
