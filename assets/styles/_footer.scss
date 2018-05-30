@@ -31,7 +31,7 @@
         .widget-area {
             @include grid((
                 v-margin: 'bottom',
-                width: 25%,
+                width: 33.33%,
                 columns: '.widget',
             ));
         }
