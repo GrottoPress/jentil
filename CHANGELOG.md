@@ -18,10 +18,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Allow overriding theme mod defaults.
 - Convert image size customizer setting to dropdown.
 - Sidebar menus (accordion) open current menu pane on page load.
+- Reduce number of columns in footer widget area to 3
 
 ### Fixed
 - Page layout metabox not showing on posts page, if no longer using static front page.
 - Posts image margin customizer setting not applied.
+
+### Removed
+- WooCommerce: Singular post views
+- WooCommerce: Posts customizer sections
 
 ## 0.6.0 - 2018-04-13
 

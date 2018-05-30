@@ -10,6 +10,8 @@ use GrottoPress\Jentil\Setups\Customizer\AbstractCustomizer;
 use GrottoPress\Jentil\Setups\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
+use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\Jentil\Utilities\Page\Page;
 use tad\FunctionMocker\FunctionMocker;
 
 class WooCommerceTest extends AbstractTestCase
@@ -22,7 +24,7 @@ class WooCommerceTest extends AbstractTestCase
 
         $woo_commerce->run();
 
-        $add_action->wasCalledTimes(2);
+        $add_action->wasCalledTimes(3);
 
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
@@ -33,6 +35,11 @@ class WooCommerceTest extends AbstractTestCase
             'customize_register',
             [$woo_commerce, 'removeCustomizerItems'],
             20
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'wp',
+            [$woo_commerce, 'removeSingularViews']
         ]);
     }
 
@@ -75,6 +82,30 @@ class WooCommerceTest extends AbstractTestCase
                                 AbstractSection::class,
                                 ['remove' => true]
                             ),
+                            'Related_product' => Stub::makeEmpty(
+                                AbstractSection::class,
+                                ['remove' => true]
+                            ),
+                            'Singular_product' => Stub::makeEmpty(
+                                AbstractSection::class,
+                                ['remove' => true]
+                            ),
+                            'Related_page' => Stub::makeEmpty(
+                                AbstractSection::class,
+                                ['get' => function () {
+                                    return new class {
+                                        public $active_callback = true;
+                                    };
+                                }]
+                            ),
+                            'Singular_page' => Stub::makeEmpty(
+                                AbstractSection::class,
+                                ['get' => function () {
+                                    return new class {
+                                        public $active_callback = true;
+                                    };
+                                }]
+                            ),
                         ]]
                     )],
                     'sections' => ['Title\Title' => Stub::makeEmpty(
@@ -110,6 +141,62 @@ class WooCommerceTest extends AbstractTestCase
                 ->with($this->equalTo($wp_customizer));
         }
 
+        $jentil->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Related_product']
+            ->expects($this->once())->method('remove')
+            ->with($this->equalTo($wp_customizer));
+
+        $jentil->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Singular_product']
+            ->expects($this->once())->method('remove')
+            ->with($this->equalTo($wp_customizer));
+
         $woo_commerce->removeCustomizerItems($wp_customizer);
+    }
+
+    public function testRemoveSingularViews()
+    {
+        $this->getMockBuilder('WooCommerce')->getMock();
+
+        $remove_action = FunctionMocker::replace('remove_action');
+        $get_option = FunctionMocker::replace('get_option', 111);
+
+        $jentil = Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => ['Views\Singular' => true],
+            'utilities' => Stub::makeEmpty(Utilities::class),
+        ]);
+
+        $jentil->utilities->page = Stub::makeEmpty(Page::class, [
+            'is' => function (string $type, string $subtype): bool {
+                return ($type === 'singular' && $subtype === 'product') ||
+                    ($type === 'page' && $subtype === 111);
+            }
+        ]);
+
+        $woo_commerce = new WooCommerce($jentil);
+
+        $woo_commerce->removeSingularViews();
+
+        $remove_action->wasCalledTimes(4);
+
+        $remove_action->wasCalledWithOnce([
+            'jentil_before_title',
+            [$jentil->setups['Views\Singular'], 'renderPostsBeforeTitle'],
+        ]);
+
+        $remove_action->wasCalledWithOnce([
+            'jentil_after_title',
+            [$jentil->setups['Views\Singular'], 'renderPostsAfterTitle'],
+        ]);
+
+        $remove_action->wasCalledWithOnce([
+            'jentil_after_content',
+            [$jentil->setups['Views\Singular'], 'renderPostsAfterContent'],
+        ]);
+
+        $remove_action->wasCalledWithOnce([
+            'jentil_after_content',
+            [$jentil->setups['Views\Singular'], 'renderRelatedPosts'],
+        ]);
     }
 }
