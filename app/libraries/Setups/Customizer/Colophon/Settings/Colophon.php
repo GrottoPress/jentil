@@ -18,7 +18,7 @@ final class Colophon extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['transport'] = 'postMessage';
-        $this->args['sanitize_callback'] = function (string $value): string {
+        $this->args['sanitize_callback'] = function ($value): string {
             return \wp_kses($value, 'pre_user_description');
         };
     }
