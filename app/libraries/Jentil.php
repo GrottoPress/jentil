@@ -12,20 +12,11 @@ final class Jentil extends AbstractTheme
      */
     private $utilities = null;
 
-    /**
-     * Theme Name
-     */
     const NAME = 'Jentil';
 
-    /**
-     * Theme website URL
-     */
-    const WEBSITE = 'https://www.grottopress.com/jentil/';
+    const URI = 'https://www.grottopress.com/jentil/';
 
-    /**
-     * Theme documentation URL
-     */
-    const DOCUMENTATION = 'https://www.grottopress.com/jentil/';
+    const DOCS_URI = 'https://www.grottopress.com/jentil/';
 
     protected function __construct()
     {

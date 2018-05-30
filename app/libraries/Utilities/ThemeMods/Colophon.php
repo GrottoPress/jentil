@@ -27,7 +27,7 @@ class Colophon extends AbstractThemeMod
                 ),
                 '<span itemprop="copyrightYear">{{this_year}}</span>',
                 '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>',
-                '<em><a itemprop="url" rel="nofollow" href="'.Jentil::WEBSITE.'">'.Jentil::NAME.'</a></em>',
+                '<em><a itemprop="url" rel="nofollow" href="'.Jentil::URI.'">'.Jentil::NAME.'</a></em>',
                 '<a itemprop="url" rel="nofollow" href="https://wordpress.org">WordPress</a>.'
             )
         );
