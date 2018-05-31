@@ -63,17 +63,17 @@ class SingularTest extends AbstractTestCase
 
         $add_action->wasCalledWithOnce([
             'jentil_before_title',
-            [$singular, 'renderBeforeTitle']
+            [$singular, 'renderPostsBeforeTitle']
         ]);
 
         $add_action->wasCalledWithOnce([
             'jentil_after_title',
-            [$singular, 'renderAfterTitle']
+            [$singular, 'renderPostsAfterTitle']
         ]);
 
         $add_action->wasCalledWithOnce([
             'jentil_after_content',
-            [$singular, 'renderAfterContent']
+            [$singular, 'renderPostsAfterContent']
         ]);
 
         $add_action->wasCalledWithOnce([

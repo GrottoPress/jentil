@@ -12,9 +12,9 @@ final class Singular extends AbstractSetup
         \add_filter('body_class', [$this, 'addBodyClasses']);
         \add_filter('jentil_byline', [$this, 'renderByline'], 10, 3);
 
-        \add_action('jentil_before_title', [$this, 'renderBeforeTitle']);
-        \add_action('jentil_after_title', [$this, 'renderAfterTitle']);
-        \add_action('jentil_after_content', [$this, 'renderAfterContent']);
+        \add_action('jentil_before_title', [$this, 'renderPostsBeforeTitle']);
+        \add_action('jentil_after_title', [$this, 'renderPostsAfterTitle']);
+        \add_action('jentil_after_content', [$this, 'renderPostsAfterContent']);
         \add_action('jentil_after_content', [$this, 'renderRelatedPosts']);
         // \add_action(
         //     'jentil_before_before_title',
@@ -89,7 +89,7 @@ final class Singular extends AbstractSetup
     /**
      * @action jentil_before_title
      */
-    public function renderBeforeTitle()
+    public function renderPostsBeforeTitle()
     {
         if (!$this->app->utilities->page->is('singular')) {
             return;
@@ -111,7 +111,7 @@ final class Singular extends AbstractSetup
     /**
      * @action jentil_after_title
      */
-    public function renderAfterTitle()
+    public function renderPostsAfterTitle()
     {
         if (!$this->app->utilities->page->is('singular')) {
             return;
@@ -133,7 +133,7 @@ final class Singular extends AbstractSetup
     /**
      * @action jentil_after_content
      */
-    public function renderAfterContent()
+    public function renderPostsAfterContent()
     {
         if (!$this->app->utilities->page->is('singular')) {
             return;
