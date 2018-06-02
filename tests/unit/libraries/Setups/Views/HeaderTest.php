@@ -51,6 +51,9 @@ class HeaderTest extends AbstractTestCase
         $get_search_form->wasCalledOnce();
         $esc_html->wasCalledOnce();
         $wp_nav_menu->wasCalledOnce();
-        $wp_nav_menu->wasCalledWithOnce([['theme_location' => 'primary']]);
+        $wp_nav_menu->wasCalledWithOnce([[
+            'theme_location' => 'primary',
+            'fallback_cb' => false,
+        ]]);
     }
 }
