@@ -58,6 +58,7 @@ final class Header extends AbstractSetup
 
             \wp_nav_menu([
                 'theme_location' => $this->app->setups['Menus\Primary']->id,
+                'fallback_cb' => false,
             ]);
         echo '</nav>';
     }
