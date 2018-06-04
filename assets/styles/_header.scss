@@ -3,10 +3,10 @@
  */
 
 #header {
-    @include paragraph;
+    @include paragraph(map-get($jentil-gutter, normal));
     @include hobbit;
 
-    padding-top: map-get($jentil-gutter, normal);
+    padding-top: 20px;
 
     &:empty {
         display: none;

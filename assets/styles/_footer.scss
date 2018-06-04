@@ -3,15 +3,11 @@
  */
 
 #footer {
-    @include paragraph;
+    @include paragraph(map-get($jentil-gutter, normal));
     @include hobbit;
 
     padding-bottom: 10px;
     margin-bottom: 0;
-
-    .widget:last-child {
-        margin-bottom: map-get($jentil-gutter, normal);
-    }
 }
 
 #colophon {
@@ -30,14 +26,9 @@
     #footer {
         .widget-area {
             @include grid((
-                v-margin: 'bottom',
                 width: 33.33%,
                 columns: '.widget',
             ));
-        }
-
-        .widget {
-            margin-top: 0;
         }
     }
 }

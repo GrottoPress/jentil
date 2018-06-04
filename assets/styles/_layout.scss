@@ -7,21 +7,21 @@
 }
 
 #main {
-    @include paragraph;
+    @include paragraph(map-get($jentil-gutter, normal));
     @include clearfix;
 
     &:first-child {
-        padding-top: map-get($jentil-gutter, normal);
+        padding-top: 20px;
     }
 
     &:last-child {
-        padding-bottom: map-get($jentil-gutter, normal);
+        padding-bottom: 20px;
     }
 }
 
 #content-wrap,
 .sidebar-wrap {
-    @include paragraph;
+    @include paragraph(map-get($jentil-gutter, normal));
 }
 
 /** One Column */
