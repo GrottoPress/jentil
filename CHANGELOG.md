@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Convert image size customizer setting to dropdown.
 - Sidebar menus (accordion) open current menu pane on page load.
 - Reduce number of columns in footer widget area to 3
+- Increase max page width for wide screens to 1000px
 
 ### Fixed
 - Page layout metabox not showing on posts page, if no longer using static front page.

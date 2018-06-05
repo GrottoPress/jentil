@@ -40,7 +40,7 @@
 
 @media (min-width: map-get($jentil-breakpoint, medium)) {
     #wrap {
-        max-width: 960px;
+        max-width: map-get($jentil-breakpoint, wide);
     }
 
     #content-wrap,
