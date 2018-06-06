@@ -101,7 +101,7 @@ final class Layout extends AbstractMetaBox
                     'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.',
                     'jentil'
                 ),
-                Jentil::DOCS_URI
+                Jentil::DOC_URI
             ).'</p>',
         ];
     }

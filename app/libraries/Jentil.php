@@ -16,7 +16,7 @@ final class Jentil extends AbstractTheme
 
     const URI = 'https://www.grottopress.com/jentil/';
 
-    const DOCS_URI = 'https://www.grottopress.com/jentil/';
+    const DOC_URI = 'https://www.grottopress.com/jentil/';
 
     protected function __construct()
     {
