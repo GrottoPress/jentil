@@ -118,7 +118,7 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * @param AbstractSetting[int] $settings
+     * @param AbstractSetting[string] $settings
      * @return string[int]
      */
     private function modIDs(array $settings): array
