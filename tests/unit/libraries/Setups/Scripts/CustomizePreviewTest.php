@@ -48,7 +48,7 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $add_action->wasCalledWithOnce([
             'wp_enqueue_scripts',
-            [$script, 'addInlineScript2'],
+            [$script, 'addFrontEndInlineScript'],
         ]);
     }
 
@@ -73,7 +73,7 @@ class CustomizePreviewTest extends AbstractTestCase
         $wp_enqueue_script->wasCalledWithOnce([
             $script->id,
             'http://my.site/dist/scripts/customizer.js',
-            ['jquery', 'customize-preview'],
+            ['customize-preview'],
             '',
             true
         ]);
@@ -141,6 +141,17 @@ class CustomizePreviewTest extends AbstractTestCase
                                     )],
                                 ]
                             ),
+                            'Layout\Layout' => Stub::makeEmpty(
+                                AbstractSection::class,
+                                [
+                                    'settings' => ['Date' => Stub::makeEmpty(
+                                        AbstractSetting::class,
+                                        [
+                                            'id' => 'date_title',
+                                        ]
+                                    )],
+                                ]
+                            ),
                         ],
                     ]
                 ),
@@ -167,7 +178,7 @@ class CustomizePreviewTest extends AbstractTestCase
         $add_inline_script->wasCalledWithOnce(['jentil-customize-preview']);
     }
 
-    public function testAddInlineScript2()
+    public function testAddFrontEndInlineScript()
     {
         $add_inline_script = FunctionMocker::replace('wp_add_inline_script');
 
@@ -181,7 +192,7 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $script = new CustomizePreview($jentil);
 
-        $script->addInlineScript2();
+        $script->addFrontEndInlineScript();
 
         $add_inline_script->wasCalledOnce();
         $add_inline_script->wasCalledWithOnce(['jentil-customize-preview']);

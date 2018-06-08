@@ -32,7 +32,7 @@
 .wp-caption-text {
     padding: 0 5px;
     font-size: map-get($jentil-font-size, small);
-    color: $jentil-font-lighter;
+    color: map-get($jentil-font-color, lighter);
     line-height: map-get($jentil-line-height, small);
 }
 
@@ -87,7 +87,7 @@
 .gallery-caption {
     @include screen-reader;
 
-    color: $jentil-font-light;
+    color: map-get($jentil-font-color, lighter);
     font-size: map-get($jentil-font-size, tiny);
     margin-top: 5px;
 }

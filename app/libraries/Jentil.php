@@ -12,20 +12,11 @@ final class Jentil extends AbstractTheme
      */
     private $utilities = null;
 
-    /**
-     * Theme Name
-     */
     const NAME = 'Jentil';
 
-    /**
-     * Theme website URL
-     */
-    const WEBSITE = 'https://www.grottopress.com/jentil/';
+    const URI = 'https://www.grottopress.com/jentil/';
 
-    /**
-     * Theme documentation URL
-     */
-    const DOCUMENTATION = 'https://www.grottopress.com/jentil/';
+    const DOC_URI = 'https://www.grottopress.com/jentil/';
 
     protected function __construct()
     {
@@ -51,7 +42,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return Setups\AbstractSetup[]
+     * @return Setups\AbstractSetup[int]
      */
     protected function getSetups(): array
     {
@@ -149,7 +140,6 @@ final class Jentil extends AbstractTheme
         $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
         $this->setups['Views\Search'] = new Setups\Views\Search($this);
         $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
-        $this->setups['Views\Post'] = new Setups\Views\Post($this);
         $this->setups['Views\Attachment'] = new Setups\Views\Attachment($this);
         $this->setups['Views\Header'] = new Setups\Views\Header($this);
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);

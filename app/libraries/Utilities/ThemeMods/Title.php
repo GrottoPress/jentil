@@ -25,6 +25,9 @@ class Title extends AbstractThemeMod
      */
     private $moreSpecific;
 
+    /**
+     * @param mixed[string] $args
+     */
     public function __construct(ThemeMods $theme_mods, array $args = [])
     {
         $this->themeMods = $theme_mods;
@@ -32,6 +35,9 @@ class Title extends AbstractThemeMod
         $this->setAttributes($args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
@@ -46,17 +52,20 @@ class Title extends AbstractThemeMod
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
 
-        $names = $this->names();
-        $this->id = isset($names[$this->context])
-            ? \sanitize_key($names[$this->context]) : '';
+        $ids = $this->ids();
+        $this->id = isset($ids[$this->context])
+            ? \sanitize_key($ids[$this->context]) : '';
 
         $defaults = $this->defaults();
         $this->default = $defaults[$this->context] ?? '';
     }
 
-    private function names(): array
+    /**
+     * @return string[string]
+     */
+    private function ids(): array
     {
-        $names = [
+        $ids = [
             'home' => 'post_post_type_title',
             'author' => 'author_title',
             'category' => "category_{$this->moreSpecific}_taxonomy_title",
@@ -68,16 +77,23 @@ class Title extends AbstractThemeMod
             'search' => 'search_title',
         ];
 
-        $names = \array_map(function (string $value): string {
+        $ids = \array_map(function (string $value): string {
             $value = \str_replace(['__', '_0_'], '_', $value);
-            $value = \trim($value, '_');
+            return \trim($value, '_');
+        }, $ids);
 
-            return $value;
-        }, $names);
-
-        return $names;
+        return \apply_filters(
+            'jentil_title_mod_id',
+            $ids,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
+    /**
+     * @return string[string]
+     */
     private function defaults(): array
     {
         $defaults = [
@@ -93,11 +109,8 @@ class Title extends AbstractThemeMod
             'search' => '&ldquo;{{search_query}}&rdquo;',
         ];
 
-        /**
-         * @var string $defaults Posts mod defaults.
-         */
         return \apply_filters(
-            'jentil_title_mod_defaults',
+            'jentil_title_mod_default',
             $defaults,
             $this->context,
             $this->specific,

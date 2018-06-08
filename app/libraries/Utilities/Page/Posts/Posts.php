@@ -103,7 +103,7 @@ class Posts
     }
 
     /**
-     * @return \WP_Post_Type[] Public post types.
+     * @return \WP_Post_Type[int] Public post types.
      */
     public function postTypes(): array
     {
@@ -111,13 +111,16 @@ class Posts
     }
 
     /**
-     * @return \WP_Taxonomy[] Public taxonomies.
+     * @return \WP_Taxonomy[int] Public taxonomies.
      */
     public function taxonomies(): array
     {
         return \get_taxonomies(['public' => true], 'objects');
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function themeMod(string $setting, array $args = []): PostsMod
     {
         if (!empty($args['context'])) {
@@ -172,10 +175,26 @@ class Posts
             !\get_post_type_archive_link($post_type)
         );
 
-        if ($check && $post_id) {
+        if ($check && $post_id && ('page' === \get_option('show_on_front'))) {
             return ($post_id !== (int)\get_option('page_for_posts'));
         }
 
         return $check;
+    }
+
+    /**
+     * @return string[string]
+     */
+    public function imageSizes(): array
+    {
+        $sizes = \wp_get_additional_image_sizes();
+
+        $return = [];
+
+        foreach ($sizes as $id => $atrr) {
+            $return[$id] = "{$id} ({$atrr['width']} x {$atrr['height']})";
+        }
+
+        return $return;
     }
 }

@@ -2,6 +2,14 @@
  * Forms
  */
 
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; // Override normalize.css rule
+}
+
 form {
     @include paragraph;
     @include inline-block-whitespace-fix;
@@ -19,6 +27,8 @@ select,
 button,
 label {
     @include inline-block;
+
+    width: 100%;
 }
 
 input,
@@ -30,7 +40,10 @@ button {
     border: $jentil-separator;
     padding: 5px 7px;
     margin-bottom: 4px;
-    width: 100%;
+
+    &:focus {
+        outline: 0;
+    }
 }
 
 input,
@@ -74,7 +87,6 @@ button {
 
     &:focus {
         border-width: 0;
-        outline: none;
     }
 }
 
@@ -91,7 +103,10 @@ button {
 label {
     cursor: pointer;
     font-size: map-get($jentil-font-size, tiny);
-    width: 100%;
+
+    &[for] {
+        width: auto;
+    }
 
     > * {
        font-size: map-get($jentil-font-size, small);
@@ -119,17 +134,10 @@ label {
         border: 0;
     }
 
-    input {
-        &[type=search] {
-            width: 100%;
-        }
-    }
-
     button {
         @include position(absolute, 1px 1px null null);
 
         font-size: 12px;
-        text-align: right;
         padding: 7px 10px;
         z-index: 1;
     }

@@ -9,27 +9,19 @@ use GrottoPress\Jentil\Setups\Customizer\AbstractSetting as Setting;
 
 abstract class AbstractSetting extends Setting
 {
-    /**
-     * @var TitleMod
-     */
-    protected $themeMod;
-
     public function __construct(Title $title)
     {
-        parent::__construct($title);
+        parent::__construct($title->customizer);
 
         $this->args['transport'] = 'postMessage';
         $this->args['sanitize_callback'] = 'wp_kses_data';
-
-        $this->control['section'] = $this->section->id;
-        $this->control['label'] = \esc_html__('Enter title', 'jentil');
-        $this->control['type'] = 'text';
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     protected function themeMod(array $args): TitleMod
     {
-        return $this->section->customizer->app->utilities->themeMods->title(
-            $args
-        );
+        return $this->customizer->app->utilities->themeMods->title($args);
     }
 }

@@ -17,11 +17,5 @@ final class AfterTitleSeparator extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'esc_attr';
-
-        $this->control['type'] = 'text';
-        $this->control['label'] = \esc_html__(
-            'After title separator',
-            'jentil'
-        );
     }
 }

@@ -14,6 +14,7 @@ final class WooCommerce extends AbstractSetup
     {
         \add_action('after_setup_theme', [$this, 'loadComments']);
         \add_action('customize_register', [$this, 'removeCustomizerItems'], 20);
+        \add_action('wp', [$this, 'removeSingularViews']);
     }
 
     /**
@@ -34,22 +35,95 @@ final class WooCommerce extends AbstractSetup
     /**
      * @action customize_register
      */
-    public function removeCustomizerItems(WPCustomizer $WPCustomizer)
+    public function removeCustomizerItems(WPCustomizer $wp_customizer)
     {
         if (!\class_exists(WooCommercePlugin::class)) {
             return;
         }
 
         $taxes = ['product_tag', 'product_cat'];
+        $shop_page = (int)\get_option('woocommerce_shop_page_id');
+
+        $related_page_section_cb = $this->app->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Related_page']
+            ->get($wp_customizer)->active_callback;
+    
+        $singular_page_section_cb = $this->app->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Singular_page']
+            ->get($wp_customizer)->active_callback;
 
         foreach ($taxes as $tax) {
             $this->app->setups['Customizer\Customizer']
                 ->panels['Posts\Posts']->sections["Taxonomy_{$tax}"]
-                ->remove($WPCustomizer);
+                ->remove($wp_customizer);
 
             $this->app->setups['Customizer\Customizer']
                 ->sections['Title\Title']->settings["Taxonomy_{$tax}"]
-                ->remove($WPCustomizer);
+                ->remove($wp_customizer);
         }
+
+        $this->app->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Related_product']
+            ->remove($wp_customizer);
+
+        $this->app->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Singular_product']
+            ->remove($wp_customizer);
+
+        $this->app->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Singular_page']
+            ->get($wp_customizer)->active_callback =
+                function () use ($shop_page, $singular_page_section_cb): bool {
+                    return (
+                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$singular_page_section_cb()
+                    );
+                };
+
+        $this->app->setups['Customizer\Customizer']
+            ->panels['Posts\Posts']->sections['Related_page']
+            ->get($wp_customizer)->active_callback =
+                function () use ($shop_page, $related_page_section_cb): bool {
+                    return (
+                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$related_page_section_cb()
+                    );
+                };
+    }
+
+    /**
+     * @action wp
+     */
+    public function removeSingularViews()
+    {
+        if (!\class_exists(WooCommercePlugin::class)) {
+            return;
+        }
+
+        $shop_page = (int)\get_option('woocommerce_shop_page_id');
+
+        if (!$this->app->utilities->page->is('singular', 'product') &&
+            !$this->app->utilities->page->is('page', $shop_page)
+        ) {
+            return;
+        }
+
+        \remove_action(
+            'jentil_before_title',
+            [$this->app->setups['Views\Singular'], 'renderPostsBeforeTitle']
+        );
+
+        \remove_action(
+            'jentil_after_title',
+            [$this->app->setups['Views\Singular'], 'renderPostsAfterTitle']
+        );
+
+        \remove_action(
+            'jentil_after_content',
+            [$this->app->setups['Views\Singular'], 'renderPostsAfterContent']
+        );
+
+        \remove_action(
+            'jentil_after_content',
+            [$this->app->setups['Views\Singular'], 'renderRelatedPosts']
+        );
     }
 }

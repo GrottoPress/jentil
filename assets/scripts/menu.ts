@@ -1,46 +1,53 @@
-///<reference path="./global.d.ts"/>
+/// <reference path='./global.d.ts' />
 
 (($: JQueryStatic): void => {
     'use strict'
 
-    const fxDuration = 200
+    const fxDuration: number = 200
 
     /**
      * Open/close mobile menu
      */
-    $('.js-main-menu-button').attr('href', '#')
-    $('.js-main-menu-button').on('click', (e: JQuery.Event): void => {
-        $('.js-main-menu').slideToggle(fxDuration, (): void => {
-            $('.js-main-menu').toggleClass('show hide').css({display: ''})
-        })
+    $('.js-main-menu-button').attr('href', '#').on(
+        'click',
+        (event: JQuery.Event): void => {
+            $('.js-main-menu').slideToggle(fxDuration, (): void => {
+                $('.js-main-menu').toggleClass('show hide').css({display: ''})
+            })
 
-        e.preventDefault()
-    })
+            event.preventDefault()
+        }
+    )
 
     /**
      * Add icons to all parent menu items
      */
     $('.menu li > ul').before(
-        '<button class="js-sub-menu-button sub-menu-toggle">'+
-            renderCaret('down')+
-        '</button>'
+        `<button class="js-sub-menu-button sub-menu-toggle">
+            ${renderCaret('down')}
+        </button>`
     )
 
     /**
      * Open/close sub-menu
      */
     $('.js-sub-menu-button').next('ul').hide()
-    $('.js-sub-menu-button').prev('a').on('click', (e: JQuery.Event): void => {
-        if ('#' === $(e.currentTarget).attr('href')) {
-            toggleSubMenu($(e.currentTarget).next('button'))
+    $('.sidebar-wrap li.current-menu-ancestor > ul').show()
+        .siblings('.js-sub-menu-button').html(`${renderCaret('up')}`)
+    $('.js-sub-menu-button').prev('a').on(
+        'click',
+        (event: JQuery.Event): void => {
+            if ('#' === $(event.currentTarget).attr('href')) {
+                toggleSubMenu($(event.currentTarget).next('button'))
 
-            e.preventDefault()
+                event.preventDefault()
+            }
         }
-    })
-    $('.js-sub-menu-button').on('click', (e: JQuery.Event): void => {
-        toggleSubMenu(e.currentTarget)
+    )
+    $('.js-sub-menu-button').on('click', (event: JQuery.Event): void => {
+        toggleSubMenu(event.currentTarget)
 
-        e.preventDefault()
+        event.preventDefault()
     })
 
     function toggleSubMenu(button: JQuery | HTMLElement | EventTarget): void
@@ -66,8 +73,7 @@
 
     function renderCaret(direction: 'up' | 'down'): string
     {
-        return '<span class="fas fa-caret-'+direction.toString()+
-            ' fa-sm" aria-hidden="true"></span>'+
-            '<span class="screen-reader-text">'+jentilMenuL10n.submenu+'</span>'
+        return `<span class="fas fa-caret-${direction.toString()} fa-sm" aria-hidden="true"></span>
+        <span class="screen-reader-text">${jentilMenuL10n.submenu}</span>`
     }
 })(jQuery)

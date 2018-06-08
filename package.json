@@ -1,6 +1,6 @@
 {
   "name": "@grottopress/jentil",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Jentil is a modern framework for rapid WordPress theme development",
   "license": "MIT",
   "homepage": "https://www.grottopress.com/jentil/",
@@ -16,27 +16,27 @@
     }
   ],
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.5",
-    "@fortawesome/fontawesome-free-brands": "^5.0.10",
-    "@fortawesome/fontawesome-free-regular": "^5.0.10",
-    "@fortawesome/fontawesome-free-solid": "^5.0.10",
-    "@grottopress/scss": "^0.1.12",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@grottopress/scss": "^0.2.1",
     "html5shiv": "^3.7.3",
     "normalize.css": "^7.0.0",
     "respond.js": "^1.4.2"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.1",
+    "@types/jquery": "^3.3.2",
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.3",
+    "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
+    "gulp-rename": "^1.2.3",
     "gulp-rtlcss": "^1.2.0",
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^3.0.0",
-    "typescript": "^2.8.1"
+    "typescript": "^2.9.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

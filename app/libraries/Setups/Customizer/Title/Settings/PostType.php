@@ -16,26 +16,13 @@ final class PostType extends AbstractSetting
             'post' === $post_type->name ? 'home' : 'post_type_archive'
         );
 
-        $this->themeMod = $this->themeMod([
+        $theme_mod = $this->themeMod([
             'context' => $mod_context,
             'specific' => $post_type->name,
         ]);
 
-        $this->id = $this->themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $this->themeMod->default;
-
-        $this->control['active_callback'] = function () use ($post_type): bool {
-            $page = $this->section->customizer->app->utilities
-                ->page;
-
-            if ('post' === $post_type->name) {
-                return $page->is('home');
-            }
-
-            return $page->is('post_type_archive', $post_type->name);
-        };
-
-        $this->control['label'] = \sprintf(\esc_html__('%s Archive', 'jentil'), $post_type->labels->name);
+        $this->args['default'] = $theme_mod->default;
     }
 }

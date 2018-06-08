@@ -25,12 +25,19 @@ class LayoutTest extends AbstractTestCase
         FunctionMocker::replace('sanitize_key', function (string $key): string {
             return $key;
         });
+
+        FunctionMocker::replace(
+            'apply_filters',
+            function (string $name, $value) {
+                return $value;
+            }
+        );
     }
 
     /**
-     * @dataProvider getNameProvider
+     * @dataProvider getIDProvider
      */
-    public function testGetName(
+    public function testGetID(
         string $context,
         string $specific,
         int $more_specific,
@@ -141,7 +148,7 @@ class LayoutTest extends AbstractTestCase
         $this->assertSame($expected, $layout->isPagelike());
     }
 
-    public function getNameProvider(): array
+    public function getIDProvider(): array
     {
         return [
             'context is home' => [

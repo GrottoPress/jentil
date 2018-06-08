@@ -5,6 +5,9 @@ namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
 class Archive extends AbstractPosts
 {
+     /**
+     * @return mixed[string]
+     */
     protected function args(): array
     {
         $args = [
@@ -16,6 +19,7 @@ class Archive extends AbstractPosts
             'image' => [
                 'size' => $this->posts->themeMod('image')->get(),
                 'align' => $this->posts->themeMod('image_alignment')->get(),
+                'margin' => $this->posts->themeMod('image_margin')->get(),
             ],
             'excerpt' => [
                 'length' => $this->posts->themeMod('excerpt')->get(),
@@ -157,7 +161,7 @@ class Archive extends AbstractPosts
     }
 
     /**
-     * @return \WP_Post_Type[] Public post types that has archive.
+     * @return \WP_Post_Type[int] Public post types that has archive.
      */
     public function postTypes(): array
     {

@@ -11,16 +11,10 @@ final class Date extends AbstractSetting
     {
         parent::__construct($title);
 
-        $this->themeMod = $this->themeMod(['context' => 'date']);
+        $theme_mod = $this->themeMod(['context' => 'date']);
 
-        $this->id = $this->themeMod->id;
+        $this->id = $theme_mod->id;
 
-        $this->args['default'] = $this->themeMod->default;
-
-        $this->control['label'] = \esc_html__('Date Archives', 'jentil');
-        $this->control['active_callback'] = function (): bool {
-            return $this->section->customizer->app->utilities
-                ->page->is('date');
-        };
+        $this->args['default'] = $theme_mod->default;
     }
 }

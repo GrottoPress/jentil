@@ -46,7 +46,7 @@
     }
 
     .reply {
-        color: $jentil-font-lighter;
+        color: map-get($jentil-font-color, lighter);
         font-size: map-get($jentil-font-size, tiny);
         line-height: map-get($jentil-line-height, normal);
         text-align: right;
@@ -77,7 +77,7 @@
 .comment-meta {
     @include clearfix;
 
-    color: $jentil-font-lighter;
+    color: map-get($jentil-font-color, lighter);
 
     .edit-link::before {
         content: "| ";
@@ -101,7 +101,7 @@
 
 .comment-notes,
 .logged-in-as {
-    color: $jentil-font-lighter;
+    color: map-get($jentil-font-color, lighter);
     font-size: map-get($jentil-font-size, tiny);
 }
 
@@ -116,5 +116,5 @@
 .comments-closed-text {
     @include paragraph;
 
-    color: $jentil-font-lighter;
+    color: map-get($jentil-font-color, lighter);
 }

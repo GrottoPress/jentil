@@ -17,8 +17,5 @@ final class PaginationNextText extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
-
-        $this->control['label'] = \esc_html__('Next page link label', 'jentil');
-        $this->control['type'] = 'text';
     }
 }

@@ -24,7 +24,7 @@ final class SearchForm extends AbstractSetup
         $searchform = '<div class="search-wrap" itemscope itemtype="http://schema.org/WebSite">
             <meta itemprop="url" content="'.$home_url.'"/>
 
-            <form role="search" method="get" class="form search self-clear" action="'.$home_url.'" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <form role="search" method="get" class="form search" action="'.$home_url.'" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
                 <meta itemprop="target" content="'.$home_url.'?s={s}" />
                 <label>
                     <span class="screen-reader-text">'.\esc_html__('Search for:', 'jentil').'</span>

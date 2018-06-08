@@ -10,6 +10,11 @@ final class Singular extends AbstractSetup
     public function run()
     {
         \add_filter('body_class', [$this, 'addBodyClasses']);
+        \add_filter('jentil_byline', [$this, 'renderByline'], 10, 3);
+
+        \add_action('jentil_before_title', [$this, 'renderPostsBeforeTitle']);
+        \add_action('jentil_after_title', [$this, 'renderPostsAfterTitle']);
+        \add_action('jentil_after_content', [$this, 'renderPostsAfterContent']);
         \add_action('jentil_after_content', [$this, 'renderRelatedPosts']);
         // \add_action(
         //     'jentil_before_before_title',
@@ -19,6 +24,8 @@ final class Singular extends AbstractSetup
 
     /**
      * @filter body_class
+     * @param string[int] $classes
+     * @return string[int]
      */
     public function addBodyClasses(array $classes): array
     {
@@ -80,6 +87,72 @@ final class Singular extends AbstractSetup
     }
 
     /**
+     * @action jentil_before_title
+     */
+    public function renderPostsBeforeTitle()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+            'types' => \explode(
+                ',',
+                $this->app->utilities->page->posts->singular
+                    ->themeMod('before_title')->get()
+            ),
+            'separator' => $this->app->utilities->page->posts->singular
+                ->themeMod('before_title_separator')->get(),
+        ])->list()) {
+            echo '<div class="entry-meta before-title">'.$info.'</div>';
+        }
+    }
+
+    /**
+     * @action jentil_after_title
+     */
+    public function renderPostsAfterTitle()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+            'types' => \explode(
+                ',',
+                $this->app->utilities->page->posts->singular
+                    ->themeMod('after_title')->get()
+            ),
+            'separator' => $this->app->utilities->page->posts->singular
+                ->themeMod('after_title_separator')->get(),
+        ])->list()) {
+            echo '<div class="entry-meta after-title">'.$info.'</div>';
+        }
+    }
+
+    /**
+     * @action jentil_after_content
+     */
+    public function renderPostsAfterContent()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+            'types' => \explode(
+                ',',
+                $this->app->utilities->page->posts->singular
+                    ->themeMod('after_content')->get()
+            ),
+            'separator' => $this->app->utilities->page->posts->singular
+                ->themeMod('after_content_separator')->get(),
+        ])->list()) {
+            echo '<div class="entry-meta after-content">'.$info.'</div>';
+        }
+    }
+
+    /**
      * @action jentil_after_content
      */
     public function renderRelatedPosts()
@@ -97,9 +170,42 @@ final class Singular extends AbstractSetup
         echo '<aside id="related-posts-wrap">';
 
         if ($heading = $related->themeMod('heading')->get()) {
-            echo '<h3 class="widget-title posts-heading">'.$heading.'</h3>';
+            echo '<h3 class="posts-heading">'.$heading.'</h3>';
         }
 
         echo $posts.'</aside>';
+    }
+
+    /**
+     * @filter jentil_byline
+     */
+    public function renderByline(string $output, int $id, string $sep): string
+    {
+        $output = '';
+
+        if (!$this->app->utilities->page->is('singular')) {
+            return $output;
+        }
+
+        if (\get_post()->ID !== $id) {
+            return $output;
+        }
+
+        $post = $this->app->utilities->post($id);
+
+        if ($avatar = $post->info(['types' => ['avatar__40']])->list()) {
+            $output .= "<p>{$avatar}</p>";
+        }
+
+        if ($author = $post->info(['types' => ['author_name']])->list()) {
+            $output .= "<p>{$author}</p>";
+        }
+
+        $output .= "<p>{$post->info([
+            'types' => ['published_date', 'comments_link'],
+            'separator' => $sep,
+        ])->list()}</p>";
+
+        return $output;
     }
 }

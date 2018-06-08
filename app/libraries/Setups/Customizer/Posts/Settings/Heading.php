@@ -18,9 +18,5 @@ final class Heading extends AbstractSetting
         $this->args['default'] = $theme_mod->default;
         $this->args['transport'] = 'postMessage';
         $this->args['sanitize_callback'] = 'sanitize_text_field';
-
-        $this->control['label'] = \esc_html__('Heading', 'jentil');
-        $this->control['type'] = 'text';
-        $this->control['description'] = \esc_html__('Posts heading', 'jentil');
     }
 }

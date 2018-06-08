@@ -5,6 +5,6 @@
 .breadcrumbs {
     @include paragraph;
 
-    color: $jentil-font-lighter;
+    color: map-get($jentil-font-color, lighter);
     font-size: map-get($jentil-font-size, tiny);
 }

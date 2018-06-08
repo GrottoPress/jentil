@@ -5,7 +5,7 @@
 .archive-description {
     @include paragraph(10px);
 
-    color: $jentil-font-light;
+    color: map-get($jentil-font-color, lighter);
 }
 
 .entry-content,
@@ -24,15 +24,11 @@
         margin-right: 15px;
     }
 
-    .entry-title {
+    .page-title {
         @include paragraph(10px);
 
-        .archive &,
-        .blog &,
-        .search & {
-            color: $jentil-font-lighter;
-            font-size: 22px;
-        }
+        color: map-get($jentil-font-color, lighter);
+        font-size: 22px;
     }
 
     .singular-post.big & {
@@ -41,27 +37,17 @@
 
             p {
                 margin: 0;
-            }
 
-            .avatar {
-                @include float(left);
-
-                margin-right: 10px;
+                .avatar {
+                    @include float(left);
+    
+                    margin-right: 10px;
+                }
             }
         }
 
         .entry-title {
             font-size: 29px;
-        }
-    }
-}
-
-@media (min-width: map-get($jentil-breakpoint, medium)) {
-    .page-header {
-        .singular-post.big & {
-            .entry-title {
-                font-size: 34px;
-            }
         }
     }
 }
@@ -132,4 +118,14 @@
     @include float(left);
 
     margin-right: 10px;
+}
+
+@media (min-width: map-get($jentil-breakpoint, medium)) {
+    .page-header {
+        .singular-post.big & {
+            .entry-title {
+                font-size: 34px;
+            }
+        }
+    }
 }

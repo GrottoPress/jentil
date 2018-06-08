@@ -34,8 +34,11 @@ final class PageBuilderBlank extends AbstractTemplate
 
     /**
      * @param \WP_Post $post
+     * @param string[string] $templates
      *
      * @filter theme_{$post_type}_templates
+     *
+     * @return string[string]
      */
     public function add(
         array $templates,

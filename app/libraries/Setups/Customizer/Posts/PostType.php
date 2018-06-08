@@ -50,21 +50,22 @@ final class PostType extends AbstractSection
         );
     }
 
-    /**
-     * @return Settings\AbstractSetting[]
-     */
-    protected function settings(): array
+    protected function setSettings()
     {
-        $settings = parent::settings();
+        parent::setSettings();
 
         if (!$this->customizer->app->utilities
             ->page->posts->sticky->get($this->postType->name)
         ) {
-            unset($settings['StickyPosts']);
+            unset(
+                $this->settings['StickyPosts'],
+                $this->controls['StickyPosts']
+            );
         }
 
-        unset($settings['Heading']);
-
-        return $settings;
+        unset(
+            $this->settings['Heading'],
+            $this->controls['Heading']
+        );
     }
 }

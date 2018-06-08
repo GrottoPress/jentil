@@ -7,6 +7,9 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 
 class Sticky extends AbstractPosts
 {
+    /**
+     * @return mixed[string]
+     */
     public function args(): array
     {
         $args = [
@@ -18,6 +21,7 @@ class Sticky extends AbstractPosts
             'image' => [
                 'size' => $this->themeMod('image')->get(),
                 'align' => $this->themeMod('image_alignment')->get(),
+                'margin' => $this->themeMod('image_margin')->get(),
             ],
             'excerpt' => [
                 'length' => $this->themeMod('excerpt')->get(),
@@ -66,7 +70,10 @@ class Sticky extends AbstractPosts
             ];
         }
 
-        if (\get_query_var('year') || \get_query_var('monthnum') || \get_query_var('day')) {
+        if (\get_query_var('year') ||
+            \get_query_var('monthnum') ||
+            \get_query_var('day')
+        ) {
             $args['wp_query']['date_query'] = [
                 [
                     'year' => \get_query_var('year'),
@@ -124,7 +131,7 @@ class Sticky extends AbstractPosts
     }
 
     /**
-     * @return int[]
+     * @return int[int]
      */
     public function get(string $post_type = ''): array
     {

@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Scripts;
 
 use GrottoPress\Jentil\AbstractTheme;
+use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
 
 final class CustomizePreview extends AbstractScript
 {
@@ -18,7 +19,7 @@ final class CustomizePreview extends AbstractScript
     {
         \add_action('customize_preview_init', [$this, 'enqueue']);
         \add_action('customize_preview_init', [$this, 'addInlineScript']);
-        \add_action('wp_enqueue_scripts', [$this, 'addInlineScript2']);
+        \add_action('wp_enqueue_scripts', [$this, 'addFrontEndInlineScript']);
     }
 
     /**
@@ -32,7 +33,7 @@ final class CustomizePreview extends AbstractScript
                 'url',
                 '/dist/scripts/customize-preview.min.js'
             ),
-            ['jquery', 'customize-preview'],
+            ['customize-preview'],
             '',
             true
         );
@@ -43,12 +44,15 @@ final class CustomizePreview extends AbstractScript
      */
     public function addInlineScript()
     {
-        $script = 'var jentilColophonModName = "'.$this->app
-            ->setups['Customizer\Customizer']
-            ->sections['Colophon\Colophon']->settings['Colophon']->id.'";
-        var jentilTitleModNames = '.\wp_json_encode($this->pageTitles()).';
-        var jentilRelatedPostsHeadingModNames = '.\wp_json_encode(
-            $this->postsHeadings()
+        $script = 'var jentilColophonModId = "'.$this->colophonModID().'";
+        var jentilPageTitleModIds = '.\wp_json_encode(
+            $this->pageTitleModIDs()
+        ).';
+        var jentilRelatedPostsHeadingModIds = '.\wp_json_encode(
+            $this->relatedPostsHeadingModIDs()
+        ).';
+        var jentilPageLayoutModIds = '.\wp_json_encode(
+            $this->pageLayoutModIDs()
         ).';';
 
         \wp_add_inline_script($this->id, $script, 'before');
@@ -56,53 +60,71 @@ final class CustomizePreview extends AbstractScript
 
     /**
      * ShortTags uses page-specific functions that won't work
-     * in the customizer, so we're adding this inline script after
-     * those functions are ready.
-     *
-     * And oh, sorry I run out of names :-)
+     * in the customizer, so we're adding this inline script to
+     * the front end (after those functions are ready).
      *
      * @action wp_enqueue_scripts
      */
-    public function addInlineScript2()
+    public function addFrontEndInlineScript()
     {
         $script = 'var jentilShortTags = '.\wp_json_encode(
             $this->app->utilities->shortTags->get()
-        );
+        ).';';
 
         \wp_add_inline_script($this->id, $script, 'before');
     }
 
-    /**
-     * @return string[]
-     */
-    private function pageTitles(): array
+    private function colophonModID(): string
     {
-        $titles = [];
-
-        foreach ($this->app->setups['Customizer\Customizer']
-            ->sections['Title\Title']->settings as $setting) {
-            $titles[] = $setting->id;
-        }
-
-        return $titles;
+        return $this->app->setups['Customizer\Customizer']
+            ->sections['Colophon\Colophon']->settings['Colophon']->id;
     }
 
     /**
-     * @return string[]
+     * @return string[int]
      */
-    private function postsHeadings(): array
+    private function pageTitleModIDs(): array
     {
-        $headings = [];
+        return $this->modIDs($this->app->setups['Customizer\Customizer']
+            ->sections['Title\Title']->settings);
+    }
+
+    /**
+     * @return string[int]
+     */
+    private function pageLayoutModIDs(): array
+    {
+        return $this->modIDs($this->app->setups['Customizer\Customizer']
+            ->sections['Layout\Layout']->settings);
+    }
+
+    /**
+     * @return string[int]
+     */
+    private function relatedPostsHeadingModIDs(): array
+    {
+        $ids = [];
 
         if ($post_types = $this->app->utilities->page->posts->postTypes()) {
             foreach ($post_types as $post_type) {
-                $headings[] = $this->app->setups['Customizer\Customizer']
+                $ids[] = $this->app->setups['Customizer\Customizer']
                     ->panels['Posts\Posts']
                     ->sections["Related_{$post_type->name}"]
                     ->settings['Heading']->id;
             }
         }
 
-        return $headings;
+        return $ids;
+    }
+
+    /**
+     * @param AbstractSetting[string] $settings
+     * @return string[int]
+     */
+    private function modIDs(array $settings): array
+    {
+        return \array_map(function (AbstractSetting $setting): string {
+            return $setting->id;
+        }, $settings);
     }
 }

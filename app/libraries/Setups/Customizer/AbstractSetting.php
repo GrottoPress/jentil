@@ -11,23 +11,30 @@ abstract class AbstractSetting
     use IdentityTrait;
 
     /**
-     * @var AbstractSection
+     * @var AbstractCustomizer
      */
-    protected $section;
+    protected $customizer;
 
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $args = [];
 
-    /**
-     * @var array
-     */
-    protected $control = [];
-
-    public function __construct(AbstractSection $section)
+    public function __construct(AbstractCustomizer $customizer)
     {
-        $this->section = $section;
+        $this->customizer = $customizer;
+    }
+
+    /**
+     * Get setting, if already added
+     */
+    public function get(WPCustomizer $wp_customizer)
+    {
+        if (!$this->id) {
+            return;
+        }
+
+        return $wp_customizer->get_setting($this->id);
     }
 
     public function add(WPCustomizer $wp_customizer)
@@ -37,9 +44,11 @@ abstract class AbstractSetting
         }
 
         $wp_customizer->add_setting($this->id, $this->args);
-        $wp_customizer->add_control($this->id, $this->control);
     }
 
+    /**
+     * Remove setting, if already added
+     */
     public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {
@@ -47,6 +56,5 @@ abstract class AbstractSetting
         }
 
         $wp_customizer->remove_setting($this->id);
-        $wp_customizer->remove_control($this->id);
     }
 }

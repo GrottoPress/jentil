@@ -15,17 +15,20 @@ class Layouts
         $this->page = $page;
     }
 
+    /**
+     * @return string[string][string]
+     */
     public function get(): array
     {
         $layouts = [
-            'one-column' => [
+            'columns-1' => [
                 'content' => \esc_html__('content', 'jentil'),
             ],
-            'two-columns' => [
+            'columns-2' => [
                 'content-sidebar' => \esc_html__('content / sidebar', 'jentil'),
                 'sidebar-content' => \esc_html__('sidebar / content', 'jentil'),
             ],
-            'three-columns' => [
+            'columns-3' => [
                 'sidebar-content-sidebar' => \esc_html__(
                     'sidebar / content / sidebar',
                     'jentil'
@@ -42,13 +45,13 @@ class Layouts
         ];
 
         /**
-         * @var array $layouts
+         * @var string[string][string] $layouts
          */
         return \apply_filters('jentil_page_layouts', $layouts);
     }
 
     /**
-     * @return array Layout IDs: [ID => Name].
+     * @return string[string]
      */
     public function IDs(): array
     {

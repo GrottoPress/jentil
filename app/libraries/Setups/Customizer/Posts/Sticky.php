@@ -47,24 +47,27 @@ final class Sticky extends AbstractSection
         $this->themeModArgs['specific'] = $post_type->name;
     }
 
-    /**
-     * @return Settings\AbstractSetting[]
-     */
-    protected function settings(): array
+    protected function setSettings()
     {
-        $settings = parent::settings();
+        parent::setSettings();
 
         unset(
-            $settings['StickyPosts'],
-            $settings['Number'],
-            $settings['Pagination'],
-            $settings['PaginationMaximum'],
-            $settings['PaginationPosition'],
-            $settings['PaginationPreviousText'],
-            $settings['PaginationNextText'],
-            $settings['Heading']
+            $this->settings['StickyPosts'],
+            $this->controls['StickyPosts'],
+            $this->settings['Number'],
+            $this->controls['Number'],
+            $this->settings['Pagination'],
+            $this->controls['Pagination'],
+            $this->settings['PaginationMaximum'],
+            $this->controls['PaginationMaximum'],
+            $this->settings['PaginationPosition'],
+            $this->controls['PaginationPosition'],
+            $this->settings['PaginationPreviousText'],
+            $this->controls['PaginationPreviousText'],
+            $this->settings['PaginationNextText'],
+            $this->controls['PaginationNextText'],
+            $this->settings['Heading'],
+            $this->controls['Heading']
         );
-
-        return $settings;
     }
 }

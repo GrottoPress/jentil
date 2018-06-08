@@ -8,7 +8,7 @@ use GrottoPress\WordPress\SUV\AbstractTheme;
 
 abstract class AbstractChildTheme extends ChildTheme
 {
-    protected function getParent(): AbstractTheme
+    final protected function getParent(): AbstractTheme
     {
         return Jentil::getInstance();
     }

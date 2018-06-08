@@ -25,6 +25,9 @@ class Layout extends AbstractThemeMod
      */
     private $moreSpecific;
 
+    /**
+     * @param mixed[string] $args
+     */
     public function __construct(ThemeMods $theme_mods, array $args = [])
     {
         $this->themeMods = $theme_mods;
@@ -32,6 +35,9 @@ class Layout extends AbstractThemeMod
         $this->setAttributes($args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     private function setAttributes(array $args)
     {
         $args = \wp_parse_args($args, [
@@ -41,20 +47,29 @@ class Layout extends AbstractThemeMod
         ]);
 
         $this->context = \sanitize_key($args['context']);
-        $this->moreSpecific = (int)$args['more_specific'];
-        $this->default = 'content';
-
         $this->specific = \post_type_exists($args['specific']) ||
             \taxonomy_exists($args['specific']) ? $args['specific'] : '';
+        $this->moreSpecific = (int)$args['more_specific'];
 
-        $names = $this->names();
-        $this->id = isset($names[$this->context])
-            ? \sanitize_key($names[$this->context]) : '';
+        $this->default = \apply_filters(
+            'jentil_layout_mod_default',
+            'content',
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
+
+        $ids = $this->ids();
+        $this->id = isset($ids[$this->context])
+            ? \sanitize_key($ids[$this->context]) : '';
     }
 
-    private function names(): array
+    /**
+     * @return string[string]
+     */
+    private function ids(): array
     {
-        $names = [
+        $ids = [
             'home' => 'post_post_type_layout',
             'singular' => (
                 $this->isPagelike() ? '_jentil-layout' :
@@ -70,17 +85,18 @@ class Layout extends AbstractThemeMod
             'search' => 'search_layout',
         ];
 
-        $names = \array_map(function (string $value): string {
+        $ids = \array_map(function (string $value): string {
             $value = \str_replace(['__', '_0_'], '_', $value);
+            return ($this->isPagelike() ? $value : \trim($value, '_'));
+        }, $ids);
 
-            if (!$this->isPagelike()) {
-                $value = \trim($value, '_');
-            }
-
-            return $value;
-        }, $names);
-
-        return $names;
+        return \apply_filters(
+            'jentil_layout_mod_id',
+            $ids,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
     public function get(): string
@@ -90,7 +106,7 @@ class Layout extends AbstractThemeMod
         }
 
         if ($this->isPagelike()) {
-            return $this->validate(\get_post_meta(
+            return $this->validate((string)\get_post_meta(
                 $this->moreSpecific,
                 $this->id,
                 true

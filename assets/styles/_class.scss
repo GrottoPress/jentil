@@ -18,6 +18,30 @@
     @include full-screen;
 }
 
+.show {
+    display: initial;
+
+    @at-root {
+        article#{&},
+        aside#{&},
+        footer#{&},
+        header#{&},
+        nav#{&},
+        section#{&},
+        figcaption#{&},
+        figure#{&},
+        main#{&},
+        details#{&},
+        menu#{&} {
+            display: block;
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
 /** Toggle elements */
 
 .screen-min-small,

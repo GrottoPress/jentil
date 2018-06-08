@@ -39,16 +39,25 @@ class ThemeMods
         return $this->colophon;
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function layout(array $args = []): Layout
     {
         return new Layout($this, $args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function posts(string $setting, array $args = []): Posts
     {
         return new Posts($this, $setting, $args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     public function title(array $args = []): Title
     {
         return new Title($this, $args);

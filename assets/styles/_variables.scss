@@ -19,8 +19,7 @@ $jentil-sidebar-content-sidebar: (primary: 26.32%, secondary: 21.06%) !default;
 $jentil-sidebar-sidebar-content: (primary: 26.32%, both: 47.38%) !default;
 
 // Font colors
-$jentil-font-lighter: #999 !default;
-$jentil-font-light: #777 !default;
+$jentil-font-color: (light: #777, lighter: #999) !default;
 
 // Font sizes
 $jentil-font-size: (

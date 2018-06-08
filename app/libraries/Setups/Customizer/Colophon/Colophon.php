@@ -21,6 +21,7 @@ final class Colophon extends AbstractSection
     public function add(WPCustomizer $wp_customizer)
     {
         $this->settings['Colophon'] = new Settings\Colophon($this);
+        $this->controls['Colophon'] = new Controls\Colophon($this);
 
         parent::add($wp_customizer);
     }

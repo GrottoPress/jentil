@@ -14,12 +14,12 @@ abstract class AbstractPanel
     protected $customizer;
 
     /**
-     * @var array
+     * @var mixed[string]
      */
     protected $args = [];
 
     /**
-     * @var AbstractSection[]
+     * @var AbstractSection[string]
      */
     protected $sections = [];
 
@@ -34,7 +34,7 @@ abstract class AbstractPanel
     }
 
     /**
-     * @return AbstractSection[]
+     * @return AbstractSection[string]
      */
     protected function getSections(): array
     {
@@ -42,8 +42,21 @@ abstract class AbstractPanel
     }
 
     /**
+     * Get panel, if already added
+     */
+    public function get(WPCustomizer $wp_customizer)
+    {
+        if (!$this->id) {
+            return;
+        }
+
+        return $wp_customizer->get_panel($this->id);
+    }
+
+    /**
      * Be sure to set $this->sections HERE, in the child class.
-     * Doing that in the constructor would be too early; it won't work.
+     * Doing that in the constructor may be too early; it mighty
+     * not work.
      */
     public function add(WPCustomizer $wp_customizer)
     {
@@ -58,6 +71,9 @@ abstract class AbstractPanel
         }
     }
 
+    /**
+     * Remove panel, if already added
+     */
     public function remove(WPCustomizer $wp_customizer)
     {
         if (!$this->id) {

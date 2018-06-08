@@ -10,21 +10,16 @@ final class Colophon extends AbstractSetting
 {
     public function __construct(Section $colophon)
     {
-        parent::__construct($colophon);
+        parent::__construct($colophon->customizer);
 
-        $theme_mod = $this->section->customizer->app->utilities
-            ->themeMods->colophon;
+        $theme_mod = $this->customizer->app->utilities->themeMods->colophon;
 
         $this->id = $theme_mod->id;
 
         $this->args['default'] = $theme_mod->default;
         $this->args['transport'] = 'postMessage';
-        $this->args['sanitize_callback'] = function (string $value): string {
+        $this->args['sanitize_callback'] = function ($value): string {
             return \wp_kses($value, 'pre_user_description');
         };
-
-        $this->control['section'] = $this->section->id;
-        $this->control['label'] = \esc_html__('Colophon', 'jentil');
-        $this->control['type'] = 'textarea';
     }
 }

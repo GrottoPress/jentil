@@ -17,8 +17,5 @@ final class WrapTag extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_key';
-
-        $this->control['label'] = \esc_html__('Wrapper tag', 'jentil');
-        $this->control['type'] = 'text';
     }
 }

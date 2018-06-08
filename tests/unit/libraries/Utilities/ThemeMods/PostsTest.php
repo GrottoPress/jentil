@@ -22,12 +22,12 @@ class PostsTest extends AbstractTestCase
             return $key;
         });
 
-        FunctionMocker::replace('apply_filters', function (
-            string $name,
-            $value
-        ) {
-            return $value;
-        });
+        FunctionMocker::replace(
+            'apply_filters',
+            function (string $name, $value) {
+                return $value;
+            }
+        );
 
         FunctionMocker::replace('esc_html__', function (string $text) {
             return $text;
@@ -35,9 +35,9 @@ class PostsTest extends AbstractTestCase
     }
 
     /**
-     * @dataProvider getNameProvider
+     * @dataProvider getIDProvider
      */
-    public function testGetName(
+    public function testGetID(
         string $setting,
         string $context,
         string $specific,
@@ -69,7 +69,7 @@ class PostsTest extends AbstractTestCase
         $this->assertSame($expected, $posts->id);
     }
 
-    public function getNameProvider(): array
+    public function getIDProvider(): array
     {
         return [
             'context is home' => [

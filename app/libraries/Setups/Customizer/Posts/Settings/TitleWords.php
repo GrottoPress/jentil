@@ -19,12 +19,5 @@ final class TitleWords extends AbstractSetting
         $this->args['sanitize_callback'] = function ($value): int {
             return \intval($value);
         };
-
-        $this->control['label'] = \esc_html__('Title length', 'jentil');
-        $this->control['description'] = \esc_html__(
-            "Number of words (or -1)",
-            'jentil'
-        );
-        $this->control['type'] = 'number';
     }
 }

@@ -30,6 +30,9 @@ class Posts extends AbstractThemeMod
      */
     private $moreSpecific;
 
+    /**
+     * @param mixed[string] $args
+     */
     public function __construct(
         ThemeMods $theme_mods,
         string $setting,
@@ -40,6 +43,9 @@ class Posts extends AbstractThemeMod
         $this->setAttributes($setting, $args);
     }
 
+    /**
+     * @param mixed[string] $args
+     */
     private function setAttributes(string $setting, array $args = [])
     {
         $args = \wp_parse_args($args, [
@@ -53,19 +59,22 @@ class Posts extends AbstractThemeMod
         $this->specific = \sanitize_key($args['specific']);
         $this->moreSpecific = (int)$args['more_specific'];
 
-        $names = $this->names();
-        $this->id = isset($names[$this->context])
-            ? \sanitize_key($names[$this->context]) : '';
+        $ids = $this->ids();
+        $this->id = isset($ids[$this->context])
+            ? \sanitize_key($ids[$this->context]) : '';
 
         $defaults = $this->defaults();
-        $this->default = isset($defaults[$this->setting])
-            ? $defaults[$this->setting] : '';
+        $this->default = $defaults[$this->setting] ?? null;
     }
 
-    private function names(): array
+    /**
+     * @return string[string]
+     */
+    private function ids(): array
     {
-        $names = [
+        $ids = [
             'home' => 'post_post_type_posts',
+            'singular' => "singular_{$this->specific}_{$this->moreSpecific}_posts",
             'author' => 'author_posts',
             'category' => "category_{$this->moreSpecific}_taxonomy_posts",
             'date' => 'date_posts',
@@ -77,17 +86,25 @@ class Posts extends AbstractThemeMod
             'related' => "{$this->specific}_related_posts",
         ];
 
-        $names = \array_map(function (string $value): string {
+        $ids = \array_map(function (string $value): string {
             $value .= "_{$this->setting}";
             $value = \str_replace(['__', '_0_'], '_', $value);
-            $value = \trim($value, '_');
+            return \trim($value, '_');
+        }, $ids);
 
-            return $value;
-        }, $names);
-
-        return $names;
+        return \apply_filters(
+            'jentil_posts_mod_id',
+            $ids,
+            $this->setting,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
+    /**
+     * @return mixed[string]
+     */
     private function defaults(): array
     {
         $defaults = [
@@ -157,6 +174,16 @@ class Posts extends AbstractThemeMod
             $defaults['number'] = ('post' === $this->specific ? 6 : 0);
         }
 
+        if ('singular' === $this->context) {
+            if ('post' === $this->specific) {
+                $defaults['after_title'] = 'jentil_byline';
+            } else {
+                $defaults['after_title'] = '';
+            }
+
+            $defaults['after_content'] = '';
+        }
+
         if (!\in_array($this->context, [
             'post_type_archive',
             'home',
@@ -170,14 +197,13 @@ class Posts extends AbstractThemeMod
             $defaults['sticky_posts'] = 1;
         }
 
-        /**
-         * @var string $defaults Posts mod defaults.
-         */
         return \apply_filters(
-            'jentil_posts_mod_defaults',
+            'jentil_posts_mod_default',
             $defaults,
             $this->setting,
-            $this->context
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
         );
     }
 }

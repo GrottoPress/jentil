@@ -5,7 +5,7 @@ declare (strict_types = 1);
 
 \the_post(); ?>
 
-<div class="posts-wrap show-content big singular-post">
+<div id="main-query" class="posts-wrap show-content big singular-post">
     <article data-post-id="<?php
         \the_ID();
     ?>" id="post-<?php \the_ID(); ?>" <?php
@@ -18,7 +18,7 @@ declare (strict_types = 1);
         \do_action('jentil_before_title');
 
         \the_title(
-            '<h1 id="page-title" class="entry-title" itemprop="name headline mainEntityOfPage">',
+            '<h1 class="entry-title" itemprop="name headline mainEntityOfPage">',
             '</h1>'
         );
 

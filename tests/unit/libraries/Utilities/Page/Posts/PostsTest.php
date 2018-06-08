@@ -86,6 +86,7 @@ class PostsTest extends AbstractTestCase
         string $post_type,
         int $post_id,
         int $page_for_posts,
+        string $show_on_front,
         array $post_types,
         bool $expected
     ) {
@@ -101,7 +102,12 @@ class PostsTest extends AbstractTestCase
             return !empty($post_types[$type]['link']);
         });
 
-        FunctionMocker::replace('get_option', $page_for_posts);
+        FunctionMocker::replace('get_option', function (string $id) use (
+            $page_for_posts,
+            $show_on_front
+        ) {
+            return ${$id};
+        });
 
         FunctionMocker::replace('post_type_exists', function (
             string $post_type
@@ -112,6 +118,30 @@ class PostsTest extends AbstractTestCase
         $posts = new Posts(Stub::makeEmpty(Page::class));
 
         $this->assertSame($expected, $posts->isPagelike($post_type, $post_id));
+    }
+
+    public function testImageSizes()
+    {
+        FunctionMocker::replace('wp_get_additional_image_sizes', [
+            'mini-thumb' => [
+                'width' => 100,
+                'height' => 100,
+            ],
+            'micro-thumb' => [
+                'width' => 75,
+                'height' => 75,
+            ]
+        ]);
+
+        $posts = new Posts(Stub::makeEmpty(Page::class));
+
+        $this->assertSame(
+            [
+                'mini-thumb' => 'mini-thumb (100 x 100)',
+                'micro-thumb' => 'micro-thumb (75 x 75)'
+            ],
+            $posts->imageSizes()
+        );
     }
 
     public function renderProvider()
@@ -128,6 +158,7 @@ class PostsTest extends AbstractTestCase
                 'post',
                 4,
                 222,
+                'posts',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => false]
@@ -138,36 +169,40 @@ class PostsTest extends AbstractTestCase
                 'post',
                 4,
                 222,
+                'posts',
                 [
                     'post' => ['h' => false, 'link' => false],
                     'page' => ['h' => true, 'link' => false]
                 ],
                 false,
             ],
-            'post type arg is hierarchical, is front page, no archive' => [
+            'post type is hierarchical, is front page, no archive' => [
                 'page',
                 123,
                 123,
+                'page',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => false]
                 ],
                 false,
             ],
-            'post type arg is hierarchical, not front page, no archive' => [
+            'post type is hierarchical, not front page, no archive' => [
                 'page',
                 123,
                 111,
+                'page',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => false]
                 ],
                 true,
             ],
-            'post type arg is hierarchical, has archive' => [
+            'post type is hierarchical, has archive' => [
                 'page',
                 123,
                 111,
+                'page',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => true]
@@ -178,6 +213,7 @@ class PostsTest extends AbstractTestCase
                 '',
                 4,
                 111,
+                'posts',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => false]
@@ -188,6 +224,7 @@ class PostsTest extends AbstractTestCase
                 'book',
                 111,
                 123,
+                'posts',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => false]
@@ -198,6 +235,7 @@ class PostsTest extends AbstractTestCase
                 'page',
                 0,
                 111,
+                'page',
                 [
                     'post' => ['h' => false, 'link' => true],
                     'page' => ['h' => true, 'link' => false]

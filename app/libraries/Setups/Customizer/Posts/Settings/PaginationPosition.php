@@ -17,14 +17,5 @@ final class PaginationPosition extends AbstractSetting
 
         $this->args['default'] = $theme_mod->default;
         $this->args['sanitize_callback'] = 'sanitize_text_field';
-
-        $this->control['label'] = \esc_html__('Pagination position', 'jentil');
-        $this->control['type'] = 'select';
-        $this->control['choices'] = [
-            'none' => \esc_html__('None', 'jentil'),
-            'top' => \esc_html__('Top', 'jentil'),
-            'bottom' => \esc_html__('Bottom', 'jentil'),
-            'top,bottom' => \esc_html__('Top and bottom', 'jentil'),
-        ];
     }
 }

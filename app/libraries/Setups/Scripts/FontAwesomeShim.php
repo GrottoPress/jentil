@@ -26,7 +26,7 @@ final class FontAwesomeShim extends AbstractScript
     {
         \wp_enqueue_script(
             $this->id,
-            'https://use.fontawesome.com/releases/v5.0.10/js/v4-shims.js',
+            'https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js',
             [$this->app->setups['Scripts\FontAwesome']->id],
             '',
             true
