@@ -50,7 +50,7 @@
         event.preventDefault()
     })
 
-    function toggleSubMenu(button: JQuery | HTMLElement | EventTarget): void
+    function toggleSubMenu(button: JQuery<EventTarget> | HTMLElement | EventTarget): void
     {
         $(button).parent().siblings('li').children('ul').slideUp(fxDuration)
         $(button).parent().siblings('li').children('button').html(
@@ -62,7 +62,7 @@
         $(button).next('ul').slideToggle(fxDuration)
     }
 
-    function toggleCaret(button: JQuery | HTMLElement | EventTarget): void
+    function toggleCaret(button: JQuery<EventTarget> | HTMLElement | EventTarget): void
     {
         if ('none' === $(button).next('ul').css('display')) {
             $(button).html(renderCaret('up'))
