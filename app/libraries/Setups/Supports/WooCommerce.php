@@ -44,11 +44,11 @@ final class WooCommerce extends AbstractSetup
         $taxes = ['product_tag', 'product_cat'];
         $shop_page = (int)\get_option('woocommerce_shop_page_id');
 
-        $related_page_section_cb = $this->app->setups['Customizer\Customizer']
+        $related_page_active_cb = $this->app->setups['Customizer\Customizer']
             ->panels['Posts\Posts']->sections['Related_page']
             ->get($wp_customizer)->active_callback;
     
-        $singular_page_section_cb = $this->app->setups['Customizer\Customizer']
+        $single_page_active_cb = $this->app->setups['Customizer\Customizer']
             ->panels['Posts\Posts']->sections['Singular_page']
             ->get($wp_customizer)->active_callback;
 
@@ -73,18 +73,18 @@ final class WooCommerce extends AbstractSetup
         $this->app->setups['Customizer\Customizer']
             ->panels['Posts\Posts']->sections['Singular_page']
             ->get($wp_customizer)->active_callback =
-                function () use ($shop_page, $singular_page_section_cb): bool {
+                function () use ($shop_page, $single_page_active_cb): bool {
                     return (
-                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$singular_page_section_cb()
+                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$single_page_active_cb()
                     );
                 };
 
         $this->app->setups['Customizer\Customizer']
             ->panels['Posts\Posts']->sections['Related_page']
             ->get($wp_customizer)->active_callback =
-                function () use ($shop_page, $related_page_section_cb): bool {
+                function () use ($shop_page, $related_page_active_cb): bool {
                     return (
-                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$related_page_section_cb()
+                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$related_page_active_cb()
                     );
                 };
     }
