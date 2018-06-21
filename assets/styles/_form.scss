@@ -121,19 +121,11 @@ label {
 
 .form.search {
     @include position(relative);
-    @include border-radius(3px);
 
     margin: 0;
 
     &:focus {
         border-color: #ccc;
-    }
-
-    button {
-        @include border-radius(2px);
-
-        margin-bottom: 0;
-        border: 0;
     }
 
     input[type=search] {
@@ -143,9 +135,12 @@ label {
 
     button {
         @include position(absolute, 2px 2px null null);
+        @include border-radius(2px);
 
-        font-size: 12px;
+        margin-bottom: 0;
         padding: 7px 10px;
+        border: 0;
+        font-size: 12px;
         z-index: 1;
     }
 }
