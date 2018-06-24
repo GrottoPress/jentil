@@ -26,11 +26,7 @@ final class Header extends AbstractSetup
 
             '<a class="js-main-menu-button hamburger" href="'.\esc_url(
                 \add_query_arg(
-                    [
-                        'menu' => (
-                            $this->menuStatus() === 'hide' ? 'show' : 'hide'
-                        )
-                    ],
+                    ['menu' => $this->toggleMenu()],
                     $this->app->utilities->page->URL('full')
                 )
             ).'" rel="nofollow">
@@ -70,6 +66,14 @@ final class Header extends AbstractSetup
         '">'.
            \sanitize_text_field($title).
         '</a>';
+    }
+
+    /**
+     * @return string 'show' or 'hide'
+     */
+    private function toggleMenu(): string
+    {
+        return ($this->menuStatus() === 'hide' ? 'show' : 'hide');
     }
 
     /**
