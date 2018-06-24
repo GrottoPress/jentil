@@ -118,7 +118,7 @@ class LoaderTest extends AbstractTestCase
             'date',
             'embed',
             'home',
-            'front_page',
+            'frontpage',
             'page',
             'paged',
             'search',

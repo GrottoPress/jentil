@@ -64,6 +64,7 @@ Install *jentil-theme*, which is a starter for building your own theme with Jent
 1. From the `wp-content/themes` directory, run `composer create-project --remove-vcs grottopress/jentil-theme your-theme-slug-here dev-dev`.
 1. Switch to `your-theme-slug-here` directory: `cd your-theme-slug-here`.
 1. Update theme information in `style.css`. You may also want to change package name, description and author in `composer.json` and `package.json`.
+1. Update theme slug in `functions.php`
 1. Replace all occurrences of `'jentil-theme'` text domain with your own theme slug. Your theme slug should match your theme folder name, which should just be the *slugified* version of your theme's name.
 1. Do a `git init` to initialize a new git repository for your theme.
 1. Run `vendor/bin/wp theme activate your-theme-slug-here` to activate your new theme.
@@ -167,3 +168,4 @@ The following websites are powered by Jentil:
 
 - [GrottoPress](https://www.grottopress.com)
 - [Ghana Gong](https://www.ghanagong.com)
+- [iQ College](https://www.iqcollegeghana.com)

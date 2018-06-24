@@ -115,30 +115,32 @@ label {
 
 /** Search form */
 
+.search-wrap {
+    @include paragraph;
+}
+
 .form.search {
     @include position(relative);
-    @include border-radius(3px);
 
     margin: 0;
-    padding: 1px;
-    border: $jentil-separator;
-    background-color: #fff;
 
     &:focus {
         border-color: #ccc;
     }
 
-    input[type=search],
-    button {
-        margin-bottom: 0;
-        border: 0;
+    input[type=search] {
+        margin: 0;
+        padding: 6px 8px;
     }
 
     button {
-        @include position(absolute, 1px 1px null null);
+        @include position(absolute, 2px 2px null null);
+        @include border-radius(2px);
 
-        font-size: 12px;
+        margin-bottom: 0;
         padding: 7px 10px;
+        border: 0;
+        font-size: 12px;
         z-index: 1;
     }
 }

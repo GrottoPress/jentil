@@ -26,7 +26,7 @@ final class Loader extends AbstractSetup
     }
 
     /**
-     * @filter {$emplate}_template_hierarchy
+     * @filter {$template}_template_hierarchy
      * @param string[int] $templates
      * @return string[int]
      */
@@ -67,7 +67,7 @@ final class Loader extends AbstractSetup
             'date',
             'embed',
             'home',
-            'front_page',
+            'frontpage',
             'page',
             'paged',
             'search',

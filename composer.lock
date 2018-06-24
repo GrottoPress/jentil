@@ -669,16 +669,16 @@
         },
         {
             "name": "grottopress/wordpress-suv",
-            "version": "0.4.2",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
-                "reference": "4c87bf98af2e0a0a20456ef75d867c4e74816166"
+                "reference": "3857c4fbe0d6cd736d9d454d20e18acd8ec2b2cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/4c87bf98af2e0a0a20456ef75d867c4e74816166",
-                "reference": "4c87bf98af2e0a0a20456ef75d867c4e74816166",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/3857c4fbe0d6cd736d9d454d20e18acd8ec2b2cf",
+                "reference": "3857c4fbe0d6cd736d9d454d20e18acd8ec2b2cf",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 "suv",
                 "wordpress"
             ],
-            "time": "2018-04-13T13:53:29+00:00"
+            "time": "2018-06-18T18:00:23+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -1119,16 +1119,16 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "6.0.9",
+            "version": "6.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "450f1cfc5f49539c421061e64338f5edb8baad6a"
+                "reference": "7057e599d97b02b4efb009681a43b327dbce138a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/450f1cfc5f49539c421061e64338f5edb8baad6a",
-                "reference": "450f1cfc5f49539c421061e64338f5edb8baad6a",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/7057e599d97b02b4efb009681a43b327dbce138a",
+                "reference": "7057e599d97b02b4efb009681a43b327dbce138a",
                 "shasum": ""
             },
             "require": {
@@ -1161,7 +1161,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-03-31T18:50:01+00:00"
+            "time": "2018-06-20T20:08:14+00:00"
         },
         {
             "name": "codeception/stub",
@@ -2638,16 +2638,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.29.2",
+            "version": "1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337"
+                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ed6aa898982f441ccc9b2acdec51490f2bc5d337",
-                "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/863a1a651ea324e1838da3a52753a4239b9d4bea",
+                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea",
                 "shasum": ""
             },
             "require": {
@@ -2682,7 +2682,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-05-29T15:23:46+00:00"
+            "time": "2018-06-15T11:52:26+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -4383,21 +4383,21 @@
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",
-            "version": "1.2.1",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
-                "reference": "2aa4232896463e2a5eb8227172fc1b6bead01cd4"
+                "reference": "ee2ce2e8bfd9683defb54a2c5154008157240dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/2aa4232896463e2a5eb8227172fc1b6bead01cd4",
-                "reference": "2aa4232896463e2a5eb8227172fc1b6bead01cd4",
+                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/ee2ce2e8bfd9683defb54a2c5154008157240dcc",
+                "reference": "ee2ce2e8bfd9683defb54a2c5154008157240dcc",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "phpunit/phpunit": "^5.7|^6.0|^7.0"
+                "phpunit/phpunit": "^6.0.5|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -4427,7 +4427,7 @@
                 "spatie",
                 "testing"
             ],
-            "time": "2018-02-02T10:27:45+00:00"
+            "time": "2018-06-08T22:20:36+00:00"
         },
         {
             "name": "symfony/browser-kit",
