@@ -168,3 +168,4 @@ The following websites are powered by Jentil:
 
 - [GrottoPress](https://www.grottopress.com)
 - [Ghana Gong](https://www.ghanagong.com)
+- [iQ College](https://www.iqcollegeghana.com)
