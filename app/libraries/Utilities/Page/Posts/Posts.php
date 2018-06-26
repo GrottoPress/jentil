@@ -168,20 +168,6 @@ class Posts
         return $mod;
     }
 
-    public function isPagelike(string $post_type = '', int $post_id = 0): bool
-    {
-        $check = (
-            \is_post_type_hierarchical($post_type) &&
-            !\get_post_type_archive_link($post_type)
-        );
-
-        if ($check && $post_id && ('page' === \get_option('show_on_front'))) {
-            return ($post_id !== (int)\get_option('page_for_posts'));
-        }
-
-        return $check;
-    }
-
     /**
      * @return string[string]
      */

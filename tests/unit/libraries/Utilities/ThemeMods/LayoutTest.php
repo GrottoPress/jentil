@@ -61,7 +61,7 @@ class LayoutTest extends AbstractTestCase
         $theme_mods = Stub::makeEmpty(ThemeMods::class);
         $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
         $theme_mods->utilities->page = Stub::makeEmpty(Page::class);
-        $theme_mods->utilities->page->posts = Stub::makeEmpty(Layout::class, [
+        $theme_mods->utilities->page->layout = Stub::makeEmpty(Layout::class, [
             'isPagelike' => $is_pagelike,
         ]);
 
@@ -135,7 +135,7 @@ class LayoutTest extends AbstractTestCase
         $theme_mods = Stub::makeEmpty(ThemeMods::class);
         $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
         $theme_mods->utilities->page = Stub::makeEmpty(Page::class);
-        $theme_mods->utilities->page->posts = Stub::makeEmpty(Layout::class, [
+        $theme_mods->utilities->page->layout = Stub::makeEmpty(Layout::class, [
             'isPagelike' => true,
         ]);
 

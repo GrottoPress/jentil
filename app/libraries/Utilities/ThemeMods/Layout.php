@@ -122,7 +122,7 @@ class Layout extends AbstractThemeMod
             return false;
         }
 
-        return $this->themeMods->utilities->page->posts->isPagelike(
+        return $this->themeMods->utilities->page->layout->isPagelike(
             $this->specific,
             $this->moreSpecific
         );

@@ -43,6 +43,47 @@ class LayoutTest extends AbstractTestCase
         $this->assertSame($expected, $layout->column());
     }
 
+    /**
+     * @dataProvider isPagelikeProvider
+     */
+    public function testIsPagelike(
+        string $post_type,
+        int $post_id,
+        int $page_for_posts,
+        string $show_on_front,
+        array $post_types,
+        bool $expected
+    ) {
+        FunctionMocker::replace('is_post_type_hierarchical', function (
+            string $type
+        ) use ($post_types): bool {
+            return !empty($post_types[$type]['h']);
+        });
+
+        FunctionMocker::replace('get_post_type_archive_link', function (
+            string $type
+        ) use ($post_types): bool {
+            return !empty($post_types[$type]['link']);
+        });
+
+        FunctionMocker::replace('get_option', function (string $id) use (
+            $page_for_posts,
+            $show_on_front
+        ) {
+            return ${$id};
+        });
+
+        FunctionMocker::replace('post_type_exists', function (
+            string $post_type
+        ) use ($post_types): bool {
+            return \array_key_exists($post_type, $post_types);
+        });
+
+        $layout = new Layout(Stub::makeEmpty(Page::class));
+
+        $this->assertSame($expected, $layout->isPagelike($post_type, $post_id));
+    }
+
     public function columnProvider(): array
     {
         return [
@@ -69,6 +110,100 @@ class LayoutTest extends AbstractTestCase
             'content' => [
                 'c',
                 'l-1-c',
+            ],
+        ];
+    }
+
+    public function isPagelikeProvider(): array
+    {
+        return [
+            'post type is non-hierarchical, has archive' => [
+                'post',
+                4,
+                222,
+                'posts',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type is non-hierarchical, no archive' => [
+                'post',
+                4,
+                222,
+                'posts',
+                [
+                    'post' => ['h' => false, 'link' => false],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type is hierarchical, is front page, no archive' => [
+                'page',
+                123,
+                123,
+                'page',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type is hierarchical, not front page, no archive' => [
+                'page',
+                123,
+                111,
+                'page',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                true,
+            ],
+            'post type is hierarchical, has archive' => [
+                'page',
+                123,
+                111,
+                'page',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => true]
+                ],
+                false,
+            ],
+            'post type arg not set' => [
+                '',
+                4,
+                111,
+                'posts',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post type arg non-existent' => [
+                'book',
+                111,
+                123,
+                'posts',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                false,
+            ],
+            'post id not set' => [
+                'page',
+                0,
+                111,
+                'page',
+                [
+                    'post' => ['h' => false, 'link' => true],
+                    'page' => ['h' => true, 'link' => false]
+                ],
+                true,
             ],
         ];
     }
