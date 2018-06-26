@@ -3,6 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\Page\Posts;
 
+use WP_Post_Type;
+
 class Archive extends AbstractPosts
 {
      /**
@@ -161,25 +163,16 @@ class Archive extends AbstractPosts
     }
 
     /**
-     * @return \WP_Post_Type[int] Public post types that has archive.
+     * @return WP_Post_Type[string] Public post types that have archive.
      */
     public function postTypes(): array
     {
-        $archive_post_types = [];
-
-        if (!($post_types = $this->posts->postTypes())) {
-            return $archive_post_types;
-        }
-
-        foreach ($post_types as $post_type) {
-            if (!\get_post_type_archive_link($post_type->name)) {
-                continue;
+        return \array_filter(
+            $this->posts->postTypes(),
+            function (WP_Post_Type $post_type) {
+                return \get_post_type_archive_link($post_type->name);
             }
-
-            $archive_post_types[$post_type->name] = $post_type;
-        }
-
-        return $archive_post_types;
+        );
     }
 
     public function postType(): string

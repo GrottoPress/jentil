@@ -12,18 +12,8 @@ class ArchiveTest extends AbstractTestCase
     /**
      * @dataProvider postTypesProvider
      */
-    public function testPostTypes(
-        array $post_types,
-        array $expected
-    ) {
-        \array_walk($post_types, function (&$v, $k) {
-            $v = \json_decode(\json_encode($v));
-        });
-
-        \array_walk($expected, function (&$v, $k) {
-            $v = \json_decode(\json_encode($v));
-        });
-
+    public function testPostTypes(array $post_types, array $expected)
+    {
         $posts = Stub::makeEmpty(Posts::class, ['postTypes' => $post_types]);
 
         FunctionMocker::replace(
@@ -42,29 +32,34 @@ class ArchiveTest extends AbstractTestCase
 
     public function postTypesProvider(): array
     {
+        $this->getMockBuilder('WP_Post_Type')->getMock();
+
+        $post = new class extends \WP_Post_Type {
+            public $name = 'post';
+            public $link = 'http://my.site/blog';
+        };
+
+        $page = new class extends \WP_Post_Type {
+            public $name = 'page';
+            public $link = '';
+        };
+
+        $tutorial = new class extends \WP_Post_Type {
+            public $name = 'tutorial';
+            public $link = 'http://my.site/tutorials';
+        };
+
         return [
             'post types empty' => [[], []],
             'post types set' => [
                 [
-                    'post' => [
-                        'name' => 'post',
-                        'link' => 'http://my.site/blog'
-                    ],
-                    'tutorial' => [
-                        'name' => 'tutorial',
-                        'link' => 'http://my.site/tutorials'
-                    ],
-                    'page' => ['name' => 'page', 'link' => ''],
+                    'post' => $post,
+                    'tutorial' => $tutorial,
+                    'page' => $page,
                 ],
                 [
-                    'post' => [
-                        'name' => 'post',
-                        'link' => 'http://my.site/blog'
-                    ],
-                    'tutorial' => [
-                        'name' => 'tutorial',
-                        'link' => 'http://my.site/tutorials'
-                    ],
+                    'post' => $post,
+                    'tutorial' => $tutorial,
                 ],
             ],
         ];
