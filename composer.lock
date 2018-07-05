@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c45bfc3bc847e31a17c8533db2a94f2f",
+    "content-hash": "33134e4d74641b44ba70d6729b7ee3dd",
     "packages": [
         {
             "name": "aura/html",
@@ -265,16 +265,16 @@
         },
         {
             "name": "grottopress/form-field",
-            "version": "0.5.0",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/form-field.git",
-                "reference": "3eaaa6cd31c5a22fa1432def1440f414cd282289"
+                "reference": "22d455a671f00ff8c3ffcaf72a33d9916ec6283a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/3eaaa6cd31c5a22fa1432def1440f414cd282289",
-                "reference": "3eaaa6cd31c5a22fa1432def1440f414cd282289",
+                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/22d455a671f00ff8c3ffcaf72a33d9916ec6283a",
+                "reference": "22d455a671f00ff8c3ffcaf72a33d9916ec6283a",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                 "Forms",
                 "html"
             ],
-            "time": "2018-03-06T14:08:20+00:00"
+            "time": "2018-07-05T21:06:56+00:00"
         },
         {
             "name": "grottopress/getter",
@@ -466,20 +466,20 @@
         },
         {
             "name": "grottopress/wordpress-field",
-            "version": "0.5.1",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-field.git",
-                "reference": "7a416d28a3c19d0c8130e512659d1a21e754d9e6"
+                "reference": "150e70771bf1953269ea9a7039da087d589cf2d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-field/zipball/7a416d28a3c19d0c8130e512659d1a21e754d9e6",
-                "reference": "7a416d28a3c19d0c8130e512659d1a21e754d9e6",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-field/zipball/150e70771bf1953269ea9a7039da087d589cf2d1",
+                "reference": "150e70771bf1953269ea9a7039da087d589cf2d1",
                 "shasum": ""
             },
             "require": {
-                "grottopress/form-field": "^0.5",
+                "grottopress/form-field": "^0.6",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -513,24 +513,24 @@
                 "Forms",
                 "wordpress"
             ],
-            "time": "2018-06-29T21:25:55+00:00"
+            "time": "2018-07-05T21:34:21+00:00"
         },
         {
             "name": "grottopress/wordpress-meta-box",
-            "version": "0.1.1",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-meta-box.git",
-                "reference": "0e81b782045896b49fb1a39bc7fb334e5844cdf9"
+                "reference": "5440e537826aedc30c851df2791005dd101bd7ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-meta-box/zipball/0e81b782045896b49fb1a39bc7fb334e5844cdf9",
-                "reference": "0e81b782045896b49fb1a39bc7fb334e5844cdf9",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-meta-box/zipball/5440e537826aedc30c851df2791005dd101bd7ee",
+                "reference": "5440e537826aedc30c851df2791005dd101bd7ee",
                 "shasum": ""
             },
             "require": {
-                "grottopress/wordpress-field": "^0.5",
+                "grottopress/wordpress-field": "^0.6",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -565,7 +565,7 @@
                 "meta-box",
                 "wordpress"
             ],
-            "time": "2018-06-29T21:34:29+00:00"
+            "time": "2018-07-05T23:21:07+00:00"
         },
         {
             "name": "grottopress/wordpress-page",
