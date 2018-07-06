@@ -85,7 +85,7 @@ final class Layout extends AbstractMetaBox
             'title' => \esc_html__('Layout', 'jentil'),
             'context' => $this->context,
             'priority' => 'default',
-            'callback' => '',
+            'callbackArgs' => ['__block_editor_compatible_meta_box' => true],
             'fields' => [
                 [
                     'id' => $mod->id,

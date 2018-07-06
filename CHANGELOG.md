@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased 0.8.0 - 
 
 ### Added
-- Deactivate theme if minimum required WordPress and PHP versions not met
+- Deactivate theme if minimum required WordPress and PHP versions not met.
 
 ### Changed
 - Move `isPagelike()` from posts utility to layout utility.
+- Explicitly mark layout meta box as compatible with Gutenberg.
 
 ## 0.7.1 - 2018-06-24
 
