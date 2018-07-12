@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Move `isPagelike()` from posts utility to layout utility.
 - Explicitly mark layout meta box as compatible with Gutenberg.
+- Replace `<?php echo` in templates/partials with `<?=`
 
 ## 0.7.1 - 2018-06-24
 

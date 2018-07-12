@@ -31,7 +31,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
         ); ?>
 
         <section id="comments-list">
-            <h3 class="comments-title"><?php echo \apply_filters(
+            <h3 class="comments-title"><?= \apply_filters(
                 'jentil_comments_title',
                 $title
             ); ?></h3>
@@ -104,7 +104,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
          */
         if (!\comments_open()) { ?>
             <div class="comments-closed-text">
-                <?php echo \sanitize_text_field(
+                <?= \sanitize_text_field(
                     \apply_filters(
                         'jentil_comments_closed_text',
                         \esc_html__('Comments are closed.', 'jentil'),

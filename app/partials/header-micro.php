@@ -20,14 +20,14 @@ declare (strict_types = 1);
         <?php } ?>
 
         <!--[if lt IE 9]>
-            <script src="<?php
-                echo \Jentil()->utilities->fileSystem->dir(
+            <script src="<?=
+                \Jentil()->utilities->fileSystem->dir(
                     'url',
                     '/dist/vendor/html5shiv.min.js'
                 );
             ?>"></script>
-            <script src="<?php
-                echo \Jentil()->utilities->fileSystem->dir(
+            <script src="<?=
+                \Jentil()->utilities->fileSystem->dir(
                     'url',
                     '/dist/vendor/respond.min.js'
                 );

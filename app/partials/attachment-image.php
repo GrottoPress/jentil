@@ -23,10 +23,10 @@ $next_label = \sanitize_text_field(
 </nav><!-- .image-navigation -->
 
 <figure class="entry-attachment image aligncenter">
-    <div class="image-wrap"><a href="<?php
-        echo \wp_get_attachment_url($post->id);
-    ?>" rel="attachment" itemprop="url"><?php
-        echo \wp_get_attachment_image($post->ID, \apply_filters(
+    <div class="image-wrap"><a href="<?=
+        \wp_get_attachment_url($post->id);
+    ?>" rel="attachment" itemprop="url"><?=
+        \wp_get_attachment_image($post->ID, \apply_filters(
             'jentil_attachment_size',
             'large'
         ));
