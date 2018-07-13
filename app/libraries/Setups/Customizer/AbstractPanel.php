@@ -14,6 +14,11 @@ abstract class AbstractPanel
     protected $customizer;
 
     /**
+     * @var \WP_Customize_Panel
+     */
+    protected $object;
+
+    /**
      * @var mixed[string]
      */
     protected $args = [];
@@ -60,11 +65,11 @@ abstract class AbstractPanel
      */
     public function add(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
+        if (!$this->id && !$this->object) {
             return;
         }
 
-        $wp_customizer->add_panel($this->id, $this->args);
+        $wp_customizer->add_panel(($this->object ?: $this->id), $this->args);
 
         foreach ($this->sections as $section) {
             $section->add($wp_customizer);

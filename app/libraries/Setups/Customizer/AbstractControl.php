@@ -16,6 +16,11 @@ abstract class AbstractControl
     protected $customizer;
 
     /**
+     * @var \WP_Customize_Control
+     */
+    protected $object;
+
+    /**
      * @var mixed[string]
      */
     protected $args = [];
@@ -39,11 +44,11 @@ abstract class AbstractControl
 
     public function add(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
+        if (!$this->id && !$this->object) {
             return;
         }
 
-        $wp_customizer->add_control($this->id, $this->args);
+        $wp_customizer->add_control(($this->object ?: $this->id), $this->args);
     }
 
     /**

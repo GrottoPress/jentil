@@ -16,6 +16,11 @@ abstract class AbstractSection
     protected $customizer;
 
     /**
+     * @var \WP_Customize_Section
+     */
+    protected $object;
+
+    /**
      * @var mixed[string]
      */
     protected $args = [];
@@ -75,11 +80,11 @@ abstract class AbstractSection
      */
     public function add(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
+        if (!$this->id && !$this->object) {
             return;
         }
 
-        $wp_customizer->add_section($this->id, $this->args);
+        $wp_customizer->add_section(($this->object ?: $this->id), $this->args);
 
         foreach ($this->settings as $setting) {
             $setting->add($wp_customizer);
