@@ -4,7 +4,10 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Scripts;
 
 use GrottoPress\Jentil\AbstractTheme;
-use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
+use GrottoPress\Jentil\Setups\Customizer\Title\Settings\AbstractSetting
+    as TitleSetting;
+use GrottoPress\Jentil\Setups\Customizer\Layout\Settings\AbstractSetting
+    as LayoutSetting;
 
 final class CustomizePreview extends AbstractScript
 {
@@ -85,8 +88,13 @@ final class CustomizePreview extends AbstractScript
      */
     private function pageTitleModIDs(): array
     {
-        return $this->modIDs($this->app->setups['Customizer\Customizer']
-            ->sections['Title\Title']->settings);
+        return \array_map(
+            function (TitleSetting $setting): string {
+                return $setting->id;
+            },
+            $this->app->setups['Customizer\Customizer']
+                ->sections['Title\Title']->settings
+        );
     }
 
     /**
@@ -94,8 +102,13 @@ final class CustomizePreview extends AbstractScript
      */
     private function pageLayoutModIDs(): array
     {
-        return $this->modIDs($this->app->setups['Customizer\Customizer']
-            ->sections['Layout\Layout']->settings);
+        return \array_map(
+            function (LayoutSetting $setting): string {
+                return $setting->id;
+            },
+            $this->app->setups['Customizer\Customizer']
+                ->sections['Layout\Layout']->settings
+        );
     }
 
     /**
@@ -115,16 +128,5 @@ final class CustomizePreview extends AbstractScript
         }
 
         return $ids;
-    }
-
-    /**
-     * @param AbstractSetting[string] $settings
-     * @return string[int]
-     */
-    private function modIDs(array $settings): array
-    {
-        return \array_map(function (AbstractSetting $setting): string {
-            return $setting->id;
-        }, $settings);
     }
 }

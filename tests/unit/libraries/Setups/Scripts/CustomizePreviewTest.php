@@ -14,6 +14,10 @@ use GrottoPress\Jentil\Setups\Customizer\AbstractCustomizer;
 use GrottoPress\Jentil\Setups\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
+use GrottoPress\Jentil\Setups\Customizer\Title\Settings\AbstractSetting
+    as TitleSetting;
+use GrottoPress\Jentil\Setups\Customizer\Layout\Settings\AbstractSetting
+    as LayoutSetting;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
@@ -134,7 +138,7 @@ class CustomizePreviewTest extends AbstractTestCase
                                 AbstractSection::class,
                                 [
                                     'settings' => ['Date' => Stub::makeEmpty(
-                                        AbstractSetting::class,
+                                        TitleSetting::class,
                                         [
                                             'id' => 'date_title',
                                         ]
@@ -145,7 +149,7 @@ class CustomizePreviewTest extends AbstractTestCase
                                 AbstractSection::class,
                                 [
                                     'settings' => ['Date' => Stub::makeEmpty(
-                                        AbstractSetting::class,
+                                        LayoutSetting::class,
                                         [
                                             'id' => 'date_title',
                                         ]
