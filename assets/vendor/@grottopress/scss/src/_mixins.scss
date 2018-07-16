@@ -53,6 +53,16 @@
     -webkit-box-sizing: $sizing;
     -moz-box-sizing: $sizing;
     box-sizing: $sizing;
+
+    *,
+    *::before,
+    *::after,
+    &::before,
+    &::after, {
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
+    }
 }
 
 /// Border Radius
@@ -188,7 +198,6 @@
 
     $width: map-get($args, width);
     $gutter: map-get($args, gutter );
-    $v-margin: map-get($args, v-margin);
     $columns: map-get($args , columns );
 
     $half-gutter: ($gutter / 2);
