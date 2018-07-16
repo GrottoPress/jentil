@@ -110,7 +110,7 @@ class Posts extends AbstractThemeMod
         $defaults = [
             'wrap_class' => 'archive-posts big',
             'wrap_tag' => 'div',
-            'layout' => 'stack',
+            'layout' => '',
             'number' => (int)\get_option('posts_per_page'),
             'before_title' => '',
             'before_title_separator' => ' | ',
