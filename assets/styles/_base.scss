@@ -13,12 +13,6 @@ html {
     overflow-x: hidden !important;
 }
 
-*,
-*::before,
-*::after {
-    @include box-sizing(inherit);
-}
-
 body {
     @include word-wrap(break-word);
 
