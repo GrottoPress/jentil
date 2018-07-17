@@ -50,6 +50,8 @@ class Loader
      *
      * @see
      * https://developer.wordpress.org/reference/functions/get_template_part/
+     *
+     * @param string $type 'template' or 'partial'
      */
     private function load(string $type, string $slug, string $name = ''): string
     {
