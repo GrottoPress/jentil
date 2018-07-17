@@ -33,7 +33,7 @@ final class Header extends AbstractSetup
                     $this->app->utilities->page->URL('full')
                 )
             ).'" rel="nofollow">
-                <span class="fas fa-bars fa-sm" aria-hidden="true"></span>
+                <span class="fas fa-bars" aria-hidden="true"></span>
                 <span class="menu-button-text icon-text">'.
                     \esc_html__('Menu', 'jentil').
                 '</span>
