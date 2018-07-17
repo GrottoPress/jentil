@@ -54,6 +54,12 @@
     .form.search {
         margin: 0;
     }
+
+    .skip-link {
+        + * {
+            margin-top: 0;
+        }
+    }
 }
 
 .sub-menu-toggle {

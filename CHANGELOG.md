@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased 0.8.0 - 
+## 0.8.0 - 
 
 ### Added
 - Deactivate theme if minimum required WordPress and PHP versions not met.
@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Replace `<?php echo` in templates/partials with `<?=`
 - Refactor customizer components' `add_*` methods to accept object in place of id.
 - Set cursor to `not-allowed` for disabled form fields.
+- Render header search via `wp_nav_menu` filter.
 
 ## 0.7.1 - 2018-06-24
 

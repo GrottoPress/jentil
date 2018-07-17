@@ -14,6 +14,7 @@ class HeaderTest extends AbstractTestCase
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
+        $add_filter = FunctionMocker::replace('add_filter');
 
         $header = new Header(Stub::makeEmpty(AbstractTheme::class));
 
@@ -30,30 +31,62 @@ class HeaderTest extends AbstractTestCase
             'jentil_inside_header',
             [$header, 'renderMenu']
         ]);
+
+        $add_filter->wasCalledWithOnce([
+            'wp_nav_menu',
+            [$header, 'renderSearchForm']
+        ]);
     }
 
     public function testRenderMenu()
     {
-        $get_search_form = FunctionMocker::replace('get_search_form');
         $esc_html = FunctionMocker::replace('esc_html__', 'some string');
         $wp_nav_menu = FunctionMocker::replace('wp_nav_menu');
         $sanitize_title = FunctionMocker::replace('sanitize_title');
         $sanitize_text_field = FunctionMocker::replace('sanitize_text_field');
 
         $header = new Header(Stub::makeEmpty(AbstractTheme::class, [
-            'setups' => ['Menus\Primary' => Stub::makeEmpty(AbstractMenu::class, [
-                'id' => 'primary',
-            ])],
+            'setups' => ['Menus\Primary' => Stub::makeEmpty(
+                AbstractMenu::class,
+                ['id' => 'primary']
+            )],
         ]));
 
         $header->renderMenu();
 
-        $get_search_form->wasCalledOnce();
         $esc_html->wasCalledOnce();
         $wp_nav_menu->wasCalledOnce();
         $wp_nav_menu->wasCalledWithOnce([[
             'theme_location' => 'primary',
             'fallback_cb' => false,
         ]]);
+    }
+
+    public function testRenderSearchForm()
+    {
+        FunctionMocker::replace('get_search_form', 'search_form');
+
+        $header = new Header(Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => ['Menus\Primary' => Stub::makeEmpty(
+                AbstractMenu::class,
+                ['id' => 'primary']
+            )],
+        ]));
+
+        $this->assertSame(
+            'search_form_menu',
+            $header->renderSearchForm(
+                '_menu',
+                (object)['theme_location' => 'primary']
+            )
+        );
+
+        $this->assertSame(
+            'menu',
+            $header->renderSearchForm(
+                'menu',
+                (object)['theme_location' => 'secondary']
+            )
+        );
     }
 }

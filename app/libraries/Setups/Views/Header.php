@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\Views;
 
 use GrottoPress\Jentil\Setups\AbstractSetup;
+use stdClass;
 
 final class Header extends AbstractSetup
 {
@@ -11,6 +12,8 @@ final class Header extends AbstractSetup
     {
         \add_action('jentil_inside_header', [$this, 'renderMenuToggle']);
         \add_action('jentil_inside_header', [$this, 'renderMenu']);
+
+        \add_filter('wp_nav_menu', [$this, 'renderSearchForm'], 10, 2);
     }
 
     /**
@@ -44,11 +47,10 @@ final class Header extends AbstractSetup
     public function renderMenu()
     {
         echo '<nav id="primary-menu" class="js-main-menu site-navigation '.
-        $this->menuStatus().'">';
-            \get_search_form();
-
+            $this->menuStatus().
+        '">';
             echo $this->menuSkipTo(
-                'main',
+                'main', // #content is not available on all pages
                 \esc_html__('Skip to content', 'jentil')
             );
 
@@ -57,6 +59,18 @@ final class Header extends AbstractSetup
                 'fallback_cb' => false,
             ]);
         echo '</nav>';
+    }
+
+    /**
+     * @filter wp_nav_menu
+     */
+    public function renderSearchForm(string $menu, stdClass $args): string
+    {
+        if ($args->theme_location !== $this->app->setups['Menus\Primary']->id) {
+            return $menu;
+        }
+
+        return \get_search_form(false).$menu;
     }
 
     private function menuSkipTo(string $location, string $title = ''): string
