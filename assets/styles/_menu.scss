@@ -137,16 +137,8 @@
                     left: 100%;
                 }
             }
-        }
-    }
 
-    // .sub-menu {
-    //     text-align: initial;
-    // }
-
-    #primary-menu {
-        .has-js & {
-            .menu {
+            .has-js & {
                 .menu-item-has-children {
                     > a {
                         padding-right: 22px;
@@ -164,4 +156,8 @@
             }
         }
     }
+
+    // .sub-menu {
+    //     text-align: initial;
+    // }
 }
