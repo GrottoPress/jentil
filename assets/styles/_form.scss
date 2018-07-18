@@ -40,20 +40,12 @@ button {
     border: $jentil-separator;
     padding: 5px 7px;
     margin-bottom: 4px;
-
-    &:focus {
-        outline: 0;
-    }
 }
 
 input,
 textarea,
 select {
     background-color: #fff;
-
-    &:focus {
-        border-color: #ccc;
-    }
 }
 
 input,
@@ -84,10 +76,6 @@ button {
     line-height: 100%;
     text-align: center;
     background-color: #ddd;
-
-    &:focus {
-        border-width: 0;
-    }
 }
 
 /// Fix button background color not showing in opera mini
@@ -123,10 +111,6 @@ label {
     @include position(relative);
 
     margin: 0;
-
-    &:focus {
-        border-color: #ccc;
-    }
 
     input[type=search] {
         margin: 0;

@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactor customizer components' `add_*` methods to accept object in place of id.
 - Set cursor to `not-allowed` for disabled form fields.
 - Render header search via `wp_nav_menu` filter.
+- General accessibility improvements
+    * Undo unsetting outlines when elements receive a focus
 
 ## 0.7.1 - 2018-06-24
 
