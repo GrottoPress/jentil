@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Deactivate theme if minimum required WordPress and PHP versions not met.
+- `.editorconfig`
 
 ### Changed
 - Move `isPagelike()` from posts utility to layout utility.
