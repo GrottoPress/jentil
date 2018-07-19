@@ -196,7 +196,7 @@
 
 /** Page Builder */
 
-.post-type-page-builder-blank-php {
+.template-post-typepage-builder-blank-php {
     padding-left: 0;
     padding-right: 0;
 
@@ -206,7 +206,7 @@
 }
 
 @media (min-width: map-get($jentil-breakpoint, wide)) {
-    .post-type-page-builder-blank-php {
+    .template-post-typepage-builder-blank-php {
         #wrap {
             max-width: none;
         }

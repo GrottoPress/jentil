@@ -52,7 +52,7 @@ final class Singular extends AbstractSetup
         if ($page_template = $this->app->utilities->postTypeTemplate->slug(
             $post->ID
         )) {
-            $classes[] = \sanitize_title($page_template);
+            $classes[] = 'template-'.\sanitize_title($page_template);
         }
 
         if (\post_type_supports($post->post_type, 'comments')) {

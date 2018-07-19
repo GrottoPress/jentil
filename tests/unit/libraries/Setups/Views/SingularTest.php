@@ -80,7 +80,7 @@ class SingularTest extends AbstractTestCase
             'jentil_after_content',
             [$singular, 'renderRelatedPosts']
         ]);
-        
+
         $add_filter->wasCalledTimes(2);
 
         $add_filter->wasCalledWithOnce([
@@ -274,7 +274,7 @@ class SingularTest extends AbstractTestCase
                 ['ID' => 3, 'post_type' => 'page', 'post_parent' => []],
                 [
                     'class-1',
-                    'page-builder.php',
+                    'template-page-builder.php',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -294,7 +294,7 @@ class SingularTest extends AbstractTestCase
                     'class-1',
                     'child-page',
                     'page-parent-1-1000',
-                    'page-builder.php',
+                    'template-page-builder.php',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -319,7 +319,7 @@ class SingularTest extends AbstractTestCase
                     'child-tutorial',
                     'tutorial-parent-1-2010',
                     'tutorial-parent-2-1010',
-                    'page-builder.php',
+                    'template-page-builder.php',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -349,7 +349,7 @@ class SingularTest extends AbstractTestCase
                     'tutorial-parent-1-3111',
                     'tutorial-parent-2-2111',
                     'tutorial-parent-3-1111',
-                    'page-builder.php',
+                    'template-page-builder.php',
                     'threaded-comments',
                     'comments-open',
                 ],
@@ -369,7 +369,7 @@ class SingularTest extends AbstractTestCase
                     'class-1',
                     'child-book',
                     'book-parent-1-2222',
-                    'page-builder.php',
+                    'template-page-builder.php',
                 ],
             ],
             'comments not threaded' => [
@@ -387,7 +387,7 @@ class SingularTest extends AbstractTestCase
                     'class-1',
                     'child-book',
                     'book-parent-1-2222',
-                    'page-builder.php',
+                    'template-page-builder.php',
                     'unthreaded-comments',
                     'comments-open',
                 ],
@@ -407,7 +407,7 @@ class SingularTest extends AbstractTestCase
                     'class-1',
                     'child-book',
                     'book-parent-1-2222',
-                    'page-builder.php',
+                    'template-page-builder.php',
                     'threaded-comments',
                     'comments-closed',
                 ],
