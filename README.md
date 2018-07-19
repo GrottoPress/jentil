@@ -109,7 +109,7 @@ These should insulate you from potential backwards compatibility breaks if any o
 
 Templates and partials should be filed in `app/templates` and `app/partials` respectively. The rules and naming conventions are as defined by WordPress. Therefore, a `app/templates/singular.php` in your theme overrides the same in Jentil.
 
-If you decide to add your own templates, do not use WordPress' `\get_header()`, `\get_footer()` and `\get_sidebar()` functions in them. These functions expect your partials to be in your theme's root, and WordPress provides no way of overriding that.
+If you decide to add your own templates, do not use WordPress' `\get_header()`, `\get_footer()` and `\get_sidebar()` functions in them. These functions expect your partials to be in your theme's root, and WordPress provides no way of overriding those.
 
 Jentil uses it's own loader to load partials from the `app/partials` directory. You should call eg: `\Jentil()->utilities->loader->loadPartial('header', 'some-slug')`, instead of `\get_header('some-slug')`.
 
