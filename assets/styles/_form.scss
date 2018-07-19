@@ -46,6 +46,10 @@ input,
 textarea,
 select {
     background-color: #fff;
+
+    &:focus {
+        border-color: #ccc;
+    }
 }
 
 input,
@@ -76,6 +80,10 @@ button {
     line-height: 100%;
     text-align: center;
     background-color: #ddd;
+
+    &:focus {
+        border-width: 0;
+    }
 }
 
 /// Fix button background color not showing in opera mini
@@ -119,7 +127,7 @@ label {
 
     button {
         @include position(absolute, 2px 2px null null);
-        @include border-radius(2px);
+        // @include border-radius(2px);
 
         margin-bottom: 0;
         padding: 7px 10px;

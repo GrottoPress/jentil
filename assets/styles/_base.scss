@@ -38,3 +38,12 @@ fieldset {
 figure {
     margin: 0;
 }
+
+/** What Input */
+
+[data-whatintent=mouse],
+[data-whatintent=touch] {
+    *:focus {
+        outline: none;
+    }
+}

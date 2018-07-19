@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Render header search via `wp_nav_menu` filter.
 - General accessibility improvements
     * Undo unsetting outlines when elements receive a focus
+    * Use [what-input](https://ten1seven.github.io/what-input/) to detect mouse, keyboard and touch events
 
 ## 0.7.1 - 2018-06-24
 
