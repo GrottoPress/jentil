@@ -20,7 +20,6 @@ class PostTypeTemplate
         $page_builder = [
             $this->utilities->app
                 ->setups['PostTypeTemplates\PageBuilder']->slug,
-
             $this->utilities->app
                 ->setups['PostTypeTemplates\PageBuilderBlank']->slug,
         ];
