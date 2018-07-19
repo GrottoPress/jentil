@@ -56,6 +56,7 @@ class Loader
     private function load(string $type, string $slug, string $name = ''): string
     {
         $slug = \ltrim($slug, '/');
+        $slug = \rtrim($slug, '.php');
 
         $this->doAction($type, $slug, $name);
 
