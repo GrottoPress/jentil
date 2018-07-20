@@ -1,7 +1,8 @@
 <?php
-declare (strict_types = 1);
+declare (strict_types = 1); ?>
 
-            \wp_footer(); ?>
         </div><!-- #wrap -->
+
+        <?php \wp_footer(); ?>
     </body>
 </html>
