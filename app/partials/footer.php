@@ -6,7 +6,7 @@ declare (strict_types = 1);
         if (\Jentil()->utilities->page->is('singular')) {
             \Jentil()->utilities->loader->loadComments();
          } ?>
-    </main><!-- #content -->
+    </div><!-- #content -->
 </div><!-- #content-wrap -->
 
 <?php

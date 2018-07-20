@@ -11,4 +11,4 @@ declare (strict_types = 1);
 
 <?php \do_action('jentil_after_header'); ?>
 
-<div id="main">
+<main id="main">

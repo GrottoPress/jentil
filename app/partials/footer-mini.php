@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1); ?>
 
-</div><!-- #main -->
+</main><!-- #main -->
 
 <?php \do_action('jentil_before_footer'); ?>
 

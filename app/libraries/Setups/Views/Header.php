@@ -50,7 +50,7 @@ final class Header extends AbstractSetup
             $this->menuStatus().
         '">';
             echo $this->menuSkipTo(
-                'main', // #content is not available on all pages
+                'main',
                 \esc_html__('Skip to content', 'jentil')
             );
 
