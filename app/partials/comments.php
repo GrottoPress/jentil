@@ -99,7 +99,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
 
         <?php
         /**
-         *If comments are closed and there are comments,
+         * If comments are closed and there are comments,
          * let's leave a little note, shall we?
          */
         if (!\comments_open()) { ?>
