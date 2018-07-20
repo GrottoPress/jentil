@@ -265,16 +265,16 @@
         },
         {
             "name": "grottopress/form-field",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/form-field.git",
-                "reference": "22d455a671f00ff8c3ffcaf72a33d9916ec6283a"
+                "reference": "d63d861a33ff5bcdb2494a3ff88ca874c9b61c98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/22d455a671f00ff8c3ffcaf72a33d9916ec6283a",
-                "reference": "22d455a671f00ff8c3ffcaf72a33d9916ec6283a",
+                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/d63d861a33ff5bcdb2494a3ff88ca874c9b61c98",
+                "reference": "d63d861a33ff5bcdb2494a3ff88ca874c9b61c98",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                 "Forms",
                 "html"
             ],
-            "time": "2018-07-05T21:06:56+00:00"
+            "time": "2018-07-19T13:37:04+00:00"
         },
         {
             "name": "grottopress/getter",
@@ -5624,16 +5624,16 @@
         },
         {
             "name": "wp-cli/core-command",
-            "version": "v1.0.9",
+            "version": "v1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/core-command.git",
-                "reference": "0e825668d2c060c40ec1d7debbee94bc08eec9b3"
+                "reference": "96b7ee4a035c11f473a07c04cd6c07bbf053d797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/core-command/zipball/0e825668d2c060c40ec1d7debbee94bc08eec9b3",
-                "reference": "0e825668d2c060c40ec1d7debbee94bc08eec9b3",
+                "url": "https://api.github.com/repos/wp-cli/core-command/zipball/96b7ee4a035c11f473a07c04cd6c07bbf053d797",
+                "reference": "96b7ee4a035c11f473a07c04cd6c07bbf053d797",
                 "shasum": ""
             },
             "require-dev": {
@@ -5680,7 +5680,7 @@
             ],
             "description": "Downloads, installs, updates, and manages a WordPress installation.",
             "homepage": "https://github.com/wp-cli/core-command",
-            "time": "2018-01-30T06:57:10+00:00"
+            "time": "2018-07-20T12:46:52+00:00"
         },
         {
             "name": "wp-cli/cron-command",
@@ -6174,16 +6174,16 @@
         },
         {
             "name": "wp-cli/extension-command",
-            "version": "v1.1.10",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/extension-command.git",
-                "reference": "3fd9ff469311bb2d6935997bc7d7e9f157fe29e6"
+                "reference": "fe25c2acbe23963a5a95524b3770e04aedfd3d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/3fd9ff469311bb2d6935997bc7d7e9f157fe29e6",
-                "reference": "3fd9ff469311bb2d6935997bc7d7e9f157fe29e6",
+                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/fe25c2acbe23963a5a95524b3770e04aedfd3d9e",
+                "reference": "fe25c2acbe23963a5a95524b3770e04aedfd3d9e",
                 "shasum": ""
             },
             "require-dev": {
@@ -6227,7 +6227,8 @@
                     "theme path",
                     "theme search",
                     "theme status",
-                    "theme update"
+                    "theme update",
+                    "theme mod list"
                 ]
             },
             "autoload": {
@@ -6251,7 +6252,7 @@
             ],
             "description": "Manages plugins and themes, including installs, activations, and updates.",
             "homepage": "https://github.com/wp-cli/extension-command",
-            "time": "2018-03-02T13:26:40+00:00"
+            "time": "2018-07-18T20:24:09+00:00"
         },
         {
             "name": "wp-cli/import-command",

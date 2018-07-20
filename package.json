@@ -24,10 +24,10 @@
     "html5shiv": "^3.7.3",
     "normalize.css": "^7.0.0",
     "respond.js": "^1.4.2",
-    "what-input": "^5.1.0"
+    "what-input": "^5.1.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.4",
+    "@types/jquery": "^3.3.5",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
