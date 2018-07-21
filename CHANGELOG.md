@@ -20,9 +20,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Strip `.php` extension from slugs passed to template loader
 - Move `wp_footer()` outside page wrapper div, to immediately before `</body>`
 - Load sidebar and comment templates via view setups
-- General accessibility improvements
-    * Undo unsetting outlines when elements receive a focus
-    * Use [what-input](https://ten1seven.github.io/what-input/) to detect mouse, keyboard and touch events
+- Accessibility: Undo unsetting outlines when elements receive a focus
+- Accessibility: Use [what-input](https://ten1seven.github.io/what-input/) to detect mouse, keyboard and touch events
 
 ## 0.7.1 - 2018-06-24
 
