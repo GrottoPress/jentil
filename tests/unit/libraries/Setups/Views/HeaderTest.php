@@ -20,7 +20,12 @@ class HeaderTest extends AbstractTestCase
 
         $header->run();
 
-        $add_action->wasCalledTimes(2);
+        $add_action->wasCalledTimes(3);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_before_header',
+            [$header, 'openWrapTag']
+        ]);
 
         $add_action->wasCalledWithOnce([
             'jentil_inside_header',

@@ -16,6 +16,7 @@ final class Singular extends AbstractSetup
         \add_action('jentil_after_title', [$this, 'renderPostsAfterTitle']);
         \add_action('jentil_after_content', [$this, 'renderPostsAfterContent']);
         \add_action('jentil_after_content', [$this, 'renderRelatedPosts']);
+        \add_action('jentil_after_after_content', [$this, 'loadComments']);
         // \add_action(
         //     'jentil_before_before_title',
         //     [$this, 'renderParentLink']
@@ -207,5 +208,17 @@ final class Singular extends AbstractSetup
         ])->list()}</p>";
 
         return $output;
+    }
+
+    /**
+     * @action jentil_after_after_content
+     */
+    public function loadComments()
+    {
+        if (!$this->app->utilities->page->is('singular')) {
+            return;
+        }
+
+        $this->app->utilities->loader->loadComments();
     }
 }

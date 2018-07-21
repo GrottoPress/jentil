@@ -38,4 +38,4 @@ declare (strict_types = 1);
     </head>
 
     <body <?php \body_class(); ?>>
-        <div id="wrap" class="site hfeed">
+        <?php \do_action('jentil_before_header');

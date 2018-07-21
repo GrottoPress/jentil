@@ -18,7 +18,7 @@ class FooterTest extends AbstractTestCase
 
         $footer->run();
 
-        $add_action->wasCalledTimes(2);
+        $add_action->wasCalledTimes(3);
 
         $add_action->wasCalledWithOnce([
             'jentil_inside_footer',
@@ -28,6 +28,11 @@ class FooterTest extends AbstractTestCase
         $add_action->wasCalledWithOnce([
             'jentil_inside_footer',
             [$footer, 'renderColophon']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_after_footer',
+            [$footer, 'closeWrapTag']
         ]);
     }
 }

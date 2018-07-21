@@ -42,7 +42,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return Setups\AbstractSetup[int]
+     * @return Setups\AbstractSetup[string]
      */
     protected function getSetups(): array
     {
@@ -138,15 +138,16 @@ final class Jentil extends AbstractTheme
     private function setUpViews()
     {
         $this->setups['Views\SearchForm'] = new Setups\Views\SearchForm($this);
-        $this->setups['Views\Author'] = new Setups\Views\Author($this);
+        $this->setups['Views\Header'] = new Setups\Views\Header($this);
+        $this->setups['Views\Breadcrumbs'] =
+            new Setups\Views\Breadcrumbs($this);
         $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
+        $this->setups['Views\Author'] = new Setups\Views\Author($this);
         $this->setups['Views\Search'] = new Setups\Views\Search($this);
         $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
         $this->setups['Views\Attachment'] = new Setups\Views\Attachment($this);
-        $this->setups['Views\Header'] = new Setups\Views\Header($this);
+        $this->setups['Views\Sidebar'] = new Setups\Views\Sidebar($this);
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
-        $this->setups['Views\Breadcrumbs'] =
-            new Setups\Views\Breadcrumbs($this);
     }
 
     private function setUpSupports()

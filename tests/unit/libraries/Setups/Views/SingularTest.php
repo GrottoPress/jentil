@@ -59,7 +59,7 @@ class SingularTest extends AbstractTestCase
 
         $singular->run();
 
-        $add_action->wasCalledTimes(4);
+        $add_action->wasCalledTimes(5);
 
         $add_action->wasCalledWithOnce([
             'jentil_before_title',
@@ -79,6 +79,11 @@ class SingularTest extends AbstractTestCase
         $add_action->wasCalledWithOnce([
             'jentil_after_content',
             [$singular, 'renderRelatedPosts']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_after_after_content',
+            [$singular, 'loadComments']
         ]);
 
         $add_filter->wasCalledTimes(2);

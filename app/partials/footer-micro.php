@@ -1,8 +1,8 @@
 <?php
-declare (strict_types = 1); ?>
+declare (strict_types = 1);
 
-        </div><!-- #wrap -->
+        \do_action('jentil_after_footer');
 
-        <?php \wp_footer(); ?>
+        \wp_footer(); ?>
     </body>
 </html>

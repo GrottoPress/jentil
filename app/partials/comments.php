@@ -14,9 +14,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
 } ?>
 
 <div id="comments" class="site-comments">
-    <?php \do_action('jentil_before_comments');
-
-    if (\have_comments()) {
+    <?php if (\have_comments()) {
         $total_pages = \absint(\get_comment_pages_count());
         $comment_count = \absint(\get_comments_number());
         $title = \sprintf(

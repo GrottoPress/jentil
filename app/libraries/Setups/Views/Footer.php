@@ -11,6 +11,7 @@ final class Footer extends AbstractSetup
     {
         \add_action('jentil_inside_footer', [$this, 'renderWidgets']);
         \add_action('jentil_inside_footer', [$this, 'renderColophon']);
+        \add_action('jentil_after_footer', [$this, 'closeWrapTag']);
     }
 
     /**
@@ -41,5 +42,14 @@ final class Footer extends AbstractSetup
         }
 
         echo '<div id="colophon"><small>'.$mod.'</small></div><!-- #colophon -->';
+    }
+
+    /**
+     * @action jentil_after_footer
+     * @see Header::openWrapTag()
+     */
+    public function closeWrapTag()
+    {
+        echo '</div><!-- #wrap -->';
     }
 }

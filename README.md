@@ -122,15 +122,17 @@ The following action hooks are available:
 - `jentil_before_header`
 - `jentil_inside_header`
 - `jentil_after_header`
+- `jentil_after_after_header`
 - `jentil_before_before_title`
 - `jentil_before_title`
 - `jentil_after_title`
 - `jentil_before_content`
 - `jentil_after_content`
 - `jentil_after_after_content`
-- `jentil_before_comments`
+- `jentil_before_before_footer`
 - `jentil_before_footer`
 - `jentil_inside_footer`
+- `jentil_after_footer`
 
 See examples of how to use these hooks in `app/libraries/Setups/Views`.
 

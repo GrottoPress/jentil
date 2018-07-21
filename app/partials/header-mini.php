@@ -1,9 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-\Jentil()->utilities->loader->loadPartial('header', 'micro');
-
-\do_action('jentil_before_header'); ?>
+\Jentil()->utilities->loader->loadPartial('header', 'micro'); ?>
 
 <header id="header" class="site-header" itemscope itemtype="http://schema.org/WPHeader">
     <?php \do_action('jentil_inside_header'); ?>
@@ -12,3 +10,4 @@ declare (strict_types = 1);
 <?php \do_action('jentil_after_header'); ?>
 
 <main id="main">
+    <?php \do_action('jentil_after_after_header'); ?>

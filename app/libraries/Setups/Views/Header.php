@@ -10,10 +10,20 @@ final class Header extends AbstractSetup
 {
     public function run()
     {
+        \add_action('jentil_before_header', [$this, 'openWrapTag']);
         \add_action('jentil_inside_header', [$this, 'renderMenuToggle']);
         \add_action('jentil_inside_header', [$this, 'renderMenu']);
 
         \add_filter('wp_nav_menu', [$this, 'renderSearchForm'], 10, 2);
+    }
+
+    /**
+     * @action jentil_before_header
+     * @see Footer::closeWrapTag()
+     */
+    public function openWrapTag()
+    {
+        echo '<div id="wrap" class="site hfeed">';
     }
 
     /**
