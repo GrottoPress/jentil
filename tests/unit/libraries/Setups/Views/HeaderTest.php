@@ -64,6 +64,7 @@ class HeaderTest extends AbstractTestCase
         $wp_nav_menu->wasCalledWithOnce([[
             'theme_location' => 'primary',
             'fallback_cb' => false,
+            'container' => 'nav',
         ]]);
     }
 

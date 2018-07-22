@@ -56,7 +56,7 @@ final class Header extends AbstractSetup
      */
     public function renderMenu()
     {
-        echo '<nav id="primary-menu" class="js-main-menu site-navigation '.
+        echo '<div id="primary-menu" class="js-main-menu site-navigation '.
             $this->menuStatus().
         '">';
             echo $this->menuSkipTo(
@@ -67,6 +67,7 @@ final class Header extends AbstractSetup
             \wp_nav_menu([
                 'theme_location' => $this->app->setups['Menus\Primary']->id,
                 'fallback_cb' => false,
+                'container' => 'nav',
             ]);
         echo '</nav>';
     }
