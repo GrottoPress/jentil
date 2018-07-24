@@ -13,10 +13,14 @@ final class Sidebar extends AbstractSetup
     }
 
     /**
-     * @action jentil_after_after_content
+     * @action jentil_before_before_footer
      */
     public function load()
     {
+        if ($this->app->utilities->postTypeTemplate->isPageBuilder()) {
+            return;
+        }
+
         $this->app->utilities->loader->loadPartial('sidebar');
     }
 }
