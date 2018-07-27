@@ -164,7 +164,7 @@ Kindly report suspected security vulnerabilities in private, via contact details
 
 ## Showcase
 
-The following websites are powered by Jentil:
+The following projects are powered by Jentil:
 
 - [GrottoPress](https://www.grottopress.com)
 - [Ghana Gong](https://www.ghanagong.com)
