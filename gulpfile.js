@@ -11,6 +11,7 @@ const concat = require('gulp-concat')
 const postcss = require('gulp-postcss')
 const cssnano = require('cssnano')
 const mqpacker = require('css-mqpacker')
+const focus = require('postcss-focus')
 
 const scripts_src = ['./assets/scripts/**/*.ts']
 const scripts_dest = './dist/scripts'
@@ -41,7 +42,7 @@ gulp.task('styles', () =>
     gulp.src(styles_src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([cssnano(), mqpacker({sort: true})]))
+        .pipe(postcss([focus(), mqpacker({sort: true}), cssnano()]))
         .pipe(rename({'suffix' : '.min'}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(styles_dest))

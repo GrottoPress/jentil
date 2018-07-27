@@ -52,7 +52,6 @@
     @include paragraph;
 
     img {
-        &:focus,
         &:hover {
             opacity: 0.7;
         }
