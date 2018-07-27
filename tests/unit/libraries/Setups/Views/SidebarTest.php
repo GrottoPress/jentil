@@ -21,11 +21,21 @@ class SidebarTest extends AbstractTestCase
 
         $sidebar->run();
 
-        $add_action->wasCalledOnce();
+        $add_action->wasCalledTimes(3);
 
         $add_action->wasCalledWithOnce([
             'jentil_before_before_footer',
             [$sidebar, 'load']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_after_after_header',
+            [$sidebar, 'openContentWrapTag']
+        ]);
+
+        $add_action->wasCalledWithOnce([
+            'jentil_before_before_footer',
+            [$sidebar, 'closeContentWrapTag']
         ]);
     }
 }

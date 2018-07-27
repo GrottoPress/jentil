@@ -25,10 +25,7 @@
 @media (min-width: map-get($jentil-breakpoint, medium)) {
     #footer {
         .widget-area {
-            @include grid((
-                width: 33.33%,
-                columns: '.widget',
-            ));
+            @include grid((width: 33.3333%));
         }
     }
 }

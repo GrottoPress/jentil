@@ -32,7 +32,7 @@
      * Open/close sub-menu
      */
     $('.js-sub-menu-button').next('ul').hide()
-    $('.sidebar-wrap li.current-menu-ancestor > ul').show()
+    $('.site-sidebar li.current-menu-ancestor > ul').show()
         .siblings('.js-sub-menu-button').html(`${renderCaret('up')}`)
     $('.js-sub-menu-button').prev('a').on(
         'click',

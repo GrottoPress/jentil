@@ -5,15 +5,13 @@
 /** Alignment */
 
 .alignleft {
-    @include float(left);
-
+    float: left;
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
 .alignright {
-    @include float(right);
-
+    float: right;
     margin-bottom: 20px;
     margin-left: 20px;
 }
@@ -44,12 +42,9 @@
 /** Gallery */
 
 .gallery {
-    @include border-radius(3px);
-    @include grid((
-        gutter: 10px,
-        columns: '.gallery-item',
-    ));
+    @include grid((width: 100%, gutter: 10px));
 
+    border-radius: 3px;
     background-color: $jentil-text-background;
     padding: 5px;
     margin: 0;
@@ -57,8 +52,9 @@
     @include paragraph;
 
     img {
+        &:focus,
         &:hover {
-            @include opacity(0.7);
+            opacity: 0.7;
         }
     }
 }
@@ -66,21 +62,15 @@
 .gallery-item {
     line-height: map-get($jentil-line-height, normal);
 
-    .gallery-columns-2 & {
-        width: 50%;
-    }
-
-    .gallery-columns-3 & {
-        width: 33.33%;
-    }
-
+    .gallery-columns-2 &,
+    .gallery-columns-3 &,
     .gallery-columns-4 &,
     .gallery-columns-5 &,
     .gallery-columns-6 &,
     .gallery-columns-7 &,
     .gallery-columns-8 &,
     .gallery-columns-9 & {
-        width: 25%;
+        width: 50%;
     }
 }
 
@@ -99,7 +89,24 @@
     }
 }
 
-@media (min-width: map-get($jentil-breakpoint , medium)) {
+@media (min-width: map-get($jentil-breakpoint, x-small)) {
+    .gallery-item {
+        .gallery-columns-3 & {
+            width: 33.33%;
+        }
+
+        .gallery-columns-4 &,
+        .gallery-columns-5 &,
+        .gallery-columns-6 &,
+        .gallery-columns-7 &,
+        .gallery-columns-8 &,
+        .gallery-columns-9 & {
+            width: 25%;
+        }
+    }
+}
+
+@media (min-width: map-get($jentil-breakpoint, small)) {
     .gallery-item {
         .gallery-columns-5 & {
             width: 20%;

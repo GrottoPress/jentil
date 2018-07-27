@@ -2,10 +2,10 @@
  * Basic styles
  */
 
-html {
+:root {
     @include box-sizing(border-box);
 
-    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
     font-family: sans-serif;
     font-size: 10px;
     direction: ltr;
@@ -14,8 +14,7 @@ html {
 }
 
 body {
-    @include word-wrap(break-word);
-
+    word-wrap: break-word;
     font-family: $helvetica;
     font-size: map-get($jentil-font-size, small);
     line-height: map-get($jentil-line-height, normal);

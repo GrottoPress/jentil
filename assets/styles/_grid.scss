@@ -3,403 +3,407 @@
  */
 
 .grid {
-    @include grid((columns: '.column'));
+    @include grid((width: 100%));
 
-    .small-1 {
-        width: 8.33%;
+    .xs-1 {
+        width: 8.3333%;
     }
 
-    .small-2 {
-        width: 16.66%;
+    .xs-2 {
+        width: 16.6666%;
     }
 
-    .small-3 {
+    .xs-3 {
         width: 25%;
     }
 
-    .small-4 {
-        width: 33.33%;
+    .xs-4 {
+        width: 33.3333%;
     }
 
-    .small-5 {
-        width: 41.66%;
+    .xs-5 {
+        width: 41.6666%;
     }
 
-    .small-6 {
+    .xs-6 {
         width: 50%;
     }
 
-    .small-7 {
-        width: 58.33%;
+    .xs-7 {
+        width: 58.3333%;
     }
 
-    .small-8 {
-        width: 66.66%;
+    .xs-8 {
+        width: 66.6666%;
     }
 
-    .small-9 {
-        width: 75%;
+    .xs-9 {
+        width: 75%
     }
 
-    .small-10 {
-        width: 83.33%;
+    .xs-10 {
+        width: 83.3333%;
     }
 
-    .small-11 {
-        width: 91.66%;
+    .xs-11 {
+        width: 91.6666%;
     }
 
-    .small-12 {
+    .xs-12 {
         width: 100%;
+    }
+}
+
+@media (min-width: map-get($jentil-breakpoint, small)) {
+    .grid {
+        .sm-1 {
+            width: 8.3333%;
+        }
+
+        .sm-2 {
+            width: 16.6666%;
+        }
+
+        .sm-3 {
+            width: 25%;
+        }
+
+        .sm-4 {
+            width: 33.3333%;
+        }
+
+        .sm-5 {
+            width: 41.6666%;
+        }
+
+        .sm-6 {
+            width: 50%;
+        }
+
+        .sm-7 {
+            width: 58.3333%;
+        }
+
+        .sm-8 {
+            width: 66.6666%;
+        }
+
+        .sm-9 {
+            width: 75%;
+        }
+
+        .sm-10 {
+            width: 83.3333%;
+        }
+
+        .sm-11 {
+            width: 91.6666%;
+        }
+
+        .sm-12 {
+            width: 100%;
+        }
     }
 }
 
 @media (min-width: map-get($jentil-breakpoint, medium)) {
     .grid {
-        .medium-1 {
-            width: 8.33%;
+        .md-1 {
+            width: 8.3333%;
         }
 
-        .medium-2 {
-            width: 16.66%;
+        .md-2 {
+            width: 16.6666%;
         }
 
-        .medium-3 {
+        .md-3 {
             width: 25%;
         }
 
-        .medium-4 {
-            width: 33.33%;
+        .md-4 {
+            width: 33.3333%;
         }
 
-        .medium-5 {
-            width: 41.66%;
+        .md-5 {
+            width: 41.6666%;
         }
 
-        .medium-6 {
+        .md-6 {
             width: 50%;
         }
 
-        .medium-7 {
-            width: 58.33%;
+        .md-7 {
+            width: 58.3333%;
         }
 
-        .medium-8 {
-            width: 66.66%;
+        .md-8 {
+            width: 66.6666%;
         }
 
-        .medium-9 {
+        .md-9 {
             width: 75%;
         }
 
-        .medium-10 {
-            width: 83.33%;
+        .md-10 {
+            width: 83.3333%;
         }
 
-        .medium-11 {
-            width: 91.66%;
+        .md-11 {
+            width: 91.6666%;
         }
 
-        .medium-12 {
+        .md-12 {
             width: 100%;
         }
 
         .layout-columns-2 & {
-            .medium-lc2-1,
-            .medium-l2c-1 {
-                width: 8.33%;
+            .md-lc2-1 {
+                width: 8.3333%;
             }
 
-            .medium-lc2-2,
-            .medium-l2c-2 {
-                width: 16.66%;
+            .md-lc2-2 {
+                width: 16.6666%;
             }
 
-            .medium-lc2-3,
-            .medium-l2c-3 {
+            .md-lc2-3 {
                 width: 25%;
             }
 
-            .medium-lc2-4,
-            .medium-l2c-4 {
-                width: 33.33%;
+            .md-lc2-4 {
+                width: 33.3333%;
             }
 
-            .medium-lc2-5,
-            .medium-l2c-5 {
-                width: 41.66%;
+            .md-lc2-5 {
+                width: 41.6666%;
             }
 
-            .medium-lc2-6,
-            .medium-l2c-6 {
+            .md-lc2-6 {
                 width: 50%;
             }
 
-            .medium-lc2-7,
-            .medium-l2c-7 {
-                width: 58.33%;
+            .md-lc2-7 {
+                width: 58.3333%;
             }
 
-            .medium-lc2-8,
-            .medium-l2c-8 {
-                width: 66.66%;
+            .md-lc2-8 {
+                width: 66.6666%;
             }
 
-            .medium-lc2-9,
-            .medium-l2c-9 {
+            .md-lc2-9 {
                 width: 75%;
             }
 
-            .medium-lc2-10,
-            .medium-l2c-10 {
-                width: 83.33%;
+            .md-lc2-10 {
+                width: 83.3333%;
             }
 
-            .medium-lc2-11,
-            .medium-l2c-11 {
-                width: 91.66%;
+            .md-lc2-11 {
+                width: 91.6666%;
             }
 
-            .medium-lc2-12,
-            .medium-l2c-12 {
+            .md-lc2-12 {
                 width: 100%;
             }
         }
 
         .layout-columns-3 & {
-            .medium-lc3-1,
-            .medium-l3c-1 {
-                width: 8.33%;
+            .md-lc3-1 {
+                width: 8.3333%;
             }
 
-            .medium-lc3-2,
-            .medium-l3c-2 {
-                width: 16.66%;
+            .md-lc3-2 {
+                width: 16.6666%;
             }
 
-            .medium-lc3-3,
-            .medium-l3c-3 {
+            .md-lc3-3 {
                 width: 25%;
             }
 
-            .medium-lc3-4,
-            .medium-l3c-4 {
-                width: 33.33%;
+            .md-lc3-4 {
+                width: 33.3333%;
             }
 
-            .medium-lc3-5,
-            .medium-l3c-5 {
-                width: 41.66%;
+            .md-lc3-5 {
+                width: 41.6666%;
             }
 
-            .medium-lc3-6,
-            .medium-l3c-6 {
+            .md-lc3-6 {
                 width: 50%;
             }
 
-            .medium-lc3-7,
-            .medium-l3c-7 {
-                width: 58.33%;
+            .md-lc3-7 {
+                width: 58.3333%;
             }
 
-            .medium-lc3-8,
-            .medium-l3c-8 {
-                width: 66.66%;
+            .md-lc3-8 {
+                width: 66.6666%;
             }
 
-            .medium-lc3-9,
-            .medium-l3c-9 {
+            .md-lc3-9 {
                 width: 75%;
             }
 
-            .medium-lc3-10,
-            .medium-l3c-10 {
-                width: 83.33%;
+            .md-lc3-10 {
+                width: 83.3333%;
             }
 
-            .medium-lc3-11,
-            .medium-l3c-11 {
-                width: 91.66%;
+            .md-lc3-11 {
+                width: 91.6666%;
             }
 
-            .medium-lc3-12,
-            .medium-l3c-12 {
+            .md-lc3-12 {
                 width: 100%;
             }
         }
     }
 }
 
-@media (min-width: map-get($jentil-breakpoint, wide)) {
+@media (min-width: map-get($jentil-breakpoint, large)) {
     .grid {
-        .wide-1 {
-            width: 8.33%;
+        .lg-1 {
+            width: 8.3333%;
         }
 
-        .wide-2 {
-            width: 16.66%;
+        .lg-2 {
+            width: 16.6666%;
         }
 
-        .wide-3 {
+        .lg-3 {
             width: 25%;
         }
 
-        .wide-4 {
-            width: 33.33%;
+        .lg-4 {
+            width: 33.3333%;
         }
 
-        .wide-5 {
-            width: 41.66%;
+        .lg-5 {
+            width: 41.6666%;
         }
 
-        .wide-6 {
+        .lg-6 {
             width: 50%;
         }
 
-        .wide-7 {
-            width: 58.33%;
+        .lg-7 {
+            width: 58.3333%;
         }
 
-        .wide-8 {
-            width: 66.66%;
+        .lg-8 {
+            width: 66.6666%;
         }
 
-        .wide-9 {
+        .lg-9 {
             width: 75%;
         }
 
-        .wide-10 {
-            width: 83.33%;
+        .lg-10 {
+            width: 83.3333%;
         }
 
-        .wide-11 {
-            width: 91.66%;
+        .lg-11 {
+            width: 91.6666%;
         }
 
-        .wide-12 {
+        .lg-12 {
             width: 100%;
         }
 
         .layout-columns-2 & {
-            .wide-lc2-1,
-            .wide-l2c-1 {
-                width: 8.33%;
+            .lg-lc2-1 {
+                width: 8.3333%;
             }
 
-            .wide-lc2-2,
-            .wide-l2c-2 {
-                width: 16.66%;
+            .lg-lc2-2 {
+                width: 16.6666%;
             }
 
-            .wide-lc2-3,
-            .wide-l2c-3 {
+            .lg-lc2-3 {
                 width: 25%;
             }
 
-            .wide-lc2-4,
-            .wide-l2c-4 {
-                width: 33.33%;
+            .lg-lc2-4 {
+                width: 33.3333%;
             }
 
-            .wide-lc2-5,
-            .wide-l2c-5 {
-                width: 41.66%;
+            .lg-lc2-5 {
+                width: 41.6666%;
             }
 
-            .wide-lc2-6,
-            .wide-l2c-6 {
+            .lg-lc2-6 {
                 width: 50%;
             }
 
-            .wide-lc2-7,
-            .wide-l2c-7 {
-                width: 58.33%;
+            .lg-lc2-7 {
+                width: 58.3333%;
             }
 
-            .wide-lc2-8,
-            .wide-l2c-8 {
-                width: 66.66%;
+            .lg-lc2-8 {
+                width: 66.6666%;
             }
 
-            .wide-lc2-9,
-            .wide-l2c-9 {
+            .lg-lc2-9 {
                 width: 75%;
             }
 
-            .wide-lc2-10,
-            .wide-l2c-10 {
-                width: 83.33%;
+            .lg-lc2-10 {
+                width: 83.3333%;
             }
 
-            .wide-lc2-11,
-            .wide-l2c-11 {
-                width: 91.66%;
+            .lg-lc2-11 {
+                width: 91.6666%;
             }
 
-            .wide-lc2-12,
-            .wide-l2c-12 {
+            .lg-lc2-12 {
                 width: 100%;
             }
         }
 
         .layout-columns-3 & {
-            .wide-lc3-1,
-            .wide-l3c-1 {
-                width: 8.33%;
+            .lg-lc3-1 {
+                width: 8.3333%;
             }
 
-            .wide-lc3-2,
-            .wide-l3c-2 {
-                width: 16.66%;
+            .lg-lc3-2 {
+                width: 16.6666%;
             }
 
-            .wide-lc3-3,
-            .wide-l3c-3 {
+            .lg-lc3-3 {
                 width: 25%;
             }
 
-            .wide-lc3-4,
-            .wide-l3c-4 {
-                width: 33.33%;
+            .lg-lc3-4 {
+                width: 33.3333%;
             }
 
-            .wide-lc3-5,
-            .wide-l3c-5 {
-                width: 41.66%;
+            .lg-lc3-5 {
+                width: 41.6666%;
             }
 
-            .wide-lc3-6,
-            .wide-l3c-6 {
+            .lg-lc3-6 {
                 width: 50%;
             }
 
-            .wide-lc3-7,
-            .wide-l3c-7 {
-                width: 58.33%;
+            .lg-lc3-7 {
+                width: 58.3333%;
             }
 
-            .wide-lc3-8,
-            .wide-l3c-8 {
-                width: 66.66%;
+            .lg-lc3-8 {
+                width: 66.6666%;
             }
 
-            .wide-lc3-9,
-            .wide-l3c-9 {
+            .lg-lc3-9 {
                 width: 75%;
             }
 
-            .wide-lc3-10,
-            .wide-l3c-10 {
-                width: 83.33%;
+            .lg-lc3-10 {
+                width: 83.3333%;
             }
 
-            .wide-lc3-11,
-            .wide-l3c-11 {
-                width: 91.66%;
+            .lg-lc3-11 {
+                width: 91.6666%;
             }
 
-            .wide-lc3-12,
-            .wide-l3c-12 {
+            .lg-lc3-12 {
                 width: 100%;
             }
         }
