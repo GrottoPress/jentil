@@ -4,11 +4,13 @@ const gulp = require('gulp')
 const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
-const cleanCSS = require('gulp-clean-css')
 const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 const typescript = require('gulp-typescript')
 const concat = require('gulp-concat')
+const postcss = require('gulp-postcss')
+const cssnano = require('cssnano')
+const mqpacker = require('css-mqpacker')
 
 const scripts_src = ['./assets/scripts/**/*.ts']
 const scripts_dest = './dist/scripts'
@@ -39,9 +41,7 @@ gulp.task('styles', () =>
     gulp.src(styles_src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        // .pipe(cleanCSS({format: 'beautify'}))
-        // .pipe(gulp.dest(styles_dest))
-        .pipe(cleanCSS())
+        .pipe(postcss([cssnano(), mqpacker({sort: true})]))
         .pipe(rename({'suffix' : '.min'}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(styles_dest))
@@ -61,7 +61,7 @@ gulp.task('vendor', () => {
     ]).pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/normalize.css/normalize.css'])
-        .pipe(cleanCSS())
+        .pipe(postcss([cssnano()]))
         .pipe(rename({'suffix' : '.min'}))
         .pipe(gulp.dest(vendor_dist))
 
