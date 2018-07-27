@@ -4,6 +4,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.4.1 - 2018-07-27
+
+### Added
+- Added `columns` argument to grid mixin.
+
+## 0.4.0 - 2018-07-26
+
+### Removed
+- All vendor-prefixed rules. You may use [postcss](https://www.npmjs.com/package/postcss) with [autoprefixer](https://www.npmjs.com/package/autoprefixer) for those.
+
+### Changed
+- Refactor `grid()` mixin to use padding (instead of margin) for gutter
+
+## 0.3.1 - 2018-07-23
+
+### Fixed
+- Override previously set `nth-child()` margins for grid children
+
+## 0.3.0 - 2018-07-23
+
+### Added
+- Flex box mixins
+- `_all.scss` that imports all scss files.
+
+### Changed
+- Rename `full-screen()` mixin to `full-width()`
+- Redo `grid()` mixin using flex box and margins
+
 ## 0.2.1 - 2018-07-16
 
 ### Changed

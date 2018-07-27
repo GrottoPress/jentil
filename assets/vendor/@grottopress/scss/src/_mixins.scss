@@ -7,8 +7,13 @@
 /// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
 ////
 
-/// Full screen
-@mixin full-screen {
+/// Full width
+///
+/// Used to force a full width background when
+/// parent element is not full width
+///
+/// You should set `overflow-x: hidden;` on `<html>` and `<body>`
+@mixin full-width {
     margin-right: -9999px;
     margin-left: -9999px;
     padding-right: 9999px;
@@ -17,7 +22,6 @@
 
 /// Inline block
 @mixin inline-block {
-    display: -moz-inline-stack;
     display: inline-block;
     zoom: 1;
     *display: inline;
@@ -40,7 +44,7 @@
 /// Clear fix
 @mixin clearfix {
     &::after {
-        content: "";
+        content: '';
         display: table;
         clear: both;
     }
@@ -48,10 +52,8 @@
 
 /// Box Sizing
 ///
-/// @param {number} $sizing
+/// @param {string} $sizing
 @mixin box-sizing($sizing) {
-    -webkit-box-sizing: $sizing;
-    -moz-box-sizing: $sizing;
     box-sizing: $sizing;
 
     *,
@@ -59,44 +61,8 @@
     *::after,
     &::before,
     &::after, {
-        -webkit-box-sizing: inherit;
-        -moz-box-sizing: inherit;
         box-sizing: inherit;
     }
-}
-
-/// Border Radius
-///
-/// @param {number} $radius
-@mixin border-radius($radius) {
-    -moz-border-radius: $radius;
-    -webkit-border-radius: $radius;
-    -ms-border-radius: $radius;
-    -o-border-radius: $radius;
-    border-radius: $radius;
-}
-
-/// Word Wrap
-///
-/// @param {string} $wrap
-@mixin word-wrap($wrap) {
-    -ms-word-wrap: $wrap;
-    word-wrap: $wrap;
-}
-
-/// Text Size Adjust
-///
-/// @param {string} $adjust
-@mixin text-size-adjust($adjust) {
-    -webkit-text-size-adjust: $adjust;
-}
-
-/// Float
-///
-/// @param {string} $direction
-@mixin float($direction) {
-    float: $direction;
-    display: inline;
 }
 
 /// Paragraph
@@ -136,23 +102,6 @@
     height: $height;
 }
 
-/// Screen reader text
-///
-/// Hide text from all except screen readers
-@mixin screen-reader {
-    @include position(absolute);
-    @include size(1px);
-    
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    word-wrap: normal !important;
-}
-
 /// Position
 ///
 /// @param {string} $position [relative]
@@ -179,61 +128,60 @@
     }
 }
 
+/// Screen reader text
+///
+/// Hide text from all except screen readers
+@mixin screen-reader {
+    @include position(absolute);
+    @include size(1px);
+
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    word-wrap: normal !important;
+}
+
 /// Grid
 ///
 /// To be used in the grids wrapper
 ///
-/// @param {map} $args - 
+/// @param {map} $args -
 ///   'width' {number} Width of each column
 ///   'gutter' {number} Size of spaces between columns
 ///   'columns' {string} Selector of immediate children to be used as columns.
 @mixin grid($args: ()) {
-    $defaults: (
-        width: 100%,
-        gutter: 20px,
-        columns: '*',
-    );
-
-    $args: map-merge($defaults, $args);
-
+    $args: map-merge((width: 100%, gutter: 20px, columns: '*'), $args);
     $width: map-get($args, width);
-    $gutter: map-get($args, gutter );
-    $columns: map-get($args , columns );
-
+    $gutter: map-get($args, gutter);
+    $columns: map-get($args, columns);
     $half-gutter: ($gutter / 2);
 
-    @include inline-block-whitespace-fix;
+    @include box-sizing(border-box);
 
+    display: flex;
+    flex-wrap: wrap;
     margin: -#{$half-gutter};
 
     &:first-child {
-        margin-top: -$half-gutter;
+        margin-top: -#{$half-gutter};
     }
 
     &:last-child {
-        margin-bottom: -$half-gutter;
+        margin-bottom: -#{$half-gutter};
     }
 
     > * {
+        flex: none;
         padding: $half-gutter;
+        width: 100%;
     }
 
     > #{$columns} {
-        @include inline-block;
-
         margin: 0;
         width: $width;
     }
-}
-
-/// Opacity
-///
-/// @param {number} $opacity
-///
-/// @since 0.1.8
-@mixin opacity($opacity) {
-    $ie: $opacity * 100;
-
-    -ms-filter: 'alpha(opacity=#{$ie})'; /* For IE8 and later */
-    opacity: $opacity;
 }
