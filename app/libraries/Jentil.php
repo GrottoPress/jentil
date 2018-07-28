@@ -93,18 +93,18 @@ final class Jentil extends AbstractTheme
 
     private function setUpScripts()
     {
-        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
-        $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
-        $this->setups['Scripts\CommentReply'] =
-            new Setups\Scripts\CommentReply($this);
-        $this->setups['Scripts\CustomizePreview'] =
-            new Setups\Scripts\CustomizePreview($this);
         $this->setups['Scripts\FontAwesome'] =
             new Setups\Scripts\FontAwesome($this);
         $this->setups['Scripts\FontAwesomeShim'] =
             new Setups\Scripts\FontAwesomeShim($this);
         $this->setups['Scripts\WhatInput'] =
             new Setups\Scripts\WhatInput($this);
+        $this->setups['Scripts\CommentReply'] =
+            new Setups\Scripts\CommentReply($this);
+        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
+        $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
+        $this->setups['Scripts\CustomizePreview'] =
+            new Setups\Scripts\CustomizePreview($this);
     }
 
     private function setUpMenus()
