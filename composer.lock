@@ -618,16 +618,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.10.1",
+            "version": "0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "0e524d9d67e513711025ec286324b2e899991969"
+                "reference": "4e54b1df62daa73d8aaf207eb050fa9fae468f5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/0e524d9d67e513711025ec286324b2e899991969",
-                "reference": "0e524d9d67e513711025ec286324b2e899991969",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/4e54b1df62daa73d8aaf207eb050fa9fae468f5f",
+                "reference": "4e54b1df62daa73d8aaf207eb050fa9fae468f5f",
                 "shasum": ""
             },
             "require": {
@@ -665,7 +665,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-07-27T17:22:02+00:00"
+            "time": "2018-07-27T19:13:56+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
@@ -1715,16 +1715,16 @@
         },
         {
             "name": "gumlet/php-image-resize",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gumlet/php-image-resize.git",
-                "reference": "2a38f3a49e2ee907f16064d8def6828c7902c0b6"
+                "reference": "d36a7bcd679445ec8f310fdbecac5d40b0c587de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gumlet/php-image-resize/zipball/2a38f3a49e2ee907f16064d8def6828c7902c0b6",
-                "reference": "2a38f3a49e2ee907f16064d8def6828c7902c0b6",
+                "url": "https://api.github.com/repos/gumlet/php-image-resize/zipball/d36a7bcd679445ec8f310fdbecac5d40b0c587de",
+                "reference": "d36a7bcd679445ec8f310fdbecac5d40b0c587de",
                 "shasum": ""
             },
             "require": {
@@ -1766,7 +1766,7 @@
                 "resize",
                 "scale"
             ],
-            "time": "2018-06-25T06:41:48+00:00"
+            "time": "2018-07-28T11:04:15+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
