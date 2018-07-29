@@ -34,8 +34,8 @@ final class Sidebar extends AbstractSetup
      */
     public function openContentWrapTag()
     {
-        if ($this->app->utilities->postTypeTemplate->isPageBuilder() ||
-            'columns-1' === $this->app->utilities->page->layout->column()
+        if ($this->app->utilities->postTypeTemplate->isPageBuilder() /*||
+            'columns-1' === $this->app->utilities->page->layout->column()*/
         ) {
             return;
         }
@@ -48,8 +48,8 @@ final class Sidebar extends AbstractSetup
      */
     public function closeContentWrapTag()
     {
-        if ($this->app->utilities->postTypeTemplate->isPageBuilder() ||
-            'columns-1' === $this->app->utilities->page->layout->column()
+        if ($this->app->utilities->postTypeTemplate->isPageBuilder() /*||
+            'columns-1' === $this->app->utilities->page->layout->column()*/
         ) {
             return;
         }
