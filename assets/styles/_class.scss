@@ -22,143 +22,52 @@
     display: none;
 }
 
-.show {
-    display: initial;
-
-    @at-root {
-        article#{&},
-        aside#{&},
-        footer#{&},
-        header#{&},
-        nav#{&},
-        section#{&},
-        figcaption#{&},
-        figure#{&},
-        main#{&},
-        details#{&},
-        menu#{&} {
-            display: block;
-        }
-    }
-}
-
 /** Toggle elements */
 
-.screen-min-xs,
-.screen-min-sm,
-.screen-min-md,
-.screen-min-lg {
-    display: none;
-}
-
 @media (min-width: map-get($jentil-breakpoint, x-small)) {
-    /** Toggle elements */
-
     .screen-max-xs {
         display: none;
-    }
-
-    .screen-min-xs {
-        display: initial;
-
-        @at-root {
-            article#{&},
-            aside#{&},
-            footer#{&},
-            header#{&},
-            nav#{&},
-            section#{&},
-            figcaption#{&},
-            figure#{&},
-            main#{&},
-            details#{&},
-            menu#{&} {
-                display: block;
-            }
-        }
     }
 }
 
 @media (min-width: map-get($jentil-breakpoint, small)) {
-    /** Toggle elements */
-
     .screen-max-sm {
         display: none;
-    }
-
-    .screen-min-sm {
-        display: initial;
-
-        @at-root {
-            article#{&},
-            aside#{&},
-            footer#{&},
-            header#{&},
-            nav#{&},
-            section#{&},
-            figcaption#{&},
-            figure#{&},
-            main#{&},
-            details#{&},
-            menu#{&} {
-                display: block;
-            }
-        }
     }
 }
 
 @media (min-width: map-get($jentil-breakpoint, medium)) {
-    /** Toggle elements */
-
     .screen-max-md {
         display: none;
-    }
-
-    .screen-min-md {
-        display: initial;
-
-        @at-root {
-            article#{&},
-            aside#{&},
-            footer#{&},
-            header#{&},
-            nav#{&},
-            section#{&},
-            figcaption#{&},
-            figure#{&},
-            main#{&},
-            details#{&},
-            menu#{&} {
-                display: block;
-            }
-        }
     }
 }
 
 @media (min-width: map-get($jentil-breakpoint, large)) {
-    /** Toggle elements */
-
     .screen-max-lg {
         display: none;
     }
+}
 
+@media (max-width: map-get($jentil-breakpoint, large) - 1px) {
     .screen-min-lg {
-        display: initial;
+        display: none;
+    }
+}
 
-        @at-root {
-            article#{&},
-            aside#{&},
-            footer#{&},
-            header#{&},
-            nav#{&},
-            section#{&},
-            figcaption#{&},
-            figure#{&},
-            main#{&},
-            details#{&},
-            menu#{&} {
-                display: block;
-            }
-        }
+@media (max-width: map-get($jentil-breakpoint, medium) - 1px) {
+    .screen-min-md {
+        display: none;
+    }
+}
+
+@media (max-width: map-get($jentil-breakpoint, small) - 1px) {
+    .screen-min-sm {
+        display: none;
+    }
+}
+
+@media (max-width: map-get($jentil-breakpoint, x-small) - 1px) {
+    .screen-min-xs {
+        display: none;
     }
 }
