@@ -46,7 +46,9 @@ final class Singular extends AbstractSection
         ): bool {
             $utilities = $this->customizer->app->utilities;
 
-            if ($utilities->postTypeTemplate->isPageBuilder()) {
+            if ($utilities->postTypeTemplate->isPageBuilder() ||
+                $utilities->postTypeTemplate->isPageBuilderBlank()
+            ) {
                 return false;
             }
 

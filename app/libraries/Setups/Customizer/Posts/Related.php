@@ -28,6 +28,7 @@ final class Related extends AbstractSection
             $utilities = $this->customizer->app->utilities;
 
             if ($utilities->postTypeTemplate->isPageBuilder() ||
+                $utilities->postTypeTemplate->isPageBuilderBlank() ||
                 !\post_type_exists($post_type->name)
             ) {
                 return false;

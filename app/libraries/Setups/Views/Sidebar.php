@@ -22,7 +22,11 @@ final class Sidebar extends AbstractSetup
      */
     public function load()
     {
-        if ($this->app->utilities->postTypeTemplate->isPageBuilder()) {
+        $utilities = $this->app->utilities;
+
+        if ($utilities->postTypeTemplate->isPageBuilder() ||
+            $utilities->postTypeTemplate->isPageBuilderBlank()
+        ) {
             return;
         }
 
@@ -34,8 +38,11 @@ final class Sidebar extends AbstractSetup
      */
     public function openContentWrapTag()
     {
-        if ($this->app->utilities->postTypeTemplate->isPageBuilder() /*||
-            'columns-1' === $this->app->utilities->page->layout->column()*/
+        $utilities = $this->app->utilities;
+
+        if ($utilities->postTypeTemplate->isPageBuilder() ||
+            $utilities->postTypeTemplate->isPageBuilderBlank() /*||
+            'columns-1' === $utilities->page->layout->column()*/
         ) {
             return;
         }
@@ -48,8 +55,11 @@ final class Sidebar extends AbstractSetup
      */
     public function closeContentWrapTag()
     {
-        if ($this->app->utilities->postTypeTemplate->isPageBuilder() /*||
-            'columns-1' === $this->app->utilities->page->layout->column()*/
+        $utilities = $this->app->utilities;
+
+        if ($utilities->postTypeTemplate->isPageBuilder() ||
+            $utilities->postTypeTemplate->isPageBuilderBlank() /*||
+            'columns-1' === $utilities->page->layout->column()*/
         ) {
             return;
         }

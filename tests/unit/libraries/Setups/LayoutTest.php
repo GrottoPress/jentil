@@ -42,6 +42,7 @@ class LayoutTest extends AbstractTestCase
     public function testAddBodyClasses(
         array $classes,
         bool $is_page_builder,
+        bool $is_page_builder_blank,
         string $theme_mod,
         string $column,
         array $expected
@@ -59,7 +60,18 @@ class LayoutTest extends AbstractTestCase
 
         $jentil->utilities->postTypeTemplate = Stub::makeEmpty(
             PostTypeTemplate::class,
-            ['isPageBuilder' => $is_page_builder]
+            [
+                '__call' => function (string $name, array $args) use (
+                    $is_page_builder,
+                    $is_page_builder_blank
+                ) {
+                    return (
+                        'isPageBuilderBlank' === $name ?
+                        $is_page_builder_blank :
+                        $is_page_builder
+                    );
+                }
+            ]
         );
 
         $jentil->utilities->page = Stub::makeEmpty(Page\Page::class);
@@ -73,18 +85,6 @@ class LayoutTest extends AbstractTestCase
         $layout = new Layout($jentil);
 
         $this->assertSame($expected, $layout->addBodyClasses($classes));
-
-        if ($is_page_builder) {
-            $sanitize_title->wasNotCalled();
-        } else {
-            if ($theme_mod) {
-                $sanitize_title->wasCalledWithOnce(["layout-{$theme_mod}"]);
-            }
-
-            if ($column) {
-                $sanitize_title->wasCalledWithOnce(["layout-{$column}"]);
-            }
-        }
     }
 
     public function testSetContentWidth()
@@ -101,8 +101,17 @@ class LayoutTest extends AbstractTestCase
     public function addBodyClassesProvider(): array
     {
         return [
-            'body classes not added if is pagebuilder' => [
+            'body classes not added if using pagebuilder template' => [
                 ['class-1', 'class-2'],
+                true,
+                false,
+                'content-sidebar-sidebar',
+                'three-columns',
+                ['class-1', 'class-2'],
+            ],
+            'body classes not added if using blank pagebuilder template' => [
+                ['class-1', 'class-2'],
+                false,
                 true,
                 'content-sidebar-sidebar',
                 'three-columns',
@@ -111,19 +120,22 @@ class LayoutTest extends AbstractTestCase
             'body classes added if themeMod not empty' => [
                 ['class-1', 'class-2'],
                 false,
+                false,
                 'sidebar-content',
                 '',
                 ['class-1', 'class-2', 'layout-sidebar-content'],
             ],
-            'body classes added if content not empty' => [
+            'body classes added if column not empty' => [
                 ['class-3', 'class-4'],
+                false,
                 false,
                 '',
                 'three-columns',
                 ['class-3', 'class-4', 'layout-three-columns'],
             ],
-            'body classes added if content and themeMod not empty' => [
+            'body classes added if column and themeMod not empty' => [
                 ['class-7', 'class-8'],
+                false,
                 false,
                 'content-sidebar-content',
                 'three-columns',
@@ -134,8 +146,9 @@ class LayoutTest extends AbstractTestCase
                     'layout-three-columns'
                 ],
             ],
-            'body classes not added if content and themeMod empty' => [
+            'body classes not added if column and themeMod empty' => [
                 ['class-7', 'class-8'],
+                false,
                 false,
                 '',
                 '',

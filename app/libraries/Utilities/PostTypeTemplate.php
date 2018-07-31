@@ -3,6 +3,12 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities;
 
+use BadMethodCallException;
+
+/**
+ * @method bool isPageBuilder(int $post_id)
+ * @method bool isPageBuilderBlank(int $post_id)
+ */
 class PostTypeTemplate
 {
     /**
@@ -15,20 +21,20 @@ class PostTypeTemplate
         $this->utilities = $utilities;
     }
 
-    public function isPageBuilder(int $post_id = null): bool
+    public function __call(string $name, array $args)
     {
-        $page_builder = [
-            $this->utilities->app
-                ->setups['PostTypeTemplates\PageBuilder']->slug,
-            $this->utilities->app
-                ->setups['PostTypeTemplates\PageBuilderBlank']->slug,
-        ];
+        if (0 === \strpos($name, 'is')) {
+            $template = $this->utilities->app->setups['PostTypeTemplates\\'.
+                \substr($name, 2)]->slug;
 
-        if ($post_id) {
-            return \in_array($this->slug($post_id), $page_builder);
+            if (!empty($args[0])) {
+                return \in_array($this->slug($args[0]), [$template]);
+            }
+
+            return $this->is([$template]);
         }
 
-        return $this->is($page_builder);
+        throw new BadMethodCallException("Method {$name} does not exist!");
     }
 
     public function slug(int $post_id = null): string

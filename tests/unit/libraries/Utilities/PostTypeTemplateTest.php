@@ -46,6 +46,40 @@ class PostTypeTemplateTest extends AbstractTestCase
         $this->assertSame($expected, $template->isPageBuilder($post_id));
     }
 
+    /**
+     * @dataProvider isPageBuilderBlankProvider
+     */
+    public function testIsPageBuilderBlank(
+        string $slug,
+        int $post_id,
+        bool $expected
+    ) {
+        FunctionMocker::replace('get_page_template_slug', $slug);
+
+        $utilities = Stub::makeEmpty(Utilities::class);
+        $utilities->app = Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => [
+                'PostTypeTemplates\PageBuilder' => Stub::makeEmpty(
+                    AbstractTemplate::class,
+                    ['slug' => 'page-builder.php']
+                ),
+                'PostTypeTemplates\PageBuilderBlank' => Stub::makeEmpty(
+                    AbstractTemplate::class,
+                    ['slug' => 'page-builder-blank.php']
+                ),
+            ],
+        ]);
+        $utilities->page = Stub::makeEmpty(Page::class, [
+            'is' => function (string $type, array $subtype) use ($slug): bool {
+                return \in_array($slug, $subtype);
+            }
+        ]);
+
+        $template = new PostTypeTemplate($utilities);
+
+        $this->assertSame($expected, $template->isPageBuilderBlank($post_id));
+    }
+
     public function testSlug()
     {
         $get_page_template_slug = FunctionMocker::replace(
@@ -81,17 +115,29 @@ class PostTypeTemplateTest extends AbstractTestCase
                 1,
                 true
             ],
-            'post id set, slug is page-builder-blank.php' => [
-                'page-builder-blank.php',
-                1,
-                true
-            ],
             'post id set, slug is invalid' => ['page.php', 1, false],
             'post id not set, slug is page-builder.php' => [
                 'page-builder.php',
                 0,
                 true
             ],
+            'post id not set, slug is invalid' => [
+                'page.php',
+                0,
+                false
+            ],
+        ];
+    }
+
+    public function isPageBuilderBlankProvider(): array
+    {
+        return [
+            'post id set, slug is page-builder-blank.php' => [
+                'page-builder-blank.php',
+                1,
+                true
+            ],
+            'post id set, slug is invalid' => ['page.php', 1, false],
             'post id not set, slug is page-builder-blank.php' => [
                 'page-builder-blank.php',
                 0,

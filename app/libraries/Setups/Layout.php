@@ -20,7 +20,9 @@ final class Layout extends AbstractSetup
     {
         $utilities = $this->app->utilities;
 
-        if ($utilities->postTypeTemplate->isPageBuilder()) {
+        if ($utilities->postTypeTemplate->isPageBuilder() ||
+            $utilities->postTypeTemplate->isPageBuilderBlank()
+        ) {
             return $classes;
         }
 

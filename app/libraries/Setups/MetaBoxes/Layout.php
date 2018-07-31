@@ -64,7 +64,9 @@ final class Layout extends AbstractMetaBox
             return [];
         }
 
-        if ($utilities->postTypeTemplate->isPageBuilder((int)$post->ID)) {
+        if ($utilities->postTypeTemplate->isPageBuilder((int)$post->ID) ||
+            $utilities->postTypeTemplate->isPageBuilderBlank((int)$post->ID)
+        ) {
             return [];
         }
 
