@@ -46,6 +46,6 @@ final class Layout extends AbstractSetup
      */
     public function setContentWidth()
     {
-        $GLOBALS['content_width'] = 960;
+        $GLOBALS['content_width'] = 1000;
     }
 }

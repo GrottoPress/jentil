@@ -95,7 +95,7 @@ class LayoutTest extends AbstractTestCase
 
         global $content_width;
 
-        $this->assertSame(960, $content_width);
+        $this->assertSame(1000, $content_width);
     }
 
     public function addBodyClassesProvider(): array
