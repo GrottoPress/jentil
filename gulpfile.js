@@ -7,7 +7,6 @@ const rtlcss = require('gulp-rtlcss')
 const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 const typescript = require('gulp-typescript')
-const concat = require('gulp-concat')
 const postcss = require('gulp-postcss')
 const cssnano = require('cssnano')
 const mqpacker = require('css-mqpacker')
@@ -34,7 +33,7 @@ gulp.task('scripts', () =>
             "strictFunctionTypes": true
         }))
         .pipe(uglify())
-        .pipe(rename({'suffix' : '.min'}))
+        .pipe(rename({'suffix': '.min'}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(scripts_dest))
 )
@@ -44,7 +43,7 @@ gulp.task('styles', () =>
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([focus(), mqpacker({sort: mqsort}), cssnano()]))
-        .pipe(rename({'suffix' : '.min'}))
+        .pipe(rename({'suffix': '.min'}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(styles_dest))
         .pipe(rtlcss())
@@ -64,17 +63,15 @@ gulp.task('vendor', () => {
 
     gulp.src(['./node_modules/normalize.css/normalize.css'])
         .pipe(postcss([cssnano()]))
-        .pipe(rename({'suffix' : '.min'}))
+        .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(vendor_dist))
 
-    gulp.src([
-        './node_modules/@fortawesome/fontawesome/index.js',
-        './node_modules/@fortawesome/fontawesome-free-solid/index.js',
-        './node_modules/@fortawesome/fontawesome-free-regular/index.js',
-        './node_modules/@fortawesome/fontawesome-free-brands/index.js'
-    ])
-        .pipe(concat('fontawesome.min.js'))
-        .pipe(uglify())
+    gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
+        .pipe(rename({'basename': 'fontawesome.min'}))
+        .pipe(gulp.dest(vendor_dist))
+
+    gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
+        .pipe(rename({'basename': 'fontawesome-v4-shims.min'}))
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@grottopress/scss/**'])

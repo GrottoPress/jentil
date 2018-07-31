@@ -5,6 +5,8 @@ namespace GrottoPress\Jentil\Setups\Scripts;
 
 use Codeception\Util\Stub;
 use GrottoPress\Jentil\AbstractTestCase;
+use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\Jentil\Utilities\FileSystem;
 use GrottoPress\Jentil\AbstractTheme;
 use tad\FunctionMocker\FunctionMocker;
 
@@ -40,12 +42,16 @@ class FontAwesomeShimTest extends AbstractTestCase
         $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
+            'utilities' => Stub::makeEmpty(Utilities::class),
             'setups' => [
                 'Scripts\FontAwesome' => Stub::makeEmpty(
                     AbstractScript::class,
                     ['id' => 'fa']
                 ),
             ],
+        ]);
+        $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
+            'dir' => 'http://my.url/dist/scripts/fa-v4-shims.js',
         ]);
 
         $script = new FontAwesomeShim($jentil);
@@ -55,7 +61,7 @@ class FontAwesomeShimTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $script->id,
-            'https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js',
+            'http://my.url/dist/scripts/fa-v4-shims.js',
             ['fa'],
             '',
             true
