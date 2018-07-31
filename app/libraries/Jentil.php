@@ -69,7 +69,6 @@ final class Jentil extends AbstractTheme
     private function setUpMisc()
     {
         $this->setups['Loader'] = new Setups\Loader($this);
-        // $this->setups['Updater'] = new Setups\Updater($this);
         $this->setups['Language'] = new Setups\Language($this);
         $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
         $this->setups['Feed'] = new Setups\Feed($this);

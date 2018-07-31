@@ -26,7 +26,6 @@
   },
   "require": {
     "php": ">=7.0",
-    "yahnis-elsts/plugin-update-checker": "^4.1",
     "grottopress/wordpress-breadcrumbs": "^0.4",
     "grottopress/wordpress-meta-box": "^0.2",
     "grottopress/wordpress-posts": "^0.10",

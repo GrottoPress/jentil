@@ -12,8 +12,6 @@ use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Mobile\Detector;
 use GrottoPress\Getter\GetterTrait;
 use GrottoPress\WordPress\MetaBox\MetaBox;
-use Puc_v4p2_Theme_UpdateChecker;
-use Puc_v4_Factory;
 
 class Utilities
 {
@@ -53,11 +51,6 @@ class Utilities
      * @var Detector
      */
     private $mobileDetector = null;
-
-    /**
-     * @var Puc_v4p2_Theme_UpdateChecker
-     */
-    private $updater = null;
 
     /**
      * @var ShortTags
@@ -131,19 +124,6 @@ class Utilities
         }
 
         return $this->mobileDetector;
-    }
-
-    private function getUpdater(): Puc_v4p2_Theme_UpdateChecker
-    {
-        if (null === $this->updater) {
-            $this->updater = Puc_v4_Factory::buildUpdateChecker(
-                'https://api.grottopress.com/wp-update-server/v1/?action=get_metadata&slug=jentil',
-                $this->fileSystem()->dir('path', '/functions.php'),
-                'jentil'
-            );
-        }
-
-        return $this->updater;
     }
 
     private function getShortTags(): ShortTags
