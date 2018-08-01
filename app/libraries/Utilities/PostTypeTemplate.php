@@ -21,12 +21,15 @@ class PostTypeTemplate
         $this->utilities = $utilities;
     }
 
+    /**
+     * @param mixed[int] $args
+     */
     public function __call(string $name, array $args)
     {
-        if (0 === \strpos($name, 'is')) {
-            $template = $this->utilities->app->setups['PostTypeTemplates\\'.
-                \substr($name, 2)]->slug;
+        $template = $this->utilities->app->setups['PostTypeTemplates\\'.
+            \substr($name, 2)]->slug ?? '';
 
+        if ($template && (0 === \strpos($name, 'is'))) {
             if (!empty($args[0])) {
                 return \in_array($this->slug($args[0]), [$template]);
             }
@@ -34,7 +37,7 @@ class PostTypeTemplate
             return $this->is([$template]);
         }
 
-        throw new BadMethodCallException("Method {$name} does not exist!");
+        throw new BadMethodCallException("Method `{$name}` does not exist!");
     }
 
     public function slug(int $post_id = null): string
