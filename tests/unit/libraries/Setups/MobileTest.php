@@ -39,8 +39,8 @@ class MobileTest extends AbstractTestCase
         string $device,
         array $expected
     ) {
-        $sanitize_title = FunctionMocker::replace(
-            'sanitize_title',
+        $sanitize_class = FunctionMocker::replace(
+            'sanitize_html_class',
             function (string $content): string {
                 return $content;
             }
@@ -64,18 +64,18 @@ class MobileTest extends AbstractTestCase
         $this->assertSame($expected, $mobile->addBodyClasses(['class-1']));
 
         if ($is_mobile && $os) {
-            $sanitize_title->wasCalledWithOnce([$os]);
+            $sanitize_class->wasCalledWithOnce([$os]);
         }
 
         if ($is_mobile && $browser) {
-            $sanitize_title->wasCalledWithOnce([$browser]);
+            $sanitize_class->wasCalledWithOnce([$browser]);
         }
 
         if ($is_mobile && $device) {
-            $sanitize_title->wasCalledWithOnce([$device]);
+            $sanitize_class->wasCalledWithOnce([$device]);
         }
 
-        $sanitize_title->wasCalledTimes('<=3');
+        $sanitize_class->wasCalledTimes('<=3');
     }
 
     public function addBodyClassesProvider(): array

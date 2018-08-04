@@ -47,8 +47,8 @@ class LayoutTest extends AbstractTestCase
         string $column,
         array $expected
     ) {
-        $sanitize_title = FunctionMocker::replace(
-            'sanitize_title',
+        FunctionMocker::replace(
+            'sanitize_html_class',
             function (string $content): string {
                 return $content;
             }

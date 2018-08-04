@@ -115,8 +115,8 @@ class SingularTest extends AbstractTestCase
     ) {
         $this->page = $page;
 
-        $sanitize_title = FunctionMocker::replace(
-            'sanitize_title',
+        FunctionMocker::replace(
+            'sanitize_html_class',
             function (string $content): string {
                 return $content;
             }
