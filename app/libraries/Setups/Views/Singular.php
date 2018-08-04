@@ -37,12 +37,12 @@ final class Singular extends AbstractSetup
         $post = \get_post();
 
         if ($parent = $post->post_parent) {
-            $classes[] = \sanitize_title("child-{$post->post_type}");
+            $classes[] = \sanitize_html_class("child-{$post->post_type}");
 
             for ($i = 1; $parent; ++$i) {
                 $object = \get_post($parent);
 
-                $classes[] = \sanitize_title(
+                $classes[] = \sanitize_html_class(
                     "{$post->post_type}-parent-{$i}-{$object->ID}"
                 );
 
@@ -53,7 +53,7 @@ final class Singular extends AbstractSetup
         if ($page_template = $this->app->utilities->postTypeTemplate->slug(
             $post->ID
         )) {
-            $classes[] = 'template-'.\sanitize_title($page_template);
+            $classes[] = \sanitize_html_class("template-{$page_template}");
         }
 
         if (\post_type_supports($post->post_type, 'comments')) {

@@ -34,15 +34,15 @@ final class Mobile extends AbstractSetup
         }
 
         if ($os = $detector->getOperatingSystem()) {
-            $classes[] = \sanitize_title($os);
+            $classes[] = \sanitize_html_class($os);
         }
 
         if ($browser = $detector->getBrowser()) {
-            $classes[] = \sanitize_title($browser);
+            $classes[] = \sanitize_html_class($browser);
         }
 
         if ($device = $detector->getDevice()) {
-            $classes[] = \sanitize_title($device);
+            $classes[] = \sanitize_html_class($device);
         }
 
         return $classes;
