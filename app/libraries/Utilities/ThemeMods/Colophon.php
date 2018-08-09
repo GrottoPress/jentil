@@ -17,8 +17,17 @@ class Colophon extends AbstractThemeMod
         $this->themeMods = $theme_mods;
 
         $this->id = \apply_filters('jentil_colophon_mod_id', 'colophon');
+        $this->default = $this->default();
+    }
 
-        $this->default = \apply_filters(
+    public function get(): string
+    {
+        return $this->themeMods->utilities->shortTags->replace(parent::get());
+    }
+
+    private function default(): string
+    {
+        return \apply_filters(
             'jentil_colophon_mod_default',
             \sprintf(
                 \esc_html__(
@@ -26,15 +35,14 @@ class Colophon extends AbstractThemeMod
                     'jentil'
                 ),
                 '<span itemprop="copyrightYear">{{this_year}}</span>',
-                '<a class="blog-name" itemprop="url" href="{{site_url}}"><span itemprop="copyrightHolder">{{site_name}}</span></a>',
-                '<em><a itemprop="url" rel="nofollow" href="'.Jentil::URI.'">'.Jentil::NAME.'</a></em>',
+                '<a class="blog-name" itemprop="url" href="{{site_url}}">
+                    <span itemprop="copyrightHolder">{{site_name}}</span>
+                </a>',
+                '<em><a itemprop="url" rel="nofollow" href="'.Jentil::URI.'">'.
+                    Jentil::NAME.
+                '</a></em>',
                 '<a itemprop="url" rel="nofollow" href="https://wordpress.org">WordPress</a>.'
             )
         );
-    }
-
-    public function get(): string
-    {
-        return $this->themeMods->utilities->shortTags->replace(parent::get());
     }
 }

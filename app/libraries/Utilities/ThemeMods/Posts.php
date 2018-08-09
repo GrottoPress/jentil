@@ -40,31 +40,13 @@ class Posts extends AbstractThemeMod
     ) {
         $this->themeMods = $theme_mods;
 
-        $this->setAttributes($setting, $args);
-    }
-
-    /**
-     * @param mixed[string] $args
-     */
-    private function setAttributes(string $setting, array $args = [])
-    {
-        $args = \wp_parse_args($args, [
-            'context' => '',
-            'specific' => '',
-            'more_specific' => 0,
-        ]);
-
         $this->setting = \sanitize_key($setting);
-        $this->context = \sanitize_key($args['context']);
-        $this->specific = \sanitize_key($args['specific']);
-        $this->moreSpecific = (int)$args['more_specific'];
+        $this->context = \sanitize_key($args['context'] ?? '');
+        $this->specific = \sanitize_key($args['specific'] ?? '');
+        $this->moreSpecific = (int)($args['more_specific'] ?? 0);
 
-        $ids = $this->ids();
-        $this->id = isset($ids[$this->context])
-            ? \sanitize_key($ids[$this->context]) : '';
-
-        $defaults = $this->defaults();
-        $this->default = $defaults[$this->setting] ?? null;
+        $this->id = \sanitize_key($this->ids()[$this->context] ?? '');
+        $this->default = $this->defaults()[$this->setting] ?? null;
     }
 
     /**

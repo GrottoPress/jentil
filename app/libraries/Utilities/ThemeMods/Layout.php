@@ -32,24 +32,17 @@ class Layout extends AbstractThemeMod
     {
         $this->themeMods = $theme_mods;
 
-        $this->setAttributes($args);
-    }
+        $this->context = \sanitize_key($args['context'] ?? '');
+        $this->specific = \sanitize_key($args['specific'] ?? '');
+        $this->moreSpecific = (int)($args['more_specific'] ?? 0);
 
-    /**
-     * @param mixed[string] $args
-     */
-    private function setAttributes(array $args)
-    {
-        $args = \wp_parse_args($args, [
-            'context' => '',
-            'specific' => '',
-            'more_specific' => 0,
-        ]);
+        if (!\post_type_exists($this->specific) &&
+            !\taxonomy_exists($this->specific)
+        ) {
+            $this->specific = '';
+        }
 
-        $this->context = \sanitize_key($args['context']);
-        $this->specific = \post_type_exists($args['specific']) ||
-            \taxonomy_exists($args['specific']) ? $args['specific'] : '';
-        $this->moreSpecific = (int)$args['more_specific'];
+        $this->id = \sanitize_key($this->ids()[$this->context] ?? '');
 
         $this->default = \apply_filters(
             'jentil_layout_mod_default',
@@ -58,10 +51,35 @@ class Layout extends AbstractThemeMod
             $this->specific,
             $this->moreSpecific
         );
+    }
 
-        $ids = $this->ids();
-        $this->id = isset($ids[$this->context])
-            ? \sanitize_key($ids[$this->context]) : '';
+    public function get(): string
+    {
+        if (!$this->id) {
+            return '';
+        }
+
+        if ($this->isPagelike()) {
+            return $this->validate((string)\get_post_meta(
+                $this->moreSpecific,
+                $this->id,
+                true
+            ));
+        }
+
+        return $this->validate(parent::get());
+    }
+
+    public function isPagelike(): bool
+    {
+        if ('singular' !== $this->context) {
+            return false;
+        }
+
+        return $this->themeMods->utilities->page->layout->isPagelike(
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
     /**
@@ -94,35 +112,6 @@ class Layout extends AbstractThemeMod
             'jentil_layout_mod_id',
             $ids,
             $this->context,
-            $this->specific,
-            $this->moreSpecific
-        );
-    }
-
-    public function get(): string
-    {
-        if (!$this->id) {
-            return '';
-        }
-
-        if ($this->isPagelike()) {
-            return $this->validate((string)\get_post_meta(
-                $this->moreSpecific,
-                $this->id,
-                true
-            ));
-        }
-
-        return $this->validate(parent::get());
-    }
-
-    public function isPagelike(): bool
-    {
-        if ('singular' !== $this->context) {
-            return false;
-        }
-
-        return $this->themeMods->utilities->page->layout->isPagelike(
             $this->specific,
             $this->moreSpecific
         );

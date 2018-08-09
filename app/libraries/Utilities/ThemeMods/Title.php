@@ -32,32 +32,23 @@ class Title extends AbstractThemeMod
     {
         $this->themeMods = $theme_mods;
 
-        $this->setAttributes($args);
+        $this->context = \sanitize_key($args['context'] ?? '');
+        $this->specific = \sanitize_key($args['specific'] ?? '');
+        $this->moreSpecific = (int)($args['more_specific'] ?? 0);
+
+        if (!\post_type_exists($this->specific) &&
+            !\taxonomy_exists($this->specific)
+        ) {
+            $this->specific = '';
+        }
+
+        $this->id = \sanitize_key($this->ids()[$this->context] ?? '');
+        $this->default = $this->defaults()[$this->context] ?? '';
     }
 
-    /**
-     * @param mixed[string] $args
-     */
-    private function setAttributes(array $args)
+    public function get(): string
     {
-        $args = \wp_parse_args($args, [
-            'context' => '',
-            'specific' => '',
-            'more_specific' => 0,
-        ]);
-
-        $this->context = \sanitize_key($args['context']);
-        $this->moreSpecific = (int)$args['more_specific'];
-
-        $this->specific = \post_type_exists($args['specific']) ||
-            \taxonomy_exists($args['specific']) ? $args['specific'] : '';
-
-        $ids = $this->ids();
-        $this->id = isset($ids[$this->context])
-            ? \sanitize_key($ids[$this->context]) : '';
-
-        $defaults = $this->defaults();
-        $this->default = $defaults[$this->context] ?? '';
+        return $this->themeMods->utilities->shortTags->replace(parent::get());
     }
 
     /**
@@ -116,10 +107,5 @@ class Title extends AbstractThemeMod
             $this->specific,
             $this->moreSpecific
         );
-    }
-
-    public function get(): string
-    {
-        return $this->themeMods->utilities->shortTags->replace(parent::get());
     }
 }
