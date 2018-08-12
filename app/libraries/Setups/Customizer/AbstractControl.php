@@ -35,19 +35,11 @@ abstract class AbstractControl
      */
     public function get(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
-            return;
-        }
-
         return $wp_customizer->get_control($this->id);
     }
 
     public function add(WPCustomizer $wp_customizer)
     {
-        if (!$this->id && !$this->object) {
-            return;
-        }
-
         $wp_customizer->add_control(($this->object ?: $this->id), $this->args);
     }
 
@@ -56,10 +48,6 @@ abstract class AbstractControl
      */
     public function remove(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
-            return;
-        }
-
         $wp_customizer->remove_control($this->id);
     }
 }

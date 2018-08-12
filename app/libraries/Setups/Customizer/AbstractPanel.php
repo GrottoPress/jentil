@@ -51,10 +51,6 @@ abstract class AbstractPanel
      */
     public function get(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
-            return;
-        }
-
         return $wp_customizer->get_panel($this->id);
     }
 
@@ -81,10 +77,6 @@ abstract class AbstractPanel
      */
     public function remove(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
-            return;
-        }
-
         $wp_customizer->remove_panel($this->id);
     }
 }

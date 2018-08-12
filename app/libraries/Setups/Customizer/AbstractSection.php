@@ -66,10 +66,6 @@ abstract class AbstractSection
      */
     public function get(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
-            return;
-        }
-
         return $wp_customizer->get_section($this->id);
     }
 
@@ -100,10 +96,6 @@ abstract class AbstractSection
      */
     public function remove(WPCustomizer $wp_customizer)
     {
-        if (!$this->id) {
-            return;
-        }
-
         $wp_customizer->remove_section($this->id);
     }
 }
