@@ -35,9 +35,9 @@ class Colophon extends AbstractThemeMod
                     'jentil'
                 ),
                 '<span itemprop="copyrightYear">{{this_year}}</span>',
-                '<a class="blog-name" itemprop="url" href="{{site_url}}">
-                    <span itemprop="copyrightHolder">{{site_name}}</span>
-                </a>',
+                '<a class="blog-name" itemprop="url" href="{{site_url}}">'.
+                    '<span itemprop="copyrightHolder">{{site_name}}</span>'.
+                '</a>',
                 '<em><a itemprop="url" rel="nofollow" href="'.Jentil::URI.'">'.
                     Jentil::NAME.
                 '</a></em>',
