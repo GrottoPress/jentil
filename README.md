@@ -146,11 +146,165 @@ To use post type templates in your own theme, add the templates in the `app/temp
 
 Jentil uses this hook to add page builder templates, and provides an `AbstractPostTypeTemplate` setup class your theme's post type templates can inherit from. (See Jentil's `app/libraries/Setups/PostTypeTemplates`).
 
+### Styling
+
+Jentil's styles are designed to be used, so we do **not** encourage that you dequeue it, unless you intend to recompile and enqueue in your own theme.
+
+Care has been taken to make them as basic as possible, so they do not get in your way. You can simply enqueue your own theme's style sheet(s) after Jentil's.
+
+#### Device break points
+
+Jentil provides 4 device break points as follows:
+
+- *x-small* (300px)
+- *small* (600px)
+- *medium* (900px)
+- *large* (1200px)
+
+#### Grid system
+
+Jentil features a built-in 12-column grid system for creating responsive layouts, based on the break points.
+
+Wrapper class: `.grid`
+
+| width    | *x-small* | *small*  | *medium* | *large*  |
+|----------|-----------|----------|----------|----------|
+| 8.33%    | `.xs-1`   | `.sm-1`  | `.md-1`  | `.lg-1`  |
+| 16.66%   | `.xs-2`   | `.sm-2`  | `.md-2`  | `.lg-2`  |
+| 25%      | `.xs-3`   | `.sm-3`  | `.md-3`  | `.lg-3`  |
+| 33.33%   | `.xs-4`   | `.sm-4`  | `.md-4`  | `.lg-4`  |
+| 41.66%   | `.xs-5`   | `.sm-5`  | `.md-5`  | `.lg-5`  |
+| 50%      | `.xs-6`   | `.sm-6`  | `.md-6`  | `.lg-6`  |
+| 58.33%   | `.xs-7`   | `.sm-7`  | `.md-7`  | `.lg-7`  |
+| 66.66%   | `.xs-8`   | `.sm-8`  | `.md-8`  | `.lg-8`  |
+| 75%      | `.xs-9`   | `.sm-9`  | `.md-9`  | `.lg-9`  |
+| 83.33%   | `.xs-10`  | `.sm-10` | `.md-10` | `.lg-10` |
+| 91.66%   | `.xs-11`  | `.sm-11` | `.md-11` | `.lg-11` |
+| 100%     | `.xs-12`  | `.sm-12` | `.md-12` | `.lg-12` |
+
+Two-Column Page Layout:
+
+| width    | *medium*     | *large*      |
+|----------|--------------|--------------|
+| 8.33%    | `.lc2-md-1`  | `.lc2-lg-1`  |
+| 16.66%   | `.lc2-md-2`  | `.lc2-lg-2`  |
+| 25%      | `.lc2-md-3`  | `.lc2-lg-3`  |
+| 33.33%   | `.lc2-md-4`  | `.lc2-lg-4`  |
+| 41.66%   | `.lc2-md-5`  | `.lc2-lg-5`  |
+| 50%      | `.lc2-md-6`  | `.lc2-lg-6`  |
+| 58.33%   | `.lc2-md-7`  | `.lc2-lg-7`  |
+| 66.66%   | `.lc2-md-8`  | `.lc2-lg-8`  |
+| 75%      | `.lc2-md-9`  | `.lc2-lg-9`  |
+| 83.33%   | `.lc2-md-10` | `.lc2-lg-10` |
+| 91.66%   | `.lc2-md-11` | `.lc2-lg-11` |
+| 100%     | `.lc2-md-12` | `.lc2-lg-12` |
+
+Three-Column Page Layout:
+
+| width    | *medium*     | *large*      |
+|----------|--------------|--------------|
+| 8.33%    | `.lc3-md-1`  | `.lc3-lg-1`  |
+| 16.66%   | `.lc3-md-2`  | `.lc3-lg-2`  |
+| 25%      | `.lc3-md-3`  | `.lc3-lg-3`  |
+| 33.33%   | `.lc3-md-4`  | `.lc3-lg-4`  |
+| 41.66%   | `.lc3-md-5`  | `.lc3-lg-5`  |
+| 50%      | `.lc3-md-6`  | `.lc3-lg-6`  |
+| 58.33%   | `.lc3-md-7`  | `.lc3-lg-7`  |
+| 66.66%   | `.lc3-md-8`  | `.lc3-lg-8`  |
+| 75%      | `.lc3-md-9`  | `.lc3-lg-9`  |
+| 83.33%   | `.lc3-md-10` | `.lc3-lg-10` |
+| 91.66%   | `.lc3-md-11` | `.lc3-lg-11` |
+| 100%     | `.lc3-md-12` | `.lc3-lg-12` |
+
+Example:
+
+```html
+<div class="grid">
+    <div class="xs-12 sm-6 md-3 lc3-md-12">
+        <div>1</div>
+    </div>
+    <div class="xs-12 sm-6 md-3 lc3-md-12">
+        <div>2</div>
+    </div>
+    <div class="xs-12 sm-6 md-3 lc3-md-12">
+        <div>3</div>
+    </div>
+    <div class="xs-12 sm-6 md-3 lc3-md-12">
+        <div>4</div>
+    </div>
+</div>
+```
+
+Result:
+
+*x-small*
+
+```text
+[ 1 ]
+[ 2 ]
+[ 3 ]
+[ 4 ]
+```
+
+*small*
+
+```text
+[ 1 ] [ 2 ]
+[ 3 ] [ 4 ]
+```
+
+*medium*, *large*
+
+```text
+[ 1 ] [ 2 ] [ 3 ] [ 4 ]
+```
+
+*medium*, *large*, on page with three-column layout
+
+```text
+[ 1 ]
+[ 2 ]
+[ 3 ]
+[ 4 ]
+```
+
+#### Toggle elements
+
+Jentil comes with classes that hides or shows the element it is applied to, based on the break points.
+
+| Class         | Description                                                      |
+|---------------|------------------------------------------------------------------|
+| `.hide`       | Hides the element                                                |
+| `.max-xs`     | Shows element when screen width `<` *x-small*; hides otherwise.  |
+| `.max-sm`     | Shows element when screen width `<` *small*; hides otherwise.    |
+| `.max-md`     | Shows element when screen width `<` *medium*; hides otherwise.   |
+| `.max-lg`     | Shows element when screen width `<` *large*; hides otherwise.    |
+| `.min-xs`     | Shows element when screen width `>=` *x-small*; hides otherwise. |
+| `.min-sm`     | Shows element when screen width `>=` *small*; hides otherwise.   |
+| `.min-md`     | Shows element when screen width `>=` *medium*; hides otherwise.  |
+| `.min-lg`     | Shows element when screen width `>=` *large*; hides otherwise.   |
+| `.lc2-max-md` | Like `.max-md`, for when page layout is 2 columns.               |
+| `.lc2-max-lg` | Like `.max-lg`, for when page layout is 2 columns.               |
+| `.lc2-min-md` | Like `.min-md`, for when page layout is 2 columns.               |
+| `.lc2-min-lg` | Like `.min-lg`, for when page layout is 2 columns.               |
+| `.lc3-max-md` | Like `.max-md`, for when page layout is 3 columns.               |
+| `.lc3-max-lg` | Like `.max-lg`, for when page layout is 3 columns.               |
+| `.lc3-min-md` | Like `.min-md`, for when page layout is 3 columns.               |
+| `.lc3-min-lg` | Like `.min-lg`, for when page layout is 3 columns.               |
+
+Example:
+
+```html
+<div class="min-xs max-md">
+    This will show when screen width is between x-small and medium. It is hidden otherwise.
+</div>
+```
+
 ### Testing
 
 Jentil employs, and encourages, proper, isolated unit tests. *jentil-theme* comes with [WP Browser](https://github.com/lucatume/wp-browser) and [Function Mocker](https://github.com/lucatume/function-mocker) for testing. You may swap these out for whatever testing framework you are comfortable with.
 
-WP Browser uses [Codeception](https://codeception.com), which, in turn uses [PHPUnit](https://phpunit.de), so it should take care of most testing needs. In addition to unit tests, you may add integration, functional and acceptance tests, using the same framework setup.
+WP Browser uses [Codeception](https://codeception.com), which, in turn uses [PHPUnit](https://phpunit.de), so it should take care of most testing needs. In addition to unit tests, you may add integration, functional and acceptance tests, using the same setup.
 
 Run all tests with `composer run test`, as defined in `composer.json`, under `scripts` configuration.
 
