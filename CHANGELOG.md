@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Accessibility: Undo unsetting outlines when elements receive a focus
 - Accessibility: Use [what-input](https://ten1seven.github.io/what-input/) to detect mouse, keyboard and touch events
 - Set `$content_width` to `1000`
+- Rename CSS grid classes
 
 ### Removed
 - Automatic updates feature
