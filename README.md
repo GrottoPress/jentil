@@ -274,7 +274,7 @@ Jentil comes with classes that hides or shows the element it is applied to, base
 
 | Class         | Description                                                      |
 |---------------|------------------------------------------------------------------|
-| `.hide`       | Hides the element                                                |
+| `.hide`       | Hides element unconditionally.                                   |
 | `.max-xs`     | Shows element when screen width `<` *x-small*; hides otherwise.  |
 | `.max-sm`     | Shows element when screen width `<` *small*; hides otherwise.    |
 | `.max-md`     | Shows element when screen width `<` *medium*; hides otherwise.   |
