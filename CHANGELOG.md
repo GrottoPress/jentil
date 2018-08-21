@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Set `$content_width` to `1000`
 - Rename CSS grid classes
 - Rename CSS toggle classes
+- Move composing classes one level up for shorter namespaces
 
 ### Removed
 - Automatic updates feature

@@ -26,9 +26,9 @@
   },
   "require": {
     "php": ">=7.0",
-    "grottopress/wordpress-breadcrumbs": "^0.4",
-    "grottopress/wordpress-meta-box": "^0.2",
-    "grottopress/wordpress-posts": "^0.10",
+    "grottopress/wordpress-breadcrumbs": "^0.5",
+    "grottopress/wordpress-meta-box": "^0.3",
+    "grottopress/wordpress-posts": "^0.11",
     "grottopress/wordpress-suv": "^0.4"
   },
   "require-dev": {
@@ -54,7 +54,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GrottoPress\\Jentil\\": "app/libraries/"
+      "GrottoPress\\": "app/libraries/"
     },
     "files": [
       "app/helpers.php"
@@ -62,7 +62,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "GrottoPress\\Jentil\\": "tests/unit/libraries/"
+      "GrottoPress\\": "tests/unit/libraries/"
     }
   }
 }

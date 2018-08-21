@@ -1,9 +1,11 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil;
+namespace GrottoPress;
 
-use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\Jentil\AbstractTheme;
+use GrottoPress\Jentil\Setups;
+use GrottoPress\Jentil\Utilities;
 
 final class Jentil extends AbstractTheme
 {
@@ -25,7 +27,6 @@ final class Jentil extends AbstractTheme
         $this->setUpStyles();
         $this->setUpScripts();
         $this->setUpMenus();
-        $this->setUpCustomizer();
         $this->setUpPostTypeTemplates();
         $this->setUpSidebars();
         $this->setUpViews();
@@ -70,6 +71,7 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Loader'] = new Setups\Loader($this);
         $this->setups['Language'] = new Setups\Language($this);
+        $this->setups['Customizer'] = new Setups\Customizer($this);
         $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
         $this->setups['Feed'] = new Setups\Feed($this);
         $this->setups['HTML5'] = new Setups\HTML5($this);
@@ -109,12 +111,6 @@ final class Jentil extends AbstractTheme
     private function setUpMenus()
     {
         $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
-    }
-
-    private function setUpCustomizer()
-    {
-        $this->setups['Customizer\Customizer'] =
-            new Setups\Customizer\Customizer($this);
     }
 
     private function setUpPostTypeTemplates()
