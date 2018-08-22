@@ -8,7 +8,7 @@ use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
 
-class ColophonTest extends AbstractTestCase
+class FooterTest extends AbstractTestCase
 {
     public function testGetID()
     {
@@ -19,8 +19,12 @@ class ColophonTest extends AbstractTestCase
             }
         );
 
-        $colophon = new Colophon(Stub::makeEmpty(ThemeMods::class));
+        FunctionMocker::replace('sanitize_key', function (string $key): string {
+            return $key;
+        });
 
-        $this->assertSame('colophon', $colophon->id);
+        $footer = new Footer(Stub::makeEmpty(ThemeMods::class), 'colophon');
+
+        $this->assertSame('footer_colophon', $footer->id);
     }
 }

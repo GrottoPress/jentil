@@ -4,9 +4,9 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities;
 
 use GrottoPress\Jentil\Utilities;
-use GrottoPress\Jentil\Utilities\ThemeMods\Colophon as ColophonMod;
+use GrottoPress\Jentil\Utilities\ThemeMods\Footer as FooterMod;
 
-class Colophon
+class Footer
 {
     /**
      * @var Utilities
@@ -18,8 +18,8 @@ class Colophon
         $this->utilities = $utilities;
     }
 
-    public function themeMod(): ColophonMod
+    public function themeMod(string $setting): FooterMod
     {
-        return $this->utilities->themeMods->colophon;
+        return $this->utilities->themeMods->footer($setting);
     }
 }

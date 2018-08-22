@@ -15,11 +15,6 @@ class ThemeMods
      */
     private $utilities;
 
-    /**
-     * @var ThemeMods\Colophon
-     */
-    private $colophon;
-
     public function __construct(Utilities $utilities)
     {
         $this->utilities = $utilities;
@@ -28,15 +23,6 @@ class ThemeMods
     private function getUtilities(): Utilities
     {
         return $this->utilities;
-    }
-
-    private function getColophon(): ThemeMods\Colophon
-    {
-        if (null === $this->colophon) {
-            $this->colophon = new ThemeMods\Colophon($this);
-        }
-
-        return $this->colophon;
     }
 
     /**
@@ -61,5 +47,10 @@ class ThemeMods
     public function title(array $args = []): ThemeMods\Title
     {
         return new ThemeMods\Title($this, $args);
+    }
+
+    public function footer(string $setting): ThemeMods\Footer
+    {
+        return new ThemeMods\Footer($this, $setting);
     }
 }

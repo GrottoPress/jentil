@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Rename CSS grid classes
 - Rename CSS toggle classes
 - Move composing classes one level up for shorter namespaces
+- Rename colophon customizer section to 'Footer'
 
 ### Removed
 - Automatic updates feature

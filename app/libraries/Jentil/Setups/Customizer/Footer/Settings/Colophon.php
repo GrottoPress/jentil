@@ -1,18 +1,17 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups\Customizer\Colophon\Settings;
+namespace GrottoPress\Jentil\Setups\Customizer\Footer\Settings;
 
-use GrottoPress\Jentil\Setups\Customizer\Colophon as Section;
-use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
+use GrottoPress\Jentil\Setups\Customizer\Footer;
 
 final class Colophon extends AbstractSetting
 {
-    public function __construct(Section $colophon)
+    public function __construct(Footer $footer)
     {
-        parent::__construct($colophon->customizer);
+        parent::__construct($footer);
 
-        $theme_mod = $this->customizer->app->utilities->themeMods->colophon;
+        $theme_mod = $this->themeMod('colophon');
 
         $this->id = $theme_mod->id;
 

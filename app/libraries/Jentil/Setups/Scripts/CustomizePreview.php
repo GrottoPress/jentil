@@ -80,7 +80,7 @@ final class CustomizePreview extends AbstractScript
     private function colophonModID(): string
     {
         return $this->app->setups['Customizer']
-            ->sections['Colophon']->settings['Colophon']->id;
+            ->sections['Footer']->settings['Colophon']->id;
     }
 
     /**

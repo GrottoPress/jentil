@@ -35,13 +35,13 @@ final class Footer extends AbstractSetup
      */
     public function renderColophon()
     {
-        if (!($mod = $this->app->utilities->colophon->themeMod()->get()) &&
-            !$this->app->utilities->page->is('customize_preview')
+        if (($mod =
+            $this->app->utilities->footer->themeMod('colophon')->get()) ||
+            $this->app->utilities->page->is('customize_preview')
         ) {
-            return;
+            echo '<div id="colophon"><small>'.$mod.
+                '</small></div><!-- #colophon -->';
         }
-
-        echo '<div id="colophon"><small>'.$mod.'</small></div><!-- #colophon -->';
     }
 
     /**

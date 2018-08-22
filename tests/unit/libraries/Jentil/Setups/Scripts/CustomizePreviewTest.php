@@ -116,7 +116,7 @@ class CustomizePreviewTest extends AbstractTestCase
                         ]]
                     )],
                     'sections' => [
-                        'Colophon' => Stub::makeEmpty(
+                        'Footer' => Stub::makeEmpty(
                             AbstractSection::class,
                             ['settings' => ['Colophon' => Stub::makeEmpty(
                                 AbstractSetting::class,

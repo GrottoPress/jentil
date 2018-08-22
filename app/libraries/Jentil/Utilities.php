@@ -31,9 +31,9 @@ class Utilities
     private $page = null;
 
     /**
-     * @var Utilities\Colophon
+     * @var Utilities\Footer
      */
-    private $colophon = null;
+    private $footer = null;
 
     /**
      * @var Utilities\FileSystem
@@ -88,13 +88,13 @@ class Utilities
         return $this->page;
     }
 
-    private function getColophon(): Utilities\Colophon
+    private function getFooter(): Utilities\Footer
     {
-        if (null === $this->colophon) {
-            $this->colophon = new Utilities\Colophon($this);
+        if (null === $this->footer) {
+            $this->footer = new Utilities\Footer($this);
         }
 
-        return $this->colophon;
+        return $this->footer;
     }
 
     private function getFileSystem(): Utilities\FileSystem

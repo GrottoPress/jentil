@@ -21,7 +21,7 @@ final class Customizer extends AbstractCustomizer
     {
         $this->sections['Title'] = new Customizer\Title($this);
         $this->sections['Layout'] = new Customizer\Layout($this);
-        $this->sections['Colophon'] = new Customizer\Colophon($this);
+        $this->sections['Footer'] = new Customizer\Footer($this);
 
         $this->panels['Posts'] = new Customizer\Posts($this);
 

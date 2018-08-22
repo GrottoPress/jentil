@@ -7,21 +7,21 @@ use GrottoPress\Jentil\Setups\Customizer;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection;
 use WP_Customize_Manager as WPCustomizer;
 
-final class Colophon extends AbstractSection
+final class Footer extends AbstractSection
 {
     public function __construct(Customizer $customizer)
     {
         parent::__construct($customizer);
 
-        $this->id = 'colophon';
+        $this->id = 'footer';
 
-        $this->args['title'] = \esc_html__('Colophon', 'jentil');
+        $this->args['title'] = \esc_html__('Footer', 'jentil');
     }
 
     public function add(WPCustomizer $wp_customizer)
     {
-        $this->settings['Colophon'] = new Colophon\Settings\Colophon($this);
-        $this->controls['Colophon'] = new Colophon\Controls\Colophon($this);
+        $this->settings['Colophon'] = new Footer\Settings\Colophon($this);
+        $this->controls['Colophon'] = new Footer\Controls\Colophon($this);
 
         parent::add($wp_customizer);
     }
