@@ -23,9 +23,12 @@ class LayoutTest extends AbstractTestCase
             return $args;
         });
 
-        FunctionMocker::replace('sanitize_key', function (string $key): string {
-            return $key;
-        });
+        FunctionMocker::replace(
+            ['sanitize_key', 'sanitize_title'],
+            function (string $key): string {
+                return $key;
+            }
+        );
 
         FunctionMocker::replace(
             'apply_filters',

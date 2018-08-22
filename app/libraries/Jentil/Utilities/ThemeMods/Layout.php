@@ -44,15 +44,8 @@ class Layout extends AbstractThemeMod
             $this->specific = '';
         }
 
-        $this->id = \sanitize_key($this->ids()[$this->context] ?? '');
-
-        $this->default = \apply_filters(
-            'jentil_layout_mod_default',
-            'content',
-            $this->context,
-            $this->specific,
-            $this->moreSpecific
-        );
+        $this->id = $this->id();
+        $this->default = $this->default();
     }
 
     public function get(): string
@@ -84,12 +77,37 @@ class Layout extends AbstractThemeMod
         );
     }
 
+    private function id(): string
+    {
+        return \sanitize_key(\apply_filters(
+            'jentil_layout_mod_id',
+            ($this->ids()[$this->context] ?? ''),
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        ));
+    }
+
+    private function default(): string
+    {
+        return \sanitize_title(\apply_filters(
+            'jentil_layout_mod_default',
+            'content',
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        ));
+    }
+
     /**
      * @return string[string]
      */
     private function ids(): array
     {
-        $ids = [
+        return \array_map(function (string $value): string {
+            $value = \str_replace(['__', '_0_'], '_', $value);
+            return ($this->isPagelike() ? $value : \trim($value, '_'));
+        }, [
             'home' => 'post_post_type_layout',
             'singular' => (
                 $this->isPagelike() ? '_jentil-layout' :
@@ -103,20 +121,7 @@ class Layout extends AbstractThemeMod
             'tax' => "{$this->specific}_{$this->moreSpecific}_taxonomy_layout",
             '404' => 'error_404_layout',
             'search' => 'search_layout',
-        ];
-
-        $ids = \array_map(function (string $value): string {
-            $value = \str_replace(['__', '_0_'], '_', $value);
-            return ($this->isPagelike() ? $value : \trim($value, '_'));
-        }, $ids);
-
-        return \apply_filters(
-            'jentil_layout_mod_id',
-            $ids,
-            $this->context,
-            $this->specific,
-            $this->moreSpecific
-        );
+        ]);
     }
 
     private function validate(string $mod): string

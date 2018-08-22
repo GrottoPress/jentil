@@ -47,8 +47,32 @@ class Posts extends AbstractThemeMod
         $this->specific = \sanitize_key($args['specific'] ?? '');
         $this->moreSpecific = (int)($args['more_specific'] ?? 0);
 
-        $this->id = \sanitize_key($this->ids()[$this->context] ?? '');
-        $this->default = $this->defaults()[$this->setting] ?? null;
+        $this->id = $this->id();
+        $this->default = $this->default();
+    }
+
+    private function id(): string
+    {
+        return \sanitize_key(\apply_filters(
+            'jentil_posts_mod_id',
+            ($this->ids()[$this->context] ?? ''),
+            $this->setting,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        ));
+    }
+
+    private function default()
+    {
+        return \apply_filters(
+            'jentil_posts_mod_default',
+            ($this->defaults()[$this->setting] ?? null),
+            $this->setting,
+            $this->context,
+            $this->specific,
+            $this->moreSpecific
+        );
     }
 
     /**
@@ -56,7 +80,11 @@ class Posts extends AbstractThemeMod
      */
     private function ids(): array
     {
-        $ids = [
+        return \array_map(function (string $value): string {
+            $value .= "_{$this->setting}";
+            $value = \str_replace(['__', '_0_'], '_', $value);
+            return \trim($value, '_');
+        }, [
             'home' => 'post_post_type_posts',
             'singular' => "singular_{$this->specific}_{$this->moreSpecific}_posts",
             'author' => 'author_posts',
@@ -68,22 +96,7 @@ class Posts extends AbstractThemeMod
             'search' => 'search_posts',
             'sticky' => "{$this->specific}_sticky_posts",
             'related' => "{$this->specific}_related_posts",
-        ];
-
-        $ids = \array_map(function (string $value): string {
-            $value .= "_{$this->setting}";
-            $value = \str_replace(['__', '_0_'], '_', $value);
-            return \trim($value, '_');
-        }, $ids);
-
-        return \apply_filters(
-            'jentil_posts_mod_id',
-            $ids,
-            $this->setting,
-            $this->context,
-            $this->specific,
-            $this->moreSpecific
-        );
+        ]);
     }
 
     /**
@@ -181,13 +194,6 @@ class Posts extends AbstractThemeMod
             $defaults['sticky_posts'] = 1;
         }
 
-        return \apply_filters(
-            'jentil_posts_mod_default',
-            $defaults,
-            $this->setting,
-            $this->context,
-            $this->specific,
-            $this->moreSpecific
-        );
+        return $defaults;
     }
 }
