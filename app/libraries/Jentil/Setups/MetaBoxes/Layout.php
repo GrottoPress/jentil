@@ -4,7 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\MetaBoxes;
 
 use GrottoPress\Jentil\AbstractTheme;
-use GrottoPress\Jentil\Jentil;
+use GrottoPress\Jentil;
 use WP_Post;
 
 final class Layout extends AbstractMetaBox
@@ -84,8 +84,8 @@ final class Layout extends AbstractMetaBox
 
         return [
             'id' => $this->id,
-            'title' => \esc_html__('Layout', 'jentil'),
             'context' => $this->context,
+            'title' => \esc_html__('Layout', 'jentil'),
             'priority' => 'default',
             'callbackArgs' => ['__block_editor_compatible_meta_box' => true],
             'fields' => [
