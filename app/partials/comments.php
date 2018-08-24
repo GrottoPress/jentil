@@ -14,9 +14,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
 } ?>
 
 <div id="comments" class="site-comments">
-    <?php \do_action('jentil_before_comments');
-
-    if (\have_comments()) {
+    <?php if (\have_comments()) {
         $total_pages = \absint(\get_comment_pages_count());
         $comment_count = \absint(\get_comments_number());
         $title = \sprintf(
@@ -31,7 +29,7 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
         ); ?>
 
         <section id="comments-list">
-            <h3 class="comments-title"><?php echo \apply_filters(
+            <h3 class="comments-title"><?= \apply_filters(
                 'jentil_comments_title',
                 $title
             ); ?></h3>
@@ -99,12 +97,12 @@ if (!\post_type_supports(\get_post_type(), 'comments')) {
 
         <?php
         /**
-         *If comments are closed and there are comments,
+         * If comments are closed and there are comments,
          * let's leave a little note, shall we?
          */
         if (!\comments_open()) { ?>
             <div class="comments-closed-text">
-                <?php echo \sanitize_text_field(
+                <?= \sanitize_text_field(
                     \apply_filters(
                         'jentil_comments_closed_text',
                         \esc_html__('Comments are closed.', 'jentil'),

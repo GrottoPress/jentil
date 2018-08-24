@@ -40,8 +40,8 @@ tt {
 
 pre {
     @include paragraph;
-    @include border-radius(3px);
 
+    border-radius: 3px;
     padding: 10px;
     border: $jentil-separator;
     overflow: auto;

@@ -1,9 +1,11 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil;
+namespace GrottoPress;
 
-use GrottoPress\Jentil\Utilities\Utilities;
+use GrottoPress\Jentil\AbstractTheme;
+use GrottoPress\Jentil\Setups;
+use GrottoPress\Jentil\Utilities;
 
 final class Jentil extends AbstractTheme
 {
@@ -25,7 +27,6 @@ final class Jentil extends AbstractTheme
         $this->setUpStyles();
         $this->setUpScripts();
         $this->setUpMenus();
-        $this->setUpCustomizer();
         $this->setUpPostTypeTemplates();
         $this->setUpSidebars();
         $this->setUpViews();
@@ -42,7 +43,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return Setups\AbstractSetup[int]
+     * @return Setups\AbstractSetup[string]
      */
     protected function getSetups(): array
     {
@@ -69,8 +70,8 @@ final class Jentil extends AbstractTheme
     private function setUpMisc()
     {
         $this->setups['Loader'] = new Setups\Loader($this);
-        // $this->setups['Updater'] = new Setups\Updater($this);
         $this->setups['Language'] = new Setups\Language($this);
+        $this->setups['Customizer'] = new Setups\Customizer($this);
         $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
         $this->setups['Feed'] = new Setups\Feed($this);
         $this->setups['HTML5'] = new Setups\HTML5($this);
@@ -93,27 +94,23 @@ final class Jentil extends AbstractTheme
 
     private function setUpScripts()
     {
-        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
-        $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
-        $this->setups['Scripts\CommentReply'] =
-            new Setups\Scripts\CommentReply($this);
-        $this->setups['Scripts\CustomizePreview'] =
-            new Setups\Scripts\CustomizePreview($this);
         $this->setups['Scripts\FontAwesome'] =
             new Setups\Scripts\FontAwesome($this);
         $this->setups['Scripts\FontAwesomeShim'] =
             new Setups\Scripts\FontAwesomeShim($this);
+        $this->setups['Scripts\WhatInput'] =
+            new Setups\Scripts\WhatInput($this);
+        $this->setups['Scripts\CommentReply'] =
+            new Setups\Scripts\CommentReply($this);
+        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
+        $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
+        $this->setups['Scripts\CustomizePreview'] =
+            new Setups\Scripts\CustomizePreview($this);
     }
 
     private function setUpMenus()
     {
         $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
-    }
-
-    private function setUpCustomizer()
-    {
-        $this->setups['Customizer\Customizer'] =
-            new Setups\Customizer\Customizer($this);
     }
 
     private function setUpPostTypeTemplates()
@@ -136,15 +133,16 @@ final class Jentil extends AbstractTheme
     private function setUpViews()
     {
         $this->setups['Views\SearchForm'] = new Setups\Views\SearchForm($this);
-        $this->setups['Views\Author'] = new Setups\Views\Author($this);
+        $this->setups['Views\Header'] = new Setups\Views\Header($this);
+        $this->setups['Views\Breadcrumbs'] =
+            new Setups\Views\Breadcrumbs($this);
         $this->setups['Views\Archive'] = new Setups\Views\Archive($this);
+        $this->setups['Views\Author'] = new Setups\Views\Author($this);
         $this->setups['Views\Search'] = new Setups\Views\Search($this);
         $this->setups['Views\Singular'] = new Setups\Views\Singular($this);
         $this->setups['Views\Attachment'] = new Setups\Views\Attachment($this);
-        $this->setups['Views\Header'] = new Setups\Views\Header($this);
+        $this->setups['Views\Sidebar'] = new Setups\Views\Sidebar($this);
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
-        $this->setups['Views\Breadcrumbs'] =
-            new Setups\Views\Breadcrumbs($this);
     }
 
     private function setUpSupports()

@@ -1,5 +1,5 @@
 /**
- * Presentational Classes
+ * Predefined Classes
  */
 
 .screen-reader-text {
@@ -14,65 +14,6 @@
     @include paragraph;
 }
 
-.full-screen {
-    @include full-screen;
-}
-
-.show {
-    display: initial;
-
-    @at-root {
-        article#{&},
-        aside#{&},
-        footer#{&},
-        header#{&},
-        nav#{&},
-        section#{&},
-        figcaption#{&},
-        figure#{&},
-        main#{&},
-        details#{&},
-        menu#{&} {
-            display: block;
-        }
-    }
-}
-
-.hide {
-    display: none;
-}
-
-/** Toggle elements */
-
-.screen-min-small,
-.screen-min-wide {
-    display: none;
-}
-
-@media (min-width: map-get($jentil-breakpoint, medium)) {
-    /**
-     * Toggle elements
-     */
-
-    .screen-max-small {
-        display: none;
-    }
-
-    .screen-min-small {
-        display: block;
-    }
-}
-
-@media (min-width: map-get($jentil-breakpoint, wide)) {
-    /**
-     * Toggle elements
-     */
-
-    .screen-max-wide {
-        display: none;
-    }
-
-    .screen-min-wide {
-        display: block;
-    }
+.full-width {
+    @include full-width;
 }

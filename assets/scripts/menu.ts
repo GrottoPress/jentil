@@ -3,15 +3,16 @@
 (($: JQueryStatic): void => {
     'use strict'
 
-    const fxDuration: number = 200
+    const duration: number = 200
 
     /**
-     * Open/close mobile menu
+     * Toggle mobile menu
      */
+
     $('.js-main-menu-button').attr('href', '#').on(
         'click',
         (event: JQuery.Event): void => {
-            $('.js-main-menu').slideToggle(fxDuration, (): void => {
+            $('.js-main-menu').slideToggle(duration, (): void => {
                 $('.js-main-menu').toggleClass('show hide').css({display: ''})
             })
 
@@ -22,6 +23,7 @@
     /**
      * Add icons to all parent menu items
      */
+
     $('.menu li > ul').before(
         `<button class="js-sub-menu-button sub-menu-toggle">
             ${renderCaret('down')}
@@ -29,11 +31,13 @@
     )
 
     /**
-     * Open/close sub-menu
+     * Toggle sub-menu
      */
+
     $('.js-sub-menu-button').next('ul').hide()
-    $('.sidebar-wrap li.current-menu-ancestor > ul').show()
+    $('.site-sidebar li.current-menu-ancestor > ul').show()
         .siblings('.js-sub-menu-button').html(`${renderCaret('up')}`)
+
     $('.js-sub-menu-button').prev('a').on(
         'click',
         (event: JQuery.Event): void => {
@@ -44,26 +48,41 @@
             }
         }
     )
+
     $('.js-sub-menu-button').on('click', (event: JQuery.Event): void => {
         toggleSubMenu(event.currentTarget)
 
         event.preventDefault()
     })
 
-    function toggleSubMenu(button: JQuery<EventTarget> | HTMLElement | EventTarget): void
-    {
-        $(button).parent().siblings('li').children('ul').slideUp(fxDuration)
+    /**
+     * Helpers
+     */
+
+    function toggleSubMenu(
+        button: JQuery<EventTarget> | HTMLElement | EventTarget,
+        effect = (target:
+            JQuery<EventTarget |
+            HTMLElement |
+            JQuery<EventTarget>>
+        ): void => {
+            $(target).slideToggle(duration)
+        }
+    ): void {
+        $(button).parent().siblings('li').children('ul').slideUp(duration)
         $(button).parent().siblings('li').children('button').html(
             renderCaret('down')
         )
 
         toggleCaret(button)
 
-        $(button).next('ul').slideToggle(fxDuration)
+        effect($(button).next('ul'))
     }
 
-    function toggleCaret(button: JQuery<EventTarget> | HTMLElement | EventTarget): void
-    {
+    function toggleCaret(button:
+        JQuery<EventTarget> |
+        HTMLElement | EventTarget
+    ): void {
         if ('none' === $(button).next('ul').css('display')) {
             $(button).html(renderCaret('up'))
         } else {

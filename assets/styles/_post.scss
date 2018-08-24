@@ -39,8 +39,7 @@
                 margin: 0;
 
                 .avatar {
-                    @include float(left);
-    
+                    float: left;
                     margin-right: 10px;
                 }
             }
@@ -61,11 +60,11 @@
 .attachment {
     .image-pagination {
         .prev {
-            @include float(left);
+            float: left;
         }
 
         .next {
-            @include float(right);
+            float: right;
         }
     }
 
@@ -92,17 +91,10 @@
 
 .sticky-posts {
     @include paragraph;
-    @include border-radius(3px);
 
+    border-radius: 3px;
     background-color: $jentil-text-background;
     padding: 20px;
-
-    &.layout-grid {
-        padding: 10px;
-        margin: 0;
-
-        @include paragraph;
-    }
 }
 
 /** Related posts */
@@ -114,10 +106,22 @@
 /** Avatar */
 
 .avatar {
-    @include border-radius(50%);
-    @include float(left);
-
+    float: left;
+    border-radius: 50%;
     margin-right: 10px;
+}
+
+@media (min-width: map-get($jentil-breakpoint, small)) {
+    /** Sticky posts */
+
+    .sticky-posts {
+        &.layout-grid {
+            padding: 12px;
+            margin: 0;
+
+            @include paragraph;
+        }
+    }
 }
 
 @media (min-width: map-get($jentil-breakpoint, medium)) {
@@ -125,6 +129,14 @@
         .singular-post.big & {
             .entry-title {
                 font-size: 34px;
+            }
+        }
+    }
+
+    .layout-grid.posts-wrap {
+        > .post-wrap {
+            .layout-columns-3 & {
+                width: 50%;
             }
         }
     }

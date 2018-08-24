@@ -1,7 +1,8 @@
 <?php
-declare (strict_types = 1); ?>
+declare (strict_types = 1);
 
-</div><!-- #main -->
+    \do_action('jentil_before_before_footer'); ?>
+</main><!-- #main -->
 
 <?php \do_action('jentil_before_footer'); ?>
 

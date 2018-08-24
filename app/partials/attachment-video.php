@@ -2,14 +2,12 @@
 declare (strict_types = 1); ?>
 
 <div class="entry-attachment">
-    <?php echo \do_shortcode(
-        '[video src="'.\wp_get_attachment_url($post->ID).'"]'
-    ); ?>
+    <?= \do_shortcode('[video src="'.\wp_get_attachment_url($post->ID).'"]'); ?>
 
-    <p><a href="<?php
-        echo \wp_get_attachment_url($post->ID);
-    ?>" rel="attachment" itemprop="url"><?php
-        echo \basename($post->guid);
+    <p><a href="<?=
+        \wp_get_attachment_url($post->ID);
+    ?>" rel="attachment" itemprop="url"><?=
+        \basename($post->guid);
     ?></a></p>
 
     <?php if ($post->post_excerpt) { ?>

@@ -15,9 +15,7 @@ Sass utilities: Mixins, variables and functions.
 Import into your project, thus:
 
 ```scss
-@import '/path/to/node_modules/@grottopress/scss/src/variables';
-@import '/path/to/node_modules/@grottopress/scss/src/functions';
-@import '/path/to/node_modules/@grottopress/scss/src/mixins';
+@import '/path/to/node_modules/@grottopress/scss/src/all';
 ```
 
 ### Variables
@@ -41,17 +39,13 @@ Import into your project, thus:
 ```scss
 .modal {
     @include size(400px);
-    @include border-radius(5px);
     @include position(absolute, 20% null null 20%);
     // ...
 }
 
 .grid {
     @include paragraph;
-    @include grid((
-        width: 25%,
-        columns: '.colums',
-    ));
+    @include grid((width: 25%, gutter: 20px));
     // ...
 }
 ```

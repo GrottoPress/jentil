@@ -9,8 +9,6 @@
 }
 
 .menu {
-    @include inline-block-whitespace-fix;
-
     margin-left: 0;
 
     ul {
@@ -54,6 +52,12 @@
     .form.search {
         margin: 0;
     }
+
+    .skip-link {
+        + * {
+            margin-top: 0;
+        }
+    }
 }
 
 .sub-menu-toggle {
@@ -69,7 +73,7 @@
 
 /** Header Menu */
 
-@media (min-width: map-get($jentil-breakpoint, wide)) {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
     .menu-toggle {
         #header & {
             display: none;
@@ -85,15 +89,15 @@
         display: block;
 
         .menu {
-            // text-align: center;
+            display: flex;
+            flex-wrap: wrap;
 
             li {
                 margin: 0;
             }
 
             > li {
-                @include inline-block;
-
+                flex: none;
                 margin-left: 2%;
 
                 &:first-child {
@@ -131,16 +135,8 @@
                     left: 100%;
                 }
             }
-        }
-    }
 
-    // .sub-menu {
-    //     text-align: initial;
-    // }
-
-    #primary-menu {
-        .has-js & {
-            .menu {
+            .has-js & {
                 .menu-item-has-children {
                     > a {
                         padding-right: 22px;

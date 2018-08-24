@@ -3,12 +3,12 @@
  */
 
 #wrap {
-    @include center(480px);
+    @include center(600px);
 }
 
 #main {
     @include paragraph(map-get($jentil-gutter, normal));
-    @include clearfix;
+    // @include clearfix;
 
     &:first-child {
         padding-top: 20px;
@@ -19,184 +19,113 @@
     }
 }
 
-#content-wrap,
-.sidebar-wrap {
-    @include paragraph(map-get($jentil-gutter, normal));
-}
-
-/** One Column */
-
 .layout-columns-1 {
-    .sidebar-wrap {
+    .site-sidebar {
         display: none;
     }
 }
 
 .layout-columns-2 {
-    #secondary-sidebar-wrap {
+    #secondary-sidebar {
         display: none;
     }
 }
 
+#content-wrap,
+.site-content,
+.site-sidebar {
+    @include paragraph(map-get($jentil-gutter, normal));
+}
+
 @media (min-width: map-get($jentil-breakpoint, medium)) {
-    #wrap {
-        max-width: map-get($jentil-breakpoint, wide);
+   #wrap {
+       max-width: 1000px;
     }
 
-    #content-wrap,
-    .sidebar-wrap {
+    #content-wrap {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .site-sidebar,
+    .site-content {
         margin-top: 0;
         margin-bottom: 0;
     }
 
-    #content-wrap {
-        width: 100%;
-    }
-
-    /** Two Columns */
+    /** Two columns */
 
     .layout-columns-2 {
-        #primary-sidebar-wrap {
-            width: $jentil-sidebar-content;
+        .site-content {
+            width: 66.6666%;
+        }
+
+        .site-sidebar {
+            width: 33.3333%;
         }
     }
-
-    /** Two Columns: Right Sidebar */
-
-    .layout-content-sidebar {
-        #content-wrap {
-            float: left;
-            margin-right: -#{$jentil-sidebar-content};
-        }
-
-        #content {
-            margin-right: $jentil-sidebar-content;
-        }
-
-        #primary-sidebar-wrap {
-            float: right;
-            padding-left: map-get($jentil-gutter, normal);
-        }
-    }
-
-    /** Two Columns: Left Sidebar */
 
     .layout-sidebar-content {
-        #content-wrap {
-            float: right;
-            margin-left: -#{$jentil-sidebar-content};
-        }
-
-        #content {
-            margin-left: $jentil-sidebar-content;
-        }
-
-        #primary-sidebar-wrap {
-            float: left;
-            padding-right: map-get($jentil-gutter, normal);
+        .site-sidebar {
+            margin-right: map-get($jentil-gutter, normal);
+            order: -1;
         }
     }
 
-    /** Three Columns */
+    .layout-content-sidebar {
+        .site-sidebar {
+            margin-left: map-get($jentil-gutter, normal);
+        }
+    }
+
+    /** Three columns */
 
     .layout-columns-3 {
-        #primary-sidebar-wrap {
-            width: map-get($jentil-sidebar-content-sidebar, primary);
+        .site-content {
+            width: 50%;
         }
 
-        #secondary-sidebar-wrap {
-            width: map-get($jentil-sidebar-content-sidebar, secondary);
-        }
-    }
-
-    /** Three Columns: Left & Right Sidebars */
-
-    .layout-sidebar-content-sidebar {
-        #content-wrap,
-        .sidebar-wrap {
-            float: left;
+        #primary-sidebar {
+            width: 28%;
         }
 
-        #content {
-            /** Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth */
-            margin-right: map-get($jentil-sidebar-content-sidebar, primary);
-            margin-left: map-get($jentil-sidebar-content-sidebar, secondary);
-        }
-
-        #secondary-sidebar-wrap {
-            margin-left: -100%;
-            padding-right: map-get($jentil-gutter, normal);
-        }
-
-        #primary-sidebar-wrap {
-            /** Set left margin to -(RightColumnWidth) */
-            margin-left: - map-get($jentil-sidebar-content-sidebar, primary);
-            padding-left: map-get($jentil-gutter, normal);
+        #secondary-sidebar {
+            width: 22%;
         }
     }
-
-    /** Three Columns: Two Left Sidebars */
 
     .layout-sidebar-sidebar-content {
-        #content-wrap,
-        #secondary-sidebar-wrap,
-        #primary-sidebar-wrap {
-            float: right;
-        }
-
-        #content {
-            /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-            margin-left: map-get($jentil-sidebar-sidebar-content, both);
-        }
-
-        .sidebar-wrap {
-            padding-right: map-get($jentil-gutter, normal);
-        }
-
-        #secondary-sidebar-wrap {
-            /** Set right margin to -(LeftColumnWidth + RightColumnWidth) */
-            margin-right: - map-get($jentil-sidebar-sidebar-content, both);
-        }
-
-        #primary-sidebar-wrap {
-            /** Set right margin to -(RightColumnWidth) */
-            margin-right: - map-get($jentil-sidebar-sidebar-content, primary);
+        .site-sidebar {
+            margin-right: map-get($jentil-gutter, normal);
+            order: -1;
         }
     }
 
-    /** Three Columns: Two Right Sidebars */
-
     .layout-content-sidebar-sidebar {
-        #content-wrap,
-        #secondary-sidebar-wrap,
-        #primary-sidebar-wrap {
-            float: left;
+        .site-sidebar {
+            margin-left: map-get($jentil-gutter, normal);
         }
 
-        #content {
-            /** Set right margin to (LeftColumnWidth + RightColumnWidth) */
-            margin-right: map-get($jentil-sidebar-sidebar-content, both);
+        #primary-sidebar {
+            order: 1;
+        }
+    }
+
+    .layout-sidebar-content-sidebar {
+        #primary-sidebar {
+            margin-left: map-get($jentil-gutter, normal);
         }
 
-        .sidebar-wrap {
-            padding-left: map-get($jentil-gutter, normal);
-        }
-
-        #secondary-sidebar-wrap {
-            /** Set left margin to -(LeftColumnWidth + RightColumnWidth) */
-            margin-left: - map-get($jentil-sidebar-sidebar-content, both);
-        }
-
-        #primary-sidebar-wrap {
-            /** Set left margin to -(RightColumnWidth) */
-            margin-left: - map-get($jentil-sidebar-sidebar-content, primary);
+        #secondary-sidebar {
+            margin-right: map-get($jentil-gutter, normal);
+            order: -1;
         }
     }
 }
 
 /** Page Builder */
 
-.post-type-page-builder-blank-php {
+.template-post-typepage-builder-blankphp {
     padding-left: 0;
     padding-right: 0;
 
@@ -205,8 +134,8 @@
     }
 }
 
-@media (min-width: map-get($jentil-breakpoint, wide)) {
-    .post-type-page-builder-blank-php {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
+    .template-post-typepage-builder-blankphp {
         #wrap {
             max-width: none;
         }

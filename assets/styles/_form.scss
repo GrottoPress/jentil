@@ -12,13 +12,11 @@ textarea {
 
 form {
     @include paragraph;
-    @include inline-block-whitespace-fix;
 }
 
 *:disabled {
-    -ms-filter: 'alpha(opacity=70)' !important;
     opacity: 0.7 !important;
-    cursor: default !important;
+    cursor: not-allowed !important;
 }
 
 input,
@@ -35,15 +33,10 @@ input,
 textarea,
 select,
 button {
-    @include border-radius(3px);
-
+    border-radius: 3px;
     border: $jentil-separator;
     padding: 5px 7px;
     margin-bottom: 4px;
-
-    &:focus {
-        outline: 0;
-    }
 }
 
 input,
@@ -124,10 +117,6 @@ label {
 
     margin: 0;
 
-    &:focus {
-        border-color: #ccc;
-    }
-
     input[type=search] {
         margin: 0;
         padding: 6px 8px;
@@ -135,7 +124,6 @@ label {
 
     button {
         @include position(absolute, 2px 2px null null);
-        @include border-radius(2px);
 
         margin-bottom: 0;
         padding: 7px 10px;

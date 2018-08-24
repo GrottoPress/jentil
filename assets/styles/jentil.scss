@@ -3,7 +3,9 @@
  *
  * @author [GrottoPress](https://www.grottopress.com)
  * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
-*/
+ */
+
+@import '../vendor/@grottopress/scss/src/all';
 
 @import 'variables';
 @import 'mixins';
@@ -12,6 +14,7 @@
 @import 'embed';
 @import 'class';
 @import 'grid';
+@import 'toggle';
 @import 'link';
 @import 'list';
 @import 'type';
