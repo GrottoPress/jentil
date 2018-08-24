@@ -134,6 +134,9 @@ The directory structure for your theme, after installation, should be similar to
 ├── node_modules/
 ├── tests/
 ├── vendor/
+├── .editorconfig
+├── .gitignore
+├── .travis.yml
 ├── CHANGELOG.md
 ├── codeception.yml
 ├── composer.json
