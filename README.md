@@ -131,6 +131,9 @@ The directory structure for your theme, after installation, should be similar to
 │       ├── theme.min.css
 │       └── theme-rtl.min.css
 ├── languages/
+├── node_modules/
+├── tests/
+├── vendor/
 ├── CHANGELOG.md
 ├── codeception.yml
 ├── composer.json
