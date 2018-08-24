@@ -1,25 +1,27 @@
 # Jentil
 
-Jentil is a modern framework for rapid WordPress theme development. It is packed with predefined, pluggable features, including powerful content options which allows to configure how posts display on archives right from the customizer.
+![Jentil code screenshot](https://www.grottopress.com/app/uploads/2018/08/my-theme-solarized-light.png)
+
+
+Jentil is a modern framework for rapid WordPress theme development. It emphasizes a cleaner, more modular way of building WordPress themes, without straying too far from the core WordPress API.
+
+Jentil is designed with the [SUV](https://github.com/grottopress/wordpress-suv/) architecture, and makes full use of the express power of core WordPress' event driven architecture.
+
+Jentil features a more organised directory structure. Templates are loaded from the `app/templates` directory, and partials from the `app/partials` directory.
+
+It is packed with predefined, pluggable features, including powerful content options which allows users to configure how posts display on archives right from the customizer.
 
 Jentil may be installed either as a parent theme, or as a package in another theme.
 
-Jentil features six layout options, configured via the customizer and post meta boxes. It can be used to build blogs, magazines, e-commerce, corporate websites and more.
-
-Jentil comes with page builder [post type templates](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/), and integrates seamlessly with most WordPress site builders, including:
-
-- [Gutenberg](https://wordpress.org/plugins/gutenberg/)
-- [Beaver Builder](https://wordpress.org/plugins/beaver-builder-lite-version/)
-- [SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
-- [Elementor](https://wordpress.org/plugins/elementor/)
-- [Live Composer](https://wordpress.org/plugins/live-composer-page-builder/)
-
 ## Features
 
-### For the End User:
-
+- Robust [architecture](https://github.com/grottopress/wordpress-suv/), with a more organised directory structure. The days of dumping templates in your theme's root are over!
+- Numerous action and filter hooks to allow easy extension via child themes and plugins.
+- Clean, object-oriented codebase.
+- Modern web development tools.
+- Compliant with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
 - Powerful posts display options via the customizer.
-- Page builder post type templates
+- Page builder [post type templates](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/)
 - Six (6) layout options  
     * Content
     * Content / Sidebar
@@ -30,14 +32,6 @@ Jentil comes with page builder [post type templates](https://make.wordpress.org/
 - HTML5 / CSS3
 - SEO-ready
 - Responsive (mobile-ready)
-
-### For the Developer:
-
-- Robust [architecture](https://github.com/grottopress/wordpress-suv/), with a more organised directory structure. Templates are loaded **only** from the `app/templates` directory, and partials from the `app/partials` directory. The days of dumping files in your theme's root are over!
-- Numerous action and filter hooks to allow easy extension via child themes and plugins.
-- Clean, object-oriented codebase.
-- Modern web development tools.
-- Compliant with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ### Supported
 
@@ -87,23 +81,71 @@ If, for any reason, you would like to use Jentil as parent theme instead, follow
 
 ## Developing your theme
 
-Whether Jentil is installed as parent theme or package, it acts as a parent theme (in the WordPress sense). This means your theme inherits all features of Jentil.
+Whether Jentil is installed as theme or package, it acts as a parent theme, in the WordPress sense. This means your theme inherits all features of Jentil.
 
 You can remove or override Jentil's features, just as you would any WordPress parent theme; via `remove_action` or `remove_filter` calls in your own theme.
 
 You may override templates and partials by placing a similarly-named template or partial in the `app/templates` or `app/partials` directory of your theme, respectively.
 
-You may copy files from Jentil into corresponding paths in your own theme and edit to taste.
+Your own theme's singleton instance is available via a call to `\Theme()` (unless you changed it in `app/helpers.php`), while Jentil's is available via `\Jentil()`. You may use these in files outside `app/libraries` (eg: in templates and partials) to access the respective instances.
 
-Your own theme's instance is available via a call to `\Theme()` (unless you changed it in `app/helpers.php`), while Jentil is available via `\Jentil()`. You may use these in files outside `app/libraries` (eg: in templates and partials) to access the respective instances.
-
-Do not use them in classes inside `app/libraries`, though. Over there, Jentil is accessible as the `$parent` attribute in the main `Theme` class (`app/libraries/Theme.php`).
+The Jentil singleton instance is exposed as the `$parent` attribute in the main `Theme` class (`app/libraries/Theme.php`).
 
 <!-- Jentil ships with abstract classes you can extend in your own theme. Use these instead of extending from Jentil's dependencies directly.
 
 You should use methods from Jentil's utilities, instead of instantiating classes from Jentil's dependencies.
 
 These should insulate you from potential backwards compatibility breaks if any of these packages should upgrade. -->
+
+### Directory Structure
+
+The directory structure for your theme, after installation, should be similar to this:
+
+```
+.
+├── app/
+│   ├── libraries/
+│   │   ├── Theme/
+│   │   │   ├── Setups/
+│   │   │   ├── Utilities/
+│   │   │   └── Utilities.php
+│   │   └── Theme.php
+│   ├── partials/
+│   ├── templates/
+│   └── helpers.php
+├── assets/
+│   ├── scripts/
+│   │   ├── customize-preview.ts
+│   │   ├── global.d.ts
+│   │   └── theme.ts
+│   └── styles/
+│       ├── _mixins.scss
+│       ├── theme.scss
+│       └── _variables.scss
+├── bin/
+│   └── release*
+├── dist/
+│   ├── scripts/
+│   │   ├── customize-preview.min.js
+│   │   └── theme.min.js
+│   └── styles/
+│       ├── theme.min.css
+│       └── theme-rtl.min.css
+├── languages/
+├── CHANGELOG.md
+├── codeception.yml
+├── composer.json
+├── composer.lock
+├── functions.php
+├── gulpfile.js
+├── index.php
+├── LICENSE.md
+├── package.json
+├── package-lock.json
+├── README.md
+├── screenshot.png*
+└── style.css
+```
 
 ### Adding templates and partials
 
@@ -134,8 +176,6 @@ The following action hooks are available:
 - `jentil_inside_footer`
 - `jentil_after_footer`
 
-See examples of how to use these hooks in `app/libraries/Setups/Views`.
-
 ### Post type templates
 
 WordPress introduced [post type templates](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/) in version 4.7, as an extension of page templates to all post types. WordPress looks for post type templates in the root of your theme.
@@ -144,7 +184,7 @@ Jentil's loader does not load any template (or partial) from your theme's root a
 
 To use post type templates in your own theme, add the templates in the `app/templates` directory, and use the [`theme_{$post_type}_templates`](https://developer.wordpress.org/reference/hooks/theme_post_type_templates/) filter.
 
-Jentil uses this hook to add page builder templates, and provides an `AbstractPostTypeTemplate` setup class your theme's post type templates can inherit from. (See Jentil's `app/libraries/Setups/PostTypeTemplates`).
+Jentil uses this hook to add page builder templates, and provides an `AbstractPostTypeTemplate` setup class your theme's post type templates can inherit from.
 
 ### Styling
 
@@ -310,7 +350,7 @@ Run all tests with `composer run test`, as defined in `composer.json`, under `sc
 
 ## Architecture
 
-Jentil is developed using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://github.com/grottopress/wordpress-suv/), as it may give a better understanding of the core philosophy underpinning Jentil's development.
+Jentil is desinged using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://github.com/grottopress/wordpress-suv/), as it may give a better understanding of the core philosophy underpinning Jentil's development.
 
 ## Security
 
