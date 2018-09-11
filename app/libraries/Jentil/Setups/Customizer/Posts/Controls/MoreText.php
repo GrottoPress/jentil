@@ -13,7 +13,7 @@ final class MoreText extends AbstractControl
 
         $this->id = $section->settings['MoreText']->id;
 
-        $this->args['label'] = \esc_html__('More link label', 'jentil');
+        $this->args['label'] = \esc_html__('More link text', 'jentil');
         $this->args['type'] = 'text';
     }
 }
