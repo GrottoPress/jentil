@@ -26,9 +26,9 @@
   },
   "require": {
     "php": ">=7.0",
-    "grottopress/wordpress-breadcrumbs": "^0.5",
-    "grottopress/wordpress-meta-box": "^0.3",
-    "grottopress/wordpress-posts": "^0.11",
+    "grottopress/wordpress-breadcrumbs": "^0.6",
+    "grottopress/wordpress-meta-box": "^0.4",
+    "grottopress/wordpress-posts": "^0.12",
     "grottopress/wordpress-suv": "^0.4"
   },
   "require-dev": {
