@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Change posts more text customizer control label to 'More link text'
+- Rename `languages/` directory to `lang/`
 
 ## 0.8.0 - 2018-08-24
 

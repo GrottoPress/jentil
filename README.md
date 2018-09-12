@@ -130,7 +130,7 @@ The directory structure for your theme, after installation, should be similar to
 │   └── styles/
 │       ├── theme.min.css
 │       └── theme-rtl.min.css
-├── languages/
+├── lang/
 ├── node_modules/
 ├── tests/
 ├── vendor/
