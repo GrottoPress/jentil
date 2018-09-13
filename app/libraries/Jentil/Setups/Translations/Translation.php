@@ -1,10 +1,19 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Translations;
 
-final class Language extends AbstractSetup
+use GrottoPress\Jentil\AbstractTheme;
+
+final class Translation extends AbstractTranslation
 {
+    public function __construct(AbstractTheme $jentil)
+    {
+        parent::__construct($jentil);
+
+        $this->textDomain = 'jentil';
+    }
+
     public function run()
     {
         \add_action('after_setup_theme', [$this, 'loadTextDomain' ]);
@@ -16,7 +25,7 @@ final class Language extends AbstractSetup
     public function loadTextDomain()
     {
         \load_theme_textdomain(
-            'jentil',
+            $this->textDomain,
             $this->app->utilities->fileSystem->dir('path', '/lang')
         );
     }

@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\Jentil\Setups;
+namespace GrottoPress\Jentil\Setups\Translations;
 
 use GrottoPress\Jentil\Utilities;
 use GrottoPress\Jentil\Utilities\FileSystem;
@@ -10,20 +10,20 @@ use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
 
-class LanguageTest extends AbstractTestCase
+class FieldTest extends AbstractTestCase
 {
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $language = new Language(Stub::makeEmpty(AbstractTheme::class));
+        $translation = new Field(Stub::makeEmpty(AbstractTheme::class));
 
-        $language->run();
+        $translation->run();
 
         $add_action->wasCalledOnce();
         $add_action->wasCalledWithOnce([
             'after_setup_theme',
-            [$language, 'loadTextDomain']
+            [$translation, 'loadTextDomain']
         ]);
     }
 
@@ -35,14 +35,17 @@ class LanguageTest extends AbstractTestCase
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => '/var/www/jentil/languages',
+            'vendorDir' => '/var/www/jentil/languages',
         ]);
 
-        $language = new Language($jentil);
+        $translation = new Field($jentil);
 
-        $language->loadTextDomain();
+        $translation->loadTextDomain();
 
         $load->wasCalledOnce();
-        $load->wasCalledWithOnce(['jentil', '/var/www/jentil/languages']);
+        $load->wasCalledWithOnce([
+            $translation->textDomain,
+            '/var/www/jentil/languages'
+        ]);
     }
 }

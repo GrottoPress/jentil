@@ -23,6 +23,7 @@ final class Jentil extends AbstractTheme
     protected function __construct()
     {
         $this->setUpMisc();
+        $this->setUpTranslations();
         $this->setUpMetaBoxes();
         $this->setUpStyles();
         $this->setUpScripts();
@@ -70,7 +71,6 @@ final class Jentil extends AbstractTheme
     private function setUpMisc()
     {
         $this->setups['Loader'] = new Setups\Loader($this);
-        $this->setups['Language'] = new Setups\Language($this);
         $this->setups['Customizer'] = new Setups\Customizer($this);
         $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
         $this->setups['Feed'] = new Setups\Feed($this);
@@ -78,6 +78,20 @@ final class Jentil extends AbstractTheme
         $this->setups['TitleTag'] = new Setups\TitleTag($this);
         $this->setups['Layout'] = new Setups\Layout($this);
         $this->setups['Mobile'] = new Setups\Mobile($this);
+    }
+
+    private function setUpTranslations()
+    {
+        $this->setups['Translations\Breadcrumbs'] =
+            new Setups\Translations\Breadcrumbs($this);
+        $this->setups['Translations\Field'] =
+            new Setups\Translations\Field($this);
+        $this->setups['Translations\Page'] =
+            new Setups\Translations\Page($this);
+        $this->setups['Translations\Posts'] =
+            new Setups\Translations\Posts($this);
+        $this->setups['Translations\Translation'] =
+            new Setups\Translations\Translation($this);
     }
 
     private function setUpMetaBoxes()
