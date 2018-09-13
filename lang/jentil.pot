@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jentil\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-22 19:37+0000\n"
+"POT-Creation-Date: 2018-09-13 15:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -312,7 +312,7 @@ msgid "Image size"
 msgstr ""
 
 #: app/libraries/Jentil/Setups/Customizer/Posts/Controls/MoreText.php:16
-msgid "More link label"
+msgid "More link text"
 msgstr ""
 
 #: app/libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContentSeparator.php:17
