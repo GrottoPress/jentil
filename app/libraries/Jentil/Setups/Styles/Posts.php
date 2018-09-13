@@ -26,9 +26,9 @@ final class Posts extends AbstractStyle
     {
         \wp_enqueue_style(
             $this->id,
-            $this->app->utilities->fileSystem->dir(
+            $this->app->utilities->fileSystem->vendorDir(
                 'url',
-                '/dist/vendor/posts.min.css'
+                '/grottopress/wordpress-posts/dist/styles/posts.min.css'
             ),
             [$this->app->setups['Styles\Normalize']->id]
         );

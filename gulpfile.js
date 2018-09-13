@@ -55,7 +55,6 @@ gulp.task('styles', () =>
 
 gulp.task('vendor', () => {
     gulp.src([
-        './vendor/grottopress/wordpress-posts/dist/styles/*.min.css',
         './node_modules/html5shiv/dist/html5shiv.min.js',
         './node_modules/respond.js/dest/respond.min.js',
         './node_modules/what-input/dist/what-input.min.js'

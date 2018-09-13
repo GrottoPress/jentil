@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Add method to get composer's vendor directory to filesystem utility
+
 ### Changed
 - Change posts more text customizer control label to 'More link text'
 - Rename `languages/` directory to `lang/`

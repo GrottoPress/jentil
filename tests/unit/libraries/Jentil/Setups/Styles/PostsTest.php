@@ -38,7 +38,7 @@ class PostsTest extends AbstractTestCase
             }],
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.url/dist/styles/posts.css'
+            'vendorDir' => 'http://my.url/dist/styles/posts.css'
         ]);
 
         $style = new Posts($jentil);
