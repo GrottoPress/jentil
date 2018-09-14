@@ -41,8 +41,8 @@
       "npm run build"
     ],
     "post-install-cmd": [
-      "npm install",
       "chmod +x ./bin/*",
+      "npm install",
       "npm run build"
     ],
     "test": [
