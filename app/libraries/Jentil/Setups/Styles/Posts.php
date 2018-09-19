@@ -11,7 +11,7 @@ final class Posts extends AbstractStyle
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-posts';
+        $this->id = 'grotto-wp-posts';
     }
 
     public function run()

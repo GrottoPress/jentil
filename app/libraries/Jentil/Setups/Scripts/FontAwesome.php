@@ -11,7 +11,7 @@ final class FontAwesome extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-fontawesome';
+        $this->id = 'font-awesome';
     }
 
     public function run()
