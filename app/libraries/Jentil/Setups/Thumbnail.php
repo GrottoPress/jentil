@@ -33,8 +33,8 @@ final class Thumbnail extends AbstractSetup
      */
     public function addSizes()
     {
-        \add_image_size('mini-thumb', 100, 100, true);
-        \add_image_size('micro-thumb', 75, 75, true);
-        \add_image_size('nano-thumb', 50, 50, true);
+        \add_image_size('jentil-mini-thumb', 100, 100, true);
+        \add_image_size('jentil-micro-thumb', 75, 75, true);
+        \add_image_size('jentil-nano-thumb', 50, 50, true);
     }
 }

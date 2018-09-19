@@ -70,8 +70,8 @@ class ThumbnailTest extends AbstractTestCase
         $thumbnails->addSizes();
 
         $add_size->wasCalledTimes(3);
-        $add_size->wasCalledWithOnce(['mini-thumb', 100, 100, true]);
-        $add_size->wasCalledWithOnce(['micro-thumb', 75, 75, true]);
-        $add_size->wasCalledWithOnce(['nano-thumb', 50, 50, true]);
+        $add_size->wasCalledWithOnce(['jentil-mini-thumb', 100, 100, true]);
+        $add_size->wasCalledWithOnce(['jentil-micro-thumb', 75, 75, true]);
+        $add_size->wasCalledWithOnce(['jentil-nano-thumb', 50, 50, true]);
     }
 }
