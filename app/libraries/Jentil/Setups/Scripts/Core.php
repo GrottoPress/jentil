@@ -5,7 +5,7 @@ namespace GrottoPress\Jentil\Setups\Scripts;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-final class Script extends AbstractScript
+final class Core extends AbstractScript
 {
     public function __construct(AbstractTheme $jentil)
     {
@@ -29,7 +29,7 @@ final class Script extends AbstractScript
             $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/dist/scripts/jentil.min.js'
+                '/dist/scripts/core.min.js'
             ),
             ['jquery'],
             '',

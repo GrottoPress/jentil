@@ -10,13 +10,13 @@ use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
 
-class StyleTest extends AbstractTestCase
+class CoreTest extends AbstractTestCase
 {
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $style = new Style(Stub::makeEmpty(AbstractTheme::class));
+        $style = new Core(Stub::makeEmpty(AbstractTheme::class));
 
         $style->run();
 
@@ -50,7 +50,7 @@ class StyleTest extends AbstractTestCase
             }
         ]);
 
-        $style = new Style($jentil);
+        $style = new Core($jentil);
 
         $style->enqueue();
 
@@ -59,8 +59,8 @@ class StyleTest extends AbstractTestCase
             $style->id,
             (
                 $is_rtl ?
-                'http://my.url/dist/styles/jentil-rtl.min.css' :
-                'http://my.url/dist/styles/jentil.min.css'
+                'http://my.url/dist/styles/core-rtl.min.css' :
+                'http://my.url/dist/styles/core.min.css'
             ),
             [$jentil->setups['Styles\Normalize']->id],
         ]);

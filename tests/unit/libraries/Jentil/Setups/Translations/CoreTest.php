@@ -10,13 +10,13 @@ use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
 
-class TranslationTest extends AbstractTestCase
+class CoreTest extends AbstractTestCase
 {
     public function testRun()
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $translation = new Translation(Stub::makeEmpty(AbstractTheme::class));
+        $translation = new Core(Stub::makeEmpty(AbstractTheme::class));
 
         $translation->run();
 
@@ -38,7 +38,7 @@ class TranslationTest extends AbstractTestCase
             'dir' => '/var/www/jentil/languages',
         ]);
 
-        $translation = new Translation($jentil);
+        $translation = new Core($jentil);
 
         $translation->loadTextDomain();
 

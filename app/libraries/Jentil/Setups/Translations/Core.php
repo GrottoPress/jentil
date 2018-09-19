@@ -5,7 +5,7 @@ namespace GrottoPress\Jentil\Setups\Translations;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-final class Translation extends AbstractTranslation
+final class Core extends AbstractTranslation
 {
     public function __construct(AbstractTheme $jentil)
     {

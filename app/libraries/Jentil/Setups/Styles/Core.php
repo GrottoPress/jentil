@@ -5,7 +5,7 @@ namespace GrottoPress\Jentil\Setups\Styles;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-final class Style extends AbstractStyle
+final class Core extends AbstractStyle
 {
     public function __construct(AbstractTheme $jentil)
     {
@@ -25,9 +25,9 @@ final class Style extends AbstractStyle
     public function enqueue()
     {
         if (\is_rtl()) {
-            $style = 'jentil-rtl.min.css';
+            $style = 'core-rtl.min.css';
         } else {
-            $style = 'jentil.min.css';
+            $style = 'core.min.css';
         }
 
         \wp_enqueue_style(

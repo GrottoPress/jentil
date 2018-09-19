@@ -10,11 +10,11 @@ use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
 
-class ScriptTest extends AbstractTestCase
+class CoreTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $script = new Script(Stub::makeEmpty(AbstractTheme::class));
+        $script = new Core(Stub::makeEmpty(AbstractTheme::class));
 
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
@@ -45,7 +45,7 @@ class ScriptTest extends AbstractTestCase
             'dir' => 'http://my.url/dist/scripts/jentil.js',
         ]);
 
-        $script = new Script($jentil);
+        $script = new Core($jentil);
 
         $script->enqueue();
 
@@ -61,7 +61,7 @@ class ScriptTest extends AbstractTestCase
 
     public function testAddBodyClasses()
     {
-        $script = new Script(Stub::makeEmpty(AbstractTheme::class));
+        $script = new Core(Stub::makeEmpty(AbstractTheme::class));
 
         $this->assertSame(
             ['class-1', 'no-js'],

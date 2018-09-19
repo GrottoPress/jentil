@@ -90,8 +90,8 @@ final class Jentil extends AbstractTheme
             new Setups\Translations\Page($this);
         $this->setups['Translations\Posts'] =
             new Setups\Translations\Posts($this);
-        $this->setups['Translations\Translation'] =
-            new Setups\Translations\Translation($this);
+        $this->setups['Translations\Core'] =
+            new Setups\Translations\Core($this);
     }
 
     private function setUpMetaBoxes()
@@ -103,7 +103,7 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
         $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
-        $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
+        $this->setups['Styles\Core'] = new Setups\Styles\Core($this);
     }
 
     private function setUpScripts()
@@ -116,7 +116,7 @@ final class Jentil extends AbstractTheme
             new Setups\Scripts\WhatInput($this);
         $this->setups['Scripts\CommentReply'] =
             new Setups\Scripts\CommentReply($this);
-        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
+        $this->setups['Scripts\Core'] = new Setups\Scripts\Core($this);
         $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
         $this->setups['Scripts\CustomizePreview'] =
             new Setups\Scripts\CustomizePreview($this);
