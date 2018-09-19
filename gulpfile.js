@@ -66,11 +66,11 @@ gulp.task('vendor', () => {
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
-        .pipe(rename({'basename': 'fontawesome.min'}))
+        .pipe(rename({'basename': 'font-awesome.min'}))
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
-        .pipe(rename({'basename': 'fontawesome-v4-shims.min'}))
+        .pipe(rename({'basename': 'font-awesome-v4-shims.min'}))
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@grottopress/scss/**'])

@@ -28,7 +28,7 @@ final class FontAwesomeShim extends AbstractScript
             $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/dist/vendor/fontawesome-v4-shims.min.js'
+                '/dist/vendor/font-awesome-v4-shims.min.js'
             ),
             [$this->app->setups['Scripts\FontAwesome']->id],
             '',

@@ -28,7 +28,7 @@ final class FontAwesome extends AbstractScript
             $this->id,
             $this->app->utilities->fileSystem->dir(
                 'url',
-                '/dist/vendor/fontawesome.min.js'
+                '/dist/vendor/font-awesome.min.js'
             ),
             [],
             '',
