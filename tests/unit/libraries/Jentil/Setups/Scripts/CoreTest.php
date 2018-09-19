@@ -14,10 +14,23 @@ class CoreTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $script = new Core(Stub::makeEmpty(AbstractTheme::class));
-
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
+
+        $jentil = new class extends AbstractTheme {
+            function __construct()
+            {
+            }
+
+            function get()
+            {
+                return new class {
+                    public $stylesheet;
+                };
+            }
+        };
+
+        $script = new Core($jentil);
 
         $script->run();
 
@@ -38,11 +51,27 @@ class CoreTest extends AbstractTestCase
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
+        $jentil = new class extends AbstractTheme {
+            function __construct()
+            {
+            }
+
+            function get()
+            {
+                return new class {
+                    public $stylesheet = 'jentil';
+                };
+            }
+        };
+
+        $jentil->utilities = Stub::makeEmpty(Utilities::class);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.url/dist/scripts/jentil.js',
+            'dir' => function (
+                string $type,
+                string $append
+            ): string {
+                return "http://my.url{$append}";
+            }
         ]);
 
         $script = new Core($jentil);
@@ -52,7 +81,7 @@ class CoreTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $script->id,
-            'http://my.url/dist/scripts/jentil.js',
+            'http://my.url/dist/scripts/core.min.js',
             ['jquery'],
             '',
             true
@@ -61,7 +90,20 @@ class CoreTest extends AbstractTestCase
 
     public function testAddBodyClasses()
     {
-        $script = new Core(Stub::makeEmpty(AbstractTheme::class));
+        $jentil = new class extends AbstractTheme {
+            function __construct()
+            {
+            }
+
+            function get()
+            {
+                return new class {
+                    public $stylesheet;
+                };
+            }
+        };
+
+        $script = new Core($jentil);
 
         $this->assertSame(
             ['class-1', 'no-js'],

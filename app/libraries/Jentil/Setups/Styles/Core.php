@@ -11,7 +11,7 @@ final class Core extends AbstractStyle
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil';
+        $this->id = $this->app->get()->stylesheet;
     }
 
     public function run()

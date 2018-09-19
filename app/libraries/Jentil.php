@@ -6,6 +6,7 @@ namespace GrottoPress;
 use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Jentil\Setups;
 use GrottoPress\Jentil\Utilities;
+use WP_Theme;
 
 final class Jentil extends AbstractTheme
 {
@@ -13,10 +14,6 @@ final class Jentil extends AbstractTheme
      * @var Utilities
      */
     private $utilities = null;
-
-    const NAME = 'Jentil';
-
-    const URI = 'https://www.grottopress.com/jentil/';
 
     const DOC_URI = 'https://www.grottopress.com/documents/jentil-wordpress-theme-framework/';
 
@@ -32,6 +29,11 @@ final class Jentil extends AbstractTheme
         $this->setUpSidebars();
         $this->setUpViews();
         $this->setUpSupports();
+    }
+
+    public function get(): WP_Theme
+    {
+        return \wp_get_theme('jentil');
     }
 
     protected function getUtilities(): Utilities

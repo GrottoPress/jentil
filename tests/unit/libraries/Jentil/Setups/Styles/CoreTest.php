@@ -16,7 +16,20 @@ class CoreTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $style = new Core(Stub::makeEmpty(AbstractTheme::class));
+        $jentil = new class extends AbstractTheme {
+            function __construct()
+            {
+            }
+
+            function get()
+            {
+                return new class {
+                    public $stylesheet;
+                };
+            }
+        };
+
+        $style = new Core($jentil);
 
         $style->run();
 
@@ -35,12 +48,27 @@ class CoreTest extends AbstractTestCase
         $enqueue = FunctionMocker::replace('wp_enqueue_style');
         $rtl = FunctionMocker::replace('is_rtl', $is_rtl);
 
-        $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'utilities' => Stub::makeEmpty(Utilities::class),
-            'setups' => ['Styles\Normalize' => new class {
-                public $id;
-            }],
-        ]);
+        $jentil = new class extends AbstractTheme {
+            function __construct()
+            {
+            }
+
+            function get()
+            {
+                return new class {
+                    public $stylesheet = 'jentil';
+                };
+            }
+
+            function getSetups(): array
+            {
+                return ['Styles\Normalize' => new class {
+                    public $id;
+                }];
+            }
+        };
+
+        $jentil->utilities = Stub::makeEmpty(Utilities::class);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => function (
                 string $type,
