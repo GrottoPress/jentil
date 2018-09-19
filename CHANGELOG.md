@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Change posts more text customizer control label to 'More link text'
 - Rename `languages/` directory to `lang/`
+- Move reusable methods in `Setups\MetaBoxes\Layout` to `Setups\MetaBoxes\AbstractMetaBox`
 
 ## 0.8.0 - 2018-08-24
 
