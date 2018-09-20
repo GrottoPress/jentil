@@ -36,6 +36,7 @@ Jentil may be installed either as a parent theme, or as a package in another the
 
 Jentil has built-in support for the following:
 
+- [Gutenberg](https://wordpress.org/gutenberg/)
 - [WooCommerce](https://wordpress.org/plugins/woocommerce/)
 
 ## Requirements
