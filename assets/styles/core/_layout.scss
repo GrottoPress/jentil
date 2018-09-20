@@ -37,7 +37,16 @@
     @include paragraph(map-get($jentil-gutter, normal));
 }
 
+.site-content {
+    min-height: 300px;
+}
+
 /** Page Builder */
+
+.template-post-typepage-builderphp #main,
+.template-post-typepage-builder-blankphp {
+    min-height: 300px;
+}
 
 .template-post-typepage-builder-blankphp {
     padding-left: 0;
