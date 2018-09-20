@@ -37,6 +37,17 @@
     @include paragraph(map-get($jentil-gutter, normal));
 }
 
+/** Page Builder */
+
+.template-post-typepage-builder-blankphp {
+    padding-left: 0;
+    padding-right: 0;
+
+    #wrap {
+        max-width: none;
+    }
+}
+
 @media (min-width: map-get($jentil-breakpoint, medium)) {
    #wrap {
        max-width: 1000px;
@@ -121,20 +132,9 @@
             order: -1;
         }
     }
-}
 
-/** Page Builder */
+    /** Page builder */
 
-.template-post-typepage-builder-blankphp {
-    padding-left: 0;
-    padding-right: 0;
-
-    #wrap {
-        max-width: none;
-    }
-}
-
-@media (min-width: map-get($jentil-breakpoint, medium)) {
     .template-post-typepage-builder-blankphp {
         #wrap {
             max-width: none;
