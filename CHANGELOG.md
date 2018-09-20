@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Move reusable methods in `Setups\MetaBoxes\Layout` to `Setups\MetaBoxes\AbstractMetaBox`
 - Prefix registered thumbnail sizes with `jentil-`
 - Append enqueued assets URL with last modified time for cache busting
+- Split up thumbnail setup into separate setups
 
 ## 0.8.0 - 2018-08-24
 

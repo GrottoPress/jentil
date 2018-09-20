@@ -22,6 +22,7 @@ final class Jentil extends AbstractTheme
         $this->setUpMisc();
         $this->setUpTranslations();
         $this->setUpMetaBoxes();
+        $this->setUpThumbnails();
         $this->setUpStyles();
         $this->setUpScripts();
         $this->setUpMenus();
@@ -74,7 +75,7 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Loader'] = new Setups\Loader($this);
         $this->setups['Customizer'] = new Setups\Customizer($this);
-        $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
+        $this->setups['FeaturedImage'] = new Setups\FeaturedImage($this);
         $this->setups['Feed'] = new Setups\Feed($this);
         $this->setups['HTML5'] = new Setups\HTML5($this);
         $this->setups['TitleTag'] = new Setups\TitleTag($this);
@@ -99,6 +100,13 @@ final class Jentil extends AbstractTheme
     private function setUpMetaBoxes()
     {
         $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
+    }
+
+    private function setUpThumbnails()
+    {
+        $this->setups['Thumbnails\Nano'] = new Setups\Thumbnails\Nano($this);
+        $this->setups['Thumbnails\Micro'] = new Setups\Thumbnails\Micro($this);
+        $this->setups['Thumbnails\Mini'] = new Setups\Thumbnails\Mini($this);
     }
 
     private function setUpStyles()
