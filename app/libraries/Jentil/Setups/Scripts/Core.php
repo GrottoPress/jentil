@@ -25,14 +25,13 @@ final class Core extends AbstractScript
      */
     public function enqueue()
     {
+        $file = '/dist/scripts/core.min.js';
+
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                '/dist/scripts/core.min.js'
-            ),
+            $this->app->utilities->fileSystem->dir('url', $file),
             ['jquery'],
-            '',
+            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
             true
         );
     }

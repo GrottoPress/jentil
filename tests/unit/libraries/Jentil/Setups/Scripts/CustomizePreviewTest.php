@@ -61,12 +61,19 @@ class CustomizePreviewTest extends AbstractTestCase
         $wp_enqueue_script = FunctionMocker::replace('wp_enqueue_script');
         $add_inline_script = FunctionMocker::replace('wp_add_inline_script');
 
+        $test_js = \codecept_data_dir('scripts/test.js');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.site/dist/scripts/customizer.js',
+            'dir' => function (
+                string $type,
+                string $append
+            ) use ($test_js): string {
+                return 'path' === $type ? $test_js : "http://my.url/test.js";
+            },
         ]);
 
         $script = new CustomizePreview($jentil);
@@ -76,9 +83,9 @@ class CustomizePreviewTest extends AbstractTestCase
         $wp_enqueue_script->wasCalledOnce();
         $wp_enqueue_script->wasCalledWithOnce([
             $script->id,
-            'http://my.site/dist/scripts/customizer.js',
+            'http://my.url/test.js',
             ['customize-preview'],
-            '',
+            \filemtime($test_js),
             true
         ]);
     }

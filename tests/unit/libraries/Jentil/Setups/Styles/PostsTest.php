@@ -31,6 +31,8 @@ class PostsTest extends AbstractTestCase
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_style');
 
+        $test_css = \codecept_data_dir('styles/test.css');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
             'setups' => ['Styles\Normalize' => new class {
@@ -38,7 +40,12 @@ class PostsTest extends AbstractTestCase
             }],
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'vendorDir' => 'http://my.url/dist/styles/posts.css'
+            'vendorDir' => function (
+                string $type,
+                string $append
+            ) use ($test_css): string {
+                return 'path' === $type ? $test_css : "http://my.url/test.css";
+            },
         ]);
 
         $style = new Posts($jentil);
@@ -48,8 +55,9 @@ class PostsTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $style->id,
-            'http://my.url/dist/styles/posts.css',
+            'http://my.url/test.css',
             [$jentil->setups['Styles\Normalize']->id],
+            \filemtime($test_css),
         ]);
     }
 }

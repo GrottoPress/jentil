@@ -68,13 +68,15 @@ class CoreTest extends AbstractTestCase
             }
         };
 
+        $test_css = \codecept_data_dir('styles/test.css');
+
         $jentil->utilities = Stub::makeEmpty(Utilities::class);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => function (
                 string $type,
                 string $append
-            ): string {
-                return "http://my.url{$append}";
+            ) use ($test_css): string {
+                return 'path' === $type ? $test_css : "http://my.url{$append}";
             }
         ]);
 
@@ -91,6 +93,7 @@ class CoreTest extends AbstractTestCase
                 'http://my.url/dist/styles/core.min.css'
             ),
             [$jentil->setups['Styles\Normalize']->id],
+            \filemtime($test_css),
         ]);
     }
 

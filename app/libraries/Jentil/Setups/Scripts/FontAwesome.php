@@ -24,14 +24,13 @@ final class FontAwesome extends AbstractScript
      */
     public function enqueue()
     {
+        $file = '/dist/vendor/font-awesome.min.js';
+
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                '/dist/vendor/font-awesome.min.js'
-            ),
+            $this->app->utilities->fileSystem->dir('url', $file),
             [],
-            '',
+            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
             true
         );
     }

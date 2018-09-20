@@ -41,6 +41,8 @@ class FontAwesomeShimTest extends AbstractTestCase
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
+        $test_js = \codecept_data_dir('scripts/test.js');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
             'setups' => [
@@ -50,8 +52,14 @@ class FontAwesomeShimTest extends AbstractTestCase
                 ),
             ],
         ]);
+
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.url/dist/scripts/fa-v4-shims.js',
+            'dir' => function (
+                string $type,
+                string $append
+            ) use ($test_js): string {
+                return 'path' === $type ? $test_js : "http://my.url/test.js";
+            },
         ]);
 
         $script = new FontAwesomeShim($jentil);
@@ -61,9 +69,9 @@ class FontAwesomeShimTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $script->id,
-            'http://my.url/dist/scripts/fa-v4-shims.js',
+            'http://my.url/test.js',
             ['fa'],
-            '',
+            \filemtime($test_js),
             true
         ]);
     }

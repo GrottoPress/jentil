@@ -24,12 +24,13 @@ final class Normalize extends AbstractStyle
      */
     public function enqueue()
     {
+        $file = '/dist/vendor/normalize.min.css';
+
         \wp_enqueue_style(
             $this->id,
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                '/dist/vendor/normalize.min.css'
-            )
+            $this->app->utilities->fileSystem->dir('url', $file),
+            [],
+            \filemtime($this->app->utilities->fileSystem->dir('path', $file))
         );
     }
 }
