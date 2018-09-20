@@ -114,22 +114,11 @@ The directory structure for your theme, after installation, should be similar to
 │   └── helpers.php
 ├── assets/
 │   ├── scripts/
-│   │   ├── customize-preview.ts
-│   │   ├── global.d.ts
-│   │   └── theme.ts
 │   └── styles/
-│       ├── _mixins.scss
-│       ├── theme.scss
-│       └── _variables.scss
 ├── bin/
-│   └── release*
 ├── dist/
 │   ├── scripts/
-│   │   ├── customize-preview.min.js
-│   │   └── theme.min.js
 │   └── styles/
-│       ├── theme.min.css
-│       └── theme-rtl.min.css
 ├── lang/
 ├── node_modules/
 ├── tests/
