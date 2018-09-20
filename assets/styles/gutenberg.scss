@@ -1,0 +1,18 @@
+/*!
+ * Jentil: Gutenberg
+ *
+ * @author [GrottoPress](https://www.grottopress.com)
+ * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
+ */
+
+@import '../vendor/@grottopress/scss/src/all';
+
+@import 'variables';
+@import 'mixins';
+
+@import 'gutenberg/base';
+@import 'gutenberg/link';
+@import 'gutenberg/list';
+@import 'gutenberg/type';
+@import 'gutenberg/table';
+@import 'gutenberg/wp';

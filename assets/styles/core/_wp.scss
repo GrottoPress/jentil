@@ -39,6 +39,12 @@
     margin: 0 !important;
 }
 
+/** Gutenberg */
+
+.wp-block-pullquote {
+    border-left: 0;
+}
+
 /** Gallery */
 
 .gallery {

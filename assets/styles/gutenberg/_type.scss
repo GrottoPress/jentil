@@ -1,0 +1,25 @@
+/**
+ * Typography
+ */
+
+.gutenberg__editor {
+    .editor-block-list__block {
+        @import '../core/type';
+
+        p {
+            font-size: inherit;
+        }
+
+        .wp-block-quote {
+            border-left-color: #ddd;
+            border-left-width: 3px
+        }
+    }
+
+    .editor-post-title__block {
+        .editor-post-title__input {
+            color: #333;
+            font-family: $helvetica;
+        }
+    }
+}

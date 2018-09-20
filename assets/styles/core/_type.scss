@@ -17,6 +17,7 @@ strong {
 em,
 i,
 q,
+cite,
 var {
     font-style: italic;
 }
@@ -29,11 +30,17 @@ del {
     text-decoration: line-through;
 }
 
+cite,
+pre,
+code,
+tt {
+    font-size: 0.90em;
+}
+
 pre,
 code,
 tt {
     font-family: $monaco;
-    font-size: 0.90em;
     padding: 2px 4px;
     background-color: $jentil-text-background;
 }
@@ -46,6 +53,10 @@ pre {
     border: $jentil-separator;
     overflow: auto;
     line-height: map-get($jentil-line-height, normal);
+}
+
+cite {
+    color: map-get($jentil-font-color, light);
 }
 
 abbr,
@@ -86,15 +97,20 @@ blockquote {
     @include paragraph;
 
     font-size: map-get($jentil-font-size, magnified);
-    color: map-get($jentil-font-color, lighter);
     font-style: italic;
+    line-height: map-get($jentil-line-height, normal);
     margin-right: 0;
     margin-left: 10px;
     padding-left: 10px;
-    border-left: 5px solid #ddd;
+    border-left: 3px solid #ddd;
 
     p {
         @include paragraph(10px);
+    }
+
+    cite {
+        display: block;
+        margin-top: 0.6em;
     }
 }
 

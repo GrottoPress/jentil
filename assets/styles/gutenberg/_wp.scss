@@ -1,0 +1,13 @@
+/**
+ * WordPress (core)
+ */
+
+.gutenberg__editor {
+    .editor-block-list__block {
+        @import '../core/wp';
+
+        .wp-block-gallery {
+            list-style-type: none;
+        }
+    }
+}

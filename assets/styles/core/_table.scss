@@ -5,6 +5,7 @@
 table {
     @include paragraph;
 
+    font-size: 0.96em;
     line-height: map-get($jentil-line-height, normal);
     width: 100%;
     border-collapse: collapse;
@@ -66,4 +67,5 @@ th {
 
 th {
     font-weight: bold;
+    text-align: inherit;
 }
