@@ -31,11 +31,6 @@ final class Jentil extends AbstractTheme
         $this->setUpSupports();
     }
 
-    public function get(): WP_Theme
-    {
-        return \wp_get_theme('jentil');
-    }
-
     protected function getUtilities(): Utilities
     {
         if (null === $this->utilities) {
@@ -55,6 +50,11 @@ final class Jentil extends AbstractTheme
         unset($setups['Loader']);
 
         return $setups;
+    }
+
+    public function get(): WP_Theme
+    {
+        return \wp_get_theme('jentil');
     }
 
     /**
