@@ -368,3 +368,4 @@ The following projects are powered by Jentil:
 - [GrottoPress](https://www.grottopress.com)
 - [Ghana Gong](https://www.ghanagong.com)
 - [iQ College](https://www.iqcollegeghana.com)
+- [Betta WordPress theme](https://www.grottopress.com/products/betta-wordpress-theme/)
