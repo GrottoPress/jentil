@@ -30,11 +30,11 @@ class GutenbergTest extends AbstractTestCase
     /**
      * @dataProvider enqueueProvider
      */
-    public function testEnqueue(bool $is_rtl)
+    public function testEnqueue(bool $rtl)
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_style');
 
-        FunctionMocker::replace('is_rtl', $is_rtl);
+        FunctionMocker::replace('is_rtl', $rtl);
 
         $test_css = \codecept_data_dir('styles/test.css');
 
@@ -59,7 +59,7 @@ class GutenbergTest extends AbstractTestCase
         $enqueue->wasCalledWithOnce([
             $style->id,
             (
-                $is_rtl ?
+                $rtl ?
                 'http://my.url/dist/styles/gutenberg-rtl.min.css' :
                 'http://my.url/dist/styles/gutenberg.min.css'
             ),

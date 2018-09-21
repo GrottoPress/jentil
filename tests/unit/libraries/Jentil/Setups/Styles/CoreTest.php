@@ -43,10 +43,11 @@ class CoreTest extends AbstractTestCase
     /**
      * @dataProvider enqueueProvider
      */
-    public function testEnqueue(bool $is_rtl)
+    public function testEnqueue(bool $rtl)
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_style');
-        $rtl = FunctionMocker::replace('is_rtl', $is_rtl);
+
+        FunctionMocker::replace('is_rtl', $rtl);
 
         $jentil = new class extends AbstractTheme {
             function __construct()
@@ -88,7 +89,7 @@ class CoreTest extends AbstractTestCase
         $enqueue->wasCalledWithOnce([
             $style->id,
             (
-                $is_rtl ?
+                $rtl ?
                 'http://my.url/dist/styles/core-rtl.min.css' :
                 'http://my.url/dist/styles/core.min.css'
             ),
