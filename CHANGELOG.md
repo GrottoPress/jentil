@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Rename `languages/` directory to `lang/`
 - Move reusable methods in `Setups\MetaBoxes\Layout` to `Setups\MetaBoxes\AbstractMetaBox`
 - Prefix registered thumbnail sizes, widget and sidebar ids with `jentil-`
+- Prefix global constant names with `JENTIL_`
 - Append enqueued assets URL with last modified time for cache busting
 - Split up thumbnail setup into separate setups
 
