@@ -11,7 +11,7 @@ final class Micro extends AbstractThumbnail
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-micro-thumb';
+        $this->id = 'jentil-micro';
     }
 
     public function run()
