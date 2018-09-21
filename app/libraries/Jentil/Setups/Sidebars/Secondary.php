@@ -11,7 +11,7 @@ final class Secondary extends AbstractSidebar
     {
         parent::__construct($jentil);
 
-        $this->id = 'secondary-widget-area';
+        $this->id = 'jentil-sidebar-2';
     }
 
     public function run()
@@ -27,7 +27,7 @@ final class Secondary extends AbstractSidebar
         \register_sidebar([
             'id'            => $this->id,
             'name'          => \esc_html__('Secondary', 'jentil'),
-            'description'   => \esc_html__('Secondary widget area', 'jentil'),
+            'description'   => \esc_html__('Secondary sidebar', 'jentil'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h3 class="widget-title">',

@@ -11,7 +11,7 @@ final class Footer extends AbstractSidebar
     {
         parent::__construct($jentil);
 
-        $this->id = 'footer-widget-area';
+        $this->id = 'jentil-footer';
     }
 
     public function run()
