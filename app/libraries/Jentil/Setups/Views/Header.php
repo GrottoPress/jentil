@@ -69,7 +69,7 @@ final class Header extends AbstractSetup
                 'fallback_cb' => false,
                 'container' => 'nav',
             ]);
-        echo '</nav>';
+        echo '</div>';
     }
 
     /**

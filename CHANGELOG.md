@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Append enqueued assets URL with last modified time for cache busting
 - Split up thumbnail setup into separate setups
 
+### Fixed
+- Fix incorrectly closing a `<div>` with a `</nav>` element
+
 ## 0.8.0 - 2018-08-24
 
 ### Added
