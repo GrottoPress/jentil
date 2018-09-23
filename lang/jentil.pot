@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jentil\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-13 15:54+0000\n"
+"POT-Creation-Date: 2018-09-22 20:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -27,12 +27,12 @@ msgid "Sorry, nothing here 😞"
 msgstr ""
 
 #: app/partials/attachment-image.php:7 app/partials/comments.php:47
-#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:129
+#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:130
 msgid "&larr; Previous"
 msgstr ""
 
 #: app/partials/attachment-image.php:15 app/partials/comments.php:55
-#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:133
+#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:134
 msgid "Next &rarr;"
 msgstr ""
 
@@ -75,16 +75,16 @@ msgstr ""
 msgid "sidebar / sidebar / content"
 msgstr ""
 
-#: app/libraries/Jentil/Utilities/ThemeMods/Footer.php:72
+#: app/libraries/Jentil/Utilities/ThemeMods/Footer.php:74
 #, php-format
 msgid "&copy; %1$s %2$s. Built with %3$s on %4$s"
 msgstr ""
 
-#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:123
+#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:124
 msgid "read more"
 msgstr ""
 
-#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:169
+#: app/libraries/Jentil/Utilities/ThemeMods/Posts.php:171
 msgid "Recommended"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Page builder (blank)"
 msgstr ""
 
-#: app/libraries/Jentil/Setups/Scripts/Menu.php:46
+#: app/libraries/Jentil/Setups/Scripts/Menu.php:45
 msgid "Sub-menu"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgid "Primary"
 msgstr ""
 
 #: app/libraries/Jentil/Setups/Sidebars/Primary.php:30
-msgid "Primary widget area"
+msgid "Primary sidebar"
 msgstr ""
 
 #: app/libraries/Jentil/Setups/Sidebars/Footer.php:29
@@ -134,21 +134,21 @@ msgid "Secondary"
 msgstr ""
 
 #: app/libraries/Jentil/Setups/Sidebars/Secondary.php:30
-msgid "Secondary widget area"
+msgid "Secondary sidebar"
 msgstr ""
 
-#: app/libraries/Jentil/Setups/MetaBoxes/Layout.php:88
+#: app/libraries/Jentil/Setups/MetaBoxes/Layout.php:63
 #: app/libraries/Jentil/Setups/Customizer/Layout.php:18
 #: app/libraries/Jentil/Setups/Customizer/Posts/Controls/Layout.php:16
 msgid "Layout"
 msgstr ""
 
-#: app/libraries/Jentil/Setups/MetaBoxes/Layout.php:96
+#: app/libraries/Jentil/Setups/MetaBoxes/Layout.php:71
 #: app/libraries/Jentil/Setups/Customizer/Layout/Controls/AbstractControl.php:16
 msgid "Select layout"
 msgstr ""
 
-#: app/libraries/Jentil/Setups/MetaBoxes/Layout.php:102
+#: app/libraries/Jentil/Setups/MetaBoxes/Layout.php:77
 #, php-format
 msgid ""
 "Need help? Check out the <a href=\"%s\" target=\"_blank\" rel=\"noreferrer "
