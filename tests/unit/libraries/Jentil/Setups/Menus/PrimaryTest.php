@@ -14,7 +14,11 @@ class PrimaryTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $menu = new Primary(Stub::makeEmpty(AbstractTheme::class));
+        $menu = new Primary(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $menu->run();
 
@@ -35,7 +39,11 @@ class PrimaryTest extends AbstractTestCase
             return $text;
         });
 
-        $menu = new Primary(Stub::makeEmpty(AbstractTheme::class));
+        $menu = new Primary(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $menu->register();
 

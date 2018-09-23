@@ -13,7 +13,7 @@ final class Layout extends AbstractMetaBox
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-layout';
+        $this->id = "{$this->app->theme->stylesheet}-layout";
         $this->context = 'side';
     }
 

@@ -14,7 +14,11 @@ class FooterTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class));
+        $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            }
+        ]));
 
         $sidebar->run();
 
@@ -30,7 +34,11 @@ class FooterTest extends AbstractTestCase
         $register_sidebar = FunctionMocker::replace('register_sidebar');
         $esc_html = FunctionMocker::replace('esc_html__', 'Footer');
 
-        $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class));
+        $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $sidebar->register();
 

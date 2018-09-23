@@ -11,7 +11,7 @@ final class Micro extends AbstractThumbnail
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-micro';
+        $this->id = "{$this->app->theme->stylesheet}-micro";
     }
 
     public function run()

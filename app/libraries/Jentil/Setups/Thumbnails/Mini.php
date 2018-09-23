@@ -11,7 +11,7 @@ final class Mini extends AbstractThumbnail
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-mini';
+        $this->id = "{$this->app->theme->stylesheet}-mini";
     }
 
     public function run()

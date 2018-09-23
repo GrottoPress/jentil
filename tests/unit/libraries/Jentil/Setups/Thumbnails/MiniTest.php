@@ -14,7 +14,11 @@ class MiniTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $thumbnail = new Mini(Stub::makeEmpty(AbstractTheme::class));
+        $thumbnail = new Mini(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $thumbnail->run();
 
@@ -30,7 +34,11 @@ class MiniTest extends AbstractTestCase
     {
         $add_image_size = FunctionMocker::replace('add_image_size');
 
-        $thumbnail = new Mini(Stub::makeEmpty(AbstractTheme::class));
+        $thumbnail = new Mini(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $thumbnail->addSize();
 

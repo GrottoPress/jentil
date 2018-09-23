@@ -11,7 +11,7 @@ final class Primary extends AbstractSidebar
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-sidebar';
+        $this->id = "{$this->app->theme->stylesheet}-sidebar";
     }
 
     public function run()

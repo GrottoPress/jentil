@@ -11,7 +11,7 @@ final class Gutenberg extends AbstractStyle
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-gutenberg';
+        $this->id = "{$this->app->theme->stylesheet}-gutenberg";
     }
 
     public function run()
