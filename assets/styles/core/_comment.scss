@@ -5,23 +5,14 @@
 .commentlist {
     @include hobbit;
 
-    margin-bottom: 10px;
     margin-left: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    // border-top: $jentil-separator;
-    // border-bottom: $jentil-separator;
 
     > li,
     .children > li {
-        @include paragraph(10px);
+        @include paragraph(15px);
 
-        padding-bottom: 10px;
-        border-bottom: $jentil-separator;
-
-        &:first-child {
-            margin-top: 10px;
-        }
+        padding-top: 10px;
+        border-top: $jentil-separator;
     }
 
     &,
@@ -30,21 +21,7 @@
     }
 
     .children {
-        margin-top: map-get($jentil-gutter, small);
-        padding-top: map-get($jentil-gutter, small);
-        border-top: $jentil-separator;
-
-        &:first-child {
-            margin-top: 0;
-            padding-top: 0;
-            border-top-width: 0;
-        }
-
-        > li {
-            &:last-child {
-                border-bottom-width: 0;
-            }
-        }
+        margin-top: 12px;
     }
 
     .reply {
