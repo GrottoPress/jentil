@@ -17,20 +17,11 @@ class CoreTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
         $add_filter = FunctionMocker::replace('add_filter');
 
-        $jentil = new class extends AbstractTheme {
-            function __construct()
-            {
+        $script = new Core(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
             }
-
-            function get()
-            {
-                return new class {
-                    public $stylesheet;
-                };
-            }
-        };
-
-        $script = new Core($jentil);
+        ]));
 
         $script->run();
 
@@ -53,20 +44,13 @@ class CoreTest extends AbstractTestCase
 
         $test_js = \codecept_data_dir('scripts/test.js');
 
-        $jentil = new class extends AbstractTheme {
-            function __construct()
-            {
+        $jentil = Stub::makeEmpty(AbstractTheme::class, [
+            'utilities' => Stub::makeEmpty(Utilities::class),
+            'theme' => new class {
+                public $stylesheet = 'jentil';
             }
+        ]);
 
-            function get()
-            {
-                return new class {
-                    public $stylesheet = 'jentil';
-                };
-            }
-        };
-
-        $jentil->utilities = Stub::makeEmpty(Utilities::class);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => function (
                 string $type,
@@ -92,20 +76,11 @@ class CoreTest extends AbstractTestCase
 
     public function testAddBodyClasses()
     {
-        $jentil = new class extends AbstractTheme {
-            function __construct()
-            {
+        $script = new Core(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
             }
-
-            function get()
-            {
-                return new class {
-                    public $stylesheet;
-                };
-            }
-        };
-
-        $script = new Core($jentil);
+        ]));
 
         $this->assertSame(
             ['class-1', 'no-js'],

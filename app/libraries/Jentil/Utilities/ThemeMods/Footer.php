@@ -68,7 +68,7 @@ class Footer extends AbstractThemeMod
 
     private function colophonDefault(): string
     {
-        $theme = $this->themeMods->utilities->app->get();
+        $theme = $this->themeMods->utilities->app->theme;
 
         return \sprintf(
             \esc_html__('&copy; %1$s %2$s. Built with %3$s on %4$s', 'jentil'),

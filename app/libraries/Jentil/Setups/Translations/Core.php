@@ -11,7 +11,7 @@ final class Core extends AbstractTranslation
     {
         parent::__construct($jentil);
 
-        $this->textDomain = $this->app->get()->get('TextDomain');
+        $this->textDomain = $this->app->theme->get('TextDomain');
     }
 
     public function run()

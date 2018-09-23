@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add method to get composer's vendor directory to filesystem utility
 - Setup translations for vendor packages
-- Add `Jentil::get()` method that returns `WP_Theme` instance of this theme.
+- Add `Jentil::$theme` attribute that returns `WP_Theme` instance of this theme.
 - Add Gutenberg editor styles
 
 ### Changed

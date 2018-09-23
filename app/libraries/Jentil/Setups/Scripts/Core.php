@@ -11,7 +11,7 @@ final class Core extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = $this->app->get()->stylesheet;
+        $this->id = $this->app->theme->stylesheet;
     }
 
     public function run()

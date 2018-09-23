@@ -16,20 +16,11 @@ class CoreTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $jentil = new class extends AbstractTheme {
-            function __construct()
-            {
+        $style = new Core(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
             }
-
-            function get()
-            {
-                return new class {
-                    public $stylesheet;
-                };
-            }
-        };
-
-        $style = new Core($jentil);
+        ]));
 
         $style->run();
 
@@ -49,29 +40,18 @@ class CoreTest extends AbstractTestCase
 
         FunctionMocker::replace('is_rtl', $rtl);
 
-        $jentil = new class extends AbstractTheme {
-            function __construct()
-            {
-            }
-
-            function get()
-            {
-                return new class {
-                    public $stylesheet = 'jentil';
-                };
-            }
-
-            function getSetups(): array
-            {
-                return ['Styles\Normalize' => new class {
-                    public $id;
-                }];
-            }
-        };
-
         $test_css = \codecept_data_dir('styles/test.css');
 
-        $jentil->utilities = Stub::makeEmpty(Utilities::class);
+        $jentil = Stub::makeEmpty(AbstractTheme::class, [
+            'utilities' => Stub::makeEmpty(Utilities::class),
+            'setups' => ['Styles\Normalize' => new class {
+                public $id;
+            }],
+            'theme' => new class {
+                public $stylesheet = 'jentil';
+            }
+        ]);
+
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'dir' => function (
                 string $type,

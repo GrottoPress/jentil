@@ -15,6 +15,11 @@ final class Jentil extends AbstractTheme
      */
     private $utilities = null;
 
+    /**
+     * @var WP_Theme
+     */
+    private $theme;
+
     const DOC_URI = 'https://www.grottopress.com/documents/jentil-wordpress-theme-framework/';
 
     protected function __construct()
@@ -41,6 +46,15 @@ final class Jentil extends AbstractTheme
         return $this->utilities;
     }
 
+    protected function getTheme(): WP_Theme
+    {
+        if (null === $this->theme) {
+            $this->theme = \wp_get_theme('jentil');
+        }
+
+        return $this->theme;
+    }
+
     /**
      * @return Setups\AbstractSetup[string]
      */
@@ -51,11 +65,6 @@ final class Jentil extends AbstractTheme
         unset($setups['Loader']);
 
         return $setups;
-    }
-
-    public function get(): WP_Theme
-    {
-        return \wp_get_theme('jentil');
     }
 
     /**
