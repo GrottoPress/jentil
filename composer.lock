@@ -618,16 +618,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.12.0",
+            "version": "0.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "94894e0c95229483778891b456749d1c32b8f26b"
+                "reference": "b79eaff390a68c42cdfafc78b0cc63042069316f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/94894e0c95229483778891b456749d1c32b8f26b",
-                "reference": "94894e0c95229483778891b456749d1c32b8f26b",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/b79eaff390a68c42cdfafc78b0cc63042069316f",
+                "reference": "b79eaff390a68c42cdfafc78b0cc63042069316f",
                 "shasum": ""
             },
             "require": {
@@ -665,7 +665,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-09-12T14:19:24+00:00"
+            "time": "2018-09-23T00:50:52+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
