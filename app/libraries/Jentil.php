@@ -13,7 +13,7 @@ final class Jentil extends AbstractTheme
     /**
      * @var Utilities
      */
-    private $utilities = null;
+    private $utilities;
 
     /**
      * @var WP_Theme
@@ -39,18 +39,14 @@ final class Jentil extends AbstractTheme
 
     protected function getUtilities(): Utilities
     {
-        if (null === $this->utilities) {
-            $this->utilities = new Utilities($this);
-        }
+        $this->utilities = $this->utilities ?: new Utilities($this);
 
         return $this->utilities;
     }
 
     protected function getTheme(): WP_Theme
     {
-        if (null === $this->theme) {
-            $this->theme = \wp_get_theme('jentil');
-        }
+        $this->theme = $this->theme ?: \wp_get_theme('jentil');
 
         return $this->theme;
     }
