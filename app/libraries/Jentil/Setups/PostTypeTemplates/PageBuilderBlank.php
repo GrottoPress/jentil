@@ -27,9 +27,9 @@ final class PageBuilderBlank extends AbstractTemplate
     {
         $post_types = \get_post_types(['public' => true, 'show_ui' => true]);
 
-        foreach ($post_types as $post_type) {
+        \array_walk($post_types, function (string $post_type, string $key) {
             \add_filter("theme_{$post_type}_templates", [$this, 'add'], 10, 4);
-        }
+        });
     }
 
     /**

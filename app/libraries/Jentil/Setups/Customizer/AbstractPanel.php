@@ -67,9 +67,15 @@ abstract class AbstractPanel
 
         $wp_customizer->add_panel(($this->object ?: $this->id), $this->args);
 
-        foreach ($this->sections as $section) {
-            $section->add($wp_customizer);
-        }
+        \array_walk(
+            $this->sections,
+            function (
+                AbstractSection $section,
+                string $key
+            ) use ($wp_customizer) {
+                $section->add($wp_customizer);
+            }
+        );
     }
 
     /**
