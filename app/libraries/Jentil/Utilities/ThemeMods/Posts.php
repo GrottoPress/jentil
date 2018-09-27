@@ -115,7 +115,8 @@ class Posts extends AbstractThemeMod
             'title_position' => 'side',
             'after_title' => 'published_date, comments_link',
             'after_title_separator' => ' | ',
-            'image' => 'mini-thumb',
+            'image' => $this->themeMods->utilities->app
+                ->setups['Thumbnails\Mini']->id,
             'image_alignment' => 'left',
             'image_margin' => '',
             'text_offset' => 0,
@@ -136,7 +137,8 @@ class Posts extends AbstractThemeMod
 
         if ('search' === $this->context) {
             $defaults['wrap_class'] = 'archive-posts';
-            $defaults['image'] = 'nano-thumb';
+            $defaults['image'] = $this->themeMods->utilities->app
+                ->setups['Thumbnails\Nano']->id;
             $defaults['title_position'] = 'top';
             $defaults['after_title'] = 'post_type, comments_link';
             $defaults['excerpt'] = 40;

@@ -16,7 +16,11 @@ class MenuTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $script = new Menu(Stub::makeEmpty(AbstractTheme::class));
+        $script = new Menu(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            }
+        ]));
 
         $script->run();
 
@@ -37,11 +41,22 @@ class MenuTest extends AbstractTestCase
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_script');
 
+        $test_js = \codecept_data_dir('scripts/test.js');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
+            'theme' => new class {
+                public $stylesheet;
+            }
         ]);
+
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.url/dist/scripts/menu.js',
+            'dir' => function (
+                string $type,
+                string $append
+            ) use ($test_js): string {
+                return 'path' === $type ? $test_js : "http://my.url/test.js";
+            },
         ]);
 
         $script = new Menu($jentil);
@@ -51,9 +66,9 @@ class MenuTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $script->id,
-            'http://my.url/dist/scripts/menu.js',
+            'http://my.url/test.js',
             ['jquery'],
-            '',
+            \filemtime($test_js),
             true,
         ]);
     }
@@ -62,7 +77,13 @@ class MenuTest extends AbstractTestCase
     {
         $localize = FunctionMocker::replace('wp_localize_script');
 
-        $script = new Menu(Stub::makeEmpty(AbstractTheme::class));
+        FunctionMocker::replace('esc_html__');
+
+        $script = new Menu(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            }
+        ]));
 
         $script->localize();
 

@@ -36,7 +36,8 @@ Jentil may be installed either as a parent theme, or as a package in another the
 
 Jentil has built-in support for the following:
 
-- [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+- [Gutenberg](https://wordpress.org/gutenberg/)
+- [WooCommerce](https://wordpress.org/plugins/woocommerce/) >= 3.3
 
 ## Requirements
 
@@ -114,23 +115,12 @@ The directory structure for your theme, after installation, should be similar to
 │   └── helpers.php
 ├── assets/
 │   ├── scripts/
-│   │   ├── customize-preview.ts
-│   │   ├── global.d.ts
-│   │   └── theme.ts
 │   └── styles/
-│       ├── _mixins.scss
-│       ├── theme.scss
-│       └── _variables.scss
 ├── bin/
-│   └── release*
 ├── dist/
 │   ├── scripts/
-│   │   ├── customize-preview.min.js
-│   │   └── theme.min.js
 │   └── styles/
-│       ├── theme.min.css
-│       └── theme-rtl.min.css
-├── languages/
+├── lang/
 ├── node_modules/
 ├── tests/
 ├── vendor/
@@ -368,3 +358,4 @@ The following projects are powered by Jentil:
 - [GrottoPress](https://www.grottopress.com)
 - [Ghana Gong](https://www.ghanagong.com)
 - [iQ College](https://www.iqcollegeghana.com)
+- [Betta WordPress theme](https://www.grottopress.com/products/betta-wordpress-theme/)

@@ -13,7 +13,7 @@ final class Layout extends AbstractMetaBox
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-layout';
+        $this->id = "{$this->app->theme->stylesheet}-layout";
         $this->context = 'side';
     }
 
@@ -25,34 +25,9 @@ final class Layout extends AbstractMetaBox
     }
 
     /**
-     * @action add_meta_boxes
-     */
-    public function add(string $post_type, WP_Post $post)
-    {
-        if (!($box = $this->box($post))) {
-            return;
-        }
-
-        $this->app->utilities->metaBox($box)->add();
-    }
-
-    /**
-     * @action save_post
-     * @action edit_attachment
-     */
-    public function save(int $post_id)
-    {
-        if (!($box = $this->box(\get_post($post_id)))) {
-            return;
-        }
-
-        $this->app->utilities->metaBox($box)->save($post_id);
-    }
-
-    /**
      * @return mixed[string]
      */
-    private function box(WP_Post $post): array
+    protected function box(WP_Post $post): array
     {
         if (!\current_user_can('edit_theme_options')) {
             return [];

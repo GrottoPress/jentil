@@ -77,29 +77,50 @@ abstract class AbstractCustomizer extends AbstractSetup
 
     private function addPanels(WPCustomizer $wp_customizer)
     {
-        foreach ($this->panels as $panel) {
-            $panel->add($wp_customizer);
-        }
+        \array_walk(
+            $this->panels,
+            function (AbstractPanel $panel, string $key) use ($wp_customizer) {
+                $panel->add($wp_customizer);
+            }
+        );
     }
 
     private function addSections(WPCustomizer $wp_customizer)
     {
-        foreach ($this->sections as $section) {
-            $section->add($wp_customizer);
-        }
+        \array_walk(
+            $this->sections,
+            function (
+                AbstractSection $section,
+                string $key
+            ) use ($wp_customizer) {
+                $section->add($wp_customizer);
+            }
+        );
     }
 
     private function addSettings(WPCustomizer $wp_customizer)
     {
-        foreach ($this->settings as $setting) {
-            $setting->add($wp_customizer);
-        }
+        \array_walk(
+            $this->settings,
+            function (
+                AbstractSetting $setting,
+                string $key
+            ) use ($wp_customizer) {
+                $setting->add($wp_customizer);
+            }
+        );
     }
 
     private function addControls(WPCustomizer $wp_customizer)
     {
-        foreach ($this->controls as $control) {
-            $control->add($wp_customizer);
-        }
+        \array_walk(
+            $this->controls,
+            function (
+                AbstractControl $control,
+                string $key
+            ) use ($wp_customizer) {
+                $control->add($wp_customizer);
+            }
+        );
     }
 }

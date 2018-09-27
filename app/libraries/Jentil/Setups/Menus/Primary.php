@@ -11,7 +11,7 @@ final class Primary extends AbstractMenu
     {
         parent::__construct($jentil);
 
-        $this->id = 'primary-menu';
+        $this->id = "{$this->app->theme->stylesheet}-primary";
     }
 
     public function run()

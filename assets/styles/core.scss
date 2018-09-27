@@ -1,0 +1,32 @@
+/*!
+ * Jentil
+ *
+ * @author [GrottoPress](https://www.grottopress.com)
+ * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
+ */
+
+@import '../vendor/@grottopress/scss/src/all';
+
+@import 'variables';
+@import 'mixins';
+
+@import 'core/base';
+@import 'core/embed';
+@import 'core/class';
+@import 'core/grid';
+@import 'core/toggle';
+@import 'core/link';
+@import 'core/list';
+@import 'core/type';
+@import 'core/form';
+@import 'core/table';
+@import 'core/header';
+@import 'core/layout';
+@import 'core/sidebar';
+@import 'core/footer';
+@import 'core/menu';
+@import 'core/breadcrumb';
+@import 'core/post';
+@import 'core/wp';
+@import 'core/widget';
+@import 'core/comment';

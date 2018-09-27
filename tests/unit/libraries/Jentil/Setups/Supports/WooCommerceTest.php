@@ -67,6 +67,8 @@ class WooCommerceTest extends AbstractTestCase
         $wp_customizer = $this->getMockBuilder('WP_Customize_Manager')
             ->getMock();
 
+        FunctionMocker::replace('get_option');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'setups' => ['Customizer' => Stub::makeEmpty(
                 AbstractCustomizer::class,

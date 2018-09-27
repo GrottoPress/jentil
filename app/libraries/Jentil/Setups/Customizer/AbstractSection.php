@@ -82,13 +82,25 @@ abstract class AbstractSection
 
         $wp_customizer->add_section(($this->object ?: $this->id), $this->args);
 
-        foreach ($this->settings as $setting) {
-            $setting->add($wp_customizer);
-        }
+        \array_walk(
+            $this->settings,
+            function (
+                AbstractSetting $setting,
+                string $key
+            ) use ($wp_customizer) {
+                $setting->add($wp_customizer);
+            }
+        );
 
-        foreach ($this->controls as $control) {
-            $control->add($wp_customizer);
-        }
+        \array_walk(
+            $this->controls,
+            function (
+                AbstractControl $control,
+                string $key
+            ) use ($wp_customizer) {
+                $control->add($wp_customizer);
+            }
+        );
     }
 
     /**

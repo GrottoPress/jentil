@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.9.0 - 2018-09-27
+
+### Added
+- Add method to get composer's vendor directory to filesystem utility
+- Setup translations for vendor packages
+- Add `Jentil::$theme` attribute that returns `WP_Theme` instance of this theme.
+- Add Gutenberg editor styles
+
+### Changed
+- Change posts more text customizer control label to 'More link text'
+- Rename `languages/` directory to `lang/`
+- Move reusable methods in `Setups\MetaBoxes\Layout` to `Setups\MetaBoxes\AbstractMetaBox`
+- Prefix registered thumbnail sizes, widget and sidebar ids with `jentil-`
+- Prefix global constant names with `JENTIL_`
+- Append enqueued assets URL with last modified time for cache busting
+- Split up thumbnail setup into separate setups
+
+### Fixed
+- Fix incorrectly closing a `<div>` with a `</nav>` element
+
 ## 0.8.0 - 2018-08-24
 
 ### Added

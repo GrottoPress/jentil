@@ -55,7 +55,6 @@ gulp.task('styles', () =>
 
 gulp.task('vendor', () => {
     gulp.src([
-        './vendor/grottopress/wordpress-posts/dist/styles/*.min.css',
         './node_modules/html5shiv/dist/html5shiv.min.js',
         './node_modules/respond.js/dest/respond.min.js',
         './node_modules/what-input/dist/what-input.min.js'
@@ -67,11 +66,11 @@ gulp.task('vendor', () => {
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
-        .pipe(rename({'basename': 'fontawesome.min'}))
+        .pipe(rename({'basename': 'font-awesome.min'}))
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
-        .pipe(rename({'basename': 'fontawesome-v4-shims.min'}))
+        .pipe(rename({'basename': 'font-awesome-v4-shims.min'}))
         .pipe(gulp.dest(vendor_dist))
 
     gulp.src(['./node_modules/@grottopress/scss/**'])

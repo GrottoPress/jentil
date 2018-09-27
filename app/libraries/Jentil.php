@@ -6,24 +6,28 @@ namespace GrottoPress;
 use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Jentil\Setups;
 use GrottoPress\Jentil\Utilities;
+use WP_Theme;
 
 final class Jentil extends AbstractTheme
 {
     /**
      * @var Utilities
      */
-    private $utilities = null;
+    private $utilities;
 
-    const NAME = 'Jentil';
+    /**
+     * @var WP_Theme
+     */
+    private $theme;
 
-    const URI = 'https://www.grottopress.com/jentil/';
-
-    const DOC_URI = 'https://www.grottopress.com/jentil/';
+    const DOC_URI = 'https://www.grottopress.com/docs/jentil/';
 
     protected function __construct()
     {
         $this->setUpMisc();
+        $this->setUpTranslations();
         $this->setUpMetaBoxes();
+        $this->setUpThumbnails();
         $this->setUpStyles();
         $this->setUpScripts();
         $this->setUpMenus();
@@ -35,11 +39,16 @@ final class Jentil extends AbstractTheme
 
     protected function getUtilities(): Utilities
     {
-        if (null === $this->utilities) {
-            $this->utilities = new Utilities($this);
-        }
+        $this->utilities = $this->utilities ?: new Utilities($this);
 
         return $this->utilities;
+    }
+
+    protected function getTheme(): WP_Theme
+    {
+        $this->theme = $this->theme ?: \wp_get_theme('jentil');
+
+        return $this->theme;
     }
 
     /**
@@ -70,9 +79,8 @@ final class Jentil extends AbstractTheme
     private function setUpMisc()
     {
         $this->setups['Loader'] = new Setups\Loader($this);
-        $this->setups['Language'] = new Setups\Language($this);
         $this->setups['Customizer'] = new Setups\Customizer($this);
-        $this->setups['Thumbnail'] = new Setups\Thumbnail($this);
+        $this->setups['FeaturedImage'] = new Setups\FeaturedImage($this);
         $this->setups['Feed'] = new Setups\Feed($this);
         $this->setups['HTML5'] = new Setups\HTML5($this);
         $this->setups['TitleTag'] = new Setups\TitleTag($this);
@@ -80,16 +88,38 @@ final class Jentil extends AbstractTheme
         $this->setups['Mobile'] = new Setups\Mobile($this);
     }
 
+    private function setUpTranslations()
+    {
+        $this->setups['Translations\Breadcrumbs'] =
+            new Setups\Translations\Breadcrumbs($this);
+        $this->setups['Translations\Field'] =
+            new Setups\Translations\Field($this);
+        $this->setups['Translations\Page'] =
+            new Setups\Translations\Page($this);
+        $this->setups['Translations\Posts'] =
+            new Setups\Translations\Posts($this);
+        $this->setups['Translations\Core'] =
+            new Setups\Translations\Core($this);
+    }
+
     private function setUpMetaBoxes()
     {
         $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
+    }
+
+    private function setUpThumbnails()
+    {
+        $this->setups['Thumbnails\Nano'] = new Setups\Thumbnails\Nano($this);
+        $this->setups['Thumbnails\Micro'] = new Setups\Thumbnails\Micro($this);
+        $this->setups['Thumbnails\Mini'] = new Setups\Thumbnails\Mini($this);
     }
 
     private function setUpStyles()
     {
         $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
         $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
-        $this->setups['Styles\Style'] = new Setups\Styles\Style($this);
+        $this->setups['Styles\Core'] = new Setups\Styles\Core($this);
+        $this->setups['Styles\Gutenberg'] = new Setups\Styles\Gutenberg($this);
     }
 
     private function setUpScripts()
@@ -102,7 +132,7 @@ final class Jentil extends AbstractTheme
             new Setups\Scripts\WhatInput($this);
         $this->setups['Scripts\CommentReply'] =
             new Setups\Scripts\CommentReply($this);
-        $this->setups['Scripts\Script'] = new Setups\Scripts\Script($this);
+        $this->setups['Scripts\Core'] = new Setups\Scripts\Core($this);
         $this->setups['Scripts\Menu'] = new Setups\Scripts\Menu($this);
         $this->setups['Scripts\CustomizePreview'] =
             new Setups\Scripts\CustomizePreview($this);

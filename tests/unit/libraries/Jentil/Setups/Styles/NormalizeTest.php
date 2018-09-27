@@ -31,11 +31,18 @@ class NormalizeTest extends AbstractTestCase
     {
         $enqueue = FunctionMocker::replace('wp_enqueue_style');
 
+        $test_css = \codecept_data_dir('styles/test.css');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.url/dist/styles/normalize.css'
+            'dir' => function (
+                string $type,
+                string $append
+            ) use ($test_css): string {
+                return 'path' === $type ? $test_css : "http://my.url/test.css";
+            },
         ]);
 
         $style = new Normalize($jentil);
@@ -45,7 +52,9 @@ class NormalizeTest extends AbstractTestCase
         $enqueue->wasCalledOnce();
         $enqueue->wasCalledWithOnce([
             $style->id,
-            'http://my.url/dist/styles/normalize.css',
+            'http://my.url/test.css',
+            [],
+            \filemtime($test_css),
         ]);
     }
 }

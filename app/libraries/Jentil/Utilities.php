@@ -23,42 +23,42 @@ class Utilities
     /**
      * @var Utilities\ThemeMods
      */
-    private $themeMods = null;
+    private $themeMods;
 
     /**
      * @var Utilities\Page
      */
-    private $page = null;
+    private $page;
 
     /**
      * @var Utilities\Footer
      */
-    private $footer = null;
+    private $footer;
 
     /**
      * @var Utilities\FileSystem
      */
-    private $fileSystem = null;
+    private $fileSystem;
 
     /**
      * @var Utilities\Loader
      */
-    private $loader = null;
+    private $loader;
 
     /**
      * @var Utilities\ShortTags
      */
-    private $shortTags = null;
+    private $shortTags;
 
     /**
      * @var Utilities\PostTypeTemplate
      */
-    private $postTypeTemplate = null;
+    private $postTypeTemplate;
 
     /**
      * @var Detector
      */
-    private $mobileDetector = null;
+    private $mobileDetector;
 
     public function __construct(Jentil $jentil)
     {
@@ -72,72 +72,58 @@ class Utilities
 
     private function getThemeMods(): Utilities\ThemeMods
     {
-        if (null === $this->themeMods) {
-            $this->themeMods = new Utilities\ThemeMods($this);
-        }
+        $this->themeMods = $this->themeMods ?: new Utilities\ThemeMods($this);
 
         return $this->themeMods;
     }
 
     private function getPage(): Utilities\Page
     {
-        if (null === $this->page) {
-            $this->page = new Utilities\Page($this);
-        }
+        $this->page = $this->page ?: new Utilities\Page($this);
 
         return $this->page;
     }
 
     private function getFooter(): Utilities\Footer
     {
-        if (null === $this->footer) {
-            $this->footer = new Utilities\Footer($this);
-        }
+        $this->footer = $this->footer ?: new Utilities\Footer($this);
 
         return $this->footer;
     }
 
     private function getFileSystem(): Utilities\FileSystem
     {
-        if (null === $this->fileSystem) {
-            $this->fileSystem = new Utilities\FileSystem($this);
-        }
+        $this->fileSystem = $this->fileSystem ?:
+            new Utilities\FileSystem($this);
 
         return $this->fileSystem;
     }
 
     private function getLoader(): Utilities\Loader
     {
-        if (null === $this->loader) {
-            $this->loader = new Utilities\Loader($this);
-        }
+        $this->loader = $this->loader ?: new Utilities\Loader($this);
 
         return $this->loader;
     }
 
     private function getShortTags(): Utilities\ShortTags
     {
-        if (null === $this->shortTags) {
-            $this->shortTags = new Utilities\ShortTags($this);
-        }
+        $this->shortTags = $this->shortTags ?: new Utilities\ShortTags($this);
 
         return $this->shortTags;
     }
 
     private function getPostTypeTemplate(): Utilities\PostTypeTemplate
     {
-        if (null === $this->postTypeTemplate) {
-            $this->postTypeTemplate = new Utilities\PostTypeTemplate($this);
-        }
+        $this->postTypeTemplate = $this->postTypeTemplate ?:
+            new Utilities\PostTypeTemplate($this);
 
         return $this->postTypeTemplate;
     }
 
     private function getMobileDetector(): Detector
     {
-        if (null === $this->mobileDetector) {
-            $this->mobileDetector = new Detector();
-        }
+        $this->mobileDetector = $this->mobileDetector ?: new Detector();
 
         return $this->mobileDetector;
     }

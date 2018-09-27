@@ -69,6 +69,25 @@ class FileSystem
     }
 
     /**
+     * Get composer's vendor directory
+     *
+     * @param string $type 'path' or 'url'.
+     * @param string $form 'relative' or 'absolute'.
+     */
+    public function vendorDir(
+        string $type,
+        string $append = '',
+        string $form = ''
+    ): string {
+        $rel_dir = \explode('/', $this->relativeDir());
+        $vendor = \reset($rel_dir) ?: 'vendor';
+
+        return 'relative' === $form ?
+            "{$vendor}{$append}" :
+            $this->themeDir($type, "/{$vendor}{$append}");
+    }
+
+    /**
      * Path of Jentil relative to theme's directory.
      *
      * @return string Path. Empty if Jentil is theme.

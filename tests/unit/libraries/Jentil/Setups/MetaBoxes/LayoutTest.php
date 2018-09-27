@@ -14,7 +14,11 @@ class LayoutTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $layout = new Layout(Stub::makeEmpty(AbstractTheme::class));
+        $layout = new Layout(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $layout->run();
 

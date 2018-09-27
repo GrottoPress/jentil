@@ -1,0 +1,16 @@
+/**
+ * Basic styles
+ */
+
+.gutenberg__editor {
+    background-color: #fff;
+    color: #333;
+
+    .editor-block-list__block {
+        font-family: $helvetica;
+        font-size: map-get($jentil-font-size, normal);
+        line-height: map-get($jentil-line-height, normal);
+        font-family: $helvetica;
+        color: #333;
+    }
+}

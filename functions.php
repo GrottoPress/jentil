@@ -4,11 +4,11 @@
  * NOTE: Keep code in this file compatible with PHP 5.2
  */
 
-define('MINIMUM_PHP', '7.0');
-define('MINIMUM_WP', '4.7');
+define('JENTIL_MIN_PHP', '7.0');
+define('JENTIL_MIN_WP', '4.7');
 
-if (version_compare(PHP_VERSION, MINIMUM_PHP, '<') ||
-    version_compare(get_bloginfo('version'), MINIMUM_WP, '<')
+if (version_compare(PHP_VERSION, JENTIL_MIN_PHP, '<') ||
+    version_compare(get_bloginfo('version'), JENTIL_MIN_WP, '<')
 ) {
     add_action('admin_notices', 'printJentilReqNotice');
 
@@ -29,12 +29,13 @@ function printJentilReqNotice()
     echo '<div class="notice notice-error">
         <p>'.
         sprintf(
-            __(
-                '%1$s theme has been deactivated as it requires PHP >= %2$s and WordPress >= %3$s'
+            esc_html__(
+                '%1$s theme has been deactivated as it requires PHP >= %2$s and WordPress >= %3$s',
+                'jentil'
             ),
             '<code>jentil</code>',
-            '<strong>'.MINIMUM_PHP.'</strong>',
-            '<strong>'.MINIMUM_WP.'</strong>'
+            '<strong>'.JENTIL_MIN_PHP.'</strong>',
+            '<strong>'.JENTIL_MIN_WP.'</strong>'
         ).
         '</p>
     </div>';

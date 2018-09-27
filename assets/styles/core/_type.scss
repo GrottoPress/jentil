@@ -1,0 +1,175 @@
+/**
+ * Typography
+ */
+
+p {
+    @include paragraph;
+
+    &:empty {
+        display: none;
+    }
+}
+
+strong {
+    font-weight: bold;
+}
+
+em,
+i,
+q,
+cite,
+var {
+    font-style: italic;
+}
+
+q {
+    font-size: map-get($jentil-font-size, magnified);
+}
+
+del {
+    text-decoration: line-through;
+}
+
+cite,
+pre,
+code,
+tt {
+    font-size: 0.90em;
+}
+
+pre,
+code,
+tt {
+    font-family: $monaco;
+    padding: 2px 4px;
+    background-color: $jentil-text-background;
+}
+
+pre {
+    @include paragraph;
+
+    border-radius: 3px;
+    padding: 10px;
+    border: $jentil-separator;
+    overflow: auto;
+    line-height: map-get($jentil-line-height, normal);
+}
+
+cite {
+    color: map-get($jentil-font-color, light);
+}
+
+abbr,
+acronym {
+    border: 0;
+    cursor: help;
+}
+
+ins {
+    text-decoration: none;
+}
+
+sup,
+sub {
+    @include position(relative);
+
+    height: 0;
+    line-height: 1px;
+    vertical-align: baseline;
+}
+
+sup {
+    bottom: 1ex;
+}
+
+sub {
+    top: 0.5ex;
+}
+
+hr {
+    @include paragraph;
+
+    border: 0;
+    border-top: $jentil-separator;
+}
+
+blockquote {
+    @include paragraph;
+
+    font-size: map-get($jentil-font-size, magnified);
+    font-style: italic;
+    line-height: map-get($jentil-line-height, normal);
+    margin-right: 0;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #ddd;
+
+    p {
+        @include paragraph(10px);
+    }
+
+    cite {
+        display: block;
+        margin-top: 0.6em;
+    }
+}
+
+/** Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include paragraph;
+
+    font-weight: bold;
+    line-height: map-get($jentil-line-height, small);
+}
+
+h1 {
+    font-size: 29px;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 23px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 17px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+@media (min-width: map-get($jentil-breakpoint, medium)) {
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+    h4 {
+        font-size: 22px;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+}

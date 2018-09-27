@@ -1,0 +1,136 @@
+/**
+ * WordPress (core)
+ */
+
+/** Alignment */
+
+.alignleft {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.alignright {
+    float: right;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/** Caption */
+
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption-text {
+    padding: 0 5px;
+    font-size: map-get($jentil-font-size, small);
+    color: map-get($jentil-font-color, lighter);
+    line-height: map-get($jentil-line-height, small);
+}
+
+.wp-smiley {
+    max-height: 1em;
+    margin: 0 !important;
+}
+
+/** Gutenberg */
+
+.wp-block-pullquote {
+    border-left: 0;
+}
+
+/** Gallery */
+
+.gallery {
+    @include grid((width: 100%, gutter: 10px));
+
+    border-radius: 3px;
+    background-color: $jentil-text-background;
+    padding: 5px;
+    margin: 0;
+
+    @include paragraph;
+
+    img {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.gallery-item {
+    line-height: map-get($jentil-line-height, normal);
+
+    .gallery-columns-2 &,
+    .gallery-columns-3 &,
+    .gallery-columns-4 &,
+    .gallery-columns-5 &,
+    .gallery-columns-6 &,
+    .gallery-columns-7 &,
+    .gallery-columns-8 &,
+    .gallery-columns-9 & {
+        width: 50%;
+    }
+}
+
+.gallery-caption {
+    @include screen-reader;
+
+    color: map-get($jentil-font-color, lighter);
+    font-size: map-get($jentil-font-size, tiny);
+    margin-top: 5px;
+}
+
+.gallery-icon {
+    a {
+        display: block;
+        line-height: 1px;
+    }
+}
+
+@media (min-width: map-get($jentil-breakpoint, x-small)) {
+    .gallery-item {
+        .gallery-columns-3 & {
+            width: 33.33%;
+        }
+
+        .gallery-columns-4 &,
+        .gallery-columns-5 &,
+        .gallery-columns-6 &,
+        .gallery-columns-7 &,
+        .gallery-columns-8 &,
+        .gallery-columns-9 & {
+            width: 25%;
+        }
+    }
+}
+
+@media (min-width: map-get($jentil-breakpoint, small)) {
+    .gallery-item {
+        .gallery-columns-5 & {
+            width: 20%;
+        }
+
+        .gallery-columns-6 & {
+            width: 16.66%;
+        }
+
+        .gallery-columns-7 & {
+            width: 14.28%;
+        }
+
+        .gallery-columns-8 & {
+            width: 12.5%;
+        }
+
+        .gallery-columns-9 & {
+            width: 11.11%;
+        }
+    }
+}

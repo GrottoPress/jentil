@@ -48,36 +48,28 @@ class Posts
 
     private function getSingular(): Posts\Singular
     {
-        if (null === $this->singular) {
-            return new Posts\Singular($this);
-        }
+        $this->singular = $this->singular ?: new Posts\Singular($this);
 
         return $this->singular;
     }
 
     private function getSticky(): Posts\Sticky
     {
-        if (null === $this->sticky) {
-            return new Posts\Sticky($this);
-        }
+        $this->sticky = $this->sticky ?: new Posts\Sticky($this);
 
         return $this->sticky;
     }
 
     private function getRelated(): Posts\Related
     {
-        if (null === $this->related) {
-            return new Posts\Related($this);
-        }
+        $this->related = $this->related ?: new Posts\Related($this);
 
         return $this->related;
     }
 
     private function getArchive(): Posts\Archive
     {
-        if (null === $this->archive) {
-            return new Posts\Archive($this);
-        }
+        $this->archive = $this->archive ?: new Posts\Archive($this);
 
         return $this->archive;
     }

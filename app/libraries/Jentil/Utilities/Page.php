@@ -19,27 +19,27 @@ class Page extends PagePackage
     /**
      * @var Page\Layout
      */
-    private $layout = null;
+    private $layout;
 
     /**
      * @var Page\Layouts
      */
-    private $layouts = null;
+    private $layouts;
 
     /**
      * @var Page\Title
      */
-    private $title = null;
+    private $title;
 
     /**
      * @var Page\Posts
      */
-    private $posts = null;
+    private $posts;
 
     /**
      * @var string[int]
      */
-    private $type = null;
+    private $type;
 
     public function __construct(Utilities $utilities)
     {
@@ -53,36 +53,28 @@ class Page extends PagePackage
 
     private function getTitle(): Page\Title
     {
-        if (null === $this->title) {
-            $this->title = new Page\Title($this);
-        }
+        $this->title = $this->title ?: new Page\Title($this);
 
         return $this->title;
     }
 
     private function getLayout(): Page\Layout
     {
-        if (null === $this->layout) {
-            $this->layout = new Page\Layout($this);
-        }
+        $this->layout = $this->layout ?: new Page\Layout($this);
 
         return $this->layout;
     }
 
     private function getLayouts(): Page\Layouts
     {
-        if (null === $this->layouts) {
-            $this->layouts = new Page\Layouts($this);
-        }
+        $this->layouts = $this->layouts ?: new Page\Layouts($this);
 
         return $this->layouts;
     }
 
     private function getPosts(): Page\Posts
     {
-        if (null === $this->posts) {
-            $this->posts = new Page\Posts($this);
-        }
+        $this->posts = $this->posts ?: new Page\Posts($this);
 
         return $this->posts;
     }
@@ -97,7 +89,7 @@ class Page extends PagePackage
      */
     private function getType(): array
     {
-        if (null === $this->type || $this->is('customize_preview')) {
+        if (!$this->type || $this->is('customize_preview')) {
             $this->type = parent::type();
         }
 

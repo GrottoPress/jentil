@@ -47,7 +47,7 @@ class StickyTest extends AbstractTestCase
                 3 => 'tutorial',
                 4 => 'tutorial',
                 5 => 'page',
-            ], 'tutorial', [3 , 4]],
+            ], 'tutorial', [2 => 3 , 3 => 4]],
             'post type arg set, invalid' => [[
                 1 => 'post',
                 2 => 'post',

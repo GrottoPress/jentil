@@ -34,7 +34,11 @@ class CustomizePreviewTest extends AbstractTestCase
     {
         $add_action = FunctionMocker::replace('add_action');
 
-        $script = new CustomizePreview(Stub::makeEmpty(AbstractTheme::class));
+        $script = new CustomizePreview(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            }
+        ]));
 
         $script->run();
 
@@ -61,12 +65,22 @@ class CustomizePreviewTest extends AbstractTestCase
         $wp_enqueue_script = FunctionMocker::replace('wp_enqueue_script');
         $add_inline_script = FunctionMocker::replace('wp_add_inline_script');
 
+        $test_js = \codecept_data_dir('scripts/test.js');
+
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
+            'theme' => new class {
+                public $stylesheet;
+            }
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => 'http://my.site/dist/scripts/customizer.js',
+            'dir' => function (
+                string $type,
+                string $append
+            ) use ($test_js): string {
+                return 'path' === $type ? $test_js : "http://my.url/test.js";
+            },
         ]);
 
         $script = new CustomizePreview($jentil);
@@ -76,9 +90,9 @@ class CustomizePreviewTest extends AbstractTestCase
         $wp_enqueue_script->wasCalledOnce();
         $wp_enqueue_script->wasCalledWithOnce([
             $script->id,
-            'http://my.site/dist/scripts/customizer.js',
+            'http://my.url/test.js',
             ['customize-preview'],
-            '',
+            \filemtime($test_js),
             true
         ]);
     }
@@ -89,6 +103,9 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
+            'theme' => new class {
+                public $stylesheet;
+            },
             'setups' => ['Customizer' => Stub::makeEmpty(
                 AbstractCustomizer::class,
                 [
@@ -159,7 +176,7 @@ class CustomizePreviewTest extends AbstractTestCase
         $script->addInlineScript();
 
         $add_inline_script->wasCalledOnce();
-        $add_inline_script->wasCalledWithOnce(['jentil-customize-preview']);
+        $add_inline_script->wasCalledWithOnce([$script->id]);
     }
 
     public function testAddFrontEndInlineScript()
@@ -168,6 +185,9 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
+            'theme' => new class {
+                public $stylesheet;
+            }
         ]);
 
         $jentil->utilities->shortTags = Stub::makeEmpty(ShortTags::class, [
@@ -179,6 +199,6 @@ class CustomizePreviewTest extends AbstractTestCase
         $script->addFrontEndInlineScript();
 
         $add_inline_script->wasCalledOnce();
-        $add_inline_script->wasCalledWithOnce(['jentil-customize-preview']);
+        $add_inline_script->wasCalledWithOnce([$script->id]);
     }
 }

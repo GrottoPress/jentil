@@ -3,6 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
+use GrottoPress\Jentil\AbstractTheme;
+use GrottoPress\Jentil\Utilities;
 use GrottoPress\Jentil\Utilities\ThemeMods;
 use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
@@ -61,7 +63,20 @@ class PostsTest extends AbstractTestCase
 
         FunctionMocker::replace('get_option');
 
-        $posts = new Posts(Stub::makeEmpty(ThemeMods::class), $setting, [
+        $theme_mods = Stub::makeEmpty(ThemeMods::class);
+        $theme_mods->utilities = Stub::makeEmpty(Utilities::class);
+        $theme_mods->utilities->app = Stub::makeEmpty(AbstractTheme::class, [
+            'setups' => [
+                'Thumbnails\Nano' => new class {
+                    public $id;
+                },
+                'Thumbnails\Mini' => new class {
+                    public $id;
+                }
+            ]
+        ]);
+
+        $posts = new Posts($theme_mods, $setting, [
             'context' => $context,
             'specific' => $specific,
             'more_specific' => $more_specific,

@@ -12,7 +12,11 @@ class PrimaryTest extends AbstractTestCase
 {
     public function testRun()
     {
-        $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class));
+        $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            }
+        ]));
 
         $add_action = FunctionMocker::replace('add_action');
 
@@ -30,7 +34,11 @@ class PrimaryTest extends AbstractTestCase
         $register_sidebar = FunctionMocker::replace('register_sidebar');
         $esc_html = FunctionMocker::replace('esc_html__', 'Primary');
 
-        $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class));
+        $sidebar = new Primary(Stub::makeEmpty(AbstractTheme::class, [
+            'theme' => new class {
+                public $stylesheet;
+            },
+        ]));
 
         $sidebar->register();
 

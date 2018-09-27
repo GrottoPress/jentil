@@ -11,7 +11,7 @@ final class FontAwesome extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = 'jentil-fontawesome';
+        $this->id = 'font-awesome';
     }
 
     public function run()
@@ -24,14 +24,13 @@ final class FontAwesome extends AbstractScript
      */
     public function enqueue()
     {
+        $file = '/dist/vendor/font-awesome.min.js';
+
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir(
-                'url',
-                '/dist/vendor/fontawesome.min.js'
-            ),
+            $this->app->utilities->fileSystem->dir('url', $file),
             [],
-            '',
+            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
             true
         );
     }

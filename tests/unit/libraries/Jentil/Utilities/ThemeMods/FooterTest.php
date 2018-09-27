@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use GrottoPress\Jentil\Utilities\ThemeMods;
+use GrottoPress\Jentil\Utilities;
 use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
@@ -19,11 +20,31 @@ class FooterTest extends AbstractTestCase
             }
         );
 
-        FunctionMocker::replace('sanitize_key', function (string $key): string {
-            return $key;
-        });
+        FunctionMocker::replace(
+            ['sanitize_key', 'esc_html__'],
+            function (string $key): string {
+                return $key;
+            }
+        );
 
-        $footer = new Footer(Stub::makeEmpty(ThemeMods::class), 'colophon');
+        $theme_mods = Stub::makeEmpty(ThemeMods::class);
+        $theme_mods->utilities = Stub::makeEmpty(ThemeMods::class, [
+            'app' => new class {
+                public $theme;
+
+                function __construct()
+                {
+                    $this->theme = new class {
+                        function get()
+                        {
+                            return 'jentil';
+                        }
+                    };
+                }
+            }
+        ]);
+
+        $footer = new Footer($theme_mods, 'colophon');
 
         $this->assertSame('footer_colophon', $footer->id);
     }

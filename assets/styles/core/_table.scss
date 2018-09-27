@@ -1,0 +1,71 @@
+/**
+ * Table
+ */
+
+table {
+    @include paragraph;
+
+    font-size: 0.96em;
+    line-height: map-get($jentil-line-height, normal);
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    &.aligncenter {
+        display: table;
+    }
+}
+
+tr,
+td,
+th,
+tfoot,
+thead,
+tbody {
+    margin: 0;
+    border: 0;
+}
+
+tr {
+    &:nth-child(even) {
+        background-color: $jentil-text-background;
+        border-top: $jentil-separator;
+        border-bottom: $jentil-separator;
+
+        td,
+        th {
+            padding: 5px 10px;
+        }
+    }
+}
+
+thead,
+tfoot {
+    tr {
+        &,
+        &:nth-child(even) {
+            background: transparent;
+            border: 0;
+        }
+    }
+}
+
+thead {
+    font-weight: bold;
+    border-top: $jentil-separator;
+}
+
+tfoot {
+    font-style: italic;
+    border-bottom: $jentil-separator;
+}
+
+td,
+th {
+    padding: 7px 10px;
+}
+
+th {
+    font-weight: bold;
+    text-align: inherit;
+}

@@ -141,15 +141,12 @@ class Sticky extends AbstractPosts
             return $sticky_posts;
         }
 
-        $type_sticky = [];
-
-        foreach ($sticky_posts as $post) {
-            if (\get_post_type($post) === $post_type) {
-                $type_sticky[] = $post;
+        return \array_filter(
+            $sticky_posts,
+            function (int $post) use ($post_type) {
+                return \get_post_type($post) === $post_type;
             }
-        }
-
-        return $type_sticky;
+        );
     }
 
     /**
