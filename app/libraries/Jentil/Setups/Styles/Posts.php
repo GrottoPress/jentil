@@ -24,15 +24,14 @@ final class Posts extends AbstractStyle
      */
     public function enqueue()
     {
+        $file_system = $this->app->utilities->fileSystem;
         $file = '/grottopress/wordpress-posts/dist/styles/posts.min.css';
 
         \wp_enqueue_style(
             $this->id,
-            $this->app->utilities->fileSystem->vendorDir('url', $file),
+            $file_system->vendorDir('url', $file),
             [$this->app->setups['Styles\Normalize']->id],
-            \filemtime(
-                $this->app->utilities->fileSystem->vendorDir('path', $file)
-            )
+            \filemtime($file_system->vendorDir('path', $file))
         );
     }
 }
