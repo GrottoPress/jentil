@@ -11,7 +11,7 @@ final class Footer extends AbstractSidebar
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-footer";
+        $this->id = "{$this->app->meta['slug']}-footer";
     }
 
     public function run()

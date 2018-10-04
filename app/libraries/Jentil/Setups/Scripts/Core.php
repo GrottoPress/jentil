@@ -11,7 +11,7 @@ final class Core extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = $this->app->theme->stylesheet;
+        $this->id = $this->app->meta['slug'];
     }
 
     public function run()
@@ -25,13 +25,14 @@ final class Core extends AbstractScript
      */
     public function enqueue()
     {
+        $file_system = $this->app->utilities->fileSystem;
         $file = '/dist/scripts/core.min.js';
 
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir('url', $file),
+            $file_system->dir('url', $file),
             ['jquery'],
-            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
+            \filemtime($file_system->dir('path', $file)),
             true
         );
     }

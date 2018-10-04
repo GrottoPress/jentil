@@ -11,7 +11,7 @@ final class Menu extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-menu";
+        $this->id = "{$this->app->meta['slug']}-menu";
     }
 
     public function run()
@@ -25,13 +25,14 @@ final class Menu extends AbstractScript
      */
     public function enqueue()
     {
+        $file_system = $this->app->utilities->fileSystem;
         $file = '/dist/scripts/menu.min.js';
 
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir('url', $file),
+            $file_system->dir('url', $file),
             ['jquery'],
-            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
+            \filemtime($file_system->dir('path', $file)),
             true
         );
     }

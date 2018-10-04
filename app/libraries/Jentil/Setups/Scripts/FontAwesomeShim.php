@@ -24,13 +24,14 @@ final class FontAwesomeShim extends AbstractScript
      */
     public function enqueue()
     {
+        $file_system = $this->app->utilities->fileSystem;
         $file = '/dist/vendor/font-awesome-v4-shims.min.js';
 
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir('url', $file),
+            $file_system->dir('url', $file),
             [$this->app->setups['Scripts\FontAwesome']->id],
-            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
+            \filemtime($file_system->dir('path', $file)),
             true
         );
     }

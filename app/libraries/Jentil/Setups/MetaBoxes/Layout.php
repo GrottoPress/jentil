@@ -13,7 +13,7 @@ final class Layout extends AbstractMetaBox
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-layout";
+        $this->id = "{$this->app->meta['slug']}-layout";
         $this->context = 'side';
     }
 
@@ -78,7 +78,7 @@ final class Layout extends AbstractMetaBox
                     'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.',
                     'jentil'
                 ),
-                Jentil::DOC_URI
+                $this->app->meta['documents_uri']
             ).'</p>',
         ];
     }

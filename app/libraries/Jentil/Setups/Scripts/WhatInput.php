@@ -24,13 +24,14 @@ final class WhatInput extends AbstractScript
      */
     public function enqueue()
     {
+        $file_system = $this->app->utilities->fileSystem;
         $file = '/dist/vendor/what-input.min.js';
 
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir('url', $file),
+            $file_system->dir('url', $file),
             [],
-            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
+            \filemtime($file_system->dir('path', $file)),
             true
         );
     }

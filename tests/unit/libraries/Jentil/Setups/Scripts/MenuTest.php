@@ -17,9 +17,7 @@ class MenuTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $script = new Menu(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $script->run();
@@ -45,9 +43,7 @@ class MenuTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
@@ -80,9 +76,7 @@ class MenuTest extends AbstractTestCase
         FunctionMocker::replace('esc_html__');
 
         $script = new Menu(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $script->localize();

@@ -15,7 +15,7 @@ final class CustomizePreview extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-customize-preview";
+        $this->id = "{$this->app->meta['slug']}-customize-preview";
     }
 
     public function run()
@@ -30,13 +30,14 @@ final class CustomizePreview extends AbstractScript
      */
     public function enqueue()
     {
+        $file_system = $this->app->utilities->fileSystem;
         $file = '/dist/scripts/customize-preview.min.js';
 
         \wp_enqueue_script(
             $this->id,
-            $this->app->utilities->fileSystem->dir('url', $file),
+            $file_system->dir('url', $file),
             ['customize-preview'],
-            \filemtime($this->app->utilities->fileSystem->dir('path', $file)),
+            \filemtime($file_system->dir('path', $file)),
             true
         );
     }

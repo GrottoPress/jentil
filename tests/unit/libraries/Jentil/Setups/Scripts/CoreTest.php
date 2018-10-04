@@ -18,9 +18,7 @@ class CoreTest extends AbstractTestCase
         $add_filter = FunctionMocker::replace('add_filter');
 
         $script = new Core(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $script->run();
@@ -46,9 +44,7 @@ class CoreTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'theme' => new class {
-                public $stylesheet = 'jentil';
-            }
+            'meta' => ['slug' => 'jentil'],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
@@ -77,9 +73,7 @@ class CoreTest extends AbstractTestCase
     public function testAddBodyClasses()
     {
         $script = new Core(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $this->assertSame(

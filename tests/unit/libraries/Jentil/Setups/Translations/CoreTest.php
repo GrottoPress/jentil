@@ -17,12 +17,7 @@ class CoreTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                function get()
-                {
-                    return 'jentil';
-                }
-            }
+            'meta' => ['text_domain' => 'jentil'],
         ]);
 
         $translation = new Core($jentil);
@@ -42,12 +37,7 @@ class CoreTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'theme' => new class {
-                function get()
-                {
-                    return 'jentil';
-                }
-            }
+            'meta' => ['text_domain' => 'jentil'],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [

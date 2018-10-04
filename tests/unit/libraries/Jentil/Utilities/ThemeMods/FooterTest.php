@@ -30,16 +30,11 @@ class FooterTest extends AbstractTestCase
         $theme_mods = Stub::makeEmpty(ThemeMods::class);
         $theme_mods->utilities = Stub::makeEmpty(ThemeMods::class, [
             'app' => new class {
-                public $theme;
+                public $meta;
 
                 function __construct()
                 {
-                    $this->theme = new class {
-                        function get()
-                        {
-                            return 'jentil';
-                        }
-                    };
+                    $this->meta = ['name' => 'Jentil', 'theme_uri' => '#'];
                 }
             }
         ]);
