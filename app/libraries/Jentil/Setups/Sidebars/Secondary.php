@@ -11,7 +11,7 @@ final class Secondary extends AbstractSidebar
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-secondary";
+        $this->id = "{$this->app->meta['slug']}-secondary";
     }
 
     public function run()

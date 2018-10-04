@@ -15,9 +15,7 @@ class NanoTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $thumbnail = new Nano(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            },
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $thumbnail->run();
@@ -35,9 +33,7 @@ class NanoTest extends AbstractTestCase
         $add_image_size = FunctionMocker::replace('add_image_size');
 
         $thumbnail = new Nano(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            },
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $thumbnail->addSize();

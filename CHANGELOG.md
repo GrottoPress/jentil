@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Rename `LICENSE.md` to `LICENSE`
 
+### Fixed
+- Replace `Jentil::$theme` with `Jentil::$meta`, since `wp_get_theme()` does not work if Jentil installed as package.
+
 ## 0.9.0 - 2018-09-27
 
 ### Added

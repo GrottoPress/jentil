@@ -35,9 +35,7 @@ class CustomizePreviewTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $script = new CustomizePreview(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $script->run();
@@ -69,9 +67,7 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
@@ -103,9 +99,7 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'theme' => new class {
-                public $stylesheet;
-            },
+            'meta' => ['slug' => 'jentil'],
             'setups' => ['Customizer' => Stub::makeEmpty(
                 AbstractCustomizer::class,
                 [
@@ -185,9 +179,7 @@ class CustomizePreviewTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]);
 
         $jentil->utilities->shortTags = Stub::makeEmpty(ShortTags::class, [

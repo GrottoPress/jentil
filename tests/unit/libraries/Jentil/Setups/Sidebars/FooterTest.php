@@ -15,9 +15,7 @@ class FooterTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $sidebar->run();
@@ -35,9 +33,7 @@ class FooterTest extends AbstractTestCase
         $esc_html = FunctionMocker::replace('esc_html__', 'Footer');
 
         $sidebar = new Footer(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            },
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $sidebar->register();

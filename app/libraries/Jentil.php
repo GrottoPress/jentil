@@ -6,7 +6,6 @@ namespace GrottoPress;
 use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Jentil\Setups;
 use GrottoPress\Jentil\Utilities;
-use WP_Theme;
 
 final class Jentil extends AbstractTheme
 {
@@ -16,11 +15,9 @@ final class Jentil extends AbstractTheme
     private $utilities;
 
     /**
-     * @var WP_Theme
+     * @var string[string]
      */
-    private $theme;
-
-    const DOC_URI = 'https://www.grottopress.com/docs/jentil/';
+    private $meta;
 
     protected function __construct()
     {
@@ -44,13 +41,6 @@ final class Jentil extends AbstractTheme
         return $this->utilities;
     }
 
-    protected function getTheme(): WP_Theme
-    {
-        $this->theme = $this->theme ?: \wp_get_theme('jentil');
-
-        return $this->theme;
-    }
-
     /**
      * @return Setups\AbstractSetup[string]
      */
@@ -61,6 +51,16 @@ final class Jentil extends AbstractTheme
         unset($setups['Loader']);
 
         return $setups;
+    }
+
+    /**
+     * @return string[string]
+     */
+    protected function getMeta(): array
+    {
+        $this->meta = $this->meta ?: $this->meta();
+
+        return $this->meta;
     }
 
     /**
@@ -179,5 +179,34 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Supports\WooCommerce'] =
             new Setups\Supports\WooCommerce($this);
+    }
+
+    /**
+     * @return string[string]
+     */
+    private function meta(): array
+    {
+        $meta = \array_map('sanitize_text_field', \get_file_data(
+            $this->getUtilities()->fileSystem->dir('path', '/style.css'),
+            [
+                'name' => 'Theme Name',
+                'theme_uri' => 'Theme URI',
+                'description' => 'Description',
+                'author' => 'Author',
+                'author_uri' => 'Author URI',
+                'version' => 'Version',
+                'license' => 'License',
+                'license_uri' => 'License URI',
+                'tags' => 'Tags',
+                'text_domain' => 'Text Domain',
+                'domain_path' => 'Domain Path',
+                'documents_uri' => 'Documents URI',
+            ],
+            'theme'
+        ));
+
+        $meta['slug'] = \sanitize_title($meta['name']);
+
+        return $meta;
     }
 }

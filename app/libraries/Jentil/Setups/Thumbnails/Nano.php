@@ -11,7 +11,7 @@ final class Nano extends AbstractThumbnail
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-nano";
+        $this->id = "{$this->app->meta['slug']}-nano";
     }
 
     public function run()

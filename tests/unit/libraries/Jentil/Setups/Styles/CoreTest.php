@@ -17,9 +17,7 @@ class CoreTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $style = new Core(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            }
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $style->run();
@@ -47,9 +45,7 @@ class CoreTest extends AbstractTestCase
             'setups' => ['Styles\Normalize' => new class {
                 public $id;
             }],
-            'theme' => new class {
-                public $stylesheet = 'jentil';
-            }
+            'meta' => ['slug' => 'jentil'],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [

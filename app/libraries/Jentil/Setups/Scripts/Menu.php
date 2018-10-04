@@ -11,7 +11,7 @@ final class Menu extends AbstractScript
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->theme->stylesheet}-menu";
+        $this->id = "{$this->app->meta['slug']}-menu";
     }
 
     public function run()

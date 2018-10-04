@@ -15,9 +15,7 @@ class SecondaryTest extends AbstractTestCase
         $add_action = FunctionMocker::replace('add_action');
 
         $sidebar = new Secondary(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            },
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $sidebar->run();
@@ -35,9 +33,7 @@ class SecondaryTest extends AbstractTestCase
         $esc_html = FunctionMocker::replace('esc_html__', 'Secondary');
 
         $sidebar = new Secondary(Stub::makeEmpty(AbstractTheme::class, [
-            'theme' => new class {
-                public $stylesheet;
-            },
+            'meta' => ['slug' => 'jentil'],
         ]));
 
         $sidebar->register();
