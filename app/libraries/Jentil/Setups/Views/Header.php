@@ -106,6 +106,6 @@ final class Header extends AbstractSetup
      */
     private function menuStatus(): string
     {
-        return (isset($_GET['menu']) ? \sanitize_key($_GET['menu']) : 'hide');
+        return \sanitize_key($_GET['menu'] ?? 'hide');
     }
 }
