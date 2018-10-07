@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fed964e8b1b21ad50d051cea01b8e9f9",
+    "content-hash": "c54f96f0d7fe6ab5e196a757ed451e02",
     "packages": [
         {
             "name": "aura/html",
@@ -265,16 +265,16 @@
         },
         {
             "name": "grottopress/form-field",
-            "version": "0.6.1",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/form-field.git",
-                "reference": "d63d861a33ff5bcdb2494a3ff88ca874c9b61c98"
+                "reference": "b69dcce7aebe15d53297ce0d0bcbd4b2a8691271"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/d63d861a33ff5bcdb2494a3ff88ca874c9b61c98",
-                "reference": "d63d861a33ff5bcdb2494a3ff88ca874c9b61c98",
+                "url": "https://api.github.com/repos/GrottoPress/form-field/zipball/b69dcce7aebe15d53297ce0d0bcbd4b2a8691271",
+                "reference": "b69dcce7aebe15d53297ce0d0bcbd4b2a8691271",
                 "shasum": ""
             },
             "require": {
@@ -312,20 +312,20 @@
                 "Forms",
                 "html"
             ],
-            "time": "2018-07-19T13:37:04+00:00"
+            "time": "2018-10-06T14:44:11+00:00"
         },
         {
             "name": "grottopress/getter",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/getter.git",
-                "reference": "57bb662a37c3916587a9d52d966b8c6d53e0d09e"
+                "reference": "b91517ea228d2cbae25a0a243d9194c5a69bdad4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/57bb662a37c3916587a9d52d966b8c6d53e0d09e",
-                "reference": "57bb662a37c3916587a9d52d966b8c6d53e0d09e",
+                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/b91517ea228d2cbae25a0a243d9194c5a69bdad4",
+                "reference": "b91517ea228d2cbae25a0a243d9194c5a69bdad4",
                 "shasum": ""
             },
             "require": {
@@ -361,20 +361,20 @@
                 "OOP",
                 "getter"
             ],
-            "time": "2018-03-03T13:32:12+00:00"
+            "time": "2018-10-06T15:00:26+00:00"
         },
         {
             "name": "grottopress/mobile-detector",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/mobile-detector.git",
-                "reference": "c069829453221e4678d524209a0366623d69d2af"
+                "reference": "f93207b39af17280e8e0710087d5e157dde8475c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/mobile-detector/zipball/c069829453221e4678d524209a0366623d69d2af",
-                "reference": "c069829453221e4678d524209a0366623d69d2af",
+                "url": "https://api.github.com/repos/GrottoPress/mobile-detector/zipball/f93207b39af17280e8e0710087d5e157dde8475c",
+                "reference": "f93207b39af17280e8e0710087d5e157dde8475c",
                 "shasum": ""
             },
             "require": {
@@ -410,25 +410,25 @@
             "keywords": [
                 "mobile"
             ],
-            "time": "2018-03-01T20:33:25+00:00"
+            "time": "2018-10-06T15:53:53+00:00"
         },
         {
             "name": "grottopress/wordpress-breadcrumbs",
-            "version": "0.6.1",
+            "version": "0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-breadcrumbs.git",
-                "reference": "29ae19284d0a177729e593dc4042a909d72a78a0"
+                "reference": "123bc4ebe446ae0888e4669cca87c4522ec38432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/29ae19284d0a177729e593dc4042a909d72a78a0",
-                "reference": "29ae19284d0a177729e593dc4042a909d72a78a0",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-breadcrumbs/zipball/123bc4ebe446ae0888e4669cca87c4522ec38432",
+                "reference": "123bc4ebe446ae0888e4669cca87c4522ec38432",
                 "shasum": ""
             },
             "require": {
                 "grottopress/getter": "^0.3",
-                "grottopress/wordpress-page": "^0.7",
+                "grottopress/wordpress-page": "^0.8",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -438,7 +438,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\": "lib/"
+                    "GrottoPress\\WordPress\\": "src/lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -462,20 +462,20 @@
                 "breadcrumbs",
                 "wordpress"
             ],
-            "time": "2018-09-12T13:58:30+00:00"
+            "time": "2018-10-06T19:00:14+00:00"
         },
         {
             "name": "grottopress/wordpress-field",
-            "version": "0.7.1",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-field.git",
-                "reference": "9e7704311fac485d30288ab40ed6e40cdae36db0"
+                "reference": "cc5878c6bd0618c05e31c1dcb10b4d7f7467b3eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-field/zipball/9e7704311fac485d30288ab40ed6e40cdae36db0",
-                "reference": "9e7704311fac485d30288ab40ed6e40cdae36db0",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-field/zipball/cc5878c6bd0618c05e31c1dcb10b4d7f7467b3eb",
+                "reference": "cc5878c6bd0618c05e31c1dcb10b4d7f7467b3eb",
                 "shasum": ""
             },
             "require": {
@@ -489,7 +489,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\Form\\": "lib/"
+                    "GrottoPress\\WordPress\\Form\\": "src/lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -513,24 +513,24 @@
                 "Forms",
                 "wordpress"
             ],
-            "time": "2018-09-12T14:05:43+00:00"
+            "time": "2018-10-06T20:51:38+00:00"
         },
         {
             "name": "grottopress/wordpress-meta-box",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-meta-box.git",
-                "reference": "89127116be4b34c0e81e4d1437dd73a07842c743"
+                "reference": "a3913fcc1f6d8a99da01f74d77697119257a976d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-meta-box/zipball/89127116be4b34c0e81e4d1437dd73a07842c743",
-                "reference": "89127116be4b34c0e81e4d1437dd73a07842c743",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-meta-box/zipball/a3913fcc1f6d8a99da01f74d77697119257a976d",
+                "reference": "a3913fcc1f6d8a99da01f74d77697119257a976d",
                 "shasum": ""
             },
             "require": {
-                "grottopress/wordpress-field": "^0.7",
+                "grottopress/wordpress-field": "^0.8",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -540,7 +540,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\": "lib/"
+                    "GrottoPress\\WordPress\\": "src/lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -565,20 +565,20 @@
                 "meta-box",
                 "wordpress"
             ],
-            "time": "2018-09-12T14:32:47+00:00"
+            "time": "2018-10-06T21:09:12+00:00"
         },
         {
             "name": "grottopress/wordpress-page",
-            "version": "0.7.1",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "1c0a7efaa3b25e3f5ae4902d7262726d0d7f4eef"
+                "reference": "dd2feafd5735fd79d60b9749db217b0b9aef2f2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/1c0a7efaa3b25e3f5ae4902d7262726d0d7f4eef",
-                "reference": "1c0a7efaa3b25e3f5ae4902d7262726d0d7f4eef",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/dd2feafd5735fd79d60b9749db217b0b9aef2f2a",
+                "reference": "dd2feafd5735fd79d60b9749db217b0b9aef2f2a",
                 "shasum": ""
             },
             "require": {
@@ -591,7 +591,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\": "lib/"
+                    "GrottoPress\\WordPress\\": "src/lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -614,20 +614,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-09-12T13:52:38+00:00"
+            "time": "2018-10-06T17:22:06+00:00"
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.12.2",
+            "version": "0.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "b79eaff390a68c42cdfafc78b0cc63042069316f"
+                "reference": "6a42c155400ae68de4c64b13ccfdf22a36f0af92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/b79eaff390a68c42cdfafc78b0cc63042069316f",
-                "reference": "b79eaff390a68c42cdfafc78b0cc63042069316f",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/6a42c155400ae68de4c64b13ccfdf22a36f0af92",
+                "reference": "6a42c155400ae68de4c64b13ccfdf22a36f0af92",
                 "shasum": ""
             },
             "require": {
@@ -642,7 +642,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\": "lib/"
+                    "GrottoPress\\WordPress\\": "src/lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -665,20 +665,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-09-23T00:50:52+00:00"
+            "time": "2018-10-06T21:36:09+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
-            "version": "0.5.0",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
-                "reference": "62cadd83e22a1f019f79c16157199175debc9683"
+                "reference": "9f980616e8d9543439885971587a20ed842ca84d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/62cadd83e22a1f019f79c16157199175debc9683",
-                "reference": "62cadd83e22a1f019f79c16157199175debc9683",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/9f980616e8d9543439885971587a20ed842ca84d",
+                "reference": "9f980616e8d9543439885971587a20ed842ca84d",
                 "shasum": ""
             },
             "require": {
@@ -689,7 +689,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "GrottoPress\\WordPress\\SUV\\": "lib/"
+                    "GrottoPress\\WordPress\\SUV\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -713,7 +713,7 @@
                 "suv",
                 "wordpress"
             ],
-            "time": "2018-09-26T02:35:31+00:00"
+            "time": "2018-10-07T01:39:44+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
