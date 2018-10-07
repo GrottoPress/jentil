@@ -28,7 +28,7 @@ final class Breadcrumbs extends AbstractTranslation
             $this->textDomain,
             $this->app->utilities->fileSystem->vendorDir(
                 'path',
-                '/grottopress/wordpress-breadcrumbs/lang'
+                '/grottopress/wordpress-breadcrumbs/src/lang'
             )
         );
     }

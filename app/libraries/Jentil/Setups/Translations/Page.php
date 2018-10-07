@@ -28,7 +28,7 @@ final class Page extends AbstractTranslation
             $this->textDomain,
             $this->app->utilities->fileSystem->vendorDir(
                 'path',
-                '/grottopress/wordpress-page/lang'
+                '/grottopress/wordpress-page/src/lang'
             )
         );
     }
