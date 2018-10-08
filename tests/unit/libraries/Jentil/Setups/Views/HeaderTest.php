@@ -21,6 +21,7 @@ class HeaderTest extends AbstractTestCase
         $header->run();
 
         $add_action->wasCalledTimes(3);
+        $add_filter->wasCalledTimes(1);
 
         $add_action->wasCalledWithOnce([
             'jentil_before_header',
@@ -47,8 +48,14 @@ class HeaderTest extends AbstractTestCase
     {
         $esc_html = FunctionMocker::replace('esc_html__', 'some string');
         $wp_nav_menu = FunctionMocker::replace('wp_nav_menu');
-        $sanitize_title = FunctionMocker::replace('sanitize_title');
         $sanitize_text_field = FunctionMocker::replace('sanitize_text_field');
+
+        FunctionMocker::replace(
+            ['sanitize_key', 'sanitize_title'],
+            function (string $string): string {
+                return $string;
+            }
+        );
 
         $header = new Header(Stub::makeEmpty(AbstractTheme::class, [
             'setups' => ['Menus\Primary' => Stub::makeEmpty(

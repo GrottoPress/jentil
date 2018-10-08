@@ -28,7 +28,7 @@ final class Field extends AbstractTranslation
             $this->textDomain,
             $this->app->utilities->fileSystem->vendorDir(
                 'path',
-                '/grottopress/wordpress-field/lang'
+                '/grottopress/wordpress-field/src/lang'
             )
         );
     }

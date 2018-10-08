@@ -28,7 +28,7 @@ final class Posts extends AbstractTranslation
             $this->textDomain,
             $this->app->utilities->fileSystem->vendorDir(
                 'path',
-                '/grottopress/wordpress-posts/lang'
+                '/grottopress/wordpress-posts/src/lang'
             )
         );
     }
