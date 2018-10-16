@@ -36,9 +36,7 @@ final class Jentil extends AbstractTheme
 
     protected function getUtilities(): Utilities
     {
-        $this->utilities = $this->utilities ?: new Utilities($this);
-
-        return $this->utilities;
+        return $this->utilities = $this->utilities ?: new Utilities($this);
     }
 
     /**
@@ -58,9 +56,7 @@ final class Jentil extends AbstractTheme
      */
     protected function getMeta(): array
     {
-        $this->meta = $this->meta ?: $this->meta();
-
-        return $this->meta;
+        return $this->meta = $this->meta ?: $this->meta();
     }
 
     /**
@@ -70,10 +66,9 @@ final class Jentil extends AbstractTheme
     {
         $rel_dir = $this->getUtilities()->fileSystem->relativeDir();
 
-        return (
+        return
             ('package' === $mode && $rel_dir) ||
-                ('theme' === $mode && !$rel_dir)
-        );
+            ('theme' === $mode && !$rel_dir);
     }
 
     private function setUpMisc()

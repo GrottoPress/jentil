@@ -53,30 +53,22 @@ class Page extends PagePackage
 
     private function getTitle(): Page\Title
     {
-        $this->title = $this->title ?: new Page\Title($this);
-
-        return $this->title;
+        return $this->title = $this->title ?: new Page\Title($this);
     }
 
     private function getLayout(): Page\Layout
     {
-        $this->layout = $this->layout ?: new Page\Layout($this);
-
-        return $this->layout;
+        return $this->layout = $this->layout ?: new Page\Layout($this);
     }
 
     private function getLayouts(): Page\Layouts
     {
-        $this->layouts = $this->layouts ?: new Page\Layouts($this);
-
-        return $this->layouts;
+        return $this->layouts = $this->layouts ?: new Page\Layouts($this);
     }
 
     private function getPosts(): Page\Posts
     {
-        $this->posts = $this->posts ?: new Page\Posts($this);
-
-        return $this->posts;
+        return $this->posts = $this->posts ?: new Page\Posts($this);
     }
 
     /**
