@@ -45,7 +45,6 @@ Jentil has built-in support for the following:
 - [WordPress](https://wordpress.org) >= 4.7
 - [Composer](https://getcomposer.org)
 - [Node JS](https://nodejs.org)
-- [NPM](https://www.npmjs.com)
 
 These are the core requirements you need to get in place. The rest would be installed by the theme itself during installation.
 
