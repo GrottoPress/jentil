@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Add `Dockerfile`
+
 ### Changed
 - Replace hard-coded domain path in core translation setup with one grabbed from `style.css`
 
