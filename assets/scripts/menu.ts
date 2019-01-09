@@ -40,7 +40,7 @@
 
     $('.js-sub-menu-button').prev('a').on(
         'click',
-        (event: JQuery.Event): void => {
+        (event: JQuery.TriggeredEvent): void => {
             if ('#' === $(event.currentTarget).attr('href')) {
                 toggleSubMenu($(event.currentTarget).next('button'))
 
@@ -49,7 +49,10 @@
         }
     )
 
-    $('.js-sub-menu-button').on('click', (event: JQuery.Event): void => {
+    $('.js-sub-menu-button').on(
+        'click',
+        (event: JQuery.TriggeredEvent
+    ): void => {
         toggleSubMenu(event.currentTarget)
 
         event.preventDefault()
