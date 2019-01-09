@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Replace hard-coded domain path in core translation setup with one grabbed from `style.css`
+- Upgrade gulp to version 4
 
 ## 0.9.2 - 2018-10-08
 
