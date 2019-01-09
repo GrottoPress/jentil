@@ -13,6 +13,7 @@ const cssnano = require('cssnano')
 const mqpacker = require('css-mqpacker')
 const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
+const newer = require('gulp-newer')
 
 const paths = {
     styles: {
@@ -34,6 +35,7 @@ const paths = {
 function _scripts(done)
 {
     src(paths.scripts.src)
+        .pipe(newer(paths.scripts.dest))
         .pipe(sourcemaps.init())
         .pipe(typescript({
             "module": "commonjs",
@@ -55,6 +57,7 @@ function _scripts(done)
 function _styles(done)
 {
     src(paths.styles.src)
+        .pipe(newer(paths.styles.dest))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([focus(), mqpacker({sort: mqsort}), cssnano()]))
@@ -77,22 +80,27 @@ function _vendor(done)
         './node_modules/respond.js/dest/respond.min.js',
         './node_modules/what-input/dist/what-input.min.js'
     ])
+        .pipe(newer(paths.vendor.dest.dist))
         .pipe(dest(paths.vendor.dest.dist))
 
     src(['./node_modules/normalize.css/normalize.css'])
+        .pipe(newer(paths.vendor.dest.dist))
         .pipe(postcss([cssnano()]))
         .pipe(rename({'suffix': '.min'}))
         .pipe(dest(paths.vendor.dest.dist))
 
     src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
+        .pipe(newer(paths.vendor.dest.dist))
         .pipe(rename({'basename': 'font-awesome.min'}))
         .pipe(dest(paths.vendor.dest.dist))
 
     src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
+        .pipe(newer(paths.vendor.dest.dist))
         .pipe(rename({'basename': 'font-awesome-v4-shims.min'}))
         .pipe(dest(paths.vendor.dest.dist))
 
     src(['./node_modules/@grottopress/scss/**'])
+        .pipe(newer(paths.vendor.dest.assets))
         .pipe(dest(`${paths.vendor.dest.assets}/@grottopress/scss`))
 
     done()
