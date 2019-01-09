@@ -1,6 +1,7 @@
 'use strict'
 
-const gulp = require('gulp')
+const { src, dest, watch, series, parallel } = require('gulp')
+
 const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
@@ -13,15 +14,26 @@ const mqpacker = require('css-mqpacker')
 const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
 
-const scripts_src = ['./assets/scripts/**/*.ts']
-const scripts_dest = './dist/scripts'
-const styles_src = ['./assets/styles/**/*.scss']
-const styles_dest = './dist/styles'
-const vendor_dist = './dist/vendor'
-const vendor_assets = './assets/vendor'
+const paths = {
+    styles: {
+        src: ['./assets/styles/**/*.scss'],
+        dest: './dist/styles'
+    },
+    scripts: {
+        src: ['./assets/scripts/**/*.ts'],
+        dest: './dist/scripts'
+    },
+    vendor: {
+        dest: {
+            dist: './dist/vendor',
+            assets: './assets/vendor'
+        }
+    }
+}
 
-gulp.task('scripts', () =>
-    gulp.src(scripts_src)
+function _scripts(done)
+{
+    src(paths.scripts.src)
         .pipe(sourcemaps.init())
         .pipe(typescript({
             "module": "commonjs",
@@ -35,55 +47,66 @@ gulp.task('scripts', () =>
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(scripts_dest))
-)
+        .pipe(dest(paths.scripts.dest))
 
-gulp.task('styles', () =>
-    gulp.src(styles_src)
+    done()
+}
+
+function _styles(done)
+{
+    src(paths.styles.src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([focus(), mqpacker({sort: mqsort}), cssnano()]))
         .pipe(rename({'suffix': '.min'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(styles_dest))
+        .pipe(dest(paths.styles.dest))
         .pipe(rtlcss())
         .pipe(rename((path) =>
             path.basename = path.basename.replace('.min', '-rtl.min')
         ))
-        .pipe(gulp.dest(styles_dest))
-)
+        .pipe(dest(paths.styles.dest))
 
-gulp.task('vendor', () => {
-    gulp.src([
+    done()
+}
+
+function _vendor(done)
+{
+    src([
         './node_modules/html5shiv/dist/html5shiv.min.js',
         './node_modules/respond.js/dest/respond.min.js',
         './node_modules/what-input/dist/what-input.min.js'
-    ]).pipe(gulp.dest(vendor_dist))
+    ])
+        .pipe(dest(paths.vendor.dest.dist))
 
-    gulp.src(['./node_modules/normalize.css/normalize.css'])
+    src(['./node_modules/normalize.css/normalize.css'])
         .pipe(postcss([cssnano()]))
         .pipe(rename({'suffix': '.min'}))
-        .pipe(gulp.dest(vendor_dist))
+        .pipe(dest(paths.vendor.dest.dist))
 
-    gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
+    src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
         .pipe(rename({'basename': 'font-awesome.min'}))
-        .pipe(gulp.dest(vendor_dist))
+        .pipe(dest(paths.vendor.dest.dist))
 
-    gulp.src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
+    src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
         .pipe(rename({'basename': 'font-awesome-v4-shims.min'}))
-        .pipe(gulp.dest(vendor_dist))
+        .pipe(dest(paths.vendor.dest.dist))
 
-    gulp.src(['./node_modules/@grottopress/scss/**'])
-        .pipe(gulp.dest(`${vendor_assets}/@grottopress/scss`))
-})
+    src(['./node_modules/@grottopress/scss/**'])
+        .pipe(dest(`${paths.vendor.dest.assets}/@grottopress/scss`))
 
-gulp.task('watch', () => {
-    gulp.watch(scripts_src, ['scripts'])
-    gulp.watch(styles_src, ['styles'])
-})
+    done()
+}
 
-gulp.task('default', [
-    'scripts',
-    'styles',
-    'watch'
-])
+function _watch()
+{
+    watch(paths.scripts.src, {ignoreInitial: false}, _scripts)
+    watch(paths.styles.src, {ignoreInitial: false}, _styles)
+}
+
+exports.styles = _styles
+exports.scripts = _scripts
+exports.vendor = _vendor
+exports.watch = _watch
+
+exports.default = series(parallel(_styles, _scripts), _watch)

@@ -1,4 +1,10 @@
 {
+  "_args": [
+    [
+      "@grottopress/scss@0.4.1",
+      "/var/www/html/wp-content/themes/jentil"
+    ]
+  ],
   "_from": "@grottopress/scss@0.4.1",
   "_id": "@grottopress/scss@0.4.1",
   "_inBundle": false,
@@ -17,13 +23,11 @@
     "fetchSpec": "0.4.1"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.4.1.tgz",
-  "_shasum": "e2660d89bb1ae62af5903d3e4ef0e5f62b9d5992",
-  "_spec": "@grottopress/scss@0.4.1",
-  "_where": "/var/www/bedrock/web/app/themes/jentil",
+  "_spec": "0.4.1",
+  "_where": "/var/www/html/wp-content/themes/jentil",
   "author": {
     "name": "GrottoPress.com",
     "email": "info@grottopress.com",
@@ -32,7 +36,6 @@
   "bugs": {
     "url": "https://github.com/GrottoPress/scss/issues"
   },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "N Atta Kusi Adusei",
@@ -40,7 +43,6 @@
     }
   ],
   "dependencies": {},
-  "deprecated": false,
   "description": "Sass utilities: Mixins, variables and functions.",
   "devDependencies": {},
   "homepage": "https://github.com/GrottoPress/scss#README",

@@ -17,7 +17,7 @@
     }
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.4.1",
+    "@fortawesome/fontawesome-free": "^5.6.3",
     "@grottopress/scss": "^0.4.1",
     "html5shiv": "^3.7.3",
     "normalize.css": "^7.0.0",
@@ -25,11 +25,11 @@
     "what-input": "^5.1.2"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.22",
+    "@types/jquery": "^3.3.29",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.1.7",
-    "cssnano-preset-advanced": "^4.0.5",
-    "gulp": "^3.9.1",
+    "cssnano": "^4.1.8",
+    "cssnano-preset-advanced": "^4.0.6",
+    "gulp": "^4.0.0",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-rtlcss": "^1.3.0",
@@ -38,8 +38,8 @@
     "gulp-typescript": "^5.0.0",
     "gulp-uglify": "^3.0.1",
     "postcss-focus": "^3.0.0",
-    "sort-css-media-queries": "^1.4.1",
-    "typescript": "^3.2.1"
+    "sort-css-media-queries": "^1.4.3",
+    "typescript": "^3.2.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
