@@ -38,13 +38,12 @@ function _scripts(done)
         .pipe(newer(paths.scripts.dest))
         .pipe(sourcemaps.init())
         .pipe(typescript({
-            "module": "commonjs",
-            "target": "es5",
-            "noImplicitAny": true,
-            "noImplicitUseStrict": true,
-            "noImplicitThis": true,
-            "strictNullChecks": true,
-            "strictFunctionTypes": true
+            'module': 'commonjs',
+            'target': 'es5',
+            'noImplicitAny': true,
+            'noImplicitThis': true,
+            'strictNullChecks': true,
+            'strictFunctionTypes': true
         }))
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
