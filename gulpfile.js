@@ -40,6 +40,7 @@ function _scripts(done)
         .pipe(typescript({
             'module': 'commonjs',
             'target': 'es5',
+            'removeComments': true,
             'noImplicitAny': true,
             'noImplicitThis': true,
             'strictNullChecks': true,
