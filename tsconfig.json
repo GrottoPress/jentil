@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "none",
+    "target": "es5",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "outDir": "./dist/scripts"
+  },
+  "include": [
+    "./assets/scripts/**/*"
+  ]
+}

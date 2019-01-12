@@ -15,14 +15,18 @@ const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
 const newer = require('gulp-newer')
 
+const tsConfigFile = './tsconfig.json'
+const tsConfig = require(tsConfigFile)
+const tsProject = typescript.createProject(tsConfigFile)
+
 const paths = {
     styles: {
         src: ['./assets/styles/**/*.scss'],
         dest: './dist/styles'
     },
     scripts: {
-        src: ['./assets/scripts/**/*.ts'],
-        dest: './dist/scripts'
+        src: tsConfig.include,
+        dest: tsConfig.compilerOptions.outDir
     },
     vendor: {
         dest: {
@@ -37,15 +41,7 @@ function _scripts(done)
     src(paths.scripts.src)
         .pipe(newer(paths.scripts.dest))
         .pipe(sourcemaps.init())
-        .pipe(typescript({
-            'module': 'commonjs',
-            'target': 'es5',
-            'removeComments': true,
-            'noImplicitAny': true,
-            'noImplicitThis': true,
-            'strictNullChecks': true,
-            'strictFunctionTypes': true
-        }))
+        .pipe(tsProject())
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
         .pipe(sourcemaps.write())
