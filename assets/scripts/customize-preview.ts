@@ -1,48 +1,101 @@
 /// <reference path='./global.d.ts' />
 
-((_wp: WP, $: JQueryStatic): void => {
-    'use strict'
-
-    const { customize } = _wp
-
-    customize(jentilColophonModId, (from: () => void): void => {
-        from.bind((to: string): void => {
-            $('#colophon small').html(replaceShortTags(to))
-        })
-    })
-
-    $.each(jentilPageTitleModIds, (i: number, id: string): void => {
-        customize(id, (from: () => void): void => {
-            from.bind((to: string): void => {
-                $('.page-title').html(replaceShortTags(to))
-            })
-        })
-    })
-
-    $.each(jentilRelatedPostsHeadingModIds, (i: number, id: string): void => {
-        customize(id, (from: () => void): void => {
-            from.bind((to: string): void => {
-                $('#related-posts-wrap .posts-heading').html(to)
-            })
-        })
-    })
-
-    $.each(jentilPageLayoutModIds, (i: number, id: string): void => {
-        customize(id, (from: () => void): void => {
-            from.bind((to: string): void => {
-                $('body').attr('class', (i: number, c: string): string =>
-                    c.replace(/(^|\s)layout\-\S+/g, '')
-                ).addClass(`layout-${to} layout-columns-${to.split('-').length}`)
-            })
-        })
-    })
-
-    function replaceShortTags(content: string): string
+namespace Jentil
+{
+    export class Customizer
     {
-        $.each(jentilShortTags, (tag: string, replace: string): void => {
-            content = content.split(tag).join(replace)
-        })
+        public constructor(
+            private readonly _j: JQueryStatic,
+            private readonly _wp: WP,
+            private readonly _shortTags: object,
+            private readonly _colophonModId: string,
+            private readonly _pageLayoutModId: string[],
+            private readonly _pageTitleModId: string[],
+            private readonly _relPostsHdModId: string[],
+        ) {
+        }
 
-        return content
+        public run(): void
+        {
+            this.updateColophon()
+            this.updatePageTitle()
+            this.updateRelatedPostsHeading()
+            this.updatePageLayout()
+        }
+
+        private updateColophon(): void
+        {
+            this._wp.customize(
+                this._colophonModId,
+                (from: () => void): void => {
+                    from.bind((to: string): void => {
+                        this._j('#colophon small')
+                            .html(this.replaceShortTags(to))
+                    })
+                }
+            )
+        }
+
+        private updatePageTitle(): void
+        {
+            this._j.each(this._pageTitleModId, (_:number, id: string): void => {
+                this._wp.customize(id, (from: () => void): void => {
+                    from.bind((to: string): void => {
+                        this._j('.page-title').html(this.replaceShortTags(to))
+                    })
+                })
+            })
+        }
+
+        private updateRelatedPostsHeading(): void
+        {
+            this._j.each(this._relPostsHdModId, (_: number, id: string): void => {
+                this._wp.customize(id, (from: () => void): void => {
+                    from.bind((to: string): void => {
+                        this._j('#related-posts-wrap .posts-heading').html(to)
+                    })
+                })
+            })
+        }
+
+        private updatePageLayout(): void
+        {
+            this._j.each(
+                this._pageLayoutModId, (_: number, id: string): void => {
+                    this._wp.customize(id, (from: () => void): void => {
+                        from.bind((to: string): void => {
+                            this._j('body').attr(
+                                'class',
+                                (_: number, klass: string): string =>
+                                    klass.replace(/(^|\s)layout\-\S+/g, '')
+                            ).addClass(`layout-${to} layout-columns-${to
+                                .split('-').length}`)
+                        })
+                    })
+                }
+            )
+        }
+
+        private replaceShortTags(content: string): string
+        {
+            this._j.each(
+                this._shortTags,
+                (tag: string, replace: string): void => {
+                    content = content.split(tag).join(replace)
+                }
+            )
+
+            return content
+        }
     }
-})(wp, jQuery)
+}
+
+new Jentil.Customizer(
+    jQuery,
+    wp,
+    jentilShortTags,
+    jentilColophonModId,
+    jentilPageLayoutModIds,
+    jentilPageTitleModIds,
+    jentilRelatedPostsHeadingModIds
+).run()
