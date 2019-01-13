@@ -102,6 +102,7 @@ namespace Jentil
         }): void {
             this._j(button).parent().siblings('li').children('ul')
                 .slideUp(this._duration)
+
             this._j(button).parent().siblings('li').children('button')
                 .html(this.renderCaret('down'))
 
@@ -110,7 +111,8 @@ namespace Jentil
             fx(this._j(button).next('ul'))
         }
 
-        private toggleCaret(button: JTarget): void {
+        private toggleCaret(button: JTarget): void
+        {
             if ('none' === this._j(button).next('ul').css('display')) {
                 this._j(button).html(this.renderCaret('up'))
             } else {
