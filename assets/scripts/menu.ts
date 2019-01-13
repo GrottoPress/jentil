@@ -1,5 +1,9 @@
 /// <reference path='./global.d.ts' />
 
+type JTarget = JQuery<EventTarget | HTMLElement | JQuery<EventTarget>>
+type JTrigEvent = JQuery.TriggeredEvent
+type JEvent = JQuery.Event
+
 namespace Jentil
 {
     export class Menu
@@ -52,7 +56,7 @@ namespace Jentil
         {
             this._j('.js-main-menu-button').attr('href', '#').on(
                 'click',
-                (event: JQuery.Event): void => {
+                (event: JEvent): void => {
                     this._j('.js-main-menu').slideToggle(
                         this._duration,
                         (): void => {
@@ -70,7 +74,7 @@ namespace Jentil
         {
             this._j(this._subMenuButtonSelector).prev('a').on(
                 'click',
-                (event: JQuery.TriggeredEvent): void => {
+                (event: JTrigEvent): void => {
                     if ('#' === this._j(event.currentTarget).attr('href')) {
                         this.toggleSubMenu(this._j(event.currentTarget)
                             .next('button'))
@@ -85,24 +89,17 @@ namespace Jentil
         {
             this._j(this._subMenuButtonSelector).on(
                 'click',
-                (event: JQuery.TriggeredEvent
-            ): void => {
-                this.toggleSubMenu(event.currentTarget)
+                (event: JTrigEvent): void => {
+                    this.toggleSubMenu(event.currentTarget)
 
-                event.preventDefault()
-            })
+                    event.preventDefault()
+                }
+            )
         }
 
-        private toggleSubMenu(
-            button: JQuery<EventTarget> | HTMLElement | EventTarget,
-            effect = (target:
-                JQuery<EventTarget |
-                HTMLElement |
-                JQuery<EventTarget>>
-            ): void => {
-                this._j(target).slideToggle(this._duration)
-            }
-        ): void {
+        private toggleSubMenu(button: JTarget, fx = (target: JTarget): void => {
+            this._j(target).slideToggle(this._duration)
+        }): void {
             this._j(button).parent().siblings('li').children('ul')
                 .slideUp(this._duration)
             this._j(button).parent().siblings('li').children('button')
@@ -110,14 +107,10 @@ namespace Jentil
 
             this.toggleCaret(button)
 
-            effect(this._j(button).next('ul'))
+            fx(this._j(button).next('ul'))
         }
 
-        private toggleCaret(button:
-            JQuery<EventTarget> |
-            HTMLElement |
-            EventTarget
-        ): void {
+        private toggleCaret(button: JTarget): void {
             if ('none' === this._j(button).next('ul').css('display')) {
                 this._j(button).html(this.renderCaret('up'))
             } else {
