@@ -14,6 +14,7 @@ const mqpacker = require('css-mqpacker')
 const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
 const newer = require('gulp-newer')
+const rimraf = require('rimraf')
 
 const tsConfigFile = './tsconfig.json'
 const tsConfig = require(tsConfigFile)
@@ -108,9 +109,15 @@ function _watch()
     watch(paths.styles.src, {ignoreInitial: false}, _styles)
 }
 
+function _clean(done)
+{
+    rimraf('./dist', done)
+}
+
 exports.styles = _styles
 exports.scripts = _scripts
 exports.vendor = _vendor
 exports.watch = _watch
+exports.clean = _clean
 
 exports.default = series(parallel(_styles, _scripts), _watch)
