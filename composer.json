@@ -42,7 +42,7 @@
     ],
     "post-install-cmd": [
       "npm install",
-      "chmod -R +x ./bin ./vendor/bin ./node_modules/.bin",
+      "npm run chmod",
       "npm run build"
     ],
     "test": [

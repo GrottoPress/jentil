@@ -15,6 +15,7 @@ const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
 const newer = require('gulp-newer')
 const rimraf = require('rimraf')
+const chmodr = require('chmodr')
 
 const tsConfigFile = './tsconfig.json'
 const tsConfig = require(tsConfigFile)
@@ -114,10 +115,20 @@ function _clean(done)
     rimraf('./dist', done)
 }
 
+function _chmod(done)
+{
+    const perm = 0o755
+
+    chmodr('./bin', perm, done)
+    chmodr('./vendor/bin', perm, done)
+    chmodr('./node_modules/.bin', perm, done)
+}
+
 exports.styles = _styles
 exports.scripts = _scripts
 exports.vendor = _vendor
 exports.watch = _watch
 exports.clean = _clean
+exports.chmod = _chmod
 
 exports.default = series(parallel(_styles, _scripts), _watch)
