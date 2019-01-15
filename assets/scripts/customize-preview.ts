@@ -38,7 +38,7 @@ namespace Jentil
 
         private updatePageTitle(): void
         {
-            this._j.each(this._pageTitleModId, (_:number, id: string): void => {
+            this._j.each(this._pageTitleModId, (_, id: string): void => {
                 this._wp.customize(id, (from: () => void): void => {
                     from.bind((to: string): void => {
                         this._j('.page-title').html(this.replaceShortTags(to))
@@ -49,7 +49,7 @@ namespace Jentil
 
         private updateRelatedPostsHeading(): void
         {
-            this._j.each(this._relPostsHdModId, (_: number, id: string): void => {
+            this._j.each(this._relPostsHdModId, (_, id: string): void => {
                 this._wp.customize(id, (from: () => void): void => {
                     from.bind((to: string): void => {
                         this._j('#related-posts-wrap .posts-heading').html(to)
@@ -61,13 +61,15 @@ namespace Jentil
         private updatePageLayout(): void
         {
             this._j.each(
-                this._pageLayoutModId, (_: number, id: string): void => {
+                this._pageLayoutModId, (_, id: string): void => {
                     this._wp.customize(id, (from: () => void): void => {
                         from.bind((to: string): void => {
                             this._j('body').attr(
                                 'class',
-                                (_: number, klass: string): string =>
-                                    klass.replace(/(^|\s)layout\-\S+/g, '')
+                                (_, klass: string): string => klass.replace(
+                                    /(^|\s)layout\-\S+/g,
+                                    ''
+                                )
                             ).addClass(`layout-${to} layout-columns-${to
                                 .split('-').length}`)
                         })
