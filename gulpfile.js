@@ -63,7 +63,7 @@ function _styles(done)
         .pipe(sourcemaps.write())
         .pipe(dest(paths.styles.dest))
         .pipe(rtlcss())
-        .pipe(rename((path) =>
+        .pipe(rename(path =>
             path.basename = path.basename.replace('.min', '-rtl.min')
         ))
         .pipe(dest(paths.styles.dest))
