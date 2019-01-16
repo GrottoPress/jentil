@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add `Dockerfile`
 - Add `tsconfig.json`. Move typescript config from `gulpfile.js`.
+- Add PHP `7.3` to travis-ci build matrix
 
 ### Changed
 - Replace hard-coded domain path in core translation setup with one grabbed from `style.css`
