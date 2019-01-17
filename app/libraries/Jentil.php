@@ -119,6 +119,9 @@ final class Jentil extends AbstractTheme
 
     private function setUpScripts()
     {
+        $this->setups['Scripts\jQuery'] = new Setups\Scripts\jQuery($this);
+        $this->setups['Scripts\jQueryMigrate'] =
+            new Setups\Scripts\jQueryMigrate($this);
         $this->setups['Scripts\FontAwesome'] =
             new Setups\Scripts\FontAwesome($this);
         $this->setups['Scripts\FontAwesomeShim'] =

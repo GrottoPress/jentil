@@ -76,7 +76,9 @@ function _vendor(done)
     src([
         './node_modules/html5shiv/dist/html5shiv.min.js',
         './node_modules/respond.js/dest/respond.min.js',
-        './node_modules/what-input/dist/what-input.min.js'
+        './node_modules/what-input/dist/what-input.min.js',
+        './node_modules/jquery/dist/jquery.min.js',
+        './node_modules/jquery-migrate/dist/jquery-migrate.min.js'
     ])
         .pipe(newer(paths.vendor.dest.dist))
         .pipe(dest(paths.vendor.dest.dist))
