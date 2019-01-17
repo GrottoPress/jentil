@@ -2,7 +2,8 @@
 
 namespace Jentil
 {
-    export class App {
+    export class App
+    {
         public constructor(private readonly _j: JQueryStatic)
         {
         }
