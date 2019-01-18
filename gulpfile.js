@@ -21,7 +21,7 @@ const tsConfig = require('./tsconfig.json')
 
 const paths = {
     styles: {
-        src: ['./assets/styles/**/*.scss'],
+        src: ['./assets/styles/**/*'],
         dest: './dist/styles'
     },
     scripts: {
