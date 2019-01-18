@@ -17,9 +17,7 @@ const newer = require('gulp-newer')
 const rimraf = require('rimraf')
 const chmodr = require('chmodr')
 
-const tsConfigFile = './tsconfig.json'
-const tsConfig = require(tsConfigFile)
-const tsProject = typescript.createProject(tsConfigFile)
+const tsConfig = require('./tsconfig.json')
 
 const paths = {
     styles: {
@@ -43,7 +41,7 @@ function _scripts(done)
     src(paths.scripts.src)
         .pipe(newer(paths.scripts.dest))
         .pipe(sourcemaps.init())
-        .pipe(tsProject())
+        .pipe(typescript(tsConfig.compilerOptions))
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
         .pipe(sourcemaps.write())
