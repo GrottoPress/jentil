@@ -16,17 +16,22 @@ const focus = require('postcss-focus')
 const newer = require('gulp-newer')
 const rimraf = require('rimraf')
 const chmodr = require('chmodr')
+const bsync = require('browser-sync').create();
 
+const bsConfig = require('./bs-config.js')
 const tsConfig = require('./tsconfig.json')
 
 const paths = {
-    styles: {
-        src: ['./assets/styles/**/*'],
-        dest: './dist/styles'
-    },
     scripts: {
         src: tsConfig.include,
         dest: tsConfig.compilerOptions.outDir
+    },
+    serve: {
+        src: bsConfig.files
+    },
+    styles: {
+        src: ['./assets/styles/**/*'],
+        dest: './dist/styles'
     },
     vendor: {
         dest: {
@@ -65,6 +70,7 @@ function _styles(done)
             path.basename = path.basename.replace('.min', '-rtl.min')
         ))
         .pipe(dest(paths.styles.dest))
+        // .pipe(bsync.stream())
 
     done()
 }
@@ -104,10 +110,27 @@ function _vendor(done)
     done()
 }
 
-function _watch()
+function _serve(done)
+{
+    bsync.init(bsConfig)
+
+    done()
+}
+
+function _reload(done)
+{
+    bsync.reload()
+
+    done()
+}
+
+function _watch(done)
 {
     watch(paths.scripts.src, {ignoreInitial: false}, _scripts)
     watch(paths.styles.src, {ignoreInitial: false}, _styles)
+    watch(paths.serve.src, {ignoreInitial: false}, _reload)
+
+    done()
 }
 
 function _clean(done)
@@ -130,5 +153,6 @@ exports.vendor = _vendor
 exports.watch = _watch
 exports.clean = _clean
 exports.chmod = _chmod
+exports.serve = _serve
 
-exports.default = series(parallel(_styles, _scripts), _watch)
+exports.default = series(parallel(_styles, _scripts), _serve, _watch)

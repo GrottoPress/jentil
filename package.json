@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.3.29",
+    "browser-sync": "^2.26.3",
     "chmodr": "^1.2.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.8",
@@ -51,7 +52,8 @@
     "build": "gulp styles scripts vendor",
     "watch": "gulp watch",
     "clean": "gulp clean",
-    "chmod": "gulp chmod"
+    "chmod": "gulp chmod",
+    "serve": "gulp serve"
   },
   "keywords": [
     "jentil",

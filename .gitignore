@@ -3,3 +3,6 @@
 
 # npm
 /node_modules/
+
+# browser-sync
+/bs-config.js
