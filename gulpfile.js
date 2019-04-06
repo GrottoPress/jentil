@@ -14,8 +14,7 @@ const mqpacker = require('css-mqpacker')
 const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
 const newer = require('gulp-newer')
-const rimraf = require('rimraf')
-const chmodr = require('chmodr')
+const shell = require('shelljs')
 const bsync = require('browser-sync').create();
 
 const bsConfig = require('./bs-config.js')
@@ -135,16 +134,20 @@ function _watch(done)
 
 function _clean(done)
 {
-    rimraf('./dist', done)
+    shell.rm('-rf', './dist')
+
+    done()
 }
 
 function _chmod(done)
 {
-    const perm = 0o755
+    const perm = 'a+x'
 
-    chmodr('./bin', perm, done)
-    chmodr('./vendor/bin', perm, done)
-    chmodr('./node_modules/.bin', perm, done)
+    shell.chmod('-R', perm, './bin')
+    shell.chmod('-R', perm, './vendor/bin')
+    shell.chmod('-R', perm, './node_modules/.bin')
+
+    done()
 }
 
 exports.styles = _styles
