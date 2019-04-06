@@ -9,4 +9,4 @@ ENV JENTIL_DIR=${JENTIL_DIR}
 
 RUN mkdir -p ${JENTIL_DIR}
 
-COPY --chown=www-data . ${JENTIL_DIR}
+COPY --chown=www-data . ${JENTIL_DIR}/
