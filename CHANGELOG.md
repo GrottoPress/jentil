@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 - Remove jQuery version shipped with WordPress core
 
+### Fixed
+- Fix editor (Gutenberg) styling not applied
+
 ## 0.9.2 - 2018-10-08
 
 ### Changed

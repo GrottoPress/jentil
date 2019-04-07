@@ -2,7 +2,8 @@
  * Hyperlinks
  */
 
-.gutenberg__editor {
+.gutenberg__editor,
+#editor {
     .editor-block-list__block {
         @import '../core/link';
     }
