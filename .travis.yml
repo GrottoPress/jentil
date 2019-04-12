@@ -10,16 +10,13 @@ php:
   - nightly
 
 before_install:
- - composer self-update
- - npm i -g npm
+  - composer self-update
 
 install:
   - composer install --no-interaction --no-scripts
-  - npm install
 
 script:
   - composer run test
-  - npm run build
 
 matrix:
   fast_finish: true
@@ -29,6 +26,4 @@ matrix:
 cache:
   directories:
     - $HOME/.composer/cache
-    - $HOME/.npm
-    - node_modules
     - vendor
