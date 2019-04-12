@@ -6,7 +6,6 @@ const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
 const sass = require('gulp-sass')
-const sourcemaps = require('gulp-sourcemaps')
 const typescript = require('gulp-typescript')
 const postcss = require('gulp-postcss')
 const cssnano = require('cssnano')
@@ -16,6 +15,7 @@ const focus = require('postcss-focus')
 const newer = require('gulp-newer')
 const shell = require('shelljs')
 const bsync = require('browser-sync').create();
+const filter = require('gulp-filter')
 
 const bsConfig = require('./bs-config.js')
 const tsConfig = require('./tsconfig.json')
@@ -23,14 +23,16 @@ const tsConfig = require('./tsconfig.json')
 const paths = {
     scripts: {
         src: tsConfig.include,
-        dest: tsConfig.compilerOptions.outDir
+        dest: tsConfig.compilerOptions.outDir,
+        mapDest: '.'
     },
     serve: {
         src: bsConfig.files
     },
     styles: {
         src: ['./assets/styles/**/*.scss'],
-        dest: './dist/styles'
+        dest: './dist/styles',
+        mapDest: '.'
     },
     vendor: {
         dest: {
@@ -42,34 +44,30 @@ const paths = {
 
 function _scripts(done)
 {
-    src(paths.scripts.src)
+    src(paths.scripts.src, {sourcemaps: true})
         .pipe(newer(paths.scripts.dest))
-        .pipe(sourcemaps.init())
         .pipe(typescript(tsConfig.compilerOptions))
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
-        .pipe(sourcemaps.write())
-        .pipe(dest(paths.scripts.dest))
+        .pipe(dest(paths.scripts.dest, {sourcemaps: paths.scripts.mapDest}))
 
     done()
 }
 
 function _styles(done)
 {
-    src(paths.styles.src)
+    src(paths.styles.src, {sourcemaps: true})
         .pipe(newer(paths.styles.dest))
-        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([focus(), mqpacker({sort: mqsort}), cssnano()]))
         .pipe(rename({'suffix': '.min'}))
-        .pipe(sourcemaps.write())
-        .pipe(dest(paths.styles.dest))
+        .pipe(dest(paths.styles.dest, {sourcemaps: paths.styles.mapDest}))
+        .pipe(filter(['**/*.css']))
         .pipe(rtlcss())
         .pipe(rename(path =>
             path.basename = path.basename.replace('.min', '-rtl.min')
         ))
-        .pipe(dest(paths.styles.dest))
-        // .pipe(bsync.stream())
+        .pipe(dest(paths.styles.dest, {sourcemaps: paths.styles.mapDest}))
 
     done()
 }

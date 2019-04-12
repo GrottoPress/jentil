@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Replace hard-coded domain path in core translation setup with one grabbed from `style.css`
 - Upgrade gulp to version 4
 - Update scripts to use typescript namespaces and classes
+- Move sourcemaps into their own `.map` files.
 
 ### Removed
 - Remove jQuery version shipped with WordPress core
