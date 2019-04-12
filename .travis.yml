@@ -28,6 +28,7 @@ matrix:
 
 cache:
   directories:
-    - vendor
     - $HOME/.composer/cache
+    - $HOME/.npm
     - node_modules
+    - vendor
