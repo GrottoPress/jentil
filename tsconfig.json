@@ -10,6 +10,6 @@
     "outDir": "./dist/scripts"
   },
   "include": [
-    "./assets/scripts/**/*"
+    "./assets/scripts/**/*.ts"
   ]
 }

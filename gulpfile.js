@@ -29,7 +29,7 @@ const paths = {
         src: bsConfig.files
     },
     styles: {
-        src: ['./assets/styles/**/*'],
+        src: ['./assets/styles/**/*.scss'],
         dest: './dist/styles'
     },
     vendor: {
