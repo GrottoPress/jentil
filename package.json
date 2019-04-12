@@ -20,7 +20,7 @@
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@grottopress/scss": "^0.4.1",
     "html5shiv": "^3.7.3",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "jquery-migrate": "^3.0.1",
     "normalize.css": "^7.0.0",
     "respond.js": "^1.4.2",
@@ -44,7 +44,7 @@
     "postcss-focus": "^3.0.0",
     "shelljs": "^0.8.3",
     "sort-css-media-queries": "^1.4.3",
-    "typescript": "^3.4.2"
+    "typescript": "^3.4.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
