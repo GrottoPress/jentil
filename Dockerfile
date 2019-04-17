@@ -8,7 +8,7 @@ WORKDIR /tmp
 COPY composer.json composer.json
 COPY composer.lock composer.lock
 
-RUN composer install \
+RUN composer update \
         --no-autoloader \
         --no-dev \
         --no-interaction \
