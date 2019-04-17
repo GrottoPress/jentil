@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c54f96f0d7fe6ab5e196a757ed451e02",
+    "content-hash": "42ff132083b438457cb56c049fe79258",
     "packages": [
         {
             "name": "aura/html",
@@ -618,16 +618,16 @@
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "0.13.0",
+            "version": "0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "6a42c155400ae68de4c64b13ccfdf22a36f0af92"
+                "reference": "6a4d8a1479d81c462e79b5dd14553925b0ef70cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/6a42c155400ae68de4c64b13ccfdf22a36f0af92",
-                "reference": "6a42c155400ae68de4c64b13ccfdf22a36f0af92",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/6a4d8a1479d81c462e79b5dd14553925b0ef70cb",
+                "reference": "6a4d8a1479d81c462e79b5dd14553925b0ef70cb",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,8 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
-                "lucatume/function-mocker": "^1.3"
+                "lucatume/function-mocker": "^1.3",
+                "wp-cli/wp-cli-bundle": "^2.1"
             },
             "type": "library",
             "autoload": {
@@ -665,7 +666,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-10-06T21:36:09+00:00"
+            "time": "2019-04-17T21:08:18+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
