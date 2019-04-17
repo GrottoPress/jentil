@@ -145,11 +145,7 @@ function _clean(done)
 
 function _chmod(done)
 {
-    const perm = 'a+x'
-
-    shell.chmod('-R', perm, './bin')
-    shell.chmod('-R', perm, './vendor/bin')
-    shell.chmod('-R', perm, './node_modules/.bin')
+    shell.chmod('-R', 'a+x', './bin', './vendor/bin', './node_modules/.bin')
 
     done()
 }
