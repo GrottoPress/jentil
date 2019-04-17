@@ -1,8 +1,25 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## 0.5.1 - 2019-04-17
+
+### Added
+- Set `files` attribute in npm config
+- Add `.security.txt`
+- Add `.gitattributes`
+
+## 0.5.0 - 2019-04-16
+
+### Added
+- Add `.editorconfig`
+- Show screen reader text on keyboard focus
+
+### Changed
+- Rename `LICENSE.md` to `LICENSE`
 
 ## 0.4.1 - 2018-07-27
 

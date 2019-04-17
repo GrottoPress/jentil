@@ -1,32 +1,28 @@
 {
-  "_args": [
-    [
-      "@grottopress/scss@0.4.1",
-      "/var/www/html/wp-content/themes/jentil"
-    ]
-  ],
-  "_from": "@grottopress/scss@0.4.1",
-  "_id": "@grottopress/scss@0.4.1",
+  "_from": "@grottopress/scss@latest",
+  "_id": "@grottopress/scss@0.5.1",
   "_inBundle": false,
-  "_integrity": "sha512-+vUXGBjitudQk0vD5W06MxFB0/ri6e8PMhuG18h9vudoXr7AF+EC8x01sICs47EdJMXRcva+eN82mpdPiqSCVg==",
+  "_integrity": "sha512-+FfX5EP4i7hWmWjCI19UbuF1P8TpcGk8yWIW2q7Ia30cHhwZ5sf2IUngxn+IvWLNu8FRuJoc4/YTdkQ3EiKW4A==",
   "_location": "/@grottopress/scss",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "tag",
     "registry": true,
-    "raw": "@grottopress/scss@0.4.1",
+    "raw": "@grottopress/scss@latest",
     "name": "@grottopress/scss",
     "escapedName": "@grottopress%2fscss",
     "scope": "@grottopress",
-    "rawSpec": "0.4.1",
+    "rawSpec": "latest",
     "saveSpec": null,
-    "fetchSpec": "0.4.1"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.4.1.tgz",
-  "_spec": "0.4.1",
+  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.5.1.tgz",
+  "_shasum": "ab902db436dd8e6a6467c66215594ca024659b1e",
+  "_spec": "@grottopress/scss@latest",
   "_where": "/var/www/html/wp-content/themes/jentil",
   "author": {
     "name": "GrottoPress.com",
@@ -36,6 +32,7 @@
   "bugs": {
     "url": "https://github.com/GrottoPress/scss/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "N Atta Kusi Adusei",
@@ -43,8 +40,12 @@
     }
   ],
   "dependencies": {},
+  "deprecated": false,
   "description": "Sass utilities: Mixins, variables and functions.",
   "devDependencies": {},
+  "files": [
+    "/src"
+  ],
   "homepage": "https://github.com/GrottoPress/scss#README",
   "keywords": [
     "sass",
@@ -62,5 +63,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.4.1"
+  "version": "0.5.1"
 }
