@@ -1,8 +1,3 @@
-# composer
-/vendor/
-
-# npm
 /node_modules/
-
-# browser-sync
+/vendor/
 /bs-config.js
