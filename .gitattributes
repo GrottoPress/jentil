@@ -1,0 +1,17 @@
+/** export-ignore
+/app -export-ignore
+/app/** -export-ignore
+/assets -export-ignore
+/assets/** -export-ignore
+/dist -export-ignore
+/dist/** -export-ignore
+/lang -export-ignore
+/lang/** -export-ignore
+/.security.txt -export-ignore
+/composer.json -export-ignore
+/composer.lock -export-ignore
+/functions.php -export-ignore
+/index.php -export-ignore
+/LICENSE -export-ignore
+/screenshot.png -export-ignore
+/style.css -export-ignore
