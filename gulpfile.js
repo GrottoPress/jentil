@@ -132,7 +132,13 @@ function _watch(done)
 
 function _clean(done)
 {
-    shell.rm('-rf', './dist')
+    shell.rm(
+        '-rf',
+        paths.styles.dest,
+        paths.scripts.dest,
+        paths.vendor.dest.dist,
+        paths.vendor.dest.assets
+    )
 
     done()
 }
