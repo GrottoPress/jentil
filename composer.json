@@ -50,6 +50,9 @@
     ],
     "release": [
       "./bin/release"
+    ],
+    "wp": [
+      "./vendor/bin/wp"
     ]
   },
   "autoload": {
