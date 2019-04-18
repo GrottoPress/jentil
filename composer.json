@@ -28,7 +28,7 @@
     "php": ">=7.0",
     "grottopress/wordpress-breadcrumbs": "^0.7",
     "grottopress/wordpress-meta-box": "^0.4",
-    "grottopress/wordpress-posts": "^0.13",
+    "grottopress/wordpress-posts": "^0.14",
     "grottopress/wordpress-suv": "^0.6"
   },
   "require-dev": {
@@ -41,8 +41,8 @@
       "npm run build"
     ],
     "post-install-cmd": [
-      "chmod +x ./bin/*",
       "npm install",
+      "npm run chmod",
       "npm run build"
     ],
     "test": [
@@ -50,6 +50,9 @@
     ],
     "release": [
       "./bin/release"
+    ],
+    "wp": [
+      "./vendor/bin/wp"
     ]
   },
   "autoload": {

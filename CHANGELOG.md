@@ -1,8 +1,33 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## 0.10.0 - 2019-04-18
+
+### Added
+- Add `Dockerfile`
+- Add `.gitattributes`
+- Add `tsconfig.json`. Move typescript config from `gulpfile.js`.
+- Add PHP `7.3` to travis-ci build matrix
+- Add jQuery version 3 (with Migrate plugin)
+- Add support for [`wp_body_open`](https://make.wordpress.org/themes/2019/03/29/addition-of-new-wp_body_open-hook/) hook, introduced in WordPress 5.2
+- Set up [browser-sync](https://www.browsersync.io)
+
+### Changed
+- Replace hard-coded domain path in core translation setup with one grabbed from `style.css`
+- Upgrade gulp to version 4
+- Update scripts to use typescript namespaces and classes
+- Move sourcemaps into their own `.map` files.
+- Update gallery grid break points to ensure bigger thumbnails
+
+### Removed
+- Remove jQuery version shipped with WordPress core
+
+### Fixed
+- Fix editor (Gutenberg) styling not applied
 
 ## 0.9.2 - 2018-10-08
 

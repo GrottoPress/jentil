@@ -1,0 +1,10 @@
+/**
+!/app/
+!/dist/
+!/lang/
+!/composer.json
+!/composer.lock
+!/functions.php
+!/index.php
+!/screenshot.png
+!/style.css

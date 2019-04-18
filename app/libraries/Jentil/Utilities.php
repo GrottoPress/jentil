@@ -72,60 +72,46 @@ class Utilities
 
     private function getThemeMods(): Utilities\ThemeMods
     {
-        $this->themeMods = $this->themeMods ?: new Utilities\ThemeMods($this);
-
-        return $this->themeMods;
+        return $this->themeMods = $this->themeMods ?:
+            new Utilities\ThemeMods($this);
     }
 
     private function getPage(): Utilities\Page
     {
-        $this->page = $this->page ?: new Utilities\Page($this);
-
-        return $this->page;
+        return $this->page = $this->page ?: new Utilities\Page($this);
     }
 
     private function getFooter(): Utilities\Footer
     {
-        $this->footer = $this->footer ?: new Utilities\Footer($this);
-
-        return $this->footer;
+        return $this->footer = $this->footer ?: new Utilities\Footer($this);
     }
 
     private function getFileSystem(): Utilities\FileSystem
     {
-        $this->fileSystem = $this->fileSystem ?:
+        return $this->fileSystem = $this->fileSystem ?:
             new Utilities\FileSystem($this);
-
-        return $this->fileSystem;
     }
 
     private function getLoader(): Utilities\Loader
     {
-        $this->loader = $this->loader ?: new Utilities\Loader($this);
-
-        return $this->loader;
+        return $this->loader = $this->loader ?: new Utilities\Loader($this);
     }
 
     private function getShortTags(): Utilities\ShortTags
     {
-        $this->shortTags = $this->shortTags ?: new Utilities\ShortTags($this);
-
-        return $this->shortTags;
+        return $this->shortTags = $this->shortTags ?:
+            new Utilities\ShortTags($this);
     }
 
     private function getPostTypeTemplate(): Utilities\PostTypeTemplate
     {
-        $this->postTypeTemplate = $this->postTypeTemplate ?:
+        return $this->postTypeTemplate = $this->postTypeTemplate ?:
             new Utilities\PostTypeTemplate($this);
-
-        return $this->postTypeTemplate;
     }
 
     private function getMobileDetector(): Detector
     {
-        $this->mobileDetector = $this->mobileDetector ?: new Detector();
-
-        return $this->mobileDetector;
+        return $this->mobileDetector = $this->mobileDetector ?: new Detector();
     }
 
     /**

@@ -37,11 +37,13 @@ class CoreTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'meta' => ['text_domain' => 'jentil'],
+            'meta' => ['text_domain' => 'jentil', 'domain_path' => '/lang'],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'dir' => '/var/www/jentil/languages',
+            'dir' => function (string $type, $append) {
+                return "/var/www/jentil${append}";
+            }
         ]);
 
         $translation = new Core($jentil);
@@ -51,7 +53,7 @@ class CoreTest extends AbstractTestCase
         $load->wasCalledOnce();
         $load->wasCalledWithOnce([
             $translation->textDomain,
-            '/var/www/jentil/languages'
+            '/var/www/jentil/lang'
         ]);
     }
 }

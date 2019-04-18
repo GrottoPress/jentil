@@ -26,7 +26,10 @@ final class Core extends AbstractTranslation
     {
         \load_theme_textdomain(
             $this->textDomain,
-            $this->app->utilities->fileSystem->dir('path', '/lang')
+            $this->app->utilities->fileSystem->dir(
+                'path',
+                $this->app->meta['domain_path']
+            )
         );
     }
 }

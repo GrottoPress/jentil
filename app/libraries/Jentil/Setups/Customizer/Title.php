@@ -16,7 +16,7 @@ final class Title extends AbstractSection
         $this->id = 'title';
 
         $this->args['title'] = \esc_html__('Title', 'jentil');
-        $this->args['description'] = \esc_html__('Description here', 'jentil');
+        // $this->args['description'] = \esc_html__('Description here', 'jentil');
     }
 
     public function add(WPCustomizer $wp_customizer)

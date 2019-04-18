@@ -38,4 +38,6 @@ declare (strict_types = 1);
     </head>
 
     <body <?php \body_class(); ?>>
-        <?php \do_action('jentil_before_header');
+        <?php \do_action('wp_body_open');
+
+        \do_action('jentil_before_header');
