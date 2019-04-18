@@ -1,6 +1,6 @@
 {
   "name": "@grottopress/jentil",
-  "version": "0.9.2",
+  "version": "0.10.0",
   "description": "Jentil is a modern framework for rapid WordPress theme development",
   "license": "MIT",
   "private": true,
