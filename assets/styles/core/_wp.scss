@@ -66,17 +66,6 @@
 
 .gallery-item {
     line-height: map-get($jentil-line-height, normal);
-
-    .gallery-columns-2 &,
-    .gallery-columns-3 &,
-    .gallery-columns-4 &,
-    .gallery-columns-5 &,
-    .gallery-columns-6 &,
-    .gallery-columns-7 &,
-    .gallery-columns-8 &,
-    .gallery-columns-9 & {
-        width: 50%;
-    }
 }
 
 .gallery-caption {
@@ -96,6 +85,21 @@
 
 @media (min-width: map-get($jentil-breakpoint, x-small)) {
     .gallery-item {
+        .gallery-columns-2 &,
+        .gallery-columns-3 &,
+        .gallery-columns-4 &,
+        .gallery-columns-5 &,
+        .gallery-columns-6 &,
+        .gallery-columns-7 &,
+        .gallery-columns-8 &,
+        .gallery-columns-9 & {
+            width: 50%;
+        }
+    }
+}
+
+@media (min-width: map-get($jentil-breakpoint, small)) {
+    .gallery-item {
         .gallery-columns-3 & {
             width: 33.33%;
         }
@@ -111,7 +115,7 @@
     }
 }
 
-@media (min-width: map-get($jentil-breakpoint, small)) {
+@media (min-width: map-get($jentil-breakpoint, medium)) {
     .gallery-item {
         .gallery-columns-5 & {
             width: 20%;

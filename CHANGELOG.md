@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Upgrade gulp to version 4
 - Update scripts to use typescript namespaces and classes
 - Move sourcemaps into their own `.map` files.
+- Update gallery grid break points to ensure bigger thumbnails
 
 ### Removed
 - Remove jQuery version shipped with WordPress core
