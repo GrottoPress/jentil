@@ -20,6 +20,8 @@ const filter = require('gulp-filter')
 const bsConfig = require('./bs-config.js')
 const tsConfig = require('./tsconfig.json')
 
+const uglifyOpts = {output: {comments: /(^!|\@license|\@preserve)/i}}
+
 const paths = {
     scripts: {
         src: tsConfig.include,
@@ -47,7 +49,7 @@ function _scripts(done)
     src(paths.scripts.src, {sourcemaps: true})
         .pipe(newer(paths.scripts.dest))
         .pipe(typescript(tsConfig.compilerOptions))
-        .pipe(uglify())
+        .pipe(uglify(uglifyOpts))
         .pipe(rename({'suffix': '.min'}))
         .pipe(dest(paths.scripts.dest, {sourcemaps: paths.scripts.mapDest}))
 
@@ -82,6 +84,7 @@ function _vendor(done)
         './node_modules/jquery-migrate/dist/jquery-migrate.min.js'
     ])
         .pipe(newer(paths.vendor.dest.dist))
+        .pipe(uglify(uglifyOpts))
         .pipe(dest(paths.vendor.dest.dist))
 
     src(['./node_modules/normalize.css/normalize.css'])
@@ -92,11 +95,13 @@ function _vendor(done)
 
     src(['./node_modules/@fortawesome/fontawesome-free/js/all.min.js'])
         .pipe(newer(paths.vendor.dest.dist))
+        .pipe(uglify(uglifyOpts))
         .pipe(rename({'basename': 'font-awesome.min'}))
         .pipe(dest(paths.vendor.dest.dist))
 
     src(['./node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'])
         .pipe(newer(paths.vendor.dest.dist))
+        .pipe(uglify(uglifyOpts))
         .pipe(rename({'basename': 'font-awesome-v4-shims.min'}))
         .pipe(dest(paths.vendor.dest.dist))
 
