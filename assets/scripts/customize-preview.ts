@@ -1,3 +1,10 @@
+/*!
+ * Jentil: Customize Preview
+ *
+ * @author [GrottoPress](https://www.grottopress.com)
+ * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
+ */
+
 /// <reference path='./global.d.ts' />
 
 namespace Jentil
