@@ -1,8 +1,14 @@
+/*!
+ * Jentil: Menu
+ *
+ * @author [GrottoPress](https://www.grottopress.com)
+ * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
+ */
+
 /// <reference path='./global.d.ts' />
 
-type JTarget = JQuery<EventTarget | HTMLElement | JQuery<EventTarget>>
-type JTrigEvent = JQuery.TriggeredEvent
-type JEvent = JQuery.Event
+type Target = JQuery<EventTarget>
+type JClickEvent = JQuery.ClickEvent
 
 namespace Jentil
 {
@@ -56,7 +62,7 @@ namespace Jentil
         {
             this._j('.js-main-menu-button').attr('href', '#').on(
                 'click',
-                (event: JEvent): void => {
+                (event: JClickEvent): void => {
                     this._j('.js-main-menu').slideToggle(
                         this._duration,
                         (): void => {
@@ -74,7 +80,7 @@ namespace Jentil
         {
             this._j(this._subMenuButtonSelector).prev('a').on(
                 'click',
-                (event: JTrigEvent): void => {
+                (event: JClickEvent): void => {
                     if ('#' === this._j(event.currentTarget).attr('href')) {
                         this.toggleSubMenu(this._j(event.currentTarget)
                             .next('button'))
@@ -89,7 +95,7 @@ namespace Jentil
         {
             this._j(this._subMenuButtonSelector).on(
                 'click',
-                (event: JTrigEvent): void => {
+                (event: JClickEvent): void => {
                     this.toggleSubMenu(event.currentTarget)
 
                     event.preventDefault()
@@ -97,7 +103,7 @@ namespace Jentil
             )
         }
 
-        private toggleSubMenu(button: JTarget, fx = (target: JTarget): void => {
+        private toggleSubMenu(button: Target, fx = (target: Target): void => {
             this._j(target).slideToggle(this._duration)
         }): void {
             this._j(button).parent().siblings('li').children('ul')
@@ -111,7 +117,7 @@ namespace Jentil
             fx(this._j(button).next('ul'))
         }
 
-        private toggleCaret(button: JTarget): void
+        private toggleCaret(button: Target): void
         {
             if ('none' === this._j(button).next('ul').css('display')) {
                 this._j(button).html(this.renderCaret('up'))

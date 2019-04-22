@@ -1,7 +1,7 @@
 <?php
 
 /**
- * NOTE: Keep code in this file compatible with PHP 5.2
+ * IMPORTANT: Keep code in this file compatible with PHP 5.2
  */
 
 define('JENTIL_MIN_PHP', '7.0');
