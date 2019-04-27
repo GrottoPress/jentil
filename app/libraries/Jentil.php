@@ -56,7 +56,9 @@ final class Jentil extends AbstractTheme
      */
     protected function getMeta(): array
     {
-        return $this->meta = $this->meta ?: $this->meta();
+        return $this->meta = $this->meta ?: $this->themeData(
+            $this->getUtilities()->fileSystem->dir('path')
+        );
     }
 
     /**
@@ -69,6 +71,34 @@ final class Jentil extends AbstractTheme
         return
             ('package' === $mode && $rel_dir) ||
             ('theme' === $mode && !$rel_dir);
+    }
+
+    /**
+     * @return string[string]
+     */
+    public function themeData(string $themeDir): array
+    {
+        $file = "{$themeDir}/style.css";
+
+        $data = \array_map('sanitize_text_field', \get_file_data($file, [
+            'author' => 'Author',
+            'author_uri' => 'Author URI',
+            'description' => 'Description',
+            'documents_uri' => 'Documents URI',
+            'domain_path' => 'Domain Path',
+            'license' => 'License',
+            'license_uri' => 'License URI',
+            'name' => 'Theme Name',
+            'tags' => 'Tags',
+            'template' => 'Template',
+            'text_domain' => 'Text Domain',
+            'theme_uri' => 'Theme URI',
+            'version' => 'Version',
+        ], 'theme'));
+
+        $data['slug'] = \sanitize_title($data['name']);
+
+        return $data;
     }
 
     private function setUpMisc()
@@ -177,34 +207,5 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Supports\WooCommerce'] =
             new Setups\Supports\WooCommerce($this);
-    }
-
-    /**
-     * @return string[string]
-     */
-    private function meta(): array
-    {
-        $meta = \array_map('sanitize_text_field', \get_file_data(
-            $this->getUtilities()->fileSystem->dir('path', '/style.css'),
-            [
-                'name' => 'Theme Name',
-                'theme_uri' => 'Theme URI',
-                'description' => 'Description',
-                'author' => 'Author',
-                'author_uri' => 'Author URI',
-                'version' => 'Version',
-                'license' => 'License',
-                'license_uri' => 'License URI',
-                'tags' => 'Tags',
-                'text_domain' => 'Text Domain',
-                'domain_path' => 'Domain Path',
-                'documents_uri' => 'Documents URI',
-            ],
-            'theme'
-        ));
-
-        $meta['slug'] = \sanitize_title($meta['name']);
-
-        return $meta;
     }
 }

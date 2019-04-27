@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Set up automated builds for docker cloud
+- Introduce method to get a given theme's data from its `style.css`
 
 ## 0.10.1 - 2019-04-22
 
