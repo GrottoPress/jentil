@@ -2,17 +2,14 @@
 #
 # https://docs.docker.com/docker-cloud/builds/advanced/
 
+echo '[***] Build hook started'
+
 declare -a tag=$(echo "${DOCKER_TAG}"| \
     sed -r 's|[0-9.]+-wordpress([0-9.]+)-php([0-9.]+)-.+$|("\1" "\2")|g')
 
-php="${tag[1]}"
-wordpress="${tag[0]}"
-
-echo '[***] Build hook started'
-
 docker build \
-    --build-arg PHP_VERSION="${php}" \
-    --build-arg WORDPRESS_VERSION="${wordpress}" \
+    --build-arg PHP_VERSION="${tag[1]}" \
+    --build-arg WORDPRESS_VERSION="${tag[0]}" \
     -f $DOCKERFILE_PATH \
     -t "${IMAGE_NAME}" .
 
