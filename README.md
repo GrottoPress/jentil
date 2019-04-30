@@ -1,6 +1,30 @@
 # Jentil
 
-![Jentil code screenshot](https://www.grottopress.com/app/uploads/2018/08/my-theme-solarized-light-1000.png)
+```php
+<?php
+declare (strict_types = 1);
+
+namespace My;
+
+use My\Theme\Setups;
+use My\Theme\Utilities;
+use GrottoPress\Jentil\AbstractChildTheme;
+
+final class Theme extends AbstractChildTheme
+{
+    /**
+     * @var Utilities
+     */
+    private $utilities;
+
+    /**
+     * @var string[string]
+     */
+    private $meta;
+
+    protected function __construct()
+    {
+```
 
 Jentil is a modern framework for rapid WordPress theme development. It emphasizes a cleaner, more modular way of building WordPress themes, without straying too far from the core WordPress API.
 
