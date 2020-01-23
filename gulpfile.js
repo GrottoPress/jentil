@@ -14,7 +14,7 @@ const mqsort = require('sort-css-media-queries')
 const focus = require('postcss-focus')
 const newer = require('gulp-newer')
 const shell = require('shelljs')
-const bsync = require('browser-sync').create();
+const bsync = require('browser-sync').create()
 const filter = require('gulp-filter')
 
 const bsConfig = require('./bs-config.js')
