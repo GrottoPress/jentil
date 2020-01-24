@@ -11,6 +11,6 @@ docker build \
     --build-arg PHP_VERSION="${tag[1]}" \
     --build-arg WORDPRESS_VERSION="${tag[0]}" \
     -f "${DOCKERFILE_PATH}" \
-    -t "${IMAGE_NAME}" .
+    -t "${IMAGE_NAME}" ../
 
 echo '[***] Build hook ended'
