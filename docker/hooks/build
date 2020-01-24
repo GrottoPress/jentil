@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # https://docs.docker.com/docker-cloud/builds/advanced/
 
@@ -7,12 +7,14 @@ echo '[***] Build hook started'
 declare -a tag=$(echo "${DOCKER_TAG}"| \
     sed -r 's|[0-9.]+-wordpress([0-9.]+)-php([0-9.]+)-.+$|("\1" "\2")|g')
 
-context="$(dirname $(dirname ${DOCKERFILE_PATH}))"
+echo "PHP_VERSION: ${tag[1]}"
+echo "WORDPRESS_VERSION: ${tag[0]}"
+echo "Dockerfile: ${DOCKERFILE_PATH}"
 
 docker build \
     --build-arg PHP_VERSION="${tag[1]}" \
     --build-arg WORDPRESS_VERSION="${tag[0]}" \
     -f "${DOCKERFILE_PATH}" \
-    -t "${IMAGE_NAME}" "${context}"
+    -t "${IMAGE_NAME}" .
 
 echo '[***] Build hook ended'
