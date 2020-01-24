@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # https://docs.docker.com/docker-cloud/builds/advanced/
 
