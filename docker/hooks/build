@@ -7,10 +7,6 @@ echo '[***] Build hook started'
 declare -a tag=$(echo "${DOCKER_TAG}"| \
     sed -r 's|[0-9.]+-wordpress([0-9.]+)-php([0-9.]+)-.+$|("\1" "\2")|g')
 
-echo "PHP_VERSION: ${tag[1]}"
-echo "WORDPRESS_VERSION: ${tag[0]}"
-echo "Dockerfile: ${DOCKERFILE_PATH}"
-
 docker build \
     --build-arg PHP_VERSION="${tag[1]}" \
     --build-arg WORDPRESS_VERSION="${tag[0]}" \
