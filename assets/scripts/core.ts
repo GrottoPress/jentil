@@ -1,30 +1,7 @@
-/*!
- * Jentil
- *
- * @author [GrottoPress](https://www.grottopress.com)
- * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
- */
+import { Base } from './core/base'
 
-/// <reference path='./global.d.ts' />
+import { BodyClass } from './core/body-class'
 
-namespace Jentil
-{
-    export class App
-    {
-        public constructor(private readonly _j: JQueryStatic)
-        {
-        }
+const cores = [new BodyClass(jQuery)]
 
-        public run(): void
-        {
-            this.addBodyClasses()
-        }
-
-        private addBodyClasses(): void
-        {
-            this._j('body').removeClass('no-js').addClass('has-js')
-        }
-    }
-}
-
-new Jentil.App(jQuery).run()
+jQuery.each(cores, (_, core: Base): void => core.run())
