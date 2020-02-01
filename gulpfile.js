@@ -64,13 +64,6 @@ function _clean(done)
     done()
 }
 
-function _reload(done)
-{
-    bsync.reload()
-
-    done()
-}
-
 function _scripts(done)
 {
     src(paths.scripts.src, {sourcemaps: true})
@@ -150,7 +143,6 @@ function _watch(done)
 {
     watch(paths.scripts.watchSrc, {ignoreInitial: false}, _scripts)
     watch(paths.styles.watchSrc, {ignoreInitial: false}, _styles)
-    watch(paths.serve.src, {ignoreInitial: false}, _reload)
 
     done()
 }
