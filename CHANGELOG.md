@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add support for PHP 7.4
 - Set up JS module bundling with [rollup js](https://rollupjs.org)
+- Add `Procfile`
 
 ## 0.10.2 - 2019-04-30
 
