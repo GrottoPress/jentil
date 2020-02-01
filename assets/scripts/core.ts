@@ -1,3 +1,5 @@
+/// <reference path='./core/module.d.ts' />
+
 import { Base } from './core/base'
 
 import { BodyClass } from './core/body-class'

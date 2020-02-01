@@ -1,3 +1,5 @@
+/// <reference path='./customize-preview/module.d.ts' />
+
 import { Base } from './customize-preview/base'
 
 import { Colophon } from './customize-preview/colophon'

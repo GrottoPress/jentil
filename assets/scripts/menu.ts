@@ -1,3 +1,5 @@
+/// <reference path='./menu/module.d.ts' />
+
 import { Base } from './menu/base'
 
 import { MenuButton } from './menu/menu-button'
