@@ -108,14 +108,8 @@ label {
 
 /** Search form */
 
-.search-wrap {
-    @include paragraph;
-}
-
 .form.search {
     @include position(relative);
-
-    margin: 0;
 
     input[type=search] {
         margin: 0;

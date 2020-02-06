@@ -25,7 +25,7 @@ $next_label = \sanitize_text_field(
 <figure class="entry-attachment image aligncenter">
     <div class="image-wrap"><a href="<?=
         \wp_get_attachment_url($post->id);
-    ?>" rel="attachment" itemprop="url"><?=
+    ?>" rel="attachment"><?=
         \wp_get_attachment_image($post->ID, \apply_filters(
             'jentil_attachment_size',
             'large'
@@ -33,8 +33,8 @@ $next_label = \sanitize_text_field(
     ?></a></div>
 
     <?php if ($post->post_excerpt) { ?>
-        <figcaption class="entry-caption wp-caption-text" itemprop="description">
-            <?php the_excerpt(); ?>
+        <figcaption class="entry-caption wp-caption-text">
+            <?php \the_excerpt(); ?>
         </figcaption>
 
     <?php } ?>

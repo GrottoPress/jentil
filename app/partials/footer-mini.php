@@ -6,7 +6,7 @@ declare (strict_types = 1);
 
 <?php \do_action('jentil_before_footer'); ?>
 
-<footer id="footer" class="site-footer" itemscope itemtype="http://schema.org/WPFooter">
+<footer id="footer" class="site-footer">
     <?php \do_action('jentil_inside_footer'); ?>
 </footer><!-- #footer -->
 
