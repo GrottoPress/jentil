@@ -74,7 +74,7 @@ class Footer extends AbstractThemeMod
             \esc_html__('&copy; %1$s %2$s. Built with %3$s on %4$s', 'jentil'),
             '{{this_year}}',
             '<a class="blog-name" href="{{site_url}}">{{site_name}}</a>',
-            '<em><a rel="nofollow" href="'.$meta['theme_uri'].'">'.
+            '<em><a rel="nofollow" href="'.$meta['uri'].'">'.
                 $meta['name'].
             '</a></em>',
             '<a rel="nofollow" href="https://wordpress.org">WordPress</a>.'

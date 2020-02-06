@@ -92,7 +92,7 @@ final class Jentil extends AbstractTheme
             'tags' => 'Tags',
             'template' => 'Template',
             'text_domain' => 'Text Domain',
-            'theme_uri' => 'Theme URI',
+            'uri' => 'Theme URI',
             'version' => 'Version',
         ], 'theme'));
 

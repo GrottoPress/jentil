@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Set up JS module bundling with [rollup js](https://rollupjs.org)
 - Add `Procfile`
 
+### Changed
+- Remove `theme_` prefix from theme meta keys
+
 ### Removed
 - Remove HTML microdata
 
