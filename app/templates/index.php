@@ -11,9 +11,7 @@ if (!\Jentil()->utilities->page->is('singular')) {
         <header class="page-header">
             <?php \do_action('jentil_before_title'); ?>
 
-            <h1 class="page-title" itemprop="name mainEntityOfPage"><?=
-                $jentil_title;
-            ?></h1>
+            <h1 class="page-title"><?= $jentil_title; ?></h1>
 
             <?php \do_action('jentil_after_title'); ?>
         </header>

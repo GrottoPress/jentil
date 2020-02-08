@@ -34,7 +34,7 @@ class FooterTest extends AbstractTestCase
 
                 function __construct()
                 {
-                    $this->meta = ['name' => 'Jentil', 'theme_uri' => '#'];
+                    $this->meta = ['name' => 'Jentil', 'uri' => '#'];
                 }
             }
         ]);

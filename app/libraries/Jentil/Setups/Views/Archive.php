@@ -27,7 +27,7 @@ final class Archive extends AbstractSetup
             return;
         }
 
-        echo '<div class="archive-description entry-summary" itemprop="description">'.
+        echo '<div class="archive-description entry-summary">'.
             $description.
         '</div>';
     }

@@ -8,14 +8,7 @@ declare const jentilRelatedPostsHeadingModIds: string[]
 
 declare const jentilPageLayoutModIds: string[]
 
-declare const jentilMenuL10n: JentilMenuL10n
-
 declare const wp: WP
-
-interface JentilMenuL10n
-{
-    submenu: string
-}
 
 interface WP
 {

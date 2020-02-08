@@ -45,12 +45,8 @@
 #primary-menu {
     @include paragraph;
 
-    .search-wrap {
-        @include paragraph;
-    }
-
     .form.search {
-        margin: 0;
+        margin-bottom: 20px;
     }
 
     .skip-link {

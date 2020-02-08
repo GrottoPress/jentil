@@ -22,8 +22,7 @@
     h6,
     pre,
     dd,
-    blockquote,
-    .search-wrap {
+    blockquote {
         @include paragraph(10px);
     }
 
@@ -61,9 +60,5 @@
         ol {
             @include paragraph(5px);
         }
-    }
-
-    .form.search {
-        margin: 0;
     }
 }

@@ -1,110 +1,17 @@
-/*!
- * Jentil: Customize Preview
- *
- * @author [GrottoPress](https://www.grottopress.com)
- * @author [N Atta Kusi Adusei](https://twitter.com/akadusei)
- */
+/// <reference path='./customize-preview/module.d.ts' />
 
-/// <reference path='./global.d.ts' />
+import { Base } from './customize-preview/base'
 
-namespace Jentil
-{
-    export class Customizer
-    {
-        public constructor(
-            private readonly _j: JQueryStatic,
-            private readonly _wp: WP,
-            private readonly _shortTags: object,
-            private readonly _colophonModId: string,
-            private readonly _pageLayoutModId: string[],
-            private readonly _pageTitleModId: string[],
-            private readonly _relPostsHdModId: string[],
-        ) {
-        }
+import { Colophon } from './customize-preview/colophon'
+import { PageLayout } from './customize-preview/page-layout'
+import { PageTitle } from './customize-preview/page-title'
+import { RelatedPostsHeading } from './customize-preview/related-posts-heading'
 
-        public run(): void
-        {
-            this.updateColophon()
-            this.updatePageTitle()
-            this.updateRelatedPostsHeading()
-            this.updatePageLayout()
-        }
+const previews = [
+    new Colophon(jQuery, wp, jentilColophonModId, jentilShortTags),
+    new PageLayout(jQuery, wp, jentilPageLayoutModIds),
+    new PageTitle(jQuery, wp, jentilPageTitleModIds, jentilShortTags),
+    new RelatedPostsHeading(jQuery, wp, jentilRelatedPostsHeadingModIds)
+]
 
-        private updateColophon(): void
-        {
-            this._wp.customize(
-                this._colophonModId,
-                (from: () => void): void => {
-                    from.bind((to: string): void => {
-                        this._j('#colophon small')
-                            .html(this.replaceShortTags(to))
-                    })
-                }
-            )
-        }
-
-        private updatePageTitle(): void
-        {
-            this._j.each(this._pageTitleModId, (_, id: string): void => {
-                this._wp.customize(id, (from: () => void): void => {
-                    from.bind((to: string): void => {
-                        this._j('.page-title').html(this.replaceShortTags(to))
-                    })
-                })
-            })
-        }
-
-        private updateRelatedPostsHeading(): void
-        {
-            this._j.each(this._relPostsHdModId, (_, id: string): void => {
-                this._wp.customize(id, (from: () => void): void => {
-                    from.bind((to: string): void => {
-                        this._j('#related-posts-wrap .posts-heading').html(to)
-                    })
-                })
-            })
-        }
-
-        private updatePageLayout(): void
-        {
-            this._j.each(
-                this._pageLayoutModId, (_, id: string): void => {
-                    this._wp.customize(id, (from: () => void): void => {
-                        from.bind((to: string): void => {
-                            this._j('body').attr(
-                                'class',
-                                (_, klass: string): string => klass.replace(
-                                    /(^|\s)layout\-\S+/g,
-                                    ''
-                                )
-                            ).addClass(`layout-${to} layout-columns-${to
-                                .split('-').length}`)
-                        })
-                    })
-                }
-            )
-        }
-
-        private replaceShortTags(content: string): string
-        {
-            this._j.each(
-                this._shortTags,
-                (tag: string, replace: string): void => {
-                    content = content.split(tag).join(replace)
-                }
-            )
-
-            return content
-        }
-    }
-}
-
-new Jentil.Customizer(
-    jQuery,
-    wp,
-    jentilShortTags,
-    jentilColophonModId,
-    jentilPageLayoutModIds,
-    jentilPageTitleModIds,
-    jentilRelatedPostsHeadingModIds
-).run()
+jQuery.each(previews, (_, preview: Base): void => preview.run())
