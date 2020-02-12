@@ -1,6 +1,7 @@
 /**
 !/app/
 !/dist/
+!/docker/
 !/lang/
 !/composer.json
 !/composer.lock
