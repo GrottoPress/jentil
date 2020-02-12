@@ -78,7 +78,7 @@ These are the core requirements you need to get in place. The rest would be inst
 
 Install *jentil-theme*, which is a starter for building your own theme with Jentil:
 
-1. From the `wp-content/themes` directory, run `composer create-project --remove-vcs grottopress/jentil-theme your-theme-slug-here dev-dev`.
+1. From the `wp-content/themes` directory, run `composer create-project --remove-vcs grottopress/jentil-theme your-theme-slug-here`.
 1. Switch to `your-theme-slug-here` directory: `cd your-theme-slug-here`.
 1. Update theme information in `style.css`. You may also want to change package name, description and author in `composer.json` and `package.json`.
 1. Copy `bs-config-sample.js` to `bs-config.js`: `cp bs-config-sample.js bs-config.js`. Edit to taste.
@@ -98,7 +98,7 @@ If, for any reason, you would like to use Jentil as parent theme instead, follow
 1. Add `Template: jentil` to your theme's `style.css` headers.
 1. Run `composer remove grottopress/jentil` to remove Jentil from your theme's dependencies.
 1. Swicth to `wp-content/themes` directory: `cd ../`
-1. Install Jentil as (parent) theme: `composer create-project grottopress/jentil jentil dev-dev`
+1. Install Jentil as (parent) theme: `composer create-project grottopress/jentil jentil`
 1. Switch to your own theme's directory: `cd your-theme-slug-here`
 1. Activate your own theme (not Jentil), if not already active.
 
