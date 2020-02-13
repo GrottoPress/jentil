@@ -28,11 +28,10 @@ ENV JENTIL_DIR=${WORDPRESS_DIR}/wp-content/themes/jentil
 
 COPY --chown=www-data . /usr/src/jentil/
 COPY --chown=www-data --from=vendor /tmp/vendor/ /usr/src/jentil/vendor/
-
 COPY docker/docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
 RUN cat /usr/local/bin/docker-entrypoint.sh | \
-        sed '/^exec "$@"/d' > \
+        sed '/^\s*exec "$@"/d' > \
         /usr/local/bin/docker-jentil-entrypoint.sh; \
     cat /tmp/docker-entrypoint.sh >> \
         /usr/local/bin/docker-jentil-entrypoint.sh; \
