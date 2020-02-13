@@ -23,22 +23,21 @@ RUN composer dump-autoload \
 
 FROM grottopress/wordpress:${WORDPRESS_VERSION}-php${PHP_VERSION}-apache
 
-ENV THEME_NAME=jentil
 ENV WORDPRESS_DIR=/var/www/html
-ENV THEME_DIR=${WORDPRESS_DIR}/wp-content/themes/${THEME_NAME}
+ENV JENTIL_DIR=${WORDPRESS_DIR}/wp-content/themes/jentil
 
-COPY --chown=www-data . /usr/src/${THEME_NAME}/
-COPY --chown=www-data --from=vendor /tmp/vendor/ /usr/src/${THEME_NAME}/vendor/
+COPY --chown=www-data . /usr/src/jentil/
+COPY --chown=www-data --from=vendor /tmp/vendor/ /usr/src/jentil/vendor/
 
-COPY docker/docker-entrypoint.sh /usr/local/bin/docker-jentil-entrypoint.sh
+COPY docker/docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
 RUN cat /usr/local/bin/docker-entrypoint.sh | \
         sed '/^exec "$@"/d' > \
-        /usr/local/bin/docker-main-entrypoint.sh; \
-    cat /usr/local/bin/docker-jentil-entrypoint.sh >> \
-        /usr/local/bin/docker-main-entrypoint.sh; \
-    chmod +x /usr/local/bin/docker-main-entrypoint.sh
+        /usr/local/bin/docker-jentil-entrypoint.sh; \
+    cat /tmp/docker-entrypoint.sh >> \
+        /usr/local/bin/docker-jentil-entrypoint.sh; \
+    chmod +x /usr/local/bin/docker-jentil-entrypoint.sh
 
-ENTRYPOINT ["docker-main-entrypoint.sh"]
+ENTRYPOINT ["docker-jentil-entrypoint.sh"]
 
 CMD ["apache2-foreground"]
