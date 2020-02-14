@@ -102,6 +102,35 @@ If, for any reason, you would like to use Jentil as parent theme instead, follow
 1. Switch to your own theme's directory: `cd your-theme-slug-here`
 1. Activate your own theme (not Jentil), if not already active.
 
+### Install via Docker
+
+Your new theme has docker files in the `docker` directory. The following `Dockerfile`s are available:
+
+- `apache.Dockerfile`: Builds an image of WordPress + PHP + apache, with your theme installed.
+- `apache.child.Dockerfile`: Builds an image of WordPress + PHP + apache, with your theme installed **as child theme** of Jentil.
+- `fpm-alpine.Dockerfile`: Builds an image of WordPress + PHP-FPM, with your theme installed.
+- `fpm-alpine.child.Dockerfile`: Builds an image of WordPress + PHP-FPM, with your theme installed **as child theme** of Jentil.
+
+You may build an image using any of the `Dockerfile`s:
+
+```bash
+docker build \
+    --build-arg JENTIL_VERSION=0.11.1 \
+    --build-arg PHP_VERSION=7.4 \
+    --build-arg THEME_NAME=your-theme-slug-here \
+    --build-arg WORDPRESS_VERSION=5.3 \
+    -f docker/fpm-alpine.Dockerfile \
+    -t your-image-tag-here .
+```
+
+You may run your built image thus:
+
+```bash
+docker run -d --name your-container-name-here \
+    -v ${PWD}/wordpress:/var/www/html \
+    your-image-tag-here
+```
+
 ## Developing your theme
 
 Whether Jentil is installed as theme or package, it acts as a parent theme, in the WordPress sense. This means your theme inherits all features of Jentil.
