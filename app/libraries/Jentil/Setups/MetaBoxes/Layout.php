@@ -73,13 +73,6 @@ final class Layout extends AbstractMetaBox
                     'layout' => 'block',
                 ],
             ],
-            'notes' => '<p>'.\sprintf(
-                \__(
-                    'Need help? Check out the <a href="%s" target="_blank" rel="noreferrer noopener nofollow">documentation</a>.',
-                    'jentil'
-                ),
-                $this->app->meta['documents_uri']
-            ).'</p>',
         ];
     }
 }
