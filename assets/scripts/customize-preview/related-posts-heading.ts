@@ -4,7 +4,7 @@ import { Base } from './base'
 
 export class RelatedPostsHeading extends Base
 {
-    update(): void
+    protected update(): void
     {
         this._j.each(this._mod_ids, (_, id: string): void => {
             this._wp.customize(id, (from: () => void): void => {

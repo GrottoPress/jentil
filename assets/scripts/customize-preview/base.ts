@@ -20,7 +20,7 @@ export abstract class Base
         this.update()
     }
 
-    abstract update(): void
+    protected abstract update(): void
 
     protected replaceShortTags(tags: object, content: string): string
     {
