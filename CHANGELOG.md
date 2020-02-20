@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased] - 
 
 ### Fixed
-- Remove top margin from sidebars on medium screen size up
+- Remove top margin from sidebars on large screens
 
 ## [0.11.1] - 2020-02-14
 
