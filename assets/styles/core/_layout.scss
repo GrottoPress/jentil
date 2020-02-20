@@ -68,8 +68,9 @@
         align-items: flex-start;
     }
 
+    .site-content,
     .site-sidebar,
-    .site-content {
+    .site-sidebar.widget-area {
         margin-top: 0;
         margin-bottom: 0;
     }
