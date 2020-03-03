@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased] - 
 
+### Changed
+- Update `lucatume/wp-browser` package to version 2.2
+
 ### Fixed
 - Remove top margin from sidebars on large screens
 
