@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased] - 
 
 ### Changed
+- Update `grottopress/wordpress-suv` to version 0.7
 - Update `lucatume/wp-browser` package to version 2.2
 
 ### Fixed

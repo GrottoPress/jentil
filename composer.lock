@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95a8e6175248f5d40fce8f27adedb935",
+    "content-hash": "aff7cb562af4a00272a67b8f81f3e38d",
     "packages": [
         {
             "name": "aura/html",
@@ -614,16 +614,16 @@
         },
         {
             "name": "grottopress/wordpress-suv",
-            "version": "v0.6.2",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-suv.git",
-                "reference": "388d4286a51fad92a5597fa1742d54e83f5b3f6d"
+                "reference": "ea6f6bfd90b25e894a603a738b68885fe0b5cdc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/388d4286a51fad92a5597fa1742d54e83f5b3f6d",
-                "reference": "388d4286a51fad92a5597fa1742d54e83f5b3f6d",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-suv/zipball/ea6f6bfd90b25e894a603a738b68885fe0b5cdc4",
+                "reference": "ea6f6bfd90b25e894a603a738b68885fe0b5cdc4",
                 "shasum": ""
             },
             "require": {
@@ -658,7 +658,7 @@
                 "suv",
                 "wordpress"
             ],
-            "time": "2020-02-08T14:45:58+00:00"
+            "time": "2020-03-11T14:43:08+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

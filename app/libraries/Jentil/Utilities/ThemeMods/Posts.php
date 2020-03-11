@@ -8,11 +8,6 @@ use GrottoPress\Jentil\Utilities\ThemeMods;
 class Posts extends AbstractThemeMod
 {
     /**
-     * @var ThemeMods
-     */
-    private $themeMods;
-
-    /**
      * @var string $setting Post setting to retrieve
      */
     private $setting;
@@ -40,7 +35,7 @@ class Posts extends AbstractThemeMod
         string $setting,
         array $args = []
     ) {
-        $this->themeMods = $theme_mods;
+        parent::__construct($theme_mods);
 
         $this->setting = \sanitize_key($setting);
         $this->context = \sanitize_key($args['context'] ?? '');

@@ -9,20 +9,15 @@ use GrottoPress\Jentil;
 class Footer extends AbstractThemeMod
 {
     /**
-     * @var ThemeMods
-     */
-    private $themeMods;
-
-    /**
      * @var string
      */
     private $setting;
 
     public function __construct(ThemeMods $theme_mods, string $setting)
     {
-        $this->themeMods = $theme_mods;
-        $this->setting = \sanitize_key($setting);
+        parent::__construct($theme_mods);
 
+        $this->setting = \sanitize_key($setting);
         $this->id = $this->id();
         $this->default = $this->default();
     }

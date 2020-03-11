@@ -29,7 +29,7 @@
     "grottopress/wordpress-breadcrumbs": "^0.8",
     "grottopress/wordpress-meta-box": "^0.4",
     "grottopress/wordpress-posts": "^0.15",
-    "grottopress/wordpress-suv": "^0.6"
+    "grottopress/wordpress-suv": "^0.7"
   },
   "require-dev": {
     "lucatume/wp-browser": "^2.2",

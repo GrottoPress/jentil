@@ -4,48 +4,17 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Utilities\ThemeMods;
 
 use GrottoPress\Jentil\Utilities\ThemeMods;
-use GrottoPress\Jentil\IdentityTrait;
+use GrottoPress\WordPress\SUV\Utilities\ThemeMods\AbstractThemeMod as ThemeMod;
 
-class AbstractThemeMod
+abstract class AbstractThemeMod extends ThemeMod
 {
-    use IdentityTrait;
-
     /**
-     * @var mixed
+     * @var ThemeMods
      */
-    protected $default;
+    protected $themeMods;
 
-    protected function getDefault()
+    public function __construct(ThemeMods $theme_mods)
     {
-        return $this->default;
-    }
-
-    public function get()
-    {
-        if (!$this->id) {
-            \settype($value, \gettype($this->default));
-
-            return $value;
-        }
-
-        return \get_theme_mod($this->id, $this->default);
-    }
-
-    public function update($new_value): bool
-    {
-        if (!$this->id) {
-            return false;
-        }
-
-        return \set_theme_mod($this->id, $new_value);
-    }
-
-    public function delete()
-    {
-        if (!$this->id) {
-            return;
-        }
-
-        \remove_theme_mod($this->id);
+        $this->themeMods = $theme_mods;
     }
 }

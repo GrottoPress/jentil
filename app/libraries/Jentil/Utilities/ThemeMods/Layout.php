@@ -8,11 +8,6 @@ use GrottoPress\Jentil\Utilities\ThemeMods;
 class Layout extends AbstractThemeMod
 {
     /**
-     * @var ThemeMods
-     */
-    private $themeMods;
-
-    /**
      * @var string $context Page type.
      */
     private $context;
@@ -32,7 +27,7 @@ class Layout extends AbstractThemeMod
      */
     public function __construct(ThemeMods $theme_mods, array $args = [])
     {
-        $this->themeMods = $theme_mods;
+        parent::__construct($theme_mods);
 
         $this->context = \sanitize_key($args['context'] ?? '');
         $this->specific = \sanitize_key($args['specific'] ?? '');
