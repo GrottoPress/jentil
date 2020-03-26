@@ -10,7 +10,7 @@ define('JENTIL_MIN_WP', '4.7');
 if (version_compare(PHP_VERSION, JENTIL_MIN_PHP, '<') ||
     version_compare(get_bloginfo('version'), JENTIL_MIN_WP, '<')
 ) {
-    add_action('admin_notices', 'printJentilReqNotice');
+    add_action('admin_notices', 'printJentilNotice');
 
     deactivateJentil();
 } else {
@@ -24,7 +24,7 @@ function runJentil()
     Jentil()->run();
 }
 
-function printJentilReqNotice()
+function printJentilNotice()
 {
     echo '<div class="notice notice-error">
         <p>'.
