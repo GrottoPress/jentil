@@ -6,7 +6,7 @@
 # Example `./bin/release 0.1.0`
 
 TO_VERSION="${1#v}"
-DEV_BRANCH='dev'
+DEV_BRANCH='master'
 
 doChecks()
 {
