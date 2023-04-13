@@ -9,5 +9,5 @@
     "strictFunctionTypes": true,
     "outDir": "./dist/scripts"
   },
-  "include": ["./assets/scripts/*.ts"]
+  "include": ["./assets/scripts/**/*.ts"]
 }

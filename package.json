@@ -17,7 +17,7 @@
     }
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@grottopress/scss": "^0.5.1",
     "html5shiv": "^3.7.3",
     "jquery": "^3.4.1",
@@ -27,27 +27,26 @@
     "what-input": "^5.2.7"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^3.1.1",
+    "@rollup/plugin-typescript": "^4.0.0",
     "@types/jquery": "^3.3.34",
     "browser-sync": "^2.26.7",
-    "cssnano": "^4.1.10",
-    "cssnano-preset-advanced": "^4.0.7",
-    "flatten": "^1.0.3",
-    "glob": "^7.1.6",
+    "cssnano": "^6.0.0",
+    "cssnano-preset-advanced": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
-    "gulp-filter": "^6.0.0",
+    "gulp-filter": "^7.0.0",
     "gulp-newer": "^1.4.0",
-    "gulp-postcss": "^8.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
-    "gulp-rtlcss": "^1.4.1",
-    "gulp-sass": "^4.0.2",
+    "gulp-rtlcss": "^2.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
-    "postcss-focus": "^4.0.0",
+    "postcss-focus": "^6.0.0",
     "rollup": "^1.32.1",
+    "sass": "^1.62.0",
     "shelljs": "^0.8.3",
-    "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
   },
   "scripts": {
     "build": "gulp vendor styles scripts",

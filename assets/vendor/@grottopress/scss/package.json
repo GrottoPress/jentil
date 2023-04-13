@@ -1,38 +1,13 @@
 {
-  "_from": "@grottopress/scss@latest",
-  "_id": "@grottopress/scss@0.5.1",
-  "_inBundle": false,
-  "_integrity": "sha512-+FfX5EP4i7hWmWjCI19UbuF1P8TpcGk8yWIW2q7Ia30cHhwZ5sf2IUngxn+IvWLNu8FRuJoc4/YTdkQ3EiKW4A==",
-  "_location": "/@grottopress/scss",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "@grottopress/scss@latest",
-    "name": "@grottopress/scss",
-    "escapedName": "@grottopress%2fscss",
-    "scope": "@grottopress",
-    "rawSpec": "latest",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.5.1.tgz",
-  "_shasum": "ab902db436dd8e6a6467c66215594ca024659b1e",
-  "_spec": "@grottopress/scss@latest",
-  "_where": "/var/www/html/wp-content/themes/jentil",
+  "name": "@grottopress/scss",
+  "version": "0.5.2",
+  "description": "Sass utilities: Mixins, variables and functions.",
+  "license": "MIT",
   "author": {
     "name": "GrottoPress.com",
     "email": "info@grottopress.com",
     "url": "https://www.grottopress.com"
   },
-  "bugs": {
-    "url": "https://github.com/GrottoPress/scss/issues"
-  },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "N Atta Kusi Adusei",
@@ -40,28 +15,26 @@
     }
   ],
   "dependencies": {},
-  "deprecated": false,
-  "description": "Sass utilities: Mixins, variables and functions.",
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "files": [
     "/src"
   ],
-  "homepage": "https://github.com/GrottoPress/scss#README",
-  "keywords": [
-    "sass",
-    "scss"
-  ],
-  "license": "MIT",
-  "name": "@grottopress/scss",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GrottoPress/scss.git"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "sass",
+    "scss"
+  ],
+  "bugs": {
+    "url": "https://github.com/GrottoPress/scss/issues"
   },
-  "version": "0.5.1"
+  "homepage": "https://github.com/GrottoPress/scss#README",
+  "publishConfig": {
+    "access": "public"
+  }
 }

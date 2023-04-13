@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Replace Travis CI with GitHub actions
+- Upgrade dependencies
 
 ## [0.11.2] - 2020-03-26
 

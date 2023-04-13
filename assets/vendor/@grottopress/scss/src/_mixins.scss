@@ -166,7 +166,7 @@
     $width: map-get($args, width);
     $gutter: map-get($args, gutter);
     $columns: map-get($args, columns);
-    $half-gutter: ($gutter / 2);
+    $half-gutter: calc($gutter / 2);
 
     @include box-sizing(border-box);
 

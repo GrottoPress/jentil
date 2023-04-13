@@ -11,7 +11,7 @@ const postcss = require('gulp-postcss')
 const rename = require('gulp-rename')
 const rollup = require('gulp-better-rollup')
 const rtlcss = require('gulp-rtlcss')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('sass'))
 const sh = require('shelljs')
 const uglify = require('gulp-uglify')
 

@@ -15,7 +15,7 @@
 /// @link https://css-tricks.com/snippets/sass/strip-unit-function/
 @function strip-units($number) {
     @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
+        @return calc($number / ($number * 0 + 1));
     }
 
     @return $number;
