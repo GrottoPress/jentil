@@ -399,10 +399,6 @@ Run all tests with `composer run test`, as defined in `composer.json`, under `sc
 
 Jentil is desinged using the [SUV](https://github.com/grottopress/wordpress-suv/) architecture. You might want to [check that out](https://github.com/grottopress/wordpress-suv/), as it may give a better understanding of the core philosophy underpinning Jentil's development.
 
-## Security
-
-Kindly report suspected security vulnerabilities in private, via contact details outlined in this repository's `.security.txt` file.
-
 ## Showcase
 
 The following projects are powered by Jentil:
