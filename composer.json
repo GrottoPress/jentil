@@ -68,5 +68,10 @@
     "psr-4": {
       "GrottoPress\\": "tests/unit/libraries/"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
   }
 }
