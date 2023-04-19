@@ -7,7 +7,7 @@ use WP_Post_Type;
 
 class Archive extends AbstractPosts
 {
-     /**
+    /**
      * @return mixed[string]
      */
     protected function args(): array
