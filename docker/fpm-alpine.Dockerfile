@@ -21,7 +21,7 @@ RUN composer dump-autoload \
         --no-scripts \
         --optimize
 
-FROM grottopress/wordpress:${WORDPRESS_VERSION}-php${PHP_VERSION}-fpm-alpine
+FROM wordpress:${WORDPRESS_VERSION}-php${PHP_VERSION}-fpm-alpine
 
 ENV WORDPRESS_DIR=/var/www/html
 ENV JENTIL_DIR=${WORDPRESS_DIR}/wp-content/themes/jentil
