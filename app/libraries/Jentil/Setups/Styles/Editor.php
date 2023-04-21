@@ -5,13 +5,13 @@ namespace GrottoPress\Jentil\Setups\Styles;
 
 use GrottoPress\Jentil\AbstractTheme;
 
-final class Gutenberg extends AbstractStyle
+final class Editor extends AbstractStyle
 {
     public function __construct(AbstractTheme $jentil)
     {
         parent::__construct($jentil);
 
-        $this->id = "{$this->app->meta['slug']}-gutenberg";
+        $this->id = "{$this->app->meta['slug']}-editor";
     }
 
     public function run()
@@ -25,10 +25,7 @@ final class Gutenberg extends AbstractStyle
     public function enqueue()
     {
         $file_system = $this->app->utilities->fileSystem;
-
-        $file = \is_rtl() ?
-            '/dist/css/gutenberg-rtl.css' :
-            '/dist/css/gutenberg.css';
+        $file = \is_rtl() ? '/dist/css/editor-rtl.css' : '/dist/css/editor.css';
 
         \wp_enqueue_style(
             $this->id,

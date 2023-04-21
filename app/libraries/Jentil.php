@@ -143,7 +143,7 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
         $this->setups['Styles\Core'] = new Setups\Styles\Core($this);
-        $this->setups['Styles\Gutenberg'] = new Setups\Styles\Gutenberg($this);
+        $this->setups['Styles\Editor'] = new Setups\Styles\Editor($this);
     }
 
     private function setUpScripts()

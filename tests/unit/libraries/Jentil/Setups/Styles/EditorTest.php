@@ -10,7 +10,7 @@ use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
 
-class GutenbergTest extends AbstractTestCase
+class EditorTest extends AbstractTestCase
 {
     public function testRun()
     {
@@ -54,7 +54,7 @@ class GutenbergTest extends AbstractTestCase
             }
         ]);
 
-        $style = new Gutenberg($jentil);
+        $style = new Editor($jentil);
 
         $style->enqueue();
 
@@ -63,8 +63,8 @@ class GutenbergTest extends AbstractTestCase
             $style->id,
             (
                 $rtl ?
-                'http://my.url/dist/css/gutenberg-rtl.css' :
-                'http://my.url/dist/css/gutenberg.css'
+                'http://my.url/dist/css/editor-rtl.css' :
+                'http://my.url/dist/css/editor.css'
             ),
             [],
             \filemtime($test_css),
