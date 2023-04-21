@@ -10,10 +10,10 @@ mix.setPublicPath(path.resolve('./'))
 mix.disableNotifications()
 
 mix.webpackConfig({
-  watchOptions: { ignored: [
-    path.posix.resolve(__dirname, './node_modules'),
-    path.posix.resolve(__dirname, './dist'),
-  ] }
+    watchOptions: { ignored: [
+        path.posix.resolve(__dirname, './node_modules'),
+        path.posix.resolve(__dirname, './dist'),
+    ] }
 })
 
 mix.ts('assets/js/core.ts', 'dist/js').sourceMaps()
