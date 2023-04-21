@@ -101,8 +101,8 @@ label {
 
     button {
         @apply absolute
-            top-[2px]
-            right-[2px]
+            top-[3px]
+            right-[3px]
             mb-0
             py-[7px]
             px-[10px]
