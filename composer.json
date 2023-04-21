@@ -28,8 +28,9 @@
     "php": ">=7.0",
     "grottopress/wordpress-breadcrumbs": "^0.8",
     "grottopress/wordpress-meta-box": "^0.4",
-    "grottopress/wordpress-posts": "^0.15",
-    "grottopress/wordpress-suv": "^0.7"
+    "grottopress/wordpress-posts": "^0.16",
+    "grottopress/wordpress-suv": "^0.7",
+    "grottopress/mobile-detector": "^0.2"
   },
   "require-dev": {
     "lucatume/wp-browser": "^3.1",
@@ -37,15 +38,6 @@
     "lucatume/function-mocker": "^1.3"
   },
   "scripts": {
-    "post-update-cmd": [
-      "npm update",
-      "npm run build"
-    ],
-    "post-install-cmd": [
-      "npm install",
-      "npm run chmod",
-      "npm run build"
-    ],
     "test": [
       "./vendor/bin/codecept run unit"
     ],

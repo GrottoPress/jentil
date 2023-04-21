@@ -1,0 +1,11 @@
+/**
+ * Breadcrumbs
+ */
+
+.breadcrumbs {
+    @apply my-5 first:mt-0 last:mb-0 text-gray-500 text-[0.8125rem];
+
+    .sep {
+        @apply text-gray-300;
+    }
+}

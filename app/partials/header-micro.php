@@ -23,13 +23,13 @@ declare (strict_types = 1);
             <script src="<?=
                 \Jentil()->utilities->fileSystem->dir(
                     'url',
-                    '/dist/vendor/html5shiv.min.js'
+                    '/dist/vendor/html5shiv.js'
                 );
             ?>"></script>
             <script src="<?=
                 \Jentil()->utilities->fileSystem->dir(
                     'url',
-                    '/dist/vendor/respond.min.js'
+                    '/dist/vendor/respond.js'
                 );
             ?>"></script>
         <![endif]-->

@@ -1,0 +1,63 @@
+/**
+ * Table
+ */
+
+table {
+    @apply w-full
+        my-5
+        first:mt-0
+        last:mb-0
+        text-[0.96em]
+        border-collapse
+        border-spacing-0;
+
+    &.aligncenter {
+        @apply table;
+    }
+}
+
+tr,
+td,
+th,
+tfoot,
+thead,
+tbody {
+    @apply m-0 border-0;
+}
+
+tr {
+    @apply even:bg-gray-50 border-y even:border-y-gray-300;
+
+    &:nth-child(even) {
+        td,
+        th {
+            @apply py-2 px-3;
+        }
+    }
+}
+
+thead,
+tfoot {
+    tr {
+        @apply bg-transparent border-0 even:bg-transparent even:border-0;
+    }
+}
+
+thead {
+    @apply font-bold border-t border-t-gray-300;
+}
+
+tfoot {
+    @apply italic border-b border-b-gray-300;
+}
+
+td,
+th {
+    @apply py-2 px-3;
+}
+
+th {
+    @apply font-bold;
+
+    text-align: inherit;
+}

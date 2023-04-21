@@ -1,0 +1,15 @@
+/*!
+ * Jentil (c) 2017-present GrottoPress
+ * License: https://opensource.org/licenses/MIT
+ * Home: https://www.grottopress.com/jentil/
+ */
+
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import 'editor/base';
+@import 'editor/link';
+@import 'editor/list';
+@import 'editor/type';
+@import 'editor/table';
+@import 'editor/wp';

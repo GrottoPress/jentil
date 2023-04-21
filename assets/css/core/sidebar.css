@@ -1,0 +1,7 @@
+/**
+ * Sidebar
+ */
+
+.site-sidebar {
+    @apply hobbit;
+}

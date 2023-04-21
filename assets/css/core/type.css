@@ -1,0 +1,134 @@
+/**
+ * Typography
+ */
+
+p {
+    @apply p empty:hidden;
+}
+
+strong {
+    @apply font-bold;
+}
+
+em,
+i,
+q,
+cite,
+var {
+    @apply italic;
+}
+
+q {
+    @apply text-[1.1em];
+}
+
+del {
+    @apply line-through;
+}
+
+cite,
+pre,
+code,
+tt {
+    @apply text-[0.9em];
+}
+
+pre,
+code,
+tt {
+    @apply py-[3px] px-1 bg-gray-50 font-mono;
+}
+
+pre {
+    @apply mt-5
+        first:mt-0
+        py-3 px-4 border
+        border-gray-300
+        rounded
+        overflow-auto;
+}
+
+cite {
+    @apply text-gray-500;
+}
+
+abbr,
+acronym {
+    @apply border-0 cursor-help;
+}
+
+ins {
+    @apply no-underline;
+}
+
+sup,
+sub {
+    @apply relative h-0 leading-[1px] align-baseline;
+}
+
+sup {
+    @apply bottom-[1ex];
+}
+
+sub {
+    @apply top-[0.5ex];
+}
+
+hr {
+    @apply my-5 border-0 border-t border-t-gray-300;
+}
+
+blockquote {
+    @apply mt-5
+        first:mt-0
+        mr-0
+        ml-3
+        pl-3
+        border-l-2
+        border-l-gray-300
+        text-[1.1em]
+        italic;
+
+    p {
+        @apply mt-3 first:mt-0;
+    }
+
+    cite {
+        @apply block mt-[0.6em]
+    }
+}
+
+/** Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply my-5 first:mt-0 last:mb-0 font-bold leading-[1.3];
+}
+
+h1 {
+    @apply text-[1.8125rem] lg:text-[2.125rem];
+}
+
+h2 {
+    @apply text-[1.625rem] lg:text-[1.875rem];
+}
+
+h3 {
+    @apply text-[1.4375rem] lg:text-[1.625rem];
+}
+
+h4 {
+    @apply text-[1.25rem] lg:text-[1.375rem];
+}
+
+h5 {
+    @apply text-[1.0625rem] lg:text-[1.125rem];
+}
+
+h6 {
+    @apply text-[0.875rem];
+}

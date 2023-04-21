@@ -1,0 +1,7 @@
+/**
+ * Header
+ */
+
+#header {
+    @apply my-5 first:mt-0 last:mb-0 pt-5 hobbit empty:hidden;
+}

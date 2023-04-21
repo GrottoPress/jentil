@@ -22,39 +22,33 @@
     "html5shiv": "^3.7.3",
     "jquery": "^3.4.1",
     "jquery-migrate": "^3.1.0",
-    "normalize.css": "^7.0.0",
     "respond.js": "^1.4.2",
     "what-input": "^5.2.7"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^4.0.0",
     "@types/jquery": "^3.3.34",
+    "autoprefixer": "^10.4.14",
     "browser-sync": "^2.26.7",
-    "cssnano": "^6.0.0",
-    "cssnano-preset-advanced": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-better-rollup": "^4.0.1",
-    "gulp-filter": "^7.0.0",
-    "gulp-newer": "^1.4.0",
-    "gulp-postcss": "^9.0.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-rtlcss": "^2.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-uglify": "^3.0.2",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.22",
     "postcss-focus": "^6.0.0",
-    "rollup": "^1.32.1",
-    "sass": "^1.62.0",
-    "shelljs": "^0.8.3",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-nested-ancestors": "^3.0.0",
+    "resolve-url-loader": "^5.0.0",
+    "rtlcss": "^4.1.0",
+    "tailwindcss": "^3.3.1",
+    "ts-loader": "^9.4.2",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "build": "gulp vendor styles scripts",
-    "chmod": "gulp chmod",
-    "clean": "gulp clean",
-    "serve": "gulp serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "gulp watch"
+    "dev": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
   },
   "keywords": [
     "jentil",
@@ -70,20 +64,5 @@
   "browserslist": [
     "last 3 years",
     "> 0.1%"
-  ],
-  "cssnano": {
-    "preset": [
-      "advanced",
-      {
-        "autoprefixer": {
-          "add": true,
-          "remove": true
-        },
-        "zindex": false,
-        "reduceIdents": false,
-        "mergeIdents": false,
-        "discardUnused": false
-      }
-    ]
-  }
+  ]
 }

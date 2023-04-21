@@ -1,0 +1,150 @@
+/**
+ * WordPress (core)
+ */
+
+/** Alignment */
+
+.alignleft {
+    @apply float-left mr-5 mb-5;
+}
+
+.alignright {
+    @apply float-right mb-5 ml-5;
+}
+
+.aligncenter {
+    @apply block mt-0 mx-auto mb-5;
+}
+
+/** Caption */
+
+.wp-caption {
+    @apply max-w-full;
+}
+
+.wp-caption-text {
+    @apply py-0 px-2 text-[0.875rem] text-gray-500;
+}
+
+.wp-smiley {
+    @apply max-h-[1em] m-0;
+}
+
+/** Editor */
+
+.wp-block-pullquote {
+    @apply border-l-0;
+}
+
+/** Gallery */
+
+.gallery {
+    @apply sm:flex
+        sm:flex-wrap
+        sm:items-start
+        sm:justify-between
+        my-5
+        first:mt-0
+        last:mb-0
+        mx-0
+        p-3
+        bg-gray-50
+        rounded;
+
+    img {
+        @apply hover:opacity-70;
+    }
+}
+
+.gallery-item {
+    @apply mt-3 first:mt-0;
+
+    .gallery-columns-2 & {
+        @apply sm:w-[49.3%];
+
+        &:nth-child(2) {
+            @apply sm:mt-0;
+        }
+    }
+
+    .gallery-columns-3 &,
+    .gallery-columns-4 &,
+    .gallery-columns-5 &,
+    .gallery-columns-6 &,
+    .gallery-columns-7 &,
+    .gallery-columns-8 &,
+    .gallery-columns-9 & {
+        @apply sm:w-[32.2%];
+
+        &:nth-child(2) {
+            @apply sm:mt-0;
+        }
+
+        &:nth-child(3) {
+            @apply sm:mt-0;
+        }
+    }
+
+    .gallery-columns-4 &,
+    .gallery-columns-5 &,
+    .gallery-columns-6 &,
+    .gallery-columns-7 &,
+    .gallery-columns-8 &,
+    .gallery-columns-9 & {
+        @apply md:w-[24%];
+
+        &:nth-child(4) {
+            @apply md:mt-0;
+        }
+    }
+
+    .gallery-columns-5 & {
+        @apply lg:w-[19.2%];
+
+        &:nth-child(5) {
+            @apply lg:mt-0;
+        }
+    }
+
+    .gallery-columns-6 & {
+        @apply lg:w-[15.8%];
+
+        &:nth-child(6) {
+            @apply lg:mt-0;
+        }
+    }
+
+    .gallery-columns-7 & {
+        @apply lg:w-[13.4%];
+
+        &:nth-child(7) {
+            @apply lg:mt-0;
+        }
+    }
+
+    .gallery-columns-8 & {
+        @apply lg:w-[11.6%];
+
+        &:nth-child(8) {
+            @apply lg:mt-0;
+        }
+    }
+
+    .gallery-columns-9 & {
+        @apply lg:w-[10.2%];
+
+        &:nth-child(9) {
+            @apply lg:mt-0;
+        }
+    }
+}
+
+.gallery-caption {
+    @apply sr-only mt-2 text-[0.8125rem] text-gray-500;
+}
+
+.gallery-icon {
+    a {
+        @apply block leading-[1px];
+    }
+}

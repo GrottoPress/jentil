@@ -80,7 +80,7 @@ final class Jentil extends AbstractTheme
     {
         $file = "{$themeDir}/style.css";
 
-        $data = \array_map('sanitize_text_field', \get_file_data($file, [
+        $data = \get_file_data($file, [
             'author' => 'Author',
             'author_uri' => 'Author URI',
             'description' => 'Description',
@@ -94,7 +94,7 @@ final class Jentil extends AbstractTheme
             'text_domain' => 'Text Domain',
             'uri' => 'Theme URI',
             'version' => 'Version',
-        ], 'theme'));
+        ], 'theme');
 
         $data['slug'] = \sanitize_title($data['name']);
 
@@ -141,7 +141,6 @@ final class Jentil extends AbstractTheme
 
     private function setUpStyles()
     {
-        $this->setups['Styles\Normalize'] = new Setups\Styles\Normalize($this);
         $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
         $this->setups['Styles\Core'] = new Setups\Styles\Core($this);
         $this->setups['Styles\Gutenberg'] = new Setups\Styles\Gutenberg($this);

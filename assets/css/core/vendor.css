@@ -1,0 +1,12 @@
+/**
+ * Vendor overrides
+ */
+
+/** What Input */
+
+[data-whatintent=mouse],
+[data-whatintent=touch] {
+    * {
+        @apply focus:outline-none;
+    }
+}

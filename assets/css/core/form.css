@@ -1,0 +1,113 @@
+/**
+ * Forms
+ */
+
+form {
+    @apply my-5 first:mt-0 last:mb-0;
+}
+
+* {
+    @apply disabled:opacity-70 disabled:cursor-not-allowed;
+}
+
+input,
+textarea,
+select,
+button,
+label {
+    @apply inline-block w-full;
+}
+
+input,
+textarea,
+select,
+button {
+    @apply mb-1 py-[5px] px-2 rounded border border-gray-300;
+
+    p & {
+        @apply mb-0;
+    }
+}
+
+input,
+textarea,
+select {
+    @apply bg-white focus:border-gray-400;
+}
+
+input,
+button {
+    @apply overflow-visible /* IE6 fix */;
+}
+
+input {
+    &[type=checkbox],
+    &[type=radio] {
+        @apply my-auto mx-[5px] w-auto align-middle;
+    }
+}
+
+[type=submit],
+[type=button],
+[type=reset],
+button {
+    @apply pt-[7px]
+        px-[10px]
+        pb-[8px]
+        w-auto
+        h-auto
+        bg-gray-300
+        cursor-pointer
+        border-0
+        text-center
+        font-bold
+        text-[0.8125rem]
+        leading-tight
+        focus:border-0;
+}
+
+/**
+ * Fix button background color not showing in opera mini
+ * @link https://github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+.opera:-o-prefocus,
+input[type=submit],
+input[type=button],
+input[type=reset],
+button {
+    @apply border-r border-[rgba(0,0,0,0.0)];
+}
+
+label {
+    @apply cursor-pointer text-[0.8125rem];
+
+    &[for] {
+        @apply w-auto;
+    }
+
+    > * {
+       @apply text-[0.875rem];
+    }
+}
+
+/** Search form */
+
+.form.search {
+    @apply relative;
+
+    input[type=search] {
+        @apply m-0 py-[6px] px-2;
+    }
+
+    button {
+        @apply absolute
+            top-[2px]
+            right-[2px]
+            mb-0
+            py-[7px]
+            px-[10px]
+            border-0
+            text-[0.75rem]
+            z-10;
+    }
+}

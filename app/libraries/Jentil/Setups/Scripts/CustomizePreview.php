@@ -31,7 +31,7 @@ final class CustomizePreview extends AbstractScript
     public function enqueue()
     {
         $file_system = $this->app->utilities->fileSystem;
-        $file = '/dist/scripts/customize-preview.min.js';
+        $file = '/dist/js/customize-preview.js';
 
         \wp_enqueue_script(
             $this->id,

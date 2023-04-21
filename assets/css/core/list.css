@@ -1,0 +1,63 @@
+/**
+ * Lists
+ */
+
+ul,
+ol {
+    @apply my-5 first:mt-0 last:mb-0 ml-7 pl-0 list-image-none;
+
+    ul,
+    ol {
+        @apply mt-3 first:mt-0;
+    }
+}
+
+ul {
+    @apply list-disc;
+
+    ul {
+        @apply list-[circle];
+    }
+}
+
+ol {
+    @apply list-decimal;
+
+    ol {
+        @apply list-[upper-alpha];
+
+        ol {
+            @apply list-[upper-roman];
+
+            ol {
+                @apply list-[lower-alpha];
+
+                ol {
+                    @apply list-[lower-roman];
+                }
+            }
+        }
+    }
+}
+
+li {
+    @apply mt-2 first:mt-0 list-item;
+}
+
+/** Definition Lists */
+
+dl {
+    @apply my-5 first:mt-0 last:mb-0;
+}
+
+dt {
+    @apply block mt-3 first:mt-0 font-bold;
+
+    + dt {
+        @apply mt-1 first:mt-0
+    }
+}
+
+dd {
+    @apply mt-2 first:mt-0;
+}

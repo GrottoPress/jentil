@@ -1,0 +1,11 @@
+/**
+ * Widgets
+ */
+
+.widget-area {
+    @apply my-5 first:mt-0 last:mb-0;
+}
+
+.widget {
+    @apply mt-5 first:mt-0;
+}

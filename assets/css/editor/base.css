@@ -1,0 +1,12 @@
+/**
+ * Basic styles
+ */
+
+.gutenberg__editor,
+#editor {
+    @apply bg-white text-gray-700;
+
+    .editor-block-list__block {
+        @apply font-sans text-[1rem] leading-[1.5] text-gray-700;
+    }
+}

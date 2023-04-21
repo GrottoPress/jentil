@@ -42,9 +42,7 @@ class CoreTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'setups' => ['Styles\Normalize' => new class {
-                public $id;
-            }],
+            'setups' => [],
             'meta' => ['slug' => 'jentil'],
         ]);
 
@@ -66,10 +64,10 @@ class CoreTest extends AbstractTestCase
             $style->id,
             (
                 $rtl ?
-                'http://my.url/dist/styles/core-rtl.min.css' :
-                'http://my.url/dist/styles/core.min.css'
+                'http://my.url/dist/css/core-rtl.css' :
+                'http://my.url/dist/css/core.css'
             ),
-            [$jentil->setups['Styles\Normalize']->id],
+            [],
             \filemtime($test_css),
         ]);
     }

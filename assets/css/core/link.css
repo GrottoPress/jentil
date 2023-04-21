@@ -1,0 +1,7 @@
+/**
+ * Hyperlinks
+ */
+
+a {
+    @apply text-blue-700 no-underline hover:underline;
+}

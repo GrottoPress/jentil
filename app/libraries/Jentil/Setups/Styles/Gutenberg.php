@@ -27,8 +27,8 @@ final class Gutenberg extends AbstractStyle
         $file_system = $this->app->utilities->fileSystem;
 
         $file = \is_rtl() ?
-            '/dist/styles/gutenberg-rtl.min.css' :
-            '/dist/styles/gutenberg.min.css';
+            '/dist/css/gutenberg-rtl.css' :
+            '/dist/css/gutenberg.css';
 
         \wp_enqueue_style(
             $this->id,

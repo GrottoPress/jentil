@@ -63,8 +63,8 @@ class GutenbergTest extends AbstractTestCase
             $style->id,
             (
                 $rtl ?
-                'http://my.url/dist/styles/gutenberg-rtl.min.css' :
-                'http://my.url/dist/styles/gutenberg.min.css'
+                'http://my.url/dist/css/gutenberg-rtl.css' :
+                'http://my.url/dist/css/gutenberg.css'
             ),
             [],
             \filemtime($test_css),

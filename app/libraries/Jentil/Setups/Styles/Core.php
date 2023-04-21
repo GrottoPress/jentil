@@ -26,14 +26,12 @@ final class Core extends AbstractStyle
     {
         $file_system = $this->app->utilities->fileSystem;
 
-        $file = \is_rtl() ?
-            '/dist/styles/core-rtl.min.css' :
-            '/dist/styles/core.min.css';
+        $file = \is_rtl() ? '/dist/css/core-rtl.css' : '/dist/css/core.css';
 
         \wp_enqueue_style(
             $this->id,
             $file_system->dir('url', $file),
-            [$this->app->setups['Styles\Normalize']->id],
+            [],
             \filemtime($file_system->dir('path', $file))
         );
     }

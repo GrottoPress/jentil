@@ -1,0 +1,125 @@
+/**
+ * Menus
+ */
+
+.menu,
+.sub-menu {
+    @apply list-none list-image-none;
+}
+
+.menu {
+    @apply ml-0;
+
+    ul {
+        @apply ml-4;
+    }
+
+    a {
+        @apply block;
+    }
+
+    li {
+        @apply relative;
+    }
+}
+
+.sub-menu {
+    li {
+        @apply text-[0.8125rem];
+    }
+}
+
+.menu-toggle {
+    #header & {
+        @apply my-5 first:mt-0 last:mb-0 text-center lg:hidden;
+
+        a {
+            @apply block;
+        }
+
+        & + * {
+            @apply lg:mt-0;
+        }
+    }
+}
+
+#primary-menu {
+    @apply my-5 first:mt-0 last:mb-0 lg:mb-0 lg:block;
+
+    .form.search {
+        @apply mb-5;
+    }
+
+    .skip-link {
+        + * {
+            @apply mt-0;
+        }
+    }
+
+    .menu {
+        @apply lg:flex lg:flex-wrap;
+
+        li {
+            @apply lg:m-0
+        }
+
+        > li {
+            @apply lg:flex-none lg:ml-[2%] lg:first:ml-0;
+        }
+
+        ul,
+        li:hover ul ul,
+        li li:hover ul ul,
+        li li li:hover ul ul ,
+        li li li li:hover ul ul,
+        li li li li li:hover ul ul {
+            @apply lg:hidden /* Required to hide menu when inactive */;
+        }
+
+        li:hover ul,
+        li li:hover ul,
+        li li li:hover ul ,
+        li li li li:hover ul,
+        li li li li li:hover ul {
+            @apply lg:block;
+        }
+
+        ul {
+            @apply lg:absolute lg:w-52 lg:m-0 lg:p-0 lg:z-50;
+
+            ul {
+                @apply lg:top-0 lg:left-full;
+            }
+        }
+
+        .has-js & {
+            .menu-item-has-children {
+                > a {
+                    @apply lg:pr-6;
+                }
+            }
+
+            ul,
+            li:hover ul ul,
+            li li:hover ul ul,
+            li li li:hover ul ul ,
+            li li li li:hover ul ul,
+            li li li li li:hover ul ul {
+                @apply lg:block;
+            }
+        }
+    }
+}
+
+.sub-menu-toggle {
+    @apply absolute
+        top-0
+        right-0
+        m-0
+        bg-transparent
+        text-inherit
+        w-auto
+        py-1
+        px-[7px]
+        z-10;
+}

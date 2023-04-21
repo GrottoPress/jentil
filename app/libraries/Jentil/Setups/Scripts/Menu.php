@@ -26,12 +26,12 @@ final class Menu extends AbstractScript
     public function enqueue()
     {
         $file_system = $this->app->utilities->fileSystem;
-        $file = '/dist/scripts/menu.min.js';
+        $file = '/dist/js/menu.js';
 
         \wp_enqueue_script(
             $this->id,
             $file_system->dir('url', $file),
-            ['jquery'],
+            [$this->app->setups['Scripts\jQuery']->id],
             \filemtime($file_system->dir('path', $file)),
             true
         );

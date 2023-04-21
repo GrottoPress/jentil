@@ -35,9 +35,7 @@ class PostsTest extends AbstractTestCase
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
-            'setups' => ['Styles\Normalize' => new class {
-                public $id;
-            }],
+            'setups' => [],
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
             'vendorDir' => function (
@@ -56,7 +54,7 @@ class PostsTest extends AbstractTestCase
         $enqueue->wasCalledWithOnce([
             $style->id,
             'http://my.url/test.css',
-            [$jentil->setups['Styles\Normalize']->id],
+            [],
             \filemtime($test_css),
         ]);
     }

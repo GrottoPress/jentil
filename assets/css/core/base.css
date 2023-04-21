@@ -1,0 +1,36 @@
+/**
+ * Basic styles
+ */
+
+@layer base {
+    body {
+        @apply px-5
+            overflow-x-hidden
+            bg-white
+            text-gray-700
+            text-[0.875rem]
+            font-sans
+            break-words
+            leading-[1.5];
+    }
+
+    a {
+        @apply no-underline hover:underline;
+    }
+
+    img,
+    iframe,
+    object,
+    embed,
+    video,
+    audio,
+    iframe[style],
+    object[style],
+    embed[style] {
+        @apply max-w-full;
+    }
+
+    img {
+        @apply h-auto;
+    }
+}
