@@ -45,6 +45,12 @@ class CoreTest extends AbstractTestCase
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'utilities' => Stub::makeEmpty(Utilities::class),
             'meta' => ['slug' => 'jentil'],
+            'setups' => [
+                'Scripts\jQuery' => Stub::makeEmpty(
+                    AbstractScript::class,
+                    ['id' => 'jq']
+                ),
+            ],
         ]);
 
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
@@ -64,7 +70,7 @@ class CoreTest extends AbstractTestCase
         $enqueue->wasCalledWithOnce([
             $script->id,
             'http://my.url/test.js',
-            ['jquery'],
+            ['jq'],
             \filemtime($test_js),
             true
         ]);
