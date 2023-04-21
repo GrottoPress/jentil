@@ -7,82 +7,78 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-17T21:38:13+00:00\n"
+"POT-Creation-Date: 2023-04-21T12:43:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.1.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: jentil\n"
 
-#: templates/singular.php:38
-msgid "Pages: "
-msgstr ""
-
-#: libraries/Jentil/Setups/Scripts/Menu.php:46
-msgid "Sub-menu"
-msgstr ""
-
-#: libraries/Jentil/Setups/Sidebars/Secondary.php:29
-msgid "Secondary"
-msgstr ""
-
-#: libraries/Jentil/Setups/Sidebars/Secondary.php:30
-msgid "Secondary sidebar"
-msgstr ""
-
-#: libraries/Jentil/Setups/Sidebars/Primary.php:29
-msgid "Primary"
-msgstr ""
-
-#: libraries/Jentil/Setups/Sidebars/Primary.php:30
-msgid "Primary sidebar"
-msgstr ""
-
-#: libraries/Jentil/Setups/Sidebars/Footer.php:29
 #: libraries/Jentil/Setups/Customizer/Footer.php:18
+#: libraries/Jentil/Setups/Sidebars/Footer.php:29
 msgid "Footer"
 msgstr ""
 
-#: libraries/Jentil/Setups/Sidebars/Footer.php:30
-msgid "Footer widget area"
+#: libraries/Jentil/Setups/Customizer/Footer/Controls/Colophon.php:16
+msgid "Colophon"
 msgstr ""
 
-#: libraries/Jentil/Setups/MetaBoxes/Layout.php:63
 #: libraries/Jentil/Setups/Customizer/Layout.php:18
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/Layout.php:16
+#: libraries/Jentil/Setups/MetaBoxes/Layout.php:63
 msgid "Layout"
 msgstr ""
 
-#: libraries/Jentil/Setups/MetaBoxes/Layout.php:71
 #: libraries/Jentil/Setups/Customizer/Layout/Controls/AbstractControl.php:16
+#: libraries/Jentil/Setups/MetaBoxes/Layout.php:71
 msgid "Select layout"
 msgstr ""
 
-#: libraries/Jentil/Setups/MetaBoxes/Layout.php:77
-msgid "Need help? Check out the <a href=\"%s\" target=\"_blank\" rel=\"noreferrer noopener nofollow\">documentation</a>."
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Author.php:16
+#: libraries/Jentil/Setups/Customizer/Posts/Author.php:18
+#: libraries/Jentil/Setups/Customizer/Title/Controls/Author.php:16
+msgid "Author Archives"
 msgstr ""
 
-#: libraries/Jentil/Setups/Views/Breadcrumbs.php:29
-msgid "Path: "
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Date.php:16
+#: libraries/Jentil/Setups/Customizer/Posts/Date.php:18
+#: libraries/Jentil/Setups/Customizer/Title/Controls/Date.php:16
+msgid "Date Archives"
 msgstr ""
 
-#: libraries/Jentil/Setups/Views/Header.php:37
-msgid "Skip to menu"
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Error404.php:16
+#: libraries/Jentil/Setups/Customizer/Title/Controls/Error404.php:16
+msgid "Error 404"
 msgstr ""
 
-#: libraries/Jentil/Setups/Views/Header.php:48
-msgid "Menu"
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/PostType.php:18
+#: libraries/Jentil/Setups/Customizer/Posts/PostType.php:31
+#: libraries/Jentil/Setups/Customizer/Title/Controls/PostType.php:28
+msgid "%s Archive"
 msgstr ""
 
-#: libraries/Jentil/Setups/Views/Header.php:64
-msgid "Skip to content"
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Search.php:16
+#: libraries/Jentil/Setups/Customizer/Posts/Search.php:18
+#: libraries/Jentil/Setups/Customizer/Title/Controls/Search.php:16
+msgid "Search Results"
 msgstr ""
 
-#: libraries/Jentil/Setups/Views/SearchForm.php:33
-msgid "Search for:"
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Singular.php:49
+#: libraries/Jentil/Setups/Customizer/Posts/Singular.php:69
+msgid "Single %1$s: %2$s"
 msgstr ""
 
-#: libraries/Jentil/Setups/Views/SearchForm.php:36
-#: libraries/Jentil/Setups/Views/SearchForm.php:45
-msgid "Search"
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Singular.php:55
+msgid "Single %1$s"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Taxonomy.php:52
+#: libraries/Jentil/Setups/Customizer/Posts/Taxonomy.php:79
+#: libraries/Jentil/Setups/Customizer/Title/Controls/Taxonomy.php:53
+msgid "%1$s Archive: %2$s"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Layout/Controls/Taxonomy.php:57
+#: libraries/Jentil/Setups/Customizer/Title/Controls/Taxonomy.php:58
+msgid "%1$s Archives"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts.php:16
@@ -90,41 +86,54 @@ msgstr ""
 msgid "Posts"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Related.php:24
-msgid "Related %s"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContent.php:17
+msgid "After content"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Taxonomy.php:79
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Taxonomy.php:52
-#: libraries/Jentil/Setups/Customizer/Title/Controls/Taxonomy.php:53
-msgid "%1$s Archive: %2$s"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContent.php:18
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterTitle.php:18
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/BeforeTitle.php:18
+msgid "Comma-separated"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Taxonomy.php:84
-msgid "%s Archives"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContentSeparator.php:17
+msgid "After content separator"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Sticky.php:24
-msgid "Sticky %s"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterTitle.php:17
+msgid "After title"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Singular.php:69
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Singular.php:49
-msgid "Single %1$s: %2$s"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterTitleSeparator.php:17
+msgid "After title separator"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Singular.php:75
-msgid "Single %s"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/BeforeTitle.php:17
+msgid "Before title"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Search.php:18
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Search.php:16
-#: libraries/Jentil/Setups/Customizer/Title/Controls/Search.php:16
-msgid "Search Results"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/BeforeTitleSeparator.php:17
+msgid "Before title separator"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationPreviousText.php:16
-msgid "Previous page link text"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/Excerpt.php:17
+msgid "Excerpt"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/Excerpt.php:18
+msgid "Number of words (or '-1', '-2')"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/Heading.php:17
+msgid "Heading"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/Heading.php:18
+msgid "Posts heading"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/Image.php:16
+msgid "Image size"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/ImageAlignment.php:16
@@ -143,16 +152,8 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/BeforeTitleSeparator.php:17
-msgid "Before title separator"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/TitleWords.php:16
-msgid "Title length"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/TitleWords.php:18
-msgid "Number of words (or '-1')"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/ImageMargin.php:17
+msgid "Image margin"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/Layout.php:19
@@ -163,16 +164,8 @@ msgstr ""
 msgid "Grid"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/Heading.php:17
-msgid "Heading"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/Heading.php:18
-msgid "Posts heading"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/Image.php:16
-msgid "Image size"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/MoreText.php:16
+msgid "More link text"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/Number.php:16
@@ -183,12 +176,12 @@ msgstr ""
 msgid "Pagination type"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/WrapTag.php:16
-msgid "Wrapper tag"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationMaximum.php:16
+msgid "Maximum pagination"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterTitleSeparator.php:17
-msgid "After title separator"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationNextText.php:16
+msgid "Next page link text"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationPosition.php:16
@@ -212,54 +205,20 @@ msgstr ""
 msgid "Top and bottom"
 msgstr ""
 
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationPreviousText.php:16
+msgid "Previous page link text"
+msgstr ""
+
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/StickyPosts.php:16
+msgid "Show sticky posts?"
+msgstr ""
+
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/TextOffset.php:16
 msgid "Text offset"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/TextOffset.php:18
 msgid "From image align side (px)"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContent.php:17
-msgid "After content"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContent.php:18
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/BeforeTitle.php:18
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterTitle.php:18
-msgid "Comma-separated"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/Excerpt.php:17
-msgid "Excerpt"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/Excerpt.php:18
-msgid "Number of words (or '-1', '-2')"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/WrapClass.php:16
-msgid "Wrapper class"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/WrapClass.php:18
-msgid "Comma- or space-separated"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationNextText.php:16
-msgid "Next page link text"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/BeforeTitle.php:17
-msgid "Before title"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterTitle.php:17
-msgid "After title"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/AfterContentSeparator.php:17
-msgid "After content separator"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Posts/Controls/TitlePosition.php:16
@@ -274,52 +233,40 @@ msgstr ""
 msgid "Side"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/MoreText.php:16
-msgid "More link text"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/TitleWords.php:16
+msgid "Title length"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/ImageMargin.php:17
-msgid "Image margin"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/TitleWords.php:18
+msgid "Number of words (or '-1')"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/PaginationMaximum.php:16
-msgid "Maximum pagination"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/WrapClass.php:16
+msgid "Wrapper class"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Controls/StickyPosts.php:16
-msgid "Show sticky posts?"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/WrapClass.php:18
+msgid "Comma- or space-separated"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/PostType.php:31
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/PostType.php:18
-#: libraries/Jentil/Setups/Customizer/Title/Controls/PostType.php:28
-msgid "%s Archive"
+#: libraries/Jentil/Setups/Customizer/Posts/Controls/WrapTag.php:16
+msgid "Wrapper tag"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Date.php:18
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Date.php:16
-#: libraries/Jentil/Setups/Customizer/Title/Controls/Date.php:16
-msgid "Date Archives"
+#: libraries/Jentil/Setups/Customizer/Posts/Related.php:24
+msgid "Related %s"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Posts/Author.php:18
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Author.php:16
-#: libraries/Jentil/Setups/Customizer/Title/Controls/Author.php:16
-msgid "Author Archives"
+#: libraries/Jentil/Setups/Customizer/Posts/Singular.php:75
+msgid "Single %s"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Taxonomy.php:57
-#: libraries/Jentil/Setups/Customizer/Title/Controls/Taxonomy.php:58
-msgid "%1$s Archives"
+#: libraries/Jentil/Setups/Customizer/Posts/Sticky.php:24
+msgid "Sticky %s"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Singular.php:55
-msgid "Single %1$s"
-msgstr ""
-
-#: libraries/Jentil/Setups/Customizer/Layout/Controls/Error404.php:16
-#: libraries/Jentil/Setups/Customizer/Title/Controls/Error404.php:16
-msgid "Error 404"
+#: libraries/Jentil/Setups/Customizer/Posts/Taxonomy.php:84
+msgid "%s Archives"
 msgstr ""
 
 #: libraries/Jentil/Setups/Customizer/Title.php:18
@@ -330,20 +277,65 @@ msgstr ""
 msgid "Enter title"
 msgstr ""
 
-#: libraries/Jentil/Setups/Customizer/Footer/Controls/Colophon.php:16
-msgid "Colophon"
-msgstr ""
-
 #: libraries/Jentil/Setups/Menus/Primary.php:28
 msgid "Primary menu"
+msgstr ""
+
+#: libraries/Jentil/Setups/PostTypeTemplates/PageBuilder.php:49
+msgid "Page builder"
 msgstr ""
 
 #: libraries/Jentil/Setups/PostTypeTemplates/PageBuilderBlank.php:49
 msgid "Page builder (blank)"
 msgstr ""
 
-#: libraries/Jentil/Setups/PostTypeTemplates/PageBuilder.php:49
-msgid "Page builder"
+#: libraries/Jentil/Setups/Scripts/Menu.php:46
+msgid "Sub-menu"
+msgstr ""
+
+#: libraries/Jentil/Setups/Sidebars/Footer.php:30
+msgid "Footer widget area"
+msgstr ""
+
+#: libraries/Jentil/Setups/Sidebars/Primary.php:29
+msgid "Primary"
+msgstr ""
+
+#: libraries/Jentil/Setups/Sidebars/Primary.php:30
+msgid "Primary sidebar"
+msgstr ""
+
+#: libraries/Jentil/Setups/Sidebars/Secondary.php:29
+msgid "Secondary"
+msgstr ""
+
+#: libraries/Jentil/Setups/Sidebars/Secondary.php:30
+msgid "Secondary sidebar"
+msgstr ""
+
+#: libraries/Jentil/Setups/Views/Breadcrumbs.php:29
+msgid "Path: "
+msgstr ""
+
+#: libraries/Jentil/Setups/Views/Header.php:37
+msgid "Skip to menu"
+msgstr ""
+
+#: libraries/Jentil/Setups/Views/Header.php:48
+msgid "Menu"
+msgstr ""
+
+#: libraries/Jentil/Setups/Views/Header.php:64
+msgid "Skip to content"
+msgstr ""
+
+#: libraries/Jentil/Setups/Views/SearchForm.php:24
+msgid "Search for:"
+msgstr ""
+
+#: libraries/Jentil/Setups/Views/SearchForm.php:27
+#: libraries/Jentil/Setups/Views/SearchForm.php:36
+msgid "Search"
 msgstr ""
 
 #: libraries/Jentil/Utilities/Page/Layouts.php:27
@@ -370,42 +362,43 @@ msgstr ""
 msgid "sidebar / sidebar / content"
 msgstr ""
 
-#: libraries/Jentil/Utilities/ThemeMods/Posts.php:124
+#: libraries/Jentil/Utilities/ThemeMods/Footer.php:69
+msgid "&copy; %1$s %2$s. Built with %3$s on %4$s"
+msgstr ""
+
+#: libraries/Jentil/Utilities/ThemeMods/Posts.php:119
 msgid "read more"
 msgstr ""
 
-#: libraries/Jentil/Utilities/ThemeMods/Posts.php:130
-#: partials/comments.php:47
+#: libraries/Jentil/Utilities/ThemeMods/Posts.php:125
 #: partials/attachment-image.php:7
+#: partials/comments.php:47
 msgid "&larr; Previous"
 msgstr ""
 
-#: libraries/Jentil/Utilities/ThemeMods/Posts.php:134
-#: partials/comments.php:55
+#: libraries/Jentil/Utilities/ThemeMods/Posts.php:129
 #: partials/attachment-image.php:15
+#: partials/comments.php:55
 msgid "Next &rarr;"
 msgstr ""
 
-#: libraries/Jentil/Utilities/ThemeMods/Posts.php:171
+#: libraries/Jentil/Utilities/ThemeMods/Posts.php:166
 msgid "Recommended"
 msgstr ""
 
-#: libraries/Jentil/Utilities/ThemeMods/Title.php:105
+#: libraries/Jentil/Utilities/ThemeMods/Title.php:100
 msgid "Latest Posts"
 msgstr ""
 
-#: libraries/Jentil/Utilities/ThemeMods/Title.php:113
+#: libraries/Jentil/Utilities/ThemeMods/Title.php:108
 msgid "Not Found"
-msgstr ""
-
-#: libraries/Jentil/Utilities/ThemeMods/Footer.php:74
-msgid "&copy; %1$s %2$s. Built with %3$s on %4$s"
 msgstr ""
 
 #: partials/comments.php:21
 msgid "1 comment on %2$s"
 msgid_plural "%1$s comments on %2$s"
 msgstr[0] ""
+msgstr[1] ""
 
 #: partials/comments.php:108
 msgid "Comments are closed."
@@ -421,4 +414,8 @@ msgstr ""
 
 #: partials/none.php:12
 msgid "Sorry, nothing here 😞"
+msgstr ""
+
+#: templates/singular.php:35
+msgid "Pages: "
 msgstr ""
