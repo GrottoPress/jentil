@@ -165,32 +165,33 @@ The directory structure for your theme, after installation, should be similar to
 │   ├── templates/
 │   └── helpers.php
 ├── assets/
-│   ├── scripts/
-│   └── styles/
-├── bin/
+│   ├── css/
+│   └── js/
 ├── dist/
-│   ├── scripts/
-│   └── styles/
+│   ├── css/
+│   └── js/
 ├── lang/
 ├── node_modules/
 ├── tests/
 ├── vendor/
 ├── .editorconfig
 ├── .gitignore
-├── .travis.yml
 ├── CHANGELOG.md
 ├── codeception.yml
 ├── composer.json
 ├── composer.lock
 ├── functions.php
-├── gulpfile.js
 ├── index.php
 ├── LICENSE.md
 ├── package.json
 ├── package-lock.json
+├── postcss.config.js
 ├── README.md
 ├── screenshot.png*
-└── style.css
+├── style.css
+├── tailwind.config.js
+├── tsconfig.json
+└── webpack.mix.js
 ```
 
 ### Adding templates and partials
