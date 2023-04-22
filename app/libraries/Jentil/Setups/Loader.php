@@ -15,14 +15,12 @@ final class Loader extends AbstractSetup
      */
     public function loadTemplates()
     {
-        $templates = $this->templates();
-
-        \array_walk($templates, function (string $template, int $i) {
+        foreach ($this->templates() as $template) {
             \add_filter(
                 "{$template}_template_hierarchy",
                 [$this, 'templateHierarchy']
             );
-        });
+        }
     }
 
     /**

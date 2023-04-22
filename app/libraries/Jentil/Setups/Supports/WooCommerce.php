@@ -52,18 +52,15 @@ final class WooCommerce extends AbstractSetup
             ->panels['Posts']->sections['Singular_page']
             ->get($wp_customizer)->active_callback;
 
-        \array_walk(
-            $taxes,
-            function (string $tax, int $i) use ($wp_customizer) {
-                $this->app->setups['Customizer']
-                    ->panels['Posts']->sections["Taxonomy_{$tax}"]
-                    ->remove($wp_customizer);
+        foreach ($taxes as $tax) {
+            $this->app->setups['Customizer']
+                ->panels['Posts']->sections["Taxonomy_{$tax}"]
+                ->remove($wp_customizer);
 
-                $this->app->setups['Customizer']
-                    ->sections['Title']->settings["Taxonomy_{$tax}"]
-                    ->remove($wp_customizer);
-            }
-        );
+            $this->app->setups['Customizer']
+                ->sections['Title']->settings["Taxonomy_{$tax}"]
+                ->remove($wp_customizer);
+        }
 
         $this->app->setups['Customizer']
             ->panels['Posts']->sections['Related_product']
