@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Load `privacypolicy` templates from `app/templates` directory
+- Hide "Layouts" customizer section if layouts empty
 
 ### Removed
 - Remove `@grottopress/scss` NPM package

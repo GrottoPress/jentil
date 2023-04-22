@@ -21,6 +21,10 @@ final class Layout extends AbstractSection
 
     public function add(WPCustomizer $wp_customizer)
     {
+        if (!$this->customizer->app->utilities->page->layouts->get()) {
+            return;
+        }
+
         $this->setSettings();
 
         parent::add($wp_customizer);
