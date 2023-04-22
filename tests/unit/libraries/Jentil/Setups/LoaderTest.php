@@ -108,23 +108,24 @@ class LoaderTest extends AbstractTestCase
     private function templates(): array
     {
         return [
-            'index',
             '404',
             'archive',
+            'attachment',
             'author',
             'category',
-            'tag',
-            'taxonomy',
             'date',
             'embed',
             'home',
+            'index',
             'frontpage',
             'page',
             'paged',
+            'privacypolicy',
             'search',
             'single',
             'singular',
-            'attachment',
+            'tag',
+            'taxonomy',
         ];
     }
 }
