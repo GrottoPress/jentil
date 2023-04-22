@@ -115,7 +115,7 @@ class Utilities
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function breadcrumbs(array $args = []): Breadcrumbs
     {
@@ -123,7 +123,7 @@ class Utilities
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function posts(array $args = []): Posts
     {
@@ -136,7 +136,7 @@ class Utilities
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function metaBox(array $args): MetaBox
     {

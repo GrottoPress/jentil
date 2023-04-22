@@ -45,9 +45,9 @@ final class Core extends AbstractScript
      *
      * @filter body_class
      *
-     * @param string[int] $classes
+     * @param string[] $classes
      *
-     * @return string[int]
+     * @return string[]
      */
     public function addBodyClasses(array $classes): array
     {

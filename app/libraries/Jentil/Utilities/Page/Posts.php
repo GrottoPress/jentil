@@ -87,7 +87,7 @@ class Posts
     }
 
     /**
-     * @return \WP_Post_Type[string] Public post types.
+     * @return array<string, \WP_Post_Type> Public post types.
      */
     public function postTypes(): array
     {
@@ -95,7 +95,7 @@ class Posts
     }
 
     /**
-     * @return \WP_Taxonomy[string] Public taxonomies.
+     * @return array<string, \WP_Taxonomy> Public taxonomies.
      */
     public function taxonomies(): array
     {
@@ -103,7 +103,7 @@ class Posts
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function themeMod(string $setting, array $args = []): PostsMod
     {
@@ -153,7 +153,7 @@ class Posts
     }
 
     /**
-     * @return string[string]
+     * @return array<string, string>
      */
     public function imageSizes(): array
     {

@@ -12,8 +12,8 @@ final class Mobile extends AbstractSetup
 
     /**
      * @filter body_class
-     * @param string[int] $classes
-     * @return string[int]
+     * @param string[] $classes
+     * @return string[]
      */
     public function addBodyClasses(array $classes): array
     {

@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 class Sticky extends AbstractPosts
 {
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     public function args(): array
     {
@@ -131,7 +131,7 @@ class Sticky extends AbstractPosts
     }
 
     /**
-     * @return int[int]
+     * @return int[]
      */
     public function get(string $post_type = ''): array
     {

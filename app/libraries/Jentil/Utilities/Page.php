@@ -37,7 +37,7 @@ class Page extends PagePackage
     private $posts;
 
     /**
-     * @var string[int]
+     * @var string[]
      */
     private $type;
 
@@ -77,7 +77,7 @@ class Page extends PagePackage
      * is called only once per page cycle, except, of course,
      * in the customizer.
      *
-     * @return string[int]
+     * @return string[]
      */
     private function getType(): array
     {

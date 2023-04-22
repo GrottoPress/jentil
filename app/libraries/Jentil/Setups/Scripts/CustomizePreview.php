@@ -84,7 +84,7 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * @return string[int]
+     * @return string[]
      */
     private function pageTitleModIDs(): array
     {
@@ -94,7 +94,7 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * @return string[int]
+     * @return string[]
      */
     private function pageLayoutModIDs(): array
     {
@@ -104,7 +104,7 @@ final class CustomizePreview extends AbstractScript
     }
 
     /**
-     * @return string[int]
+     * @return string[]
      */
     private function relatedPostsHeadingModIDs(): array
     {

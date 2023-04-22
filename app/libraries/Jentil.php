@@ -15,7 +15,7 @@ final class Jentil extends AbstractTheme
     private $utilities;
 
     /**
-     * @var string[string]
+     * @var array<string, string>
      */
     private $meta;
 
@@ -40,7 +40,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return Setups\AbstractSetup[string]
+     * @return array<string, Setups\AbstractSetup>
      */
     protected function getSetups(): array
     {
@@ -52,7 +52,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return string[string]
+     * @return array<string, string>
      */
     protected function getMeta(): array
     {
@@ -74,7 +74,7 @@ final class Jentil extends AbstractTheme
     }
 
     /**
-     * @return string[string]
+     * @return array<string, string>
      */
     public function themeData(string $themeDir): array
     {

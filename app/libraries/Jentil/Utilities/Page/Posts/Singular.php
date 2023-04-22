@@ -8,7 +8,7 @@ use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 class Singular extends AbstractPosts
 {
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     public function args(): array
     {

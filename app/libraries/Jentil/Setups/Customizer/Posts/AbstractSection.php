@@ -10,7 +10,7 @@ use WP_Customize_Manager as WPCustomizer;
 abstract class AbstractSection extends Section
 {
     /**
-     * @var mixed[string]
+     * @var array<string, mixed>
      */
     protected $themeModArgs = [];
 
@@ -23,7 +23,7 @@ abstract class AbstractSection extends Section
     }
 
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     protected function getThemeModArgs(): array
     {

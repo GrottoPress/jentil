@@ -29,7 +29,7 @@ abstract class AbstractPosts
     }
 
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     abstract protected function args(): array;
 }

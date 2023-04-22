@@ -16,7 +16,7 @@ class Related extends AbstractPosts
     }
 
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     public function args(): array
     {

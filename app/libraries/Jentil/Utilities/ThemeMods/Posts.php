@@ -28,7 +28,7 @@ class Posts extends AbstractThemeMod
     private $moreSpecific;
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function __construct(
         ThemeMods $theme_mods,
@@ -71,7 +71,7 @@ class Posts extends AbstractThemeMod
     }
 
     /**
-     * @return string[string]
+     * @return array<string, string>
      */
     private function ids(): array
     {
@@ -95,7 +95,7 @@ class Posts extends AbstractThemeMod
     }
 
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     private function defaults(): array
     {

@@ -18,7 +18,7 @@ final class Theme extends AbstractChildTheme
     private $utilities;
 
     /**
-     * @var string[string]
+     * @var array<string, string>
      */
     private $meta;
 

@@ -18,7 +18,7 @@ abstract class AbstractSetting extends Setting
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     protected function themeMod(array $args): TitleMod
     {

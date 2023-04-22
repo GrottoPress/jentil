@@ -25,8 +25,8 @@ final class Loader extends AbstractSetup
 
     /**
      * @filter {$template}_template_hierarchy
-     * @param string[int] $templates
-     * @return string[int]
+     * @param string[] $templates
+     * @return string[]
      */
     public function templateHierarchy(array $templates): array
     {
@@ -50,7 +50,7 @@ final class Loader extends AbstractSetup
     }
 
     /**
-     * @return string[int]
+     * @return string[]
      */
     private function templates(): array
     {

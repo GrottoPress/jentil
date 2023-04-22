@@ -47,7 +47,7 @@ abstract class AbstractMetaBox extends AbstractSetup
     }
 
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     abstract protected function box(WP_Post $post): array;
 }

@@ -27,7 +27,7 @@ class ShortTags
     }
 
     /**
-     * @return string[string]
+     * @return array<string, string>
      */
     public function get(): array
     {
@@ -59,7 +59,7 @@ class ShortTags
         ];
 
         /**
-         * @var string[string] $tags
+         * @var array<string, string> $tags
          */
         return \apply_filters('jentil_short_tags', $tags);
     }

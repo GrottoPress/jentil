@@ -26,7 +26,7 @@ class ThemeMods
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function layout(array $args = []): ThemeMods\Layout
     {
@@ -34,7 +34,7 @@ class ThemeMods
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function posts(string $setting, array $args = []): ThemeMods\Posts
     {
@@ -42,7 +42,7 @@ class ThemeMods
     }
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function title(array $args = []): ThemeMods\Title
     {

@@ -8,7 +8,7 @@ use WP_Post_Type;
 class Archive extends AbstractPosts
 {
     /**
-     * @return mixed[string]
+     * @return array<string, mixed>
      */
     protected function args(): array
     {
@@ -163,7 +163,7 @@ class Archive extends AbstractPosts
     }
 
     /**
-     * @return WP_Post_Type[string] Public post types that have archive.
+     * @return array<string, WP_Post_Type> Public post types that have archive.
      */
     public function postTypes(): array
     {

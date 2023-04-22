@@ -23,7 +23,7 @@ class PostTypeTemplate
     }
 
     /**
-     * @param mixed[int] $args
+     * @param mixed[] $args
      */
     public function __call(string $name, array $args)
     {
@@ -47,7 +47,7 @@ class PostTypeTemplate
     }
 
     /**
-     * @param string[int] $type
+     * @param string[] $type
      */
     public function is(array $type): bool
     {

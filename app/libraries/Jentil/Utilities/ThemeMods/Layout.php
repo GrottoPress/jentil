@@ -23,7 +23,7 @@ class Layout extends AbstractThemeMod
     private $moreSpecific;
 
     /**
-     * @param mixed[string] $args
+     * @param array<string, mixed> $args
      */
     public function __construct(ThemeMods $theme_mods, array $args = [])
     {
@@ -95,7 +95,7 @@ class Layout extends AbstractThemeMod
     }
 
     /**
-     * @return string[string]
+     * @return array<string, string>
      */
     private function ids(): array
     {
