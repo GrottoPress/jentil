@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Hide "Layouts" customizer section if layouts empty
 - Fix large gap between footer widgets in grid layout
 
+### Changed
+- Remove `fa-sm` sizing from Fontawesome icons
+
 ### Removed
 - Remove `@grottopress/scss` NPM package
 

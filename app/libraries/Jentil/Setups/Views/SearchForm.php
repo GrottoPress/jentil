@@ -30,7 +30,7 @@ final class SearchForm extends AbstractSetup
             </label>
 
             <button type="submit" class="button submit">
-                <span class="fas fa-search fa-sm" aria-hidden="true"></span>
+                <span class="fas fa-search" aria-hidden="true"></span>
 
                 <span class="search-button-text icon-text">'.
                     \esc_html__('Search', 'jentil').'</span>

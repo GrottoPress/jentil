@@ -45,9 +45,8 @@ export abstract class Base {
     }
 
     protected renderCaret(direction: 'up' | 'down'): string {
-        return `<span class="fas fa-caret-${
-            direction
-        } fa-sm" aria-hidden="true"></span>
-        <span class="screen-reader-text">${this._l10n.submenu}</span>`
+        return `<span class="fas fa-caret-${direction}" aria-hidden="true">
+            </span>
+            <span class="screen-reader-text">${this._l10n.submenu}</span>`
     }
 }
