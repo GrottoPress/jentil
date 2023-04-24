@@ -121,5 +121,6 @@
         w-auto
         py-1
         px-[7px]
-        z-10;
+        z-10
+        leading-none;
 }
