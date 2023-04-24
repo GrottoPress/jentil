@@ -14,10 +14,6 @@
     @apply mt-5 first:mt-0;
 }
 
-.full-width {
-    @apply -mx-[9999px] px-[9999px];
-}
-
 .hide {
     @apply hidden;
 }
