@@ -26,6 +26,7 @@ export abstract class Base {
         const jlink = this._j(link)
         const siblings = jlink.parent('li').siblings('li')
         const submenu = jlink.next('ul')
+        const submenuChildren = submenu.find('ul')
 
         siblings.children('ul').slideUp(this._fx_duration)
 
@@ -35,12 +36,11 @@ export abstract class Base {
 
         this.toggleIcon(link)
 
-        submenu.find('ul')
-            .prev('a')
+        submenuChildren.prev('a')
             .children(this._submenu_button_selector)
             .html(this.renderIcon('down'))
 
-        submenu.find('ul').slideUp(this._fx_duration)
+        submenuChildren.slideUp(this._fx_duration)
         submenu.slideToggle(this._fx_duration)
     }
 
