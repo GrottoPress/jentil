@@ -9,7 +9,7 @@
 export abstract class Base {
     protected readonly _fx_duration = 200
     protected readonly _submenu_button_class_name = 'js-sub-menu-button'
-    protected _submenu_selector = '.menu li > ul'
+    protected _submenu_selector = '#primary-menu .menu li > ul'
 
     protected readonly _submenu_button_selector =
         `.${this._submenu_button_class_name}`
