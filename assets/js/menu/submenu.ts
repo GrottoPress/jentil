@@ -3,7 +3,6 @@
 import { Base } from './base'
 
 export class Submenu extends Base {
-    private readonly selector = '.menu li > ul'
     private timeKeeper: NodeJS.Timeout | undefined
 
     run(): void {
@@ -12,17 +11,17 @@ export class Submenu extends Base {
     }
 
     private hide(): void {
-        this._j(this.selector).hide()
+        this._j(this._submenu_selector).hide()
     }
 
     private handleFocusOut(): void {
-        this._j(this.selector).parent('li').attr('tabindex', -1)
+        this._j(this._submenu_selector).parent('li').attr('tabindex', -1)
 
-        this._j(this.selector).parent('li').on('focusout', () => {
+        this._j(this._submenu_selector).parent('li').on('focusout', () => {
             clearTimeout(this.timeKeeper)
 
             this.timeKeeper = setTimeout(() => {
-                this._j(this.selector).slideUp(this._fx_duration)
+                this._j(this._submenu_selector).slideUp(this._fx_duration)
             }, 150);
         })
     }

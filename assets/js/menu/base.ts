@@ -9,9 +9,11 @@
 type Target = JQuery<EventTarget>
 
 export abstract class Base {
-    protected readonly _fx_duration: number = 200
-    protected readonly _submenu_button_class_name: string = 'js-sub-menu-button'
-    protected readonly _submenu_button_selector: string =
+    protected readonly _fx_duration = 200
+    protected readonly _submenu_button_class_name = 'js-sub-menu-button'
+    protected _submenu_selector = '.menu li > ul'
+
+    protected readonly _submenu_button_selector =
         `.${this._submenu_button_class_name}`
 
     constructor(

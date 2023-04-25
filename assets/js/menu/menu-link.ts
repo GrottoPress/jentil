@@ -9,7 +9,7 @@ export class MenuLink extends Base {
     }
 
     private moveElement(): void {
-        this._j('.menu li > ul').prev('a').filter((_, link) => {
+        this._j(this._submenu_selector).prev('a').filter((_, link) => {
             return (0 !== this._j(link).attr('href')?.indexOf('#'))
         }).each((_, link) => {
             const element = this._j(link).first()
@@ -18,7 +18,7 @@ export class MenuLink extends Base {
     }
 
     private handleClick(): void {
-        this._j('.menu li > ul').prev('a').on(
+        this._j(this._submenu_selector).prev('a').on(
             'click',
             (event: JQuery.ClickEvent): void => {
                 this.toggleSubMenu(event.currentTarget)
