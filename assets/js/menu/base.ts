@@ -34,24 +34,24 @@ export abstract class Base {
             .siblings('li')
             .children('a')
             .children(this._submenu_button_selector)
-            .html(this.renderCaret('down'))
+            .html(this.renderIcon('down'))
 
-        this.toggleCaret(link)
+        this.toggleIcon(link)
 
         this._j(link).next('ul').slideToggle(this._fx_duration)
     }
 
-    protected toggleCaret(link: JQuery<EventTarget>): void {
+    protected toggleIcon(link: JQuery<EventTarget>): void {
         const direction = ('none' === this._j(link).next('ul').css('display')) ?
             'up' :
             'down'
 
         this._j(link)
             .children(this._submenu_button_selector)
-            .html(this.renderCaret(direction))
+            .html(this.renderIcon(direction))
     }
 
-    protected renderCaret(direction: 'up' | 'down'): string {
+    protected renderIcon(direction: 'up' | 'down'): string {
         return `<span class="fas fa-caret-${direction}" aria-hidden="true">
             </span>
             <span class="screen-reader-text">${this._l10n.submenu}</span>`

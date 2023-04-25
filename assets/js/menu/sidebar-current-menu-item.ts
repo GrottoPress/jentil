@@ -12,6 +12,6 @@ export class SidebarCurrentMenuItem extends Base {
             .show()
             .prev('a')
             .children(this._submenu_button_selector)
-            .html(this.renderCaret('up'))
+            .html(this.renderIcon('up'))
     }
 }
