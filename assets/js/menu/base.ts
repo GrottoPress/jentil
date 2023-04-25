@@ -38,6 +38,11 @@ export abstract class Base {
 
         this.toggleIcon(link)
 
+        this._j(link).next('ul').find('ul')
+            .prev('a')
+            .children(this._submenu_button_selector)
+            .html(this.renderIcon('down'))
+        this._j(link).next('ul').find('ul').slideUp(this._fx_duration)
         this._j(link).next('ul').slideToggle(this._fx_duration)
     }
 
