@@ -17,10 +17,7 @@ export class Submenu extends Base {
             if (event.isDefaultPrevented()) return
 
             const submenu = this._j(this._submenu_selector)
-
-            // TODO: Fix menu closed when link clicked
-            const parent = submenu.parent('li').get(0)
-            if (parent && this._j.contains(parent, event.target)) return
+            if (0 !== submenu.parent('li').find(event.target).length) return
 
             submenu.prev('a')
                 .children(this._submenu_button_selector)
