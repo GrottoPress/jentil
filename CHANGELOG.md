@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Remove `fa-sm` sizing from Fontawesome icons
+- Rewrite JS for menus
 
 ### Removed
 - Remove `@grottopress/scss` NPM package

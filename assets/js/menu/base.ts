@@ -22,26 +22,33 @@ export abstract class Base {
 
     abstract run(): void
 
-    protected toggleSubMenu(button: Target, fx = (target: Target): void => {
-        this._j(target).slideToggle(this._fx_duration)
-    }): void {
-        this._j(button).parent().siblings('li').children('ul')
+    protected toggleSubMenu(link: Target): void {
+        this._j(link)
+            .parent('li')
+            .siblings('li')
+            .children('ul')
             .slideUp(this._fx_duration)
 
-        this._j(button).parent().siblings('li').children('button')
+        this._j(link)
+            .parent('li')
+            .siblings('li')
+            .children('a')
+            .children(this._submenu_button_selector)
             .html(this.renderCaret('down'))
 
-        this.toggleCaret(button)
+        this.toggleCaret(link)
 
-        fx(this._j(button).next('ul'))
+        this._j(link).next('ul').slideToggle(this._fx_duration)
     }
 
-    protected toggleCaret(button: Target): void {
-        if ('none' === this._j(button).next('ul').css('display')) {
-            this._j(button).html(this.renderCaret('up'))
-        } else {
-            this._j(button).html(this.renderCaret('down'))
-        }
+    protected toggleCaret(link: Target): void {
+        const direction = ('none' === this._j(link).next('ul').css('display')) ?
+            'up' :
+            'down'
+
+        this._j(link)
+            .children(this._submenu_button_selector)
+            .html(this.renderCaret(direction))
     }
 
     protected renderCaret(direction: 'up' | 'down'): string {

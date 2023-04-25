@@ -6,7 +6,6 @@ import { MenuLink } from './menu/menu-link'
 import { ParentMenuIcon } from './menu/parent-menu-icon'
 import { SidebarCurrentMenuItem } from './menu/sidebar-current-menu-item'
 import { Submenu } from './menu/submenu'
-import { SubmenuButton } from './menu/submenu-button'
 
 const menus = [
     new ParentMenuIcon(jQuery, jentilMenuL10n),
@@ -14,7 +13,6 @@ const menus = [
     new SidebarCurrentMenuItem(jQuery, jentilMenuL10n),
     new MenuButton(jQuery, jentilMenuL10n),
     new MenuLink(jQuery, jentilMenuL10n),
-    new SubmenuButton(jQuery, jentilMenuL10n)
 ]
 
 jQuery.each(menus, (_, menu: Base): void => menu.run())

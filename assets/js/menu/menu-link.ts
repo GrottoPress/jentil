@@ -5,19 +5,24 @@ import { Base } from './base'
 export class MenuLink extends Base {
     run(): void {
         this.handleClick()
+        // this.moveElement()
+    }
+
+    private moveElement(): void {
+        this._j('.menu li > ul').prev('a').filter((_, link) => {
+            return (0 !== this._j(link).attr('href')?.indexOf('#'))
+        }).each((_, link) => {
+            const element = this._j(link).first()
+            element.detach().appendTo(element.next())
+        })
     }
 
     private handleClick(): void {
-        this._j(this._submenu_button_selector).prev('a').on(
+        this._j('.menu li > ul').prev('a').on(
             'click',
             (event: JQuery.ClickEvent): void => {
-                if ('#' === this._j(event.currentTarget).attr('href')) {
-                    this.toggleSubMenu(
-                        this._j(event.currentTarget).next('button')
-                    )
-
-                    event.preventDefault()
-                }
+                this.toggleSubMenu(event.currentTarget)
+                event.preventDefault()
             }
         )
     }

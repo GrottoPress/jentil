@@ -8,9 +8,10 @@ export class SidebarCurrentMenuItem extends Base {
     }
 
     private show(): void {
-        this._j('.site-sidebar li.current-menu-ancestor > ul')
+        this._j('.widget_nav_menu li.current-menu-ancestor > ul')
             .show()
-            .siblings(this._submenu_button_selector)
+            .prev('a')
+            .children(this._submenu_button_selector)
             .html(this.renderCaret('up'))
     }
 }

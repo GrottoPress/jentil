@@ -15,7 +15,7 @@
     }
 
     a {
-        @apply block;
+        @apply inline-block;
     }
 
     li {
@@ -93,12 +93,6 @@
         }
 
         .has-js & {
-            .menu-item-has-children {
-                > a {
-                    @apply lg:pr-6;
-                }
-            }
-
             ul,
             li:hover ul ul,
             li li:hover ul ul,
@@ -112,15 +106,5 @@
 }
 
 .sub-menu-toggle {
-    @apply absolute
-        top-0
-        right-0
-        m-0
-        bg-transparent
-        text-inherit
-        w-auto
-        py-1
-        px-[7px]
-        z-10
-        leading-none;
+    @apply ml-[6px];
 }
