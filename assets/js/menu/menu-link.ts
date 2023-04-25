@@ -5,16 +5,22 @@ import { Base } from './base'
 export class MenuLink extends Base {
     run(): void {
         this.handleClick()
-        // this.moveElement()
+        this.cloneParents()
     }
 
-    private moveElement(): void {
-        this._j(this._submenu_selector).prev('a').filter((_, link) => {
-            return (0 !== this._j(link).attr('href')?.indexOf('#'))
-        }).each((_, link) => {
-            const element = this._j(link).first()
-            element.detach().appendTo(element.next())
-        })
+    // If a menu item has submenu, clone this menu item to the first
+    // item of its submenu, and change the original menu item to an
+    // anchor that opens the submenu.
+    private cloneParents(): void {
+        const links = this._j(this._submenu_selector)
+            .prev('a')
+            .filter((_, link) => 0 !== this._j(link).attr('href')?.indexOf('#'))
+
+        const clones = links.clone()
+
+        links.attr('href', '#')
+        clones.children(this._submenu_button_selector).remove()
+        clones.prependTo(links.next('ul')).wrap('<li class="menu-item"></li>')
     }
 
     private handleClick(): void {

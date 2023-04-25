@@ -4,8 +4,8 @@ import { Base } from './base'
 
 export class Submenu extends Base {
     run(): void {
-        this.hide()
         this.handleClickOutside()
+        this.hide()
     }
 
     private hide(): void {
