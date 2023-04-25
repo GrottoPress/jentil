@@ -23,36 +23,35 @@ export abstract class Base {
     abstract run(): void
 
     protected toggleSubMenu(link: JQuery<EventTarget>): void {
-        this._j(link)
-            .parent('li')
-            .siblings('li')
-            .children('ul')
-            .slideUp(this._fx_duration)
+        const jlink = this._j(link)
+        const siblings = jlink.parent('li').siblings('li')
+        const submenu = jlink.next('ul')
 
-        this._j(link)
-            .parent('li')
-            .siblings('li')
-            .children('a')
+        siblings.children('ul').slideUp(this._fx_duration)
+
+        siblings.children('a')
             .children(this._submenu_button_selector)
             .html(this.renderIcon('down'))
 
         this.toggleIcon(link)
 
-        this._j(link).next('ul').find('ul')
+        submenu.find('ul')
             .prev('a')
             .children(this._submenu_button_selector)
             .html(this.renderIcon('down'))
-        this._j(link).next('ul').find('ul').slideUp(this._fx_duration)
-        this._j(link).next('ul').slideToggle(this._fx_duration)
+
+        submenu.find('ul').slideUp(this._fx_duration)
+        submenu.slideToggle(this._fx_duration)
     }
 
     protected toggleIcon(link: JQuery<EventTarget>): void {
-        const direction = ('none' === this._j(link).next('ul').css('display')) ?
+        const jlink = this._j(link)
+
+        const direction = ('none' === jlink.next('ul').css('display')) ?
             'up' :
             'down'
 
-        this._j(link)
-            .children(this._submenu_button_selector)
+        jlink.children(this._submenu_button_selector)
             .html(this.renderIcon(direction))
     }
 

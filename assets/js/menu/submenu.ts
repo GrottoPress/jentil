@@ -16,15 +16,16 @@ export class Submenu extends Base {
         this._j(document).on('click', (event: JQuery.ClickEvent) => {
             if (event.isDefaultPrevented()) return
 
-            const parent = this._j(this._submenu_selector).parent('li').get(0)
+            const submenu = this._j(this._submenu_selector)
+
+            const parent = submenu.parent('li').get(0)
             if (parent && this._j.contains(parent, event.target)) return
 
-            this._j(this._submenu_selector)
-                .prev('a')
+            submenu.prev('a')
                 .children(this._submenu_button_selector)
                 .html(this.renderIcon('down'))
 
-            this._j(this._submenu_selector).slideUp(this._fx_duration)
+            submenu.slideUp(this._fx_duration)
         })
     }
 }
