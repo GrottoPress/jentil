@@ -6,8 +6,6 @@
 
 /// <reference path='./module.d.ts' />
 
-type Target = JQuery<EventTarget>
-
 export abstract class Base {
     protected readonly _fx_duration = 200
     protected readonly _submenu_button_class_name = 'js-sub-menu-button'
@@ -24,7 +22,7 @@ export abstract class Base {
 
     abstract run(): void
 
-    protected toggleSubMenu(link: Target): void {
+    protected toggleSubMenu(link: JQuery<EventTarget>): void {
         this._j(link)
             .parent('li')
             .siblings('li')
@@ -43,7 +41,7 @@ export abstract class Base {
         this._j(link).next('ul').slideToggle(this._fx_duration)
     }
 
-    protected toggleCaret(link: Target): void {
+    protected toggleCaret(link: JQuery<EventTarget>): void {
         const direction = ('none' === this._j(link).next('ul').css('display')) ?
             'up' :
             'down'
