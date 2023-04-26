@@ -10,7 +10,7 @@ export class ParentMenuIcon extends Base {
     private add(): void {
         this._j(this._submenu_selector).prev('a').append(
             `<span class="${this._submenu_button_class_name}
-                sub-menu-toggle">${this.renderIcon('down')}</span>`
+                sub-menu-toggle">${this.renderSubmenuIcon('down')}</span>`
         )
     }
 }

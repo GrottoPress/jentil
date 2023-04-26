@@ -32,19 +32,19 @@ export abstract class Base {
 
         siblings.children('a')
             .children(this._submenu_button_selector)
-            .html(this.renderIcon('down'))
+            .html(this.renderSubmenuIcon('down'))
 
-        this.toggleIcon(link)
+        this.toggleSubmenuIcon(link)
 
         submenuChildren.prev('a')
             .children(this._submenu_button_selector)
-            .html(this.renderIcon('down'))
+            .html(this.renderSubmenuIcon('down'))
 
         submenuChildren.slideUp(this._fx_duration)
         submenu.slideToggle(this._fx_duration)
     }
 
-    protected toggleIcon(link: JQuery<EventTarget>): void {
+    protected toggleSubmenuIcon(link: JQuery<EventTarget>): void {
         const jlink = this._j(link)
 
         const direction = ('none' === jlink.next('ul').css('display')) ?
@@ -52,10 +52,10 @@ export abstract class Base {
             'down'
 
         jlink.children(this._submenu_button_selector)
-            .html(this.renderIcon(direction))
+            .html(this.renderSubmenuIcon(direction))
     }
 
-    protected renderIcon(direction: 'up' | 'down'): string {
+    protected renderSubmenuIcon(direction: 'up' | 'down'): string {
         return `<span class="fas fa-caret-${direction}" aria-hidden="true">
             </span>
             <span class="screen-reader-text">${this._l10n.submenu}</span>`

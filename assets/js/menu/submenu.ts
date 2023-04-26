@@ -21,7 +21,7 @@ export class Submenu extends Base {
 
             submenu.prev('a')
                 .children(this._submenu_button_selector)
-                .html(this.renderIcon('down'))
+                .html(this.renderSubmenuIcon('down'))
 
             submenu.slideUp(this._fx_duration)
         })
