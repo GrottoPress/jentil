@@ -11,14 +11,11 @@ export class MenuButton extends Base {
         this._j('.js-main-menu-button').attr('href', '#').on(
             'click',
             (event: JQuery.ClickEvent): void => {
-                this._j('.js-main-menu').slideToggle(
-                    this._fx_duration,
-                    (): void => {
-                        this._j('.js-main-menu')
-                            .toggleClass('show hide')
-                            .css({display: ''})
-                    }
-                )
+                const jmenu = this._j('.js-main-menu')
+
+                jmenu.slideToggle(this._fx_duration, (): void => {
+                    jmenu.toggleClass('show hide').css({display: ''})
+                })
 
                 event.preventDefault()
             }
