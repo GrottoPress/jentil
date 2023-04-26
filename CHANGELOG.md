@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Rewrite JS for menus
 - Limit menu JS enhancement to primary menu
 - Close open submenus when a click is triggered outside it
+- Use a "X" icon for menu button when menu is open
 
 ### Removed
 - Remove `@grottopress/scss` NPM package

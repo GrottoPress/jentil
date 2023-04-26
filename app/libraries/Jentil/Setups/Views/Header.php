@@ -37,13 +37,15 @@ final class Header extends AbstractSetup
                 \esc_html__('Skip to menu', 'jentil')
             ).
 
-            '<a class="js-main-menu-button hamburger" href="'.\esc_url(
+            '<a class="js-main-menu-button menu-button" href="'.\esc_url(
                 \add_query_arg(
                     ['menu' => $this->toggleMenu()],
                     $this->app->utilities->page->URL('full')
                 )
             ).'" rel="nofollow">
-                <span class="fas fa-bars" aria-hidden="true"></span>
+                <span class="js-menu-button-icon menu-button-icon icon">'.
+                    $this->menuToggleIcon().
+                '</span>
                 <span class="menu-button-text icon-text">'.
                     \esc_html__('Menu', 'jentil').
                 '</span>
@@ -99,6 +101,13 @@ final class Header extends AbstractSetup
     private function toggleMenu(): string
     {
         return ($this->menuStatus() === 'hide' ? 'show' : 'hide');
+    }
+
+    private function menuToggleIcon(): string
+    {
+        $icon = 'show' === $this->menuStatus() ? 'fas fa-times' : 'fas fa-bars';
+
+        return '<span class="'.$icon.'" aria-hidden="true"></span>';
     }
 
     /**
