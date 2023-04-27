@@ -10,7 +10,7 @@
             text-[0.875rem]
             font-sans
             break-words
-            leading-[1.5];
+            leading-normal;
     }
 
     a {
