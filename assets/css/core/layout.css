@@ -3,7 +3,7 @@
  */
 
 #wrap {
-    @apply max-w-3xl mx-auto lg:max-w-7xl;
+    @apply max-w-3xl mx-auto lg:max-w-6xl;
 }
 
 #main {
