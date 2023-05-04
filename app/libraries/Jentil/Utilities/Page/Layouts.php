@@ -18,7 +18,7 @@ class Layouts
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, array<string, string>>
      */
     public function get(): array
     {
@@ -47,7 +47,7 @@ class Layouts
         ];
 
         /**
-         * @var array<string, string> $layouts
+         * @var array<string, array<string, string>> $layouts
          */
         return \apply_filters('jentil_page_layouts', $layouts);
     }
