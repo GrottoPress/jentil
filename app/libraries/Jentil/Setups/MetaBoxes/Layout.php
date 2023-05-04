@@ -4,7 +4,6 @@ declare (strict_types = 1);
 namespace GrottoPress\Jentil\Setups\MetaBoxes;
 
 use GrottoPress\Jentil\AbstractTheme;
-use GrottoPress\Jentil;
 use WP_Post;
 
 final class Layout extends AbstractMetaBox
