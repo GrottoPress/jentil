@@ -59,7 +59,7 @@ class Layouts
     {
         $return = [];
 
-        foreach ($this->get() as $column_type => $layouts) {
+        foreach ($this->get() as $layouts) {
             foreach ($layouts as $layout_id => $layout_name) {
                 $return[\sanitize_title($layout_id)] = \sanitize_text_field(
                     $layout_name
