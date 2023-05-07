@@ -40,8 +40,9 @@ tt {
 }
 
 pre {
-    @apply mt-5
+    @apply my-5
         first:mt-0
+        last:mb-0
         py-3 px-4 border
         border-gray-300
         rounded
