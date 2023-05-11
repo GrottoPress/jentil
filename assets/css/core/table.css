@@ -30,7 +30,7 @@ tbody {
 }
 
 tr {
-    @apply even:bg-gray-50 border-y even:border-y-gray-300;
+    @apply even:bg-gray-50 border-y border-gray-300;
 
     &:nth-child(even) {
         td,
@@ -43,16 +43,12 @@ tr {
 thead,
 tfoot {
     tr {
-        @apply bg-transparent border-0 even:bg-transparent even:border-0;
+        @apply even:bg-transparent;
     }
 }
 
-thead {
-    @apply font-bold border-t border-t-gray-300;
-}
-
 tfoot {
-    @apply italic border-b border-b-gray-300;
+    @apply italic;
 }
 
 td,
