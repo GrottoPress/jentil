@@ -11,8 +11,6 @@ class Related extends AbstractPosts
     public function __construct(Posts $posts)
     {
         parent::__construct($posts);
-
-        $this->id = 'related-posts';
     }
 
     /**
@@ -23,7 +21,6 @@ class Related extends AbstractPosts
         return [
             // 'tag' => $this->themeMod('wrap_tag')->get(),
             'class' => $this->themeMod('wrap_class')->get(),
-            'id' => $this->id,
             'layout' => $this->themeMod('layout')->get(),
             'text_offset' => $this->themeMod('text_offset')->get(),
             'related_to' => \get_post()->ID,

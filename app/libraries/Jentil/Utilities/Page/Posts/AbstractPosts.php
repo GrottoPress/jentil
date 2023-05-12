@@ -13,11 +13,6 @@ abstract class AbstractPosts
      */
     protected $posts;
 
-    /**
-     * @var string
-     */
-    protected $id = 'main-query';
-
     public function __construct(Posts $posts)
     {
         $this->posts = $posts;

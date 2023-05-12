@@ -28,7 +28,7 @@
     "php": ">=7.0",
     "grottopress/wordpress-breadcrumbs": "^0.8",
     "grottopress/wordpress-meta-box": "^0.4",
-    "grottopress/wordpress-posts": "^0.16",
+    "grottopress/wordpress-posts": "^0.17",
     "grottopress/wordpress-suv": "^0.7",
     "grottopress/mobile-detector": "^0.2"
   },

@@ -15,7 +15,6 @@ class Archive extends AbstractPosts
         $args = [
             // 'tag' => $this->posts->themeMod('wrap_tag')->get(),
             'class' => $this->posts->themeMod('wrap_class')->get(),
-            'id' => $this->id,
             'layout' => $this->posts->themeMod('layout')->get(),
             'text_offset' => $this->posts->themeMod('text_offset')->get(),
             'image' => [
