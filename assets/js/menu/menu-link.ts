@@ -20,7 +20,12 @@ export class MenuLink extends Base {
 
         links.attr('href', '#')
         clones.children(this._submenu_button_selector).remove()
-        clones.prependTo(links.next('ul')).wrap('<li class="menu-item"></li>')
+
+        this._j.each(links, (i, link) => {
+            const clone = this._j(clones[i])
+            const submenu = this._j(link).next('ul')
+            clone.prependTo(submenu).wrap('<li class="menu-item"></li>')
+        })
     }
 
     private handleClick(): void {
