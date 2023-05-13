@@ -29,6 +29,16 @@
         @apply max-w-full;
     }
 
+    img,
+    iframe,
+    object,
+    embed,
+    video,
+    audio,
+    svg {
+        @apply inline-block;
+    }
+
     img {
         @apply h-auto;
     }
