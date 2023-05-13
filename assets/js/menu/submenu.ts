@@ -19,11 +19,7 @@ export class Submenu extends Base {
             const submenu = this._j(this._submenu_selector)
             if (0 !== submenu.parent('li').find(event.target).length) return
 
-            submenu.prev('a')
-                .children(this._submenu_button_selector)
-                .html(this.renderSubmenuIcon('down'))
-
-            submenu.slideUp(this._fx_duration)
+            this.closeSubmenu(submenu.prev('a'))
         })
     }
 }

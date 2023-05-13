@@ -24,35 +24,33 @@ export abstract class Base {
 
     protected toggleSubMenu(link: JQuery<EventTarget>): void {
         const jlink = this._j(link)
-        const siblings = jlink.parent('li').siblings('li')
+        const aunties = jlink.parent('li').siblings('li')
         const submenu = jlink.next('ul')
         const submenuChildren = submenu.find('ul')
 
-        siblings.children('ul').slideUp(this._fx_duration)
+        this.closeSubmenu(aunties.children('a'))
+        this.closeSubmenu(submenuChildren.prev('a'))
 
-        siblings.children('a')
-            .children(this._submenu_button_selector)
-            .html(this.renderSubmenuIcon('down'))
+        const hidden = 'none' === submenu.css('display')
+        const icon = hidden ? 'up' : 'down'
 
-        this.toggleSubmenuIcon(link)
+        hidden ? jlink.addClass('open') : jlink.removeClass('open')
 
-        submenuChildren.prev('a')
-            .children(this._submenu_button_selector)
-            .html(this.renderSubmenuIcon('down'))
+        jlink.children(this._submenu_button_selector)
+            .html(this.renderSubmenuIcon(icon))
 
-        submenuChildren.slideUp(this._fx_duration)
         submenu.slideToggle(this._fx_duration)
     }
 
-    protected toggleSubmenuIcon(link: JQuery<EventTarget>): void {
+    protected closeSubmenu(link: JQuery<EventTarget>): void {
         const jlink = this._j(link)
 
-        const direction = ('none' === jlink.next('ul').css('display')) ?
-            'up' :
-            'down'
+        jlink.removeClass('open')
 
         jlink.children(this._submenu_button_selector)
-            .html(this.renderSubmenuIcon(direction))
+            .html(this.renderSubmenuIcon('down'))
+
+        jlink.next('ul').slideUp(this._fx_duration)
     }
 
     protected renderSubmenuIcon(direction: 'up' | 'down'): string {
