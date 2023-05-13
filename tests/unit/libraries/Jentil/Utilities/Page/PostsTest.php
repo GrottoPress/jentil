@@ -81,7 +81,7 @@ class PostsTest extends AbstractTestCase
 
     public function testImageSizes()
     {
-        FunctionMocker::replace('wp_get_additional_image_sizes', [
+        FunctionMocker::replace('wp_get_registered_image_subsizes', [
             'mini-thumb' => [
                 'width' => 100,
                 'height' => 100,

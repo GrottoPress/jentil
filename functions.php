@@ -5,7 +5,7 @@
  */
 
 define('JENTIL_MIN_PHP', '7.0');
-define('JENTIL_MIN_WP', '4.7');
+define('JENTIL_MIN_WP', '5.3');
 
 if (version_compare(PHP_VERSION, JENTIL_MIN_PHP, '<') ||
     version_compare(get_bloginfo('version'), JENTIL_MIN_WP, '<')

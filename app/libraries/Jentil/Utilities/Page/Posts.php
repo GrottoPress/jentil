@@ -157,7 +157,7 @@ class Posts
      */
     public function imageSizes(): array
     {
-        $sizes = \wp_get_additional_image_sizes();
+        $sizes = \wp_get_registered_image_subsizes();
 
         $return = [];
 

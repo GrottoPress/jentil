@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### [Unreleased] - 
 
+### Added
+- Include built-in image sizes in thumbnail selector in posts customizer
+
 ### Fixed
 - Load `privacypolicy` templates from `app/templates` directory
 - Hide "Layouts" customizer section if layouts empty
@@ -16,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove `.full-width` utility class
 
 ### Changed
+- Bump minimum required WordPress version to 5.3
 - Remove `fa-sm` sizing from Fontawesome icons
 - Rewrite JS for menus
 - Limit menu JS enhancement to primary menu

@@ -65,7 +65,7 @@ Jentil has built-in support for the following:
 ## Requirements
 
 - [PHP](https://secure.php.net) >= 7.0
-- [WordPress](https://wordpress.org) >= 4.7
+- [WordPress](https://wordpress.org) >= 5.3
 - [Composer](https://getcomposer.org)
 - [Node JS](https://nodejs.org)
 
