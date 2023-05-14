@@ -130,9 +130,9 @@ class Utilities
         return new Posts($args);
     }
 
-    public function post(int $id = 0): Post
+    public function post($post = null): Post
     {
-        return new Post($id);
+        return new Post($post);
     }
 
     /**

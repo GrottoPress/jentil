@@ -96,7 +96,7 @@ final class Singular extends AbstractSetup
             return;
         }
 
-        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+        if ($info = $this->app->utilities->post()->info([
             'types' => \explode(
                 ',',
                 $this->app->utilities->page->posts->singular
@@ -118,7 +118,7 @@ final class Singular extends AbstractSetup
             return;
         }
 
-        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+        if ($info = $this->app->utilities->post()->info([
             'types' => \explode(
                 ',',
                 $this->app->utilities->page->posts->singular
@@ -140,7 +140,7 @@ final class Singular extends AbstractSetup
             return;
         }
 
-        if ($info = $this->app->utilities->post(\get_post()->ID)->info([
+        if ($info = $this->app->utilities->post()->info([
             'types' => \explode(
                 ',',
                 $this->app->utilities->page->posts->singular

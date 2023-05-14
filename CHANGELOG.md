@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Close open submenus when a click is triggered outside it
 - Use a "X" icon for menu button when menu is open
 - Show sidebar widgets as grid on small to large screens
+- Upgrade `grottopress/wordpress-posts` package to v0.17
 
 ### Removed
 - Remove `@grottopress/scss` NPM package
