@@ -82,15 +82,11 @@
 .layout-grid.posts-wrap {
     > .post-wrap {
         .layout-columns-3 & {
-            @apply lg:w-[49%] /*2xl:w-[32.5%]*/;
+            @apply lg:w-[49%] lg:mr-0 lg:odd:mr-[1.9%];
 
             &:nth-child(3) {
                 @apply lg:mt-4;
             }
-
-            /* &:nth-child(4) {
-                @apply 2xl:mt-4;
-            } */
         }
     }
 }
