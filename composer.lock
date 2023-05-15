@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56f12d072a5810c1b2dd9e99578a5aba",
+    "content-hash": "75b4089428601cef819c97cdc22eca63",
     "packages": [
         {
             "name": "grottopress/form-field",
@@ -348,16 +348,16 @@
         },
         {
             "name": "grottopress/wordpress-page",
-            "version": "v0.8.4",
+            "version": "v0.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-page.git",
-                "reference": "6a8cf5219e542419cf43fa1c0f8a5a08ac2bcf25"
+                "reference": "b4f7f9e663ee29b5bee16dd01a864ccea4e2ea26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/6a8cf5219e542419cf43fa1c0f8a5a08ac2bcf25",
-                "reference": "6a8cf5219e542419cf43fa1c0f8a5a08ac2bcf25",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-page/zipball/b4f7f9e663ee29b5bee16dd01a864ccea4e2ea26",
+                "reference": "b4f7f9e663ee29b5bee16dd01a864ccea4e2ea26",
                 "shasum": ""
             },
             "require": {
@@ -399,20 +399,20 @@
                 "source": "https://github.com/GrottoPress/wordpress-page/",
                 "wiki": "https://github.com/GrottoPress/wordpress-page/wiki"
             },
-            "time": "2023-04-13T10:48:35+00:00"
+            "time": "2023-05-12T10:47:49+00:00"
         },
         {
             "name": "grottopress/wordpress-posts",
-            "version": "v0.17.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/wordpress-posts.git",
-                "reference": "d5b544c44f85ae47d62cd9c154302ac30496a3f3"
+                "reference": "4ba48f1ab2d1b85b719fa2052783ee173cbdbb49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/d5b544c44f85ae47d62cd9c154302ac30496a3f3",
-                "reference": "d5b544c44f85ae47d62cd9c154302ac30496a3f3",
+                "url": "https://api.github.com/repos/GrottoPress/wordpress-posts/zipball/4ba48f1ab2d1b85b719fa2052783ee173cbdbb49",
+                "reference": "4ba48f1ab2d1b85b719fa2052783ee173cbdbb49",
                 "shasum": ""
             },
             "require": {
@@ -425,6 +425,7 @@
                 "lucatume/function-mocker": "^1.3",
                 "wp-cli/wp-cli-bundle": "^2.1"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -456,7 +457,7 @@
                 "source": "https://github.com/GrottoPress/wordpress-posts/",
                 "wiki": "https://github.com/GrottoPress/wordpress-posts/wiki"
             },
-            "time": "2023-05-12T10:33:47+00:00"
+            "time": "2023-05-15T16:01:42+00:00"
         },
         {
             "name": "grottopress/wordpress-suv",
@@ -9155,7 +9156,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "grottopress/wordpress-posts": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -16,13 +16,13 @@
 @import 'core/type';
 @import 'core/form';
 @import 'core/table';
-@import 'core/header';
+@import 'core/widget';
 @import 'core/layout';
+@import 'core/header';
 @import 'core/sidebar';
 @import 'core/footer';
 @import 'core/menu';
 @import 'core/breadcrumb';
 @import 'core/post';
-@import 'core/wp';
-@import 'core/widget';
 @import 'core/comment';
+@import 'core/wp';
