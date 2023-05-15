@@ -6,7 +6,7 @@
     @apply sr-only;
 }
 
-.self-clear {
+.clear-self {
     @apply flow-root;
 }
 
