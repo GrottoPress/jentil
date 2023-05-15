@@ -23,7 +23,7 @@
 }
 
 .site-content {
-    @apply w-full min-h-[300px];
+    @apply min-h-[300px];
 }
 
 #content-wrap {
