@@ -2,44 +2,42 @@
  * Basic styles
  */
 
-@layer base {
-    body {
-        @apply px-5
-            bg-white
-            text-gray-700
-            text-[0.875rem]
-            font-sans
-            break-words
-            leading-normal;
-    }
+body {
+    @apply px-5
+        bg-white
+        text-gray-700
+        text-[0.875rem]
+        font-sans
+        break-words
+        leading-normal;
+}
 
-    a {
-        @apply no-underline hover:underline;
-    }
+a {
+    @apply no-underline hover:underline;
+}
 
-    img,
-    iframe,
-    object,
-    embed,
-    video,
-    audio,
-    iframe[style],
-    object[style],
-    embed[style] {
-        @apply max-w-full;
-    }
+img,
+iframe,
+object,
+embed,
+video,
+audio,
+iframe[style],
+object[style],
+embed[style] {
+    @apply max-w-full;
+}
 
-    img,
-    iframe,
-    object,
-    embed,
-    video,
-    audio,
-    svg {
-        @apply inline-block;
-    }
+img,
+iframe,
+object,
+embed,
+video,
+audio,
+svg {
+    @apply inline-block;
+}
 
-    img {
-        @apply h-auto;
-    }
+img {
+    @apply h-auto;
 }
