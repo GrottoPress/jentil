@@ -7,7 +7,7 @@
 }
 
 .clear-self {
-    @apply flow-root;
+    @apply after:table after:content-[''] after:clear-both;
 }
 
 .p {

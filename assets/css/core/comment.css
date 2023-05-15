@@ -30,7 +30,7 @@
 }
 
 #comments {
-    @apply flow-root mt-5;
+    @apply clear-self mt-5;
 }
 
 #comments-list {
@@ -43,7 +43,7 @@
 }
 
 .comment-meta {
-    @apply flow-root text-gray-500;
+    @apply clear-self text-gray-500;
 
     .edit-link {
         @apply before:content-['|_'];
@@ -74,7 +74,7 @@
 }
 
 .comment-content {
-    @apply flow-root;
+    @apply clear-self;
 }
 
 .comments-closed-text {
