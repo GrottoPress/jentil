@@ -6,10 +6,26 @@
     @apply mt-5 first:mt-0 pb-4 hobbit;
 
     .widget-area {
-        @apply sm:-m-2 sm:flex sm:flex-wrap sm:items-start;
+        @apply sm:flex sm:flex-wrap sm:items-start;
 
         > .widget {
-            @apply sm:mt-0 sm:p-2 sm:w-1/2 lg:w-1/3;
+            @apply sm:w-[48.8%]
+                sm:odd:mr-[2.3%]
+                lg:w-[32.4%]
+                lg:odd:mr-[1.35%]
+                lg:mr-[1.35%];
+
+            &:nth-child(3n) {
+              @apply lg:mr-0;
+            }
+
+            &:nth-child(2) {
+                @apply sm:mt-0;
+            }
+
+            &:nth-child(3) {
+                @apply lg:mt-0;
+            }
         }
     }
 }
