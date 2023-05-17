@@ -79,6 +79,18 @@
 
 /** Grid posts */
 
+.layout-columns-2 {
+    .layout-grid.posts-wrap {
+        > .post-wrap {
+            @apply lg:w-[32.3%] lg:mr-[1.5%];
+
+            &:nth-child(3n) {
+                @apply lg:mr-0;
+            }
+        }
+    }
+}
+
 .layout-columns-3 {
     .layout-grid.posts-wrap {
         > .post-wrap {
