@@ -79,7 +79,7 @@
 
 /** Grid posts */
 
-.layout-columns-2 {
+.layout-columns-2 .site-content {
     .layout-grid.posts-wrap {
         > .post-wrap {
             @apply lg:w-[32.3%] lg:mr-[1.5%];
@@ -91,7 +91,7 @@
     }
 }
 
-.layout-columns-3 {
+.layout-columns-3 .site-content {
     .layout-grid.posts-wrap {
         > .post-wrap {
             @apply lg:w-[48.8%] lg:mr-0 lg:odd:mr-[2.3%];
