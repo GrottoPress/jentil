@@ -6,7 +6,7 @@
     @apply hobbit sm:max-lg:flex sm:max-lg:flex-wrap sm:max-lg:items-start;
 
     > .widget {
-        @apply sm:max-lg:w-[48.8%] sm:max-lg:odd:mr-[2.3%];
+        @apply sm:max-lg:w-[48.8%] sm:max-lg:odd:mr-[2.35%];
 
         &:nth-child(2) {
             @apply sm:max-lg:mt-0;

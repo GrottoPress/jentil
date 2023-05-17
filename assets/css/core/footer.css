@@ -10,7 +10,7 @@
 
         > .widget {
             @apply sm:w-[48.8%]
-                sm:odd:mr-[2.3%]
+                sm:odd:mr-[2.35%]
                 lg:w-[32.4%]
                 lg:odd:mr-[1.35%]
                 lg:mr-[1.35%];
