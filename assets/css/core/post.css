@@ -79,10 +79,10 @@
 
 /** Grid posts */
 
-.layout-grid.posts-wrap {
-    > .post-wrap {
-        .layout-columns-3 & {
-            @apply lg:w-[49%] lg:mr-0 lg:odd:mr-[1.9%];
+.layout-columns-3 {
+    .layout-grid.posts-wrap {
+        > .post-wrap {
+            @apply lg:w-[48.8%] lg:mr-0 lg:odd:mr-[2.3%];
 
             &:nth-child(3) {
                 @apply lg:mt-4;
