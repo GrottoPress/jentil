@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Fix pagination links alignment issues
 
-## [0.13.0] - 2023-05-17
+## [0.13.0] - 2023-05-18
 
 ### Added
 - Include built-in image sizes in thumbnail selector in posts customizer
