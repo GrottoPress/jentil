@@ -8,13 +8,17 @@
 
 .entry-content,
 .pagination {
-    @apply clear-self my-5 first:mt-0 last:mb-0;
+    @apply my-5 first:mt-0 last:mb-0;
+}
+
+.entry-content {
+    @apply clear-self;
 }
 
 /** Page Header */
 
 .page-header {
-    @apply clear-self my-5 first:mt-0 last:mb-0;
+    @apply my-5 first:mt-0 last:mb-0;
 
     .archive & .avatar {
         @apply mr-4;
