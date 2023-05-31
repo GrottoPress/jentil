@@ -26,11 +26,11 @@
   },
   "require": {
     "php": ">=7.0",
-    "grottopress/wordpress-breadcrumbs": "^0.8",
-    "grottopress/wordpress-meta-box": "^0.4",
-    "grottopress/wordpress-posts": "^0.17",
-    "grottopress/wordpress-suv": "^0.7",
-    "grottopress/mobile-detector": "^0.2"
+    "grottopress/wordpress-breadcrumbs": "^1.0",
+    "grottopress/wordpress-meta-box": "^1.0",
+    "grottopress/wordpress-posts": "^1.0",
+    "grottopress/wordpress-suv": "^1.0",
+    "grottopress/mobile-detector": "^1.0"
   },
   "require-dev": {
     "lucatume/wp-browser": "^3.1",

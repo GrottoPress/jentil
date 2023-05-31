@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 
+
+### Changed
+- Upgrade `grottopress/wordpress-breadcrumbs` package to v1.0
+- Upgrade `grottopress/wordpress-meta-box` package to v1.0
+- Upgrade `grottopress/wordpress-posts` package to v1.0
+- Upgrade `grottopress/wordpress-suv` package to v1.0
+- Upgrade `grottopress/mobile-detector` package to v1.0
+
 ## [0.13.1] - 2023-05-19
 
 ### Fixed
