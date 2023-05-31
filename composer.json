@@ -1,6 +1,7 @@
 {
   "name": "grottopress/jentil",
   "description": "Jentil is a modern framework for rapid WordPress theme development",
+  "type": "wordpress-theme",
   "license": "MIT",
   "homepage": "https://www.grottopress.com/jentil/",
   "authors": [
@@ -26,6 +27,7 @@
   },
   "require": {
     "php": ">=7.0",
+    "composer/installers": "^1.12",
     "grottopress/wordpress-breadcrumbs": "^1.0",
     "grottopress/wordpress-meta-box": "^1.0",
     "grottopress/wordpress-posts": "^1.0",
@@ -61,7 +63,8 @@
   },
   "config": {
     "allow-plugins": {
-      "kylekatarnls/update-helper": true
+      "kylekatarnls/update-helper": true,
+      "composer/installers": true
     }
   }
 }
