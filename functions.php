@@ -11,16 +11,16 @@ if (version_compare(PHP_VERSION, JENTIL_MIN_PHP, '<') ||
     version_compare(get_bloginfo('version'), JENTIL_MIN_WP, '<')
 ) {
     add_action('admin_notices', 'printJentilNotice');
-
     deactivateJentil();
 } else {
-    require __DIR__.'/vendor/autoload.php';
-
     add_action('after_setup_theme', 'runJentil', 0);
 }
 
 function runJentil()
 {
+    $file = __DIR__.'/vendor/autoload.php';
+    \file_exists($file) && require $file;
+
     Jentil()->run();
 }
 
