@@ -25,7 +25,8 @@ final class Posts extends AbstractStyle
     public function enqueue()
     {
         $file_system = $this->app->utilities->fileSystem;
-        $file = '/grottopress/wordpress-posts/dist/css/posts.css';
+        $file_name = \is_rtl() ? 'posts-rtl.css' : 'posts.css';
+        $file = "/grottopress/wordpress-posts/dist/css/{$file_name}";
 
         \wp_enqueue_style(
             $this->id,

@@ -25,7 +25,6 @@ final class Core extends AbstractStyle
     public function enqueue()
     {
         $file_system = $this->app->utilities->fileSystem;
-
         $file = \is_rtl() ? '/dist/css/core-rtl.css' : '/dist/css/core.css';
 
         \wp_enqueue_style(
