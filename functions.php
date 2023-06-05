@@ -19,7 +19,7 @@ if (version_compare(PHP_VERSION, JENTIL_MIN_PHP, '<') ||
 function runJentil()
 {
     $file = __DIR__.'/vendor/autoload.php';
-    \file_exists($file) && require $file;
+    file_exists($file) && require $file;
 
     Jentil()->run();
 }
