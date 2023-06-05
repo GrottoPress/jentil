@@ -26,13 +26,13 @@ final class Posts extends AbstractStyle
     {
         $file_system = $this->app->utilities->fileSystem;
         $file_name = \is_rtl() ? 'posts-rtl.css' : 'posts.css';
-        $file = "/grottopress/wordpress-posts/dist/css/{$file_name}";
+        $file = "/dist/vendor/{$file_name}";
 
         \wp_enqueue_style(
             $this->id,
-            $file_system->vendorDir('url', $file),
+            $file_system->dir('url', $file),
             [],
-            \filemtime($file_system->vendorDir('path', $file))
+            \filemtime($file_system->dir('path', $file))
         );
     }
 }

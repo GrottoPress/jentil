@@ -38,7 +38,7 @@ class PostsTest extends AbstractTestCase
             'setups' => [],
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'vendorDir' => function (
+            'dir' => function (
                 string $type,
                 string $append
             ) use ($test_css): string {

@@ -35,6 +35,12 @@ mix.postCss(
     [rtlcss()]
 ).sourceMaps()
 
+mix.copy('vendor/grottopress/wordpress-posts/dist/css/posts.css', 'dist/vendor')
+mix.copy(
+    'vendor/grottopress/wordpress-posts/dist/css/posts-rtl.css',
+    'dist/vendor'
+)
+
 mix.copy('node_modules/html5shiv/dist/html5shiv.min.js', 'dist/vendor')
 mix.copy('node_modules/what-input/dist/what-input.min.js', 'dist/vendor')
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'dist/vendor')
