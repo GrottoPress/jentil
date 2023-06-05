@@ -1,0 +1,21 @@
+# Copyright (C) 2018 WordPress Page
+# This file is distributed under the same license as the WordPress Page package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress Page\n"
+"Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
+"POT-Creation-Date: 2018-09-12 13:45:55+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: Page.php:30
+msgid "Search results: \"%s\""
+msgstr ""
+
+#: Page.php:36
+msgid "Not found"
+msgstr ""

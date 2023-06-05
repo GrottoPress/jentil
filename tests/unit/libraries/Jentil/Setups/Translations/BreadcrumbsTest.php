@@ -35,7 +35,7 @@ class BreadcrumbsTest extends AbstractTestCase
             'utilities' => Stub::makeEmpty(Utilities::class),
         ]);
         $jentil->utilities->fileSystem = Stub::makeEmpty(FileSystem::class, [
-            'vendorDir' => '/var/www/jentil/languages',
+            'dir' => '/var/www/jentil/languages',
         ]);
 
         $translation = new Breadcrumbs($jentil);

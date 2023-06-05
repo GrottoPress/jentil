@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Enqueue missing RTL styles from `grottopress/wordpress-posts` package
 
+### Removed
+- Remove `FileSystem::vendorDir()`
+
 ## [0.13.1] - 2023-05-19
 
 ### Fixed

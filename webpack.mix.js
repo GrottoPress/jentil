@@ -41,6 +41,26 @@ mix.copy(
     'dist/vendor'
 )
 
+mix.copy(
+    'vendor/grottopress/wordpress-breadcrumbs/src/lang',
+    'dist/vendor/grotto-wp-breadcrumbs'
+)
+
+mix.copy(
+    'vendor/grottopress/wordpress-field/src/lang',
+    'dist/vendor/grotto-wp-field'
+)
+
+mix.copy(
+    'vendor/grottopress/wordpress-page/src/lang',
+    'dist/vendor/grotto-wp-page'
+)
+
+mix.copy(
+    'vendor/grottopress/wordpress-posts/src/lang',
+    'dist/vendor/grotto-wp-posts'
+)
+
 mix.copy('node_modules/html5shiv/dist/html5shiv.min.js', 'dist/vendor')
 mix.copy('node_modules/what-input/dist/what-input.min.js', 'dist/vendor')
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'dist/vendor')

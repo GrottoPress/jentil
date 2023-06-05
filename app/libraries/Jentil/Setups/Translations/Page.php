@@ -26,9 +26,9 @@ final class Page extends AbstractTranslation
     {
         \load_theme_textdomain(
             $this->textDomain,
-            $this->app->utilities->fileSystem->vendorDir(
+            $this->app->utilities->fileSystem->dir(
                 'path',
-                '/grottopress/wordpress-page/src/lang'
+                '/dist/vendor/grotto-wp-page'
             )
         );
     }
