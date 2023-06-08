@@ -24,8 +24,10 @@ abstract class AbstractMetaBox extends AbstractSetup
     /**
      * @action add_meta_boxes
      */
-    public function add(string $post_type, WP_Post $post)
+    public function add(string $post_type, $post)
     {
+        if (!\is_a($post, 'WP_Post')) return;
+
         if (!($box = $this->box($post))) {
             return;
         }
