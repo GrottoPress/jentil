@@ -3,17 +3,9 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\PostTypeTemplates;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
+use GrottoPress\WordPress\SUV\Setups\PostTypeTemplates\AbstractTemplate as
+    Template;
 
-abstract class AbstractTemplate extends AbstractSetup
+abstract class AbstractTemplate extends Template
 {
-    /**
-     * @var string
-     */
-    protected $slug;
-
-    protected function getSlug(): string
-    {
-        return $this->slug;
-    }
 }

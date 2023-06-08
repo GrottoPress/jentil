@@ -3,24 +3,11 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\MetaBoxes;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
-use GrottoPress\Jentil\IdentityTrait;
+use GrottoPress\WordPress\SUV\Setups\MetaBoxes\AbstractMetaBox as Metabox;
 use WP_Post;
 
-abstract class AbstractMetaBox extends AbstractSetup
+abstract class AbstractMetaBox extends Metabox
 {
-    use IdentityTrait;
-
-    /**
-     * @var string $context 'normal', 'side', or 'advanced'.
-     */
-    protected $context;
-
-    protected function getContext(): string
-    {
-        return $this->context;
-    }
-
     /**
      * @action add_meta_boxes
      */

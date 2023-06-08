@@ -3,20 +3,9 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Translations;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
-use GrottoPress\Getter\GetterTrait;
+use GrottoPress\WordPress\SUV\Setups\Translations\AbstractTranslation as
+    Translation;
 
-abstract class AbstractTranslation extends AbstractSetup
+abstract class AbstractTranslation extends Translation
 {
-    use GetterTrait;
-
-    /**
-     * @var string
-     */
-    protected $textDomain;
-
-    protected function getTextDomain(): string
-    {
-        return $this->textDomain;
-    }
 }

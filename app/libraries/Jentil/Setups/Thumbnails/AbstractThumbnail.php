@@ -3,10 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Thumbnails;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
-use GrottoPress\Jentil\IdentityTrait;
+use GrottoPress\WordPress\SUV\Setups\Thumbnails\AbstractThumbnail as Thumbnail;
 
-abstract class AbstractThumbnail extends AbstractSetup
+abstract class AbstractThumbnail extends Thumbnail
 {
-    use IdentityTrait;
 }

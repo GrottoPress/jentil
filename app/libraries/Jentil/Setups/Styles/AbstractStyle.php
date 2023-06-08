@@ -3,10 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Styles;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
-use GrottoPress\Jentil\IdentityTrait;
+use GrottoPress\WordPress\SUV\Setups\Styles\AbstractStyle as Style;
 
-abstract class AbstractStyle extends AbstractSetup
+abstract class AbstractStyle extends Style
 {
-    use IdentityTrait;
 }

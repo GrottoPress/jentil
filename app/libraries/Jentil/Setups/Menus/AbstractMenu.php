@@ -3,10 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups\Menus;
 
-use GrottoPress\Jentil\Setups\AbstractSetup;
-use GrottoPress\Jentil\IdentityTrait;
+use GrottoPress\WordPress\SUV\Setups\Menus\AbstractMenu as Menu;
 
-abstract class AbstractMenu extends AbstractSetup
+abstract class AbstractMenu extends Menu
 {
-    use IdentityTrait;
 }
