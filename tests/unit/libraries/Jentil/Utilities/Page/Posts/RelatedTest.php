@@ -7,7 +7,6 @@ use GrottoPress\Jentil\Utilities\Page\Posts;
 use GrottoPress\Jentil\Utilities\ThemeMods\Posts as PostsMod;
 use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
-use tad\FunctionMocker\FunctionMocker;
 
 class RelatedTest extends AbstractTestCase
 {

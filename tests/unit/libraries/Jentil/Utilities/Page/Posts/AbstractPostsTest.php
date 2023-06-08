@@ -9,7 +9,6 @@ use GrottoPress\Jentil\Utilities\Page;
 use GrottoPress\WordPress\Posts as PostsPackage;
 use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
-use tad\FunctionMocker\FunctionMocker;
 
 class AbstractPostsTest extends AbstractTestCase
 {

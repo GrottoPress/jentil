@@ -3,9 +3,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\Jentil\Setups;
 
-use GrottoPress\Jentil\Utilities;
-use GrottoPress\Jentil\Utilities\FileSystem;
-use GrottoPress\Jentil\Utilities\ShortTags;
 use GrottoPress\Jentil\AbstractTheme;
 use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
