@@ -101,6 +101,16 @@ final class Jentil extends AbstractTheme
         return $data;
     }
 
+    private function setUpMenus()
+    {
+        $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
+    }
+
+    private function setUpMetaBoxes()
+    {
+        $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
+    }
+
     private function setUpMisc()
     {
         $this->setups['Loader'] = new Setups\Loader($this);
@@ -113,37 +123,12 @@ final class Jentil extends AbstractTheme
         $this->setups['Mobile'] = new Setups\Mobile($this);
     }
 
-    private function setUpTranslations()
+    private function setUpPostTypeTemplates()
     {
-        $this->setups['Translations\Breadcrumbs'] =
-            new Setups\Translations\Breadcrumbs($this);
-        $this->setups['Translations\Field'] =
-            new Setups\Translations\Field($this);
-        $this->setups['Translations\Page'] =
-            new Setups\Translations\Page($this);
-        $this->setups['Translations\Posts'] =
-            new Setups\Translations\Posts($this);
-        $this->setups['Translations\Core'] =
-            new Setups\Translations\Core($this);
-    }
-
-    private function setUpMetaBoxes()
-    {
-        $this->setups['MetaBoxes\Layout'] = new Setups\MetaBoxes\Layout($this);
-    }
-
-    private function setUpThumbnails()
-    {
-        $this->setups['Thumbnails\Nano'] = new Setups\Thumbnails\Nano($this);
-        $this->setups['Thumbnails\Micro'] = new Setups\Thumbnails\Micro($this);
-        $this->setups['Thumbnails\Mini'] = new Setups\Thumbnails\Mini($this);
-    }
-
-    private function setUpStyles()
-    {
-        $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
-        $this->setups['Styles\Core'] = new Setups\Styles\Core($this);
-        $this->setups['Styles\Editor'] = new Setups\Styles\Editor($this);
+        $this->setups['PostTypeTemplates\PageBuilder'] =
+            new Setups\PostTypeTemplates\PageBuilder($this);
+        $this->setups['PostTypeTemplates\PageBuilderBlank'] =
+            new Setups\PostTypeTemplates\PageBuilderBlank($this);
     }
 
     private function setUpScripts()
@@ -165,19 +150,6 @@ final class Jentil extends AbstractTheme
             new Setups\Scripts\CustomizePreview($this);
     }
 
-    private function setUpMenus()
-    {
-        $this->setups['Menus\Primary'] = new Setups\Menus\Primary($this);
-    }
-
-    private function setUpPostTypeTemplates()
-    {
-        $this->setups['PostTypeTemplates\PageBuilder'] =
-            new Setups\PostTypeTemplates\PageBuilder($this);
-        $this->setups['PostTypeTemplates\PageBuilderBlank'] =
-            new Setups\PostTypeTemplates\PageBuilderBlank($this);
-    }
-
     private function setUpSidebars()
     {
         $this->setups['Sidebars\Primary'] =
@@ -185,6 +157,42 @@ final class Jentil extends AbstractTheme
         $this->setups['Sidebars\Secondary'] =
             new Setups\Sidebars\Secondary($this);
         $this->setups['Sidebars\Footer'] = new Setups\Sidebars\Footer($this);
+    }
+
+    private function setUpStyles()
+    {
+        $this->setups['Styles\Posts'] = new Setups\Styles\Posts($this);
+        $this->setups['Styles\Core'] = new Setups\Styles\Core($this);
+        $this->setups['Styles\Editor'] = new Setups\Styles\Editor($this);
+    }
+
+    private function setUpSupports()
+    {
+        $this->setups['Supports\WooCommerce'] =
+            new Setups\Supports\WooCommerce($this);
+        $this->setups['Supports\BuddyPress'] =
+            new Setups\Supports\BuddyPress($this);
+    }
+
+    private function setUpThumbnails()
+    {
+        $this->setups['Thumbnails\Nano'] = new Setups\Thumbnails\Nano($this);
+        $this->setups['Thumbnails\Micro'] = new Setups\Thumbnails\Micro($this);
+        $this->setups['Thumbnails\Mini'] = new Setups\Thumbnails\Mini($this);
+    }
+
+    private function setUpTranslations()
+    {
+        $this->setups['Translations\Breadcrumbs'] =
+            new Setups\Translations\Breadcrumbs($this);
+        $this->setups['Translations\Field'] =
+            new Setups\Translations\Field($this);
+        $this->setups['Translations\Page'] =
+            new Setups\Translations\Page($this);
+        $this->setups['Translations\Posts'] =
+            new Setups\Translations\Posts($this);
+        $this->setups['Translations\Core'] =
+            new Setups\Translations\Core($this);
     }
 
     private function setUpViews()
@@ -200,13 +208,5 @@ final class Jentil extends AbstractTheme
         $this->setups['Views\Attachment'] = new Setups\Views\Attachment($this);
         $this->setups['Views\Sidebar'] = new Setups\Views\Sidebar($this);
         $this->setups['Views\Footer'] = new Setups\Views\Footer($this);
-    }
-
-    private function setUpSupports()
-    {
-        $this->setups['Supports\WooCommerce'] =
-            new Setups\Supports\WooCommerce($this);
-        $this->setups['Supports\BuddyPress'] =
-            new Setups\Supports\BuddyPress($this);
     }
 }
