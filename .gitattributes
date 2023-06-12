@@ -7,7 +7,10 @@
 /dist/** -export-ignore
 /lang -export-ignore
 /lang/** -export-ignore
-/.security.txt -export-ignore
+/partials -export-ignore
+/partials/** -export-ignore
+/templates -export-ignore
+/templates/** -export-ignore
 /composer.json -export-ignore
 /composer.lock -export-ignore
 /functions.php -export-ignore

@@ -3,6 +3,8 @@
 !/dist/
 !/docker/
 !/lang/
+!/partials/
+!/templates/
 !/composer.json
 !/composer.lock
 !/functions.php
