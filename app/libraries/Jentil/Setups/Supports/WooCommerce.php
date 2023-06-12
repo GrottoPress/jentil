@@ -42,7 +42,6 @@ final class WooCommerce extends AbstractSetup
         }
 
         $taxes = ['product_tag', 'product_cat'];
-        $shop_page = (int)\get_option('woocommerce_shop_page_id');
 
         $related_page_active_cb = $this->app->setups['Customizer']
             ->panels['Posts']->sections['Related_page']
@@ -73,19 +72,17 @@ final class WooCommerce extends AbstractSetup
         $this->app->setups['Customizer']
             ->panels['Posts']->sections['Singular_page']
             ->get($wp_customizer)->active_callback =
-                function () use ($shop_page, $single_page_active_cb): bool {
-                    return (
-                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$single_page_active_cb()
-                    );
+                function () use ($single_page_active_cb): bool {
+                    return !$this->isWooCommercePage() &&
+                        (bool)$single_page_active_cb();
                 };
 
         $this->app->setups['Customizer']
             ->panels['Posts']->sections['Related_page']
             ->get($wp_customizer)->active_callback =
-                function () use ($shop_page, $related_page_active_cb): bool {
-                    return (
-                        !$this->app->utilities->page->is('page', $shop_page) && (bool)$related_page_active_cb()
-                    );
+                function () use ($related_page_active_cb): bool {
+                    return !$this->isWooCommercePage() &&
+                        (bool)$related_page_active_cb();
                 };
     }
 
@@ -98,11 +95,7 @@ final class WooCommerce extends AbstractSetup
             return;
         }
 
-        $shop_page = (int)\get_option('woocommerce_shop_page_id');
-
-        if (!$this->app->utilities->page->is('singular', 'product') &&
-            !$this->app->utilities->page->is('page', $shop_page)
-        ) {
+        if (!$this->isWooCommercePage()) {
             return;
         }
 
@@ -125,5 +118,14 @@ final class WooCommerce extends AbstractSetup
             'jentil_after_content',
             [$this->app->setups['Views\Singular'], 'renderRelatedPosts']
         );
+    }
+
+    private function isWooCommercePage(): bool
+    {
+        return \is_product() ||
+            \is_shop() ||
+            \is_cart() ||
+            \is_checkout() ||
+            \is_account_page();
     }
 }

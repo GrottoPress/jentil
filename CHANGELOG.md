@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Ensure page content spans full width on single column layouts
+- Remove customizer sections for **all** WooCommerce pages
 
 ### Removed
 - Remove `IdentityTrait`
