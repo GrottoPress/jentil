@@ -19,4 +19,4 @@ extensions:
 coverage:
   enabled: true
   include:
-    - app/libraries/*
+    - app/*

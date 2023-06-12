@@ -50,7 +50,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GrottoPress\\": "app/libraries/"
+      "GrottoPress\\": "app/"
     },
     "files": [
       "app/helpers.php"
@@ -58,7 +58,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "GrottoPress\\": "tests/unit/libraries/"
+      "GrottoPress\\": "tests/unit/app/"
     }
   },
   "config": {

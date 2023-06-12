@@ -30,7 +30,7 @@ Jentil is a modern framework for rapid WordPress theme development. It emphasize
 
 Jentil is designed with the [SUV](https://github.com/grottopress/wordpress-suv/) architecture, and makes full use of the express power of core WordPress' event driven architecture.
 
-Jentil features a more organised directory structure. Templates are loaded from the `app/templates` directory, and partials from the `app/partials` directory.
+Jentil features a more organised directory structure. Templates are loaded from the `templates/` directory, and partials from the `partials/` directory.
 
 It is packed with predefined, pluggable features, including powerful content options which allows users to configure how posts display on archives right from the customizer.
 
@@ -71,8 +71,8 @@ These are the core requirements you need to get in place. The rest would be inst
 
 Install *jentil-theme*, which is a starter for building your own theme with Jentil:
 
-1. From the `wp-content/themes` directory, run `composer create-project --remove-vcs grottopress/jentil-theme your-theme-slug-here`.
-1. Switch to `your-theme-slug-here` directory: `cd your-theme-slug-here`.
+1. From the `wp-content/themes/` directory, run `composer create-project --remove-vcs grottopress/jentil-theme your-theme-slug-here`.
+1. Switch to `your-theme-slug-here/` directory: `cd your-theme-slug-here/`.
 1. Update theme information in `style.css`. You may also want to change package name, description and author in `composer.json` and `package.json`.
 1. Copy `bs-config-sample.js` to `bs-config.js`: `cp bs-config-sample.js bs-config.js`. Edit to taste.
 1. Replace all occurrences of `'jentil-theme'` text domain with your own theme slug. Your theme slug should match your theme folder name, which should just be the *slugified* version of your theme's name.
@@ -82,7 +82,7 @@ Install *jentil-theme*, which is a starter for building your own theme with Jent
 
 ### Install Jentil as parent theme
 
-By default, your new theme is installed with Jentil as package (in the `vendor` directory). This is recommended.
+By default, your new theme is installed with Jentil as package (in the `vendor/` directory). This is recommended.
 
 However, Jentil is a full-fledged WordPress theme by itself, and can, therefore, be installed as such.
 
@@ -90,14 +90,14 @@ If, for any reason, you would like to use Jentil as parent theme instead, follow
 
 1. Add `Template: jentil` to your theme's `style.css` headers.
 1. Run `composer remove grottopress/jentil` to remove Jentil from your theme's dependencies.
-1. Swicth to `wp-content/themes` directory: `cd ../`
+1. Swicth to `wp-content/themes/` directory: `cd ../`
 1. Install Jentil as (parent) theme: `composer create-project grottopress/jentil jentil`
-1. Switch to your own theme's directory: `cd your-theme-slug-here`
+1. Switch to your own theme's directory: `cd your-theme-slug-here/`
 1. Activate your own theme (not Jentil), if not already active.
 
 ### Install via Docker
 
-Your new theme has docker files in the `docker` directory. The following `Dockerfile`s are available:
+Your new theme has docker files in the `docker/` directory. The following `Dockerfile`s are available:
 
 - `apache.Dockerfile`: Builds an image of WordPress + PHP + apache, with your theme installed.
 - `apache.child.Dockerfile`: Builds an image of WordPress + PHP + apache, with your theme installed **as child theme** of Jentil.
@@ -130,11 +130,11 @@ Whether Jentil is installed as theme or package, it acts as a parent theme, in t
 
 You can remove or override Jentil's features, just as you would any WordPress parent theme; via `remove_action` or `remove_filter` calls in your own theme.
 
-You may override templates and partials by placing a similarly-named template or partial in the `app/templates` or `app/partials` directory of your theme, respectively.
+You may override templates and partials by placing a similarly-named template or partial in the `templates/` or `partials/` directory of your theme, respectively.
 
-Your own theme's singleton instance is available via a call to `\Theme()` (unless you changed it in `app/helpers.php`), while Jentil's is available via `\Jentil()`. You may use these in files outside `app/libraries` (eg: in templates and partials) to access the respective instances.
+Your own theme's singleton instance is available via a call to `\Theme()` (unless you changed it in `app/helpers.php`), while Jentil's is available via `\Jentil()`. You may use these in files outside `app` directory (eg: in templates and partials) to access the respective instances.
 
-The Jentil singleton instance is exposed as the `$parent` attribute in the main `Theme` class (`app/libraries/Theme.php`).
+The Jentil singleton instance is exposed as the `$parent` attribute in the main `Theme` class (`app/Theme.php`).
 
 <!-- Jentil ships with abstract classes you can extend in your own theme. Use these instead of extending from Jentil's dependencies directly.
 
@@ -149,15 +149,12 @@ The directory structure for your theme, after installation, should be similar to
 ```
 .
 ├── app/
-│   ├── libraries/
-│   │   ├── Theme/
-│   │   │   ├── Setups/
-│   │   │   ├── Utilities/
-│   │   │   └── Utilities.php
-│   │   └── Theme.php
-│   ├── partials/
-│   ├── templates/
-│   └── helpers.php
+│   ├── Theme/
+│   │   ├── Setups/
+│   │   ├── Utilities/
+│   │   └── Utilities.php
+│   ├── helpers.php
+│   └── Theme.php
 ├── assets/
 │   ├── css/
 │   └── js/
@@ -166,6 +163,8 @@ The directory structure for your theme, after installation, should be similar to
 │   └── js/
 ├── lang/
 ├── node_modules/
+├── partials/
+├── templates/
 ├── tests/
 ├── vendor/
 ├── .editorconfig
@@ -190,11 +189,11 @@ The directory structure for your theme, after installation, should be similar to
 
 ### Adding templates and partials
 
-Templates and partials should be filed in `app/templates` and `app/partials` respectively. The rules and naming conventions are as defined by WordPress. Therefore, a `app/templates/singular.php` in your theme overrides the same in Jentil.
+Templates and partials should be filed in `templates/` and `partials/` respectively. The rules and naming conventions are as defined by WordPress. Therefore, a `templates/singular.php` in your theme overrides the same in Jentil.
 
 If you decide to add your own templates, do not use WordPress' `\get_header()`, `\get_footer()` and `\get_sidebar()` functions in them. These functions expect your partials to be in your theme's root, and WordPress provides no way of overriding those.
 
-Jentil uses it's own loader to load partials from the `app/partials` directory. You should call eg: `\Jentil()->utilities->loader->loadPartial('header', 'some-slug')`, instead of `\get_header('some-slug')`.
+Jentil uses it's own loader to load partials from the `partials/` directory. You should call eg: `\Jentil()->utilities->loader->loadPartial('header', 'some-slug')`, instead of `\get_header('some-slug')`.
 
 ### Template hooks
 
@@ -223,7 +222,7 @@ WordPress introduced [post type templates](https://make.wordpress.org/core/2016/
 
 Jentil's loader does not load any template (or partial) from your theme's root at all. So if you placed post type templates here, though they may be recognised by WordPress and listed in the Page Template dropdown in the post edit screen, they would not be loaded by Jentil.
 
-To use post type templates in your own theme, add the templates in the `app/templates` directory, and use the [`theme_{$post_type}_templates`](https://developer.wordpress.org/reference/hooks/theme_post_type_templates/) filter.
+To use post type templates in your own theme, add the templates in the `templates/` directory, and use the [`theme_{$post_type}_templates`](https://developer.wordpress.org/reference/hooks/theme_post_type_templates/) filter.
 
 Jentil uses this hook to add page builder templates, and provides an `AbstractPostTypeTemplate` setup class your theme's post type templates can inherit from.
 

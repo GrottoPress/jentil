@@ -3,9 +3,9 @@ module.exports = {
     files: [
         './dist/css/**/*',
         './dist/js/**/*',
-        './app/partials/**/*',
-        './app/templates/**/*',
-        './app/libraries/Jentil/Setups/Views/**/*'
+        './partials/**/*',
+        './templates/**/*',
+        './app/Jentil/Setups/Views/**/*'
     ],
     minify: false,
     // notify: true,

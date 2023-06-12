@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Change
 - Make abstract subclasses of `AbstractSetup` extend directly from corresponding SUV setups
+- Move `app/partials/` directory up one level to `partials/`
+- Move `app/templates/` directory up one level to `templates/`
 
 ### Fixed
 - Ensure page content spans full width on single column layouts

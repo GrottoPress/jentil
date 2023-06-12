@@ -51,7 +51,7 @@ class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->_dir($type, "/app/partials{$append}", $form);
+        return $this->_dir($type, "/partials{$append}", $form);
     }
 
     /**
@@ -65,7 +65,7 @@ class FileSystem
         string $append = '',
         string $form = ''
     ): string {
-        return $this->_dir($type, "/app/templates{$append}", $form);
+        return $this->_dir($type, "/templates{$append}", $form);
     }
 
     /**
@@ -138,6 +138,6 @@ class FileSystem
      */
     private function dirPath(): string
     {
-        return \dirname(__FILE__, 5);
+        return \dirname(__FILE__, 4);
     }
 }
