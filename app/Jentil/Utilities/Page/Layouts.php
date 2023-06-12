@@ -24,23 +24,23 @@ class Layouts
     {
         $layouts = [
             'columns-1' => [
-                'content' => \esc_html__('content', 'jentil'),
+                'content' => \esc_html__('Content', 'jentil'),
             ],
             'columns-2' => [
-                'content-sidebar' => \esc_html__('content / sidebar', 'jentil'),
-                'sidebar-content' => \esc_html__('sidebar / content', 'jentil'),
+                'content-sidebar' => \esc_html__('Content / Sidebar', 'jentil'),
+                'sidebar-content' => \esc_html__('Sidebar / Content', 'jentil'),
             ],
             'columns-3' => [
                 'sidebar-content-sidebar' => \esc_html__(
-                    'sidebar / content / sidebar',
+                    'Sidebar / Content / Sidebar',
                     'jentil'
                 ),
                 'content-sidebar-sidebar' => \esc_html__(
-                    'content / sidebar / sidebar',
+                    'Content / Sidebar / Sidebar',
                     'jentil'
                 ),
                 'sidebar-sidebar-content' => \esc_html__(
-                    'sidebar / sidebar / content',
+                    'Sidebar / Sidebar / Content',
                     'jentil'
                 ),
             ],
