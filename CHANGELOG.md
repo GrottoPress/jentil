@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased] - 
 
+### Added
+- Add support for [BuddyPress](https://wordpress.org/plugins/buddypress/)
+
 ### Change
 - Make abstract subclasses of `AbstractSetup` extend directly from corresponding SUV setups
 

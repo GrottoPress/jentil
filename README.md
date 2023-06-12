@@ -56,12 +56,6 @@ Jentil may be installed either as a parent theme, or as a package in another the
 - SEO-ready
 - Responsive (mobile-ready)
 
-### Supported
-
-Jentil has built-in support for the following:
-
-- [WooCommerce](https://wordpress.org/plugins/woocommerce/) >= 3.3
-
 ## Requirements
 
 - [PHP](https://secure.php.net) >= 7.0

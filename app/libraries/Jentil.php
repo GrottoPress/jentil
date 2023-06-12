@@ -206,5 +206,7 @@ final class Jentil extends AbstractTheme
     {
         $this->setups['Supports\WooCommerce'] =
             new Setups\Supports\WooCommerce($this);
+        $this->setups['Supports\BuddyPress'] =
+            new Setups\Supports\BuddyPress($this);
     }
 }
