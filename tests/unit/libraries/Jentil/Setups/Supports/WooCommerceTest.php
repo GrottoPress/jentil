@@ -9,7 +9,6 @@ use GrottoPress\Jentil\Setups\Customizer\AbstractPanel;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSection;
 use GrottoPress\Jentil\Setups\Customizer\AbstractSetting;
 use GrottoPress\Jentil\Utilities;
-use GrottoPress\Jentil\Utilities\Page;
 use GrottoPress\Jentil\AbstractTestCase;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
@@ -66,8 +65,6 @@ class WooCommerceTest extends AbstractTestCase
 
         $wp_customizer = $this->getMockBuilder('WP_Customize_Manager')
             ->getMock();
-
-        FunctionMocker::replace('get_option');
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'setups' => ['Customizer' => Stub::makeEmpty(
@@ -161,18 +158,12 @@ class WooCommerceTest extends AbstractTestCase
         $this->getMockBuilder('WooCommerce')->getMock();
 
         $remove_action = FunctionMocker::replace('remove_action');
-        $get_option = FunctionMocker::replace('get_option', 111);
+        FunctionMocker::replace('is_product', false);
+        FunctionMocker::replace('is_shop', true);
 
         $jentil = Stub::makeEmpty(AbstractTheme::class, [
             'setups' => ['Views\Singular' => true],
             'utilities' => Stub::makeEmpty(Utilities::class),
-        ]);
-
-        $jentil->utilities->page = Stub::makeEmpty(Page::class, [
-            'is' => function (string $type, string $subtype): bool {
-                return ($type === 'singular' && $subtype === 'product') ||
-                    ($type === 'page' && $subtype === 111);
-            }
         ]);
 
         $woo_commerce = new WooCommerce($jentil);
