@@ -34,6 +34,10 @@
     .site-sidebar {
         @apply hidden;
     }
+
+    .site-content {
+        @apply lg:w-full;
+    }
 }
 
 /** Two Columns */

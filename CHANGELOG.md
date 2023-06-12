@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Change
 - Make abstract subclasses of `AbstractSetup` extend directly from corresponding SUV setups
 
+### Fixed
+- Ensure page content spans full width on single column layouts
+
 ### Removed
 - Remove `IdentityTrait`
 
