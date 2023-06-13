@@ -1,8 +1,6 @@
 /** export-ignore
 /app -export-ignore
 /app/** -export-ignore
-/assets -export-ignore
-/assets/** -export-ignore
 /dist -export-ignore
 /dist/** -export-ignore
 /lang -export-ignore
