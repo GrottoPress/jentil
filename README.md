@@ -174,7 +174,7 @@ The directory structure for your theme, after installation, should be similar to
 ├── composer.lock
 ├── functions.php
 ├── index.php
-├── LICENSE.md
+├── LICENSE
 ├── package.json
 ├── package-lock.json
 ├── postcss.config.js
