@@ -108,10 +108,9 @@ You may build an image using any of the `Dockerfile`s:
 
 ```bash
 docker build \
-    --build-arg JENTIL_VERSION=0.11.1 \
     --build-arg PHP_VERSION=7.4 \
     --build-arg THEME_NAME=your-theme-slug-here \
-    --build-arg WORDPRESS_VERSION=5.3 \
+    --build-arg WORDPRESS_VERSION=6.1 \
     -f docker/fpm-alpine.Dockerfile \
     -t your-image-tag-here .
 ```
