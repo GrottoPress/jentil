@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Update outdated package versions in docker files
+- Remove "Show sticky posts?" setting from Search posts section in customizer
+- Remove "Heading" setting from Search posts section in customizer
 
 ## [1.0.0] - 2023-06-12
 

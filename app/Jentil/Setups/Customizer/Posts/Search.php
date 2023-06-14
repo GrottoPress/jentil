@@ -22,7 +22,7 @@ final class Search extends AbstractSection
         };
     }
 
-    protected function settings()
+    protected function setSettings()
     {
         parent::setSettings();
 
