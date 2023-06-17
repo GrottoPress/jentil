@@ -13,7 +13,7 @@ export class Colophon extends Base {
     }
 
     protected update(): void {
-        this._wp.customize(this._mod_ids[0], (from: () => void): void => {
+        this._wp.customize(this._mod_ids[0], (from): void => {
             from.bind((to: string): void => {
                 this._j('#colophon small').html(this.replaceShortTags(
                     this._short_tags,

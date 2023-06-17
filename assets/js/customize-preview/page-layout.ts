@@ -5,7 +5,7 @@ import { Base } from './base'
 export class PageLayout extends Base {
     protected update(): void {
         this._j.each(this._mod_ids, (_, id: string): void => {
-            this._wp.customize(id, (from: () => void): void => {
+            this._wp.customize(id, (from): void => {
                 from.bind((to: string): void => {
                     this.updateBodyClass(to)
                 })

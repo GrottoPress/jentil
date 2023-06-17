@@ -14,7 +14,7 @@ export class PageTitle extends Base {
 
     protected update(): void {
         this._j.each(this._mod_ids, (_, id: string): void => {
-            this._wp.customize(id, (from: () => void): void => {
+            this._wp.customize(id, (from): void => {
                 from.bind((to: string): void => {
                     this._j('.page-title').html(this.replaceShortTags(
                         this._short_tags,
