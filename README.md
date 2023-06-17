@@ -43,8 +43,6 @@ These are the core requirements you need to get in place. The rest would be inst
 
 ## Installation
 
-**Disclaimer:** *This software is still in development. Use at your own risk.*
-
 Install *jentil-theme*, which is a starter for building your own theme with Jentil:
 
 1. From the `wp-content/themes/` directory, run `composer create-project --remove-vcs grottopress/jentil-theme your-theme-slug-here`.
