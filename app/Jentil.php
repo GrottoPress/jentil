@@ -89,6 +89,8 @@ final class Jentil extends AbstractTheme
             'license' => 'License',
             'license_uri' => 'License URI',
             'name' => 'Theme Name',
+            'requires_php' => 'Requires PHP',
+            'requires_wp' => 'Requires at least',
             'tags' => 'Tags',
             'template' => 'Template',
             'text_domain' => 'Text Domain',
